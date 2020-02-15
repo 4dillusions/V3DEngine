@@ -1,0 +1,85 @@
+Windows/Android - Visual Studio Community 2019 (16.4.5)
+====================================================================================================================================
+Create solution: Solution/WindowsAndroid/V3DEngine.sln
+******************************************************
+
+configuration	x86		ARM		x64		ARM64
+---------------------------------------------
+Android			x86		ARM		x86		ARM64
+Windows			x64		x64		x64		x64
+
+
+Shared
+++++++
+Projects (Windows & Android shared code)
+----------------------------------------
+V3DEngine (Shared Items)
+V3DEngineTests (Shared Items)
+
+
+Windows
++++++++
+Projects (Windows desktop x64)
+------------------------------
+V3DEngine (Dynamic-Link Library with exorts .dll)	references: V3DEngine (shared)
+V3DEngineTests (Console App .exe)					references: V3DEngineTests (shared), V3DEngine
+
+Settings
+--------
+General
+	output directory: 
+		.exe: $(SolutionDir)\Windows\Bin\$(Configuration)\$(Platform)\		
+		.dll/.lib: $(SolutionDir)\Windows\Bin\$(Configuration)\$(Platform)\Lib\<ThirdParty>\<LibName>
+	Target name: $(ProjectName)
+	Windows SDK: 10.0.10240.0
+	Platform toolset: Visual Studio 2019 (v142)
+	C++ language: C++17
+	
+Debugging
+	Working Directory: $(SolutionDir)\Windows\Bin\$(Configuration)\$(Platform)\
+	
+VC++ directories
+	include directories: 	$(SolutionDir)..\..\Source\Windows
+							$(SolutionDir)..\..\Source\Shared
+	
+C/C++
+	preprocessors: WINCLASSIC
+	Code generation
+		Enable C++ exceptions: No (release), Yes (debug)
+	Language
+		Enable RTTI: No
+	Precompiled headers: Not using, -, -
+	
+Build Events:
+	Post build event
+		.dll: xcopy $(SolutionDir)\Windows\Bin\$(Configuration)\$(Platform)\Lib\V3DEngine\$(ProjectName).dll $(SolutionDir)\Windows\Bin\$(Configuration)\$(Platform)\ /Y /D
+
+
+Android (Mobile & emulator ARM/x86)
++++++++++++++++++++++++++++++++++++
+Projects (AAndroid x86\ARM)
+---------------------------
+V3DEngine (Static Library)						references: V3DEngine (shared)	C/C++ Advanced: Compile as: C++
+V3DEngineTests (Native Activity Application)	references: V3DEngineTests (shared), V3DEngine	C/C++ Advanced: Compile as: C++
+
+Settings
+--------
+General
+	output directory: $(SolutionDir)\Android\Bin\$(Configuration)\$(Platform)\
+	Platform toolset: Clang 5.0
+	Config type: static library .a (lib), Dynamic library (app)
+	Target API level: x86/ARM: android 19, x64/ARM64: android 21
+	
+VC++ directories
+	include directories: 	$(SolutionDir)..\..\Source\Android
+							$(SolutionDir)..\..\Source\Shared
+	
+C/C++
+	preprocessors: ANDROID, _DEBUG
+	Code generation
+		Enable C++ exceptions: No (release), Yes (debug)
+	Language
+		Enable RTTI: No
+		C language: C11
+		C++ language: C++17
+	Precompiled headers: Not using, -, -
