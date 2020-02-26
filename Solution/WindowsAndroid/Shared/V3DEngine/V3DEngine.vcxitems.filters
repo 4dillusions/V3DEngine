@@ -4,15 +4,21 @@
     <Filter Include="Source">
       <UniqueIdentifier>{a9958820-fcc5-41d0-944d-f5f7e009c680}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\V3DGameEngine">
+      <UniqueIdentifier>{2bd0dd61-7f59-41ff-b5d6-7842eee49f3d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DEngine.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DEngine.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMacros.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DGameEngine\V3DGameEngineFacade.h">
+      <Filter>Source\V3DGameEngine</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DGameEngine\V3DGameEngineFacade.cpp">
+      <Filter>Source\V3DGameEngine</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -4,11 +4,6 @@ Copyright (c) 2020 by 4D Illusions. All rights reserved.
 Released under the terms of the GNU General Public License version 3 or later.
 */
 
-#include "V3DEngineTests/V3DTestRunner.h"
+#pragma once
 
-int main()
-{
-	V3D::V3DEngineTests::RunAllTests();
-	
-	return 0;
-}
+#define V3DENGINE_API /**/

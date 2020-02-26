@@ -12,12 +12,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEngineTests\Main.cpp" />
-    <ClCompile Include="..\..\..\..\Source\Windows\V3DEngineTests\V3DEngineTests.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEngineTests\V3DEngineTestsApp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\V3DEngine\V3DEngine.vcxproj">
       <Project>{f80bf265-b06b-4a8b-91f0-6c4f0736dd6f}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEngineTests\V3DTestIO.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

@@ -3,9 +3,11 @@
 .vs/
 ARM/
 ARM64/
+Assets/
 Bin/
-Debug/
 ContentSource/
+Debug/
+Depencies/
 Games/
 html/
 Plan/

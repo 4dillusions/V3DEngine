@@ -4,12 +4,12 @@ Copyright (c) 2020 by 4D Illusions. All rights reserved.
 Released under the terms of the GNU General Public License version 3 or later.
 */
 
-#include "V3DEngine.h"
+#include "V3DGameEngineFacade.h"
 
-namespace V3DEngine
+namespace V3D::V3DEngine::V3DGameEngine
 {
-    int V3DEngineTest::Test(int a, int b)
+    void V3DGameEngineFacade::Placeholder()
     {
-        return a + b;
+        //TODO
     }
 }

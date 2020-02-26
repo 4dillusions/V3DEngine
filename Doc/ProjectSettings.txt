@@ -59,8 +59,11 @@ Android (Mobile & emulator ARM/x86)
 +++++++++++++++++++++++++++++++++++
 Projects (AAndroid x86\ARM)
 ---------------------------
-V3DEngine (Static Library)						references: V3DEngine (shared)	C/C++ Advanced: Compile as: C++
-V3DEngineTests (Native Activity Application)	references: V3DEngineTests (shared), V3DEngine	C/C++ Advanced: Compile as: C++
+V3DEngine (Static Library)						references: V3DEngine (shared)	
+												C/C++ Advanced: Compile as: C++
+V3DEngineTests (Native Activity Application)	references: V3DEngineTests (shared), V3DEngine
+												C/C++ Advanced: Compile as: C++
+												// Linker/Input: GLESv1_CM -> GLESv2, EGL, m
 
 Settings
 --------

@@ -5,4 +5,9 @@
       <UniqueIdentifier>{c5583712-36a2-4b83-b147-45df644613dc}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\Source\Android\V3DEngine\V3DEngineLibrary.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+  </ItemGroup>
 </Project>
