@@ -43,10 +43,10 @@ namespace V3D::V3DEngine::V3DMathematics
 
 		V3DVector2D operator-() const;
 
-		V3DVector2D& operator++();
-		V3DVector2D& operator++(int);
-		V3DVector2D& operator--();
-		V3DVector2D& operator--(int);
+		const V3DVector2D& operator++();
+		const V3DVector2D& operator++(int);
+		const V3DVector2D& operator--();
+		const V3DVector2D& operator--(int);
 
 		V3DVector2D& operator+=(const V3DVector2D& value);
 		V3DVector2D& operator+=(float size);

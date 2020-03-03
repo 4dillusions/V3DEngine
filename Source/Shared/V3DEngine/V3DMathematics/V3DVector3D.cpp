@@ -71,7 +71,7 @@ namespace V3D::V3DEngine::V3DMathematics
 		return V3DVector3D(-x, -y, -z);
 	}
 
-	V3DVector3D& V3DVector3D::operator++()
+	const V3DVector3D& V3DVector3D::operator++()
 	{
 		++x;
 		++y;
@@ -80,7 +80,7 @@ namespace V3D::V3DEngine::V3DMathematics
 		return *this;
 	}
 
-	V3DVector3D& V3DVector3D::operator++(int)
+	const V3DVector3D& V3DVector3D::operator++(int)
 	{
 		x++;
 		y++;
@@ -89,7 +89,7 @@ namespace V3D::V3DEngine::V3DMathematics
 		return *this;
 	}
 
-	V3DVector3D& V3DVector3D::operator--()
+	const V3DVector3D& V3DVector3D::operator--()
 	{
 		--x;
 		--y;
@@ -98,7 +98,7 @@ namespace V3D::V3DEngine::V3DMathematics
 		return *this;
 	}
 
-	V3DVector3D& V3DVector3D::operator--(int)
+	const V3DVector3D& V3DVector3D::operator--(int)
 	{
 		x--;
 		y--;
