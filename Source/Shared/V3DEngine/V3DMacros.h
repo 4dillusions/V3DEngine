@@ -37,7 +37,7 @@ namespace V3D
 	#define V3DPLATFORM_INFO " (" V3DRUN_MODE " " V3DPLATFORM ")"
 	
 	//analyzer macro for UnitTest and MemoryManager
-	#define V3DLFSTRINGIFY(x) #x
-	#define V3DLFTOSTRING(x) V3DLFSTRINGIFY(x)
-	#define V3DFILE_INFO __FILE__ ": " V3DLFTOSTRING(__LINE__)
+	#define V3DSTRINGIFY(x) #x
+	#define V3DTOSTRING(x) V3DSTRINGIFY(x)
+	#define V3DFILE_INFO __FILE__ ": " V3DTOSTRING(__LINE__)
 }

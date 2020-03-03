@@ -7,6 +7,9 @@
     <Filter Include="Source\V3DGameEngine">
       <UniqueIdentifier>{2bd0dd61-7f59-41ff-b5d6-7842eee49f3d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\V3DMathematics">
+      <UniqueIdentifier>{f1dc15c4-14c0-4753-ae4a-88f157999f3e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMacros.h">
@@ -15,10 +18,73 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DGameEngine\V3DGameEngineFacade.h">
       <Filter>Source\V3DGameEngine</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DTypes.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMathematics\V3DMath.h">
+      <Filter>Source\V3DMathematics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMathematics\V3DVector2D.h">
+      <Filter>Source\V3DMathematics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMathematics\V3DColor.h">
+      <Filter>Source\V3DMathematics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMathematics\V3DVector3D.h">
+      <Filter>Source\V3DMathematics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMathematics\V3DCircle.h">
+      <Filter>Source\V3DMathematics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMathematics\V3DRectangle.h">
+      <Filter>Source\V3DMathematics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMathematics\V3DVector4D.h">
+      <Filter>Source\V3DMathematics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMathematics\V3DMatrix3.h">
+      <Filter>Source\V3DMathematics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMathematics\V3DMatrix4.h">
+      <Filter>Source\V3DMathematics</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMathematics\V3DRandom.h">
+      <Filter>Source\V3DMathematics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DGameEngine\V3DGameEngineFacade.cpp">
       <Filter>Source\V3DGameEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMathematics\V3DMath.cpp">
+      <Filter>Source\V3DMathematics</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMathematics\V3DVector2D.cpp">
+      <Filter>Source\V3DMathematics</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMathematics\V3DColor.cpp">
+      <Filter>Source\V3DMathematics</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMathematics\V3DVector3D.cpp">
+      <Filter>Source\V3DMathematics</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMathematics\V3DCircle.cpp">
+      <Filter>Source\V3DMathematics</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMathematics\V3DRectangle.cpp">
+      <Filter>Source\V3DMathematics</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMathematics\V3DVector4D.cpp">
+      <Filter>Source\V3DMathematics</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMathematics\V3DMatrix3.cpp">
+      <Filter>Source\V3DMathematics</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMathematics\V3DMatrix4.cpp">
+      <Filter>Source\V3DMathematics</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMathematics\V3DRandom.cpp">
+      <Filter>Source\V3DMathematics</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

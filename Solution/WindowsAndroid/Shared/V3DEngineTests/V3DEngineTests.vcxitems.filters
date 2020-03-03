@@ -4,6 +4,12 @@
     <Filter Include="Source">
       <UniqueIdentifier>{51fe6122-1070-45db-9185-b3ccb32f4e18}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\V3DEngine">
+      <UniqueIdentifier>{7f08ac1e-202c-4817-a1db-c42d53882ea9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\V3DEngine\V3DMathematics">
+      <UniqueIdentifier>{2ee78335-7887-4ad1-823f-bc98148861e0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTest.h">
@@ -12,10 +18,22 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTestRunner.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DTypesTests.h">
+      <Filter>Source\V3DEngine</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DMathemathics\V3DMathematicsTests.h">
+      <Filter>Source\V3DEngine\V3DMathematics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTest.cpp">
       <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DTypesTests.cpp">
+      <Filter>Source\V3DEngine</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DMathemathics\V3DMathematicsTests.cpp">
+      <Filter>Source\V3DEngine\V3DMathematics</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

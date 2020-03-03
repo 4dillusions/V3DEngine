@@ -8,7 +8,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 int main()
 {
-	V3D::V3DEngineTests::RunAllTests();
+	V3D::V3DEngineTests::V3DEngine::RunAllTests();
 	
 	return 0;
 }

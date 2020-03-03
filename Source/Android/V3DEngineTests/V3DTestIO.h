@@ -21,6 +21,6 @@ namespace V3D::V3DEngineTests
 
 	inline void WriteOutput(const std::string& text)
 	{
-		__android_log_print(ANDROID_LOG_VERBOSE, "LFUnitTest", "%s", text.c_str());
+		__android_log_print(ANDROID_LOG_VERBOSE, "V3DEngineTests", "%s", text.c_str());
 	}
 }
