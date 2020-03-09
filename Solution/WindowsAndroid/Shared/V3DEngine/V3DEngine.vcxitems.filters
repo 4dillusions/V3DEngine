@@ -51,6 +51,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMathematics\V3DRandom.h">
       <Filter>Source\V3DMathematics</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMathematics\V3DRandomClassic.h">
+      <Filter>Source\V3DMathematics</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DGameEngine\V3DGameEngineFacade.cpp">
@@ -84,6 +87,9 @@
       <Filter>Source\V3DMathematics</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMathematics\V3DRandom.cpp">
+      <Filter>Source\V3DMathematics</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMathematics\V3DRandomClassic.cpp">
       <Filter>Source\V3DMathematics</Filter>
     </ClCompile>
   </ItemGroup>

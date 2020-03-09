@@ -8,7 +8,10 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngineTests/V3DTestIO.h"
 #include "V3DEngine/V3DMacros.h"
 
+#include <chrono>
+
 using namespace std;
+using namespace std::chrono;
 
 namespace V3D::V3DEngineTests
 {
@@ -16,6 +19,7 @@ namespace V3D::V3DEngineTests
 	int V3DTest::tests = 0;
 	int V3DTest::passedTests = 0;
 	list<const char*> V3DTest::errorList;
+	std::map<std::string, std::function<void()>> V3DTest::timingList;
 
 	void V3DTest::Init()
 	{
@@ -35,6 +39,26 @@ namespace V3D::V3DEngineTests
 		{
 			errorCounter++;
 			errorList.push_back(info);
+		}
+	}
+
+	void V3DTest::AddTimingTest(const std::string& timingFunctionName, const std::function<void()>& timingFunction)
+	{
+		if (timingList.find(timingFunctionName) == timingList.end())
+			timingList.insert({ timingFunctionName, timingFunction });
+	}
+
+	void V3DTest::RunTimingTests()
+	{
+		WriteOutput("\nTiming tests:");
+		
+		for (const auto& func : timingList)
+		{
+			auto start = system_clock::now();
+			func.second();
+			auto end = system_clock::now();
+			
+			WriteOutput(func.first + " " + to_string(duration_cast<std::chrono::milliseconds>(end - start).count()) + " ms");
 		}
 	}
 

@@ -27,6 +27,10 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DMathematics
 		static void V3DMatrix3Test();
 		static void V3DMatrix4Test();
 		static void V3DRandomTest();
+		static void V3DRandomClassicTest();
+
+		static void V3DRandomTimingTest();
+		static void V3DRandomClassicTimingTest();
 
 		static void RunAllTests();
 	};

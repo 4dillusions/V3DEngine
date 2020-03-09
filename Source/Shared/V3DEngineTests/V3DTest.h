@@ -7,6 +7,8 @@ Released under the terms of the GNU General Public License version 3 or later.
 #pragma once
 
 #include <list>
+#include <map>
+#include <functional>
 
 namespace V3D::V3DEngineTests
 {
@@ -17,6 +19,7 @@ namespace V3D::V3DEngineTests
 		static int tests;
 		static int passedTests;
 		static std::list<const char*> errorList;
+		static std::map<std::string, std::function<void()>> timingList;
 
 		static void Init();
 
@@ -29,6 +32,8 @@ namespace V3D::V3DEngineTests
 		~V3DTest() = delete;
 
 		static void AssertOk(bool isOk, const char* info);
+		static void AddTimingTest(const std::string &timingFunctionName, const std::function<void()> &timingFunction);
+		static void RunTimingTests();
 		static void WriteStatistics();
 	};
 }

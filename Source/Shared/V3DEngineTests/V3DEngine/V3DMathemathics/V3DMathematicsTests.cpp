@@ -16,8 +16,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngine/V3DMathematics/V3DMatrix3.h"
 #include "V3DEngine/V3DMathematics/V3DMatrix4.h"
 #include "V3DEngine/V3DMathematics/V3DRandom.h"
-
-#include <cmath>
+#include "V3DEngine/V3DMathematics/V3DRandomClassic.h"
 
 using namespace std;
 
@@ -505,14 +504,14 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DMathematics
 	void V3DMathematicsTests::V3DRandomTest()
 	{
 		int rand10Counter = 0;
-		const int rand10 = V3DRandom::CreateRandom(0, 10), rand11 = V3DRandom::CreateRandom(0, 10), rand12 = V3DRandom::CreateRandom(0, 10);
-		const int rand13 = V3DRandom::CreateRandom(0, 10), rand14 = V3DRandom::CreateRandom(0, 10), rand15 = V3DRandom::CreateRandom(0, 10);
+		const int rand10 = V3DRandom::CreateRandom(0, 100), rand11 = V3DRandom::CreateRandom(0, 100), rand12 = V3DRandom::CreateRandom(0, 100);
+		const int rand13 = V3DRandom::CreateRandom(0, 100), rand14 = V3DRandom::CreateRandom(0, 100), rand15 = V3DRandom::CreateRandom(0, 100);
 		if (rand10 == rand13) rand10Counter++;
 		if (rand11 == rand14) rand10Counter++;
 		if (rand12 == rand15) rand10Counter++;
 		V3DTest::AssertOk(rand10Counter < 3, V3DFILE_INFO);
 
-		const int rand20 = V3DRandom::CreateRandom(0, 10), rand21 = V3DRandom::CreateRandom(0, 10), rand22 = V3DRandom::CreateRandom(0, 10);
+		const int rand20 = V3DRandom::CreateRandom(0, 100), rand21 = V3DRandom::CreateRandom(0, 100), rand22 = V3DRandom::CreateRandom(0, 100);
 		V3DTest::AssertOk(rand20 != rand21, V3DFILE_INFO);
 		V3DTest::AssertOk(rand20 != rand22, V3DFILE_INFO);
 		V3DTest::AssertOk(rand21 != rand22, V3DFILE_INFO);
@@ -521,6 +520,39 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DMathematics
 		V3DTest::AssertOk(rand30 != rand31, V3DFILE_INFO);
 		V3DTest::AssertOk(rand30 != rand32, V3DFILE_INFO);
 		V3DTest::AssertOk(rand31 != rand32, V3DFILE_INFO);
+	}
+
+	void V3DMathematicsTests::V3DRandomClassicTest()
+	{
+		int rand10Counter = 0;
+		const int rand10 = V3DRandomClassic::CreateRandom(0, 100), rand11 = V3DRandomClassic::CreateRandom(0, 100), rand12 = V3DRandomClassic::CreateRandom(0, 100);
+		const int rand13 = V3DRandomClassic::CreateRandom(0, 100), rand14 = V3DRandomClassic::CreateRandom(0, 100), rand15 = V3DRandomClassic::CreateRandom(0, 100);
+		if (rand10 == rand13) rand10Counter++;
+		if (rand11 == rand14) rand10Counter++;
+		if (rand12 == rand15) rand10Counter++;
+		V3DTest::AssertOk(rand10Counter < 3, V3DFILE_INFO);
+
+		const int rand20 = V3DRandomClassic::CreateRandom(0, 100), rand21 = V3DRandomClassic::CreateRandom(0, 100), rand22 = V3DRandomClassic::CreateRandom(0, 100);
+		V3DTest::AssertOk(rand20 != rand21, V3DFILE_INFO);
+		V3DTest::AssertOk(rand20 != rand22, V3DFILE_INFO);
+		V3DTest::AssertOk(rand21 != rand22, V3DFILE_INFO);
+
+		const V3DVector2D rand30 = V3DRandomClassic::CreateRandom(V3DVector2D(0, 100), V3DVector2D(50, 100)), rand31 = V3DRandomClassic::CreateRandom(V3DVector2D(0, 100), V3DVector2D(50, 100)), rand32 = V3DRandomClassic::CreateRandom(V3DVector2D(0, 100), V3DVector2D(50, 100));
+		V3DTest::AssertOk(rand30 != rand31, V3DFILE_INFO);
+		V3DTest::AssertOk(rand30 != rand32, V3DFILE_INFO);
+		V3DTest::AssertOk(rand31 != rand32, V3DFILE_INFO);
+	}
+
+	void V3DMathematicsTests::V3DRandomTimingTest()
+	{
+		for (int i = 0; i < 100'000; i++)
+			V3DRandom::CreateRandom(0, 1000);
+	}
+
+	void V3DMathematicsTests::V3DRandomClassicTimingTest()
+	{
+		for (int i = 0; i < 100'000; i++)
+			V3DRandomClassic::CreateRandom(0, 1000);
 	}
 
 	void V3DMathematicsTests::RunAllTests()
@@ -534,5 +566,9 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DMathematics
 		V3DMatrix3Test();
 		V3DMatrix4Test();
 		V3DRandomTest();
+		V3DRandomClassicTest();
+
+		V3DTest::AddTimingTest("V3DRandomTimingTest", V3DRandomTimingTest);
+		V3DTest::AddTimingTest("V3DRandomClassicTimingTest", V3DRandomClassicTimingTest);
 	}
 }

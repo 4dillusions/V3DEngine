@@ -22,6 +22,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMathematics\V3DMatrix3.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMathematics\V3DMatrix4.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMathematics\V3DRandom.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMathematics\V3DRandomClassic.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMathematics\V3DRectangle.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMathematics\V3DVector2D.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMathematics\V3DVector3D.h" />
@@ -36,6 +37,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMathematics\V3DMatrix3.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMathematics\V3DMatrix4.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMathematics\V3DRandom.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMathematics\V3DRandomClassic.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMathematics\V3DRectangle.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMathematics\V3DVector2D.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMathematics\V3DVector3D.cpp" />

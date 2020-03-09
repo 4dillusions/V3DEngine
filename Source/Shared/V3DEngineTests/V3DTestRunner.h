@@ -16,7 +16,8 @@ namespace V3D::V3DEngineTests::V3DEngine
 	{
 		V3DTypesTests::RunAllTests();
 		V3DMathematics::V3DMathematicsTests::RunAllTests();
-		
+
 		V3DTest::WriteStatistics();
+		V3DTest::RunTimingTests();
 	}
 }
