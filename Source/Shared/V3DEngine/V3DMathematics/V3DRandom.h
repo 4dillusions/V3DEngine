@@ -6,7 +6,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #pragma once
 
-#include "V3DEngine/V3DEngineLibrary.h"
+#include "V3DEngine/V3DEngineLibraryPlatform.h"
 #include <random>
 
 namespace V3D::V3DEngine::V3DMathematics
@@ -23,13 +23,10 @@ namespace V3D::V3DEngine::V3DMathematics
 	public:
 		V3DRandom(const V3DRandom&) = delete;
 		V3DRandom(V3DRandom&&) = delete;
+		~V3DRandom() = default;
 		V3DRandom& operator=(const V3DRandom&) = delete;
 		V3DRandom& operator=(V3DRandom&&) = delete;
-
-	private:
-		~V3DRandom() = default;
-
-	public:
+	
 		static int CreateRandom(int min, int max);
 		static V3DVector2D CreateRandom(const V3DVector2D& min, const V3DVector2D& max);
 	};

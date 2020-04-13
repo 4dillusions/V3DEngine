@@ -10,6 +10,6 @@ namespace V3D::V3DEngine::V3DGameEngine
 {
     void V3DGameEngineFacade::Placeholder()
     {
-        //TODO
+        
     }
 }

@@ -14,7 +14,7 @@ namespace V3D::V3DEngine::V3DMathematics
 	{
 	public:
 		V3DVector2D position = V3DVector2D();
-		float width = 0, height = 0;
+		float width{ 0 }, height{ 0 };
 
 		V3DRectangle() = default;
 		V3DRectangle(const V3DRectangle&) = default;

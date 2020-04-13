@@ -6,7 +6,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #pragma once
 
-#include "V3DEngine/V3DEngineLibrary.h"
+#include "V3DEngine/V3DEngineLibraryPlatform.h"
 
 namespace V3D::V3DEngine::V3DMathematics
 {
@@ -157,7 +157,7 @@ namespace V3D::V3DEngine::V3DMathematics
 		static const V3DVector3D Yellow;
 		static const V3DVector3D YellowGreen;
 
-		float a = 0.0f, r = 0.0f, g = 0.0f, b = 0.0f;
+		float a{ 0.0f }, r{ 0.0f }, g{ 0.0f }, b{ 0.0f };
 
 		V3DColor() = default;
 		explicit V3DColor(const V3DVector3D& color);

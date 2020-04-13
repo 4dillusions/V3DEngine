@@ -8,7 +8,6 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngineTests/V3DTest.h"
 #include "V3DEngine/V3DMacros.h"
 #include "V3DEngine/V3DMathematics/V3DMath.h"
-#include "V3DEngine/V3DMathematics/V3DVector2D.h"
 #include "V3DEngine/V3DMathematics/V3DVector3D.h"
 #include "V3DEngine/V3DMathematics/V3DCircle.h"
 #include "V3DEngine/V3DMathematics/V3DRectangle.h"

@@ -6,7 +6,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #pragma once
 
-#include "V3DEngine/V3DEngineLibrary.h"
+#include "V3DEngine/V3DEngineLibraryPlatform.h"
 
 namespace V3D::V3DEngine::V3DMathematics
 {
@@ -14,7 +14,7 @@ namespace V3D::V3DEngine::V3DMathematics
 	class V3DENGINE_API V3DVector3D final
 	{
 	public:
-		float x = 0.0f, y = 0.0f, z = 0.0f;
+		float x{ 0.0f }, y{ 0.0f }, z{ 0.0f };
 
 		V3DVector3D() = default;
 		explicit V3DVector3D(float scale);

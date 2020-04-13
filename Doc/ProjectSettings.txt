@@ -43,7 +43,7 @@ VC++ directories
 							$(SolutionDir)..\..\Source\Shared
 	
 C/C++
-	preprocessors: WINCLASSIC
+	preprocessors: WINCLASSIC, _CRT_SECURE_NO_WARNINGS
 	Code generation
 		Enable C++ exceptions: No (release), Yes (debug)
 	Language

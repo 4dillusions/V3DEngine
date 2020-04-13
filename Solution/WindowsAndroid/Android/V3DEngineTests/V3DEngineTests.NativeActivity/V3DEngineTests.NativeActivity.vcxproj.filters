@@ -17,7 +17,7 @@
     <ClInclude Include="..\..\..\..\..\Source\Android\V3DEngineTests\android_native_app_glue.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\Source\Android\V3DEngineTests\V3DTestIO.h">
+    <ClInclude Include="..\..\..\..\..\Source\Android\V3DEngineTests\V3DTestIOPlatform.h">
       <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>

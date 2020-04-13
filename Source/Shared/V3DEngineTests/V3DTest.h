@@ -27,9 +27,9 @@ namespace V3D::V3DEngineTests
 		V3DTest() = delete;
 		V3DTest(const V3DTest&) = delete;
 		V3DTest(V3DTest&&) = delete;
+		~V3DTest() = delete;
 		V3DTest& operator=(const V3DTest&) = delete;
 		V3DTest& operator=(V3DTest&&) = delete;
-		~V3DTest() = delete;
 
 		static void AssertOk(bool isOk, const char* info);
 		static void AddTimingTest(const std::string &timingFunctionName, const std::function<void()> &timingFunction);

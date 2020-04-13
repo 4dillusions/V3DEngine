@@ -6,13 +6,16 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #pragma once
 
-#include <string>
-#include <iostream>
-
-namespace V3D::V3DEngineTests
+namespace V3D::V3DEngine::V3DCore
 {
-	inline void WriteOutput(const std::string& text)
+	enum class LFVFSPath : int
 	{
-		std::cout << text << std::endl;
-	}
+		No,
+		Image,
+		Sound,
+		ShaderEffect,
+		DataRead,
+		DataReadWrite,
+	};
 }
+		

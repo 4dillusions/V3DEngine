@@ -15,7 +15,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\Source\Windows\V3DEngineTests\V3DTestIO.h">
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEngineTests\V3DTestIOPlatform.h">
       <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>

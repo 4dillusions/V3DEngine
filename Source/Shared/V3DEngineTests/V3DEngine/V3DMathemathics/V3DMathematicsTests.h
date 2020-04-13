@@ -14,9 +14,9 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DMathematics
 		V3DMathematicsTests() = delete;
 		V3DMathematicsTests(const V3DMathematicsTests&) = delete;
 		V3DMathematicsTests(V3DMathematicsTests&&) = delete;
+		~V3DMathematicsTests() = delete;
 		V3DMathematicsTests& operator=(const V3DMathematicsTests&) = delete;
 		V3DMathematicsTests& operator=(V3DMathematicsTests&&) = delete;
-		~V3DMathematicsTests() = delete;
 
 		static void V3DMathTest();
 		static void V3DVector2DTest();

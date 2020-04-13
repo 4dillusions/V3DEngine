@@ -5,7 +5,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 */
 
 #include "V3DTest.h"
-#include "V3DEngineTests/V3DTestIO.h"
+#include "V3DEngineTests/V3DTestIOPlatform.h"
 #include "V3DEngine/V3DMacros.h"
 
 #include <chrono>
@@ -58,7 +58,7 @@ namespace V3D::V3DEngineTests
 			func.second();
 			auto end = system_clock::now();
 			
-			WriteOutput(func.first + " " + to_string(duration_cast<std::chrono::milliseconds>(end - start).count()) + " ms");
+			WriteOutput(func.first + " " + to_string(duration_cast<milliseconds>(end - start).count()) + " ms");
 		}
 	}
 

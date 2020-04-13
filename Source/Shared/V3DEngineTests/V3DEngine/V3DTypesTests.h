@@ -14,9 +14,9 @@ namespace V3D::V3DEngineTests::V3DEngine
 		V3DTypesTests() = delete;
 		V3DTypesTests(const V3DTypesTests&) = delete;
 		V3DTypesTests(V3DTypesTests&&) = delete;
+		~V3DTypesTests() = delete;
 		V3DTypesTests& operator=(const V3DTypesTests&) = delete;
 		V3DTypesTests& operator=(V3DTypesTests&&) = delete;
-		~V3DTypesTests() = delete;
 
 		static void RunAllTests();
 	};

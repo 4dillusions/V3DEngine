@@ -6,7 +6,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #pragma once
 
-#include "V3DEngine/V3DEngineLibrary.h"
+#include "V3DEngine/V3DEngineLibraryPlatform.h"
 
 namespace V3D::V3DEngine::V3DMathematics
 {
@@ -17,9 +17,9 @@ namespace V3D::V3DEngine::V3DMathematics
 		V3DMath() = delete;
 		V3DMath(const V3DMath&) = delete;
 		V3DMath(V3DMath&&) = delete;
+		~V3DMath() = delete;
 		V3DMath& operator=(const V3DMath&) = delete;
 		V3DMath& operator=(V3DMath&&) = delete;
-		~V3DMath() = delete;
 
 		static constexpr float Pi = 3.141593f;
 		static constexpr float PiOver2 = Pi / 2.0f;
