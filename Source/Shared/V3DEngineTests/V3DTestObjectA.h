@@ -19,7 +19,7 @@ namespace V3D::V3DEngineTests
 		V3DTestObjectA();
 		V3DTestObjectA(const V3DTestObjectA&);
 		V3DTestObjectA(V3DTestObjectA&&) = default;
-		virtual ~V3DTestObjectA();
+		~V3DTestObjectA() override;
 		V3DTestObjectA& operator=(const V3DTestObjectA&) = delete;
 		V3DTestObjectA& operator=(V3DTestObjectA&&) = delete;
 

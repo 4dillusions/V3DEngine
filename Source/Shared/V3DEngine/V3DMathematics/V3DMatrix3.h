@@ -6,7 +6,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #pragma once
 
-#include "V3DEngine/V3DEngineLibraryPlatform.h"
+#include "V3DEngine/V3DEngineLibrary.h"
 
 namespace V3D::V3DEngine::V3DMathematics
 {

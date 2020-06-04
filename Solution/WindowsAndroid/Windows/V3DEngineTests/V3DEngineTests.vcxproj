@@ -20,7 +20,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\Source\Windows\V3DEngineTests\V3DTestIOPlatform.h" />
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEngineTests\V3DTestIO.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

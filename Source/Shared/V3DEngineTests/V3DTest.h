@@ -12,6 +12,9 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 namespace V3D::V3DEngineTests
 {
+	template <typename TDerived> class V3DITestIO;
+	class V3DTestIO;
+	
 	//cross-platform unit test system for TDD
 	class V3DTest final
 	{
@@ -20,6 +23,7 @@ namespace V3D::V3DEngineTests
 		static int passedTests;
 		static std::list<const char*> errorList;
 		static std::map<std::string, std::function<void()>> timingList;
+		static V3DITestIO<V3DTestIO> &testIO;
 
 		static void Init();
 

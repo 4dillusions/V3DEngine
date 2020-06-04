@@ -8,6 +8,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngine/V3DMacros.h"
 #include "V3DEngine/V3DCore/V3DMemory.h"
 #include "V3DEngine/V3DCore/V3DDateTime.h"
+#include "V3DEngine/V3DIO/V3DOstream.h"
 
 using namespace V3D::V3DEngine::V3DCore;
 
@@ -15,7 +16,8 @@ namespace V3D::V3DEngine::V3DIO
 {
 	V3DLogger::V3DLogger()
 	{
-		InitOStream(oStream);
+		static V3DOstream stream;
+		oStream = &stream;
 
 		buffer = V3DMemory::New<V3DString>(V3DPLATFORM_INFO);
 
@@ -103,12 +105,12 @@ namespace V3D::V3DEngine::V3DIO
 
 		if (outputTypes[static_cast<unsigned int>(V3DLogOutputType::ToOutput)])
 		{
-			WriteLineToOutput(text.ToChar());
+			oStream->WriteLineToOutput(text.ToChar());
 		}
 
 		if (outputTypes[static_cast<unsigned int>(V3DLogOutputType::ToFile)])
 		{
-			WriteLineToFile(oStream, text.ToChar());
+			oStream->WriteLineToFile(text.ToChar());
 		}
 
 		if (outputTypes[static_cast<unsigned int>(V3DLogOutputType::ToLogTrigger)] && logTrigger != nullptr)

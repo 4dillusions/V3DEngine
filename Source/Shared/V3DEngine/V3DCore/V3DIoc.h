@@ -24,9 +24,9 @@ namespace V3D::V3DEngine::V3DCore
 		V3DIoc() = delete;
 		V3DIoc(const V3DIoc&) = delete;
 		V3DIoc(V3DIoc&&) = delete;
+		~V3DIoc() = delete;
 		V3DIoc& operator=(const V3DIoc&) = delete;
 		V3DIoc& operator=(V3DIoc&&) = delete;
-		~V3DIoc() = delete;
 
 		static TInstance& Get()
 		{

@@ -5,8 +5,8 @@ Released under the terms of the GNU General Public License version 3 or later.
 */
 
 #include "V3DTest.h"
-#include "V3DEngineTests/V3DTestIOPlatform.h"
 #include "V3DEngine/V3DMacros.h"
+#include "V3DEngineTests/V3DTestIO.h"
 
 #include <chrono>
 
@@ -20,6 +20,7 @@ namespace V3D::V3DEngineTests
 	int V3DTest::passedTests = 0;
 	list<const char*> V3DTest::errorList;
 	std::map<std::string, std::function<void()>> V3DTest::timingList;
+	V3DITestIO<V3DTestIO>& V3DTest::testIO = V3DTestIO::Get();
 
 	void V3DTest::Init()
 	{
@@ -50,7 +51,7 @@ namespace V3D::V3DEngineTests
 
 	void V3DTest::RunTimingTests()
 	{
-		WriteOutput("\nTiming tests:");
+		testIO.WriteOutput("\nTiming tests:");
 		
 		for (const auto& func : timingList)
 		{
@@ -58,23 +59,23 @@ namespace V3D::V3DEngineTests
 			func.second();
 			auto end = system_clock::now();
 			
-			WriteOutput(func.first + " " + to_string(duration_cast<milliseconds>(end - start).count()) + " ms");
+			testIO.WriteOutput(func.first + " " + testIO.ConvertToString(static_cast<int>(duration_cast<milliseconds>(end - start).count())) + " ms");
 		}
 	}
 
 	void V3DTest::WriteStatistics()
 	{
-		WriteOutput("UnitTest" + string(V3DPLATFORM_INFO));
-		WriteOutput("Passed: " + to_string(tests) + '/' + to_string(passedTests));
-		WriteOutput("Unit test Errors:");
+		testIO.WriteOutput("UnitTest" + string(V3DPLATFORM_INFO));
+		testIO.WriteOutput("Passed: " + testIO.ConvertToString(tests) + '/' + testIO.ConvertToString(passedTests));
+		testIO.WriteOutput("Unit test Errors:");
 
 		if (errorCounter > 0)
 		{
 			for (auto text : errorList)
-				WriteOutput(text);
+				testIO.WriteOutput(text);
 		}
 		else
-			WriteOutput("0 error");
+			testIO.WriteOutput("0 error");
 
 		Init();
 	}

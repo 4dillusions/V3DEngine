@@ -6,22 +6,18 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #pragma once
 
-#include "V3DTest.h"
-#include "V3DEngine/V3DTypesTests.h"
-#include "V3DEngine/V3DMathemathics/V3DMathematicsTests.h"
-#include "V3DEngine/V3DCore/V3DCoreTests.h"
-#include "V3DEngine/V3DIO/V3DIOTests.h"
-
 namespace V3D::V3DEngineTests::V3DEngine
 {
-	inline void RunAllTests()
+	class V3DTestRunner final
 	{
-		V3DTypesTests::RunAllTests();
-		V3DMathematics::V3DMathematicsTests::RunAllTests();
-		V3DCore::V3DCoreTests::RunAllTests();
-		V3DIO::V3DIOTests::RunAllTests();
-
-		V3DTest::WriteStatistics();
-		V3DTest::RunTimingTests();
-	}
+	public:
+		V3DTestRunner() = delete;
+		V3DTestRunner(const V3DTestRunner&) = delete;
+		V3DTestRunner(V3DTestRunner&&) = delete;
+		~V3DTestRunner() = delete;
+		V3DTestRunner& operator=(const V3DTestRunner&) = delete;
+		V3DTestRunner& operator=(V3DTestRunner&&) = delete;
+		
+		static void RunAllTests();
+	};
 }

@@ -6,8 +6,8 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #pragma once
 
-#include "V3DEngine/V3DIO/V3DLoggerPlatform.h"
-#include "V3DEngine/V3DEngineLibraryPlatform.h"
+#include "V3DEngine/V3DIO/V3DIOstream.h"
+#include "V3DEngine/V3DEngineLibrary.h"
 #include "V3DLogMessageType.h"
 #include "V3DLogOutputType.h"
 
@@ -25,7 +25,7 @@ namespace V3D::V3DEngine::V3DIO
         bool outputTypes[static_cast<unsigned int>(V3DLogOutputType::Count)]{};
         std::function<void(const V3DCore::V3DString& log)> logTrigger = nullptr;
 
-        V3DOStream oStream;
+        V3DIOstream* oStream;
     	
         V3DCore::V3DString* buffer = nullptr;
 
@@ -41,9 +41,9 @@ namespace V3D::V3DEngine::V3DIO
         V3DLogger();
         V3DLogger(const V3DLogger&) = delete;
         V3DLogger(V3DLogger&&) = delete;
+        ~V3DLogger() = default;
         V3DLogger& operator=(const V3DLogger&) = delete;
         V3DLogger& operator=(V3DLogger&&) = delete;
-        ~V3DLogger() = default;
 
         //Avoid buffer leak before detecting
         void ReleaseBuffer();
