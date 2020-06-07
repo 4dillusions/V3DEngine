@@ -10,15 +10,16 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 namespace V3D::V3DEngine::V3DCore
 {
-	class V3DENGINE_API V3DTime final
+	class V3DENGINE_API V3DTimeHour final
 	{
 	public:
 		int minute{}, second{};
 
-		V3DTime() = default;
-		V3DTime(int minute, int second);
+		V3DTimeHour() = default;
+		V3DTimeHour(int minute, int second);
 
-		void operator+=(const V3DTime& value);
-		bool operator==(const V3DTime& value) const;
+		bool operator==(const V3DTimeHour& value) const;
+
+		void Clamp();
 	};
 }

@@ -39,6 +39,7 @@ namespace V3D::V3DEngine::V3DMathematics
 		static float ConvertRadianToDegree(float radian);
 		static float Lerp(float value1, float value2, float amount);
 		static float Clamp(float value, float min, float max);
+		static int Clamp(int value, int min, int max);
 		static float Distance(float value1, float value2);
 		static float Log(int x, float value);
 		static float Pow(int x, float value);

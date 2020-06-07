@@ -5,10 +5,14 @@ Released under the terms of the GNU General Public License version 3 or later.
 */
 
 #include "V3DMemory.h"
+#include "V3DIoc.h"
+#include "V3DString.h"
+#include "V3DEngine/V3DIO/V3DLogger.h"
 
 #include <unordered_map>
 
 using namespace std;
+using namespace V3D::V3DEngine::V3DIO;
 
 namespace V3D::V3DEngine::V3DCore
 {
@@ -31,9 +35,9 @@ namespace V3D::V3DEngine::V3DCore
 			memoryList.erase(search);
 	}
 
-	void V3DMemory::WriteStatistics(bool isTest)
+	void V3DMemory::WriteStatistics()
 	{
-		/*V3DIoc<V3DLogger>::Get().ReleaseBuffer();
+		V3DIoc<V3DIO::V3DLogger>::Get().ReleaseBuffer();
 
 		V3DIoc<V3DLogger>::Get().WriteOutput("");
 		V3DIoc<V3DLogger>::Get().WriteOutput("Leaked objects:");
@@ -43,18 +47,18 @@ namespace V3D::V3DEngine::V3DCore
 
 		if (memoryList.size() == 0)
 			V3DIoc<V3DLogger>::Get().WriteOutput("0 leaked object");
+	}
 
-		if (!isTest)
-		{
-			V3DIoc<V3DLogger>::Get().WriteOutput("");
-			V3DIoc<V3DLogger>::Get().WriteOutput("Warnings:");
-			V3DIoc<V3DLogger>::Get().WriteOutput(V3DIoc<V3DLogger>::Get().GetWarnings());
+	void V3DMemory::WriteStatisticsForTests()
+	{
+		WriteStatistics();
+		
+		V3DIoc<V3DLogger>::Get().WriteOutput("");
+		V3DIoc<V3DLogger>::Get().WriteOutput("Warnings:");
+		V3DIoc<V3DLogger>::Get().WriteOutput(V3DIoc<V3DLogger>::Get().GetWarnings());
 
-			V3DIoc<V3DLogger>::Get().WriteOutput("");
-			V3DIoc<V3DLogger>::Get().WriteOutput("Errors:");
-			V3DIoc<V3DLogger>::Get().WriteOutput(V3DIoc<V3DLogger>::Get().GetErrors());
-		}
-
-		V3DIoc<V3DLogger>::Get().WriteOutput("");*/
+		V3DIoc<V3DLogger>::Get().WriteOutput("");
+		V3DIoc<V3DLogger>::Get().WriteOutput("Errors:");
+		V3DIoc<V3DLogger>::Get().WriteOutput(V3DIoc<V3DLogger>::Get().GetErrors());
 	}
 }

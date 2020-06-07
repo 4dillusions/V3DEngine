@@ -17,26 +17,26 @@ namespace V3D::V3DEngine::V3DCore
 		Reset();
 	}
 
-	long long V3DStopper::GetActualTime()
+	long long V3DStopper::GetActualTimeMsec()
 	{
 		return duration_cast<milliseconds>(steady_clock::now().time_since_epoch()).count();
 	}
 
-	void V3DStopper::Reset()
+	long long V3DStopper::GetDeltaTimeMsec()
 	{
-		lastTime = duration_cast<milliseconds>(steady_clock::now().time_since_epoch()).count();
-
-		currentTime = 0;
-		deltaTime = 0;
-	}
-
-	long long V3DStopper::DeltaTime()
-	{
-		currentTime = duration_cast<milliseconds>(steady_clock::now().time_since_epoch()).count();
+		currentTime = GetActualTimeMsec();
 
 		deltaTime = currentTime - lastTime;
 		lastTime = currentTime;
 
 		return deltaTime;
+	}
+
+	void V3DStopper::Reset()
+	{
+		lastTime = GetActualTimeMsec();
+
+		currentTime = 0;
+		deltaTime = 0;
 	}
 }

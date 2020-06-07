@@ -33,6 +33,14 @@ namespace V3D::V3DEngine::V3DMathematics
 		return value;
 	}
 
+	int V3DMath::Clamp(int value, int min, int max)
+	{
+		value = (value > max) ? max : value;
+		value = (value < min) ? min : value;
+
+		return value;
+	}
+
 	float V3DMath::Distance(float value1, float value2)
 	{
 		return Abs((value1 - value2));

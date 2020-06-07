@@ -66,16 +66,10 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DCore\V3DTuple.h">
       <Filter>Source\V3DCore</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DCore\V3DTime.h">
-      <Filter>Source\V3DCore</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DCore\V3DStopper.h">
       <Filter>Source\V3DCore</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DCore\V3DVFSPathType.h">
-      <Filter>Source\V3DCore</Filter>
-    </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DCore\V3DWatch.h">
       <Filter>Source\V3DCore</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DCore\V3DString.h">
@@ -104,6 +98,12 @@
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DIO\V3DIOStream.h">
       <Filter>Source\V3DIO</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Robi\Data\OneDrive\V3DEngine\Solution\WindowsAndroid\Shared\V3DEngine\..\..\..\..\Source\Shared\V3DEngine\V3DCore\V3DTimeHour.h">
+      <Filter>Source\V3DCore</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\Robi\Data\OneDrive\V3DEngine\Solution\WindowsAndroid\Shared\V3DEngine\..\..\..\..\Source\Shared\V3DEngine\V3DCore\V3DWatchHour.h">
+      <Filter>Source\V3DCore</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -143,13 +143,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMathematics\V3DRandomClassic.cpp">
       <Filter>Source\V3DMathematics</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DCore\V3DTime.cpp">
-      <Filter>Source\V3DCore</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DCore\V3DStopper.cpp">
-      <Filter>Source\V3DCore</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DCore\V3DWatch.cpp">
       <Filter>Source\V3DCore</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DCore\V3DString.cpp">
@@ -162,6 +156,12 @@
       <Filter>Source\V3DIO</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DCore\V3DDateTime.cpp">
+      <Filter>Source\V3DCore</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Robi\Data\OneDrive\V3DEngine\Solution\WindowsAndroid\Shared\V3DEngine\..\..\..\..\Source\Shared\V3DEngine\V3DCore\V3DTimeHour.cpp">
+      <Filter>Source\V3DCore</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\Robi\Data\OneDrive\V3DEngine\Solution\WindowsAndroid\Shared\V3DEngine\..\..\..\..\Source\Shared\V3DEngine\V3DCore\V3DWatchHour.cpp">
       <Filter>Source\V3DCore</Filter>
     </ClCompile>
   </ItemGroup>

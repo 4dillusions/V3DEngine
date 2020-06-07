@@ -11,7 +11,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #include "V3DEngine/V3DCore/V3DTuple.h"
 #include "V3DEngine/V3DCore/V3DStopper.h"
-#include "V3DEngine/V3DCore/V3DWatch.h"
+#include "V3DEngine/V3DCore/V3DWatchHour.h"
 #include "V3DEngine/V3DCore/V3DIoc.h"
 #include "V3DEngine/V3DCore/V3DDateTime.h"
 
@@ -55,7 +55,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 		long long time = 0;
 		for (; ;)
 		{
-			time += timer.DeltaTime();
+			time += timer.GetDeltaTimeMsec();
 
 			if (time > 1)
 				break;
@@ -64,18 +64,50 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 		V3DTest::AssertOk(time > 0, V3DFILE_INFO);
 	}
 
+	void V3DCoreTests::V3DTimeHourTest()
+	{
+		const auto time1 = V3DTimeHour(-2, -10);
+		const auto time2 = V3DTimeHour(100, 80);
+		const auto time3 = V3DTimeHour(-70, 72);
+		const auto time4 = V3DTimeHour(60, -81);
+
+		V3DTest::AssertOk(time1 == V3DTimeHour(0, 0), V3DFILE_INFO);
+		V3DTest::AssertOk(time2 == V3DTimeHour(59, 59), V3DFILE_INFO);
+		V3DTest::AssertOk(time3 == V3DTimeHour(0, 59), V3DFILE_INFO);
+		V3DTest::AssertOk(time4 == V3DTimeHour(59, 0), V3DFILE_INFO);
+	}
+
 	void V3DCoreTests::V3DWatchTest()
 	{
-		bool isAlarm = false;
-		const auto OnAlarm = [&isAlarm]() { isAlarm = true; };
+		const auto minTime = V3DTimeHour(0, 0);
+		const auto maxTime = V3DTimeHour(2, 0);
+		V3DWatchHour watch(V3DTimeHour(1, 0), minTime, maxTime);
 
-		V3DWatch watch(V3DTime(1, 0), V3DTime(0, 0), V3DTime(2, 0));
-		watch.SetAlarmEvent(OnAlarm);
+		bool isMaxTime = false;
+		watch.SetMaxTimeEvent([&isMaxTime]() { isMaxTime = true; });
+		for (int i = 0; i < 60; i++)
+			watch.IncreaseSeconds();
+		
+		V3DTest::AssertOk(isMaxTime, V3DFILE_INFO);
+		V3DTest::AssertOk(watch.GetTime() == maxTime, V3DFILE_INFO);
 
-		for (int i = 0; i < 60; i++, watch++)
-			;
+		bool isMinTime = false;
+		watch.SetMinTimeEvent([&isMinTime]() { isMinTime = true; });
+		for (int i = 0; i < 120; i++)
+			watch.DecreaseSeconds();
 
-		V3DTest::AssertOk(isAlarm, V3DFILE_INFO);
+		V3DTest::AssertOk(isMinTime, V3DFILE_INFO);
+		V3DTest::AssertOk(watch.GetTime() == minTime, V3DFILE_INFO);
+
+		watch.SetToZero();
+		watch.DecreaseSeconds();
+		V3DTest::AssertOk(watch.GetTime() == V3DTimeHour(0, 59), V3DFILE_INFO);
+
+		watch.SetToZero();
+		for (int i = 0; i < 60 * 61; i++)
+			watch.IncreaseSeconds();
+		
+		V3DTest::AssertOk(watch.GetTime() == V3DTimeHour(59, 0), V3DFILE_INFO);
 	}
 
 	void V3DCoreTests::V3DMemoryTest()
@@ -184,6 +216,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 	{
 		V3DTupleTest();
 		V3DStopperTest();
+		V3DTimeHourTest();
 		V3DWatchTest();
 		V3DMemoryTest();
 		V3DIocTest();

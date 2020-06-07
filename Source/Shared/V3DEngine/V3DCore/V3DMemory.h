@@ -28,7 +28,8 @@ namespace V3D::V3DEngine::V3DCore
 		static void Add(int* address, const char* info);
 		static void Remove(int* address);
 		static int GetMemoryLeakCount();
-		static void WriteStatistics(bool isTest);
+		static void WriteStatistics();
+		static void WriteStatisticsForTests();
 
 		template <typename T, typename TInfo> static T* New(TInfo info)
 		{

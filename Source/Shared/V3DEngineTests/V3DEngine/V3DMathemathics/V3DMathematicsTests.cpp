@@ -30,6 +30,8 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DMathematics
 		V3DTest::AssertOk(V3DMath::Lerp(10, 20, 0.5) == 15, V3DFILE_INFO);
 		V3DTest::AssertOk(V3DMath::Abs(-3.12) == 3.12, V3DFILE_INFO);
 		V3DTest::AssertOk(V3DMath::Abs(3.12) == 3.12, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMath::Clamp(12.4f, -10.2f, 10.2f) == 10.2f, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMath::Clamp(-15.2f, -10.3f, 10.3f) == -10.3f, V3DFILE_INFO);	
 		V3DTest::AssertOk(V3DMath::Clamp(12, -10, 10) == 10, V3DFILE_INFO);
 		V3DTest::AssertOk(V3DMath::Clamp(-15, -10, 10) == -10, V3DFILE_INFO);
 		V3DTest::AssertOk(V3DMath::Distance(10.5f, 12.5f) == 2, V3DFILE_INFO);

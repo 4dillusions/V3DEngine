@@ -14,6 +14,8 @@ namespace V3D::V3DEngine::V3DCore
 	{
 		long long lastTime{}, currentTime{}, deltaTime{};
 
+		static long long GetActualTimeMsec();
+		
 	public:
 		V3DStopper();
 		V3DStopper(const V3DStopper&) = delete;
@@ -22,9 +24,8 @@ namespace V3D::V3DEngine::V3DCore
 		V3DStopper& operator=(const V3DStopper&) = delete;
 		V3DStopper& operator=(V3DStopper&&) = delete;	
 
-		static long long GetActualTime();
-
+		long long GetDeltaTimeMsec();
+		
 		void Reset();
-		long long DeltaTime();
 	};
 }

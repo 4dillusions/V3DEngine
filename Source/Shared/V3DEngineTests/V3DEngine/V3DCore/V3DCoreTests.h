@@ -20,6 +20,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 
 		static void V3DTupleTest();
 		static void V3DStopperTest();
+		static void V3DTimeHourTest();
 		static void V3DWatchTest();
 		static void V3DMemoryTest();
 		static void V3DIocTest();
