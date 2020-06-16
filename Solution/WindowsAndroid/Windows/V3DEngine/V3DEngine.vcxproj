@@ -12,7 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEngine\V3DEngineLibrary.h" />
-    <ClInclude Include="..\..\..\..\Source\Windows\V3DEngine\V3DIO\V3DOStream.h" />
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEngine\V3DIO\V3DOstream.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

@@ -22,5 +22,7 @@ namespace V3D::V3DEngineTests
 		virtual char GetTypeCode() = 0;
 		virtual int GetId() = 0;
 		virtual void SetId(int id) = 0;
+		virtual bool GetIsAlive() = 0;
+		virtual void SetIsAlive(bool isAlive) = 0;
 	};
 }

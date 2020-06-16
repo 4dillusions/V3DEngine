@@ -25,8 +25,7 @@ namespace V3D::V3DEngine::V3DIO
         bool outputTypes[static_cast<unsigned int>(V3DLogOutputType::Count)]{};
         std::function<void(const V3DCore::V3DString& log)> logTrigger = nullptr;
 
-        V3DIOstream* oStream;
-    	
+        V3DIOstream* oStream;    	
         V3DCore::V3DString* buffer = nullptr;
 
         int warnings = 0, errors = 0;
@@ -46,7 +45,7 @@ namespace V3D::V3DEngine::V3DIO
         V3DLogger& operator=(V3DLogger&&) = delete;
 
         //Avoid buffer leak before detecting
-        void ReleaseBuffer();
+        void DeleteBuffer();
 
         void SetOutputTypeFlag(V3DLogOutputType outputType, bool isEnable);
 

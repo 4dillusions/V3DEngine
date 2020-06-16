@@ -40,6 +40,16 @@ namespace V3D::V3DEngineTests
 		this->id = id;
 	}
 
+	bool V3DTestObjectA::GetIsAlive()
+	{
+		return isAlive;
+	}
+
+	void V3DTestObjectA::SetIsAlive(bool isAlive)
+	{
+		this->isAlive = isAlive;
+	}
+
 	int V3DTestObjectA::GetReferenceCounter()
 	{
 		return referenceCounter;

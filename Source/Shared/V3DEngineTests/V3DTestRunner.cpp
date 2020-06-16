@@ -10,6 +10,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngine/V3DMathemathics/V3DMathematicsTests.h"
 #include "V3DEngine/V3DCore/V3DCoreTests.h"
 #include "V3DEngine/V3DIO/V3DIOTests.h"
+#include "V3DEngine/V3DCollections/V3DCollectionsTests.h"
 
 namespace V3D::V3DEngineTests::V3DEngine
 {	
@@ -19,6 +20,7 @@ namespace V3D::V3DEngineTests::V3DEngine
 		V3DMathematics::V3DMathematicsTests::RunAllTests();
 		V3DCore::V3DCoreTests::RunAllTests();
 		V3DIO::V3DIOTests::RunAllTests();
+		V3DCollections::V3DCollectionsTests::RunAllTests();
 
 		V3DTest::WriteStatistics();
 		V3DTest::RunTimingTests();

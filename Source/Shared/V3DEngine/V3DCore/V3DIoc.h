@@ -6,8 +6,8 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #pragma once
 
-#include "V3DEngine/V3DMacros.h"
 #include "V3DMemory.h"
+#include "V3DEngine/V3DMacros.h"
 
 #include <functional>
 
@@ -72,7 +72,7 @@ namespace V3D::V3DEngine::V3DCore
 				instance = prototype();
 		}
 
-		static void Release()
+		static void DeleteInstance()
 		{
 			V3DMemory::Delete(instance);
 			prototype = nullptr;

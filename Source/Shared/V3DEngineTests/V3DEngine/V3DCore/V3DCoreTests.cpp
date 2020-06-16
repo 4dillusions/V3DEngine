@@ -112,19 +112,41 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 
 	void V3DCoreTests::V3DMemoryTest()
 	{
-		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+		int* value = V3DMemory::New<int>(V3DFILE_INFO, 0);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 1, V3DFILE_INFO);
+		V3DMemory::Delete(value);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(value == nullptr, V3DFILE_INFO);
 
-		int* x = V3DMemory::New<int>(V3DFILE_INFO, 0);
-		int* y = V3DMemory::NewArray<int>(V3DFILE_INFO, 10);
+		int* arr = V3DMemory::NewArray<int>(V3DFILE_INFO, 10);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 1, V3DFILE_INFO);
+		V3DMemory::DeleteArray(arr);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(arr == nullptr, V3DFILE_INFO);
 
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount + 2, V3DFILE_INFO);
+		const int matrixSize = 5;
+		int** matrix = V3DMemory::NewMatrix<int>(V3DFILE_INFO, matrixSize);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 1 + matrixSize, V3DFILE_INFO);
+		V3DMemory::DeleteMatrix(matrix, matrixSize);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
 
-		V3DMemory::Delete(x);
-		V3DMemory::DeleteArray(y);
+		const int pointerArraySize = 10;
+		V3DTestObjectA::SetReferenceCounter(0);
+		V3DTestObjectA** pointerArray = V3DMemory::NewPointerArray<V3DTestObjectA>(V3DFILE_INFO, pointerArraySize);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 1, V3DFILE_INFO);
+		for (int i = 0; i < pointerArraySize; i++)
+			pointerArray[i] = V3DMemory::New<V3DTestObjectA>(V3DFILE_INFO);
 
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
-		V3DTest::AssertOk(x == nullptr, V3DFILE_INFO);
-		V3DTest::AssertOk(y == nullptr, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 1 + pointerArraySize, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == pointerArraySize, V3DFILE_INFO);
+
+		for (int i = 0; i < pointerArraySize; i++)
+			V3DMemory::Delete(pointerArray[i]);
+		
+		V3DMemory::DeletePointerArray(pointerArray);
+
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == 0, V3DFILE_INFO);
 	}
 
 	void V3DCoreTests::V3DIocTest()
@@ -136,7 +158,6 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 		V3DTest::AssertOk(V3DIoc<V3DTestObjectA>::Get().GetId() == 20, V3DFILE_INFO);
 
 		//dynamic Ioc test
-		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
 		V3DTest::AssertOk(V3DIoc<V3DITestObject*>::IsExist() == false, V3DFILE_INFO);
 
 		V3DIoc<V3DITestObject*>::Register<V3DTestObjectA>();
@@ -150,15 +171,15 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 		V3DTest::AssertOk(V3DIoc<V3DITestObject*>::Get()->GetId() == 20, V3DFILE_INFO);
 		V3DTest::AssertOk(V3DIoc<V3DITestObject*>::Get()->GetTypeCode() == 'A', V3DFILE_INFO);
 
-		V3DIoc<V3DITestObject*>::Release();
+		V3DIoc<V3DITestObject*>::DeleteInstance();
 		V3DTest::AssertOk(V3DIoc<V3DITestObject*>::IsExist() == false, V3DFILE_INFO);
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
 
 		V3DIoc<V3DITestObject*>::Register<V3DTestObjectB>();
 		V3DIoc<V3DITestObject*>::Create();
 		V3DTest::AssertOk(V3DIoc<V3DITestObject*>::Get()->GetTypeCode() == 'B', V3DFILE_INFO);
 
-		V3DIoc<V3DITestObject*>::Release();
+		V3DIoc<V3DITestObject*>::DeleteInstance();
 		V3DIoc<V3DITestObject*>::Register<V3DTestObjectA>([]()
 		{
 			auto result = V3DMemory::New<V3DTestObjectB>(V3DFILE_INFO);
@@ -170,8 +191,8 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 		V3DTest::AssertOk(V3DIoc<V3DITestObject*>::Get()->GetTypeCode() == 'B', V3DFILE_INFO);
 		V3DTest::AssertOk(V3DIoc<V3DITestObject*>::Get()->GetId() == 44, V3DFILE_INFO);
 
-		V3DIoc<V3DITestObject*>::Release();
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
+		V3DIoc<V3DITestObject*>::DeleteInstance();
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
 	}
 
 	void V3DCoreTests::V3DStringTest()

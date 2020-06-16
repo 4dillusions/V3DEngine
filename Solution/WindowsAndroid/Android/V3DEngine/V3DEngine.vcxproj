@@ -36,7 +36,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\Source\Android\V3DEngine\V3DEngineLibrary.h" />
-    <ClInclude Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DOStream.h" />
+    <ClInclude Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DOstream.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{fa00616c-6032-44ba-b4fb-49a8005f6a45}</ProjectGuid>

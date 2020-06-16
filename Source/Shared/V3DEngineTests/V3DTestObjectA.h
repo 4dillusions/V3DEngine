@@ -14,6 +14,7 @@ namespace V3D::V3DEngineTests
 	{
 		static int referenceCounter;
 		int id{};
+		bool isAlive{ true };
 
 	public:
 		V3DTestObjectA();
@@ -26,6 +27,8 @@ namespace V3D::V3DEngineTests
 		char GetTypeCode() override;
 		int GetId() override;
 		void SetId(int id) override;
+		bool GetIsAlive() override;
+		void SetIsAlive(bool isAlive) override;
 
 		static int GetReferenceCounter();
 		static void SetReferenceCounter(int counter);

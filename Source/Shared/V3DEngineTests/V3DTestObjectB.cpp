@@ -27,4 +27,14 @@ namespace V3D::V3DEngineTests
 	{
 		this->id = id;
 	}
+	
+	bool V3DTestObjectB::GetIsAlive()
+	{
+		return isAlive;
+	}
+	
+	void V3DTestObjectB::SetIsAlive(bool isAlive)
+	{
+		this->isAlive = isAlive;
+	}
 }

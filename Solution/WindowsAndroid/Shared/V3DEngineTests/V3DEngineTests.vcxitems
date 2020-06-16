@@ -14,6 +14,8 @@
     <ProjectCapability Include="SourceItemsFromImports" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DCollections\V3DCollectionsTests.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DCollections\V3DObjectPoolTests.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DCore\V3DCoreTests.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DCore\V3DStringTest.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DIO\V3DIOTests.h" />
@@ -27,6 +29,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTestRunner.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DCollections\V3DCollectionsTests.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DCollections\V3DObjectPoolTests.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DCore\V3DCoreTests.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DCore\V3DStringTest.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DIO\V3DIOTests.cpp" />

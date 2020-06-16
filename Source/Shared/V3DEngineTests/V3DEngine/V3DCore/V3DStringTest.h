@@ -10,8 +10,6 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 {
 	class V3DStringTest final
 	{
-		static int memoryLeakCount;
-		
 	public:
 		V3DStringTest() = delete;
 		V3DStringTest(const V3DStringTest&) = delete;

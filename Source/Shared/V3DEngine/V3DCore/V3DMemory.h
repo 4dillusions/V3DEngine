@@ -139,17 +139,17 @@ namespace V3D::V3DEngine::V3DCore
 			obj = nullptr;
 		}
 
-		template <typename T, typename TInfo> static T** NewMatrix(TInfo info, int sizeX, int sizeY)
+		template <typename T, typename TInfo> static T** NewMatrix(TInfo info, int size)
 		{
-			T** result = new T * [sizeX];
+			T** result = new T * [size];
 
 			#if defined(UNITTEST) || defined(_DEBUG)
 				V3DMemory::Add(reinterpret_cast<int*>(result), info);
 			#endif
 
-			for (int x = 0; x < sizeX; ++x)
+			for (int x = 0; x < size; ++x)
 			{
-				result[x] = new T[sizeY];
+				result[x] = new T[size];
 
 				#if defined(UNITTEST) || defined(_DEBUG)
 					V3DMemory::Add(reinterpret_cast<int*>(result[x]), info);

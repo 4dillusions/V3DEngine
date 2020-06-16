@@ -13,7 +13,7 @@
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEngine\V3DEngineLibrary.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Source\Windows\V3DEngine\V3DIO\V3DOStream.h">
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEngine\V3DIO\V3DOstream.h">
       <Filter>Source\V3DIO</Filter>
     </ClInclude>
   </ItemGroup>

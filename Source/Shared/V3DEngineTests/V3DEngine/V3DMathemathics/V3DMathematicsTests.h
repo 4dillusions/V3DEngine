@@ -10,6 +10,9 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DMathematics
 {
 	class V3DMathematicsTests final
 	{
+		static const int timingCountSize = 100'000;
+		static const int maxRandom = 1'000;
+		
 	public:
 		V3DMathematicsTests() = delete;
 		V3DMathematicsTests(const V3DMathematicsTests&) = delete;

@@ -37,15 +37,14 @@ namespace V3D::V3DEngine::V3DCore
 
 	void V3DMemory::WriteStatistics()
 	{
-		V3DIoc<V3DIO::V3DLogger>::Get().ReleaseBuffer();
-
+		V3DIoc<V3DLogger>::Get().DeleteBuffer();
 		V3DIoc<V3DLogger>::Get().WriteOutput("");
 		V3DIoc<V3DLogger>::Get().WriteOutput("Leaked objects:");
 
-		for (auto i : memoryList)
+		for (const auto i : memoryList)
 			V3DIoc<V3DLogger>::Get().WriteOutput(i.second);
 
-		if (memoryList.size() == 0)
+		if (memoryList.empty())
 			V3DIoc<V3DLogger>::Get().WriteOutput("0 leaked object");
 	}
 

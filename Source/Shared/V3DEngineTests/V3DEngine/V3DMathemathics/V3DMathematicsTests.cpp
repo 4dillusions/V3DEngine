@@ -546,14 +546,14 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DMathematics
 
 	void V3DMathematicsTests::V3DRandomTimingTest()
 	{
-		for (int i = 0; i < 100'000; i++)
-			V3DRandom::CreateRandom(0, 1000);
+		for (int i = 0; i < timingCountSize; i++)
+			V3DRandom::CreateRandom(0, maxRandom);
 	}
 
 	void V3DMathematicsTests::V3DRandomClassicTimingTest()
 	{
-		for (int i = 0; i < 100'000; i++)
-			V3DRandomClassic::CreateRandom(0, 1000);
+		for (int i = 0; i < timingCountSize; i++)
+			V3DRandomClassic::CreateRandom(0, maxRandom);
 	}
 
 	void V3DMathematicsTests::RunAllTests()

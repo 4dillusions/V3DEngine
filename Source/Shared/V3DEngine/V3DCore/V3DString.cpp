@@ -5,8 +5,8 @@ Released under the terms of the GNU General Public License version 3 or later.
 */
 
 #include "V3DString.h"
-#include "V3DEngine/V3DMacros.h"
 #include "V3DMemory.h"
+#include "V3DEngine/V3DMacros.h"
 #include "V3DEngine/V3DMathematics/V3DMath.h"
 
 using namespace V3D::V3DEngine::V3DMathematics;

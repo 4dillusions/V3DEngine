@@ -8,18 +8,14 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngineTests/V3DTest.h"
 #include "V3DEngine/V3DCore/V3DString.h"
 #include "V3DEngine/V3DCore/V3DMemory.h"
-
 #include "V3DEngine/V3DMacros.h"
 
 using namespace V3D::V3DEngine::V3DCore;
 
 namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 {
-	int V3DStringTest::memoryLeakCount = 0;
-	
 	void V3DStringTest::CtorOperatorsTest()
 	{
-		memoryLeakCount = V3DMemory::GetMemoryLeakCount();
 		const auto StringTestCtorOperators = []()
 		{
 			const V3DString text("test123");
@@ -59,7 +55,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 			V3DTest::AssertOk(text6 == V3DString("3.140"), V3DFILE_INFO);
 		};
 		StringTestCtorOperators();
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
 	}
 	
 	void V3DStringTest::ReturnTest()
@@ -71,7 +67,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 			return result;
 		};
 		V3DTest::AssertOk(StringTestReturn() == V3DString("hoho"), V3DFILE_INFO);
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
 	}
 	
 	void V3DStringTest::ToTest()
@@ -91,7 +87,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 			V3DTest::AssertOk(0 == text.ToInt(), V3DFILE_INFO);
 		};
 		StringTestTo();
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
 	}
 	
 	void V3DStringTest::GetHashTest()
@@ -194,7 +190,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 			V3DTest::AssertOk(!empty.IsEmpty(), V3DFILE_INFO);
 		};
 		StringTestGet();
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
 	}
 	
 	void V3DStringTest::IsTest()
@@ -251,7 +247,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 			V3DTest::AssertOk(example.IsEndsWith(V3DString('b')) == false, V3DFILE_INFO);
 		};
 		StringTestIs();
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
 	}
 	
 	void V3DStringTest::CopyArrayTest()
@@ -263,7 +259,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 			V3DTest::AssertOk(V3DString(text) == V3DString("hello123"), V3DFILE_INFO);
 		};
 		StringTestCopyArray();
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
 	}
 	
 	void V3DStringTest::ReplaceRemoveTest()
@@ -309,7 +305,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 			V3DTest::AssertOk(text == V3DString(""), V3DFILE_INFO);
 		};
 		StringTestReplaceRemove();
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
 	}
 	
 	void V3DStringTest::LargeTest()
@@ -335,14 +331,14 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 			V3DTest::AssertOk((textSize * 4) + ((V3DString::GetTextLength("hoho") - 1) * 2) == text.GetDataSize(), V3DFILE_INFO);
 		};
 		StringTestLarge();
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
 	}
 	
 	void V3DStringTest::CopyTest()
 	{
 		const auto StringTestCopy = []() { return V3DString("hoho1234!"); };
 		V3DTest::AssertOk(StringTestCopy() == V3DString("hoho1234!"), V3DFILE_INFO);
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
 	}
 	
 	void V3DStringTest::SplitTest()
@@ -359,7 +355,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 			V3DTest::AssertOk(numbers[3] == V3DString("four"), V3DFILE_INFO);
 		};
 		StringTestSplit();
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
 
 		auto StringTestSplit2 = []()
 		{
@@ -373,7 +369,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 			V3DTest::AssertOk(numbers[3] == V3DString("four"), V3DFILE_INFO);
 		};
 		StringTestSplit2();
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
 
 		auto StringTestSplit3 = []()
 		{
@@ -386,11 +382,11 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 			V3DTest::AssertOk(empty2[0].IsEmpty(), V3DFILE_INFO);
 		};
 		StringTestSplit3();
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);*/
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);*/
 	}
 
 	void V3DStringTest::RunAllTests()
-	{
+	{	
 		CtorOperatorsTest();
 		ReturnTest();
 		ToTest();

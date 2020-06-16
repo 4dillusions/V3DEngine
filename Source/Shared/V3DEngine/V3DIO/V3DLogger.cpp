@@ -24,12 +24,12 @@ namespace V3D::V3DEngine::V3DIO
 		for (bool& outputType : outputTypes)
 			outputType = false;
 	}
-	
-	void V3DLogger::ReleaseBuffer()
+
+	void V3DLogger::DeleteBuffer()
 	{
 		V3DMemory::Delete(buffer);
 	}
-
+	
 	void V3DLogger::SetOutputTypeFlag(V3DLogOutputType outputType, bool isEnable)
 	{
 		outputTypes[static_cast<unsigned int>(outputType)] = isEnable;
