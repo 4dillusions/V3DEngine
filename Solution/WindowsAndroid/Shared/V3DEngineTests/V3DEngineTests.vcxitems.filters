@@ -57,7 +57,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DCollections\V3DCollectionsTests.h">
       <Filter>Source\V3DEngine\V3DCollections</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DCollections\V3DObjectPoolTests.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DCollections\V3DObjectPoolTests.h">
+      <Filter>Source\V3DEngine\V3DCollections</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTest.cpp">
@@ -90,6 +92,8 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DCollections\V3DCollectionsTests.cpp">
       <Filter>Source\V3DEngine\V3DCollections</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DCollections\V3DObjectPoolTests.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DCollections\V3DObjectPoolTests.cpp">
+      <Filter>Source\V3DEngine\V3DCollections</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

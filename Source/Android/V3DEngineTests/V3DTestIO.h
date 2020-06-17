@@ -6,8 +6,8 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #pragma once
 
-#include "V3DEngineTests/V3DITestIO.h"
 #include <android/log.h>
+#include "V3DEngineTests/V3DITestIO.h"
 
 namespace V3D::V3DEngineTests
 {
