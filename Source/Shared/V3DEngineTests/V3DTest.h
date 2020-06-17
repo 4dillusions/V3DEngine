@@ -6,6 +6,8 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #pragma once
 
+#define UNITTEST
+
 #include <list>
 #include <map>
 #include <functional>
