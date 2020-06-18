@@ -12,8 +12,8 @@ Released under the terms of the GNU General Public License version 3 or later.
 namespace V3D::V3DEngine::V3DCollections
 {
 	/**
-		Linked list data structure with objects.
-		Supports logically fast add/remove functions without memory allocation or free.
+		Linked list data structure with dynamic objects.
+		Supports logically fast add/remove functions without memory allocation or free while iterate.
 
 		Mainly use for iterating
 		
@@ -181,12 +181,11 @@ namespace V3D::V3DEngine::V3DCollections
 			return nullptr;
 		}
 
-		T* AddNode()
+		T* Add()
 		{
-			static V3DObjectPoolNode<T>* temp{};
 			if (poolTail->prev != nullptr)
 			{
-				temp = poolTail->prev;
+				auto temp = poolTail->prev;
 				temp->isAlive = true;
 				RemoveNodeFromPool(temp);
 				InsertNodeToList(temp);			
@@ -196,11 +195,9 @@ namespace V3D::V3DEngine::V3DCollections
 			return nullptr;
 		}
 
-		void RemoveCurrentNode()
+		void RemoveCurrent()
 		{
-			static V3DObjectPoolNode<T>* temp{};
-
-			temp = current;
+			auto temp = current;
 			current = current->prev;
 			
 			temp->isAlive = false;
@@ -209,7 +206,7 @@ namespace V3D::V3DEngine::V3DCollections
 			length--;
 		}
 
-		void RemoveAllNodes()
+		void RemoveAll()
 		{
 			if (length == 0)
 				return;
