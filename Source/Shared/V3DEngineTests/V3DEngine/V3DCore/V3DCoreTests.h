@@ -18,15 +18,6 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 		V3DCoreTests& operator=(const V3DCoreTests&) = delete;
 		V3DCoreTests& operator=(V3DCoreTests&&) = delete;
 
-		static void V3DTupleTest();
-		static void V3DStopperTest();
-		static void V3DTimeHourTest();
-		static void V3DWatchTest();
-		static void V3DMemoryTest();
-		static void V3DIocTest();
-		static void V3DStringTest();
-		static void V3DDateTimeTest();
-
 		static void RunAllTests();
 	};
 }

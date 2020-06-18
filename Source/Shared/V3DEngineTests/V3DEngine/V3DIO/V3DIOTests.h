@@ -18,8 +18,6 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 		V3DIOTests& operator=(const V3DIOTests&) = delete;
 		V3DIOTests& operator=(V3DIOTests&&) = delete;
 
-		static void V3DLoggerTest();
-		
 		static void RunAllTests();
 	};
 }
