@@ -10,6 +10,8 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 {
 	class V3DMemoryTest final
 	{
+		static const int testMemoryAllocsize = 20'000'000; //20'000'000;
+		
 	public:
 		V3DMemoryTest() = delete;
 		V3DMemoryTest(const V3DMemoryTest&) = delete;
@@ -22,6 +24,9 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 		static void ArrayTest();
 		static void MatrixTest();
 		static void PointerArrayTest();
+
+		static void MemoryAllocationCMallocTimingTest();
+		static void MemoryAllocationCppNewTimingTest();
 		
 		static void RunAllTests();
 	};

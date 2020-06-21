@@ -36,7 +36,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		V3DLinkedList<V3DTestObjectA*> dynamicObjList;
 		dynamicObjList.Add(dobj);
 		
-		V3DTest::AssertOk(false, V3DFILE_INFO);
+		//V3DTest::AssertOk(false, V3DFILE_INFO);
 
 		/*V3DLinkedList<int> intList;
 		V3DLinkedList<V3DTestObjectA> staticObjList;

@@ -10,6 +10,8 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngine/V3DMacros.h"
 #include "V3DEngineTests/V3DTestObjectA.h"
 
+#include <string>
+
 using namespace V3D::V3DEngine::V3DCore;
 
 namespace V3D::V3DEngineTests::V3DEngine::V3DCore
@@ -62,11 +64,28 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == 0, V3DFILE_INFO);
 	}
 
+	void V3DMemoryTest::MemoryAllocationCMallocTimingTest()
+	{
+		char* heap = static_cast<char*>(malloc(sizeof(char) * testMemoryAllocsize));
+		for (int i = 0; i < testMemoryAllocsize; i++)
+			heap[i] = 'A';
+	}
+
+	void V3DMemoryTest::MemoryAllocationCppNewTimingTest()
+	{
+		char* heap = new char[testMemoryAllocsize];
+		for (int i = 0; i < testMemoryAllocsize; i++)
+			heap[i] = 'A';
+	}
+
 	void V3DMemoryTest::RunAllTests()
 	{
 		ValueTest();
 		ArrayTest();
 		MatrixTest();
 		PointerArrayTest();
+
+		V3DTest::AddTimingTest("MemoryAllocationCMallocTimingTest", MemoryAllocationCMallocTimingTest);
+		V3DTest::AddTimingTest("MemoryAllocationCppNewTimingTest", MemoryAllocationCppNewTimingTest);
 	}
 }
