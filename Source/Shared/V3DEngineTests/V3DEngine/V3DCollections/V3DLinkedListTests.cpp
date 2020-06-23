@@ -21,7 +21,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 	void V3DLinkedListTests::CtorDtorTest()
 	{
 		/*V3DObjectPool<int, size> intPool;
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == poolHeadTailCount + size * 2, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == poolMemoryAllocCount + size * 2, V3DFILE_INFO);
 		intPool.~V3DObjectPool();
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);*/
 

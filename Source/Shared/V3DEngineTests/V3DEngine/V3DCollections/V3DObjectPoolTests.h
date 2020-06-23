@@ -10,7 +10,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 {
 	class V3DObjectPoolTests final
 	{
-		static const int poolHeadTailCount = 4;
+		static const int poolMemoryAllocCount = 2;
 		static const int size = 10;
 		static const int bigSize = 10'000;
 		

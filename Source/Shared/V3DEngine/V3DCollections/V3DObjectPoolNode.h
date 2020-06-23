@@ -6,8 +6,6 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #pragma once
 
-#include "V3DEngine/V3DCore/V3DMemory.h"
-
 namespace V3D::V3DEngine::V3DCollections
 {
 	template<typename T> struct V3DObjectPoolNode final
@@ -21,10 +19,5 @@ namespace V3D::V3DEngine::V3DCollections
 		V3DObjectPoolNode(V3DObjectPoolNode<T>&&) = delete;
 		V3DObjectPoolNode<T>& operator=(const V3DObjectPoolNode<T>&) = delete;
 		V3DObjectPoolNode<T>& operator=(V3DObjectPoolNode<T>&&) = delete;
-
-		~V3DObjectPoolNode()
-		{
-			V3DCore::V3DMemory::Delete(data);
-		}
 	};
 }

@@ -23,8 +23,8 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 {
 	void V3DObjectPoolTests::CtorDtorTest()
 	{
-		V3DObjectPool<int, size> intPool;
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == poolHeadTailCount + size * 2, V3DFILE_INFO);
+		V3DObjectPool<V3DTestObjectA, size> intPool;
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == poolMemoryAllocCount, V3DFILE_INFO);
 		intPool.~V3DObjectPool();
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
 	}
@@ -33,7 +33,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 	{
 		V3DTestObjectA::SetReferenceCounter(0);
 		V3DObjectPool<V3DTestObjectA, size> objectPool;
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == poolHeadTailCount + size * 2, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == poolMemoryAllocCount, V3DFILE_INFO);
 		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == size, V3DFILE_INFO);
 
 		for (objectPool.First(); objectPool.IsDone(); objectPool.Next())

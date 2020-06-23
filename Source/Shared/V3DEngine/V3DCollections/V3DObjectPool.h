@@ -27,23 +27,15 @@ namespace V3D::V3DEngine::V3DCollections
 	*/
 	template<typename T, int poolSize> class V3DObjectPool final
 	{
+		T* datas;
+		V3DObjectPoolNode<T>* nodes;
 		V3DObjectPoolNode<T>* poolHead{}, * poolTail{}, * head{}, * tail{}, * current{};
 		int length{};
 
-		V3DObjectPoolNode<T>* CreateNode()
+		V3DObjectPoolNode<T>* AddNewNodeWithData(V3DObjectPoolNode<T>* targetNode, int arrayIndex)
 		{
-			return V3DCore::V3DMemory::New<V3DObjectPoolNode<T>>(V3DFILE_INFO);
-		}
-
-		T* CreateData()
-		{
-			return V3DCore::V3DMemory::New<T>(V3DFILE_INFO);
-		}
-
-		V3DObjectPoolNode<T>* AddNewNodeWithData(V3DObjectPoolNode<T>* targetNode)
-		{
-			auto newNode = CreateNode();
-			newNode->data = CreateData();
+			auto newNode = &nodes[arrayIndex];
+			newNode->data = &datas[arrayIndex];
 
 			targetNode->next = newNode;
 			newNode->prev = targetNode;
@@ -104,20 +96,6 @@ namespace V3D::V3DEngine::V3DCollections
 			}
 		}
 
-		void DeleteLinkedNodes(V3DObjectPoolNode<T>* headNode)
-		{
-			if (headNode == nullptr || headNode->next == nullptr)
-				return;
-
-			auto currentHead = headNode->next;
-			while (currentHead->data != nullptr)
-			{
-				auto nextNode = currentHead->next;
-				V3DCore::V3DMemory::Delete(currentHead);
-				currentHead = nextNode;
-			}
-		}
-
 	public:
 		V3DObjectPool<T, poolSize>(const V3DObjectPool<T, poolSize>&) = delete;
 		V3DObjectPool(V3DObjectPool<T, poolSize>&&) = delete;
@@ -126,15 +104,19 @@ namespace V3D::V3DEngine::V3DCollections
 
 		V3DObjectPool()
 		{
-			poolHead = CreateNode();
-			poolTail = CreateNode();
-			head = CreateNode();
-			tail = CreateNode();
-
-			auto currentNode = AddNewNodeWithData(poolHead);
+			datas = V3DCore::V3DMemory::NewArray<T>(V3DFILE_INFO, poolSize);
+			nodes = V3DCore::V3DMemory::NewArray<V3DObjectPoolNode<T>>(V3DFILE_INFO, poolSize + 4);
 			
-			for (int i = 0; i < poolSize - 1; i++)
-				currentNode = AddNewNodeWithData(currentNode);
+			poolHead = &nodes[poolSize];
+			poolTail = &nodes[poolSize + 1];
+			head = &nodes[poolSize + 2];
+			tail = &nodes[poolSize + 3];
+
+			int arrayIndex = 0;
+			auto currentNode = AddNewNodeWithData(poolHead, arrayIndex);
+			
+			for (arrayIndex++; arrayIndex < poolSize; arrayIndex++)
+				currentNode = AddNewNodeWithData(currentNode, arrayIndex);
 
 			currentNode->next = poolTail;
 			poolTail->prev = currentNode;
@@ -142,14 +124,9 @@ namespace V3D::V3DEngine::V3DCollections
 
 		~V3DObjectPool()
 		{
-			DeleteLinkedNodes(poolHead);
-			DeleteLinkedNodes(head);
-
-			V3DCore::V3DMemory::Delete(poolHead);
-			V3DCore::V3DMemory::Delete(poolTail);
-			V3DCore::V3DMemory::Delete(head);
-			V3DCore::V3DMemory::Delete(tail);
-
+			V3DCore::V3DMemory::DeleteArray(nodes);
+			V3DCore::V3DMemory::DeleteArray(datas);
+			
 			length = 0;
 		}
 
