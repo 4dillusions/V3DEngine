@@ -10,10 +10,6 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 {
 	class V3DLinkedListTests final
 	{
-		static const int listMemoryAllocCount = 2;
-		static const int size = 10;
-		static const int bigSize = 10'000;
-
 	public:
 		V3DLinkedListTests() = delete;
 		V3DLinkedListTests(const V3DLinkedListTests&) = delete;

@@ -11,6 +11,11 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 	class V3DCollectionsTests final
 	{
 	public:
+		static const int poolMemoryAllocCount = 2;
+		static const int listMemoryAllocCount = 2;
+		static const int size = 10;
+		static const int bigSize = 10'000;
+		
 		V3DCollectionsTests() = delete;
 		V3DCollectionsTests(const V3DCollectionsTests&) = delete;
 		V3DCollectionsTests(V3DCollectionsTests&&) = delete;

@@ -14,6 +14,8 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include <string>
 #include <vector>
 
+#include "V3DCollectionsTests.h"
+
 using namespace V3D::V3DEngine::V3DCore;
 using namespace V3D::V3DEngine::V3DCollections;
 
@@ -23,8 +25,8 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 {
 	void V3DObjectPoolTests::CtorDtorTest()
 	{
-		V3DObjectPool<V3DTestObjectA, size> intPool;
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == poolMemoryAllocCount, V3DFILE_INFO);
+		V3DObjectPool<V3DTestObjectA, V3DCollectionsTests::size> intPool;
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == V3DCollectionsTests::poolMemoryAllocCount, V3DFILE_INFO);
 		intPool.~V3DObjectPool();
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
 	}
@@ -32,9 +34,9 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 	void V3DObjectPoolTests::AddRemoveTest()
 	{
 		V3DTestObjectA::SetReferenceCounter(0);
-		V3DObjectPool<V3DTestObjectA, size> objectPool;
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == poolMemoryAllocCount, V3DFILE_INFO);
-		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == size, V3DFILE_INFO);
+		V3DObjectPool<V3DTestObjectA, V3DCollectionsTests::size> objectPool;
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == V3DCollectionsTests::poolMemoryAllocCount, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == V3DCollectionsTests::size, V3DFILE_INFO);
 
 		for (objectPool.First(); objectPool.IsDone(); objectPool.Next())
 			;
@@ -56,7 +58,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 			else
 				break;
 
-		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == size, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == V3DCollectionsTests::size, V3DFILE_INFO);
 		V3DTest::AssertOk(objectPool.GetLength() == 1, V3DFILE_INFO);
 
 		testObjectPoolCounter = 0;
@@ -64,7 +66,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		for (objectPool.First(); objectPool.IsDone(); objectPool.Next(), testObjectPoolCounter++)
 			;
 		V3DTest::AssertOk(testObjectPoolCounter == 2, V3DFILE_INFO);
-		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == size, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == V3DCollectionsTests::size, V3DFILE_INFO);
 		V3DTest::AssertOk(objectPool.GetLength() == 2, V3DFILE_INFO);
 
 		for (objectPool.First(); objectPool.IsDone(); /*unreachable code: objectPool.Next()*/)
@@ -72,7 +74,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 			objectPool.RemoveCurrent();
 			break;
 		}
-		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == size, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == V3DCollectionsTests::size, V3DFILE_INFO);
 		V3DTest::AssertOk(objectPool.GetLength() == 1, V3DFILE_INFO);
 		
 		objectPool.~V3DObjectPool();
@@ -86,9 +88,9 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		const auto ObjectPoolRemoveAllTest = []()
 		{
 			V3DTestObjectA::SetReferenceCounter(0);
-			V3DObjectPool<V3DTestObjectA, size> objectPool;
+			V3DObjectPool<V3DTestObjectA, V3DCollectionsTests::size> objectPool;
 			objectPool.RemoveAll();
-			V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == size, V3DFILE_INFO);
+			V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == V3DCollectionsTests::size, V3DFILE_INFO);
 			V3DTest::AssertOk(objectPool.GetLength() == 0, V3DFILE_INFO);
 		};
 		ObjectPoolRemoveAllTest();
@@ -98,13 +100,13 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		const auto ObjectPoolRemoveAllCurrentsTest = []()
 		{
 			V3DTestObjectA::SetReferenceCounter(0);
-			V3DObjectPool<V3DTestObjectA, size> objectPool;
+			V3DObjectPool<V3DTestObjectA, V3DCollectionsTests::size> objectPool;
 
 			for (objectPool.First(); objectPool.IsDone(); objectPool.Next())
 				objectPool.RemoveCurrent();
 
 			V3DTest::AssertOk(objectPool.GetLength() == 0, V3DFILE_INFO);
-			V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == size, V3DFILE_INFO);
+			V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == V3DCollectionsTests::size, V3DFILE_INFO);
 		};
 		ObjectPoolRemoveAllCurrentsTest();
 		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == 0, V3DFILE_INFO);
@@ -116,11 +118,11 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		const auto ObjectPoolRemoveAllTest = []()
 		{
 			V3DTestObjectA::SetReferenceCounter(0);
-			V3DObjectPool<V3DTestObjectA, size> objectPool;
+			V3DObjectPool<V3DTestObjectA, V3DCollectionsTests::size> objectPool;
 			objectPool.RemoveAll();
 			objectPool.Add();
 			objectPool.Add();
-			V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == size, V3DFILE_INFO);
+			V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == V3DCollectionsTests::size, V3DFILE_INFO);
 			V3DTest::AssertOk(objectPool.GetLength() == 2, V3DFILE_INFO);
 		};
 		ObjectPoolRemoveAllTest();
@@ -130,7 +132,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		const auto ObjectPoolRemoveAllCurrentsTest = []()
 		{
 			V3DTestObjectA::SetReferenceCounter(0);
-			V3DObjectPool<V3DTestObjectA, size> objectPool;
+			V3DObjectPool<V3DTestObjectA, V3DCollectionsTests::size> objectPool;
 
 			for (objectPool.First(); objectPool.IsDone(); objectPool.Next())
 				objectPool.RemoveCurrent();
@@ -138,7 +140,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 			objectPool.Add();
 			objectPool.Add();
 			V3DTest::AssertOk(objectPool.GetLength() == 2, V3DFILE_INFO);
-			V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == size, V3DFILE_INFO);
+			V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == V3DCollectionsTests::size, V3DFILE_INFO);
 		};
 		ObjectPoolRemoveAllCurrentsTest();
 		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == 0, V3DFILE_INFO);
@@ -147,8 +149,8 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 
 	void V3DObjectPoolTests::RemoveFirstWhileIterateTest()
 	{
-		V3DObjectPool<V3DTestObjectA, size> objectPool;
-		for (int i = 0; i < size; i++)
+		V3DObjectPool<V3DTestObjectA, V3DCollectionsTests::size> objectPool;
+		for (int i = 0; i < V3DCollectionsTests::size; i++)
 			objectPool.Add();
 
 		int index = 0;
@@ -178,8 +180,8 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 
 	void V3DObjectPoolTests::RemoveLastWhileIterateTest()
 	{
-		V3DObjectPool<V3DTestObjectA, size> objectPool;
-		for (int i = 0; i < size; i++)
+		V3DObjectPool<V3DTestObjectA, V3DCollectionsTests::size> objectPool;
+		for (int i = 0; i < V3DCollectionsTests::size; i++)
 			objectPool.Add();
 
 		int killObjectsCounter = 2;
@@ -218,7 +220,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		
 		V3DTest::AddTimingTest("StdVectorAddRemoveTimingTest1", []()
 		{
-			for (int i = 0; i < bigSize; i++)
+			for (int i = 0; i < V3DCollectionsTests::bigSize; i++)
 				stdList->push_back(V3DMemory::New<V3DTestObjectA>(V3DFILE_INFO));
 
 			for (auto i = stdList->begin(); i != stdList->end(); ++i)
@@ -255,7 +257,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		{
 			stdList = V3DMemory::New<vector<V3DTestObjectA*>>(V3DFILE_INFO);
 			
-			for (int i = 0; i < bigSize; i++)
+			for (int i = 0; i < V3DCollectionsTests::bigSize; i++)
 				stdList->push_back(V3DMemory::New<V3DTestObjectA>(V3DFILE_INFO));
 		});
 		
@@ -291,16 +293,16 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 	
 	void V3DObjectPoolTests::ObjectPoolAddRemoveTimingTest()
 	{
-		static V3DObjectPool<V3DTestObjectA, V3DObjectPoolTests::bigSize>* objectPool;
+		static V3DObjectPool<V3DTestObjectA, V3DCollectionsTests::bigSize>* objectPool;
 		
 		V3DTest::AddTimingTest("V3DObjectPoolAddRemoveTimingTest0SKIP", []()
 		{
-			objectPool = V3DMemory::New<V3DObjectPool<V3DTestObjectA, bigSize>>(V3DFILE_INFO);
+			objectPool = V3DMemory::New<V3DObjectPool<V3DTestObjectA, V3DCollectionsTests::bigSize>>(V3DFILE_INFO);
 		});
 		
 		V3DTest::AddTimingTest("V3DObjectPoolAddRemoveTimingTest1", []()
 		{
-			for (int i = 0; i < bigSize; i++)
+			for (int i = 0; i < V3DCollectionsTests::bigSize; i++)
 				objectPool->Add();
 
 			for (objectPool->First(); objectPool->IsDone(); objectPool->Next())
@@ -315,13 +317,13 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 
 	void V3DObjectPoolTests::ObjectPoolIterateTimingTest()
 	{
-		static V3DObjectPool<V3DTestObjectA, V3DObjectPoolTests::bigSize>* objectPool;
+		static V3DObjectPool<V3DTestObjectA, V3DCollectionsTests::bigSize>* objectPool;
 		
 		V3DTest::AddTimingTest("V3DObjectPoolIterateTimingTest0SKIP", []()
 		{
-			objectPool = V3DMemory::New<V3DObjectPool<V3DTestObjectA, bigSize>>(V3DFILE_INFO);
+			objectPool = V3DMemory::New<V3DObjectPool<V3DTestObjectA, V3DCollectionsTests::bigSize>>(V3DFILE_INFO);
 			
-			for (int i = 0; i < bigSize; i++)
+			for (int i = 0; i < V3DCollectionsTests::bigSize; i++)
 				objectPool->Add();
 		});
 		
