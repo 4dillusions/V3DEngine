@@ -7,23 +7,24 @@ Released under the terms of the GNU General Public License version 3 or later.
 #pragma once
 
 #include "V3DLinkedListNode.h"
+#include "V3DEngine/V3DCore/V3DMemory.h"
 #include "V3DEngine/V3DMacros.h"
 
 namespace V3D::V3DEngine::V3DCollections
 {
 	/**
 		Linked list data structure with static and dynamic objects.
-		Supports delete items while iterate, except RemoveAll/DeleteAll
+		Supports delete nodes while iterate, except RemoveAll
 
 		Mainly use for iterating
 
 		best/worst
 		search:		O(n) O(n)
-		add:		O(1) O(1) (without memory allocation)
-		remove:		O(1) O(1) (without free memory)
+		add:		O(1) O(1)
+		remove:		O(1) O(1) (without free data memory)
 		index:						no
 		static remove/delete:		no
-		continuously remove/delete: no/yes
+		continuously remove/delete: yes/no
 	*/
 	template<typename T> class V3DLinkedList final
 	{
@@ -33,6 +34,34 @@ namespace V3D::V3DEngine::V3DCollections
 		V3DLinkedListNode<T>* CreateNode()
 		{
 			return V3DCore::V3DMemory::New<V3DLinkedListNode<T>>(V3DFILE_INFO);
+		}
+
+		static void InsertNode(V3DLinkedListNode<T>* prevNode, V3DLinkedListNode<T>* nextNode, V3DLinkedListNode<T>* node)
+		{
+			prevNode->next = node;
+			nextNode->prev = node;
+
+			node->prev = prevNode;
+			node->next = nextNode;
+		}
+
+		static void LinkNodes(V3DLinkedListNode<T>* prevNode, V3DLinkedListNode<T>* nextNode)
+		{
+			prevNode->next = nextNode;
+			nextNode->prev = prevNode;
+		}
+
+		void DeleteNodeFromList(V3DLinkedListNode<T>* node)
+		{
+			if (length > 1)
+				LinkNodes(node->prev, node->next);
+			else
+			{
+				head->next = nullptr;
+				tail->prev = nullptr;
+			}
+
+			V3DCore::V3DMemory::Delete(node);
 		}
 
 	public:
@@ -49,10 +78,10 @@ namespace V3D::V3DEngine::V3DCollections
 
 		~V3DLinkedList()
 		{
+			RemoveAll();
+
 			V3DCore::V3DMemory::Delete(head);
 			V3DCore::V3DMemory::Delete(tail);
-
-			DeleteAll();
 		}
 
 		[[nodiscard]] int GetLength() const
@@ -60,30 +89,68 @@ namespace V3D::V3DEngine::V3DCollections
 			return length;
 		}
 
+		void First()
+		{
+			current = head != nullptr ? head->next : nullptr;
+		}
+
+		void Next()
+		{
+			current = current->next;
+		}
+
+		bool IsDone()
+		{
+			return current != nullptr && current->dataFlag != nullptr;
+		}
+		
+		T* GetCurrent()
+		{
+			if (current != nullptr)
+				return &current->data;
+
+			return nullptr;
+		}
+
 		void Add(const T& item)
 		{
-			//TODO
 			auto node = CreateNode();
+			node->data = item;
+			node->dataFlag = &const_cast<T&>(item);
 
-			//node->data = item;
-			//node->SetData(const_cast<T&>(item));
-
-			node->data = nullptr;
-
+			if (head->next == nullptr)
+				InsertNode(head, tail, node);
+			else
+				InsertNode(tail->prev, tail, node);
+			
 			length++;
 		}
 
-		void DeleteCurrent()
+		void RemoveCurrent()
 		{
-			//TODO
+			auto temp = current;
+			current = current->prev;
+
+			DeleteNodeFromList(temp);
+			length--;
 		}
 
-		void DeleteAll()
+		void RemoveAll()
 		{
 			if (length == 0)
 				return;
 			
-			//TODO
+			auto node = head->next;
+			V3DLinkedListNode<T>* temp = nullptr;
+			while(node->dataFlag != nullptr)
+			{
+				temp = node;
+				node = node->next;
+				V3DCore::V3DMemory::Delete(temp);
+			}
+
+			head->next = nullptr;
+			tail->prev = nullptr;
 
 			length = 0;
 		}

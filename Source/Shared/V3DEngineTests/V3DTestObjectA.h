@@ -18,11 +18,12 @@ namespace V3D::V3DEngineTests
 
 	public:
 		V3DTestObjectA();
+		explicit V3DTestObjectA(int id);
 		V3DTestObjectA(const V3DTestObjectA&);
 		V3DTestObjectA(V3DTestObjectA&&) = default;
 		~V3DTestObjectA() override;
-		V3DTestObjectA& operator=(const V3DTestObjectA&) = delete;
-		V3DTestObjectA& operator=(V3DTestObjectA&&) = delete;
+		V3DTestObjectA& operator=(const V3DTestObjectA&) = default;
+		V3DTestObjectA& operator=(V3DTestObjectA&&) = default;
 
 		char GetTypeCode() override;
 		int GetId() override;

@@ -105,9 +105,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DCollections\V3DObjectPool.h">
       <Filter>Source\V3DCollections</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DCollections\V3DObjectPoolNode.h">
-      <Filter>Source\V3DCollections</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DCore\V3DTimeHour.h">
       <Filter>Source\V3DCore</Filter>
     </ClInclude>
@@ -118,6 +115,9 @@
       <Filter>Source\V3DCollections</Filter>
     </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DCollections\V3DLinkedListNode.h">
+      <Filter>Source\V3DCollections</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DCollections\V3DObjectPoolNode.h">
       <Filter>Source\V3DCollections</Filter>
     </ClInclude>
   </ItemGroup>

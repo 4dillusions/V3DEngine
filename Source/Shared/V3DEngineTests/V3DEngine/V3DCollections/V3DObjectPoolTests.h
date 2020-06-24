@@ -13,7 +13,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		static const int poolMemoryAllocCount = 2;
 		static const int size = 10;
 		static const int bigSize = 10'000;
-		
+
 	public:
 		V3DObjectPoolTests() = delete;
 		V3DObjectPoolTests(const V3DObjectPoolTests&) = delete;

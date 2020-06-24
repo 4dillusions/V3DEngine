@@ -12,8 +12,7 @@ namespace V3D::V3DEngine::V3DCollections
 	{
 		T* data{};
 		V3DObjectPoolNode* prev{}, * next{};
-		bool isAlive{ true };
-		
+
 		V3DObjectPoolNode() = default;
 		V3DObjectPoolNode<T>(const V3DObjectPoolNode<T>&) = delete;
 		V3DObjectPoolNode(V3DObjectPoolNode<T>&&) = delete;

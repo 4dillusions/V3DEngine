@@ -15,6 +15,11 @@ namespace V3D::V3DEngineTests
 		referenceCounter++;
 	}
 
+	V3DTestObjectA::V3DTestObjectA(int id) : id{id}
+	{
+		referenceCounter++;
+	}
+
 	V3DTestObjectA::V3DTestObjectA(const V3DTestObjectA& value)
 	{
 		referenceCounter++;

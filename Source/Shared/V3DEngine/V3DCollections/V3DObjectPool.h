@@ -7,6 +7,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 #pragma once
 
 #include "V3DObjectPoolNode.h"
+#include "V3DEngine/V3DCore/V3DMemory.h"
 #include "V3DEngine/V3DMacros.h"
 
 namespace V3D::V3DEngine::V3DCollections
@@ -163,7 +164,6 @@ namespace V3D::V3DEngine::V3DCollections
 			if (poolTail->prev != nullptr)
 			{
 				auto temp = poolTail->prev;
-				temp->isAlive = true;
 				RemoveNodeFromPool(temp);
 				InsertNodeToList(temp);			
 				length++;
@@ -177,7 +177,6 @@ namespace V3D::V3DEngine::V3DCollections
 			auto temp = current;
 			current = current->prev;
 			
-			temp->isAlive = false;
 			RemoveNodeFromList(temp);
 			InsertNodeToPool(temp);
 			length--;

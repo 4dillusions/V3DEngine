@@ -12,13 +12,8 @@ namespace V3D::V3DEngineTests
 	class V3DITestObject
 	{
 	public:
-		V3DITestObject() = default;
-		V3DITestObject(const V3DITestObject&) = default;
-		V3DITestObject(V3DITestObject&&) = default;
 		virtual ~V3DITestObject() = default;
-		V3DITestObject& operator=(const V3DITestObject&) = delete;
-		V3DITestObject& operator=(V3DITestObject&&) = delete;
-
+		
 		virtual char GetTypeCode() = 0;
 		virtual int GetId() = 0;
 		virtual void SetId(int id) = 0;

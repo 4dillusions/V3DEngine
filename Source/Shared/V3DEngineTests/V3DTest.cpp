@@ -58,6 +58,12 @@ namespace V3D::V3DEngineTests
 		
 		for (const auto& func : timingList)
 		{
+			if (func.first.find("SKIP") != string::npos)
+			{
+				func.second();
+				continue;
+			}
+
 			auto start = system_clock::now();
 			func.second();
 			auto end = system_clock::now();
@@ -74,7 +80,7 @@ namespace V3D::V3DEngineTests
 
 		if (errorCounter > 0)
 		{
-			for (auto text : errorList)
+			for (const auto* text : errorList)
 				testIO.WriteOutput(text);
 		}
 		else
