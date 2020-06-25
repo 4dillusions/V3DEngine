@@ -213,39 +213,48 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 	{
 		static vector<V3DTestObjectA*>* stdList;
 		
-		V3DTest::AddTimingTest("StdVectorAddRemoveTimingTest0SKIP", []()
+		V3DTest::AddTimingTest("StdVectorAddRemoveTimingTest", V3DTimingTestData
 		{
-			stdList = V3DMemory::New<vector<V3DTestObjectA*>>(V3DFILE_INFO);
+			[]()
+			{	
+				stdList = V3DMemory::New<vector<V3DTestObjectA*>>(V3DFILE_INFO);
+			}, true, 0
 		});
 		
-		V3DTest::AddTimingTest("StdVectorAddRemoveTimingTest1", []()
+		V3DTest::AddTimingTest("StdVectorAddRemoveTimingTest", V3DTimingTestData
 		{
-			for (int i = 0; i < V3DCollectionsTests::bigSize; i++)
-				stdList->push_back(V3DMemory::New<V3DTestObjectA>(V3DFILE_INFO));
-
-			for (auto i = stdList->begin(); i != stdList->end(); ++i)
+			[]()
 			{
-				if (!(*i)->GetIsAlive())
+				for (int i = 0; i < V3DCollectionsTests::bigSize; i++)
+					stdList->push_back(V3DMemory::New<V3DTestObjectA>(V3DFILE_INFO));
+
+				for (auto i = stdList->begin(); i != stdList->end(); ++i)
 				{
-					V3DMemory::Delete(*i);
-
-					if (i == --stdList->end())
+					if (!(*i)->GetIsAlive())
 					{
-						stdList->erase(i);
-						break;
-					}
+						V3DMemory::Delete(*i);
 
-					i = stdList->erase(i);
+						if (i == --stdList->end())
+						{
+							stdList->erase(i);
+							break;
+						}
+
+						i = stdList->erase(i);
+					}
 				}
-			}
+			}, false, 1
 		});
 
-		V3DTest::AddTimingTest("StdVectorAddRemoveTimingTest2SKIP", []()
+		V3DTest::AddTimingTest("StdVectorAddRemoveTimingTest", V3DTimingTestData
 		{
-			for (auto& i : *stdList)
-				V3DMemory::Delete(i);
+			[]()
+			{
+				for (auto& i : *stdList)
+					V3DMemory::Delete(i);
 
-			V3DMemory::Delete(stdList);
+				V3DMemory::Delete(stdList);
+			}, true, 2
 		});
 	}
 	
@@ -253,41 +262,50 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 	{
 		static vector<V3DTestObjectA*>* stdList;
 		
-		V3DTest::AddTimingTest("StdVectorIterateTimingTest0SKIP", []()
+		V3DTest::AddTimingTest("StdVectorIterateTimingTest", V3DTimingTestData
 		{
-			stdList = V3DMemory::New<vector<V3DTestObjectA*>>(V3DFILE_INFO);
-			
-			for (int i = 0; i < V3DCollectionsTests::bigSize; i++)
-				stdList->push_back(V3DMemory::New<V3DTestObjectA>(V3DFILE_INFO));
+			[]()
+			{
+				stdList = V3DMemory::New<vector<V3DTestObjectA*>>(V3DFILE_INFO);
+
+				for (int i = 0; i < V3DCollectionsTests::bigSize; i++)
+					stdList->push_back(V3DMemory::New<V3DTestObjectA>(V3DFILE_INFO));
+			}, true, 0
 		});
 		
-		V3DTest::AddTimingTest("StdVectorIterateTimingTest1", []()
+		V3DTest::AddTimingTest("StdVectorIterateTimingTest", V3DTimingTestData
 		{
-			for (auto i = stdList->begin(); i != stdList->end(); ++i)
+			[]()
 			{
-				if (!(*i)->GetIsAlive())
+				for (auto i = stdList->begin(); i != stdList->end(); ++i)
 				{
-					V3DMemory::Delete(*i);
-
-					if (i == --stdList->end())
+					if (!(*i)->GetIsAlive())
 					{
-						stdList->erase(i);
-						break;
+						V3DMemory::Delete(*i);
+
+						if (i == --stdList->end())
+						{
+							stdList->erase(i);
+							break;
+						}
+
+						i = stdList->erase(i);
 					}
 
-					i = stdList->erase(i);
+					(*i)->SetId((*i)->GetId() + 1);
 				}
-				
-				(*i)->SetId((*i)->GetId() + 1);
-			}
+			}, false, 1
 		});
 
-		V3DTest::AddTimingTest("StdVectorIterateTimingTest2SKIP", []()
+		V3DTest::AddTimingTest("StdVectorIterateTimingTest", V3DTimingTestData
 		{
-			for (auto& i : *stdList)
-				V3DMemory::Delete(i);
+			[]()
+			{
+				for (auto& i : *stdList)
+					V3DMemory::Delete(i);
 
-			V3DMemory::Delete(stdList);
+				V3DMemory::Delete(stdList);
+			}, true, 2
 		});
 	}
 	
@@ -295,23 +313,32 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 	{
 		static V3DObjectPool<V3DTestObjectA, V3DCollectionsTests::bigSize>* objectPool;
 		
-		V3DTest::AddTimingTest("V3DObjectPoolAddRemoveTimingTest0SKIP", []()
+		V3DTest::AddTimingTest("V3DObjectPoolAddRemoveTimingTest", V3DTimingTestData
 		{
-			objectPool = V3DMemory::New<V3DObjectPool<V3DTestObjectA, V3DCollectionsTests::bigSize>>(V3DFILE_INFO);
+			[]()
+			{
+				objectPool = V3DMemory::New<V3DObjectPool<V3DTestObjectA, V3DCollectionsTests::bigSize>>(V3DFILE_INFO);
+			}, true, 0
 		});
 		
-		V3DTest::AddTimingTest("V3DObjectPoolAddRemoveTimingTest1", []()
+		V3DTest::AddTimingTest("V3DObjectPoolAddRemoveTimingTest", V3DTimingTestData
 		{
-			for (int i = 0; i < V3DCollectionsTests::bigSize; i++)
-				objectPool->Add();
+			[]()
+			{
+				for (int i = 0; i < V3DCollectionsTests::bigSize; i++)
+					objectPool->Add();
 
-			for (objectPool->First(); objectPool->IsDone(); objectPool->Next())
-				objectPool->RemoveCurrent();
+				for (objectPool->First(); objectPool->IsDone(); objectPool->Next())
+					objectPool->RemoveCurrent();
+			}, false, 1
 		});
 
-		V3DTest::AddTimingTest("V3DObjectPoolAddRemoveTimingTest2SKIP", []()
+		V3DTest::AddTimingTest("V3DObjectPoolAddRemoveTimingTest", V3DTimingTestData
 		{
-			V3DMemory::Delete(objectPool);
+			[]()
+			{
+				V3DMemory::Delete(objectPool);
+			}, true, 2
 		});
 	}
 
@@ -319,23 +346,32 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 	{
 		static V3DObjectPool<V3DTestObjectA, V3DCollectionsTests::bigSize>* objectPool;
 		
-		V3DTest::AddTimingTest("V3DObjectPoolIterateTimingTest0SKIP", []()
+		V3DTest::AddTimingTest("V3DObjectPoolIterateTimingTest", V3DTimingTestData
 		{
-			objectPool = V3DMemory::New<V3DObjectPool<V3DTestObjectA, V3DCollectionsTests::bigSize>>(V3DFILE_INFO);
-			
-			for (int i = 0; i < V3DCollectionsTests::bigSize; i++)
-				objectPool->Add();
+			[]()
+			{
+				objectPool = V3DMemory::New<V3DObjectPool<V3DTestObjectA, V3DCollectionsTests::bigSize>>(V3DFILE_INFO);
+
+				for (int i = 0; i < V3DCollectionsTests::bigSize; i++)
+					objectPool->Add();
+			}, true, 0
 		});
 		
-		V3DTest::AddTimingTest("V3DObjectPoolIterateTimingTest1", []()
+		V3DTest::AddTimingTest("V3DObjectPoolIterateTimingTest1", V3DTimingTestData
 		{
-			for (objectPool->First(); objectPool->IsDone(); objectPool->Next())
-				objectPool->GetCurrent()->SetId(objectPool->GetCurrent()->GetId() + 1);
+			[]()
+			{
+				for (objectPool->First(); objectPool->IsDone(); objectPool->Next())
+					objectPool->GetCurrent()->SetId(objectPool->GetCurrent()->GetId() + 1);
+			}, false, 1
 		});
 
-		V3DTest::AddTimingTest("V3DObjectPoolIterateTimingTest2SKIP", []()
+		V3DTest::AddTimingTest("V3DObjectPoolIterateTimingTest", V3DTimingTestData
 		{
-			V3DMemory::Delete(objectPool);
+			[]()
+			{
+				V3DMemory::Delete(objectPool);
+			}, true, 2
 		});
 	}
 

@@ -174,26 +174,35 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 	void V3DLinkedListTests::LinkedListAddRemoveTimingTest()
 	{
 		static V3DLinkedList<V3DTestObjectA*>* list;
-		
-		V3DTest::AddTimingTest("LinkedListAddRemoveTimingTest0SKIP", []()
+
+		V3DTest::AddTimingTest("LinkedListAddRemoveTimingTest", V3DTimingTestData
 		{
-			list = V3DMemory::New<V3DLinkedList<V3DTestObjectA*>>(V3DFILE_INFO);
+			[]()
+			{
+				list = V3DMemory::New<V3DLinkedList<V3DTestObjectA*>>(V3DFILE_INFO);
+			},true,0
 		});
 
-		V3DTest::AddTimingTest("LinkedListAddRemoveTimingTest1", []()
+		V3DTest::AddTimingTest("LinkedListAddRemoveTimingTest", V3DTimingTestData 
 		{
-			for (int i = 0; i < V3DCollectionsTests::bigSize; i++)
-				list->Add(V3DMemory::New<V3DTestObjectA>(V3DFILE_INFO));
+			[]()
+			{
+				for (int i = 0; i < V3DCollectionsTests::bigSize; i++)
+					list->Add(V3DMemory::New<V3DTestObjectA>(V3DFILE_INFO));
 
-			for (list->First(); list->IsDone(); list->Next())
-				V3DMemory::Delete(*list->GetCurrent());
+				for (list->First(); list->IsDone(); list->Next())
+					V3DMemory::Delete(*list->GetCurrent());
 
-			list->RemoveAll();
+				list->RemoveAll();
+			},false,1
 		});
 
-		V3DTest::AddTimingTest("LinkedListAddRemoveTimingTest2SKIP", []()
+		V3DTest::AddTimingTest("LinkedListAddRemoveTimingTest", V3DTimingTestData
 		{
-			V3DMemory::Delete(list);
+			[]()
+			{
+				V3DMemory::Delete(list);
+			}, true, 2
 		});
 	}
 
@@ -201,26 +210,35 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 	{
 		static V3DLinkedList<V3DTestObjectA*>* list;
 		
-		V3DTest::AddTimingTest("LinkedListIterateTimingTest0SKIP", []()
+		V3DTest::AddTimingTest("LinkedListIterateTimingTest", V3DTimingTestData
 		{
-			list = V3DMemory::New<V3DLinkedList<V3DTestObjectA*>>(V3DFILE_INFO);
+			[]()
+			{
+				list = V3DMemory::New<V3DLinkedList<V3DTestObjectA*>>(V3DFILE_INFO);
 
-			for (int i = 0; i < V3DCollectionsTests::bigSize; i++)
-				list->Add(V3DMemory::New<V3DTestObjectA>(V3DFILE_INFO));
+				for (int i = 0; i < V3DCollectionsTests::bigSize; i++)
+					list->Add(V3DMemory::New<V3DTestObjectA>(V3DFILE_INFO));
+			}, true, 0
 		});
 
-		V3DTest::AddTimingTest("LinkedListIterateTimingTest1", []()
+		V3DTest::AddTimingTest("LinkedListIterateTimingTest", V3DTimingTestData
 		{
-			for (list->First(); list->IsDone(); list->Next())
-				(*list->GetCurrent())->SetId((*list->GetCurrent())->GetId() + 1);
+			[]()
+			{
+				for (list->First(); list->IsDone(); list->Next())
+					(*list->GetCurrent())->SetId((*list->GetCurrent())->GetId() + 1);
+			}, false, 1
 		});
 
-		V3DTest::AddTimingTest("LinkedListIterateTimingTest2SKIP", []()
+		V3DTest::AddTimingTest("LinkedListIterateTimingTest", V3DTimingTestData
 		{
-			for (list->First(); list->IsDone(); list->Next())
-				V3DMemory::Delete(*list->GetCurrent());
+			[]()
+			{
+				for (list->First(); list->IsDone(); list->Next())
+					V3DMemory::Delete(*list->GetCurrent());
 
-			V3DMemory::Delete(list);
+				V3DMemory::Delete(list);
+			}, true, 2
 		});
 	}
 	

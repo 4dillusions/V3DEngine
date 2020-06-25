@@ -10,6 +10,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngine/V3DCore/V3DMemory.h"
 
 #include <chrono>
+#include <string>
 
 using namespace V3D::V3DEngine::V3DCore;
 
@@ -22,7 +23,7 @@ namespace V3D::V3DEngineTests
 	int V3DTest::tests = 0;
 	int V3DTest::passedTests = 0;
 	list<const char*> V3DTest::errorList;
-	std::map<std::string, std::function<void()>> V3DTest::timingList;
+	map<string, V3DTimingTestData> V3DTest::timingList;
 	V3DITestIO<V3DTestIO>& V3DTest::testIO = V3DTestIO::Get();
 
 	void V3DTest::Init()
@@ -46,29 +47,35 @@ namespace V3D::V3DEngineTests
 		}
 	}
 
-	void V3DTest::AddTimingTest(const std::string& timingFunctionName, const std::function<void()>& timingFunction)
+	void V3DTest::AddTimingTest(const string& timingFunctionName, const V3DTimingTestData& timingTestData)
 	{
 		if (timingList.find(timingFunctionName) == timingList.end())
-			timingList.insert({ timingFunctionName, timingFunction });
+			timingList.insert({ timingFunctionName + testIO.ConvertToString(timingTestData.orderIndex), timingTestData });
+	}
+
+	void V3DTest::AddTimingTest(const string& timingFunctionName, const function<void()>& timingFunction)
+	{
+		AddTimingTest(timingFunctionName, V3DTimingTestData{ timingFunction });
 	}
 
 	void V3DTest::RunTimingTests()
 	{
 		testIO.WriteOutput("\nTiming tests:");
-		
-		for (const auto& func : timingList)
+
+		for (const auto& mapItem : timingList)
 		{
-			if (func.first.find("SKIP") != string::npos)
+			if (mapItem.second.isKip)
 			{
-				func.second();
+				mapItem.second.func();
 				continue;
 			}
 
 			auto start = system_clock::now();
-			func.second();
+			mapItem.second.func();
 			auto end = system_clock::now();
-			
-			testIO.WriteOutput(func.first + " " + testIO.ConvertToString(static_cast<int>(duration_cast<milliseconds>(end - start).count())) + " ms");
+
+			auto functionName = mapItem.first.substr(0, mapItem.first.size() - 1);
+			testIO.WriteOutput(functionName + " " + testIO.ConvertToString(static_cast<int>(duration_cast<milliseconds>(end - start).count())) + " ms");
 		}
 	}
 

@@ -12,7 +12,8 @@ Released under the terms of the GNU General Public License version 3 or later.
 namespace V3D::V3DEngineTests
 {
 	class V3DTestIO final : public V3DITestIO<V3DTestIO>
-	{	
+	{
+	public:
 		std::string ConvertToString(int value) override
 		{
 			return std::to_string(value);
