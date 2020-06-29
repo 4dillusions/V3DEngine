@@ -12,7 +12,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 namespace V3D::V3DEngine::V3DCollections
 {
-	/**
+	/*
 		Linked list data structure with static and dynamic objects.
 		Supports delete nodes while iterate, except RemoveAll
 

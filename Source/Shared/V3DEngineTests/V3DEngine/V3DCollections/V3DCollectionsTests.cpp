@@ -8,6 +8,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #include "V3DObjectPoolTests.h"
 #include "V3DLinkedListTests.h"
+#include "V3DDynamicArrayTests.h"
 
 namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 {
@@ -15,5 +16,6 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 	{
 		V3DObjectPoolTests::RunAllTests();
 		V3DLinkedListTests::RunAllTests();
+		V3DDynamicArrayTests::RunAllTests();
 	}
 }

@@ -12,7 +12,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 namespace V3D::V3DEngine::V3DCollections
 {
-	/**
+	/*
 		Linked list data structure with dynamic objects.
 		Supports logically fast add/remove functions without memory allocation or free while iterate.
 
@@ -28,7 +28,7 @@ namespace V3D::V3DEngine::V3DCollections
 	*/
 	template<typename T, int poolSize> class V3DObjectPool final
 	{
-		T* datas;
+		T* dataArray;
 		V3DObjectPoolNode<T>* nodes;
 		V3DObjectPoolNode<T>* poolHead{}, * poolTail{}, * head{}, * tail{}, * current{};
 		int length{};
@@ -36,7 +36,7 @@ namespace V3D::V3DEngine::V3DCollections
 		V3DObjectPoolNode<T>* AddNewNodeWithData(V3DObjectPoolNode<T>* targetNode, int arrayIndex)
 		{
 			auto newNode = &nodes[arrayIndex];
-			newNode->data = &datas[arrayIndex];
+			newNode->data = &dataArray[arrayIndex];
 
 			targetNode->next = newNode;
 			newNode->prev = targetNode;
@@ -105,7 +105,7 @@ namespace V3D::V3DEngine::V3DCollections
 
 		V3DObjectPool()
 		{
-			datas = V3DCore::V3DMemory::NewArray<T>(V3DFILE_INFO, poolSize);
+			dataArray = V3DCore::V3DMemory::NewArray<T>(V3DFILE_INFO, poolSize);
 			nodes = V3DCore::V3DMemory::NewArray<V3DObjectPoolNode<T>>(V3DFILE_INFO, poolSize + 4);
 			
 			poolHead = &nodes[poolSize];
@@ -126,7 +126,7 @@ namespace V3D::V3DEngine::V3DCollections
 		~V3DObjectPool()
 		{
 			V3DCore::V3DMemory::DeleteArray(nodes);
-			V3DCore::V3DMemory::DeleteArray(datas);
+			V3DCore::V3DMemory::DeleteArray(dataArray);
 			
 			length = 0;
 		}
