@@ -51,6 +51,11 @@ namespace V3D::V3DEngine::V3DCollections
 			nextNode->prev = prevNode;
 		}
 
+		static void DeleteNode(V3DLinkedListNode<T>*& node)
+		{
+			V3DCore::V3DMemory::Delete(node);
+		}
+
 		void DeleteNodeFromList(V3DLinkedListNode<T>* node)
 		{
 			if (length > 1)
@@ -61,7 +66,7 @@ namespace V3D::V3DEngine::V3DCollections
 				tail->prev = nullptr;
 			}
 
-			V3DCore::V3DMemory::Delete(node);
+			DeleteNode(node);
 		}
 
 	public:
@@ -80,8 +85,8 @@ namespace V3D::V3DEngine::V3DCollections
 		{
 			RemoveAll();
 
-			V3DCore::V3DMemory::Delete(head);
-			V3DCore::V3DMemory::Delete(tail);
+			DeleteNode(head);
+			DeleteNode(tail);
 		}
 
 		[[nodiscard]] int GetLength() const
@@ -94,16 +99,16 @@ namespace V3D::V3DEngine::V3DCollections
 			current = head != nullptr ? head->next : nullptr;
 		}
 
-		void Next()
-		{
-			current = current->next;
-		}
-
 		bool IsDone()
 		{
 			return current != nullptr && current->dataFlag != nullptr;
 		}
 		
+		void Next()
+		{
+			current = current->next;
+		}
+
 		T* GetCurrent()
 		{
 			if (current != nullptr)
@@ -141,12 +146,12 @@ namespace V3D::V3DEngine::V3DCollections
 				return;
 			
 			auto node = head->next;
-			V3DLinkedListNode<T>* temp = nullptr;
+			V3DLinkedListNode<T>* temp;
 			while(node->dataFlag != nullptr)
 			{
 				temp = node;
 				node = node->next;
-				V3DCore::V3DMemory::Delete(temp);
+				DeleteNode(temp);
 			}
 
 			head->next = nullptr;

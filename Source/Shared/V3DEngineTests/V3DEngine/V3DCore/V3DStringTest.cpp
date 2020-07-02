@@ -104,6 +104,13 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 
 		V3DTest::AssertOk(V3DString::GetHashCode(ctext1[11], 0) == V3DString::GetHashCode(ctext2[11], 0), V3DFILE_INFO);
 		V3DTest::AssertOk(V3DString::GetHashCode(ctext1[11], 0) != V3DString::GetHashCode(ctext3[11], 0), V3DFILE_INFO);
+
+		const auto five = V3DString("five").GetHashCode();
+		const auto nine = V3DString("nine").GetHashCode();
+		const auto nini = V3DString("nini").GetHashCode();
+		const auto inin = V3DString("inin").GetHashCode();
+		V3DTest::AssertOk(five != nine, V3DFILE_INFO);
+		V3DTest::AssertOk(nini != inin, V3DFILE_INFO);
 	}
 	
 	void V3DStringTest::GetTest()

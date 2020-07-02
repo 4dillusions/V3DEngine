@@ -14,6 +14,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		static const int poolMemoryAllocCount = 2;
 		static const int listMemoryAllocCount = 2;
 		static const int dynamicArrayMemoryAllocCount = 1;
+		static const int decimalTreeMemoryAllocCount = 1;
 		static const int size = 10;
 		static const int bigSize = 10'000;
 		

@@ -26,7 +26,7 @@ namespace V3D::V3DEngine::V3DIO
         std::function<void(const V3DCore::V3DString& log)> logTrigger = nullptr;
 
         V3DIOstream* oStream;    	
-        V3DCore::V3DString* buffer = nullptr;
+        V3DCore::V3DString* buffer{};
 
         int warnings = 0, errors = 0;
 

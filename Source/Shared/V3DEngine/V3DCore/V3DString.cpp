@@ -423,7 +423,7 @@ namespace V3D::V3DEngine::V3DCore
 		int result = 0;
 
 		for (int i = 0; text[i] != '\0'; i++, hashIndex++)
-			result += (static_cast<int>(text[i]) * 31 ^ hashIndex);
+			result += GetHashCode(text[i], hashIndex);
 
 		return result;
 	}
@@ -433,14 +433,14 @@ namespace V3D::V3DEngine::V3DCore
 		int result = 0;
 
 		for (int i = 0; i < lenght; i++, hashIndex++)
-			result += (static_cast<int>(text[i]) * 31 ^ hashIndex);
+			result += GetHashCode(text[i], hashIndex);
 
 		return result;
 	}
 
 	int V3DString::GetHashCode(char letter, int hashIndex)
 	{
-		return (static_cast<int>(letter) * 31 ^ hashIndex);
+		return (static_cast<int>(letter) * 31 ^ hashIndex) + (7 * letter % 31 % 139);
 	}
 
 	int V3DString::GetNumberLength(int number)

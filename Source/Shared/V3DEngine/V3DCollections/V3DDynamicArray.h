@@ -39,9 +39,9 @@ namespace V3D::V3DEngine::V3DCollections
 			return V3DCore::V3DMemory::NewPointerArray<V3DDynamicArrayNode<T>>(V3DFILE_INFO, size);
 		}
 
-		void DeleteDataArray(V3DDynamicArrayNode<T>** array)
+		static void DeleteDataArray(V3DDynamicArrayNode<T>**& array)
 		{
-			V3DCore::V3DMemory::DeletePointerArray(dataArray);
+			V3DCore::V3DMemory::DeletePointerArray(array);
 		}
 
 		V3DDynamicArrayNode<T> *CreateNode()
@@ -49,7 +49,7 @@ namespace V3D::V3DEngine::V3DCollections
 			return V3DCore::V3DMemory::New<V3DDynamicArrayNode<T>>(V3DFILE_INFO);
 		}
 
-		static void DeleteNode(V3DDynamicArrayNode<T>* node)
+		static void DeleteNode(V3DDynamicArrayNode<T>*& node)
 		{
 			V3DCore::V3DMemory::Delete(node);
 		}
@@ -130,6 +130,11 @@ namespace V3D::V3DEngine::V3DCollections
 			current = dataArray[0];
 		}
 
+		bool IsDone()
+		{
+			return (current != nullptr);
+		}
+
 		void Next()
 		{
 			currentIndex++;
@@ -138,11 +143,6 @@ namespace V3D::V3DEngine::V3DCollections
 				current = dataArray[currentIndex];
 			else
 				current = nullptr;
-		}
-
-		bool IsDone()
-		{
-			return (current != nullptr);
 		}
 
 		T* GetCurrent()

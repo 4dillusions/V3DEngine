@@ -141,14 +141,14 @@ namespace V3D::V3DEngine::V3DCollections
 			current = head != nullptr ? head->next : nullptr;
 		}
 
-		void Next()
-		{
-			current = current->next;
-		}
-
 		bool IsDone()
 		{
 			return current != nullptr && current->data != nullptr;
+		}
+
+		void Next()
+		{
+			current = current->next;
 		}
 
 		T* GetCurrent()
