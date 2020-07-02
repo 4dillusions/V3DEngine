@@ -11,8 +11,6 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngine/V3DCollections/V3DLinkedList.h"
 #include "V3DEngineTests/V3DTestObjectA.h"
 
-#include <string>
-
 #include "V3DCollectionsTests.h"
 
 using namespace V3D::V3DEngine::V3DCore;

@@ -269,6 +269,77 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		V3DTest::AssertOk(treeDynamic.GetLength() == 1, V3DFILE_INFO);
 	}
 
+	void V3DDecimalTreeTests::DynamicArrayAddRemoveTimingTest()
+	{
+		static V3DDecimalTree<int, V3DTestObjectA*>* tree;
+
+		V3DTest::AddTimingTest("DecimalTreeAddRemoveTimingTest", V3DTimingTestData
+			{
+				[]()
+				{
+					tree = V3DMemory::New<V3DDecimalTree<int, V3DTestObjectA*>>(V3DFILE_INFO);
+				},true,0
+			});
+
+		V3DTest::AddTimingTest("DecimalTreeAddRemoveTimingTest", V3DTimingTestData
+			{
+				[]()
+				{
+					for (int i = 0; i < V3DCollectionsTests::bigSize; i++)
+						tree->Add(i, V3DMemory::New<V3DTestObjectA>(V3DFILE_INFO));
+
+					for (tree->First(); tree->IsDone(); tree->Next())
+						V3DMemory::Delete(*tree->GetCurrentItem());
+
+					tree->RemoveAll();
+				},false,1
+			});
+
+		V3DTest::AddTimingTest("DecimalTreeAddRemoveTimingTest", V3DTimingTestData
+			{
+				[]()
+				{
+					V3DMemory::Delete(tree);
+				}, true, 2
+			});
+	}
+
+	void V3DDecimalTreeTests::DynamicArrayIterateTimingTest()
+	{
+		static V3DDecimalTree<int, V3DTestObjectA*>* tree;
+
+		V3DTest::AddTimingTest("DecimalTreeIterateTimingTest", V3DTimingTestData
+			{
+				[]()
+				{
+					tree = V3DMemory::New<V3DDecimalTree<int, V3DTestObjectA*>>(V3DFILE_INFO);
+
+					for (int i = 0; i < V3DCollectionsTests::bigSize; i++)
+						tree->Add(i, V3DMemory::New<V3DTestObjectA>(V3DFILE_INFO));
+				}, true, 0
+			});
+
+		V3DTest::AddTimingTest("DecimalTreeIterateTimingTest", V3DTimingTestData
+			{
+				[]()
+				{
+					for (tree->First(); tree->IsDone(); tree->Next())
+						(*tree->GetCurrentItem())->SetId((*tree->GetCurrentItem())->GetId() + 1);
+				}, false, 1
+			});
+
+		V3DTest::AddTimingTest("DecimalTreeIterateTimingTest", V3DTimingTestData
+			{
+				[]()
+				{
+					for (tree->First(); tree->IsDone(); tree->Next())
+						V3DMemory::Delete(*tree->GetCurrentItem());
+
+					V3DMemory::Delete(tree);
+				}, true, 2
+			});
+	}
+
 	void V3DDecimalTreeTests::RunAllTests()
 	{
 		CtorDtorTest();
@@ -277,6 +348,9 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		AddRemoveStaticObjectKeyTest();
 		AddRemoveDynamicTest();
 		RemoveAtTest();
+
+		DynamicArrayAddRemoveTimingTest();
+		DynamicArrayIterateTimingTest();
 
 		//a modulos osztás helyett sima osztásra optimalizálni majd a hsashelés
 		//a next-nél 'yield return'-szerűség kéne, mert így n * logn a bejárás, elég lassú
