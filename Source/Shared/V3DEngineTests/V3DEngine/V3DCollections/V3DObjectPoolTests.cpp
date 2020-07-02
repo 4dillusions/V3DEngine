@@ -11,9 +11,6 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngine/V3DCollections/V3DObjectPool.h"
 #include "V3DEngineTests/V3DTestObjectA.h"
 
-#include <string>
-#include <vector>
-
 #include "V3DCollectionsTests.h"
 
 using namespace V3D::V3DEngine::V3DCore;
@@ -209,105 +206,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		V3DTest::AssertOk(sumId == 1 + 2 + 3 + 4 + 5 + 6 + 7, V3DFILE_INFO);
 	}
 
-	void V3DObjectPoolTests::StdVectorAddRemoveTimingTest()
-	{
-		static vector<V3DTestObjectA*>* stdList;
-		
-		V3DTest::AddTimingTest("StdVectorAddRemoveTimingTest", V3DTimingTestData
-		{
-			[]()
-			{	
-				stdList = V3DMemory::New<vector<V3DTestObjectA*>>(V3DFILE_INFO);
-			}, true, 0
-		});
-		
-		V3DTest::AddTimingTest("StdVectorAddRemoveTimingTest", V3DTimingTestData
-		{
-			[]()
-			{
-				for (int i = 0; i < V3DCollectionsTests::bigSize; i++)
-					stdList->push_back(V3DMemory::New<V3DTestObjectA>(V3DFILE_INFO));
-
-				for (auto i = stdList->begin(); i != stdList->end(); ++i)
-				{
-					if (!(*i)->GetIsAlive())
-					{
-						V3DMemory::Delete(*i);
-
-						if (i == --stdList->end())
-						{
-							stdList->erase(i);
-							break;
-						}
-
-						i = stdList->erase(i);
-					}
-				}
-			}, false, 1
-		});
-
-		V3DTest::AddTimingTest("StdVectorAddRemoveTimingTest", V3DTimingTestData
-		{
-			[]()
-			{
-				for (auto& i : *stdList)
-					V3DMemory::Delete(i);
-
-				V3DMemory::Delete(stdList);
-			}, true, 2
-		});
-	}
 	
-	void V3DObjectPoolTests::StdVectorIterateTimingTest()
-	{
-		static vector<V3DTestObjectA*>* stdList;
-		
-		V3DTest::AddTimingTest("StdVectorIterateTimingTest", V3DTimingTestData
-		{
-			[]()
-			{
-				stdList = V3DMemory::New<vector<V3DTestObjectA*>>(V3DFILE_INFO);
-
-				for (int i = 0; i < V3DCollectionsTests::bigSize; i++)
-					stdList->push_back(V3DMemory::New<V3DTestObjectA>(V3DFILE_INFO));
-			}, true, 0
-		});
-		
-		V3DTest::AddTimingTest("StdVectorIterateTimingTest", V3DTimingTestData
-		{
-			[]()
-			{
-				for (auto i = stdList->begin(); i != stdList->end(); ++i)
-				{
-					if (!(*i)->GetIsAlive())
-					{
-						V3DMemory::Delete(*i);
-
-						if (i == --stdList->end())
-						{
-							stdList->erase(i);
-							break;
-						}
-
-						i = stdList->erase(i);
-					}
-
-					(*i)->SetId((*i)->GetId() + 1);
-				}
-			}, false, 1
-		});
-
-		V3DTest::AddTimingTest("StdVectorIterateTimingTest", V3DTimingTestData
-		{
-			[]()
-			{
-				for (auto& i : *stdList)
-					V3DMemory::Delete(i);
-
-				V3DMemory::Delete(stdList);
-			}, true, 2
-		});
-	}
 	
 	void V3DObjectPoolTests::ObjectPoolAddRemoveTimingTest()
 	{
@@ -384,8 +283,6 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		RemoveFirstWhileIterateTest();
 		RemoveLastWhileIterateTest();
 
-		StdVectorAddRemoveTimingTest();
-		StdVectorIterateTimingTest();
 		ObjectPoolAddRemoveTimingTest();
 		ObjectPoolIterateTimingTest();
 	}
