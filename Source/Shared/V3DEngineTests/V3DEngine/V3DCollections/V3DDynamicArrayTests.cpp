@@ -14,6 +14,8 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngine/V3DCore/V3DString.h"
 #include "V3DEngineTests/V3DTestObjectA.h"
 
+#include <assert.h>
+
 using namespace V3D::V3DEngine::V3DCollections;
 using namespace V3D::V3DEngine::V3DCore;
 
@@ -261,6 +263,8 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 
 					for (int i = 0; i < V3DCollectionsTests::bigSize; i++)
 						list->Add(V3DMemory::New<V3DTestObjectA>(V3DFILE_INFO));
+
+					assert(list->GetLength() == V3DCollectionsTests::bigSize);
 				}, true, 0
 			});
 

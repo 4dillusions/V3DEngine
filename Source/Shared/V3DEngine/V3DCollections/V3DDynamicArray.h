@@ -79,7 +79,7 @@ namespace V3D::V3DEngine::V3DCollections
 			DeleteDataArray(dataArray);
 		}
 
-		V3DDynamicArray<T>& operator=(const V3DDynamicArray<T>& value)
+		V3DDynamicArray<T>& operator=(const V3DDynamicArray<T>& value) noexcept
 		{
 			if (this != &value)
 			{
@@ -98,7 +98,7 @@ namespace V3D::V3DEngine::V3DCollections
 			return *this;
 		}
 
-		V3DDynamicArray<T>& operator=(V3DDynamicArray<T>&& value)
+		V3DDynamicArray<T>& operator=(V3DDynamicArray<T>&& value) noexcept
 		{
 			if (this != &value)
 			{

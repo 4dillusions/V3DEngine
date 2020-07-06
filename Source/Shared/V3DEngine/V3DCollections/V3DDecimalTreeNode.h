@@ -12,6 +12,7 @@ namespace V3D::V3DEngine::V3DCollections
 	{
 		bool isMarked{ false };
 		V3DDecimalTreeNode* current{};
+		int currentIndex{};
 		
 	public:
 		static const int childSize = 10;
@@ -29,7 +30,10 @@ namespace V3D::V3DEngine::V3DCollections
 		void First(bool isSetMarkDefault = true)
 		{
 			if (isSetMarkDefault)
+			{
 				isMarked = false;
+				currentIndex = 0;
+			}
 			
 			for (int i = 0; i < childSize; i++)
 				if (children[i] != nullptr)
@@ -38,14 +42,17 @@ namespace V3D::V3DEngine::V3DCollections
 		
 		V3DDecimalTreeNode* GetFirst()
 		{
-			for (int currentIndex = 0; currentIndex < childSize; currentIndex++)
+			for (; currentIndex < childSize; currentIndex++)
 			{
 				if (children[currentIndex] != nullptr)
 				{
-					if (children[currentIndex]->dataFlag != nullptr && children[currentIndex]->isMarked == false)
+					if (children[currentIndex]->isMarked == false && children[currentIndex]->dataFlag != nullptr)
 					{
-						children[currentIndex]->isMarked = true;
-						return children[currentIndex];
+						const int index = currentIndex;
+						currentIndex++;
+						
+						children[index]->isMarked = true;
+						return children[index];
 					}
 
 					current = children[currentIndex]->GetFirst();

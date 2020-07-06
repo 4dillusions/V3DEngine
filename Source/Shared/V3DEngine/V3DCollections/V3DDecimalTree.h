@@ -10,6 +10,8 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngine/V3DCore/V3DMemory.h"
 #include "V3DEngine/V3DMacros.h"
 
+#include <assert.h>
+
 namespace V3D::V3DEngine::V3DCollections
 {
 	/*
@@ -132,9 +134,11 @@ namespace V3D::V3DEngine::V3DCollections
 			
 			return current->dataFlag != nullptr ? &current->data : nullptr;
 		}
-		
+
 		bool Add(const TKey& key, const TItem& item)
 		{
+			assert(static_cast<int>(key) >= 0);
+			
 			int digitArray[digitSize];
 			int digitCount{};
 			GetDigitArrayFromKey(key, digitArray, digitCount);

@@ -5,13 +5,15 @@ Released under the terms of the GNU General Public License version 3 or later.
 */
 
 #include "V3DObjectPoolTests.h"
+
+#include "V3DCollectionsTests.h"
 #include "V3DEngineTests/V3DTest.h"
 #include "V3DEngine/V3DMacros.h"
 #include "V3DEngine/V3DCore/V3DMemory.h"
 #include "V3DEngine/V3DCollections/V3DObjectPool.h"
 #include "V3DEngineTests/V3DTestObjectA.h"
 
-#include "V3DCollectionsTests.h"
+#include <assert.h>
 
 using namespace V3D::V3DEngine::V3DCore;
 using namespace V3D::V3DEngine::V3DCollections;
@@ -253,10 +255,12 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 
 				for (int i = 0; i < V3DCollectionsTests::bigSize; i++)
 					objectPool->Add();
+
+				assert(objectPool->GetLength() == V3DCollectionsTests::bigSize);
 			}, true, 0
 		});
 		
-		V3DTest::AddTimingTest("V3DObjectPoolIterateTimingTest1", V3DTimingTestData
+		V3DTest::AddTimingTest("V3DObjectPoolIterateTimingTest", V3DTimingTestData
 		{
 			[]()
 			{
