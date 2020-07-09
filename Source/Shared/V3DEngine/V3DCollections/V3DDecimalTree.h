@@ -160,7 +160,7 @@ namespace V3D::V3DEngine::V3DCollections
 			
 			return current->dataFlag != nullptr ? &current->data : nullptr;
 		}
-
+		
 		bool Add(const TKey& key, const TItem& item)
 		{
 			assert(static_cast<int>(key) >= 0);

@@ -7,3 +7,6 @@ Released under the terms of the GNU General Public License version 3 or later.
 #pragma once
 
 #define V3DENGINE_API /**/
+
+//assert function declaration
+#define __PRETTY_FUNCTION__ __FUNCTION__
