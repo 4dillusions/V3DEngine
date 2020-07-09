@@ -33,8 +33,8 @@ namespace V3D::V3DEngine::V3DCollections
 	{
 		static const int digitSize = 10;
 		static const int numberSystemSize = 10;
-		V3DDecimalTreeNode<TKey, TItem>* root{}, * current{};
-		int length{};
+		V3DDecimalTreeNode<TKey, TItem>* root{}, * current{}, ** currentAllItemArray{};
+		int currentIndex, length{};
 
 		V3DDecimalTreeNode<TKey, TItem>* CreateNode()
 		{
@@ -44,6 +44,16 @@ namespace V3D::V3DEngine::V3DCollections
 		static void DeleteNode(V3DDecimalTreeNode<TKey, TItem>*& node)
 		{
 			V3DCore::V3DMemory::Delete(node);
+		}
+
+		V3DDecimalTreeNode<TKey, TItem>** CreateNodeArray(int size)
+		{
+			return V3DCore::V3DMemory::NewPointerArray<V3DDecimalTreeNode<TKey, TItem>>(V3DFILE_INFO, size);
+		}
+
+		static void DeleteNodeArray(V3DDecimalTreeNode<TKey, TItem>**& nodeArray)
+		{
+			V3DCore::V3DMemory::DeletePointerArray(nodeArray);
 		}
 
 		static void GetDigitArrayFromKey(const TKey& key, int* digitArray, int& digitCount)
@@ -82,6 +92,8 @@ namespace V3D::V3DEngine::V3DCollections
 				root->DeleteAllChildrenNode();
 				DeleteNode(root);
 			}
+
+			DeleteNodeArray(currentAllItemArray);
 		}
 
 		[[nodiscard]] int GetLength() const
@@ -91,18 +103,32 @@ namespace V3D::V3DEngine::V3DCollections
 
 		void First()
 		{
-			root->First();
-			current = root->GetFirst();
+			if (length > 0)
+			{
+				currentIndex = 0;
+				
+				if (currentAllItemArray != nullptr)
+					DeleteNodeArray(currentAllItemArray);
+				
+				currentAllItemArray = CreateNodeArray(length);
+				root->GetAllChildren(currentAllItemArray);
+				current = currentAllItemArray[0];
+			}
 		}
 
 		bool IsDone()
 		{
-			return current != nullptr && current->dataFlag != nullptr;
+			return current != nullptr; //& current->dataFlag != nullptr;
 		}
 
 		void Next()
 		{
-			current = root->GetNext();
+			currentIndex++;
+
+			if (currentIndex < length)
+				current = currentAllItemArray[currentIndex];
+			else
+				current = nullptr;
 		}
 
 		TKey GetCurrentKey()

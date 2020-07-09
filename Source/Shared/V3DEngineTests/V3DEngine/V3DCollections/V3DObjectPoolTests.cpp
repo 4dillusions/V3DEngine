@@ -257,6 +257,12 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 					objectPool->Add();
 
 				assert(objectPool->GetLength() == V3DCollectionsTests::bigSize);
+
+				int i = 0;
+				for (objectPool->First(); objectPool->IsDone(); objectPool->Next(), i++)
+					objectPool->GetCurrent()->SetId(objectPool->GetCurrent()->GetId() + 1);
+
+				assert(i == V3DCollectionsTests::bigSize);
 			}, true, 0
 		});
 		

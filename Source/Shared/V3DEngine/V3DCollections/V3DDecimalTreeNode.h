@@ -8,13 +8,8 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 namespace V3D::V3DEngine::V3DCollections
 {
-	template<typename TKey, typename TItem> class V3DDecimalTreeNode final
+	template<typename TKey, typename TItem> struct V3DDecimalTreeNode final
 	{
-		bool isMarked{ false };
-		V3DDecimalTreeNode* current{};
-		int currentIndex{};
-		
-	public:
 		static const int childSize = 10;
 		TKey key{};
 		TItem data{};
@@ -26,50 +21,6 @@ namespace V3D::V3DEngine::V3DCollections
 		V3DDecimalTreeNode(V3DDecimalTreeNode<TKey, TItem>&&) = delete;
 		V3DDecimalTreeNode<TKey, TItem>& operator=(const V3DDecimalTreeNode<TKey, TItem>&) = delete;
 		V3DDecimalTreeNode<TKey, TItem>& operator=(V3DDecimalTreeNode<TKey, TItem>&&) = delete;
-
-		void First(bool isSetMarkDefault = true)
-		{
-			if (isSetMarkDefault)
-			{
-				isMarked = false;
-				currentIndex = 0;
-			}
-			
-			for (int i = 0; i < childSize; i++)
-				if (children[i] != nullptr)
-					children[i]->First(isSetMarkDefault);
-		}
-		
-		V3DDecimalTreeNode* GetFirst()
-		{
-			for (; currentIndex < childSize; currentIndex++)
-			{
-				if (children[currentIndex] != nullptr)
-				{
-					if (children[currentIndex]->isMarked == false && children[currentIndex]->dataFlag != nullptr)
-					{
-						const int index = currentIndex;
-						currentIndex++;
-						
-						children[index]->isMarked = true;
-						return children[index];
-					}
-
-					current = children[currentIndex]->GetFirst();
-					if (current != nullptr)
-						return current;
-				}
-			}
-
-			return nullptr;
-		}
-
-		V3DDecimalTreeNode* GetNext()
-		{
-			First(false);
-			
-			return GetFirst();
-		}
 
 		void RemoveAllChildrenData()
 		{
@@ -90,6 +41,19 @@ namespace V3D::V3DEngine::V3DCollections
 
 				V3DCore::V3DMemory::Delete(children[i]);
 			}	
+		}
+
+		void GetAllChildren(V3DDecimalTreeNode<TKey, TItem>** allItemArray, int&& index = 0)
+		{
+			if (dataFlag != nullptr)
+			{
+				allItemArray[index] = this;
+				index++;
+			}
+			
+			for (int i = 0; i < childSize; i++)
+				if (children[i] != nullptr)
+					children[i]->GetAllChildren(allItemArray, std::move(index));  // NOLINT(bugprone-use-after-move)
 		}
 	};
 }

@@ -271,7 +271,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		V3DTest::AssertOk(treeDynamic.GetLength() == 1, V3DFILE_INFO);
 	}
 
-	void V3DDecimalTreeTests::DynamicArrayAddRemoveTimingTest()
+	void V3DDecimalTreeTests::DecimalTreeAddRemoveTimingTest()
 	{
 		static V3DDecimalTree<int, V3DTestObjectA*>* tree;
 
@@ -306,7 +306,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 			});
 	}
 
-	void V3DDecimalTreeTests::DynamicArrayIterateTimingTest()
+	void V3DDecimalTreeTests::DecimalTreeIterateTimingTest()
 	{
 		static V3DDecimalTree<int, V3DTestObjectA*>* tree;
 
@@ -320,6 +320,12 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 						tree->Add(i, V3DMemory::New<V3DTestObjectA>(V3DFILE_INFO));
 
 					assert(tree->GetLength() == V3DCollectionsTests::bigSize);
+
+					int i = 0;
+					for (tree->First(); tree->IsDone(); tree->Next(), i++)
+						(*tree->GetCurrentItem())->SetId((*tree->GetCurrentItem())->GetId() + 1);
+
+					assert(i == V3DCollectionsTests::bigSize);
 				}, true, 0
 			});
 
@@ -353,7 +359,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		AddRemoveDynamicTest();
 		RemoveAtTest();
 
-		DynamicArrayAddRemoveTimingTest();
-		DynamicArrayIterateTimingTest();
+		DecimalTreeAddRemoveTimingTest();
+		DecimalTreeIterateTimingTest();
 	}
 }

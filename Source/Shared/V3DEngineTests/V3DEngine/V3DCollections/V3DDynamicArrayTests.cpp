@@ -265,6 +265,12 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 						list->Add(V3DMemory::New<V3DTestObjectA>(V3DFILE_INFO));
 
 					assert(list->GetLength() == V3DCollectionsTests::bigSize);
+
+					int i = 0;
+					for (list->First(); list->IsDone(); list->Next(), i++)
+						(*list->GetCurrent())->SetId((*list->GetCurrent())->GetId() + 1);
+
+					assert(i == V3DCollectionsTests::bigSize);
 				}, true, 0
 			});
 
