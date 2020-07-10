@@ -350,16 +350,16 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 	
 	void V3DStringTest::SplitTest()
 	{
-		/*auto StringTestSplit = []()
+		auto StringTestSplit = []()
 		{
 			V3DString text;
 
 			text = "one#two#three#four";
 			auto numbers = text.Split('#');
-			V3DTest::AssertOk(numbers[0] == V3DString("one"), V3DFILE_INFO);
-			V3DTest::AssertOk(numbers[1] == V3DString("two"), V3DFILE_INFO);
-			V3DTest::AssertOk(numbers[2] == V3DString("three"), V3DFILE_INFO);
-			V3DTest::AssertOk(numbers[3] == V3DString("four"), V3DFILE_INFO);
+			V3DTest::AssertOk(*numbers[0] == V3DString("one"), V3DFILE_INFO);
+			V3DTest::AssertOk(*numbers[1] == V3DString("two"), V3DFILE_INFO);
+			V3DTest::AssertOk(*numbers[2] == V3DString("three"), V3DFILE_INFO);
+			V3DTest::AssertOk(*numbers[3] == V3DString("four"), V3DFILE_INFO);
 		};
 		StringTestSplit();
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
@@ -370,26 +370,26 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 
 			text = "onesplittwosplitthreesplitfour";
 			auto numbers = text.Split(V3DString("split"));
-			V3DTest::AssertOk(numbers[0] == V3DString("one"), V3DFILE_INFO);
-			V3DTest::AssertOk(numbers[1] == V3DString("two"), V3DFILE_INFO);
-			V3DTest::AssertOk(numbers[2] == V3DString("three"), V3DFILE_INFO);
-			V3DTest::AssertOk(numbers[3] == V3DString("four"), V3DFILE_INFO);
+			V3DTest::AssertOk(*numbers[0] == V3DString("one"), V3DFILE_INFO);
+			V3DTest::AssertOk(*numbers[1] == V3DString("two"), V3DFILE_INFO);
+			V3DTest::AssertOk(*numbers[2] == V3DString("three"), V3DFILE_INFO);
+			V3DTest::AssertOk(*numbers[3] == V3DString("four"), V3DFILE_INFO);
 		};
 		StringTestSplit2();
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
 
 		auto StringTestSplit3 = []()
 		{
-			V3DString text;
-			auto empty = text.Split(V3DString('#'));
+			const V3DString text;
+			const auto empty = text.Split(V3DString('#'));
 			V3DTest::AssertOk(empty.GetLength() == 0, V3DFILE_INFO);
 
-			V3DString text2("#");
+			const V3DString text2("#");
 			auto empty2 = text2.Split(V3DString('#'));
-			V3DTest::AssertOk(empty2[0].IsEmpty(), V3DFILE_INFO);
+			V3DTest::AssertOk(empty2[0]->IsEmpty(), V3DFILE_INFO);
 		};
 		StringTestSplit3();
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);*/
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
 	}
 
 	void V3DStringTest::RunAllTests()

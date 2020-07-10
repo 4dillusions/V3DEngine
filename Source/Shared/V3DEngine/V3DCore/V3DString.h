@@ -7,6 +7,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 #pragma once
 
 #include "V3DEngine/V3DEngineLibrary.h"
+#include "V3DEngine/V3DCollections/V3DDynamicArray.h"
 
 #include <string>
 
@@ -116,7 +117,7 @@ namespace V3D::V3DEngine::V3DCore
         void Trim();
         void Clear();
 
-        //LFCollections::LFList<V3DString> Split(char separator) const;
-        //LFCollections::LFList<V3DString> Split(const V3DString& text) const;
+        [[nodiscard]] V3DCollections::V3DDynamicArray<V3DString> Split(char separator) const;
+        [[nodiscard]] V3DCollections::V3DDynamicArray<V3DString> Split(const V3DString& text) const;
 	};
 }

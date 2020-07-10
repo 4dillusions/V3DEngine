@@ -10,6 +10,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngine/V3DMathematics/V3DMath.h"
 
 using namespace V3D::V3DEngine::V3DMathematics;
+using namespace V3D::V3DEngine::V3DCollections;
 
 namespace V3D::V3DEngine::V3DCore
 {
@@ -830,9 +831,9 @@ namespace V3D::V3DEngine::V3DCore
 		hashCode = 0;
 	}
 
-	/*LFList<V3DString> V3DString::Split(char separator) const
+	V3DDynamicArray<V3DString> V3DString::Split(char separator) const
 	{
-		LFList<V3DString> result;
+		V3DDynamicArray<V3DString> result;
 
 		if (textLenght > 0)
 		{
@@ -854,11 +855,11 @@ namespace V3D::V3DEngine::V3DCore
 		return result;
 	}
 
-	LFList<V3DString> V3DString::Split(const V3DString& text) const
+	V3DDynamicArray<V3DString> V3DString::Split(const V3DString& text) const
 	{
 		V3DString temp(*this);
 		temp.Replace(text, V3DString("~"));
 
 		return temp.Split('~');
-	}*/
+	}
 }
