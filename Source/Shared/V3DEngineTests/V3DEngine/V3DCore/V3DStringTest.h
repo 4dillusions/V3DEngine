@@ -21,7 +21,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 		static void CtorOperatorsTest();
 		static void ReturnTest();
 		static void ToTest();
-		static void GetHashTest();
+		static void HashAndConversionTest();
 		static void GetTest();
 		static void IsTest();
 		static void CopyArrayTest();

@@ -90,14 +90,16 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
 	}
 	
-	void V3DStringTest::GetHashTest()
+	void V3DStringTest::HashAndConversionTest()
 	{
 		const char* ctext1 = "appletree123";
 		const char* ctext2 = "appletree123";
-		const char* ctext3 = "appletree124";
+		const char ctext3[20] = "appletree124";
 
 		V3DTest::AssertOk(V3DString::GetHashCode(ctext1) == V3DString::GetHashCode(ctext2), V3DFILE_INFO);
 		V3DTest::AssertOk(V3DString::GetHashCode(ctext1) != V3DString::GetHashCode(ctext3), V3DFILE_INFO);
+		V3DTest::AssertOk(V3DString("appletree124").GetHashCode() == V3DString::GetHashCode(ctext3), V3DFILE_INFO);
+		V3DTest::AssertOk(V3DString("appletree124") == static_cast<V3DString>(ctext3), V3DFILE_INFO);
 
 		V3DTest::AssertOk(V3DString::GetHashCode(ctext1, 12, 2) == V3DString::GetHashCode(ctext2, 12, 2), V3DFILE_INFO);
 		V3DTest::AssertOk(V3DString::GetHashCode(ctext1, 12, 2) != V3DString::GetHashCode(ctext3, 12, 2), V3DFILE_INFO);
@@ -397,7 +399,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 		CtorOperatorsTest();
 		ReturnTest();
 		ToTest();
-		GetHashTest();
+		HashAndConversionTest();
 		GetTest();
 		IsTest();
 		CopyArrayTest();
