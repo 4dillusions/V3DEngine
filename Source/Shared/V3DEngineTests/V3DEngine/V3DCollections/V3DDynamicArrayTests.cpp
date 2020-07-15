@@ -220,7 +220,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 	{
 		static V3DDynamicArray<V3DTestObjectA*>* dArray;
 
-		V3DTest::AddTimingTest("DynamicArrayAddRemoveTimingTest", V3DTimingTestData
+		V3DTest::AddTimingTest("V3DDynamicArrayAddRemoveTimingTest", V3DTimingTestData
 			{
 				[]()
 				{
@@ -228,7 +228,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 				},true,0
 			});
 
-		V3DTest::AddTimingTest("DynamicArrayAddRemoveTimingTest", V3DTimingTestData
+		V3DTest::AddTimingTest("V3DDynamicArrayAddRemoveTimingTest", V3DTimingTestData
 			{
 				[]()
 				{
@@ -242,7 +242,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 				},false,1
 			});
 
-		V3DTest::AddTimingTest("DynamicArrayAddRemoveTimingTest", V3DTimingTestData
+		V3DTest::AddTimingTest("V3DDynamicArrayAddRemoveTimingTest", V3DTimingTestData
 			{
 				[]()
 				{
@@ -255,7 +255,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 	{
 		static V3DDynamicArray<V3DTestObjectA*>* list;
 
-		V3DTest::AddTimingTest("DynamicArrayIterateTimingTest", V3DTimingTestData
+		V3DTest::AddTimingTest("V3DDynamicArrayIterateTimingTest", V3DTimingTestData
 			{
 				[]()
 				{
@@ -274,7 +274,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 				}, true, 0
 			});
 
-		V3DTest::AddTimingTest("DynamicArrayIterateTimingTest", V3DTimingTestData
+		V3DTest::AddTimingTest("V3DDynamicArrayIterateTimingTest", V3DTimingTestData
 			{
 				[]()
 				{
@@ -283,7 +283,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 				}, false, 1
 			});
 
-		V3DTest::AddTimingTest("DynamicArrayIterateTimingTest", V3DTimingTestData
+		V3DTest::AddTimingTest("V3DDynamicArrayIterateTimingTest", V3DTimingTestData
 			{
 				[]()
 				{
