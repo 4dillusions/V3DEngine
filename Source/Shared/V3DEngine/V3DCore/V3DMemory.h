@@ -4,6 +4,8 @@ Copyright (c) 2020 by 4D Illusions. All rights reserved.
 Released under the terms of the GNU General Public License version 3 or later.
 */
 
+// ReSharper disable CppUnreachableCode
+
 #pragma once
 
 #include "V3DEngine/V3DEngineLibrary.h"
@@ -17,6 +19,15 @@ namespace V3D::V3DEngine::V3DCore
 	{
 		static std::unordered_map<int*, const char*> memoryList;
 
+		static const bool IsDebugMode =
+		#if defined(_DEBUG)
+			 true;
+		#else
+			false;
+		#endif
+
+		static bool IsUnitTestMode;
+
 	public:
 		V3DMemory() = delete;
 		V3DMemory(const V3DMemory&) = delete;
@@ -24,6 +35,8 @@ namespace V3D::V3DEngine::V3DCore
 		~V3DMemory() = delete;
 		V3DMemory& operator=(const V3DMemory&) = delete;
 		V3DMemory& operator=(V3DMemory&&) = delete;
+
+		static void SetUnitTestMode();
 		
 		static void Add(int* address, const char* info);
 		static void Remove(int* address);
@@ -35,9 +48,9 @@ namespace V3D::V3DEngine::V3DCore
 		{
 			T* result = new T;
 
-			#if defined(UNITTEST) || defined(_DEBUG)
+			
+			if (IsDebugMode || IsUnitTestMode) 
 				V3DMemory::Add(reinterpret_cast<int*>(result), info);
-			#endif
 
 			return result;
 		}
@@ -46,9 +59,9 @@ namespace V3D::V3DEngine::V3DCore
 		{
 			T* result = new T(p1);
 
-			#if defined(UNITTEST) || defined(_DEBUG)
+			
+			if (IsDebugMode || IsUnitTestMode)
 				V3DMemory::Add(reinterpret_cast<int*>(result), info);
-			#endif
 
 			return result;
 		}
@@ -57,9 +70,8 @@ namespace V3D::V3DEngine::V3DCore
 		{
 			T* result = new T(p1, p2);
 
-			#if defined(UNITTEST) || defined(_DEBUG)
+			if (IsDebugMode || IsUnitTestMode)
 				V3DMemory::Add(reinterpret_cast<int*>(result), info);
-			#endif
 
 			return result;
 		}
@@ -68,9 +80,8 @@ namespace V3D::V3DEngine::V3DCore
 		{
 			T* result = new T(p1, p2, p3);
 
-			#if defined(UNITTEST) || defined(_DEBUG)
+			if (IsDebugMode || IsUnitTestMode)
 				V3DMemory::Add(reinterpret_cast<int*>(result), info);
-			#endif
 
 			return result;
 		}
@@ -79,9 +90,8 @@ namespace V3D::V3DEngine::V3DCore
 		{
 			T* result = new T(p1, p2, p3, p4);
 
-			#if defined(UNITTEST) || defined(_DEBUG)
+			if (IsDebugMode || IsUnitTestMode)
 				V3DMemory::Add(reinterpret_cast<int*>(result), info);
-			#endif
 
 			return result;
 		}
@@ -90,9 +100,8 @@ namespace V3D::V3DEngine::V3DCore
 		{
 			T* result = new T(p1, p2, p3, p4, p5);
 
-			#if defined(UNITTEST) || defined(_DEBUG)
+			if (IsDebugMode || IsUnitTestMode)
 				V3DMemory::Add(reinterpret_cast<int*>(result), info);
-			#endif
 
 			return result;
 		}
@@ -101,18 +110,16 @@ namespace V3D::V3DEngine::V3DCore
 		{
 			T* result = new T(p1, p2, p3, p4, p5, p6);
 
-			#if defined(UNITTEST) || defined(_DEBUG)
+			if (IsDebugMode || IsUnitTestMode)
 				V3DMemory::Add(reinterpret_cast<int*>(result), info);
-			#endif
 
 			return result;
 		}
 
 		template <typename T> static void Delete(T& obj)
 		{
-			#if defined(UNITTEST) || defined(_DEBUG)
+			if (IsDebugMode || IsUnitTestMode)
 				Remove(reinterpret_cast<int*>(obj));
-			#endif
 
 			delete obj;
 			obj = nullptr;
@@ -122,18 +129,16 @@ namespace V3D::V3DEngine::V3DCore
 		{
 			T* result = new T[size];
 
-			#if defined(UNITTEST) || defined(_DEBUG)
+			if (IsDebugMode || IsUnitTestMode)
 				V3DMemory::Add(reinterpret_cast<int*>(result), info);
-			#endif
 
 			return result;
 		}
 
 		template <typename T> static void DeleteArray(T& obj)
 		{
-			#if defined(UNITTEST) || defined(_DEBUG)
+			if (IsDebugMode || IsUnitTestMode)
 				Remove(reinterpret_cast<int*>(obj));
-			#endif
 
 			delete[]obj;
 			obj = nullptr;
@@ -143,17 +148,15 @@ namespace V3D::V3DEngine::V3DCore
 		{
 			T** result = new T * [size];
 
-			#if defined(UNITTEST) || defined(_DEBUG)
+			if (IsDebugMode || IsUnitTestMode)
 				V3DMemory::Add(reinterpret_cast<int*>(result), info);
-			#endif
 
 			for (int x = 0; x < size; ++x)
 			{
 				result[x] = new T[size];
 
-				#if defined(UNITTEST) || defined(_DEBUG)
+				if (IsDebugMode || IsUnitTestMode)
 					V3DMemory::Add(reinterpret_cast<int*>(result[x]), info);
-				#endif
 			}
 
 			return result;
@@ -163,16 +166,14 @@ namespace V3D::V3DEngine::V3DCore
 		{
 			for (int x = 0; x < sizeX; ++x)
 			{
-				#if defined(UNITTEST) || defined(_DEBUG)
+				if (IsDebugMode || IsUnitTestMode)
 					Remove(reinterpret_cast<int*>(obj[x]));
-				#endif
 
 				delete[]obj[x];
 			}
 
-			#if defined(UNITTEST) || defined(_DEBUG)
+			if (IsDebugMode || IsUnitTestMode)
 				Remove(reinterpret_cast<int*>(obj));
-			#endif
 
 			delete[]obj;
 
@@ -183,18 +184,16 @@ namespace V3D::V3DEngine::V3DCore
 		{
 			T** result = new T * [size];
 
-			#if defined(UNITTEST) || defined(_DEBUG)
+			if (IsDebugMode || IsUnitTestMode)
 				V3DMemory::Add(reinterpret_cast<int*>(result), info);
-			#endif
 
 			return result;
 		}
 
 		template <typename T> static void DeletePointerArray(T& obj)
 		{
-			#if defined(UNITTEST) || defined(_DEBUG)
+			if (IsDebugMode || IsUnitTestMode)
 				Remove(reinterpret_cast<int*>(obj));
-			#endif
 
 			delete[] obj;
 

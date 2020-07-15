@@ -6,8 +6,6 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #pragma once
 
-#define UNITTEST
-
 #include "V3DTimingTestData.h"
 
 #include <list>

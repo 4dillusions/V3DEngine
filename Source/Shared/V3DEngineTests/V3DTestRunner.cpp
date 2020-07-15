@@ -11,11 +11,16 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngine/V3DCore/V3DCoreTests.h"
 #include "V3DEngine/V3DIO/V3DIOTests.h"
 #include "V3DEngine/V3DCollections/V3DCollectionsTests.h"
+#include "V3DEngine/V3DCore/V3DMemory.h"
+
+using namespace V3D::V3DEngine::V3DCore;
 
 namespace V3D::V3DEngineTests::V3DEngine
 {	
 	void V3DTestRunner::RunAllTests()
 	{
+		V3DMemory::SetUnitTestMode();
+		
 		V3DTypesTests::RunAllTests();
 		V3DMathematics::V3DMathematicsTests::RunAllTests();
 		V3DCore::V3DCoreTests::RunAllTests();

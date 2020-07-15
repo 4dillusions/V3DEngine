@@ -16,6 +16,12 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 {
 	void V3DStringTest::CtorOperatorsTest()
 	{
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
+		V3DString txt("test");
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 1, V3DFILE_INFO);
+		txt.~V3DString();
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
+		
 		const auto StringTestCtorOperators = []()
 		{
 			const V3DString text("test123");

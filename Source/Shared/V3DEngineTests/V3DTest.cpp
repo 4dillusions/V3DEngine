@@ -7,12 +7,9 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DTest.h"
 #include "V3DEngine/V3DMacros.h"
 #include "V3DEngineTests/V3DTestIO.h"
-#include "V3DEngine/V3DCore/V3DMemory.h"
 
 #include <chrono>
 #include <string>
-
-using namespace V3D::V3DEngine::V3DCore;
 
 using namespace std;
 using namespace std::chrono;
@@ -27,7 +24,7 @@ namespace V3D::V3DEngineTests
 	V3DITestIO<V3DTestIO>& V3DTest::testIO = V3DTestIO::Get();
 
 	void V3DTest::Init()
-	{
+	{	
 		errorCounter = 0;
 		tests = 0;
 		passedTests = 0;
