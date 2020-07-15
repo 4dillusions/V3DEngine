@@ -8,7 +8,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 namespace V3D::V3DEngine::V3DCore
 {
-	V3DWatchHour::V3DWatchHour(const V3DTimeHour& time, const V3DTimeHour& minTime, const V3DTimeHour& maxTime) : time{ time }, minTime{ minTime }, maxTime{ maxTime }
+	V3DWatchHour::V3DWatchHour(const V3DTimeHour& time, const V3DTimeHour& minTime, const V3DTimeHour& maxTime) : time{ time }, MinTime{ minTime }, MaxTime{ maxTime }
 	{ }
 
 	void V3DWatchHour::SetMinTimeEvent(const std::function<void()>& minTimeEvent)
@@ -33,12 +33,12 @@ namespace V3D::V3DEngine::V3DCore
 
 	void V3DWatchHour::SetToMin()
 	{
-		time = minTime;
+		time = MinTime;
 	}
 
 	void V3DWatchHour::SetToMax()
 	{
-		time = maxTime;
+		time = MaxTime;
 	}
 
 	void V3DWatchHour::ChangeTime()
@@ -56,11 +56,11 @@ namespace V3D::V3DEngine::V3DCore
 
 		time.Clamp();
 
-		if (time == minTime)
+		if (time == MinTime)
 			if (minTimeEvent != nullptr)
 				minTimeEvent();
 
-		if (time == maxTime)
+		if (time == MaxTime)
 			if (maxTimeEvent != nullptr)
 				maxTimeEvent();
 	}

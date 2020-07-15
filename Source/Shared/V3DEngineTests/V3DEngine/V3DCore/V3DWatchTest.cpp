@@ -16,9 +16,9 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 {
 	void V3DWatchTest::WatchTest()
 	{
-		const auto minTime = V3DTimeHour(0, 0);
-		const auto maxTime = V3DTimeHour(2, 0);
-		V3DWatchHour watch(V3DTimeHour(1, 0), minTime, maxTime);
+		const auto MinTime = V3DTimeHour(0, 0);
+		const auto MaxTime = V3DTimeHour(2, 0);
+		V3DWatchHour watch(V3DTimeHour(1, 0), MinTime, MaxTime);
 
 		bool isMaxTime = false;
 		watch.SetMaxTimeEvent([&isMaxTime]() { isMaxTime = true; });
@@ -26,7 +26,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 			watch.IncreaseSeconds();
 
 		V3DTest::AssertOk(isMaxTime, V3DFILE_INFO);
-		V3DTest::AssertOk(watch.GetTime() == maxTime, V3DFILE_INFO);
+		V3DTest::AssertOk(watch.GetTime() == MaxTime, V3DFILE_INFO);
 
 		bool isMinTime = false;
 		watch.SetMinTimeEvent([&isMinTime]() { isMinTime = true; });
@@ -34,7 +34,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 			watch.DecreaseSeconds();
 
 		V3DTest::AssertOk(isMinTime, V3DFILE_INFO);
-		V3DTest::AssertOk(watch.GetTime() == minTime, V3DFILE_INFO);
+		V3DTest::AssertOk(watch.GetTime() == MinTime, V3DFILE_INFO);
 
 		watch.SetToZero();
 		watch.DecreaseSeconds();

@@ -36,26 +36,26 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 	
 	void V3DMemoryTest::MatrixTest()
 	{
-		const int matrixSize = 5;
-		int** matrix = V3DMemory::NewMatrix<int>(V3DFILE_INFO, matrixSize);
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 1 + matrixSize, V3DFILE_INFO);
-		V3DMemory::DeleteMatrix(matrix, matrixSize);
+		const int MatrixSize = 5;
+		int** matrix = V3DMemory::NewMatrix<int>(V3DFILE_INFO, MatrixSize);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 1 + MatrixSize, V3DFILE_INFO);
+		V3DMemory::DeleteMatrix(matrix, MatrixSize);
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
 	}
 	
 	void V3DMemoryTest::PointerArrayTest()
 	{
-		const int pointerArraySize = 10;
+		const int PointerArraySize = 10;
 		V3DTestObjectA::SetReferenceCounter(0);
-		V3DTestObjectA** pointerArray = V3DMemory::NewPointerArray<V3DTestObjectA>(V3DFILE_INFO, pointerArraySize);
+		V3DTestObjectA** pointerArray = V3DMemory::NewPointerArray<V3DTestObjectA>(V3DFILE_INFO, PointerArraySize);
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 1, V3DFILE_INFO);
-		for (int i = 0; i < pointerArraySize; i++)
+		for (int i = 0; i < PointerArraySize; i++)
 			pointerArray[i] = V3DMemory::New<V3DTestObjectA>(V3DFILE_INFO);
 
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 1 + pointerArraySize, V3DFILE_INFO);
-		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == pointerArraySize, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 1 + PointerArraySize, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == PointerArraySize, V3DFILE_INFO);
 
-		for (int i = 0; i < pointerArraySize; i++)
+		for (int i = 0; i < PointerArraySize; i++)
 			V3DMemory::Delete(pointerArray[i]);
 
 		V3DMemory::DeletePointerArray(pointerArray);
@@ -66,15 +66,15 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 
 	void V3DMemoryTest::MemoryAllocationCMallocTimingTest()
 	{
-		char* heap = static_cast<char*>(malloc(sizeof(char) * testMemoryAllocsize));
-		for (int i = 0; i < testMemoryAllocsize; i++)
+		char* heap = static_cast<char*>(malloc(sizeof(char) * TestMemoryAllocsize));
+		for (int i = 0; i < TestMemoryAllocsize; i++)
 			heap[i] = 'A';
 	}
 
 	void V3DMemoryTest::MemoryAllocationCppNewTimingTest()
 	{
-		char* heap = new char[testMemoryAllocsize];
-		for (int i = 0; i < testMemoryAllocsize; i++)
+		char* heap = new char[TestMemoryAllocsize];
+		for (int i = 0; i < TestMemoryAllocsize; i++)
 			heap[i] = 'A';
 	}
 

@@ -15,19 +15,19 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DMathematics
 {
 	void V3DCircleTest::CircleTest()
 	{
-		const V3DCircle circle{ 0, 0, 20 };
-		const V3DCircle circle2 = circle;
-		const V3DCircle circle3 = circle;
+		const V3DCircle Circle{ 0, 0, 20 };
+		const V3DCircle Circle2 = Circle;
+		const V3DCircle Circle3 = Circle;
 
-		V3DTest::AssertOk(circle == circle2, V3DFILE_INFO);
-		V3DTest::AssertOk(circle == circle3, V3DFILE_INFO);
-		V3DTest::AssertOk(circle != V3DCircle(), V3DFILE_INFO);
-		V3DTest::AssertOk(circle.Contains(0, 19), V3DFILE_INFO);
-		V3DTest::AssertOk(!circle.Contains(20, 30), V3DFILE_INFO);
-		V3DTest::AssertOk(circle.Contains(V3DCircle(0, 0, 5)), V3DFILE_INFO);
-		V3DTest::AssertOk(!circle.Contains(V3DCircle(0, 40, 10)), V3DFILE_INFO);
-		V3DTest::AssertOk(circle.Intersects(V3DCircle(0, 0, 30)), V3DFILE_INFO);
-		V3DTest::AssertOk(!circle.Intersects(V3DCircle(20, 30, 10)), V3DFILE_INFO);
+		V3DTest::AssertOk(Circle == Circle2, V3DFILE_INFO);
+		V3DTest::AssertOk(Circle == Circle3, V3DFILE_INFO);
+		V3DTest::AssertOk(Circle != V3DCircle(), V3DFILE_INFO);
+		V3DTest::AssertOk(Circle.Contains(0, 19), V3DFILE_INFO);
+		V3DTest::AssertOk(!Circle.Contains(20, 30), V3DFILE_INFO);
+		V3DTest::AssertOk(Circle.Contains(V3DCircle(0, 0, 5)), V3DFILE_INFO);
+		V3DTest::AssertOk(!Circle.Contains(V3DCircle(0, 40, 10)), V3DFILE_INFO);
+		V3DTest::AssertOk(Circle.Intersects(V3DCircle(0, 0, 30)), V3DFILE_INFO);
+		V3DTest::AssertOk(!Circle.Intersects(V3DCircle(20, 30, 10)), V3DFILE_INFO);
 	}
 	
 	void V3DCircleTest::RunAllTests()

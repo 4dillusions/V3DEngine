@@ -224,26 +224,26 @@ namespace V3D::V3DEngine::V3DMathematics
 
 	float V3DVector3D::Normalise()
 	{
-		const float result = Length();
+		const float Result = Length();
 
-		if (result > 1e-08)
+		if (Result > 1e-08)
 		{
-			const float length = 1.0f / result;
-			x *= length;
-			y *= length;
-			z *= length;
+			const float Length = 1.0f / Result;
+			x *= Length;
+			y *= Length;
+			z *= Length;
 		}
 
-		return result;
+		return Result;
 	}
 
 	void V3DVector3D::Normalizing()
 	{
-		const float length = Length();
+		const float _Length = Length();
 
-		x /= length;
-		y /= length;
-		z /= length;
+		x /= _Length;
+		y /= _Length;
+		z /= _Length;
 	}
 
 	V3DVector3D V3DVector3D::MidPoint(const V3DVector3D& value) const

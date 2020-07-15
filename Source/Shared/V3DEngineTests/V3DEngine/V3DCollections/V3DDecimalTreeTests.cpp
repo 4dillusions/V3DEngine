@@ -24,22 +24,22 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 	void V3DDecimalTreeTests::CtorDtorTest()
 	{
 		V3DDecimalTree<int, int> intTree;
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == V3DCollectionsTests::decimalTreeMemoryAllocCount, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == V3DCollectionsTests::DecimalTreeMemoryAllocCount, V3DFILE_INFO);
 		intTree.~V3DDecimalTree();
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
 
 		V3DDecimalTree<int, V3DTestObjectA> staticObjTree;
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == V3DCollectionsTests::decimalTreeMemoryAllocCount, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == V3DCollectionsTests::DecimalTreeMemoryAllocCount, V3DFILE_INFO);
 		staticObjTree.~V3DDecimalTree();
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
 
 		V3DDecimalTree<int, V3DTestObjectA*> dynamicObjTree;
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == V3DCollectionsTests::decimalTreeMemoryAllocCount, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == V3DCollectionsTests::DecimalTreeMemoryAllocCount, V3DFILE_INFO);
 		dynamicObjTree.~V3DDecimalTree();
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
 
 		V3DDecimalTree<V3DString, V3DTestObjectA*> dynamicObjTree2;
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == V3DCollectionsTests::decimalTreeMemoryAllocCount + 1, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == V3DCollectionsTests::DecimalTreeMemoryAllocCount + 1, V3DFILE_INFO);
 		dynamicObjTree2.~V3DDecimalTree();
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
 	}
@@ -287,7 +287,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 			{
 				[]()
 				{
-					for (int i = 0; i < V3DCollectionsTests::bigSize; i++)
+					for (int i = 0; i < V3DCollectionsTests::BigSize; i++)
 						tree->Add(i, V3DMemory::New<V3DTestObjectA>(V3DFILE_INFO));
 
 					for (tree->First(); tree->IsDone(); tree->Next())
@@ -316,16 +316,16 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 				{
 					tree = V3DMemory::New<V3DDecimalTree<int, V3DTestObjectA*>>(V3DFILE_INFO);
 
-					for (int i = 0; i < V3DCollectionsTests::bigSize; i++)
+					for (int i = 0; i < V3DCollectionsTests::BigSize; i++)
 						tree->Add(i, V3DMemory::New<V3DTestObjectA>(V3DFILE_INFO));
 
-					assert(tree->GetLength() == V3DCollectionsTests::bigSize);
+					assert(tree->GetLength() == V3DCollectionsTests::BigSize);
 
 					int i = 0;
 					for (tree->First(); tree->IsDone(); tree->Next(), i++)
 						(*tree->GetCurrentItem())->SetId((*tree->GetCurrentItem())->GetId() + 1);
 
-					assert(i == V3DCollectionsTests::bigSize);
+					assert(i == V3DCollectionsTests::BigSize);
 				}, true, 0
 			});
 

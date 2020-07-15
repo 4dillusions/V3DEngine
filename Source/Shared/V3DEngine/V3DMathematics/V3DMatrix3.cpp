@@ -175,27 +175,27 @@ namespace V3D::V3DEngine::V3DMathematics
 		inverse.m[2][1] = m[0][1] * m[2][0] - m[0][0] * m[2][1];
 		inverse.m[2][2] = m[0][0] * m[1][1] - m[0][1] * m[1][0];
 
-		const float det =
+		const float Det =
 			m[0][0] * inverse.m[0][0] +
 			m[0][1] * inverse.m[1][0] +
 			m[0][2] * inverse.m[2][0];
 
-		if (fabs(det) <= tolerance)
+		if (fabs(Det) <= tolerance)
 			return false;
 
-		const float invDet = 1.0f / det;
+		const float InvDet = 1.0f / Det;
 
-		inverse.m[0][0] *= invDet;
-		inverse.m[0][1] *= invDet;
-		inverse.m[0][2] *= invDet;
+		inverse.m[0][0] *= InvDet;
+		inverse.m[0][1] *= InvDet;
+		inverse.m[0][2] *= InvDet;
 
-		inverse.m[1][0] *= invDet;
-		inverse.m[1][1] *= invDet;
-		inverse.m[1][2] *= invDet;
+		inverse.m[1][0] *= InvDet;
+		inverse.m[1][1] *= InvDet;
+		inverse.m[1][2] *= InvDet;
 
-		inverse.m[2][0] *= invDet;
-		inverse.m[2][1] *= invDet;
-		inverse.m[2][2] *= invDet;
+		inverse.m[2][0] *= InvDet;
+		inverse.m[2][1] *= InvDet;
+		inverse.m[2][2] *= InvDet;
 
 		return true;
 	}
@@ -230,16 +230,16 @@ namespace V3D::V3DEngine::V3DMathematics
 
 	float V3DMatrix3::Determinant() const
 	{
-		const float factor = m[1][1] * m[2][2] - m[1][2] * m[2][1];
-		const float factor1 = m[1][2] * m[2][0] - m[1][0] * m[2][2];
-		const float factor2 = m[1][0] * m[2][1] - m[1][1] * m[2][0];
+		const float Factor = m[1][1] * m[2][2] - m[1][2] * m[2][1];
+		const float Factor1 = m[1][2] * m[2][0] - m[1][0] * m[2][2];
+		const float Factor2 = m[1][0] * m[2][1] - m[1][1] * m[2][0];
 
-		const float result =
-			m[0][0] * factor +
-			m[0][1] * factor1 +
-			m[0][2] * factor2;
+		const float Result =
+			m[0][0] * Factor +
+			m[0][1] * Factor1 +
+			m[0][2] * Factor2;
 
-		return result;
+		return Result;
 	}
 
 	void V3DMatrix3::Orthonormalize()
@@ -262,12 +262,12 @@ namespace V3D::V3DEngine::V3DMathematics
 		m[1][1] *= invLength;
 		m[2][1] *= invLength;
 
-		const float dot1 = m[0][1] * m[0][2] + m[1][1] * m[1][2] + m[2][1] * m[2][2];
+		const float Dot1 = m[0][1] * m[0][2] + m[1][1] * m[1][2] + m[2][1] * m[2][2];
 		dot = m[0][0] * m[0][2] + m[1][0] * m[1][2] + m[2][0] * m[2][2];
 
-		m[0][2] -= dot * m[0][0] + dot1 * m[0][1];
-		m[1][2] -= dot * m[1][0] + dot1 * m[1][1];
-		m[2][2] -= dot * m[2][0] + dot1 * m[2][1];
+		m[0][2] -= dot * m[0][0] + Dot1 * m[0][1];
+		m[1][2] -= dot * m[1][0] + Dot1 * m[1][1];
+		m[2][2] -= dot * m[2][0] + Dot1 * m[2][1];
 
 		invLength = 1.0f / sqrt(m[0][2] * m[0][2] + m[1][2] * m[1][2] + m[2][2] * m[2][2]);
 

@@ -24,7 +24,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 		
 		const auto StringTestCtorOperators = []()
 		{
-			const V3DString text("test123");
+			const V3DString Text("test123");
 
 			V3DString text2("test");
 			text2 += "123";
@@ -42,11 +42,11 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 
 			V3DString text6(text5);
 
-			V3DTest::AssertOk(text == text2, V3DFILE_INFO);
-			V3DTest::AssertOk(text == text3, V3DFILE_INFO);
-			V3DTest::AssertOk(text == text4, V3DFILE_INFO);
-			V3DTest::AssertOk(text == text5, V3DFILE_INFO);
-			V3DTest::AssertOk(text == text6, V3DFILE_INFO);
+			V3DTest::AssertOk(Text == text2, V3DFILE_INFO);
+			V3DTest::AssertOk(Text == text3, V3DFILE_INFO);
+			V3DTest::AssertOk(Text == text4, V3DFILE_INFO);
+			V3DTest::AssertOk(Text == text5, V3DFILE_INFO);
+			V3DTest::AssertOk(Text == text6, V3DFILE_INFO);
 
 			text6 += 'K';
 			text6 += 3.14f;
@@ -98,28 +98,28 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 	
 	void V3DStringTest::HashAndConversionTest()
 	{
-		const char* ctext1 = "appletree123";
-		const char* ctext2 = "appletree123";
-		const char ctext3[20] = "appletree124";
+		const char* Ctext1 = "appletree123";
+		const char* Ctext2 = "appletree123";
+		const char Ctext3[20] = "appletree124";
 
-		V3DTest::AssertOk(V3DString::GetHashCode(ctext1) == V3DString::GetHashCode(ctext2), V3DFILE_INFO);
-		V3DTest::AssertOk(V3DString::GetHashCode(ctext1) != V3DString::GetHashCode(ctext3), V3DFILE_INFO);
-		V3DTest::AssertOk(V3DString("appletree123") == static_cast<V3DString>(ctext2), V3DFILE_INFO);
-		V3DTest::AssertOk(V3DString("appletree124").GetHashCode() == V3DString::GetHashCode(ctext3), V3DFILE_INFO);
-		V3DTest::AssertOk(V3DString("appletree124") == static_cast<V3DString>(ctext3), V3DFILE_INFO);
+		V3DTest::AssertOk(V3DString::GetHashCode(Ctext1) == V3DString::GetHashCode(Ctext2), V3DFILE_INFO);
+		V3DTest::AssertOk(V3DString::GetHashCode(Ctext1) != V3DString::GetHashCode(Ctext3), V3DFILE_INFO);
+		V3DTest::AssertOk(V3DString("appletree123") == static_cast<V3DString>(Ctext2), V3DFILE_INFO);
+		V3DTest::AssertOk(V3DString("appletree124").GetHashCode() == V3DString::GetHashCode(Ctext3), V3DFILE_INFO);
+		V3DTest::AssertOk(V3DString("appletree124") == static_cast<V3DString>(Ctext3), V3DFILE_INFO);
 
-		V3DTest::AssertOk(V3DString::GetHashCode(ctext1, 12, 2) == V3DString::GetHashCode(ctext2, 12, 2), V3DFILE_INFO);
-		V3DTest::AssertOk(V3DString::GetHashCode(ctext1, 12, 2) != V3DString::GetHashCode(ctext3, 12, 2), V3DFILE_INFO);
+		V3DTest::AssertOk(V3DString::GetHashCode(Ctext1, 12, 2) == V3DString::GetHashCode(Ctext2, 12, 2), V3DFILE_INFO);
+		V3DTest::AssertOk(V3DString::GetHashCode(Ctext1, 12, 2) != V3DString::GetHashCode(Ctext3, 12, 2), V3DFILE_INFO);
 
-		V3DTest::AssertOk(V3DString::GetHashCode(ctext1[11], 0) == V3DString::GetHashCode(ctext2[11], 0), V3DFILE_INFO);
-		V3DTest::AssertOk(V3DString::GetHashCode(ctext1[11], 0) != V3DString::GetHashCode(ctext3[11], 0), V3DFILE_INFO);
+		V3DTest::AssertOk(V3DString::GetHashCode(Ctext1[11], 0) == V3DString::GetHashCode(Ctext2[11], 0), V3DFILE_INFO);
+		V3DTest::AssertOk(V3DString::GetHashCode(Ctext1[11], 0) != V3DString::GetHashCode(Ctext3[11], 0), V3DFILE_INFO);
 
-		const auto five = V3DString("five").GetHashCode();
-		const auto nine = V3DString("nine").GetHashCode();
-		const auto nini = V3DString("nini").GetHashCode();
-		const auto inin = V3DString("inin").GetHashCode();
-		V3DTest::AssertOk(five != nine, V3DFILE_INFO);
-		V3DTest::AssertOk(nini != inin, V3DFILE_INFO);
+		const auto Five = V3DString("five").GetHashCode();
+		const auto Nine = V3DString("nine").GetHashCode();
+		const auto Nini = V3DString("nini").GetHashCode();
+		const auto Inin = V3DString("inin").GetHashCode();
+		V3DTest::AssertOk(Five != Nine, V3DFILE_INFO);
+		V3DTest::AssertOk(Nini != Inin, V3DFILE_INFO);
 	}
 	
 	void V3DStringTest::GetTest()
@@ -128,14 +128,14 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 		{
 			V3DTest::AssertOk(8 == V3DString::GetNumberLength(12345678), V3DFILE_INFO);
 
-			const char* goodAlphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-			const char* wrongAlphabet = "abcd}";
-			const char* wrongAlphabet2 = "abcd0";
+			const char* GoodAlphabet = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
+			const char* WrongAlphabet = "abcd}";
+			const char* WrongAlphabet2 = "abcd0";
 
 			bool isGoodAlphabet = true;
-			for (int index = 0; goodAlphabet[index] != 0; index++)
+			for (int index = 0; GoodAlphabet[index] != 0; index++)
 			{
-				if (!V3DString::IsAbcLetter(goodAlphabet[index]))
+				if (!V3DString::IsAbcLetter(GoodAlphabet[index]))
 				{
 					isGoodAlphabet = false;
 					break;
@@ -144,9 +144,9 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 			V3DTest::AssertOk(isGoodAlphabet, V3DFILE_INFO);
 
 			bool isWrongAlphabet = true;
-			for (int index = 0; wrongAlphabet[index] != 0; index++)
+			for (int index = 0; WrongAlphabet[index] != 0; index++)
 			{
-				if (!V3DString::IsAbcLetter(wrongAlphabet[index]))
+				if (!V3DString::IsAbcLetter(WrongAlphabet[index]))
 				{
 					isWrongAlphabet = false;
 					break;
@@ -155,9 +155,9 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 			V3DTest::AssertOk(isWrongAlphabet == false, V3DFILE_INFO);
 
 			bool isWrongAlphabet2 = true;
-			for (int index = 0; wrongAlphabet2[index] != 0; index++)
+			for (int index = 0; WrongAlphabet2[index] != 0; index++)
 			{
-				if (!V3DString::IsAbcLetter(wrongAlphabet2[index]))
+				if (!V3DString::IsAbcLetter(WrongAlphabet2[index]))
 				{
 					isWrongAlphabet2 = false;
 					break;
@@ -184,17 +184,17 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 			}
 			V3DTest::AssertOk(isDigitChecker, V3DFILE_INFO);
 
-			const V3DString text("test 123  ");
-			V3DTest::AssertOk(text.GetTextLength() == 10, V3DFILE_INFO);
-			V3DTest::AssertOk(text.GetTextLenghtWithoutSpace() == 7, V3DFILE_INFO);
+			const V3DString Text("test 123  ");
+			V3DTest::AssertOk(Text.GetTextLength() == 10, V3DFILE_INFO);
+			V3DTest::AssertOk(Text.GetTextLenghtWithoutSpace() == 7, V3DFILE_INFO);
 
 			V3DString empty;
 
 			V3DTest::AssertOk(empty.IsEmpty(), V3DFILE_INFO);
 			V3DTest::AssertOk(empty == V3DString(""), V3DFILE_INFO);
 
-			const V3DString empty2("");
-			V3DTest::AssertOk(empty2.IsEmpty(), V3DFILE_INFO);
+			const V3DString Empty2("");
+			V3DTest::AssertOk(Empty2.IsEmpty(), V3DFILE_INFO);
 
 			empty += "hohoh";
 			V3DTest::AssertOk(!empty.IsEmpty(), V3DFILE_INFO);
@@ -213,54 +213,54 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 	{
 		const auto StringTestIs = []()
 		{
-			const V3DString example("X-Ample123_123B");
-			const V3DString example2("arvizturo tukorfurogep");
+			const V3DString Example("X-Ample123_123B");
+			const V3DString Example2("arvizturo tukorfurogep");
 
-			V3DTest::AssertOk(example.Contains(V3DString("X-Ample123")) == true, V3DFILE_INFO);
-			V3DTest::AssertOk(example.Contains(V3DString("X-Ample")) == true, V3DFILE_INFO);
-			V3DTest::AssertOk(example.Contains(V3DString("Ample")) == true, V3DFILE_INFO);
-			V3DTest::AssertOk(example.Contains(V3DString("X-Am")) == true, V3DFILE_INFO);
-			V3DTest::AssertOk(example.Contains(V3DString("e12")) == true, V3DFILE_INFO);
-			V3DTest::AssertOk(example.Contains(V3DString("23")) == true, V3DFILE_INFO);
-			V3DTest::AssertOk(example.Contains(V3DString("3B")) == true, V3DFILE_INFO);
-			V3DTest::AssertOk(example.Contains(V3DString("123")) == true, V3DFILE_INFO);
-			V3DTest::AssertOk(example.Contains(V3DString("123B")) == true, V3DFILE_INFO);
-			V3DTest::AssertOk(example.Contains(V3DString("X-Ample124")) == false, V3DFILE_INFO);
-			V3DTest::AssertOk(example.Contains(V3DString("1234")) == false, V3DFILE_INFO);
-			V3DTest::AssertOk(example.Contains(V3DString("X-ample123")) == false, V3DFILE_INFO);
-			V3DTest::AssertOk(example2.Contains(V3DString("o ")) == true, V3DFILE_INFO);
-			V3DTest::AssertOk(example2.Contains(V3DString("or")) == true, V3DFILE_INFO);
-			V3DTest::AssertOk(example2.Contains(V3DString("og")) == true, V3DFILE_INFO);
-			V3DTest::AssertOk(example2.Contains(V3DString("roe")) == false, V3DFILE_INFO);
-			V3DTest::AssertOk(example2.Contains(V3DString("ogepp")) == false, V3DFILE_INFO);
+			V3DTest::AssertOk(Example.Contains(V3DString("X-Ample123")) == true, V3DFILE_INFO);
+			V3DTest::AssertOk(Example.Contains(V3DString("X-Ample")) == true, V3DFILE_INFO);
+			V3DTest::AssertOk(Example.Contains(V3DString("Ample")) == true, V3DFILE_INFO);
+			V3DTest::AssertOk(Example.Contains(V3DString("X-Am")) == true, V3DFILE_INFO);
+			V3DTest::AssertOk(Example.Contains(V3DString("e12")) == true, V3DFILE_INFO);
+			V3DTest::AssertOk(Example.Contains(V3DString("23")) == true, V3DFILE_INFO);
+			V3DTest::AssertOk(Example.Contains(V3DString("3B")) == true, V3DFILE_INFO);
+			V3DTest::AssertOk(Example.Contains(V3DString("123")) == true, V3DFILE_INFO);
+			V3DTest::AssertOk(Example.Contains(V3DString("123B")) == true, V3DFILE_INFO);
+			V3DTest::AssertOk(Example.Contains(V3DString("X-Ample124")) == false, V3DFILE_INFO);
+			V3DTest::AssertOk(Example.Contains(V3DString("1234")) == false, V3DFILE_INFO);
+			V3DTest::AssertOk(Example.Contains(V3DString("X-ample123")) == false, V3DFILE_INFO);
+			V3DTest::AssertOk(Example2.Contains(V3DString("o ")) == true, V3DFILE_INFO);
+			V3DTest::AssertOk(Example2.Contains(V3DString("or")) == true, V3DFILE_INFO);
+			V3DTest::AssertOk(Example2.Contains(V3DString("og")) == true, V3DFILE_INFO);
+			V3DTest::AssertOk(Example2.Contains(V3DString("roe")) == false, V3DFILE_INFO);
+			V3DTest::AssertOk(Example2.Contains(V3DString("ogepp")) == false, V3DFILE_INFO);
 
-			V3DTest::AssertOk(example.Contains(V3DString('_')) == true, V3DFILE_INFO);
-			V3DTest::AssertOk(example2.Contains(V3DString('o')) == true, V3DFILE_INFO);
-			V3DTest::AssertOk(example2.Contains(V3DString(' ')) == true, V3DFILE_INFO);
-			V3DTest::AssertOk(example2.Contains(V3DString('x')) == false, V3DFILE_INFO);
+			V3DTest::AssertOk(Example.Contains(V3DString('_')) == true, V3DFILE_INFO);
+			V3DTest::AssertOk(Example2.Contains(V3DString('o')) == true, V3DFILE_INFO);
+			V3DTest::AssertOk(Example2.Contains(V3DString(' ')) == true, V3DFILE_INFO);
+			V3DTest::AssertOk(Example2.Contains(V3DString('x')) == false, V3DFILE_INFO);
 
-			V3DTest::AssertOk(2 == example2.ContainsCount(V3DString("tu")), V3DFILE_INFO);
-			V3DTest::AssertOk(1 == example2.ContainsCount(V3DString("o t")), V3DFILE_INFO);
+			V3DTest::AssertOk(2 == Example2.ContainsCount(V3DString("tu")), V3DFILE_INFO);
+			V3DTest::AssertOk(1 == Example2.ContainsCount(V3DString("o t")), V3DFILE_INFO);
 
-			V3DTest::AssertOk(3 == example2.ContainsCount(V3DString('o')), V3DFILE_INFO);
-			V3DTest::AssertOk(1 == example2.ContainsCount(V3DString(' ')), V3DFILE_INFO);
-			V3DTest::AssertOk(3 == example2.ContainsCount(V3DString('u')), V3DFILE_INFO);
+			V3DTest::AssertOk(3 == Example2.ContainsCount(V3DString('o')), V3DFILE_INFO);
+			V3DTest::AssertOk(1 == Example2.ContainsCount(V3DString(' ')), V3DFILE_INFO);
+			V3DTest::AssertOk(3 == Example2.ContainsCount(V3DString('u')), V3DFILE_INFO);
 
-			V3DTest::AssertOk(example.IsStartsWith(V3DString("X-Ample123")) == true, V3DFILE_INFO);
-			V3DTest::AssertOk(example.IsStartsWith(V3DString("X-Ample")) == true, V3DFILE_INFO);
-			V3DTest::AssertOk(example.IsStartsWith(V3DString("X-Am")) == true, V3DFILE_INFO);
-			V3DTest::AssertOk(example.IsStartsWith(V3DString("Ample")) == false, V3DFILE_INFO);
+			V3DTest::AssertOk(Example.IsStartsWith(V3DString("X-Ample123")) == true, V3DFILE_INFO);
+			V3DTest::AssertOk(Example.IsStartsWith(V3DString("X-Ample")) == true, V3DFILE_INFO);
+			V3DTest::AssertOk(Example.IsStartsWith(V3DString("X-Am")) == true, V3DFILE_INFO);
+			V3DTest::AssertOk(Example.IsStartsWith(V3DString("Ample")) == false, V3DFILE_INFO);
 
-			V3DTest::AssertOk(example.IsStartsWith(V3DString('X')) == true, V3DFILE_INFO);
-			V3DTest::AssertOk(example.IsStartsWith(V3DString('-')) == false, V3DFILE_INFO);
+			V3DTest::AssertOk(Example.IsStartsWith(V3DString('X')) == true, V3DFILE_INFO);
+			V3DTest::AssertOk(Example.IsStartsWith(V3DString('-')) == false, V3DFILE_INFO);
 
-			V3DTest::AssertOk(example.IsEndsWith(V3DString("123_123B")) == true, V3DFILE_INFO);
-			V3DTest::AssertOk(example.IsEndsWith(V3DString("_123B")) == true, V3DFILE_INFO);
-			V3DTest::AssertOk(example.IsEndsWith(V3DString("123B")) == true, V3DFILE_INFO);
-			V3DTest::AssertOk(example.IsEndsWith(V3DString("1234")) == false, V3DFILE_INFO);
+			V3DTest::AssertOk(Example.IsEndsWith(V3DString("123_123B")) == true, V3DFILE_INFO);
+			V3DTest::AssertOk(Example.IsEndsWith(V3DString("_123B")) == true, V3DFILE_INFO);
+			V3DTest::AssertOk(Example.IsEndsWith(V3DString("123B")) == true, V3DFILE_INFO);
+			V3DTest::AssertOk(Example.IsEndsWith(V3DString("1234")) == false, V3DFILE_INFO);
 
-			V3DTest::AssertOk(example.IsEndsWith(V3DString('B')) == true, V3DFILE_INFO);
-			V3DTest::AssertOk(example.IsEndsWith(V3DString('b')) == false, V3DFILE_INFO);
+			V3DTest::AssertOk(Example.IsEndsWith(V3DString('B')) == true, V3DFILE_INFO);
+			V3DTest::AssertOk(Example.IsEndsWith(V3DString('b')) == false, V3DFILE_INFO);
 		};
 		StringTestIs();
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
@@ -329,22 +329,22 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 		const auto StringTestLarge = []()
 		{
 			V3DString text;
-			const int textSize = 1200;
+			const int TextSize = 1200;
 
-			char largeText[textSize];
-			for (int index = 0; index < textSize - 1; index++)
+			char largeText[TextSize];
+			for (int index = 0; index < TextSize - 1; index++)
 				largeText[index] = 'A';
-			largeText[textSize - 1] = '\0';
+			largeText[TextSize - 1] = '\0';
 
 			text = largeText;
-			V3DTest::AssertOk(textSize - 1 == text.GetTextLength(), V3DFILE_INFO);
-			V3DTest::AssertOk(textSize * 2 == text.GetDataSize(), V3DFILE_INFO);
+			V3DTest::AssertOk(TextSize - 1 == text.GetTextLength(), V3DFILE_INFO);
+			V3DTest::AssertOk(TextSize * 2 == text.GetDataSize(), V3DFILE_INFO);
 
 			text += "hoho";
 			V3DTest::AssertOk(text.IsEndsWith(V3DString("hoho")), V3DFILE_INFO);
 
 			text += largeText;
-			V3DTest::AssertOk((textSize * 4) + ((V3DString::GetTextLength("hoho") - 1) * 2) == text.GetDataSize(), V3DFILE_INFO);
+			V3DTest::AssertOk((TextSize * 4) + ((V3DString::GetTextLength("hoho") - 1) * 2) == text.GetDataSize(), V3DFILE_INFO);
 		};
 		StringTestLarge();
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
@@ -389,12 +389,12 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 
 		auto StringTestSplit3 = []()
 		{
-			const V3DString text;
-			const auto empty = text.Split(V3DString('#'));
-			V3DTest::AssertOk(empty.GetLength() == 0, V3DFILE_INFO);
+			const V3DString Text;
+			const auto Empty = Text.Split(V3DString('#'));
+			V3DTest::AssertOk(Empty.GetLength() == 0, V3DFILE_INFO);
 
-			const V3DString text2("#");
-			auto empty2 = text2.Split(V3DString('#'));
+			const V3DString Text2("#");
+			auto empty2 = Text2.Split(V3DString('#'));
 			V3DTest::AssertOk(empty2[0]->IsEmpty(), V3DFILE_INFO);
 		};
 		StringTestSplit3();

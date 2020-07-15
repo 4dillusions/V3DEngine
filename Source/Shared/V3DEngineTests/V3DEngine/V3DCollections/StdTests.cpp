@@ -37,7 +37,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 			{
 				[]()
 				{
-					for (int i = 0; i < V3DCollectionsTests::bigSize; i++)
+					for (int i = 0; i < V3DCollectionsTests::BigSize; i++)
 						stdList->push_back(V3DMemory::New<V3DTestObjectA>(V3DFILE_INFO));
 
 					for (auto i = stdList->begin(); i != stdList->end(); ++i)
@@ -80,7 +80,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 				{
 					stdList = V3DMemory::New<vector<V3DTestObjectA*>>(V3DFILE_INFO);
 
-					for (int i = 0; i < V3DCollectionsTests::bigSize; i++)
+					for (int i = 0; i < V3DCollectionsTests::BigSize; i++)
 						stdList->push_back(V3DMemory::New<V3DTestObjectA>(V3DFILE_INFO));
 				}, true, 0
 			});
@@ -137,7 +137,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 			{
 				[]()
 				{
-					for (int i = 0; i < V3DCollectionsTests::bigSize; i++)
+					for (int i = 0; i < V3DCollectionsTests::BigSize; i++)
 						stdMap->insert({i, V3DMemory::New<V3DTestObjectA>(V3DFILE_INFO) });
 
 					for (auto i = stdMap->begin(); i != stdMap->end(); ++i)
@@ -180,7 +180,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 				{
 					stdMap = V3DMemory::New<map<int, V3DTestObjectA*>>(V3DFILE_INFO);
 
-					for (int i = 0; i < V3DCollectionsTests::bigSize; i++)
+					for (int i = 0; i < V3DCollectionsTests::BigSize; i++)
 						stdMap->insert({ i, V3DMemory::New<V3DTestObjectA>(V3DFILE_INFO) });
 				}, true, 0
 			});

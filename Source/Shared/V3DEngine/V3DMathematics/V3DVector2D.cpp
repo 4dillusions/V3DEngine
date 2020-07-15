@@ -218,40 +218,40 @@ namespace V3D::V3DEngine::V3DMathematics
 	{
 		angle = -V3DMath::ConvertDegreeToRadian(angle);
 
-		const float x1 = (x * cosf(angle)) - (y * sinf(angle));
-		const float y1 = (y * cosf(angle)) + (x * sinf(angle));
+		const float X1 = (x * cosf(angle)) - (y * sinf(angle));
+		const float Y1 = (y * cosf(angle)) + (x * sinf(angle));
 
-		x = x1;
-		y = y1;
+		x = X1;
+		y = Y1;
 	}
 
 	void V3DVector2D::RotateCeil(float angle)
 	{
 		angle = -V3DMath::ConvertDegreeToRadian(angle);
 
-		const float x1 = (x * cosf(angle)) - (y * sinf(angle));
-		const float y1 = (y * cosf(angle)) + (x * sinf(angle));
+		const float X1 = (x * cosf(angle)) - (y * sinf(angle));
+		const float Y1 = (y * cosf(angle)) + (x * sinf(angle));
 
-		x = ceilf(x1);
-		y = ceilf(y1);
+		x = ceilf(X1);
+		y = ceilf(Y1);
 	}
 
 	void V3DVector2D::Rotate90DegreeForward()
 	{
-		const float x1 = y;
-		const float y1 = -x;
+		const float X1 = y;
+		const float Y1 = -x;
 
-		x = x1;
-		y = y1;
+		x = X1;
+		y = Y1;
 	}
 
 	void V3DVector2D::Rotate90DegreeBackward()
 	{
-		const float x1 = -y;
-		const float y1 = x;
+		const float X1 = -y;
+		const float Y1 = x;
 
-		x = x1;
-		y = y1;
+		x = X1;
+		y = Y1;
 	}
 
 	float V3DVector2D::Length() const
@@ -276,24 +276,24 @@ namespace V3D::V3DEngine::V3DMathematics
 
 	float V3DVector2D::Normalise()
 	{
-		const float result = Length();
+		const float Result = Length();
 
-		if (result > 1e-08)
+		if (Result > 1e-08)
 		{
-			const float length = 1.0f / result;
-			x *= length;
-			y *= length;
+			const float Length = 1.0f / Result;
+			x *= Length;
+			y *= Length;
 		}
 
-		return result;
+		return Result;
 	}
 
 	void V3DVector2D::Normalizing()
 	{
-		const float length = Length();
+		const float _Length = Length();
 
-		x /= length;
-		y /= length;
+		x /= _Length;
+		y /= _Length;
 	}
 
 	V3DVector2D V3DVector2D::MidPoint(const V3DVector2D& value) const

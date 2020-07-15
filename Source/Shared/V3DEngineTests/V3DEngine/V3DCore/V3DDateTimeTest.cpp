@@ -15,22 +15,22 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 {
 	void V3DDateTimeTest::DateTimeTest()
 	{
-		const auto now = V3DDateTime::GetNow();
+		const auto Now = V3DDateTime::GetNow();
 
-		V3DTest::AssertOk(now->year > 1900, V3DFILE_INFO);
-		V3DTest::AssertOk(now->year < 2100, V3DFILE_INFO);
-		V3DTest::AssertOk(now->month > 0, V3DFILE_INFO);
-		V3DTest::AssertOk(now->month < 13, V3DFILE_INFO);
-		V3DTest::AssertOk(now->day > 0, V3DFILE_INFO);
-		V3DTest::AssertOk(now->day < 32, V3DFILE_INFO);
-		V3DTest::AssertOk(now->hour >= 0, V3DFILE_INFO);
-		V3DTest::AssertOk(now->hour < 25, V3DFILE_INFO);
-		V3DTest::AssertOk(now->min >= 0, V3DFILE_INFO);
-		V3DTest::AssertOk(now->min < 60, V3DFILE_INFO);
-		V3DTest::AssertOk(now->sec >= 0, V3DFILE_INFO);
-		V3DTest::AssertOk(now->sec < 60, V3DFILE_INFO);
-		V3DTest::AssertOk(now->millisec >= 0, V3DFILE_INFO);
-		V3DTest::AssertOk(now->millisec < 1000, V3DFILE_INFO);
+		V3DTest::AssertOk(Now->year > 1900, V3DFILE_INFO);
+		V3DTest::AssertOk(Now->year < 2100, V3DFILE_INFO);
+		V3DTest::AssertOk(Now->month > 0, V3DFILE_INFO);
+		V3DTest::AssertOk(Now->month < 13, V3DFILE_INFO);
+		V3DTest::AssertOk(Now->day > 0, V3DFILE_INFO);
+		V3DTest::AssertOk(Now->day < 32, V3DFILE_INFO);
+		V3DTest::AssertOk(Now->hour >= 0, V3DFILE_INFO);
+		V3DTest::AssertOk(Now->hour < 25, V3DFILE_INFO);
+		V3DTest::AssertOk(Now->min >= 0, V3DFILE_INFO);
+		V3DTest::AssertOk(Now->min < 60, V3DFILE_INFO);
+		V3DTest::AssertOk(Now->sec >= 0, V3DFILE_INFO);
+		V3DTest::AssertOk(Now->sec < 60, V3DFILE_INFO);
+		V3DTest::AssertOk(Now->millisec >= 0, V3DFILE_INFO);
+		V3DTest::AssertOk(Now->millisec < 1000, V3DFILE_INFO);
 
 		V3DTimeSpan nowTest;  // NOLINT
 		nowTest.year = 2014;

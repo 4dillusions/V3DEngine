@@ -17,18 +17,18 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DMathematics
 {
 	void V3DVector2DTest::OperatorsTest()
 	{
-		const V3DVector2D vec{ 20, 30 };
-		const V3DVector2D vec2 = vec;
-		const V3DVector2D vec3 = vec;
+		const V3DVector2D Vec{ 20, 30 };
+		const V3DVector2D Vec2 = Vec;
+		const V3DVector2D Vec3 = Vec;
 
-		const V3DVector2D vec4 = static_cast<V3DVector2D>(12);
+		const V3DVector2D Vec4 = static_cast<V3DVector2D>(12);
 		V3DVector2D vec5{ 20, 30 };
 
-		V3DTest::AssertOk(vec == vec2, V3DFILE_INFO);
-		V3DTest::AssertOk(vec == vec3, V3DFILE_INFO);
-		V3DTest::AssertOk(vec4.x == 12, V3DFILE_INFO);
-		V3DTest::AssertOk(vec4.y == 12, V3DFILE_INFO);
-		V3DTest::AssertOk(vec != V3DVector2D(), V3DFILE_INFO);
+		V3DTest::AssertOk(Vec == Vec2, V3DFILE_INFO);
+		V3DTest::AssertOk(Vec == Vec3, V3DFILE_INFO);
+		V3DTest::AssertOk(Vec4.x == 12, V3DFILE_INFO);
+		V3DTest::AssertOk(Vec4.y == 12, V3DFILE_INFO);
+		V3DTest::AssertOk(Vec != V3DVector2D(), V3DFILE_INFO);
 
 		V3DTest::AssertOk((V3DVector2D(1, 2) + V3DVector2D(3, 4)) == V3DVector2D(4, 6), V3DFILE_INFO);
 		V3DTest::AssertOk((V3DVector2D(1, 2) + 10) == V3DVector2D(11, 12), V3DFILE_INFO);

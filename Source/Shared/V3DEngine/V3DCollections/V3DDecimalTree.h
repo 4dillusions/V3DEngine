@@ -31,8 +31,8 @@ namespace V3D::V3DEngine::V3DCollections
 	*/
 	template<typename TKey, typename TItem> class V3DDecimalTree final
 	{
-		static const int digitSize = 10;
-		static const int numberSystemSize = 10;
+		static const int DigitSize = 10;
+		static const int NumberSystemSize = 10;
 		V3DDecimalTreeNode<TKey, TItem>* root{}, * current{}, ** currentAllItemArray{};
 		int currentIndex, length{};
 
@@ -59,18 +59,18 @@ namespace V3D::V3DEngine::V3DCollections
 		static void GetDigitArrayFromKey(const TKey& key, int* digitArray, int& digitCount)
 		{
 			auto currentNumber = static_cast<int>(key);
-			for (int digitIndex = digitSize - 1; digitIndex >= 0; digitIndex--)
+			for (int digitIndex = DigitSize - 1; digitIndex >= 0; digitIndex--)
 			{
 				digitCount++;
 				
-				if (currentNumber < numberSystemSize)
+				if (currentNumber < NumberSystemSize)
 				{
 					digitArray[digitIndex] = currentNumber;
 					break;
 				}
 
-				digitArray[digitIndex] = currentNumber % numberSystemSize;
-				currentNumber /= numberSystemSize;
+				digitArray[digitIndex] = currentNumber % NumberSystemSize;
+				currentNumber /= NumberSystemSize;
 			}
 		}
 
@@ -146,12 +146,12 @@ namespace V3D::V3DEngine::V3DCollections
 
 		TItem* GetItem(const TKey& key)
 		{
-			int digitArray[digitSize]{};
+			int digitArray[DigitSize]{};
 			int digitCount{};
 			GetDigitArrayFromKey(key, digitArray, digitCount);
 
 			current = root;
-			for (int digitIndex = digitSize - digitCount; digitIndex < digitSize; digitIndex++)
+			for (int digitIndex = DigitSize - digitCount; digitIndex < DigitSize; digitIndex++)
 			{
 				current = current->children[digitArray[digitIndex]];
 				if (current == nullptr)
@@ -165,12 +165,12 @@ namespace V3D::V3DEngine::V3DCollections
 		{
 			assert(static_cast<int>(key) >= 0);
 			
-			int digitArray[digitSize];
+			int digitArray[DigitSize];
 			int digitCount{};
 			GetDigitArrayFromKey(key, digitArray, digitCount);
 
 			current = root;
-			for (int digitIndex = digitSize - digitCount; digitIndex < digitSize; digitIndex++)
+			for (int digitIndex = DigitSize - digitCount; digitIndex < DigitSize; digitIndex++)
 			{
 				if (current->children[digitArray[digitIndex]] == nullptr)
 					current->children[digitArray[digitIndex]] = CreateNode();

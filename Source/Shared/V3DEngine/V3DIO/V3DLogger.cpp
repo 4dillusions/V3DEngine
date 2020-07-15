@@ -101,27 +101,27 @@ namespace V3D::V3DEngine::V3DIO
 
 	void V3DLogger::WriteOutput(const char* log)
 	{
-		const V3DString text = V3DDateTime::GetTimeStamp() + log;
+		const V3DString Text = V3DDateTime::GetTimeStamp() + log;
 
 		if (outputTypes[static_cast<unsigned int>(V3DLogOutputType::ToOutput)])
 		{
-			oStream->WriteLineToOutput(text.ToChar());
+			oStream->WriteLineToOutput(Text.ToChar());
 		}
 
 		if (outputTypes[static_cast<unsigned int>(V3DLogOutputType::ToFile)])
 		{
-			oStream->WriteLineToFile(text.ToChar());
+			oStream->WriteLineToFile(Text.ToChar());
 		}
 
 		if (outputTypes[static_cast<unsigned int>(V3DLogOutputType::ToLogTrigger)] && logTrigger != nullptr)
 		{
-			logTrigger(text);
+			logTrigger(Text);
 		}
 
 		if (outputTypes[static_cast<unsigned int>(V3DLogOutputType::ToBuffer)])
 		{
 			if (buffer != nullptr)
-				*buffer += text + '\n';
+				*buffer += Text + '\n';
 		}
 	}
 }

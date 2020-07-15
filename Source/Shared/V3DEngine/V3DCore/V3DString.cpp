@@ -213,11 +213,11 @@ namespace V3D::V3DEngine::V3DCore
 
 	V3DString& V3DString::operator+=(const V3DString& value)
 	{
-		const int newTextSize = textLenght + value.textLenght + 1;
-		if (dataSize < newTextSize)
-			IncrementDataSize(newTextSize * 2);
+		const int NewTextSize = textLenght + value.textLenght + 1;
+		if (dataSize < NewTextSize)
+			IncrementDataSize(NewTextSize * 2);
 
-		for (int currentIndex = textLenght, valueIndex = 0; currentIndex < newTextSize; currentIndex++, valueIndex++)
+		for (int currentIndex = textLenght, valueIndex = 0; currentIndex < NewTextSize; currentIndex++, valueIndex++)
 			data[currentIndex] = value.data[valueIndex];
 
 		hashCode += GetHashCode(value.data, value.textLenght, textLenght);
@@ -248,11 +248,11 @@ namespace V3D::V3DEngine::V3DCore
 
 	V3DString& V3DString::operator+=(int number)
 	{
-		const int numberLenght = GetNumberLength(number);
-		if (numberLenght <= MaxNumberDigits)
+		const int NumberLenght = GetNumberLength(number);
+		if (NumberLenght <= MaxNumberDigits)
 		{
-			const int newTextSize = textLenght + numberLenght + 1;
-			if (dataSize < newTextSize)
+			const int NewTextSize = textLenght + NumberLenght + 1;
+			if (dataSize < NewTextSize)
 				IncrementDataSize();
 
 			char digitsTemp[MaxNumberDigits];
@@ -271,16 +271,16 @@ namespace V3D::V3DEngine::V3DCore
 			}
 
 			char digits[MaxNumberDigits];
-			for (int digitsIndex = 0, tempIndex = MaxNumberDigits - numberLenght; digitsIndex < numberLenght; digitsIndex++, tempIndex++)
+			for (int digitsIndex = 0, tempIndex = MaxNumberDigits - NumberLenght; digitsIndex < NumberLenght; digitsIndex++, tempIndex++)
 				digits[digitsIndex] = digitsTemp[tempIndex];
 
-			for (int currentIndex = textLenght, digitsIndex = 0; digitsIndex < numberLenght; currentIndex++, digitsIndex++)
+			for (int currentIndex = textLenght, digitsIndex = 0; digitsIndex < NumberLenght; currentIndex++, digitsIndex++)
 				data[currentIndex] = digits[digitsIndex];
 
-			data[textLenght + numberLenght] = NullCharacter;
+			data[textLenght + NumberLenght] = NullCharacter;
 
-			hashCode += GetHashCode(digits, numberLenght, textLenght);
-			textLenght += numberLenght;
+			hashCode += GetHashCode(digits, NumberLenght, textLenght);
+			textLenght += NumberLenght;
 		}
 
 		return *this;
@@ -291,11 +291,11 @@ namespace V3D::V3DEngine::V3DCore
 		*this += static_cast<int>(floatNumber);
 		*this += FloatNumberSplit;
 
-		const float rightNum = floatNumber - static_cast<int>(floatNumber); // NOLINT
+		const float RightNum = floatNumber - static_cast<int>(floatNumber); // NOLINT
 		int num = 0;
 		for (int pow = 1; pow < MaxNumberDigits; ++pow)
 		{
-			num = static_cast<int>(rightNum * V3DMath::Pow(10, static_cast<float>(pow)));
+			num = static_cast<int>(RightNum * V3DMath::Pow(10, static_cast<float>(pow)));
 
 			if (num % 10 == 0)
 				break;
@@ -701,10 +701,10 @@ namespace V3D::V3DEngine::V3DCore
 
 		if (digits <= MaxNumberDigits)
 		{
-			const int numberLenght = GetNumberLength(number);
+			const int NumberLenght = GetNumberLength(number);
 
-			if (numberLenght < digits)
-				for (int i = 0; i < (digits - numberLenght); ++i)
+			if (NumberLenght < digits)
+				for (int i = 0; i < (digits - NumberLenght); ++i)
 				{
 					data[textLenght] = '0';
 					hashCode += GetHashCode('0', textLenght++);
@@ -718,17 +718,17 @@ namespace V3D::V3DEngine::V3DCore
 	{
 		if (startIndex + count <= textLenght)
 		{
-			const auto tempText = V3DMemory::NewArray<char>(V3DFILE_INFO, textLenght + 1);
+			const auto TempText = V3DMemory::NewArray<char>(V3DFILE_INFO, textLenght + 1);
 
 			int tempIndex = 0;
 			for (int dataIndex = 0; dataIndex < startIndex; tempIndex++, dataIndex++)
-				tempText[tempIndex] = data[dataIndex];
+				TempText[tempIndex] = data[dataIndex];
 
 			for (int dataIndex = startIndex + count; dataIndex < textLenght + 1; tempIndex++, dataIndex++)
-				tempText[tempIndex] = data[dataIndex];
+				TempText[tempIndex] = data[dataIndex];
 
 			V3DMemory::DeleteArray(data);
-			data = tempText;
+			data = TempText;
 			textLenght -= count;
 			hashCode = GetHashCode(data, textLenght, 0);
 		}
@@ -738,12 +738,12 @@ namespace V3D::V3DEngine::V3DCore
 	{
 		if (text.textLenght <= textLenght)
 		{
-			const auto tempText = V3DMemory::NewArray<char>(V3DFILE_INFO, textLenght + 1);
+			const auto TempText = V3DMemory::NewArray<char>(V3DFILE_INFO, textLenght + 1);
 
 			int tempIndex = 0;
 			for (int dataIndex = 0; dataIndex < textLenght + 1; dataIndex++)
 			{
-				tempText[tempIndex++] = data[dataIndex];
+				TempText[tempIndex++] = data[dataIndex];
 
 				bool isExist = true;
 				for (int i = 0; i < text.textLenght; i++)
@@ -761,7 +761,7 @@ namespace V3D::V3DEngine::V3DCore
 			}
 
 			V3DMemory::DeleteArray(data);
-			data = tempText;
+			data = TempText;
 			textLenght = tempIndex - 1;
 			hashCode = GetHashCode(data, textLenght, 0);
 		}
@@ -771,15 +771,15 @@ namespace V3D::V3DEngine::V3DCore
 	{
 		if (textLenght > 0)
 		{
-			const auto tempText = V3DMemory::NewArray<char>(V3DFILE_INFO, textLenght + 1);
+			const auto TempText = V3DMemory::NewArray<char>(V3DFILE_INFO, textLenght + 1);
 
 			int tempIndex = 0;
 			for (int dataIndex = 0; dataIndex < textLenght + 1; dataIndex++)
 				if (data[dataIndex] != Letter)
-					tempText[tempIndex++] = data[dataIndex];
+					TempText[tempIndex++] = data[dataIndex];
 
 			V3DMemory::DeleteArray(data);
-			data = tempText;
+			data = TempText;
 			textLenght = tempIndex - 1;
 			hashCode = GetHashCode(data, textLenght, 0);
 		}
@@ -797,7 +797,7 @@ namespace V3D::V3DEngine::V3DCore
 			'\r' (0x0d) carriage return (CR)
 		*/
 		char whiteSpaceCharacters[] = " \t\n\v\f\r";
-		const auto tempText = V3DMemory::NewArray<char>(V3DFILE_INFO, textLenght + 1);
+		const auto TempText = V3DMemory::NewArray<char>(V3DFILE_INFO, textLenght + 1);
 
 		int newTextLenght = 0;
 		for (int tempIndex = 0, dataIndex = 0; dataIndex < textLenght + 1; dataIndex++)
@@ -812,7 +812,7 @@ namespace V3D::V3DEngine::V3DCore
 
 			if (!isWhiteCpaceCharacter)
 			{
-				tempText[tempIndex++] = data[dataIndex];
+				TempText[tempIndex++] = data[dataIndex];
 				newTextLenght++;
 			}
 		}
@@ -820,7 +820,7 @@ namespace V3D::V3DEngine::V3DCore
 		textLenght = newTextLenght - 1;
 
 		V3DMemory::DeleteArray(data);
-		data = tempText;
+		data = TempText;
 		hashCode = GetHashCode(data, textLenght, 0);
 	}
 

@@ -15,7 +15,7 @@ namespace V3D::V3DEngine::V3DCore
 	class V3DENGINE_API V3DWatchHour final
 	{
 		V3DTimeHour time;
-		const V3DTimeHour minTime, maxTime;
+		const V3DTimeHour MinTime, MaxTime;
 		std::function<void()> minTimeEvent = nullptr;
 		std::function<void()> maxTimeEvent = nullptr;
 

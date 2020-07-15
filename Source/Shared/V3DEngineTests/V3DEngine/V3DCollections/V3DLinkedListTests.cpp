@@ -25,17 +25,17 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 	void V3DLinkedListTests::CtorDtorTest()
 	{
 		V3DLinkedList<int> intList;
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == V3DCollectionsTests::listMemoryAllocCount, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == V3DCollectionsTests::ListMemoryAllocCount, V3DFILE_INFO);
 		intList.~V3DLinkedList();
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
 
 		V3DLinkedList<V3DTestObjectA> staticObjList;
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == V3DCollectionsTests::listMemoryAllocCount, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == V3DCollectionsTests::ListMemoryAllocCount, V3DFILE_INFO);
 		staticObjList.~V3DLinkedList();
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
 
 		V3DLinkedList<V3DTestObjectA*> dynamicObjList;
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == V3DCollectionsTests::listMemoryAllocCount, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == V3DCollectionsTests::ListMemoryAllocCount, V3DFILE_INFO);
 		dynamicObjList.~V3DLinkedList();
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
 	}
@@ -187,7 +187,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		{
 			[]()
 			{
-				for (int i = 0; i < V3DCollectionsTests::bigSize; i++)
+				for (int i = 0; i < V3DCollectionsTests::BigSize; i++)
 					list->Add(V3DMemory::New<V3DTestObjectA>(V3DFILE_INFO));
 
 				for (list->First(); list->IsDone(); list->Next())
@@ -216,16 +216,16 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 			{
 				list = V3DMemory::New<V3DLinkedList<V3DTestObjectA*>>(V3DFILE_INFO);
 
-				for (int i = 0; i < V3DCollectionsTests::bigSize; i++)
+				for (int i = 0; i < V3DCollectionsTests::BigSize; i++)
 					list->Add(V3DMemory::New<V3DTestObjectA>(V3DFILE_INFO));
 
-				assert(list->GetLength() == V3DCollectionsTests::bigSize);
+				assert(list->GetLength() == V3DCollectionsTests::BigSize);
 
 				int i = 0;
 				for (list->First(); list->IsDone(); list->Next(), i++)
 					(*list->GetCurrent())->SetId((*list->GetCurrent())->GetId() + 1);
 
-				assert(i == V3DCollectionsTests::bigSize);
+				assert(i == V3DCollectionsTests::BigSize);
 			}, true, 0
 		});
 
