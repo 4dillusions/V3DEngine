@@ -166,7 +166,7 @@
       <CppLanguageStandard>c++1z</CppLanguageStandard>
       <PrecompiledHeaderOutputFileDirectory />
       <PrecompiledHeaderCompileAs />
-      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
     </ClCompile>
     <Link>
       <LibraryDependencies>%(LibraryDependencies);GLESv1_CM;EGL;m</LibraryDependencies>
@@ -183,7 +183,7 @@
       <CppLanguageStandard>c++1z</CppLanguageStandard>
       <PrecompiledHeaderOutputFileDirectory />
       <PrecompiledHeaderCompileAs />
-      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
     </ClCompile>
     <Link>
       <LibraryDependencies>%(LibraryDependencies);GLESv1_CM;EGL;m</LibraryDependencies>
@@ -200,7 +200,7 @@
       <CppLanguageStandard>c++1z</CppLanguageStandard>
       <PrecompiledHeaderOutputFileDirectory />
       <PrecompiledHeaderCompileAs />
-      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
     </ClCompile>
     <Link>
       <LibraryDependencies>%(LibraryDependencies);GLESv1_CM;EGL;m</LibraryDependencies>
@@ -217,7 +217,7 @@
       <CppLanguageStandard>c++1z</CppLanguageStandard>
       <PrecompiledHeaderOutputFileDirectory />
       <PrecompiledHeaderCompileAs />
-      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
     </ClCompile>
     <Link>
       <LibraryDependencies>%(LibraryDependencies);GLESv1_CM;EGL;m</LibraryDependencies>
@@ -234,7 +234,7 @@
       <CppLanguageStandard>c++1z</CppLanguageStandard>
       <PrecompiledHeaderOutputFileDirectory />
       <PrecompiledHeaderCompileAs />
-      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
     </ClCompile>
     <Link>
       <LibraryDependencies>%(LibraryDependencies);GLESv1_CM;EGL;m</LibraryDependencies>
@@ -251,7 +251,7 @@
       <CppLanguageStandard>c++1z</CppLanguageStandard>
       <PrecompiledHeaderOutputFileDirectory />
       <PrecompiledHeaderCompileAs />
-      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
     </ClCompile>
     <Link>
       <LibraryDependencies>%(LibraryDependencies);GLESv1_CM;EGL;m</LibraryDependencies>
@@ -268,7 +268,7 @@
       <CppLanguageStandard>c++1z</CppLanguageStandard>
       <PrecompiledHeaderOutputFileDirectory />
       <PrecompiledHeaderCompileAs />
-      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
     </ClCompile>
     <Link>
       <LibraryDependencies>%(LibraryDependencies);GLESv1_CM;EGL;m</LibraryDependencies>
@@ -285,7 +285,7 @@
       <CppLanguageStandard>c++1z</CppLanguageStandard>
       <PrecompiledHeaderOutputFileDirectory />
       <PrecompiledHeaderCompileAs />
-      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
     </ClCompile>
     <Link>
       <LibraryDependencies>%(LibraryDependencies);GLESv1_CM;EGL;m</LibraryDependencies>

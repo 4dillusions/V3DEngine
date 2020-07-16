@@ -47,7 +47,7 @@ C/C++
 	Code generation
 		Enable C++ exceptions: No (release), Yes (debug)
 	Language
-		Enable RTTI: No
+		Enable RTTI: Yes
 	Precompiled headers: Not using, -, -
 	
 Build Events:
@@ -82,7 +82,7 @@ C/C++
 	Code generation
 		Enable C++ exceptions: No (release), Yes (debug)
 	Language
-		Enable RTTI: No
+		Enable RTTI: Yes
 		C language: C11
 		C++ language: C++17
 	Precompiled headers: Not using, -, -

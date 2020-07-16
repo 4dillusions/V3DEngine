@@ -7,14 +7,12 @@ Released under the terms of the GNU General Public License version 3 or later.
 #pragma once
 
 #include "V3DITestObject.h"
+#include "V3DEngine/V3DCore/V3DDelegate.h"
+#include "V3DEngine/V3DCore/V3DEvent.h"
 
 namespace V3D::V3DEngineTests
 {
-	class Args final
-	{
-	public:
-		int x;
-	};
+	struct V3DArgsTest final { int x; };
 	
 	class V3DTestObjectB final : public V3DITestObject
 	{
@@ -30,7 +28,8 @@ namespace V3D::V3DEngineTests
 		V3DTestObjectB& operator=(const V3DTestObjectB&) = delete;
 		V3DTestObjectB& operator=(V3DTestObjectB&&) = delete;
 
-		//LF3Engine::LFEngine::LFCore::LFCommon::LFEvent<Args> TestEvent;
+		V3D::V3DEngine::V3DCore::V3DDelegate TestDelegate;
+		V3D::V3DEngine::V3DCore::V3DEvent<V3DArgsTest> TestEvent;
 		//void PerformTestEvent(Args args);
 		
 		char GetTypeCode() override;
