@@ -6,7 +6,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #pragma once
 
-namespace V3D::V3DEngineTests
+namespace V3D::V3DEngineTests::V3DTestObject
 {
 	//unit test interface for basic test objects
 	class V3DITestObject

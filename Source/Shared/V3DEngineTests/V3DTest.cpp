@@ -11,6 +11,8 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include <chrono>
 #include <string>
 
+using namespace V3D::V3DEngineTests::V3DTestObject;
+
 using namespace std;
 using namespace std::chrono;
 

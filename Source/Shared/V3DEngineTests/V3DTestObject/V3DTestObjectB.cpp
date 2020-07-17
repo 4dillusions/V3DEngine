@@ -6,7 +6,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #include "V3DTestObjectB.h"
 
-namespace V3D::V3DEngineTests
+namespace V3D::V3DEngineTests::V3DTestObject
 {
 	/*void V3DTestObjectB::PerformTestEvent(Args args)
 	{

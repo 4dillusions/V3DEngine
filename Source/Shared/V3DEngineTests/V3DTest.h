@@ -6,7 +6,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #pragma once
 
-#include "V3DTimingTestData.h"
+#include "V3DTestObject/V3DTimingTestData.h"
 
 #include <list>
 #include <map>
@@ -24,7 +24,7 @@ namespace V3D::V3DEngineTests
 		static int tests;
 		static int passedTests;
 		static std::list<const char*> errorList;
-		static std::map<std::string, V3DTimingTestData> timingList;
+		static std::map<std::string, V3DTestObject::V3DTimingTestData> timingList;
 		static V3DITestIO<V3DTestIO>& testIO;
 
 		static void Init();
@@ -38,7 +38,7 @@ namespace V3D::V3DEngineTests
 		V3DTest& operator=(V3DTest&&) = delete;
 
 		static void AssertOk(bool isOk, const char* info);
-		static void AddTimingTest(const std::string& timingFunctionName, const V3DTimingTestData& timingTestData);
+		static void AddTimingTest(const std::string& timingFunctionName, const V3DTestObject::V3DTimingTestData& timingTestData);
 		static void AddTimingTest(const std::string& timingFunctionName, const std::function<void()>& timingFunction);
 		static void RunTimingTests();
 		static void WriteStatistics();

@@ -8,16 +8,17 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngineTests/V3DTest.h"
 #include "V3DEngine/V3DMacros.h"
 #include "V3DEngine/V3DCore/V3DMemory.h"
-#include "V3DEngineTests/V3DTestObjectB.h"
+#include "V3DEngineTests/V3DTestObject/V3DTestObjectB.h"
 
 using namespace V3D::V3DEngine::V3DCore;
+using namespace V3D::V3DEngineTests::V3DTestObject;
 
 namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 {
 	void V3DDelegateEventTest::DelegateAddRemoveTest()
 	{
 		int x = 100;
-		auto obj = V3DMemory::New<V3DTestObjectB>(V3DFILE_INFO);
+		auto obj = V3DMemory::New<V3DTestObject::V3DTestObjectB>(V3DFILE_INFO);
 
 		const std::function<void()> Func1 = [&x]() { x += 5; };
 		obj->TestDelegate += Func1;

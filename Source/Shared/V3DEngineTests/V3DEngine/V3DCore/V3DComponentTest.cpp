@@ -6,14 +6,15 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #include "V3DComponentTest.h"
 #include "V3DEngineTests/V3DTest.h"
-#include "V3DEngineTests/V3DTestGameComponent.h"
-#include "V3DEngineTests/V3DTestLayer.h"
-#include "V3DEngineTests/V3DTestLayerPool.h"
 #include "V3DEngine/V3DMacros.h"
 #include "V3DEngine/V3DCore/V3DString.h"
-#include "V3DEngineTests/V3DTestSprite.h"
+#include "V3DEngineTests/V3DTestObject/V3DTestSprite.h"
+#include "V3DEngineTests/V3DTestObject/V3DTestGameComponent.h"
+#include "V3DEngineTests/V3DTestObject/V3DTestLayer.h"
+#include "V3DEngineTests/V3DTestObject/V3DTestLayerPool.h"
 
 using namespace V3D::V3DEngine::V3DCore;
+using namespace V3D::V3DEngineTests::V3DTestObject;
 
 namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 {

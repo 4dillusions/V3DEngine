@@ -8,7 +8,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #include "V3DEngine/V3DCore/V3DGameCompositeComponent.h"
 
-namespace V3D::V3DEngineTests
+namespace V3D::V3DEngineTests::V3DTestObject
 {
 	class V3DTestSprite final : public V3D::V3DEngine::V3DCore::V3DGameComponent
 	{

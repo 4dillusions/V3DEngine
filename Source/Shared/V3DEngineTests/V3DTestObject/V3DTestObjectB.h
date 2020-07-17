@@ -10,7 +10,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngine/V3DCore/V3DDelegate.h"
 #include "V3DEngine/V3DCore/V3DEvent.h"
 
-namespace V3D::V3DEngineTests
+namespace V3D::V3DEngineTests::V3DTestObject
 {
 	struct V3DArgsTest final { int x; };
 	

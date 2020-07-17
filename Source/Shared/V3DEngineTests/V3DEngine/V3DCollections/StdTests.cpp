@@ -13,9 +13,10 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngine/V3DMacros.h"
 #include "V3DEngine/V3DCore/V3DMemory.h"
 #include "V3DEngineTests/V3DTest.h"
-#include "V3DEngineTests/V3DTestObjectA.h"
+#include "V3DEngineTests/V3DTestObject/V3DTestObjectA.h"
 
 using namespace V3D::V3DEngine::V3DCore;
+using namespace V3D::V3DEngineTests::V3DTestObject;
 
 using namespace std;
 
