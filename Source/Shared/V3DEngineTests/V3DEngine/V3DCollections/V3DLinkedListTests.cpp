@@ -107,7 +107,6 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 
 		V3DTest::AssertOk((allNumbers == (4 + 5 + 6)), V3DFILE_INFO);
 
-		list.RemoveAll();
 		list.~V3DLinkedList();
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
 	}
@@ -165,7 +164,6 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		for (list.First(); list.IsDone(); list.Next())
 			V3DMemory::Delete(*list.GetCurrent());
 
-		list.RemoveAll();
 		list.~V3DLinkedList();
 		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == 0, V3DFILE_INFO);
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);

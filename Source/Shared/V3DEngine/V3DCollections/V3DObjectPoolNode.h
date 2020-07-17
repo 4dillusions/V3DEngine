@@ -13,9 +13,9 @@ namespace V3D::V3DEngine::V3DCollections
 		T* data{};
 		V3DObjectPoolNode* prev{}, * next{};
 
-		V3DObjectPoolNode() = default;
+		V3DObjectPoolNode<T>() = default;
 		V3DObjectPoolNode<T>(const V3DObjectPoolNode<T>&) = delete;
-		V3DObjectPoolNode(V3DObjectPoolNode<T>&&) = delete;
+		V3DObjectPoolNode<T>(V3DObjectPoolNode<T>&&) = delete;
 		V3DObjectPoolNode<T>& operator=(const V3DObjectPoolNode<T>&) = delete;
 		V3DObjectPoolNode<T>& operator=(V3DObjectPoolNode<T>&&) = delete;
 	};

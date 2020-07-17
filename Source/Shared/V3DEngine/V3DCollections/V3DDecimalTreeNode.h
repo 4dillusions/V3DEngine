@@ -16,9 +16,9 @@ namespace V3D::V3DEngine::V3DCollections
 		TItem* dataFlag{};
 		V3DDecimalTreeNode* children[ChildSize]{};
 
-		V3DDecimalTreeNode() = default;
+		V3DDecimalTreeNode<TKey, TItem>() = default;
 		V3DDecimalTreeNode<TKey, TItem>(const V3DDecimalTreeNode<TKey, TItem>&) = delete;
-		V3DDecimalTreeNode(V3DDecimalTreeNode<TKey, TItem>&&) = delete;
+		V3DDecimalTreeNode<TKey, TItem>(V3DDecimalTreeNode<TKey, TItem>&&) = delete;
 		V3DDecimalTreeNode<TKey, TItem>& operator=(const V3DDecimalTreeNode<TKey, TItem>&) = delete;
 		V3DDecimalTreeNode<TKey, TItem>& operator=(V3DDecimalTreeNode<TKey, TItem>&&) = delete;
 

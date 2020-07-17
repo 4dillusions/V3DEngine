@@ -14,7 +14,7 @@ namespace V3D::V3DEngine::V3DCollections
 		T* dataFlag{};
 		V3DLinkedListNode* prev{}, * next{};
 
-		V3DLinkedListNode() = default;
+		V3DLinkedListNode<T>() = default;
 		V3DLinkedListNode<T>(const V3DLinkedListNode<T>&) = delete;
 		V3DLinkedListNode(V3DLinkedListNode<T>&&) = delete;
 		V3DLinkedListNode<T>& operator=(const V3DLinkedListNode<T>&) = delete;

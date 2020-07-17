@@ -71,7 +71,7 @@ namespace V3D::V3DEngine::V3DCollections
 
 	public:
 		V3DLinkedList<T>(const V3DLinkedList<T>&) = delete;
-		V3DLinkedList(V3DLinkedList<T>&&) = delete;
+		V3DLinkedList<T>(V3DLinkedList<T>&&) = delete;
 		V3DLinkedList<T>& operator=(const V3DLinkedList<T>&) = delete;
 		V3DLinkedList<T>& operator=(V3DLinkedList<T>&&) = delete;
 

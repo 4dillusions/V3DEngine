@@ -26,13 +26,34 @@ namespace V3D::V3DEngine::V3DCollections
 		static remove/delete:		no
 		continuously remove/delete: yes (logically)
 	*/
-	template<typename T, int poolSize> class V3DObjectPool final
+	template<typename T> class V3DObjectPool final
 	{
+		const int PoolSize;
 		T* dataArray;
 		V3DObjectPoolNode<T>* nodes;
 		V3DObjectPoolNode<T>* poolHead{}, * poolTail{}, * head{}, * tail{}, * current{};
 		int length{};
 
+		void Init()
+		{
+			dataArray = V3DCore::V3DMemory::NewArray<T>(V3DFILE_INFO, PoolSize);
+			nodes = V3DCore::V3DMemory::NewArray<V3DObjectPoolNode<T>>(V3DFILE_INFO, PoolSize + 4);
+
+			poolHead = &nodes[PoolSize];
+			poolTail = &nodes[PoolSize + 1];
+			head = &nodes[PoolSize + 2];
+			tail = &nodes[PoolSize + 3];
+
+			int arrayIndex = 0;
+			auto currentNode = AddNewNodeWithData(poolHead, arrayIndex);
+
+			for (arrayIndex++; arrayIndex < PoolSize; arrayIndex++)
+				currentNode = AddNewNodeWithData(currentNode, arrayIndex);
+
+			currentNode->next = poolTail;
+			poolTail->prev = currentNode;
+		}
+		
 		V3DObjectPoolNode<T>* AddNewNodeWithData(V3DObjectPoolNode<T>* targetNode, int arrayIndex)
 		{
 			auto newNode = &nodes[arrayIndex];
@@ -69,7 +90,7 @@ namespace V3D::V3DEngine::V3DCollections
 
 		void RemoveNodeFromPool(V3DObjectPoolNode<T>* node)
 		{
-			if (length < poolSize)
+			if (length < PoolSize)
 				LinkNodes(node->prev, node->next);
 			else
 			{
@@ -98,29 +119,19 @@ namespace V3D::V3DEngine::V3DCollections
 		}
 
 	public:
-		V3DObjectPool<T, poolSize>(const V3DObjectPool<T, poolSize>&) = delete;
-		V3DObjectPool(V3DObjectPool<T, poolSize>&&) = delete;
-		V3DObjectPool<T, poolSize>& operator=(const V3DObjectPool<T, poolSize>&) = delete;
-		V3DObjectPool<T, poolSize>& operator=(V3DObjectPool<T, poolSize>&&) = delete;
+		V3DObjectPool<T>(const V3DObjectPool<T>&) = delete;
+		V3DObjectPool<T>(V3DObjectPool<T>&&) = delete;
+		V3DObjectPool<T>& operator=(const V3DObjectPool<T>&) = delete;
+		V3DObjectPool<T>& operator=(V3DObjectPool<T>&&) = delete;
 
 		V3DObjectPool()
 		{
-			dataArray = V3DCore::V3DMemory::NewArray<T>(V3DFILE_INFO, poolSize);
-			nodes = V3DCore::V3DMemory::NewArray<V3DObjectPoolNode<T>>(V3DFILE_INFO, poolSize + 4);
-			
-			poolHead = &nodes[poolSize];
-			poolTail = &nodes[poolSize + 1];
-			head = &nodes[poolSize + 2];
-			tail = &nodes[poolSize + 3];
+			Init();
+		}
 
-			int arrayIndex = 0;
-			auto currentNode = AddNewNodeWithData(poolHead, arrayIndex);
-			
-			for (arrayIndex++; arrayIndex < poolSize; arrayIndex++)
-				currentNode = AddNewNodeWithData(currentNode, arrayIndex);
-
-			currentNode->next = poolTail;
-			poolTail->prev = currentNode;
+		V3DObjectPool(const int poolSize) : PoolSize { poolSize }
+		{
+			Init();
 		}
 
 		~V3DObjectPool()
@@ -167,6 +178,8 @@ namespace V3D::V3DEngine::V3DCollections
 				RemoveNodeFromPool(temp);
 				InsertNodeToList(temp);			
 				length++;
+
+				return temp->data;
 			}
 
 			return nullptr;
@@ -190,7 +203,7 @@ namespace V3D::V3DEngine::V3DCollections
 			auto first = head->next;
 			auto last = tail->prev;
 
-			if (length == poolSize)
+			if (length == PoolSize)
 				LinkNodes(poolHead, first);
 			else
 				LinkNodes(poolTail->prev, last);

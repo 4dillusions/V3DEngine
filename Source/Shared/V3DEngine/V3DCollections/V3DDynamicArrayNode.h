@@ -12,9 +12,9 @@ namespace V3D::V3DEngine::V3DCollections
 	{
 		T data{};
 
-		V3DDynamicArrayNode() = default;
+		V3DDynamicArrayNode<T>() = default;
 		V3DDynamicArrayNode<T>(const V3DDynamicArrayNode<T>&) = delete;
-		V3DDynamicArrayNode(V3DDynamicArrayNode<T>&&) = delete;
+		V3DDynamicArrayNode<T>(V3DDynamicArrayNode<T>&&) = delete;
 		V3DDynamicArrayNode<T>& operator=(const V3DDynamicArrayNode<T>&) = delete;
 		V3DDynamicArrayNode<T>& operator=(V3DDynamicArrayNode<T>&&) = delete;
 	};

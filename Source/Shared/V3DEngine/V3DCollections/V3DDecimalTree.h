@@ -76,7 +76,7 @@ namespace V3D::V3DEngine::V3DCollections
 
 	public:
 		V3DDecimalTree<TKey, TItem>(const V3DDecimalTree<TKey, TItem>&) = delete;
-		V3DDecimalTree(V3DDecimalTree<TKey, TItem>&&) = delete;
+		V3DDecimalTree<TKey, TItem>(V3DDecimalTree<TKey, TItem>&&) = delete;
 		V3DDecimalTree<TKey, TItem>& operator=(const V3DDecimalTree<TKey, TItem>&) = delete;
 		V3DDecimalTree<TKey, TItem>& operator=(V3DDecimalTree<TKey, TItem>&&) = delete;
 

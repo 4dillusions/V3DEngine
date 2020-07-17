@@ -26,13 +26,22 @@ namespace V3D::V3DEngine::V3DCollections
 		static remove/delete:		yes/no
 		continuously remove/delete: yes/no
 	*/
-	template<typename T, int minDataSize = 100> class V3DDynamicArray final
+	template<typename T> class V3DDynamicArray final
 	{
+		const int MinDataSize { 100 };
 		V3DDynamicArrayNode<T>** dataArray{};
 		V3DDynamicArrayNode<T>* current{};
-		int dataSize = minDataSize;
+		int dataSize = MinDataSize;
 		int currentIndex{};
 		int length{};
+
+		void Init()
+		{
+			dataArray = CreateDataArray(MinDataSize);
+
+			for (int i = 0; i < dataSize; i++)
+				dataArray[i] = nullptr;
+		}
 
 		V3DDynamicArrayNode<T>** CreateDataArray(int size)
 		{
@@ -55,20 +64,22 @@ namespace V3D::V3DEngine::V3DCollections
 		}
 
 	public:
-		V3DDynamicArray()
+		V3DDynamicArray<T>()
 		{
-			dataArray = CreateDataArray(minDataSize);
-
-			for (int i = 0; i < dataSize; i++)
-				dataArray[i] = nullptr;
+			Init();
+		}
+		
+		explicit V3DDynamicArray<T>(const int minDataSize) : MinDataSize { minDataSize }
+		{
+			Init();
 		}
 
-		V3DDynamicArray<T, minDataSize>(const V3DDynamicArray<T, minDataSize>& value)
+		V3DDynamicArray<T>(const V3DDynamicArray<T>& value)
 		{
 			*this = value;
 		}
 
-		V3DDynamicArray<T, minDataSize>(V3DDynamicArray<T, minDataSize>&& value) noexcept
+		V3DDynamicArray<T>(V3DDynamicArray<T>&& value) noexcept
 		{
 			*this = std::move(value);
 		}
@@ -110,7 +121,7 @@ namespace V3D::V3DEngine::V3DCollections
 				currentIndex = value.currentIndex;
 				dataArray = value.dataArray;
 
-				value.dataSize = minDataSize;
+				value.dataSize = MinDataSize;
 				value.length = 0;
 				value.currentIndex = 0;
 				value.dataArray = nullptr;
