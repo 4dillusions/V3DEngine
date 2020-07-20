@@ -11,8 +11,13 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEngine\V3DCore\V3DEnvironment.h" />
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEngine\V3DEngineLibrary.h" />
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEngine\V3DIO\V3DOstream.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DCore\V3DEnvironment.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DIO\V3DOstream.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

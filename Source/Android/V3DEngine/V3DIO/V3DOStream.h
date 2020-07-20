@@ -6,20 +6,15 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #pragma once
 
-#include <android/log.h>
 #include "V3DEngine/V3DIO/V3DIOStream.h"
+#include "V3DEngine/V3DGameEngine.h"
 
 namespace V3D::V3DEngine::V3DIO
 {
-    class V3DOstream final : public V3DIOstream
+    class V3DENGINE_API V3DOstream final : public V3DIOstream
     {
     public:
-        void WriteLineToFile(const char* log) override
-        { }
-    	
-        void WriteLineToOutput(const char* log) override
-        {
-			__android_log_print(ANDROID_LOG_VERBOSE, "V3DEngine", "%s", log);
-        }
+        void WriteLineToFile(const char* log) override;
+        void WriteLineToOutput(const char* log) override;
     };
 }
