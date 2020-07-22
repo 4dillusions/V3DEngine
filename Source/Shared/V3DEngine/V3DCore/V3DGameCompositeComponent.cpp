@@ -10,6 +10,8 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DString.h"
 #include "V3DEngine/V3DIO/V3DLogger.h"
 
+#include <assert.h>
+
 using namespace V3D::V3DEngine::V3DIO;
 
 namespace V3D::V3DEngine::V3DCore
@@ -58,6 +60,18 @@ namespace V3D::V3DEngine::V3DCore
 
 	void V3DGameCompositeComponent::Add(V3DGameComponent* gameComponent)
 	{
+		static bool isDebugMode{ V3DEnvironment::GetIsRunModeDebug() };
+		static bool isTestMode{ V3DEnvironment::GetIsUnitTestMode() };
+		if (isDebugMode || isTestMode)
+		{
+			const bool isfounded = Find(gameComponent);
+
+			if (isTestMode && isfounded)
+				return;
+			
+			assert(!isfounded);
+		}
+		
 		componentList.Add(gameComponent);
 	}
 

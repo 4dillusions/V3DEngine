@@ -46,6 +46,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 		gameLayer->Add(Sprite3);
 		gameLayer->Add(Sprite4);
 		gameLayer->Add(Sprite5);
+		gameLayer->Add(sprite1);
 
 		V3DTest::AssertOk(*gameLayer->Find(Sprite3) == *Sprite3, V3DFILE_INFO);
 		V3DTest::AssertOk(*gameLayer->Find("Sprite4") == *Sprite4, V3DFILE_INFO);

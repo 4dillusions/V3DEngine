@@ -19,7 +19,7 @@ namespace V3D::V3DEngine::V3DIO
 		static V3DOstream stream;
 		oStream = &stream;
 
-		buffer = V3DMemory::New<V3DString>(V3DPLATFORM_INFO);
+		buffer = V3DMemory::New<V3DString>(V3DFILE_INFO);
 
 		for (bool& outputType : outputTypes)
 			outputType = false;

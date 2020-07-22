@@ -18,7 +18,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 	void V3DDelegateEventTest::DelegateAddRemoveTest()
 	{
 		int x = 100;
-		auto obj = V3DMemory::New<V3DTestObject::V3DTestObjectB>(V3DFILE_INFO);
+		auto obj = V3DMemory::New<V3DTestObjectB>(V3DFILE_INFO);
 
 		const std::function<void()> Func1 = [&x]() { x += 5; };
 		obj->TestDelegate += Func1;

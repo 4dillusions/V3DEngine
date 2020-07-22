@@ -19,7 +19,7 @@ namespace V3D::V3DEngineTests::V3DEngine
 {	
 	void V3DTestRunner::RunAllTests()
 	{
-		V3DMemory::SetUnitTestMode();
+		V3DEnvironment::SetUnitTestMode();
 		
 		V3DTypesTests::RunAllTests();
 		V3DMathematics::V3DMathematicsTests::RunAllTests();

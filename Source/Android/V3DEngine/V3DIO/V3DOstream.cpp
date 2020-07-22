@@ -5,6 +5,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 */
 
 #include "V3DOstream.h"
+#include "V3DEngine/V3DCore/V3DEnvironment.h"
 
 #include <android/log.h>
 
@@ -15,6 +16,6 @@ namespace V3D::V3DEngine::V3DIO
 
     void V3DOstream::WriteLineToOutput(const char* log)
     {
-        __android_log_print(ANDROID_LOG_VERBOSE, "V3DEngine", "%s", log);
+        __android_log_print(ANDROID_LOG_VERBOSE, V3DCore::V3DEnvironment::GetEngineName(), "%s", log);
     }
 }

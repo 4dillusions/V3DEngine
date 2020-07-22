@@ -17,12 +17,6 @@ using namespace V3D::V3DEngine::V3DIO;
 namespace V3D::V3DEngine::V3DCore
 {
 	std::unordered_map<int*, const char*> V3DMemory::memoryList;
-	bool V3DMemory::IsUnitTestMode = false;
-	
-	void V3DMemory::SetUnitTestMode()
-	{
-		IsUnitTestMode = true;
-	}
 	
 	int V3DMemory::GetMemoryLeakCount()
 	{

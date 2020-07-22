@@ -5,13 +5,14 @@ Released under the terms of the GNU General Public License version 3 or later.
 */
 
 #include "V3DTest.h"
-#include "V3DEngine/V3DMacros.h"
 #include "V3DEngineTests/V3DTestIO.h"
+#include "V3DEngine/V3DCore/V3DEnvironment.h"
 
 #include <chrono>
 #include <string>
 
 using namespace V3D::V3DEngineTests::V3DTestObject;
+using namespace V3D::V3DEngine::V3DCore;
 
 using namespace std;
 using namespace std::chrono;
@@ -80,7 +81,9 @@ namespace V3D::V3DEngineTests
 
 	void V3DTest::WriteStatistics()
 	{
-		testIO.WriteOutput("UnitTest" + string(V3DPLATFORM_INFO));
+		static V3DEnvironment environment;
+		
+		testIO.WriteOutput(string("UnitTest (") + V3DEnvironment::GetRunMode() + " " + environment.GetPlatformName() + ")");
 		testIO.WriteOutput("Passed: " + testIO.ConvertToString(tests) + '/' + testIO.ConvertToString(passedTests));
 		testIO.WriteOutput("Unit test Errors:");
 
