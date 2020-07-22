@@ -147,7 +147,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DCore\V3DGameCompositeComponent.h">
       <Filter>Source\V3DCore</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DCore\V3DAbstractEnvironment.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DCore\V3DAbstractEnvironment.h">
+      <Filter>Source\V3DCore</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DGameEngine\V3DGameEngineFacade.cpp">
@@ -216,6 +218,8 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DCore\V3DGameCompositeComponent.cpp">
       <Filter>Source\V3DCore</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DCore\V3DAbstractEnvironment.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DCore\V3DAbstractEnvironment.cpp">
+      <Filter>Source\V3DCore</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
