@@ -111,10 +111,9 @@ namespace V3D::V3DEngine::V3DCore
 		return windowHeight > windowWidth;
 	}
 
-	const char *V3DAbstractEnvironment::GetSystemInfo() const
+	V3DString V3DAbstractEnvironment::GetSystemInfo() const
 	{
-		static V3DString result;
-		result.Clear();
+		V3DString result;
 		
 		const V3DString timeStamp = V3DDateTime::GetTimeStamp();
 
@@ -130,6 +129,6 @@ namespace V3D::V3DEngine::V3DCore
 		result += timeStamp + V3DString("vsync: ") + (GetIsVSyncEnable() ? "true" : "false") + '\n';
 		result += timeStamp + V3DString("game name: ") + GetGameName();
 
-		return result.ToChar();
+		return result;
 	}
 }

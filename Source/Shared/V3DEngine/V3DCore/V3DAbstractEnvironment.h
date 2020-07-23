@@ -10,6 +10,9 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 namespace V3D::V3DEngine::V3DCore
 {
+	enum class V3DAssetPathType : unsigned;
+	class V3DString;
+	
 	class V3DENGINE_API V3DAbstractEnvironment
 	{
         static bool isUnitTestMode;
@@ -54,8 +57,9 @@ namespace V3D::V3DEngine::V3DCore
         [[nodiscard]] virtual int GetWindowHeight() const = 0;
         [[nodiscard]] virtual int GetScreenWidth() const = 0;
         [[nodiscard]] virtual int GetScreenHeight() const = 0;
-        
+        [[nodiscard]] virtual const char* GetAssetPath(V3DAssetPathType assetPath) const = 0;
+		
         [[nodiscard]] bool GetIsWindowOrientationPortrait() const;
-        [[nodiscard]] const char* GetSystemInfo() const;
+        [[nodiscard]] V3DString GetSystemInfo() const;
 	};
 }

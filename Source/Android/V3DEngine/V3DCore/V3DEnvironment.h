@@ -19,5 +19,6 @@ namespace V3D::V3DEngine::V3DCore
         [[nodiscard]] int GetWindowHeight() const override;
         [[nodiscard]] int GetScreenWidth() const override;
         [[nodiscard]] int GetScreenHeight() const override;
+        [[nodiscard]] const char* GetAssetPath(V3DAssetPathType assetPath) const override;
     };
 }
