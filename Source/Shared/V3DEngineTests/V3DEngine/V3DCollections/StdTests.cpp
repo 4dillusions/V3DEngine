@@ -18,19 +18,17 @@ Released under the terms of the GNU General Public License version 3 or later.
 using namespace V3D::V3DEngine::V3DCore;
 using namespace V3D::V3DEngineTests::V3DTestObject;
 
-using namespace std;
-
 namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 {
 	void StdTests::StdVectorAddRemoveTimingTest()
 	{
-		static vector<V3DTestObjectA*>* stdList;
+		static std::vector<V3DTestObjectA*>* stdList;
 
 		V3DTest::AddTimingTest("StdVectorAddRemoveTimingTest", V3DTimingTestData
 			{
 				[]()
 				{
-					stdList = V3DMemory::New<vector<V3DTestObjectA*>>(V3DFILE_INFO);
+					stdList = V3DMemory::New<std::vector<V3DTestObjectA*>>(V3DFILE_INFO);
 				}, true, 0
 			});
 
@@ -73,13 +71,13 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 
 	void StdTests::StdVectorIterateTimingTest()
 	{
-		static vector<V3DTestObjectA*>* stdList;
+		static std::vector<V3DTestObjectA*>* stdList;
 
 		V3DTest::AddTimingTest("StdVectorIterateTimingTest", V3DTimingTestData
 			{
 				[]()
 				{
-					stdList = V3DMemory::New<vector<V3DTestObjectA*>>(V3DFILE_INFO);
+					stdList = V3DMemory::New<std::vector<V3DTestObjectA*>>(V3DFILE_INFO);
 
 					for (int i = 0; i < V3DCollectionsTests::BigSize; i++)
 						stdList->push_back(V3DMemory::New<V3DTestObjectA>(V3DFILE_INFO));
@@ -124,13 +122,13 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 
 	void StdTests::StdMapAddRemoveTimingTest()
 	{
-		static map<int, V3DTestObjectA*>* stdMap;
+		static std::map<int, V3DTestObjectA*>* stdMap;
 
 		V3DTest::AddTimingTest("StdMapAddRemoveTimingTest", V3DTimingTestData
 			{
 				[]()
 				{
-					stdMap = V3DMemory::New<map<int, V3DTestObjectA*>>(V3DFILE_INFO);
+					stdMap = V3DMemory::New<std::map<int, V3DTestObjectA*>>(V3DFILE_INFO);
 				}, true, 0
 			});
 
@@ -173,13 +171,13 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 
 	void StdTests::StdMapIterateTimingTest()
 	{
-		static map<int, V3DTestObjectA*>* stdMap;
+		static std::map<int, V3DTestObjectA*>* stdMap;
 
 		V3DTest::AddTimingTest("StdMapIterateTimingTest", V3DTimingTestData
 			{
 				[]()
 				{
-					stdMap = V3DMemory::New<map<int, V3DTestObjectA*>>(V3DFILE_INFO);
+					stdMap = V3DMemory::New<std::map<int, V3DTestObjectA*>>(V3DFILE_INFO);
 
 					for (int i = 0; i < V3DCollectionsTests::BigSize; i++)
 						stdMap->insert({ i, V3DMemory::New<V3DTestObjectA>(V3DFILE_INFO) });

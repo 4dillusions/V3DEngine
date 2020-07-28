@@ -8,8 +8,6 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #include <chrono>
 
-using namespace std::chrono;
-
 namespace V3D::V3DEngine::V3DCore
 {
 	V3DStopper::V3DStopper()
@@ -19,7 +17,7 @@ namespace V3D::V3DEngine::V3DCore
 
 	long long V3DStopper::GetActualTimeMsec()
 	{
-		return duration_cast<milliseconds>(steady_clock::now().time_since_epoch()).count();
+		return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::steady_clock::now().time_since_epoch()).count();
 	}
 
 	long long V3DStopper::GetDeltaTimeMsec()

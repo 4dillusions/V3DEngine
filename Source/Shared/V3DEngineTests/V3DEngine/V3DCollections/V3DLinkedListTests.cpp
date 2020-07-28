@@ -19,8 +19,6 @@ using namespace V3D::V3DEngine::V3DCore;
 using namespace V3D::V3DEngine::V3DCollections;
 using namespace V3D::V3DEngineTests::V3DTestObject;
 
-using namespace std;
-
 namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 {
 	void V3DLinkedListTests::CtorDtorTest()

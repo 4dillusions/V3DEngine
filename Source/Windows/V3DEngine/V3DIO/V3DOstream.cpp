@@ -9,8 +9,6 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include <fstream>
 #include <iostream>
 
-using namespace std;
-
 namespace V3D::V3DEngine::V3DIO
 {
 	V3DOstream::V3DOstream()

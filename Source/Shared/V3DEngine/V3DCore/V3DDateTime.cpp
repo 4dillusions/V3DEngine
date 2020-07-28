@@ -9,8 +9,6 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include <ctime>
 #include <chrono>
 
-using namespace std::chrono;
-
 namespace V3D::V3DEngine::V3DCore
 {
 	V3DTimeSpan* V3DDateTime::GetNow()
@@ -28,7 +26,7 @@ namespace V3D::V3DEngine::V3DCore
 		result.hour = localTime->tm_hour;
 		result.min = localTime->tm_min;
 		result.sec = localTime->tm_sec;
-		result.millisec = static_cast<int>(duration_cast<milliseconds>(system_clock::now().time_since_epoch()).count() % 1000);
+		result.millisec = static_cast<int>(std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::system_clock::now().time_since_epoch()).count() % 1000);
 		
 		return &result;
 	}

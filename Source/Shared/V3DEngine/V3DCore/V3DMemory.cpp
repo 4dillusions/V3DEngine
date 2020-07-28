@@ -11,7 +11,6 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #include <unordered_map>
 
-using namespace std;
 using namespace V3D::V3DEngine::V3DIO;
 
 namespace V3D::V3DEngine::V3DCore

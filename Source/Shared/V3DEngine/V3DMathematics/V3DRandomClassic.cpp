@@ -10,8 +10,6 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include <ctime>
 #include <cstdlib>
 
-using namespace std;
-
 namespace V3D::V3DEngine::V3DMathematics
 {
 	V3DRandomClassic::V3DRandomClassic()

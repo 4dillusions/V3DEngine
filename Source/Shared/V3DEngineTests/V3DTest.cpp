@@ -15,16 +15,13 @@ Released under the terms of the GNU General Public License version 3 or later.
 using namespace V3D::V3DEngineTests::V3DTestObject;
 using namespace V3D::V3DEngine::V3DCore;
 
-using namespace std;
-using namespace std::chrono;
-
 namespace V3D::V3DEngineTests
 {
 	int V3DTest::errorCounter = 0;
 	int V3DTest::tests = 0;
 	int V3DTest::passedTests = 0;
-	list<const char*> V3DTest::errorList;
-	map<string, V3DTimingTestData> V3DTest::timingList;
+	std::list<const char*> V3DTest::errorList;
+	std::map<std::string, V3DTimingTestData> V3DTest::timingList;
 	V3DITestIO<V3DTestIO>& V3DTest::testIO = V3DTestIO::Get();
 
 	void V3DTest::Init()
@@ -48,13 +45,13 @@ namespace V3D::V3DEngineTests
 		}
 	}
 
-	void V3DTest::AddTimingTest(const string& timingFunctionName, const V3DTimingTestData& timingTestData)
+	void V3DTest::AddTimingTest(const std::string& timingFunctionName, const V3DTimingTestData& timingTestData)
 	{
 		if (timingList.find(timingFunctionName) == timingList.end())
 			timingList.insert({ timingFunctionName + testIO.ConvertToString(timingTestData.orderIndex), timingTestData });
 	}
 
-	void V3DTest::AddTimingTest(const string& timingFunctionName, const function<void()>& timingFunction)
+	void V3DTest::AddTimingTest(const std::string& timingFunctionName, const std::function<void()>& timingFunction)
 	{
 		AddTimingTest(timingFunctionName, V3DTimingTestData{ timingFunction });
 	}
@@ -71,12 +68,12 @@ namespace V3D::V3DEngineTests
 				continue;
 			}
 
-			auto start = system_clock::now();
+			auto start = std::chrono::system_clock::now();
 			mapItem.second.func();
-			auto end = system_clock::now();
+			auto end = std::chrono::system_clock::now();
 
 			auto functionName = mapItem.first.substr(0, mapItem.first.size() - 1);
-			testIO.WriteOutput(functionName + " " + testIO.ConvertToString(static_cast<int>(duration_cast<milliseconds>(end - start).count())) + " ms");
+			testIO.WriteOutput(functionName + " " + testIO.ConvertToString(static_cast<int>(std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count())) + " ms");
 		}
 	}
 
@@ -84,7 +81,7 @@ namespace V3D::V3DEngineTests
 	{
 		static auto environment = V3DIoc<V3DEnvironment>::Get();
 		
-		testIO.WriteOutput(string("UnitTest (") + V3DEnvironment::GetRunMode() + " " + environment.GetPlatformName() + ")");
+		testIO.WriteOutput(std::string("UnitTest (") + V3DEnvironment::GetRunMode() + " " + environment.GetPlatformName() + ")");
 		testIO.WriteOutput("Passed: " + testIO.ConvertToString(tests) + '/' + testIO.ConvertToString(passedTests));
 		testIO.WriteOutput("Unit test Errors:");
 
