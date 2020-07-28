@@ -17,6 +17,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DCore\V3DEnvironment.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DIO\V3DFile.cpp" />
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DIO\V3DOstream.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

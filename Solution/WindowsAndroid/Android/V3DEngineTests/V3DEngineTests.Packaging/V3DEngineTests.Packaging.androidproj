@@ -146,6 +146,7 @@
     </AntPackage>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <Content Include="assets\Data\Options\test.txt" />
     <Content Include="res\values\strings.xml" />
     <AntBuildXml Include="build.xml" />
     <AndroidManifest Include="AndroidManifest.xml" />
@@ -155,6 +156,14 @@
     <ProjectReference Include="..\V3DEngineTests.NativeActivity\V3DEngineTests.NativeActivity.vcxproj">
       <Project>{38107070-e6ee-4e58-9fad-ecab69573b0c}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="assets\Content\Texture\" />
+    <Folder Include="assets\Content\Sound\" />
+    <Folder Include="assets\Content\Shader\" />
+    <Folder Include="assets\Data\Level\" />
+    <Folder Include="assets\Data\UI\" />
+    <Folder Include="assets\Data\Physics\" />
   </ItemGroup>
   <Import Project="$(AndroidTargetsPath)\Android.targets" />
   <ImportGroup Label="ExtensionTargets" />

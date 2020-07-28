@@ -11,6 +11,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 namespace V3D::V3DEngine::V3DCore
 {
+	void* V3DAbstractEnvironment::app{};
 	bool V3DAbstractEnvironment::isUnitTestMode = false;
 	bool V3DAbstractEnvironment::isVsyncEnable = false;
 	char* V3DAbstractEnvironment::renderer{};
@@ -60,6 +61,16 @@ namespace V3D::V3DEngine::V3DCore
 	void V3DAbstractEnvironment::SetIsVSyncEnable(bool isVsyncEnable)
 	{
 		V3DAbstractEnvironment::isVsyncEnable = isVsyncEnable;
+	}
+
+	void V3DAbstractEnvironment::SetApp(void* application)
+	{
+		app = application;
+	}
+
+	void* V3DAbstractEnvironment::GetApp()
+	{
+		return app;
 	}
 
 	void V3DAbstractEnvironment::SetWindowSize(int width, int height)

@@ -153,6 +153,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DCore\V3DAssetPathType.h">
       <Filter>Source\V3DCore</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DIO\V3DFile.h">
+      <Filter>Source\V3DIO</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DGameEngine\V3DGameEngineFacade.cpp">

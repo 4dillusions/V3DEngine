@@ -5,12 +5,15 @@ Released under the terms of the GNU General Public License version 3 or later.
 */
 
 #include "V3DIOTests.h"
+
 #include "V3DLoggerTest.h"
+#include "V3DFileTest.h"
 
 namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 {	
 	void V3DIOTests::RunAllTests()
 	{
 		V3DLoggerTest::RunAllTests();
+		V3DFileTest::RunAllTests();
 	}
 }

@@ -15,6 +15,7 @@ namespace V3D::V3DEngine::V3DCore
 	
 	class V3DENGINE_API V3DAbstractEnvironment
 	{
+        static void* app;
         static bool isUnitTestMode;
 		static bool isVsyncEnable;
         static char* renderer;
@@ -43,6 +44,8 @@ namespace V3D::V3DEngine::V3DCore
         static bool GetIsVSyncEnable();
         static void SetIsVSyncEnable(bool isVsyncEnable);
 
+        static void SetApp(void* application);
+        [[nodiscard]] static void* GetApp();
         void SetWindowSize(int width, int height);
         void SetScreenSize(int width, int height);
         static void SetGPUData(char* renderer, char* gpuName, int maxTextureSize);
@@ -51,7 +54,7 @@ namespace V3D::V3DEngine::V3DCore
         [[nodiscard]] static int GetMaxTextureSize();
         [[nodiscard]] static const char* GetGameName();
         static void SetGameName(char* gameName);
-		
+
         [[nodiscard]] virtual const char* GetPlatformName() const = 0;
         [[nodiscard]] virtual int GetWindowWidth() const = 0;
         [[nodiscard]] virtual int GetWindowHeight() const = 0;

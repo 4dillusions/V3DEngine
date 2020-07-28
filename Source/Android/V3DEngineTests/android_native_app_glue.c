@@ -29,8 +29,9 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include <unistd.h>
 #include <sys/resource.h>
 
-#include "android_native_app_glue.h"
 #include <android/log.h>
+
+#include "V3DEngine/android_native_app_glue.h"
 
 #define LOGI(...) ((void)__android_log_print(ANDROID_LOG_INFO, "threaded_app", __VA_ARGS__))
 #define LOGE(...) ((void)__android_log_print(ANDROID_LOG_ERROR, "threaded_app", __VA_ARGS__))

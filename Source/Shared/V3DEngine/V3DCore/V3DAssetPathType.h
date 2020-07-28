@@ -11,5 +11,6 @@ namespace V3D::V3DEngine::V3DCore
 		Options,
 		Physics,
 		UI,
+		Internal,
 	};
 }

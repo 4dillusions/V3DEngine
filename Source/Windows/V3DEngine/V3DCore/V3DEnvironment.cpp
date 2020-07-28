@@ -51,12 +51,14 @@ namespace V3D::V3DEngine::V3DCore
 		case V3DAssetPathType::Sound: return "Assets\\Content\\Sound\\";
 		case V3DAssetPathType::Texture: return "Assets\\Content\\Texture\\";
 		case V3DAssetPathType::Shader: return "Assets\\Content\\Shader\\";
-		case V3DAssetPathType::Level: return "Assets\\Data/Level\\";
+		case V3DAssetPathType::Level: return "Assets\\Data\\Level\\";
 		case V3DAssetPathType::Options: return "Assets\\Data\\Options\\";
 		case V3DAssetPathType::Physics: return "Assets\\Data\\Physics\\";
 		case V3DAssetPathType::UI: return "Assets\\Data\\UI\\";;
 
-		default: return"default";
+		case V3DAssetPathType::Internal: return "";
+
+		default: return "default";
 		}
 	}
 }

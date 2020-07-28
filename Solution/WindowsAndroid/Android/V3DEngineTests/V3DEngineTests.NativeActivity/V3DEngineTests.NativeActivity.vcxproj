@@ -301,7 +301,6 @@
     <ClCompile Include="..\..\..\..\..\Source\Android\V3DEngineTests\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\Source\Android\V3DEngineTests\android_native_app_glue.h" />
     <ClInclude Include="..\..\..\..\..\Source\Android\V3DEngineTests\V3DTestIO.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

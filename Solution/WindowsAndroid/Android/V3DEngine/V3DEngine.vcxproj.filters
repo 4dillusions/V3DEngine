@@ -21,6 +21,9 @@
     <ClInclude Include="..\..\..\..\Source\Android\V3DEngine\V3DCore\V3DEnvironment.h">
       <Filter>Source\V3DCore</Filter>
     </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Android\V3DEngine\android_native_app_glue.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DOstream.cpp">
@@ -28,6 +31,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DCore\V3DEnvironment.cpp">
       <Filter>Source\V3DCore</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DFile.cpp">
+      <Filter>Source\V3DIO</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

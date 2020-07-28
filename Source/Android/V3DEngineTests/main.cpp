@@ -4,8 +4,10 @@ Copyright (c) 2020 by 4D Illusions. All rights reserved.
 Released under the terms of the GNU General Public License version 3 or later.
 */
 
-#include "android_native_app_glue.h"
+#include "V3DEngine/android_native_app_glue.h"
 #include "V3DEngineTests/V3DTestRunner.h"
+#include "V3DEngine/V3DCore/V3DIoc.h"
+#include "V3DEngine/V3DCore/V3DEnvironment.h"
 
 struct engine
 {
@@ -57,10 +59,13 @@ void android_main(struct android_app* state)
 	state->onInputEvent = engine_handle_input;
 
 	engine.app = state;
-
 	engine.animating = 1;
+	
 	int events;
 	struct android_poll_source* source;
+
+	V3D::V3DEngine::V3DCore::V3DIoc<V3D::V3DEngine::V3DCore::V3DEnvironment>::Get().SetApp(state);
+	
 	while (true)
 	{
 		while (ALooper_pollAll(engine.animating ? 0 : -1, nullptr, &events, reinterpret_cast<void**>(&source)) >= 0)
