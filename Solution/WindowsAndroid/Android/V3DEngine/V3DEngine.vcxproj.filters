@@ -35,5 +35,8 @@
     <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DFile.cpp">
       <Filter>Source\V3DIO</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DFolder.cpp">
+      <Filter>Source\V3DIO</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

@@ -8,6 +8,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #include "V3DLoggerTest.h"
 #include "V3DFileTest.h"
+#include "V3DFolderTest.h"
 
 namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 {	
@@ -15,5 +16,6 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 	{
 		V3DLoggerTest::RunAllTests();
 		V3DFileTest::RunAllTests();
+		V3DFolderTest::RunAllTests();
 	}
 }

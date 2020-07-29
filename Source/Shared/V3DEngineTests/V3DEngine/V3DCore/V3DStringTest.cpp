@@ -104,9 +104,9 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 
 		V3DTest::AssertOk(V3DString::GetHashCode(Ctext1) == V3DString::GetHashCode(Ctext2), V3DFILE_INFO);
 		V3DTest::AssertOk(V3DString::GetHashCode(Ctext1) != V3DString::GetHashCode(Ctext3), V3DFILE_INFO);
-		V3DTest::AssertOk(V3DString("appletree123") == static_cast<V3DString>(Ctext2), V3DFILE_INFO);
+		V3DTest::AssertOk(V3DString("appletree123") == V3DString(Ctext2), V3DFILE_INFO);
 		V3DTest::AssertOk(V3DString("appletree124").GetHashCode() == V3DString::GetHashCode(Ctext3), V3DFILE_INFO);
-		V3DTest::AssertOk(V3DString("appletree124") == static_cast<V3DString>(Ctext3), V3DFILE_INFO);
+		V3DTest::AssertOk(V3DString("appletree124") == V3DString(Ctext3), V3DFILE_INFO);
 
 		V3DTest::AssertOk(V3DString::GetHashCode(Ctext1, 12, 2) == V3DString::GetHashCode(Ctext2, 12, 2), V3DFILE_INFO);
 		V3DTest::AssertOk(V3DString::GetHashCode(Ctext1, 12, 2) != V3DString::GetHashCode(Ctext3, 12, 2), V3DFILE_INFO);

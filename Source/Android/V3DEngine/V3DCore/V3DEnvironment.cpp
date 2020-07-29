@@ -58,6 +58,8 @@ namespace V3D::V3DEngine::V3DCore
 		case V3DAssetPathType::Physics: return "Data/Physics/";
 		case V3DAssetPathType::UI: return "Data/UI/";;
 
+		case V3DAssetPathType::Internal: return "";
+
 		default: return"default";
 		}
 	}

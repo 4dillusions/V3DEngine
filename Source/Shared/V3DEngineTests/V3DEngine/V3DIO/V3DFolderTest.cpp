@@ -1,0 +1,31 @@
+#include "V3DFolderTest.h"
+
+#include "V3DEngineTests/V3DTest.h"
+#include "V3DEngine/V3DMacros.h"
+#include "V3DEngine/V3DIO/V3DFolder.h"
+
+using namespace V3D::V3DEngine::V3DCore;
+using namespace V3D::V3DEngine::V3DIO;
+
+namespace V3D::V3DEngineTests::V3DEngine::V3DIO
+{
+	void V3DFolderTest::FolderTest()
+	{
+		V3DTest::AssertOk(V3DFolder::IsExist(V3DAssetPathType::Options), V3DFILE_INFO);
+		V3DTest::AssertOk(!V3DFolder::IsExist(V3DAssetPathType::Internal), V3DFILE_INFO);
+
+		auto fileList = V3DFolder::GetFileList(V3DAssetPathType::Options);
+		V3DTest::AssertOk(fileList.GetLength() == 2, V3DFILE_INFO);
+
+		if (fileList.GetLength() == 2)
+		{
+			V3DTest::AssertOk(*fileList[0] == V3DString("test.txt"), V3DFILE_INFO);
+			V3DTest::AssertOk(*fileList[1] == V3DString("test2.txt"), V3DFILE_INFO);
+		}
+	}
+
+	void V3DFolderTest::RunAllTests()
+	{
+		FolderTest();
+	}
+}

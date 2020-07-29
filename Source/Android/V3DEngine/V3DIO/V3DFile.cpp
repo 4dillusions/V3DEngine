@@ -4,7 +4,6 @@ Copyright (c) 2020 by 4D Illusions. All rights reserved.
 Released under the terms of the GNU General Public License version 3 or later.
 */
 
-
 #include "V3DEngine/V3DIO/V3DFile.h"
 #include "V3DEngine/V3DCore/V3DString.h"
 #include "V3DEngine/V3DCore/V3DIoc.h"
@@ -29,29 +28,40 @@ namespace V3D::V3DEngine::V3DIO
 
 		if (path == V3DAssetPathType::Internal)
 		{
-			fileFullName += static_cast<V3DString>(static_cast<android_app*>(GetEnvironment()->GetApp())->activity->internalDataPath);
+			fileFullName += V3DString(static_cast<android_app*>(GetEnvironment()->GetApp())->activity->internalDataPath);
 			fileFullName += '/';
 		}
 		else
 		{
-			fileFullName += static_cast<V3DString>(GetEnvironment()->GetAssetPath(path));
+			fileFullName += V3DString(GetEnvironment()->GetAssetPath(path));
 		}
 		
 		fileFullName += fileName;
 
 		if (path == V3DAssetPathType::Internal)
 		{
-			return std::fopen(fileFullName.ToChar(), "r+");
+			if (auto* const file = std::fopen(fileFullName.ToChar(), "r+"))
+			{
+				std::fclose(file);
+				return true;
+			}
+
+			return false;
 		}
 
-		auto* const asset = AAssetManager_open(static_cast<android_app*>(GetEnvironment()->GetApp())->activity->assetManager, fileFullName.ToChar(), AASSET_MODE_UNKNOWN);
-		return asset != nullptr;
+		if (auto* const asset = AAssetManager_open(static_cast<android_app*>(GetEnvironment()->GetApp())->activity->assetManager, fileFullName.ToChar(), AASSET_MODE_UNKNOWN))
+		{
+			AAsset_close(asset);
+			return true;
+		}
+		
+		return false;
 	}
 	
 	void V3DFile::Create(const char* fileName)
 	{
 		V3DString fileFullName;
-		fileFullName += static_cast<V3DString>(static_cast<android_app*>(GetEnvironment()->GetApp())->activity->internalDataPath);
+		fileFullName += V3DString(static_cast<android_app*>(GetEnvironment()->GetApp())->activity->internalDataPath);
 		fileFullName += '/';
 		fileFullName += fileName;
 
@@ -63,7 +73,7 @@ namespace V3D::V3DEngine::V3DIO
 	void V3DFile::Delete(const char* fileName)
 	{
 		V3DString fileFullName;
-		fileFullName += static_cast<V3DString>(static_cast<android_app*>(GetEnvironment()->GetApp())->activity->internalDataPath);
+		fileFullName += V3DString(static_cast<android_app*>(GetEnvironment()->GetApp())->activity->internalDataPath);
 		fileFullName += '/';
 		fileFullName += fileName;
 		

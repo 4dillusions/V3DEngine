@@ -147,6 +147,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <Content Include="assets\Data\Options\test.txt" />
+    <Content Include="assets\Data\Options\test2.txt" />
     <Content Include="res\values\strings.xml" />
     <AntBuildXml Include="build.xml" />
     <AndroidManifest Include="AndroidManifest.xml" />

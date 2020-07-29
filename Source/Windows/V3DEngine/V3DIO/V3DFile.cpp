@@ -23,7 +23,7 @@ namespace V3D::V3DEngine::V3DIO
 	bool V3DFile::IsExist(V3DAssetPathType path, const char* fileName)
 	{
 		V3DString fileFullName;
-		fileFullName += static_cast<V3DString>(GetEnvironment()->GetAssetPath(path));
+		fileFullName += V3DString(GetEnvironment()->GetAssetPath(path));
 		fileFullName += fileName;
 
 		return exists(std::filesystem::path(fileFullName.ToChar()));

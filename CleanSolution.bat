@@ -1,11 +1,11 @@
 rem WindowsAndroid
 
 rem ####################################################################################
-rem clear and copy Assets folder to Windows
+rem clear Assets folder to Windows
 del /s /q Solution\WindowsAndroid\Windows\Bin\Debug\x64\Assets\*
 del /s /q Solution\WindowsAndroid\Windows\Bin\Release\x64\Assets\*
 
-rem clear and copy Assets folder to Android
+rem clear Assets folder to Android
 del /s /q Solution\WindowsAndroid\Android\V3DEngineTests\V3DEngineTests.Packaging\assets\*
 
 rem ####################################################################################
