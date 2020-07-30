@@ -20,6 +20,7 @@
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DIO\V3DFile.cpp" />
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DIO\V3DFolder.cpp" />
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DIO\V3DOstream.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DIO\V3DTextRW.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

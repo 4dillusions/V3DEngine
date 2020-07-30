@@ -45,6 +45,7 @@
     <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DFile.cpp" />
     <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DFolder.cpp" />
     <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DOstream.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DTextRW.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{fa00616c-6032-44ba-b4fb-49a8005f6a45}</ProjectGuid>
