@@ -12,6 +12,8 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #include <android/asset_manager.h>
 
+#include <cstdio>
+
 using namespace V3D::V3DEngine::V3DCore;
 
 namespace V3D::V3DEngine::V3DIO
@@ -40,9 +42,9 @@ namespace V3D::V3DEngine::V3DIO
 
 		if (path == V3DAssetPathType::Internal)
 		{
-			if (auto* const file = std::fopen(fileFullName.ToChar(), "r"))
+			if (auto* const file = fopen(fileFullName.ToChar(), "r"))
 			{
-				std::fclose(file);
+				fclose(file);
 				return true;
 			}
 
@@ -57,6 +59,48 @@ namespace V3D::V3DEngine::V3DIO
 		
 		return false;
 	}
+
+	long V3DFile::GetSize(V3DAssetPathType path, const char* fileName)
+	{
+		V3DString fileFullName;
+
+		if (path == V3DAssetPathType::Internal)
+		{
+			fileFullName += V3DString(static_cast<android_app*>(GetEnvironment()->GetApp())->activity->internalDataPath);
+			fileFullName += '/';
+		}
+		else
+		{
+			fileFullName += V3DString(GetEnvironment()->GetAssetPath(path));
+		}
+
+		fileFullName += fileName;
+
+		if (path == V3DAssetPathType::Internal)
+		{
+			if (auto* const file = fopen(fileFullName.ToChar(), "r"))
+			{
+				fseek(file, 0, SEEK_END);
+				const auto length = ftell(file);
+				fseek(file, 0, SEEK_SET);
+				fclose(file);
+
+				return length;
+			}
+
+			return -1;
+		}
+
+		if (auto* const asset = AAssetManager_open(static_cast<android_app*>(GetEnvironment()->GetApp())->activity->assetManager, fileFullName.ToChar(), AASSET_MODE_UNKNOWN))
+		{
+			const long size = AAsset_getLength(asset);
+			AAsset_close(asset);
+
+			return size;
+		}
+		
+		return -1;
+	}
 	
 	void V3DFile::Create(const char* fileName)
 	{
@@ -65,9 +109,9 @@ namespace V3D::V3DEngine::V3DIO
 		fileFullName += '/';
 		fileFullName += fileName;
 
-		auto* const file = std::fopen(fileFullName.ToChar(), "w+");
-		std::fwrite(file, sizeof(char), 0, file);
-		std::fclose(file);
+		auto* const file = fopen(fileFullName.ToChar(), "w+");
+		fwrite(file, sizeof(char), 0, file);
+		fclose(file);
 	}
 	
 	void V3DFile::Delete(const char* fileName)
@@ -77,6 +121,6 @@ namespace V3D::V3DEngine::V3DIO
 		fileFullName += '/';
 		fileFullName += fileName;
 		
-		std::remove(fileFullName.ToChar());
+		remove(fileFullName.ToChar());
 	}
 }

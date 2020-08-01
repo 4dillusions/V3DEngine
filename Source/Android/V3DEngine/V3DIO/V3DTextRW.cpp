@@ -33,7 +33,7 @@ namespace V3D::V3DEngine::V3DIO
 	{
 		V3DString result;
 		V3DString fileFullName;
-		auto LogFileNotFound = [&fileFullName]()
+		const auto LogFileNotFound = [&fileFullName]()
 		{
 			V3DString log = V3DString("Couldn't open: ");
 			log += fileFullName;
