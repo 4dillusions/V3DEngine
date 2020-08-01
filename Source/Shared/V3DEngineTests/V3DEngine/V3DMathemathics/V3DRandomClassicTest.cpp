@@ -20,23 +20,42 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DMathematics
 {
 	void V3DRandomClassicTest::RandomClassicTest()
 	{
-		int rand10Counter = 0;
-		const int Rand10 = V3DRandomClassic::CreateRandom(0, 100), rand11 = V3DRandomClassic::CreateRandom(0, 100), rand12 = V3DRandomClassic::CreateRandom(0, 100);
-		const int Rand13 = V3DRandomClassic::CreateRandom(0, 100), rand14 = V3DRandomClassic::CreateRandom(0, 100), rand15 = V3DRandomClassic::CreateRandom(0, 100);
-		if (Rand10 == Rand13) rand10Counter++;
-		if (rand11 == rand14) rand10Counter++;
-		if (rand12 == rand15) rand10Counter++;
-		V3DTest::AssertOk(rand10Counter < 3, V3DFILE_INFO);
+		int randCounter = 0;
+		
+		const int Rand10 = V3DRandomClassic::CreateRandom(0, 100);
+		const int Rand11 = V3DRandomClassic::CreateRandom(0, 100);
+		const int Rand12 = V3DRandomClassic::CreateRandom(0, 100);
+		const int Rand13 = V3DRandomClassic::CreateRandom(0, 100);
+		const int rand14 = V3DRandomClassic::CreateRandom(0, 100);
+		const int rand15 = V3DRandomClassic::CreateRandom(0, 100);
+		if (Rand10 == Rand13) randCounter++;
+		if (Rand11 == rand14) randCounter++;
+		if (Rand12 == rand15) randCounter++;
+		V3DTest::AssertOk(randCounter < 3, V3DFILE_INFO);
 
-		const int Rand20 = V3DRandomClassic::CreateRandom(0, 100), rand21 = V3DRandomClassic::CreateRandom(0, 100), rand22 = V3DRandomClassic::CreateRandom(0, 100);
-		V3DTest::AssertOk(Rand20 != rand21, V3DFILE_INFO);
-		V3DTest::AssertOk(Rand20 != rand22, V3DFILE_INFO);
-		V3DTest::AssertOk(rand21 != rand22, V3DFILE_INFO);
-
-		const V3DVector2D Rand30 = V3DRandomClassic::CreateRandom(V3DVector2D(0, 100), V3DVector2D(50, 100)), rand31 = V3DRandomClassic::CreateRandom(V3DVector2D(0, 100), V3DVector2D(50, 100)), rand32 = V3DRandomClassic::CreateRandom(V3DVector2D(0, 100), V3DVector2D(50, 100));
-		V3DTest::AssertOk(Rand30 != rand31, V3DFILE_INFO);
-		V3DTest::AssertOk(Rand30 != rand32, V3DFILE_INFO);
-		V3DTest::AssertOk(rand31 != rand32, V3DFILE_INFO);
+		randCounter = 0;
+		const int Rand20 = V3DRandomClassic::CreateRandom(0, 100);
+		const int Rand21 = V3DRandomClassic::CreateRandom(0, 100);
+		const int Rand22 = V3DRandomClassic::CreateRandom(0, 100);
+		const int Rand23 = V3DRandomClassic::CreateRandom(0, 100);
+		const int Rand24 = V3DRandomClassic::CreateRandom(0, 100);
+		const int Rand25 = V3DRandomClassic::CreateRandom(0, 100);
+		if (Rand20 == Rand23) randCounter++;
+		if (Rand21 == Rand24) randCounter++;
+		if (Rand22 == Rand25) randCounter++;
+		V3DTest::AssertOk(randCounter < 3, V3DFILE_INFO);
+		
+		randCounter = 0;
+		const V3DVector2D Rand30 = V3DRandomClassic::CreateRandom(V3DVector2D(0, 100), V3DVector2D(50, 100));
+		const V3DVector2D Rand31 = V3DRandomClassic::CreateRandom(V3DVector2D(0, 100), V3DVector2D(50, 100));
+		const V3DVector2D Rand32 = V3DRandomClassic::CreateRandom(V3DVector2D(0, 100), V3DVector2D(50, 100));
+		const V3DVector2D Rand33 = V3DRandomClassic::CreateRandom(V3DVector2D(0, 100), V3DVector2D(50, 100));
+		const V3DVector2D Rand34 = V3DRandomClassic::CreateRandom(V3DVector2D(0, 100), V3DVector2D(50, 100));
+		const V3DVector2D Rand35 = V3DRandomClassic::CreateRandom(V3DVector2D(0, 100), V3DVector2D(50, 100));
+		if (Rand30 == Rand33) randCounter++;
+		if (Rand31 == Rand34) randCounter++;
+		if (Rand32 == Rand35) randCounter++;
+		V3DTest::AssertOk(randCounter < 3, V3DFILE_INFO);
 	}
 
 	void V3DRandomClassicTest::TimingTest()

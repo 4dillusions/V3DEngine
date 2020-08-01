@@ -18,31 +18,42 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DMathematics
 {
 	void V3DRandomTest::RandomTest()
 	{
-		int rand10Counter = 0;
+		int randCounter = 0;
+
 		const int Rand10 = V3DRandom::CreateRandom(0, 100);
 		const int Rand11 = V3DRandom::CreateRandom(0, 100);
 		const int Rand12 = V3DRandom::CreateRandom(0, 100);
 		const int Rand13 = V3DRandom::CreateRandom(0, 100);
-		const int Rand14 = V3DRandom::CreateRandom(0, 100);
-		const int Rand15 = V3DRandom::CreateRandom(0, 100);
-		if (Rand10 == Rand13) rand10Counter++;
-		if (Rand11 == Rand14) rand10Counter++;
-		if (Rand12 == Rand15) rand10Counter++;
-		V3DTest::AssertOk(rand10Counter < 3, V3DFILE_INFO);
+		const int rand14 = V3DRandom::CreateRandom(0, 100);
+		const int rand15 = V3DRandom::CreateRandom(0, 100);
+		if (Rand10 == Rand13) randCounter++;
+		if (Rand11 == rand14) randCounter++;
+		if (Rand12 == rand15) randCounter++;
+		V3DTest::AssertOk(randCounter < 3, V3DFILE_INFO);
 
+		randCounter = 0;
 		const int Rand20 = V3DRandom::CreateRandom(0, 100);
 		const int Rand21 = V3DRandom::CreateRandom(0, 100);
 		const int Rand22 = V3DRandom::CreateRandom(0, 100);
-		V3DTest::AssertOk(Rand20 != Rand21, V3DFILE_INFO);
-		V3DTest::AssertOk(Rand20 != Rand22, V3DFILE_INFO);
-		V3DTest::AssertOk(Rand21 != Rand22, V3DFILE_INFO);
+		const int Rand23 = V3DRandom::CreateRandom(0, 100);
+		const int Rand24 = V3DRandom::CreateRandom(0, 100);
+		const int Rand25 = V3DRandom::CreateRandom(0, 100);
+		if (Rand20 == Rand23) randCounter++;
+		if (Rand21 == Rand24) randCounter++;
+		if (Rand22 == Rand25) randCounter++;
+		V3DTest::AssertOk(randCounter < 3, V3DFILE_INFO);
 
+		randCounter = 0;
 		const V3DVector2D Rand30 = V3DRandom::CreateRandom(V3DVector2D(0, 100), V3DVector2D(50, 100));
 		const V3DVector2D Rand31 = V3DRandom::CreateRandom(V3DVector2D(0, 100), V3DVector2D(50, 100));
 		const V3DVector2D Rand32 = V3DRandom::CreateRandom(V3DVector2D(0, 100), V3DVector2D(50, 100));
-		V3DTest::AssertOk(Rand30 != Rand31, V3DFILE_INFO);
-		V3DTest::AssertOk(Rand30 != Rand32, V3DFILE_INFO);
-		V3DTest::AssertOk(Rand31 != Rand32, V3DFILE_INFO);
+		const V3DVector2D Rand33 = V3DRandom::CreateRandom(V3DVector2D(0, 100), V3DVector2D(50, 100));
+		const V3DVector2D Rand34 = V3DRandom::CreateRandom(V3DVector2D(0, 100), V3DVector2D(50, 100));
+		const V3DVector2D Rand35 = V3DRandom::CreateRandom(V3DVector2D(0, 100), V3DVector2D(50, 100));
+		if (Rand30 == Rand33) randCounter++;
+		if (Rand31 == Rand34) randCounter++;
+		if (Rand32 == Rand35) randCounter++;
+		V3DTest::AssertOk(randCounter < 3, V3DFILE_INFO);
 	}
 
 	void V3DRandomTest::TimingTest()
