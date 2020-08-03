@@ -20,7 +20,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 	{
 		const char* TestAsset = "test2.txt";
 		const char* TestInternal = "test.txt";
-		const V3DString TestString("<img src=\"Doc/Doxygen/Res/V3DLogoLarge.png\">");
+		const V3DString TestString(R"(<img src="Doc/Doxygen/Res/V3DLogoLarge.png">)");
 		
 		V3DTest::AssertOk(V3DTextRW::Read(V3DAssetPathType::Options, TestAsset).Contains(TestString), V3DFILE_INFO);
 
