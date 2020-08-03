@@ -55,10 +55,9 @@ namespace V3D::V3DEngine::V3DIO
 		return result;
 	}
 
-	void V3DTextRW::Write(V3DAssetPathType path, const char* fileName, const V3DString& text)
+	void V3DTextRW::Write(const char* fileName, const V3DString& text)
 	{
 		V3DString fileFullName;
-		fileFullName += V3DString(GetEnvironment()->GetAssetPath(path));
 		fileFullName += fileName;
 
 		std::ofstream ofs(fileFullName.ToChar(), std::ofstream::out);

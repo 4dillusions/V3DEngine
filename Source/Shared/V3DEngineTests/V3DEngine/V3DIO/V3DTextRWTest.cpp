@@ -1,3 +1,9 @@
+/*
+V3D Game Engine
+Copyright (c) 2020 by 4D Illusions. All rights reserved.
+Released under the terms of the GNU General Public License version 3 or later.
+*/
+
 #include "V3DTextRWTest.h"
 
 #include "V3DEngineTests/V3DTest.h"
@@ -18,7 +24,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 		
 		V3DTest::AssertOk(V3DTextRW::Read(V3DAssetPathType::Options, TestAsset).Contains(TestString), V3DFILE_INFO);
 
-		V3DTextRW::Write(V3DAssetPathType::Internal, TestInternal, TestString);
+		V3DTextRW::Write(TestInternal, TestString);
 		V3DTest::AssertOk(V3DTextRW::Read(V3DAssetPathType::Internal, TestInternal).Contains(TestString), V3DFILE_INFO);
 		V3DFile::Delete(TestInternal);
 	}
@@ -26,6 +32,5 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 	void V3DTextRWTest::RunAllTests()
 	{
 		TextRWTest();
-
 	}
 }

@@ -121,7 +121,7 @@ namespace V3D::V3DEngine::V3DCore
 			obj = nullptr;
 		}
 
-		template <typename T, typename TInfo> static T* NewArray(TInfo info, int size)
+		template <typename T, typename TInfo> static T* NewArray(TInfo info, unsigned int size)
 		{
 			T* result = new T[size];
 
@@ -142,7 +142,7 @@ namespace V3D::V3DEngine::V3DCore
 			obj = nullptr;
 		}
 
-		template <typename T, typename TInfo> static T** NewMatrix(TInfo info, int size)
+		template <typename T, typename TInfo> static T** NewMatrix(TInfo info, unsigned int size)
 		{
 			T** result = new T * [size];
 
@@ -150,7 +150,7 @@ namespace V3D::V3DEngine::V3DCore
 			if (isDebugMode || isUnitTestMode)
 				V3DMemory::Add(reinterpret_cast<int*>(result), info);
 
-			for (int x = 0; x < size; ++x)
+			for (unsigned int x = 0; x < size; ++x)
 			{
 				result[x] = new T[size];
 
@@ -161,11 +161,11 @@ namespace V3D::V3DEngine::V3DCore
 			return result;
 		}
 
-		template <typename T> static void DeleteMatrix(T& obj, int sizeX)
+		template <typename T> static void DeleteMatrix(T& obj, unsigned int sizeX)
 		{
 			static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
 			
-			for (int x = 0; x < sizeX; ++x)
+			for (unsigned int x = 0; x < sizeX; ++x)
 			{
 				if (isDebugMode || isUnitTestMode)
 					Remove(reinterpret_cast<int*>(obj[x]));
@@ -181,7 +181,7 @@ namespace V3D::V3DEngine::V3DCore
 			obj = nullptr;
 		}
 
-		template <typename T, typename TInfo> static T** NewPointerArray(TInfo info, int size)
+		template <typename T, typename TInfo> static T** NewPointerArray(TInfo info, unsigned int size)
 		{
 			T** result = new T * [size];
 

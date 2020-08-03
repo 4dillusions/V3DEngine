@@ -43,13 +43,13 @@ namespace V3D::V3DEngine::V3DIO
 	
 	void V3DFile::Create(const char* fileName)
 	{
-		auto* const file = std::fopen(fileName, "w+");
-		std::fwrite(file, sizeof(char), 0, file);
-		std::fclose(file);
+		auto* const file = fopen(fileName, "w+");
+		fwrite(file, sizeof(char), 0, file);
+		fclose(file);
 	}
 	
 	void V3DFile::Delete(const char* fileName)
 	{
-		std::remove(fileName);
+		remove(fileName);
 	}
 }

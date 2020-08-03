@@ -4,34 +4,34 @@ Copyright (c) 2020 by 4D Illusions. All rights reserved.
 Released under the terms of the GNU General Public License version 3 or later.
 */
 
-#include "V3DEngine/V3DIO/V3DTextRW.h"
+#include "V3DEngine/V3DIO/V3DBinaryRW.h"
 #include "V3DEngine/V3DCore/V3DIoc.h"
 #include "V3DEngine/V3DIO/V3DLogger.h"
+#include "V3DEngine/V3DCore/V3DString.h"
 
 #include "V3DEngine/android_native_app_glue.h"
 
 #include <android/asset_manager.h>
 
 using namespace V3D::V3DEngine::V3DCore;
-using namespace V3D::V3DEngine::V3DCollections;
 
 namespace V3D::V3DEngine::V3DIO
 {
-	V3DEnvironment* V3DTextRW::GetEnvironment()
+	V3DEnvironment* V3DBinaryRW::GetEnvironment()
 	{
 		static auto environment = V3DIoc<V3DEnvironment>::Get();
 		return &environment;
 	}
 
-	V3DLogger* V3DTextRW::GetLogger()
+	V3DLogger* V3DBinaryRW::GetLogger()
 	{
 		static auto& logger = V3DIoc<V3DLogger>::Get();
 		return &logger;
 	}
 	
-	V3DString V3DTextRW::Read(V3DAssetPathType path, const char* fileName)
+	char* V3DBinaryRW::Read(V3DAssetPathType path, const char* fileName)
 	{
-		V3DString result;
+		char* result{};
 		V3DString fileFullName;
 		const auto LogFileNotFound = [&fileFullName]()
 		{
@@ -40,7 +40,7 @@ namespace V3D::V3DEngine::V3DIO
 
 			GetLogger()->WriteOutput(V3DLogMessageType::Error, log);
 		};
-		
+
 		if (path == V3DAssetPathType::Internal)
 		{
 			fileFullName += V3DString(static_cast<android_app*>(GetEnvironment()->GetApp())->activity->internalDataPath);
@@ -52,15 +52,17 @@ namespace V3D::V3DEngine::V3DIO
 		}
 
 		fileFullName += fileName;
-		
+
 		if (path == V3DAssetPathType::Internal)
 		{
-			if (auto* const file = fopen(fileFullName.ToChar(), "r"))
+			if (auto* const file = std::fopen(fileFullName.ToChar(), "rb"))
 			{
-				int letter;
-				while ((letter = getc(file)) != EOF)
-					result += static_cast<char>(letter);
-				
+				fseek(file, 0, SEEK_END);
+				const auto size = ftell(file);
+				fseek(file, 0, SEEK_SET);
+
+				result = V3DMemory::NewArray<char>(V3DFILE_INFO, static_cast<unsigned int>(sizeof(char) * size));
+				fread(result, size, 1, file);
 				fclose(file);
 			}
 			else
@@ -74,33 +76,32 @@ namespace V3D::V3DEngine::V3DIO
 		if (auto* const asset = AAssetManager_open(static_cast<android_app*>(GetEnvironment()->GetApp())->activity->assetManager, fileFullName.ToChar(), AASSET_MODE_UNKNOWN))
 		{
 			const auto size = AAsset_getLength(asset);
-			char* buffer = static_cast<char*>(malloc(sizeof(char) * size));
+			char* buffer = V3DMemory::NewArray<char>(V3DFILE_INFO, (sizeof(char) * size) + 1);
 
 			AAsset_read(asset, buffer, size);
-
-			buffer[size] = '\0';
-			result += buffer;
+			result[size] = '\0';
 			
 			AAsset_close(asset);
-			free(buffer);
 		}
 		else
 		{
 			LogFileNotFound();
 		}
 		
-		return result;
+		return nullptr;
 	}
 	
-	void V3DTextRW::Write(const char* fileName, const V3DString& text)
+	void V3DBinaryRW::Write(const char* fileName, char* data, unsigned long long size, unsigned long long offset)
 	{
 		V3DString fileFullName;
 		fileFullName += V3DString(static_cast<android_app*>(GetEnvironment()->GetApp())->activity->internalDataPath);
 		fileFullName += '/';
 		fileFullName += fileName;
 
-		auto* const file = fopen(fileFullName.ToChar(), "w+");
-		fprintf(file, "%s", text.ToChar());
-		fclose(file);
+		const char* mode = offset == 0 ? "wb+" : "ab+";
+		auto* const file = std::fopen(fileFullName.ToChar(), mode);
+		fseek(file, static_cast<long>(offset), SEEK_SET);
+		fwrite(data, size, 1, file);
+		std::fclose(file);
 	}
 }
