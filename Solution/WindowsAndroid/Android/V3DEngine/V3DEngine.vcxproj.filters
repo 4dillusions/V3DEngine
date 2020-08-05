@@ -44,5 +44,8 @@
     <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DBinaryRW.cpp">
       <Filter>Source\V3DIO</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DJsonIO.cpp">
+      <Filter>Source\V3DIO</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

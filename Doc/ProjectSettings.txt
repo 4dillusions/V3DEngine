@@ -3,10 +3,10 @@ Windows/Android - Visual Studio Community 2019 (16.4.5)
 Create solution: Solution/WindowsAndroid/V3DEngine.sln
 ******************************************************
 
-configuration	x86		ARM		x64		ARM64
----------------------------------------------
-Android			x86		ARM		x86		ARM64
-Windows			x64		x64		x64		x64
+configuration	32bit	64bit
+-----------------------------
+Android			ARM		ARM64
+Windows			x64		x64
 
 
 Shared
@@ -71,7 +71,9 @@ General
 	output directory: $(SolutionDir)\Android\Bin\$(Configuration)\$(Platform)\
 	Platform toolset: Clang 5.0
 	Config type: static library .a (lib), Dynamic library (app)
-	Target API level: x86/ARM: android 19, x64/ARM64: android 21
+	Target API level: 
+		V3DEngine, V3DEngine.Tests.packaging: android 19
+		V3DEngine, V3DEngine.Tests.NativeActivity: android 21
 	
 VC++ directories
 	include directories: 	$(SolutionDir)..\..\Source\Android
@@ -80,7 +82,7 @@ VC++ directories
 C/C++
 	preprocessors: ANDROID, _DEBUG
 	Code generation
-		Enable C++ exceptions: No (release), Yes (debug)
+		Enable C++ exceptions: No (release/debug)
 	Language
 		Enable RTTI: Yes
 		C language: C11

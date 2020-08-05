@@ -33,27 +33,15 @@ del /s /q Solution\WindowsAndroid\Windows\V3DEngineTests\x64\Release\*
 rem clean all Android VS compiled files
 del /s /q Solution\WindowsAndroid\Android\Bin\*
 
-del /s /q Solution\WindowsAndroid\Android\V3DEngine\x86\Debug\*
-del /s /q Solution\WindowsAndroid\Android\V3DEngine\x86\Release\*
-del /s /q Solution\WindowsAndroid\Android\V3DEngine\x64\Debug\*
-del /s /q Solution\WindowsAndroid\Android\V3DEngine\x64\Release\*
 del /s /q Solution\WindowsAndroid\Android\V3DEngine\ARM\Debug\*
 del /s /q Solution\WindowsAndroid\Android\V3DEngine\ARM\Release\*
 del /s /q Solution\WindowsAndroid\Android\V3DEngine\ARM64\Debug\*
 del /s /q Solution\WindowsAndroid\Android\V3DEngine\ARM64\Release\*
 
-del /s /q Solution\WindowsAndroid\Android\V3DEngineTests\V3DEngineTests.NativeActivity\x86\Debug\*
-del /s /q Solution\WindowsAndroid\Android\V3DEngineTests\V3DEngineTests.NativeActivity\x86\Release\*
-del /s /q Solution\WindowsAndroid\Android\V3DEngineTests\V3DEngineTests.NativeActivity\x64\Debug\*
-del /s /q Solution\WindowsAndroid\Android\V3DEngineTests\V3DEngineTests.NativeActivity\x64\Release\*
 del /s /q Solution\WindowsAndroid\Android\V3DEngineTests\V3DEngineTests.NativeActivity\ARM\Debug\*
 del /s /q Solution\WindowsAndroid\Android\V3DEngineTests\V3DEngineTests.NativeActivity\ARM\Release\*
 del /s /q Solution\WindowsAndroid\Android\V3DEngineTests\V3DEngineTests.NativeActivity\ARM64\Debug\*
 del /s /q Solution\WindowsAndroid\Android\V3DEngineTests\V3DEngineTests.NativeActivity\ARM64\Release\*
-del /s /q Solution\WindowsAndroid\Android\V3DEngineTests\V3DEngineTests.Packaging\x86\Debug\*
-del /s /q Solution\WindowsAndroid\Android\V3DEngineTests\V3DEngineTests.Packaging\x86\Release\*
-del /s /q Solution\WindowsAndroid\Android\V3DEngineTests\V3DEngineTests.Packaging\x64\Debug\*
-del /s /q Solution\WindowsAndroid\Android\V3DEngineTests\V3DEngineTests.Packaging\x64\Release\*
 del /s /q Solution\WindowsAndroid\Android\V3DEngineTests\V3DEngineTests.Packaging\ARM\Debug\*
 del /s /q Solution\WindowsAndroid\Android\V3DEngineTests\V3DEngineTests.Packaging\ARM\Release\*
 del /s /q Solution\WindowsAndroid\Android\V3DEngineTests\V3DEngineTests.Packaging\ARM64\Debug\*

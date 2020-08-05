@@ -35,6 +35,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DIO\V3DFileTest.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DIO\V3DFolderTest.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DIO\V3DIOTests.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DIO\V3DJsonIOTest.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DIO\V3DLoggerTest.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DIO\V3DTextRWTest.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DMathemathics\V3DCircleTest.h" />
@@ -55,6 +56,8 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTestObject\V3DTestBinaryData.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTestObject\V3DTestBinaryDataHead.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTestObject\V3DTestGameComponent.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTestObject\V3DTestJsonConfigData.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTestObject\V3DTestJSonUIControl.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTestObject\V3DTestLayer.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTestObject\V3DTestLayerPool.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTestObject\V3DTestObjectA.h" />
@@ -86,6 +89,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DIO\V3DFileTest.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DIO\V3DFolderTest.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DIO\V3DIOTests.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DIO\V3DJsonIOTest.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DIO\V3DLoggerTest.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DIO\V3DTextRWTest.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DMathemathics\V3DCircleTest.cpp" />
@@ -103,6 +107,8 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTest.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTestObject\V3DTestBinaryData.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTestObject\V3DTestGameComponent.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTestObject\V3DTestJsonConfigData.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTestObject\V3DTestJSonUIControl.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTestObject\V3DTestLayer.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTestObject\V3DTestLayerPool.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTestObject\V3DTestObjectA.cpp" />

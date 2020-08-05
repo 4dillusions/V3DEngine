@@ -171,6 +171,15 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTestObject\V3DTestBinaryData.h">
       <Filter>Source\V3DTestObject</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DIO\V3DJsonIOTest.h">
+      <Filter>Source\V3DEngine\V3DIO</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTestObject\V3DTestJsonConfigData.h">
+      <Filter>Source\V3DTestObject</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTestObject\V3DTestJSonUIControl.h">
+      <Filter>Source\V3DTestObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTest.cpp">
@@ -187,9 +196,6 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DCore\V3DStringTest.cpp">
       <Filter>Source\V3DEngine\V3DCore</Filter>
-    </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DIO\V3DIOTests.cpp">
-      <Filter>Source\V3DEngine\V3DIO</Filter>
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTestRunner.cpp">
       <Filter>Source</Filter>
@@ -307,6 +313,18 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTestObject\V3DTestBinaryData.cpp">
       <Filter>Source\V3DTestObject</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DIO\V3DJsonIOTest.cpp">
+      <Filter>Source\V3DEngine\V3DIO</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTestObject\V3DTestJsonConfigData.cpp">
+      <Filter>Source\V3DTestObject</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTestObject\V3DTestJSonUIControl.cpp">
+      <Filter>Source\V3DTestObject</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DIO\V3DIOTests.cpp">
+      <Filter>Source\V3DEngine\V3DIO</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
