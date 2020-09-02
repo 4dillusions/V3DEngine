@@ -27,6 +27,7 @@ namespace V3D::V3DEngineTests::V3DEngine
 		V3DIO::V3DIOTests::RunAllTests();
 		V3DCollections::V3DCollectionsTests::RunAllTests();
 
+		V3DTest::RunIntegrationTests();		
 		V3DTest::WriteStatistics();
 		V3DTest::RunTimingTests();
 	}

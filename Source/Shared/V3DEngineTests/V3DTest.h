@@ -25,6 +25,7 @@ namespace V3D::V3DEngineTests
 		static int passedTests;
 		static std::list<const char*> errorList;
 		static std::map<std::string, V3DTestObject::V3DTimingTestData> timingList;
+		static std::list<std::function<void()>> integrationList;
 		static V3DITestIO<V3DTestIO>& testIO;
 
 		static void Init();
@@ -41,6 +42,8 @@ namespace V3D::V3DEngineTests
 		static void AddTimingTest(const std::string& timingFunctionName, const V3DTestObject::V3DTimingTestData& timingTestData);
 		static void AddTimingTest(const std::string& timingFunctionName, const std::function<void()>& timingFunction);
 		static void RunTimingTests();
+		static void AddIntegrationTest(const std::function<void()>& integrationFunction);
+		static void RunIntegrationTests();
 		static void WriteStatistics();
 	};
 }
