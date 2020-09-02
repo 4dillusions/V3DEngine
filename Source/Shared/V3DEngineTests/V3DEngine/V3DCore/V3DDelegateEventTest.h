@@ -18,8 +18,10 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 		V3DDelegateEventTest& operator=(const V3DDelegateEventTest&) = delete;
 		V3DDelegateEventTest& operator=(V3DDelegateEventTest&&) = delete;
 
-		static void DelegateAddRemoveTest();
-		static void EventAddRemoveTest();
+		static void DelegateNoParamAddRemoveTest();
+		static void DelegateParamAddRemoveTest();
+		static void EventNoParamAddRemoveTest();
+		static void EventParamAddRemoveTest();
 
 		static void RunAllTests();
 	};

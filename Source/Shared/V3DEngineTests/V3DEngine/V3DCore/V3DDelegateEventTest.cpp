@@ -15,52 +15,97 @@ using namespace V3D::V3DEngineTests::V3DTestObject;
 
 namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 {
-	void V3DDelegateEventTest::DelegateAddRemoveTest()
+	void V3DDelegateEventTest::DelegateNoParamAddRemoveTest()
 	{
 		int x = 100;
 		auto obj = V3DMemory::New<V3DTestObjectB>(V3DFILE_INFO);
 
 		const std::function<void()> Func1 = [&x]() { x += 5; };
-		obj->TestDelegate += Func1;
-		const std::function<void()> Func2 = [&x]() { x += 10; };
-		obj->TestDelegate += Func2;
+		obj->TestNoParamDelegate = Func1;
+		obj->TestNoParamDelegate();
+		V3DTest::AssertOk(x == 105, V3DFILE_INFO);
 
-		obj->TestDelegate();
+		const std::function<void()> Func2 = [&x]() { x += 10; };
+		obj->TestNoParamDelegate = Func2;
+		obj->TestNoParamDelegate();
+		V3DTest::AssertOk(x == 115, V3DFILE_INFO);
+
+		obj->TestNoParamDelegate = nullptr;
+		obj->TestNoParamDelegate();
+		V3DTest::AssertOk(x == 115, V3DFILE_INFO);
+
+		V3DMemory::Delete(obj);
+	}
+	
+	void V3DDelegateEventTest::DelegateParamAddRemoveTest()
+	{
+		const V3DArgsTest EventArgs{ 5 };
+		int x = 100;
+		auto obj = V3DMemory::New<V3DTestObjectB>(V3DFILE_INFO);
+
+		const std::function<void(const V3DArgsTest& args)> Func1 = [&x](const V3DArgsTest& args) { x += args.x; };
+		obj->TestParamDelegate = Func1;
+		obj->TestParamDelegate(EventArgs);
+		V3DTest::AssertOk(x == 105, V3DFILE_INFO);
+
+		const std::function<void(const V3DArgsTest& args)> Func2 = [&x](const V3DArgsTest& args) { x += (args.x * 2); };
+		obj->TestParamDelegate = Func2;
+		obj->TestParamDelegate(EventArgs);
+		V3DTest::AssertOk(x == 115, V3DFILE_INFO);
+
+		obj->TestParamDelegate = nullptr;
+		obj->TestParamDelegate(EventArgs);
+		V3DTest::AssertOk(x == 115, V3DFILE_INFO);
+
+		V3DMemory::Delete(obj);
+	}
+
+	void V3DDelegateEventTest::EventNoParamAddRemoveTest()
+	{
+		int x = 100;
+		auto obj = V3DMemory::New<V3DTestObjectB>(V3DFILE_INFO);
+
+		const std::function<void()> Func1 = [&x]() { x += 5; };
+		obj->TestNoParamEvent += Func1;
+		const std::function<void()> Func2 = [&x]() { x += 10; };
+		obj->TestNoParamEvent += Func2;
+
+		obj->TestNoParamEvent();
 
 		V3DTest::AssertOk(x == 115, V3DFILE_INFO);
 
-		obj->TestDelegate -= Func1;
-		obj->TestDelegate();
+		obj->TestNoParamEvent -= Func1;
+		obj->TestNoParamEvent();
 		V3DTest::AssertOk(x == 125, V3DFILE_INFO);
-		
-		obj->TestDelegate -= Func2;
-		obj->TestDelegate();
+
+		obj->TestNoParamEvent -= Func2;
+		obj->TestNoParamEvent();
 		V3DTest::AssertOk(x == 125, V3DFILE_INFO);
 
 		V3DMemory::Delete(obj);
 	}
 	
-	void V3DDelegateEventTest::EventAddRemoveTest()
+	void V3DDelegateEventTest::EventParamAddRemoveTest()
 	{
 		int x = 100;
 		const V3DArgsTest EventArgs{ 5 };
 		auto obj = V3DMemory::New<V3DTestObjectB>(V3DFILE_INFO);
 
 		const std::function<void(const V3DArgsTest& args)> Func1 = [&x](const V3DArgsTest& args) { x += args.x; };
-		obj->TestEvent += Func1;
+		obj->TestParamEvent += Func1;
 		const std::function<void(const V3DArgsTest& args)> Func2 = [&x](const V3DArgsTest& args) { x += (args.x * 2); };
-		obj->TestEvent += Func2;
+		obj->TestParamEvent += Func2;
 
-		obj->TestEvent(EventArgs);
+		obj->TestParamEvent(EventArgs);
 
 		V3DTest::AssertOk(x == 115, V3DFILE_INFO);
 
-		obj->TestEvent -= Func1;
-		obj->TestEvent(EventArgs);
+		obj->TestParamEvent -= Func1;
+		obj->TestParamEvent(EventArgs);
 		V3DTest::AssertOk(x == 125, V3DFILE_INFO);
 
-		obj->TestEvent -= Func2;
-		obj->TestEvent(EventArgs);
+		obj->TestParamEvent -= Func2;
+		obj->TestParamEvent(EventArgs);
 		V3DTest::AssertOk(x == 125, V3DFILE_INFO);
 
 		V3DMemory::Delete(obj);
@@ -68,7 +113,9 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 	
 	void V3DDelegateEventTest::RunAllTests()
 	{
-		DelegateAddRemoveTest();
-		EventAddRemoveTest();
+		DelegateNoParamAddRemoveTest();
+		DelegateParamAddRemoveTest();
+		EventNoParamAddRemoveTest();
+		EventParamAddRemoveTest();
 	}
 }

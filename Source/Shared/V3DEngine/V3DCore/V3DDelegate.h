@@ -6,16 +6,14 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #pragma once
 
-#include "V3DEngine/V3DCollections/V3DLinkedList.h"
-
 #include <functional>
 
 namespace V3D::V3DEngine::V3DCore
 {
-	class V3DENGINE_API V3DDelegate final
+	template <typename TArgs> class V3DDelegate final
 	{
-		V3DCollections::V3DLinkedList<std::function<void()>> functionList;
-		
+		std::function<void(const TArgs& args)> func;
+
 	public:
 		V3DDelegate() = default;
 		V3DDelegate(const V3DDelegate&) = delete;
@@ -24,8 +22,41 @@ namespace V3D::V3DEngine::V3DCore
 		V3DDelegate& operator=(const V3DDelegate&) = delete;
 		V3DDelegate& operator=(V3DDelegate&&) = delete;
 
-		void operator += (const std::function<void()>& function);
-		void operator -= (const std::function<void()>& function);
-		void operator () ();
+		V3DDelegate<TArgs>& operator=(const std::function<void(const TArgs& args)>& function)
+		{
+			func = function;
+			return *this;
+		}
+
+		void operator () (const TArgs& args)
+		{
+			if (func != nullptr)
+				func(args);
+		}
+	};
+
+	template <> class V3DDelegate<void()> final
+	{
+		std::function<void()> func;
+
+	public:
+		V3DDelegate() = default;
+		V3DDelegate(const V3DDelegate&) = delete;
+		V3DDelegate(V3DDelegate&&) = delete;
+		~V3DDelegate() = default;
+		V3DDelegate& operator=(const V3DDelegate&) = delete;
+		V3DDelegate& operator=(V3DDelegate&&) = delete;
+
+		V3DDelegate<void()>& operator=(const std::function<void()>& function)
+		{
+			func = function;
+			return *this;
+		}
+
+		void operator () () const
+		{
+			if (func != nullptr)
+				func();
+		}
 	};
 }

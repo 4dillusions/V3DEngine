@@ -45,4 +45,38 @@ namespace V3D::V3DEngine::V3DCore
 				(*functionList.GetCurrent())(args);
 		}
 	};
+
+	template <> class V3DEvent<void()> final
+	{
+		V3DCollections::V3DLinkedList<std::function<void()>> functionList;
+
+	public:
+		V3DEvent() = default;
+		V3DEvent(const V3DEvent&) = delete;
+		V3DEvent(V3DEvent&&) = delete;
+		~V3DEvent() = default;
+		V3DEvent& operator=(const V3DEvent&) = delete;
+		V3DEvent& operator=(V3DEvent&&) = delete;
+
+		void operator += (const std::function<void()>& function)
+		{
+			functionList.Add(function);
+		}
+
+		void operator -= (const std::function<void()>& function)
+		{
+			for (functionList.First(); functionList.IsDone(); functionList.Next())
+				if (functionList.GetCurrent()->template target<void()>() == function.template target<void()>())
+				{
+					functionList.RemoveCurrent();
+					break;
+				}
+		}
+
+		void operator () ()
+		{
+			for (functionList.First(); functionList.IsDone(); functionList.Next())
+				(*functionList.GetCurrent())();
+		}
+	};
 }

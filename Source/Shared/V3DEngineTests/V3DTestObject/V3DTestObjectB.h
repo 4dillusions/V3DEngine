@@ -22,14 +22,16 @@ namespace V3D::V3DEngineTests::V3DTestObject
 
 	public:
 		V3DTestObjectB() = default;
-		V3DTestObjectB(const V3DTestObjectB&) = default;
-		V3DTestObjectB(V3DTestObjectB&&) = default;
+		V3DTestObjectB(const V3DTestObjectB&) = delete;
+		V3DTestObjectB(V3DTestObjectB&&) = delete;
 		~V3DTestObjectB() override = default;
 		V3DTestObjectB& operator=(const V3DTestObjectB&) = delete;
 		V3DTestObjectB& operator=(V3DTestObjectB&&) = delete;
 
-		V3D::V3DEngine::V3DCore::V3DDelegate TestDelegate;
-		V3D::V3DEngine::V3DCore::V3DEvent<V3DArgsTest> TestEvent;
+		V3D::V3DEngine::V3DCore::V3DDelegate<void()> TestNoParamDelegate;
+		V3D::V3DEngine::V3DCore::V3DDelegate<V3DArgsTest> TestParamDelegate;
+		V3D::V3DEngine::V3DCore::V3DEvent<void()> TestNoParamEvent;
+		V3D::V3DEngine::V3DCore::V3DEvent<V3DArgsTest> TestParamEvent;
 		//void PerformTestEvent(Args args);
 		
 		char GetTypeCode() override;
