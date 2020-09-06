@@ -20,7 +20,6 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 
 		static void BinarySimpleRWTest();
 		static void BinaryComplexRWTest();
-		static void BinaryComplexRWMemoryStreamTest();
 
 		static void RunAllTests();
 	};

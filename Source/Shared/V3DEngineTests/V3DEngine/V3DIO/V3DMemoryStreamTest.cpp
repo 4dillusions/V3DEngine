@@ -10,9 +10,12 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngineTests/V3DTest.h"
 #include "V3DEngine/V3DIO/V3DMemoryStream.h"
 #include "V3DEngineTests/V3DTestObject/V3DTestBinaryData.h"
+#include "V3DEngine/V3DCore/V3DMemory.h"
+#include "V3DEngine/V3DIO/V3DBinaryRW.h"
 
 using namespace V3D::V3DEngine::V3DIO;
 using namespace V3D::V3DEngineTests::V3DTestObject;
+using namespace V3D::V3DEngine::V3DCore;
 
 namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 {
@@ -60,10 +63,39 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 		V3DTest::AssertOk(testDataR.uvs[1] == 2, V3DFILE_INFO);
 		V3DTest::AssertOk(testDataR.uvs[2] == 3, V3DFILE_INFO);
 	}
+
+	void V3DMemoryStreamTest::WriteReadObjectToFileTest()
+	{
+		const char* TestModelDataFileName = "testModelData.dat";
+
+		const V3DTestBinaryData testDataW(V3DTestBinaryDataHead{ 2, 3 });
+		testDataW.vertices[0] = 10;
+		testDataW.vertices[1] = 20;
+		testDataW.uvs[0] = 1;
+		testDataW.uvs[1] = 2;
+		testDataW.uvs[2] = 3;
+		V3DMemoryStream streamW(testDataW.GetSize());
+		testDataW.Save(streamW);
+		V3DBinaryRW::Write(TestModelDataFileName, streamW.GetBuffer(), streamW.GetCurrentSize());
+
+		auto bufferR = V3DBinaryRW::Read(V3DAssetPathType::Internal, TestModelDataFileName);
+		V3DMemoryStream streamR(bufferR);
+		V3DTestBinaryData testDataR;
+		testDataR.Load(streamR);
+		V3DTest::AssertOk(testDataR.head->verticeCount == 2, V3DFILE_INFO);
+		V3DTest::AssertOk(testDataR.head->uvCount == 3, V3DFILE_INFO);
+		V3DTest::AssertOk(testDataR.vertices[0] == 10, V3DFILE_INFO);
+		V3DTest::AssertOk(testDataR.vertices[1] == 20, V3DFILE_INFO);
+		V3DTest::AssertOk(testDataR.uvs[0] == 1, V3DFILE_INFO);
+		V3DTest::AssertOk(testDataR.uvs[1] == 2, V3DFILE_INFO);
+		V3DTest::AssertOk(testDataR.uvs[2] == 3, V3DFILE_INFO);
+		V3DMemory::DeleteArray(bufferR);
+	}
 	
 	void V3DMemoryStreamTest::RunAllTests()
 	{
 		WriteReadArrayTest();
 		WriteReadObjectTest();
+		WriteReadObjectToFileTest();
 	}
 }
