@@ -13,6 +13,7 @@ namespace V3D::V3DEngineTests::V3DTestObject
 		const int verticeCount{};
 		const int uvCount{};
 
+		V3DTestBinaryDataHead() = default;
 		V3DTestBinaryDataHead(int verticeCount, int uvCount) : verticeCount{verticeCount}, uvCount{uvCount}
 		{ }
 	};

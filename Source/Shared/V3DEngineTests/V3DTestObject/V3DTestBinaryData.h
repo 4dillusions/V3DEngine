@@ -9,6 +9,11 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DTestBinaryDataHead.h"
 #include "V3DEngine/V3DCore/V3DAssetPathType.h"
 
+namespace V3D::V3DEngine::V3DIO
+{
+	class V3DMemoryStream;
+}
+
 namespace V3D::V3DEngineTests::V3DTestObject
 {
 	struct V3DTestBinaryData final
@@ -39,7 +44,11 @@ namespace V3D::V3DEngineTests::V3DTestObject
 		explicit V3DTestBinaryData(const V3DTestBinaryDataHead& dataHead);
 		~V3DTestBinaryData();
 
+		unsigned long long GetSize() const;
+
 		void Load(V3D::V3DEngine::V3DCore::V3DAssetPathType path, const char* fileName);
+		void Load(V3D::V3DEngine::V3DIO::V3DMemoryStream &stream);
 		void Save(const char* fileName) const;
+		void Save(V3D::V3DEngine::V3DIO::V3DMemoryStream& streamOut) const;
 	};
 }

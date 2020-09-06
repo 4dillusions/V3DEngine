@@ -12,6 +12,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DTextRWTest.h"
 #include "V3DBinaryRWTest.h"
 #include "V3DJsonIOTest.h"
+#include "V3DMemoryStreamTest.h"
 
 namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 {	
@@ -23,5 +24,6 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 		V3DTextRWTest::RunAllTests();
 		V3DBinaryRWTest::RunAllTests();
 		V3DJsonIOTest::RunAllTests();
+		V3DMemoryStreamTest::RunAllTests();
 	}
 }
