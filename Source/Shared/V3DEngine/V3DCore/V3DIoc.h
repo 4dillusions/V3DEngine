@@ -14,9 +14,9 @@ Released under the terms of the GNU General Public License version 3 or later.
 namespace V3D::V3DEngine::V3DCore
 {
 	/*
-		Static IOC for Logging etc. <br>
-		Ioc implements prototype, factory and singleton patterns together, called Inversion Of Control and Dependency Injection pattern (DI) <br>
-		This Ioc supports one instance -> one prototype implementation <br>
+		Static IOC for Logging etc.
+		Ioc implements prototype, factory and singleton patterns together, called Inversion Of Control and Dependency Injection pattern (DI)
+		This Ioc supports one instance -> one prototype implementation
 	*/
 	template <typename TInstance> class V3DIoc final
 	{
@@ -37,9 +37,9 @@ namespace V3D::V3DEngine::V3DCore
 	};
 
 	/*
-		Dynamic IOC for subsystems and other dynamic main objects <br>
-		Ioc implements prototype, factory and singleton patterns together, called Inversion Of Control and Dependency Injection pattern (DI) <br>
-		This Ioc supports one instance -> one prototype implementation <br>
+		Dynamic IOC for subsystems and other dynamic main objects
+		Ioc implements prototype, factory and singleton patterns together, called Inversion Of Control and Dependency Injection pattern (DI)
+		This Ioc supports one instance -> one prototype implementation
 	*/
 	template <typename TInstance> class V3DIoc<TInstance*> final
 	{
