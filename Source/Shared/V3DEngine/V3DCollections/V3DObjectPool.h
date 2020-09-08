@@ -28,7 +28,7 @@ namespace V3D::V3DEngine::V3DCollections
 	*/
 	template<typename T> class V3DObjectPool final
 	{
-		const int PoolSize;
+		const int PoolSize{};
 		T* dataArray;
 		V3DObjectPoolNode<T>* nodes;
 		V3DObjectPoolNode<T>* poolHead{}, * poolTail{}, * head{}, * tail{}, * current{};

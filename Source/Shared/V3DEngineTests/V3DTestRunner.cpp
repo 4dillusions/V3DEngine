@@ -6,6 +6,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #include "V3DTestRunner.h"
 #include "V3DTest.h"
+#include "V3DEngine/V3DMacros.h"
 #include "V3DEngine/V3DTypesTests.h"
 #include "V3DEngine/V3DMathemathics/V3DMathematicsTests.h"
 #include "V3DEngine/V3DCore/V3DCoreTests.h"
@@ -27,8 +28,9 @@ namespace V3D::V3DEngineTests::V3DEngine
 		V3DIO::V3DIOTests::RunAllTests();
 		V3DCollections::V3DCollectionsTests::RunAllTests();
 
-		V3DTest::RunIntegrationTests();		
+		V3DTest::RunIntegrationTests();
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
 		V3DTest::WriteStatistics();
-		V3DTest::RunTimingTests();
+		//V3DTest::RunTimingTests();
 	}
 }

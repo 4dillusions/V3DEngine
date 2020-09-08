@@ -10,10 +10,11 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngine/V3DCore/V3DMemory.h"
 #include "V3DEngine/V3DMacros.h"
 
-#include <assert.h>
+#include <cassert>
 
 namespace V3D::V3DEngine::V3DCollections
 {
+	// ReSharper disable once CommentTypo
 	/*
 		Decimal tree data structure with static and dynamic objects.
 		Supports delete nodes while iterate, except RemoveAll
@@ -34,7 +35,7 @@ namespace V3D::V3DEngine::V3DCollections
 		static const int DigitSize = 10;
 		static const int NumberSystemSize = 10;
 		V3DDecimalTreeNode<TKey, TItem>* root{}, * current{}, ** currentAllItemArray{};
-		int currentIndex, length{};
+		int currentIndex{}, length{};
 
 		V3DDecimalTreeNode<TKey, TItem>* CreateNode()
 		{

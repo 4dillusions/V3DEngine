@@ -17,6 +17,7 @@ namespace V3D::V3DEngine::V3DCollections
 		V3DLinkedListNode<T>() = default;
 		V3DLinkedListNode<T>(const V3DLinkedListNode<T>&) = delete;
 		V3DLinkedListNode(V3DLinkedListNode<T>&&) = delete;
+		~V3DLinkedListNode<T>() = default;
 		V3DLinkedListNode<T>& operator=(const V3DLinkedListNode<T>&) = delete;
 		V3DLinkedListNode<T>& operator=(V3DLinkedListNode<T>&&) = delete;
 	};

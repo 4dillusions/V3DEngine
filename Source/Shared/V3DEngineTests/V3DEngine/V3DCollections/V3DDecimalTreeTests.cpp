@@ -270,6 +270,12 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 
 		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == 1, V3DFILE_INFO);
 		V3DTest::AssertOk(treeDynamic.GetLength() == 1, V3DFILE_INFO);
+
+		auto item2 = *treeDynamic.GetItem(44);
+		treeDynamic.RemoveAt(44);
+		V3DMemory::Delete(item2);
+		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(treeDynamic.GetLength() == 0, V3DFILE_INFO);
 	}
 
 	void V3DDecimalTreeTests::DecimalTreeAddRemoveTimingTest()
@@ -359,7 +365,6 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		AddRemoveStaticObjectKeyTest();
 		AddRemoveDynamicTest();
 		RemoveAtTest();
-
 		DecimalTreeAddRemoveTimingTest();
 		DecimalTreeIterateTimingTest();
 	}

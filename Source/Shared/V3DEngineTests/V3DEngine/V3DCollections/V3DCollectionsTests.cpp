@@ -11,6 +11,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DDynamicArrayTests.h"
 #include "V3DDecimalTreeTests.h"
 #include "StdTests.h"
+#include "V3DQueueTests.h"
 
 namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 {
@@ -20,6 +21,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		V3DLinkedListTests::RunAllTests();
 		V3DDynamicArrayTests::RunAllTests();
 		V3DDecimalTreeTests::RunAllTests();
+		V3DQueueTests::RunAllTests();
 		StdTests::RunAllTests();
 	}
 }

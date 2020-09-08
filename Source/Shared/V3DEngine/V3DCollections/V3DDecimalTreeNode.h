@@ -43,6 +43,7 @@ namespace V3D::V3DEngine::V3DCollections
 			}	
 		}
 
+		// ReSharper disable once CommentTypo
 		void GetAllChildren(V3DDecimalTreeNode<TKey, TItem>** allItemArray, int&& index = 0)
 		{
 			if (dataFlag != nullptr)
