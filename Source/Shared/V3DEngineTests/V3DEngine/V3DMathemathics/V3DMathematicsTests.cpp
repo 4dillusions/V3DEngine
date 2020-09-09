@@ -14,6 +14,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DVector4DTest.h"
 #include "V3DMatrix3Test.h"
 #include "V3DMatrix4Test.h"
+#include "V3DQuaternionTest.h"
 #include "V3DRandomTest.h"
 #include "V3DRandomClassicTest.h"
 
@@ -29,6 +30,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DMathematics
 		V3DVector4DTest::RunAllTests();
 		V3DMatrix3Test::RunAllTests();
 		V3DMatrix4Test::RunAllTests();
+		V3DQuaternionTest::RunAllTests();
 		V3DRandomTest::RunAllTests();
 		V3DRandomClassicTest::RunAllTests();
 	}

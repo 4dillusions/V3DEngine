@@ -15,9 +15,9 @@ namespace V3D::V3DEngine::V3DMathematics
 	//3*3 Matrix and math calculations
 	class V3DENGINE_API V3DMatrix3 final
 	{
-		float m[3][3] = {};
-
 	public:
+		float m[3][3] = {};
+		
 		V3DMatrix3() = default;
 		V3DMatrix3(
 			float m00, float m01, float m02,

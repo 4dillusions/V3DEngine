@@ -21,7 +21,7 @@ namespace V3D::V3DEngine::V3DMathematics
 		V3DMath& operator=(const V3DMath&) = delete;
 		V3DMath& operator=(V3DMath&&) = delete;
 
-		static constexpr float Pi = 3.141593f;
+		static constexpr float Pi = 3.14159265359f;
 		static constexpr float PiOver2 = Pi / 2.0f;
 		static constexpr float PiOver4 = Pi / 4.0f;
 		static constexpr float TwoPi = Pi * 2.0f;
