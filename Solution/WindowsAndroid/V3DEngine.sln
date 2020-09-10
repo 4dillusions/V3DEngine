@@ -31,6 +31,12 @@ Project("{39E2626F-3545-4960-A6E8-258AD8476CE5}") = "V3DEngineTests.Packaging", 
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "V3DEngineTests.NativeActivity", "Android\V3DEngineTests\V3DEngineTests.NativeActivity\V3DEngineTests.NativeActivity.vcxproj", "{38107070-E6EE-4E58-9FAD-ECAB69573B0C}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Json", "Json", "{C16F7609-1DD0-4C6B-B7C8-7A1C6A6258DF}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Source\Shared\ThirdParty\Json\json.hpp = ..\..\Source\Shared\ThirdParty\Json\json.hpp
+		..\..\Source\Shared\ThirdParty\Json\json_fwd.hpp = ..\..\Source\Shared\ThirdParty\Json\json_fwd.hpp
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Shared\V3DEngineTests\V3DEngineTests.vcxitems*{38107070-e6ee-4e58-9fad-ecab69573b0c}*SharedItemsImports = 4
@@ -107,6 +113,7 @@ Global
 		{C1927265-C6E2-4833-8E6E-2E4727A4C006} = {5A0C572A-D959-402A-8B67-CE4BF6B8417B}
 		{9F5A2F9D-3309-49F1-9A4E-A00C8F319828} = {C1927265-C6E2-4833-8E6E-2E4727A4C006}
 		{38107070-E6EE-4E58-9FAD-ECAB69573B0C} = {C1927265-C6E2-4833-8E6E-2E4727A4C006}
+		{C16F7609-1DD0-4C6B-B7C8-7A1C6A6258DF} = {1A6B2D8F-2A19-4E24-9A12-DBB91BB3638B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0C445ECF-1191-424E-93F8-CAA5EC40B04B}
