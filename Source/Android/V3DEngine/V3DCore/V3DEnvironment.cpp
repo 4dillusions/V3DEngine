@@ -50,17 +50,17 @@ namespace V3D::V3DEngine::V3DCore
 	{
 		switch (assetPath)
 		{
-		case V3DAssetPathType::Sound: return "Content/Sound/";
-		case V3DAssetPathType::Texture: return "Content/Texture/";
-		case V3DAssetPathType::Shader: return "Content/Shader/";
-		case V3DAssetPathType::Level: return "Data/Level/";
-		case V3DAssetPathType::Options: return "Data/Options/";
-		case V3DAssetPathType::Physics: return "Data/Physics/";
-		case V3DAssetPathType::UI: return "Data/UI/";;
+		case V3DAssetPathType::Sound: return "Content/Sound";
+		case V3DAssetPathType::Texture: return "Content/Texture";
+		case V3DAssetPathType::Shader: return "Content/Shader";
+		case V3DAssetPathType::Level: return "Data/Level";
+		case V3DAssetPathType::Options: return "Data/Options";
+		case V3DAssetPathType::Physics: return "Data/Physics";
+		case V3DAssetPathType::UI: return "Data/UI";
 
 		case V3DAssetPathType::Internal: return "";
 
-		default: return"default";
+		default: return "default";
 		}
 	}
 }

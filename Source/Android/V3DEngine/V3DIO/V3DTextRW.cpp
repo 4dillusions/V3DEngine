@@ -44,13 +44,13 @@ namespace V3D::V3DEngine::V3DIO
 		if (path == V3DAssetPathType::Internal)
 		{
 			fileFullName += V3DString(static_cast<android_app*>(GetEnvironment()->GetApp())->activity->internalDataPath);
-			fileFullName += '/';
 		}
 		else
 		{
 			fileFullName += V3DString(GetEnvironment()->GetAssetPath(path));
 		}
 
+		fileFullName += '/';
 		fileFullName += fileName;
 		
 		if (path == V3DAssetPathType::Internal)

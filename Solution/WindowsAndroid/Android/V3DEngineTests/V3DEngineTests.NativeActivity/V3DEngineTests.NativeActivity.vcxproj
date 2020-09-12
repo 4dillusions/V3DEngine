@@ -87,7 +87,7 @@
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>Clang_5_0</PlatformToolset>
     <UseOfStl>c++_static</UseOfStl>
-    <AndroidAPILevel>android-21</AndroidAPILevel>
+    <AndroidAPILevel>android-19</AndroidAPILevel>
     <ThumbMode>Thumb</ThumbMode>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'" Label="Configuration">
