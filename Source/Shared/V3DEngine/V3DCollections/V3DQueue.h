@@ -11,7 +11,6 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 namespace V3D::V3DEngine::V3DCollections
 {
-	// ReSharper disable once CommentTypo
 	/*
 		Queue FIFO data structure with "cirled" array
 
@@ -69,7 +68,6 @@ namespace V3D::V3DEngine::V3DCollections
 			DeleteQueueArray();
 		}
 
-		// ReSharper disable once CommentTypo
 		V3DQueue<T>& operator=(const V3DQueue<T>& value) noexcept  // NOLINT(bugprone-unhandled-self-assignment)
 		{
 			if (this != &value)

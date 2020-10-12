@@ -4,8 +4,6 @@ Copyright (c) 2020 by 4D Illusions. All rights reserved.
 Released under the terms of the GNU General Public License version 3 or later.
 */
 
-// ReSharper disable All
-
 #include "V3DQuaternion.h"
 #include "V3DMath.h"
 
@@ -114,8 +112,8 @@ namespace V3D::V3DEngine::V3DMathematics
 			if (rotMatrix.m[2][2] > rotMatrix.m[i][i])
 				i = 2;
 
-			auto j = s_iNext[i];
-			auto k = s_iNext[j];
+			const auto j = s_iNext[i];
+			const auto k = s_iNext[j];
 
 			fRoot = sqrt(rotMatrix.m[i][i] - rotMatrix.m[j][j] - rotMatrix.m[k][k] + 1.0f);
 			float* apkQuat[3] = { &x, &y, &z };
@@ -129,18 +127,18 @@ namespace V3D::V3DEngine::V3DMathematics
 
 	void V3DQuaternion::ToRotationMatrix(V3DMatrix3& rotMatrixOut) const
 	{
-		float _2x = x + x;
-		float _2y = y + y;
-		float _2z = z + z;
-		float _2xw = _2x * w;
-		float _2yw = _2y * w;
-		float _2zw = _2z * w;
-		float _2xx = _2x * x;
-		float _2yx = _2y * x;
-		float _2zx = _2z * x;
-		float _2yy = _2y * y;
-		float _2zy = _2z * y;
-		float _2zz = _2z * z;
+		const float _2x = x + x;
+		const float _2y = y + y;
+		const float _2z = z + z;
+		const float _2xw = _2x * w;
+		const float _2yw = _2y * w;
+		const float _2zw = _2z * w;
+		const float _2xx = _2x * x;
+		const float _2yx = _2y * x;
+		const float _2zx = _2z * x;
+		const float _2yy = _2y * y;
+		const float _2zy = _2z * y;
+		const float _2zz = _2z * z;
 
 		rotMatrixOut.m[0][0] = 1.0f - (_2yy + _2zz);
 		rotMatrixOut.m[0][1] = _2yx - _2zw;
@@ -153,7 +151,6 @@ namespace V3D::V3DEngine::V3DMathematics
 		rotMatrixOut.m[2][2] = 1.0f - (_2xx + _2yy);
 	}
 
-	// ReSharper disable once IdentifierTypo
 	float V3DQuaternion::Normalise()
 	{
 		const float Result = Length();

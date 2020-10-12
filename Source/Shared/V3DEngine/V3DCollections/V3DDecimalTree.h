@@ -14,7 +14,6 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 namespace V3D::V3DEngine::V3DCollections
 {
-	// ReSharper disable once CommentTypo
 	/*
 		Decimal tree data structure with static and dynamic objects.
 		Supports delete nodes while iterate, except RemoveAll

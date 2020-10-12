@@ -90,7 +90,6 @@ namespace V3D::V3DEngine::V3DCollections
 			DeleteDataArray(dataArray);
 		}
 
-		// ReSharper disable once CommentTypo
 		V3DDynamicArray<T>& operator=(const V3DDynamicArray<T>& value) noexcept  // NOLINT(bugprone-unhandled-self-assignment)
 		{
 			if (this != &value)

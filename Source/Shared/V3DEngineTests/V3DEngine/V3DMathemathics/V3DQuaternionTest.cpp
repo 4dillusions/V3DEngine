@@ -4,13 +4,12 @@ Copyright (c) 2020 by 4D Illusions. All rights reserved.
 Released under the terms of the GNU General Public License version 3 or later.
 */
 
-// ReSharper disable All
-
 #include "V3DQuaternionTest.h"
 #include "V3DEngineTests/V3DTest.h"
 #include "V3DEngine/V3DMacros.h"
 #include "V3DEngine/V3DMathematics/V3DQuaternion.h"
 
+// ReSharper disable once CppUnusedIncludeDirective
 #include <cmath>
 
 using namespace V3D::V3DEngine::V3DMathematics;
@@ -22,8 +21,6 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DMathematics
 		const V3DQuaternion Quat{ 20, 30, 40, 50 };
 		const V3DQuaternion Quat2 = Quat;
 		const V3DQuaternion Quat3 = Quat;
-
-		V3DQuaternion q(V3DMatrix3(0, 0, 1, 1, 0, 0, 0, 1, 0));
 
 		V3DTest::AssertOk(Quat == Quat2, V3DFILE_INFO);
 		V3DTest::AssertOk(Quat == Quat3, V3DFILE_INFO);
