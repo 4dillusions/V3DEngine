@@ -21,6 +21,7 @@ namespace V3D::V3DEngine::V3DCore
 			#endif
 		#endif
 
+		// ReSharper disable once CppUnreachableCode
 		return "";
 	}
 

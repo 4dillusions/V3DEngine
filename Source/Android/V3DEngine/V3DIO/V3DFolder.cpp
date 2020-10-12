@@ -24,7 +24,7 @@ namespace V3D::V3DEngine::V3DIO
 	
 	bool V3DFolder::IsExist(V3DAssetPathType path)
 	{
-		auto* const dir = AAssetManager_openDir(static_cast<android_app*>(GetEnvironment()->GetApp())->activity->assetManager, GetEnvironment()->GetAssetPath(path));
+		auto const dir = AAssetManager_openDir(static_cast<android_app*>(GetEnvironment()->GetApp())->activity->assetManager, GetEnvironment()->GetAssetPath(path));
 		const bool result = AAssetDir_getNextFileName(dir);
 		AAssetDir_close(dir);
 
@@ -35,9 +35,9 @@ namespace V3D::V3DEngine::V3DIO
 	{
 		V3DDynamicArray<V3DString> result;
 
-		auto* const dir = AAssetManager_openDir(static_cast<android_app*>(GetEnvironment()->GetApp())->activity->assetManager, GetEnvironment()->GetAssetPath(path));
+		auto const dir = AAssetManager_openDir(static_cast<android_app*>(GetEnvironment()->GetApp())->activity->assetManager, GetEnvironment()->GetAssetPath(path));
 
-		while(const auto* fileName = AAssetDir_getNextFileName(dir))
+		while(const auto fileName = AAssetDir_getNextFileName(dir))
 			result.Add(V3DString(fileName));
 		
 		return result;

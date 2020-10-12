@@ -400,10 +400,10 @@ namespace V3D::V3DEngine::V3DCore
 			return 0;
 
 		for (int dataIndex = leftCount + 1, pow = 1; dataIndex < textLenght; dataIndex++, pow++)
-			result += (static_cast<int>(data[dataIndex]) - NumberToChar) / V3DMath::Pow(10, pow);  // NOLINT(bugprone-narrowing-conversions)
+			result += static_cast<float>(static_cast<int>(data[dataIndex]) - NumberToChar) / V3DMath::Pow(10, static_cast<float>(pow));
 
 		for (int dataIndex = 0, pow = leftCount - 1; dataIndex < leftCount; dataIndex++, pow--)
-			result += (static_cast<int>(data[dataIndex]) - NumberToChar)* V3DMath::Pow(10, pow); // NOLINT(bugprone-narrowing-conversions)
+			result += static_cast<float>(static_cast<int>(data[dataIndex]) - NumberToChar)* V3DMath::Pow(10, static_cast<float>(pow));
 
 		return result;
 	}

@@ -10,17 +10,20 @@ Released under the terms of the GNU General Public License version 3 or later.
 	undefined reference to 'wcstoull'
 	undefined reference to 'wcstof'
 */
-long long wcstoll(const wchar_t* str, wchar_t** str_end, int base)
+
+#pragma once
+
+inline long long wcstoll(const wchar_t* str, wchar_t** str_end, int base)
 {
 	return 0;
 }
 
-unsigned long long wcstoull(const wchar_t* str, wchar_t** str_end, int base)
+inline unsigned long long wcstoull(const wchar_t* str, wchar_t** str_end, int base)
 {
 	return 0;
 }
 
-float wcstof(const wchar_t* str, wchar_t** str_end)
+inline float wcstof(const wchar_t* str, wchar_t** str_end)
 {
 	return 0;
 }

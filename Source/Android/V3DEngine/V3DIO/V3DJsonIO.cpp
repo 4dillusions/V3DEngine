@@ -8,7 +8,6 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngine/V3DCore/V3DMemory.h"
 #include "V3DEngine/V3DMacros.h"
 #include "ThirdParty/Json/json.hpp"
-#include "ThirdParty/Json/JsonAndroidHelper.h"
 
 using namespace V3D::V3DEngine::V3DCore;
 using json = nlohmann::json;
@@ -27,10 +26,8 @@ namespace V3D::V3DEngine::V3DIO
 	
 	char* V3DJsonIO::GetByteStream(const json& jsonObj)
 	{
-		char* result{};
-
 		const auto jsonText = jsonObj.dump();
-		result = V3DMemory::NewArray<char>(V3DFILE_INFO, jsonText.length() + 1);
+		auto result = V3DMemory::NewArray<char>(V3DFILE_INFO, jsonText.length() + 1);
 		strcpy(result, jsonText.c_str());
 
 		return result;

@@ -6,7 +6,8 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #include "V3DMemory.h"
 #include "V3DIoc.h"
-#include "V3DString.h"
+// ReSharper disable once CppUnusedIncludeDirective
+#include "V3DString.h" 
 #include "V3DEngine/V3DIO/V3DLogger.h"
 
 #include <unordered_map>
@@ -40,7 +41,7 @@ namespace V3D::V3DEngine::V3DCore
 		V3DIoc<V3DLogger>::Get().WriteOutput("");
 		V3DIoc<V3DLogger>::Get().WriteOutput("Leaked objects:");
 
-		for (const auto i : memoryList)
+		for (const auto i : memoryList)  // NOLINT(clang-diagnostic-range-loop-construct)
 			V3DIoc<V3DLogger>::Get().WriteOutput(i.second);
 
 		if (memoryList.empty())

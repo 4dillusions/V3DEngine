@@ -42,7 +42,7 @@ namespace V3D::V3DEngine::V3DIO
 
 		if (path == V3DAssetPathType::Internal)
 		{
-			if (auto* const file = fopen(fileFullName.ToChar(), "r"))
+			if (auto const file = fopen(fileFullName.ToChar(), "r"))
 			{
 				fclose(file);
 				return true;
@@ -51,7 +51,7 @@ namespace V3D::V3DEngine::V3DIO
 			return false;
 		}
 
-		if (auto* const asset = AAssetManager_open(static_cast<android_app*>(GetEnvironment()->GetApp())->activity->assetManager, fileFullName.ToChar(), AASSET_MODE_UNKNOWN))
+		if (auto const asset = AAssetManager_open(static_cast<android_app*>(GetEnvironment()->GetApp())->activity->assetManager, fileFullName.ToChar(), AASSET_MODE_UNKNOWN))
 		{
 			AAsset_close(asset);
 			return true;
@@ -78,7 +78,7 @@ namespace V3D::V3DEngine::V3DIO
 
 		if (path == V3DAssetPathType::Internal)
 		{
-			if (auto* const file = fopen(fileFullName.ToChar(), "r"))
+			if (auto const file = fopen(fileFullName.ToChar(), "r"))
 			{
 				fseek(file, 0, SEEK_END);
 				const auto length = ftell(file);
@@ -91,7 +91,7 @@ namespace V3D::V3DEngine::V3DIO
 			return -1;
 		}
 
-		if (auto* const asset = AAssetManager_open(static_cast<android_app*>(GetEnvironment()->GetApp())->activity->assetManager, fileFullName.ToChar(), AASSET_MODE_UNKNOWN))
+		if (auto const asset = AAssetManager_open(static_cast<android_app*>(GetEnvironment()->GetApp())->activity->assetManager, fileFullName.ToChar(), AASSET_MODE_UNKNOWN))
 		{
 			const long size = AAsset_getLength(asset);
 			AAsset_close(asset);
@@ -109,7 +109,7 @@ namespace V3D::V3DEngine::V3DIO
 		fileFullName += '/';
 		fileFullName += fileName;
 
-		auto* const file = fopen(fileFullName.ToChar(), "w+");
+		auto const file = fopen(fileFullName.ToChar(), "w+");
 		fwrite(file, sizeof(char), 0, file);
 		fclose(file);
 	}

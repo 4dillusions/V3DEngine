@@ -44,7 +44,7 @@ namespace V3D::V3DEngineTests::V3DTestObject
 		explicit V3DTestBinaryData(const V3DTestBinaryDataHead& dataHead);
 		~V3DTestBinaryData();
 
-		unsigned long long GetSize() const;
+		[[nodiscard]] unsigned long long GetSize() const;
 
 		void Load(V3D::V3DEngine::V3DCore::V3DAssetPathType path, const char* fileName);
 		void Load(V3D::V3DEngine::V3DIO::V3DMemoryStream &stream);

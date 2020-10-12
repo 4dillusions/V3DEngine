@@ -55,7 +55,7 @@ namespace V3D::V3DEngine::V3DIO
 		
 		if (path == V3DAssetPathType::Internal)
 		{
-			if (auto* const file = fopen(fileFullName.ToChar(), "r"))
+			if (auto const file = fopen(fileFullName.ToChar(), "r"))
 			{
 				int letter;
 				while ((letter = getc(file)) != EOF)
@@ -71,7 +71,7 @@ namespace V3D::V3DEngine::V3DIO
 			return result;
 		}
 
-		if (auto* const asset = AAssetManager_open(static_cast<android_app*>(GetEnvironment()->GetApp())->activity->assetManager, fileFullName.ToChar(), AASSET_MODE_UNKNOWN))
+		if (auto const asset = AAssetManager_open(static_cast<android_app*>(GetEnvironment()->GetApp())->activity->assetManager, fileFullName.ToChar(), AASSET_MODE_UNKNOWN))
 		{
 			const auto size = AAsset_getLength(asset);
 			char* buffer = static_cast<char*>(malloc(sizeof(char) * size));
@@ -99,7 +99,7 @@ namespace V3D::V3DEngine::V3DIO
 		fileFullName += '/';
 		fileFullName += fileName;
 
-		auto* const file = fopen(fileFullName.ToChar(), "w+");
+		auto const file = fopen(fileFullName.ToChar(), "w+");
 		fprintf(file, "%s", text.ToChar());
 		fclose(file);
 	}

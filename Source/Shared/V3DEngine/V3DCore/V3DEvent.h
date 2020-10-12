@@ -66,7 +66,7 @@ namespace V3D::V3DEngine::V3DCore
 		void operator -= (const std::function<void()>& function)
 		{
 			for (functionList.First(); functionList.IsDone(); functionList.Next())
-				if (functionList.GetCurrent()->template target<void()>() == function.template target<void()>())
+				if (functionList.GetCurrent()->target<void()>() == function.target<void()>())
 				{
 					functionList.RemoveCurrent();
 					break;

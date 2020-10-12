@@ -9,6 +9,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngine/V3DMacros.h"
 #include "V3DEngine/V3DMathematics/V3DVector2D.h"
 
+// ReSharper disable once CppUnusedIncludeDirective
 #include <cmath>
 
 using namespace V3D::V3DEngine::V3DMathematics;

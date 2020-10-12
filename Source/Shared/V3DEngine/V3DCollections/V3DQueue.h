@@ -25,9 +25,9 @@ namespace V3D::V3DEngine::V3DCollections
 	*/
 	template<typename T> class V3DQueue final
 	{
-		const int queueSize;
-		V3DQueueNode<T>** queueArray;
-		int front, currentFront, rear;
+		const int queueSize{};
+		V3DQueueNode<T>** queueArray{};
+		int front{}, currentFront{}, rear{};
 
 		void CreateQueueArray()
 		{
@@ -49,7 +49,7 @@ namespace V3D::V3DEngine::V3DCollections
 		}
 
 	public:
-		V3DQueue(int size) : queueSize(size), front{ -1 }, currentFront{}, rear{ -1 }
+		V3DQueue(int size) : queueSize(size), front{ -1 }, rear{ -1 }
 		{
 			CreateQueueArray();
 		}

@@ -25,7 +25,13 @@ namespace V3D::V3DEngineTests::V3DTestObject
 
 		std::list<V3DTestJSonUIControl*> controls;
 
+		V3DTestJSonUIControl() = default;
+		V3DTestJSonUIControl(const V3DTestJSonUIControl&) = delete;
+		V3DTestJSonUIControl(V3DTestJSonUIControl&&) = delete;
 		~V3DTestJSonUIControl();
+		V3DTestJSonUIControl& operator=(const V3DTestJSonUIControl&) = delete;
+		V3DTestJSonUIControl& operator=(V3DTestJSonUIControl&&) = delete;
+		
 		void Load(const nlohmann::json& jsonObj, int hierarchyNum = 0);
 		void WriteToString(V3D::V3DEngine::V3DCore::V3DString& out);
 	};

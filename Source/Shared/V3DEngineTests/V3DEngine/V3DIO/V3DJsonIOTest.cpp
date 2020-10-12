@@ -54,7 +54,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 
 	void V3DJsonIOTest::ConfigLoadSaveTest()
 	{
-		const auto* const jsonText =
+		const auto jsonText =
 			R"(
 				{
 					"name": "Test 123",
@@ -73,7 +73,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 
 	void V3DJsonIOTest::UIBuildTest()
 	{
-		const auto* const jsonText =
+		const auto jsonText =
 			R"(
 				{
 					"type": "window",

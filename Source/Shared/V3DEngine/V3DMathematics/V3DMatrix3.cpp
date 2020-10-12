@@ -31,17 +31,20 @@ namespace V3D::V3DEngine::V3DMathematics
 
 	V3DMatrix3& V3DMatrix3::operator=(const V3DMatrix3& value)
 	{
-		m[0][0] = value.m[0][0];
-		m[0][1] = value.m[0][1];
-		m[0][2] = value.m[0][2];
+		if (this != &value)
+		{
+			m[0][0] = value.m[0][0];
+			m[0][1] = value.m[0][1];
+			m[0][2] = value.m[0][2];
 
-		m[1][0] = value.m[1][0];
-		m[1][1] = value.m[1][1];
-		m[1][2] = value.m[1][2];
+			m[1][0] = value.m[1][0];
+			m[1][1] = value.m[1][1];
+			m[1][2] = value.m[1][2];
 
-		m[2][0] = value.m[2][0];
-		m[2][1] = value.m[2][1];
-		m[2][2] = value.m[2][2];
+			m[2][0] = value.m[2][0];
+			m[2][1] = value.m[2][1];
+			m[2][2] = value.m[2][2];
+		}
 
 		return *this;
 	}

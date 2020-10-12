@@ -8,8 +8,8 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 namespace V3D::V3DEngine::V3DGameEngine
 {
-    void V3DGameEngineFacade::Placeholder()
+    /*void V3DGameEngineFacade::Placeholder()
     {
         
-    }
+    }*/
 }

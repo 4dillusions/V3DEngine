@@ -12,7 +12,7 @@ namespace V3D::V3DEngine::V3DGameEngine
 {
 	class V3DENGINE_API V3DGameEngineFacade
 	{
-	public:
-		void Placeholder();
+	//public:
+		//void Placeholder();
 	};
 }

@@ -12,7 +12,12 @@ namespace V3D::V3DEngineTests::V3DTestObject
 	class V3DITestObject
 	{
 	public:
+		V3DITestObject() = default;
+		V3DITestObject(const V3DITestObject&) = default;
+		V3DITestObject(V3DITestObject&&) = default;
 		virtual ~V3DITestObject() = default;
+		V3DITestObject& operator=(const V3DITestObject&) = default;
+		V3DITestObject& operator=(V3DITestObject&&) = default;
 		
 		virtual char GetTypeCode() = 0;
 		virtual int GetId() = 0;

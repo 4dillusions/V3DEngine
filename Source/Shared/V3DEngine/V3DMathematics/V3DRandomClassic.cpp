@@ -19,7 +19,7 @@ namespace V3D::V3DEngine::V3DMathematics
 
 	float V3DRandomClassic::CreateRandom(float min, float max)
 	{
-		static V3DRandomClassic random;
+		[[maybe_unused]] static V3DRandomClassic random;
 
 		return static_cast<float>((rand() % (static_cast<int>(++max) - static_cast<int>(min))) + static_cast<int>(min));
 	}

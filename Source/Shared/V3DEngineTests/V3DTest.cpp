@@ -99,7 +99,7 @@ namespace V3D::V3DEngineTests
 
 		if (errorCounter > 0)
 		{
-			for (const auto* text : errorList)
+			for (const auto text : errorList)
 				testIO.WriteOutput(text);
 		}
 		else

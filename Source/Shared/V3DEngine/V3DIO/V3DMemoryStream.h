@@ -32,8 +32,8 @@ namespace V3D::V3DEngine::V3DIO
 		explicit V3DMemoryStream(char* bufferData);
 		~V3DMemoryStream();
 
-		char* GetBuffer() const;
-		unsigned long long GetCurrentSize() const;
+		[[nodiscard]] char* GetBuffer() const;
+		[[nodiscard]] unsigned long long GetCurrentSize() const;
 
 		template<typename T> void Read(T& data)
 		{

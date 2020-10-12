@@ -43,7 +43,7 @@ namespace V3D::V3DEngine::V3DIO
 	
 	void V3DFile::Create(const char* fileName)
 	{
-		auto* const file = fopen(fileName, "w+");
+		auto const file = fopen(fileName, "w+");
 		fwrite(file, sizeof(char), 0, file);
 		fclose(file);
 	}

@@ -24,7 +24,7 @@ namespace V3D::V3DEngine::V3DIO
 			return json::parse(jsonText);
 		
 		#ifdef _DEBUG //don't handle exceptions in Release mode
-			static const auto environment = V3DIoc<V3DEnvironment>::Get();
+			static const auto environment = V3DIoc<V3DEnvironment>::Get();  // NOLINT(readability-misleading-indentation)
 			if (!environment.GetIsUnitTestMode())
 			{
 				try
@@ -43,10 +43,8 @@ namespace V3D::V3DEngine::V3DIO
 	
 	char* V3DJsonIO::GetByteStream(const json& jsonObj)
 	{
-		char* result{};
-
 		const auto jsonText = jsonObj.dump();
-		result = new char[jsonText.length() + 1];
+		char* result = new char[jsonText.length() + 1];
 		strcpy(result, jsonText.c_str());
 
 		return result;

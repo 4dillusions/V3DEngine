@@ -12,8 +12,6 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngine/V3DMathematics/V3DRandomClassic.h"
 #include "V3DEngine/V3DMathematics/V3DVector2D.h"
 
-#include <string>
-
 using namespace V3D::V3DEngine::V3DMathematics;
 
 namespace V3D::V3DEngineTests::V3DEngine::V3DMathematics

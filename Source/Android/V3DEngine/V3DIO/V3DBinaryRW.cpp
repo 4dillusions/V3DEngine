@@ -55,7 +55,7 @@ namespace V3D::V3DEngine::V3DIO
 
 		if (path == V3DAssetPathType::Internal)
 		{
-			if (auto* const file = std::fopen(fileFullName.ToChar(), "rb"))
+			if (auto const file = std::fopen(fileFullName.ToChar(), "rb"))
 			{
 				fseek(file, 0, SEEK_END);
 				const auto size = ftell(file);
@@ -73,7 +73,7 @@ namespace V3D::V3DEngine::V3DIO
 			return result;
 		}
 
-		if (auto* const asset = AAssetManager_open(static_cast<android_app*>(GetEnvironment()->GetApp())->activity->assetManager, fileFullName.ToChar(), AASSET_MODE_UNKNOWN))
+		if (auto const asset = AAssetManager_open(static_cast<android_app*>(GetEnvironment()->GetApp())->activity->assetManager, fileFullName.ToChar(), AASSET_MODE_UNKNOWN))
 		{
 			const auto size = AAsset_getLength(asset);
 			char* buffer = V3DMemory::NewArray<char>(V3DFILE_INFO, (sizeof(char) * size) + 1);
@@ -99,7 +99,7 @@ namespace V3D::V3DEngine::V3DIO
 		fileFullName += fileName;
 
 		const char* mode = offset == 0 ? "wb+" : "ab+";
-		auto* const file = std::fopen(fileFullName.ToChar(), mode);
+		auto const file = std::fopen(fileFullName.ToChar(), mode);
 		fseek(file, static_cast<long>(offset), SEEK_SET);
 		fwrite(data, size, 1, file);
 		std::fclose(file);

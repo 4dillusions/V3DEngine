@@ -6,7 +6,6 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #pragma once
 
-#include "V3DEngine/V3DEngineLibrary.h"
 #include "V3DEngine/V3DCollections/V3DDynamicArray.h"
 
 #include <string>

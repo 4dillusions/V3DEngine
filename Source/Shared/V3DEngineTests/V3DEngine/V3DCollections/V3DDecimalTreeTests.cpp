@@ -14,7 +14,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngine/V3DCore/V3DString.h"
 #include "V3DEngineTests/V3DTestObject/V3DTestObjectA.h"
 
-#include <assert.h>
+#include <cassert>
 
 using namespace V3D::V3DEngine::V3DCollections;
 using namespace V3D::V3DEngine::V3DCore;
@@ -66,7 +66,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
 
 		V3DDecimalTree<int, V3DTestObjectA*> dynamicObjTree;
-		V3DTestObjectA* dObj = V3DMemory::New<V3DTestObjectA>(V3DFILE_INFO);
+		auto dObj = V3DMemory::New<V3DTestObjectA>(V3DFILE_INFO);
 		dObj->SetId(20);
 		dynamicObjTree.Add(20, dObj);
 		dynamicObjTree.First();

@@ -13,7 +13,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #include "V3DCollectionsTests.h"
 
-#include <assert.h>
+#include <cassert>
 
 using namespace V3D::V3DEngine::V3DCore;
 using namespace V3D::V3DEngine::V3DCollections;
@@ -58,7 +58,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
 
 		V3DLinkedList<V3DTestObjectA*> dynamicObjList;
-		V3DTestObjectA* dObj = V3DMemory::New<V3DTestObjectA>(V3DFILE_INFO);
+		auto dObj = V3DMemory::New<V3DTestObjectA>(V3DFILE_INFO);
 		dObj->SetId(20);
 		dynamicObjList.Add(dObj);
 		dynamicObjList.First();

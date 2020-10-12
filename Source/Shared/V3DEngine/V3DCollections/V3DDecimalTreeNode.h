@@ -19,6 +19,7 @@ namespace V3D::V3DEngine::V3DCollections
 		V3DDecimalTreeNode<TKey, TItem>() = default;
 		V3DDecimalTreeNode<TKey, TItem>(const V3DDecimalTreeNode<TKey, TItem>&) = delete;
 		V3DDecimalTreeNode<TKey, TItem>(V3DDecimalTreeNode<TKey, TItem>&&) = delete;
+		~V3DDecimalTreeNode<TKey, TItem>() = default;
 		V3DDecimalTreeNode<TKey, TItem>& operator=(const V3DDecimalTreeNode<TKey, TItem>&) = delete;
 		V3DDecimalTreeNode<TKey, TItem>& operator=(V3DDecimalTreeNode<TKey, TItem>&&) = delete;
 
@@ -43,7 +44,6 @@ namespace V3D::V3DEngine::V3DCollections
 			}	
 		}
 
-		// ReSharper disable once CommentTypo
 		void GetAllChildren(V3DDecimalTreeNode<TKey, TItem>** allItemArray, int&& index = 0)
 		{
 			if (dataFlag != nullptr)
@@ -54,7 +54,7 @@ namespace V3D::V3DEngine::V3DCollections
 			
 			for (int i = 0; i < ChildSize; i++)
 				if (children[i] != nullptr)
-					children[i]->GetAllChildren(allItemArray, std::move(index));  // NOLINT(bugprone-use-after-move)
+					children[i]->GetAllChildren(allItemArray, std::move(index));  // NOLINT(bugprone-use-after-move, performance-move-const-arg)
 		}
 	};
 }

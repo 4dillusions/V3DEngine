@@ -17,7 +17,7 @@ namespace V3D::V3DEngineTests::V3DTestObject
 {
 	V3DTestJSonUIControl::~V3DTestJSonUIControl()
 	{
-		for (auto* ptr : controls)
+		for (auto ptr : controls)
 			V3DMemory::Delete(ptr);
 
 		controls.clear();
@@ -33,7 +33,7 @@ namespace V3D::V3DEngineTests::V3DTestObject
 		if (!jsonObj["controls"].is_null())
 			for (const auto& controlJson : jsonObj["controls"])
 			{
-				auto* control = V3DMemory::New<V3DTestJSonUIControl>(V3DFILE_INFO);
+				auto control = V3DMemory::New<V3DTestJSonUIControl>(V3DFILE_INFO);
 				controls.push_back(control);
 				control->Load(controlJson, hierarchyNum + 1);
 			}
