@@ -29,6 +29,8 @@ namespace V3D::V3DEngine::V3DIO
 
         int warnings = 0, errors = 0;
 
+        V3DLogger();
+
     public:
         const char* const LogFileName = "Log.txt";
 
@@ -36,13 +38,14 @@ namespace V3D::V3DEngine::V3DIO
         const char* const WarningTag = "[Warning]";
         const char* const ErrorTag = "[Error]";
 
-        V3DLogger();
         V3DLogger(const V3DLogger&) = delete;
         V3DLogger(V3DLogger&&) = delete;
         ~V3DLogger() = default;
         V3DLogger& operator=(const V3DLogger&) = delete;
         V3DLogger& operator=(V3DLogger&&) = delete;
 
+        static V3DLogger& Get();
+        
         //Avoid buffer leak before detecting
         void DeleteBuffer();
 

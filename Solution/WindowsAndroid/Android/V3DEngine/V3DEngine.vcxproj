@@ -47,6 +47,7 @@
     <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DFolder.cpp" />
     <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DJsonIO.cpp" />
     <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DOstream.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DSQLiteContext.cpp" />
     <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DTextRW.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -217,6 +218,7 @@
       <PrecompiledHeaderCompileAs />
       <CompileAs>CompileAsCpp</CompileAs>
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <ExceptionHandling>Disabled</ExceptionHandling>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">

@@ -17,8 +17,6 @@ namespace V3D::V3DEngine::V3DCore
 
 namespace V3D::V3DEngine::V3DIO
 {
-    class V3DLogger;
-
     /*
         Raw text read/write from/to file
         It's not enable continuos writing
@@ -26,8 +24,7 @@ namespace V3D::V3DEngine::V3DIO
     class V3DENGINE_API V3DTextRW final
     {
         static V3DCore::V3DEnvironment* GetEnvironment();
-        static V3DLogger* GetLogger();
-    	
+        
     public:
         V3DTextRW() = delete;
         V3DTextRW(const V3DTextRW&) = delete;

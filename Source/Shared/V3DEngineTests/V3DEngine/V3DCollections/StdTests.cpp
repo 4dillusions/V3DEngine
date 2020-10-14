@@ -24,7 +24,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 	{
 		static std::vector<V3DTestObjectA*>* stdList;
 
-		V3DTest::AddTimingTest("StdVectorAddRemoveTimingTest", V3DTimingTestData
+		V3DTest::AddTimingTest("StdVectorAddRemoveTimingTest", V3DTestTimingData
 			{
 				[]()
 				{
@@ -32,7 +32,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 				}, true, 0
 			});
 
-		V3DTest::AddTimingTest("StdVectorAddRemoveTimingTest", V3DTimingTestData
+		V3DTest::AddTimingTest("StdVectorAddRemoveTimingTest", V3DTestTimingData
 			{
 				[]()
 				{
@@ -57,7 +57,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 				}, false, 1
 			});
 
-		V3DTest::AddTimingTest("StdVectorAddRemoveTimingTest", V3DTimingTestData
+		V3DTest::AddTimingTest("StdVectorAddRemoveTimingTest", V3DTestTimingData
 			{
 				[]()
 				{
@@ -73,7 +73,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 	{
 		static std::vector<V3DTestObjectA*>* stdList;
 
-		V3DTest::AddTimingTest("StdVectorIterateTimingTest", V3DTimingTestData
+		V3DTest::AddTimingTest("StdVectorIterateTimingTest", V3DTestTimingData
 			{
 				[]()
 				{
@@ -84,7 +84,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 				}, true, 0
 			});
 
-		V3DTest::AddTimingTest("StdVectorIterateTimingTest", V3DTimingTestData
+		V3DTest::AddTimingTest("StdVectorIterateTimingTest", V3DTestTimingData
 			{
 				[]()
 				{
@@ -108,7 +108,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 				}, false, 1
 			});
 
-		V3DTest::AddTimingTest("StdVectorIterateTimingTest", V3DTimingTestData
+		V3DTest::AddTimingTest("StdVectorIterateTimingTest", V3DTestTimingData
 			{
 				[]()
 				{
@@ -124,7 +124,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 	{
 		static std::map<int, V3DTestObjectA*>* stdMap;
 
-		V3DTest::AddTimingTest("StdMapAddRemoveTimingTest", V3DTimingTestData
+		V3DTest::AddTimingTest("StdMapAddRemoveTimingTest", V3DTestTimingData
 			{
 				[]()
 				{
@@ -132,7 +132,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 				}, true, 0
 			});
 
-		V3DTest::AddTimingTest("StdMapAddRemoveTimingTest", V3DTimingTestData
+		V3DTest::AddTimingTest("StdMapAddRemoveTimingTest", V3DTestTimingData
 			{
 				[]()
 				{
@@ -157,7 +157,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 				}, false, 1
 			});
 
-		V3DTest::AddTimingTest("StdMapAddRemoveTimingTest", V3DTimingTestData
+		V3DTest::AddTimingTest("StdMapAddRemoveTimingTest", V3DTestTimingData
 			{
 				[]()
 				{
@@ -173,7 +173,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 	{
 		static std::map<int, V3DTestObjectA*>* stdMap;
 
-		V3DTest::AddTimingTest("StdMapIterateTimingTest", V3DTimingTestData
+		V3DTest::AddTimingTest("StdMapIterateTimingTest", V3DTestTimingData
 			{
 				[]()
 				{
@@ -184,7 +184,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 				}, true, 0
 			});
 
-		V3DTest::AddTimingTest("StdMapIterateTimingTest", V3DTimingTestData
+		V3DTest::AddTimingTest("StdMapIterateTimingTest", V3DTestTimingData
 			{
 				[]()
 				{
@@ -208,7 +208,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 				}, false, 1
 			});
 
-		V3DTest::AddTimingTest("StdMapIterateTimingTest", V3DTimingTestData
+		V3DTest::AddTimingTest("StdMapIterateTimingTest", V3DTestTimingData
 			{
 				[]()
 				{

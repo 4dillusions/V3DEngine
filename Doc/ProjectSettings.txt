@@ -82,7 +82,7 @@ VC++ directories
 C/C++
 	preprocessors: ANDROID, _DEBUG
 	Code generation
-		Enable C++ exceptions: No (release/debug)
+		Enable C++ exceptions: No (release), No (debug)
 	Language
 		Enable RTTI: Yes
 		C language: C11

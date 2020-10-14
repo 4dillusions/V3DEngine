@@ -10,7 +10,6 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngine/V3DMacros.h"
 #include "V3DEngine/V3DCore/V3DString.h"
 #include "V3DEngine/V3DIO/V3DLogger.h"
-#include "V3DEngine/V3DCore/V3DIoc.h"
 
 using namespace V3D::V3DEngine::V3DCore;
 using namespace V3D::V3DEngine::V3DIO;
@@ -20,7 +19,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 	void V3DLoggerTest::LoggerTest()
 	{
 		auto logTriggerText = V3DMemory::New<V3DString>(V3DFILE_INFO);
-		auto& logger = V3DIoc<V3DLogger>::Get();
+		auto& logger = V3DLogger::Get();
 		logger.SetLogTrigger([&logTriggerText](const V3DString& log) { *logTriggerText += log; });
 
 		logger.WriteOutput(V3DLogMessageType::Error, V3DString("Testing log system 1"));
@@ -77,7 +76,13 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 		V3DTest::AssertOk(logTriggerText->Contains(V3DString("Testing log system 3330")), V3DFILE_INFO);
 
 		V3DMemory::Delete(logTriggerText);
+		logger.SetLogTrigger(nullptr);
 		logger.DeleteBuffer();
+		logger.SetOutputTypeFlag(V3DLogOutputType::ToFile, false);
+		logger.SetOutputTypeFlag(V3DLogOutputType::ToBuffer, false);
+		logger.SetOutputTypeFlag(V3DLogOutputType::ToLogTrigger, false);
+
+		
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
 	}
 

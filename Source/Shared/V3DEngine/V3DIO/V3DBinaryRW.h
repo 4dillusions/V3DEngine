@@ -16,8 +16,6 @@ namespace V3D::V3DEngine::V3DCore
 
 namespace V3D::V3DEngine::V3DIO
 {
-    class V3DLogger;
-	
     /*
         Binary stream (char*) read/write from/to file
         It enables continuos writing
@@ -25,7 +23,6 @@ namespace V3D::V3DEngine::V3DIO
     class V3DENGINE_API V3DBinaryRW final
     {
         static V3DCore::V3DEnvironment* GetEnvironment();
-        static V3DLogger* GetLogger();
     	
     public:
         V3DBinaryRW() = delete;

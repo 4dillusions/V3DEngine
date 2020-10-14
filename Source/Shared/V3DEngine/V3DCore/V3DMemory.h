@@ -17,7 +17,7 @@ namespace V3D::V3DEngine::V3DCore
 	{
 		static std::unordered_map<int*, const char*> memoryList;
 		inline static bool isDebugMode{ V3DEnvironment::GetIsRunModeDebug() };
-
+		
 	public:
 		V3DMemory() = default;
 		V3DMemory(const V3DMemory&) = delete;

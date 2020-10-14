@@ -8,11 +8,8 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #include "V3DIoc.h"
 #include "V3DString.h"
-#include "V3DEngine/V3DIO/V3DLogger.h"
 
 #include <cassert>
-
-using namespace V3D::V3DEngine::V3DIO;
 
 namespace V3D::V3DEngine::V3DCore
 {

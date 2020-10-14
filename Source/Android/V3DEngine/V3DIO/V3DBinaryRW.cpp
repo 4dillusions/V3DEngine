@@ -23,12 +23,6 @@ namespace V3D::V3DEngine::V3DIO
 		return &environment;
 	}
 
-	V3DLogger* V3DBinaryRW::GetLogger()
-	{
-		static auto& logger = V3DIoc<V3DLogger>::Get();
-		return &logger;
-	}
-	
 	char* V3DBinaryRW::Read(V3DAssetPathType path, const char* fileName)
 	{
 		char* result{};
@@ -38,7 +32,7 @@ namespace V3D::V3DEngine::V3DIO
 			V3DString log = V3DString("Couldn't open: ");
 			log += fileFullName;
 
-			GetLogger()->WriteOutput(V3DLogMessageType::Error, log);
+			V3DLogger::Get().WriteOutput(V3DLogMessageType::Error, log);
 		};
 
 		if (path == V3DAssetPathType::Internal)

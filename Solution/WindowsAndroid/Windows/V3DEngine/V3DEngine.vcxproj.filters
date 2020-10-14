@@ -45,5 +45,11 @@
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DIO\V3DJsonIO.cpp">
       <Filter>Source\V3DIO</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DIO\V3DSQLiteContext.cpp">
+      <Filter>Source\V3DIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DEngine.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

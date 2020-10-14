@@ -53,16 +53,9 @@ namespace V3D::V3DEngine::V3DCollections
 			CreateQueueArray();
 		}
 
-		V3DQueue<T>(const V3DQueue<T>& value)
-		{
-			*this = value;
-		}
-
-		V3DQueue<T>(V3DQueue<T>&& value) noexcept
-		{
-			*this = std::move(value);
-		}
-
+		V3DQueue<T>(const V3DQueue<T>& value) = delete;
+		V3DQueue<T>(V3DQueue<T>&& value) = delete;
+		
 		~V3DQueue()
 		{
 			DeleteQueueArray();

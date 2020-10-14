@@ -5,7 +5,6 @@ Released under the terms of the GNU General Public License version 3 or later.
 */
 
 #include "V3DMemory.h"
-#include "V3DIoc.h"
 // ReSharper disable once CppUnusedIncludeDirective
 #include "V3DString.h" 
 #include "V3DEngine/V3DIO/V3DLogger.h"
@@ -17,7 +16,7 @@ using namespace V3D::V3DEngine::V3DIO;
 namespace V3D::V3DEngine::V3DCore
 {
 	std::unordered_map<int*, const char*> V3DMemory::memoryList;
-	
+
 	int V3DMemory::GetMemoryLeakCount()
 	{
 		return static_cast<int>(memoryList.size());
@@ -37,27 +36,27 @@ namespace V3D::V3DEngine::V3DCore
 
 	void V3DMemory::WriteStatistics()
 	{
-		V3DIoc<V3DLogger>::Get().DeleteBuffer();
-		V3DIoc<V3DLogger>::Get().WriteOutput("");
-		V3DIoc<V3DLogger>::Get().WriteOutput("Leaked objects:");
+		V3DLogger::Get().DeleteBuffer();
+		V3DLogger::Get().WriteOutput("");
+		V3DLogger::Get().WriteOutput("Leaked objects:");
 
 		for (const auto i : memoryList)  // NOLINT(clang-diagnostic-range-loop-construct)
-			V3DIoc<V3DLogger>::Get().WriteOutput(i.second);
+			V3DLogger::Get().WriteOutput(i.second);
 
 		if (memoryList.empty())
-			V3DIoc<V3DLogger>::Get().WriteOutput("0 leaked object");
+			V3DLogger::Get().WriteOutput("0 leaked object");
 	}
 
 	void V3DMemory::WriteStatisticsForTests()
 	{
 		WriteStatistics();
 		
-		V3DIoc<V3DLogger>::Get().WriteOutput("");
-		V3DIoc<V3DLogger>::Get().WriteOutput("Warnings:");
-		V3DIoc<V3DLogger>::Get().WriteOutput(V3DIoc<V3DLogger>::Get().GetWarnings());
+		V3DLogger::Get().WriteOutput("");
+		V3DLogger::Get().WriteOutput("Warnings:");
+		V3DLogger::Get().WriteOutput(V3DLogger::Get().GetWarnings());
 
-		V3DIoc<V3DLogger>::Get().WriteOutput("");
-		V3DIoc<V3DLogger>::Get().WriteOutput("Errors:");
-		V3DIoc<V3DLogger>::Get().WriteOutput(V3DIoc<V3DLogger>::Get().GetErrors());
+		V3DLogger::Get().WriteOutput("");
+		V3DLogger::Get().WriteOutput("Errors:");
+		V3DLogger::Get().WriteOutput(V3DLogger::Get().GetErrors());
 	}
 }

@@ -42,6 +42,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Json", "Json", "{970B57C8-5
 		..\..\Source\Android\ThirdParty\Json\JsonAndroidHelper.h = ..\..\Source\Android\ThirdParty\Json\JsonAndroidHelper.h
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQLite", "SQLite", "{5297B740-CB77-48C1-ADC6-26ECEDA8287A}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Source\Windows\ThirdParty\SQLite\sqlite3.h = ..\..\Source\Windows\ThirdParty\SQLite\sqlite3.h
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Shared\V3DEngineTests\V3DEngineTests.vcxitems*{38107070-e6ee-4e58-9fad-ecab69573b0c}*SharedItemsImports = 4
@@ -120,6 +125,7 @@ Global
 		{38107070-E6EE-4E58-9FAD-ECAB69573B0C} = {C1927265-C6E2-4833-8E6E-2E4727A4C006}
 		{C16F7609-1DD0-4C6B-B7C8-7A1C6A6258DF} = {1A6B2D8F-2A19-4E24-9A12-DBB91BB3638B}
 		{970B57C8-591E-4313-93C2-949EB5759425} = {011AC25E-A921-4289-8C5B-A3D874DD70CF}
+		{5297B740-CB77-48C1-ADC6-26ECEDA8287A} = {97B97F08-4B61-4C5F-A577-FE96950771FE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0C445ECF-1191-424E-93F8-CAA5EC40B04B}

@@ -21,7 +21,7 @@ namespace V3D::V3DEngineTests
 	int V3DTest::tests = 0;
 	int V3DTest::passedTests = 0;
 	std::list<const char*> V3DTest::errorList;
-	std::map<std::string, V3DTimingTestData> V3DTest::timingList;
+	std::map<std::string, V3DTestTimingData> V3DTest::timingList;
 	std::list<std::function<void()>> V3DTest::integrationList;
 	V3DITestIO<V3DTestIO>& V3DTest::testIO = V3DTestIO::Get();
 
@@ -46,7 +46,7 @@ namespace V3D::V3DEngineTests
 		}
 	}
 
-	void V3DTest::AddTimingTest(const std::string& timingFunctionName, const V3DTimingTestData& timingTestData)
+	void V3DTest::AddTimingTest(const std::string& timingFunctionName, const V3DTestTimingData& timingTestData)
 	{
 		if (timingList.find(timingFunctionName) == timingList.end())
 			timingList.insert({ timingFunctionName + testIO.ConvertToString(timingTestData.orderIndex), timingTestData });
@@ -54,7 +54,7 @@ namespace V3D::V3DEngineTests
 
 	void V3DTest::AddTimingTest(const std::string& timingFunctionName, const std::function<void()>& timingFunction)
 	{
-		AddTimingTest(timingFunctionName, V3DTimingTestData{ timingFunction });
+		AddTimingTest(timingFunctionName, V3DTestTimingData{ timingFunction });
 	}
 
 	void V3DTest::RunTimingTests()

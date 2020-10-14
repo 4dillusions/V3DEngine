@@ -10,7 +10,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 namespace V3D::V3DEngineTests::V3DTestObject
 {
-	struct V3DTimingTestData
+	struct V3DTestTimingData
 	{
 		std::function<void()> func;
 		bool isKip{ false };

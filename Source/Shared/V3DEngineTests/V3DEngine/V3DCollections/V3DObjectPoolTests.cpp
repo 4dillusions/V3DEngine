@@ -211,7 +211,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 	{
 		static V3DObjectPool<V3DTestObjectA>* objectPool;
 		
-		V3DTest::AddTimingTest("V3DObjectPoolAddRemoveTimingTest", V3DTimingTestData
+		V3DTest::AddTimingTest("V3DObjectPoolAddRemoveTimingTest", V3DTestTimingData
 		{
 			[]()
 			{
@@ -219,7 +219,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 			}, true, 0
 		});
 		
-		V3DTest::AddTimingTest("V3DObjectPoolAddRemoveTimingTest", V3DTimingTestData
+		V3DTest::AddTimingTest("V3DObjectPoolAddRemoveTimingTest", V3DTestTimingData
 		{
 			[]()
 			{
@@ -231,7 +231,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 			}, false, 1
 		});
 
-		V3DTest::AddTimingTest("V3DObjectPoolAddRemoveTimingTest", V3DTimingTestData
+		V3DTest::AddTimingTest("V3DObjectPoolAddRemoveTimingTest", V3DTestTimingData
 		{
 			[]()
 			{
@@ -244,7 +244,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 	{
 		static V3DObjectPool<V3DTestObjectA>* objectPool;
 		
-		V3DTest::AddTimingTest("V3DObjectPoolIterateTimingTest", V3DTimingTestData
+		V3DTest::AddTimingTest("V3DObjectPoolIterateTimingTest", V3DTestTimingData
 		{
 			[]()
 			{
@@ -263,7 +263,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 			}, true, 0
 		});
 		
-		V3DTest::AddTimingTest("V3DObjectPoolIterateTimingTest", V3DTimingTestData
+		V3DTest::AddTimingTest("V3DObjectPoolIterateTimingTest", V3DTestTimingData
 		{
 			[]()
 			{
@@ -272,7 +272,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 			}, false, 1
 		});
 
-		V3DTest::AddTimingTest("V3DObjectPoolIterateTimingTest", V3DTimingTestData
+		V3DTest::AddTimingTest("V3DObjectPoolIterateTimingTest", V3DTestTimingData
 		{
 			[]()
 			{

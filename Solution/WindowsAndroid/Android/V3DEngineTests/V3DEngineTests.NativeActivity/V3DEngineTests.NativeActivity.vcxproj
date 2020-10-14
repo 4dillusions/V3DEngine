@@ -173,6 +173,7 @@
       <PrecompiledHeaderOutputFileDirectory />
       <PrecompiledHeaderCompileAs />
       <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <ExceptionHandling>Disabled</ExceptionHandling>
     </ClCompile>
     <Link>
       <LibraryDependencies>%(LibraryDependencies);GLESv1_CM;EGL;m</LibraryDependencies>

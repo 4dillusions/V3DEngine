@@ -74,11 +74,8 @@ namespace V3D::V3DEngine::V3DCollections
 			Init();
 		}
 
-		V3DDynamicArray<T>(const V3DDynamicArray<T>& value)
-		{
-			*this = value;
-		}
-
+		V3DDynamicArray<T>(const V3DDynamicArray<T>& value) = delete;
+		
 		V3DDynamicArray<T>(V3DDynamicArray<T>&& value) noexcept
 		{
 			*this = std::move(value);
@@ -90,24 +87,7 @@ namespace V3D::V3DEngine::V3DCollections
 			DeleteDataArray(dataArray);
 		}
 
-		V3DDynamicArray<T>& operator=(const V3DDynamicArray<T>& value) noexcept  // NOLINT(bugprone-unhandled-self-assignment)
-		{
-			if (this != &value)
-			{
-				RemoveAll();
-				DeleteDataArray(dataArray);
-
-				dataSize = value.dataSize;
-				length = value.length;
-				currentIndex = value.currentIndex;
-
-				dataArray = CreateDataArray(dataSize);
-				for (int i = 0; i < length; i++)
-					dataArray[i] = value.dataArray[i];
-			}
-
-			return *this;
-		}
+		V3DDynamicArray<T>& operator=(const V3DDynamicArray<T>& value) = delete;	
 
 		V3DDynamicArray<T>& operator=(V3DDynamicArray<T>&& value) noexcept
 		{

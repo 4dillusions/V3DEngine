@@ -22,7 +22,8 @@ namespace V3D::V3DEngine::V3DIO
 		
 		if (json::accept(jsonText))
 			return json::parse(jsonText);
-		
+
+		//write error for editor, etc.
 		#ifdef _DEBUG //don't handle exceptions in Release mode
 			static const auto environment = V3DIoc<V3DEnvironment>::Get();  // NOLINT(readability-misleading-indentation)
 			if (!environment.GetIsUnitTestMode())
@@ -33,7 +34,7 @@ namespace V3D::V3DEngine::V3DIO
 				}
 				catch (json::exception& ex)
 				{
-					V3DIoc<V3DLogger>::Get().WriteOutput(V3DLogMessageType::Error, ex.what());
+					V3DLogger::Get().WriteOutput(V3DLogMessageType::Error, ex.what());
 				}
 			}
 		#endif

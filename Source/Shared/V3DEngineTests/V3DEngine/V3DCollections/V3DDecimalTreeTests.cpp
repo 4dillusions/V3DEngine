@@ -282,7 +282,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 	{
 		static V3DDecimalTree<int, V3DTestObjectA*>* tree;
 
-		V3DTest::AddTimingTest("V3DDecimalTreeAddRemoveTimingTest", V3DTimingTestData
+		V3DTest::AddTimingTest("V3DDecimalTreeAddRemoveTimingTest", V3DTestTimingData
 			{
 				[]()
 				{
@@ -290,7 +290,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 				},true,0
 			});
 
-		V3DTest::AddTimingTest("V3DDecimalTreeAddRemoveTimingTest", V3DTimingTestData
+		V3DTest::AddTimingTest("V3DDecimalTreeAddRemoveTimingTest", V3DTestTimingData
 			{
 				[]()
 				{
@@ -304,7 +304,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 				},false,1
 			});
 
-		V3DTest::AddTimingTest("V3DDecimalTreeAddRemoveTimingTest", V3DTimingTestData
+		V3DTest::AddTimingTest("V3DDecimalTreeAddRemoveTimingTest", V3DTestTimingData
 			{
 				[]()
 				{
@@ -317,7 +317,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 	{
 		static V3DDecimalTree<int, V3DTestObjectA*>* tree;
 
-		V3DTest::AddTimingTest("V3DDecimalTreeIterateTimingTest", V3DTimingTestData
+		V3DTest::AddTimingTest("V3DDecimalTreeIterateTimingTest", V3DTestTimingData
 			{
 				[]()
 				{
@@ -336,7 +336,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 				}, true, 0
 			});
 
-		V3DTest::AddTimingTest("V3DDecimalTreeIterateTimingTest", V3DTimingTestData
+		V3DTest::AddTimingTest("V3DDecimalTreeIterateTimingTest", V3DTestTimingData
 			{
 				[]()
 				{
@@ -345,7 +345,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 				}, false, 1
 			});
 
-		V3DTest::AddTimingTest("V3DDecimalTreeIterateTimingTest", V3DTimingTestData
+		V3DTest::AddTimingTest("V3DDecimalTreeIterateTimingTest", V3DTestTimingData
 			{
 				[]()
 				{

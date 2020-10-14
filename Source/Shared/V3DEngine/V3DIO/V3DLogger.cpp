@@ -25,6 +25,13 @@ namespace V3D::V3DEngine::V3DIO
 			outputType = false;
 	}
 
+	V3DLogger& V3DLogger::Get()
+	{
+		static V3DLogger instance;
+
+		return instance;
+	}
+
 	void V3DLogger::DeleteBuffer()
 	{
 		V3DMemory::Delete(buffer);
