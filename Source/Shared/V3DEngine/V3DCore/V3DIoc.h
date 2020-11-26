@@ -45,7 +45,7 @@ namespace V3D::V3DEngine::V3DCore
 			-execute, dynamic lib
 			-execute + static lib
 			
-		Dynamic IOC for subsystems and other dynamic main objects (it is working only in one assembly execute, dynamic lib or execute + static lib)
+		Dynamic IOC for subsystems and other dynamic main objects
 		Ioc implements prototype, factory and singleton patterns together, called Inversion Of Control and Dependency Injection pattern (DI)
 		This Ioc supports one instance -> one prototype implementation
 	*/

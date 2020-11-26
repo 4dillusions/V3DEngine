@@ -11,6 +11,9 @@
     <Filter Include="Source\V3DCore">
       <UniqueIdentifier>{de098aa9-0525-4f1d-accb-574137d9f248}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\V3DNetwork">
+      <UniqueIdentifier>{bc85a06c-3f74-4a21-b775-4f392a34aa70}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEngine\V3DEngineLibrary.h">
@@ -21,6 +24,15 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEngine\V3DCore\V3DEnvironment.h">
       <Filter>Source\V3DCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEngine\V3DNetwork\V3DNetworkSystem.h">
+      <Filter>Source\V3DNetwork</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEngine\V3DNetwork\V3DSocketAddressHelper.h">
+      <Filter>Source\V3DNetwork</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEngine\V3DNetwork\V3DSocketHelper.h">
+      <Filter>Source\V3DNetwork</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -50,6 +62,9 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DEngine.cpp">
       <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DNetwork\V3DNet.cpp">
+      <Filter>Source\V3DNetwork</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

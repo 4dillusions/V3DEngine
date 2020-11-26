@@ -6,6 +6,8 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #if _DEBUG
 	#pragma comment (lib, "..//Bin//Debug//x64//Lib//SQLite//sqlite3.lib")
+	#pragma comment (lib, "ws2_32.lib")
 #else
 	#pragma comment (lib, "..//Bin//Release//x64//Lib//SQLite//sqlite3.lib")
+	#pragma comment (lib, "ws2_32.lib")
 #endif

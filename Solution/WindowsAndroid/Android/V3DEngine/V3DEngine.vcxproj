@@ -36,9 +36,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\Source\Android\V3DEngine\android_native_app_glue.h" />
+    <ClInclude Include="..\..\..\..\Source\Android\V3DEngine\android_native_app_glue.hpp" />
     <ClInclude Include="..\..\..\..\Source\Android\V3DEngine\V3DCore\V3DEnvironment.h" />
     <ClInclude Include="..\..\..\..\Source\Android\V3DEngine\V3DEngineLibrary.h" />
     <ClInclude Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DOstream.h" />
+    <ClInclude Include="..\..\..\..\Source\Android\V3DEngine\V3DNetwork\V3DNetworkSystem.h" />
+    <ClInclude Include="..\..\..\..\Source\Android\V3DEngine\V3DNetwork\V3DSocketHelper.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DCore\V3DEnvironment.cpp" />
@@ -49,6 +52,8 @@
     <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DOstream.cpp" />
     <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DSQLiteContext.cpp" />
     <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DTextRW.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DNetwork\V3DNet.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DNetwork\V3DSocketAddressHelper.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{fa00616c-6032-44ba-b4fb-49a8005f6a45}</ProjectGuid>

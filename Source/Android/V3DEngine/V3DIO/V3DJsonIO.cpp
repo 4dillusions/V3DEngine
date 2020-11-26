@@ -8,6 +8,8 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngine/V3DCore/V3DMemory.h"
 #include "V3DEngine/V3DMacros.h"
 #include "ThirdParty/Json/json.hpp"
+// ReSharper disable once CppUnusedIncludeDirective
+#include "ThirdParty/Json/JsonAndroidHelper.h"
 
 using namespace V3D::V3DEngine::V3DCore;
 using json = nlohmann::json;

@@ -22,6 +22,9 @@
     <Filter Include="Source\V3DTestObject">
       <UniqueIdentifier>{389b824a-5ccc-4d6c-af5f-cb02d30efc8b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\V3DEngine\V3DNetwork">
+      <UniqueIdentifier>{e236de10-5fdc-49cc-bd4a-53ca790a5beb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTest.h">
@@ -198,6 +201,24 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTestObject\V3DTestTimingData.h">
       <Filter>Source\V3DTestObject</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DNetwork\V3DNetworkTests.h">
+      <Filter>Source\V3DEngine\V3DNetwork</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DNetwork\V3DSocketAddressTest.h">
+      <Filter>Source\V3DEngine\V3DNetwork</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DNetwork\V3DTCPSocketTest.h">
+      <Filter>Source\V3DEngine\V3DNetwork</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DNetwork\V3DUDPSocketTest.h">
+      <Filter>Source\V3DEngine\V3DNetwork</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DNetwork\V3DNetTest.h">
+      <Filter>Source\V3DEngine\V3DNetwork</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DNetwork\V3DIpV4AddressTest.h">
+      <Filter>Source\V3DEngine\V3DNetwork</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTest.cpp">
@@ -361,6 +382,24 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DIO\V3DSQLiteTest.cpp">
       <Filter>Source\V3DEngine\V3DIO</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DNetwork\V3DNetworkTests.cpp">
+      <Filter>Source\V3DEngine\V3DNetwork</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DNetwork\V3DSocketAddressTest.cpp">
+      <Filter>Source\V3DEngine\V3DNetwork</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DNetwork\V3DTCPSocketTest.cpp">
+      <Filter>Source\V3DEngine\V3DNetwork</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DNetwork\V3DUDPSocketTest.cpp">
+      <Filter>Source\V3DEngine\V3DNetwork</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DNetwork\V3DNetTest.cpp">
+      <Filter>Source\V3DEngine\V3DNetwork</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DNetwork\V3DIpV4AddressTest.cpp">
+      <Filter>Source\V3DEngine\V3DNetwork</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

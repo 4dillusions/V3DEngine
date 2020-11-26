@@ -13,17 +13,17 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #pragma once
 
-inline long long wcstoll(const wchar_t* str, wchar_t** str_end, int base)
+long long wcstoll(const wchar_t* str, wchar_t** str_end, int base)
 {
 	return 0;
 }
 
-inline unsigned long long wcstoull(const wchar_t* str, wchar_t** str_end, int base)
+unsigned long long wcstoull(const wchar_t* str, wchar_t** str_end, int base)
 {
 	return 0;
 }
 
-inline float wcstof(const wchar_t* str, wchar_t** str_end)
+float wcstof(const wchar_t* str, wchar_t** str_end)
 {
 	return 0;
 }

@@ -6,9 +6,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\..\Source\Android\V3DEngineTests\android_native_app_glue.c">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\..\Source\Android\V3DEngineTests\main.cpp">
       <Filter>Source</Filter>
     </ClCompile>

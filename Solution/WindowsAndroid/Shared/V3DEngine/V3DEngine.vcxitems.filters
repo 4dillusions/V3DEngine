@@ -22,6 +22,9 @@
     <Filter Include="Source\V3DCollections">
       <UniqueIdentifier>{d6793fbc-d9c9-4173-a5bb-122ca24da87a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\V3DNetwork">
+      <UniqueIdentifier>{bb9a8940-7c5e-4c43-af42-72428d66a19b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMacros.h">
@@ -183,6 +186,21 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DIO\V3DSQLiteContext.h">
       <Filter>Source\V3DIO</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DNetwork\V3DSocketAddress.h">
+      <Filter>Source\V3DNetwork</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DNetwork\V3DTCPSocket.h">
+      <Filter>Source\V3DNetwork</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DNetwork\V3DNet.h">
+      <Filter>Source\V3DNetwork</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DNetwork\V3DIpV4Address.h">
+      <Filter>Source\V3DNetwork</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DNetwork\V3DUDPSocket.h">
+      <Filter>Source\V3DNetwork</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DGameEngine\V3DGameEngineFacade.cpp">
@@ -256,6 +274,18 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMathematics\V3DQuaternion.cpp">
       <Filter>Source\V3DMathematics</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DNetwork\V3DSocketAddress.cpp">
+      <Filter>Source\V3DNetwork</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DNetwork\V3DIpV4Address.cpp">
+      <Filter>Source\V3DNetwork</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DNetwork\V3DTCPSocket.cpp">
+      <Filter>Source\V3DNetwork</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DNetwork\V3DUDPSocket.cpp">
+      <Filter>Source\V3DNetwork</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
