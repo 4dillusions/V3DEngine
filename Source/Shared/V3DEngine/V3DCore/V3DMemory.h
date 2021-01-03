@@ -26,6 +26,8 @@ namespace V3D::V3DEngine::V3DCore
 		V3DMemory& operator=(const V3DMemory&) = delete;
 		V3DMemory& operator=(V3DMemory&&) = delete;
 
+		static V3DString GetStatistics();
+
 		static void Add(int* address, const char* info);
 		static void Remove(int* address);
 		static int GetMemoryLeakCount();

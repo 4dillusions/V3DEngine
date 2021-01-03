@@ -8,6 +8,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngineTests/V3DTestIO.h"
 #include "V3DEngine/V3DCore/V3DEnvironment.h"
 #include "V3DEngine/V3DCore/V3DIoc.h"
+#include "V3DEngine/V3DCore/V3DString.h"
 
 #include <chrono>
 #include <string>
@@ -104,6 +105,8 @@ namespace V3D::V3DEngineTests
 		}
 		else
 			testIO.WriteOutput("0 error");
+
+		testIO.WriteOutput(V3DMemory::GetStatistics().ToChar());
 
 		Init();
 	}

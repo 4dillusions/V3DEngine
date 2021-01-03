@@ -22,6 +22,19 @@ namespace V3D::V3DEngine::V3DCore
 		return static_cast<int>(memoryList.size());
 	}
 
+	V3DString V3DMemory::GetStatistics()
+	{
+		std::string result("Leaked objects:\n");
+
+		for (const auto i : memoryList)  // NOLINT(clang-diagnostic-range-loop-construct)
+			result += i.second + '\n';
+
+		if (memoryList.empty())
+			result += "0 leaked object";
+		
+		return V3DString(result.c_str());
+	}
+
 	void V3DMemory::Add(int* address, const char* info)
 	{
 		memoryList.insert({ address, info });
@@ -38,13 +51,7 @@ namespace V3D::V3DEngine::V3DCore
 	{
 		V3DLogger::Get().DeleteBuffer();
 		V3DLogger::Get().WriteOutput("");
-		V3DLogger::Get().WriteOutput("Leaked objects:");
-
-		for (const auto i : memoryList)  // NOLINT(clang-diagnostic-range-loop-construct)
-			V3DLogger::Get().WriteOutput(i.second);
-
-		if (memoryList.empty())
-			V3DLogger::Get().WriteOutput("0 leaked object");
+		V3DLogger::Get().WriteOutput(GetStatistics());
 	}
 
 	void V3DMemory::WriteStatisticsForTests()
