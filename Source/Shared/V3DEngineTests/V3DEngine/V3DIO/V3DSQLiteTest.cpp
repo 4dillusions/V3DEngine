@@ -56,6 +56,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 		V3DTest::AssertOk(provider.DeleteAll(), V3DFILE_INFO);
 		V3DTest::AssertOk(provider.Select(player2) != player2, V3DFILE_INFO);
 
+		db.~V3DSQLiteContext();
 		V3DFile::Delete(dbName);
 		V3DLogger::Get().SetOutputTypeFlag(V3DLogOutputType::ToFile, false);
 	}
