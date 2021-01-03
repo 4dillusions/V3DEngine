@@ -32,7 +32,9 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 
 		if (V3DFile::IsExist(V3DAssetPathType::Internal, dbExceptionName))
 		{
+			db.~V3DSQLiteContext();
 			V3DFile::Delete(dbExceptionName);
+			
 			return;
 		}
 		
