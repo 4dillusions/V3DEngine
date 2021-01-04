@@ -29,25 +29,32 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DNetwork
 
 		auto receiverSocket = V3DMemory::New<V3DUDPSocket>(V3DFILE_INFO);
 		receiverSocket->SetNonBlocking();
-		receiverSocket->Bind(localAddress);
+		receiverSocket->BindAny(port);
 
 		auto senderSocket = V3DMemory::New<V3DUDPSocket>(V3DFILE_INFO);
+		senderSocket->BindAny();
 
 		if (isToAll)
 		{
 			V3DSocketAddress localPublicAddress(port, V3DIpV4Address(V3DSocketAddress::GetLocalIp()));
-			senderSocket->SendToAll(Message.ToChar(), Message.GetTextLength(), localPublicAddress);
+			senderSocket->SendToAll(Message, localPublicAddress);
 		}
 		else
-			senderSocket->SendTo(Message.ToChar(), Message.GetTextLength(), localAddress);
+			senderSocket->SendTo(Message, localAddress);
 
 		memset(messageByteBuffer, 0, MessageByteBufferSize);
-		receiverSocket->ReceiveFrom(messageByteBuffer, MessageByteBufferSize, localAddress);
+		V3DSocketAddress senderAddress{};
+		receiverSocket->ReceiveFrom(messageByteBuffer, MessageByteBufferSize, senderAddress);
 
 		if (isToAll)
+		{
 			V3DTest::AssertOk(V3DString(messageByteBuffer) != Message, V3DFILE_INFO);
+		}
 		else
+		{
+			V3DTest::AssertOk(senderAddress.GetIp() == localAddress.GetIp(), V3DFILE_INFO);
 			V3DTest::AssertOk(V3DString(messageByteBuffer) == Message, V3DFILE_INFO);
+		}
 
 		V3DMemory::Delete(receiverSocket);
 		V3DMemory::Delete(senderSocket);

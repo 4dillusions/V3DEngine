@@ -40,10 +40,21 @@ namespace V3D::V3DEngine::V3DNetwork
 		else
 			V3DLogger::Get().WriteOutput("OK - bind UDP socket");
 	}
+
+	void V3DUDPSocket::BindAny(unsigned short int port) const
+	{
+		V3DSocketAddress anyAddress(port);
+		Bind(anyAddress);
+	}
 	
 	int V3DUDPSocket::SendTo(const char* message, int messageLenght, V3DSocketAddress& toAddress) const
 	{
 		return sendto(udpSocket, message, messageLenght, 0, reinterpret_cast<sockaddr*>(toAddress.GetSockAddress()), sizeof(sockaddr_in));
+	}
+
+	int V3DUDPSocket::SendTo(const V3DString& message, V3DSocketAddress& toAddress) const
+	{
+		return SendTo(message.ToChar(), message.GetTextLength(), toAddress);
 	}
 
 	int V3DUDPSocket::SendToAll(const char* message, int messageLenght, V3DSocketAddress& localAddress) const
@@ -65,13 +76,42 @@ namespace V3D::V3DEngine::V3DNetwork
 
 		return 0;
 	}
+
+	int V3DUDPSocket::SendToAll(const V3DString& message, V3DSocketAddress& localAddress) const
+	{
+		return SendToAll(message.ToChar(), message.GetTextLength(), localAddress);
+	}
 	
 	int V3DUDPSocket::ReceiveFrom(char* messageOut, int messageLenght, V3DSocketAddress& fromAddressOut) const
 	{
 		socklen_t fromLenght = sizeof(sockaddr_in);
 		return recvfrom(udpSocket, messageOut, messageLenght, 0, reinterpret_cast<sockaddr*>(fromAddressOut.GetSockAddress()), &fromLenght);
 	}
-	
+
+	V3DString V3DUDPSocket::ReceiveFrom(V3DSocketAddress& fromAddressOut) const
+	{
+		char messageBuffer[MessageBufferSize];
+		ReceiveFrom(messageBuffer, MessageBufferSize, fromAddressOut);
+
+		return V3DString(messageBuffer);
+	}
+
+	int V3DUDPSocket::ReceiveFromAny(char* messageOut, int messageLenght) const
+	{
+		V3DSocketAddress anyAddress{};
+		const int result = ReceiveFrom(messageOut, messageLenght, anyAddress);
+
+		return result;
+	}
+
+	V3DString V3DUDPSocket::ReceiveFromAny() const
+	{
+		char messageBuffer[MessageBufferSize];
+		ReceiveFromAny(messageBuffer, MessageBufferSize);
+
+		return V3DString(messageBuffer);
+	}
+
 	void V3DUDPSocket::SetNonBlocking() const
 	{
 		V3DSocketSetNonBlocking(udpSocket);

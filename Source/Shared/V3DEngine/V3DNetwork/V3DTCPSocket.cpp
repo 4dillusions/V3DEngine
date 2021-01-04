@@ -74,12 +74,25 @@ namespace V3D::V3DEngine::V3DNetwork
 	{
 		return send(tcpSocket, message, messageLenght, 0);
 	}
-	
+
+	int V3DTCPSocket::Send(const V3DString& message) const
+	{
+		return Send(message.ToChar(), message.GetTextLength());
+	}
+
 	int V3DTCPSocket::Receive(char* messageOut, int messageLenght) const
 	{
 		return recv(tcpSocket, messageOut, messageLenght, 0);
 	}
-	
+
+	V3DString V3DTCPSocket::Receive() const
+	{
+		char messageBuffer[MessageBufferSize];
+		Receive(messageBuffer, MessageBufferSize);
+
+		return V3DString(messageBuffer);
+	}
+
 	void V3DTCPSocket::SetNonBlocking() const
 	{
 		V3DSocketSetNonBlocking(tcpSocket);
