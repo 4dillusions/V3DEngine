@@ -9,6 +9,8 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DDateTime.h"
 #include "V3DString.h"
 
+#include <thread>
+
 namespace V3D::V3DEngine::V3DCore
 {
 	void* V3DAbstractEnvironment::app{};
@@ -92,6 +94,13 @@ namespace V3D::V3DEngine::V3DCore
 		V3DAbstractEnvironment::maxTextureSize = maxTextureSize;
 	}
 
+	const int V3DAbstractEnvironment::GetCpuCoreCount()
+	{
+		static int res{ static_cast<int>(std::thread::hardware_concurrency()) };
+
+		return res;
+	}
+
 	const char* V3DAbstractEnvironment::GetRenderMode()
 	{
 		return renderer;
@@ -131,6 +140,7 @@ namespace V3D::V3DEngine::V3DCore
 		result += V3DString("start ") + GetEngineName() + " " + GetEngineVersion() + '\n';
 		result += timeStamp + V3DString("platform: ") + GetPlatformName() + '\n';
 		result += timeStamp + V3DString("run mode: ") + GetRunMode() + '\n';
+		result += timeStamp + V3DString("CPU core count: ") + GetCpuCoreCount() + '\n';
 		result += timeStamp + V3DString("renderer: ") + GetRenderMode() + '\n';
 		result += timeStamp + V3DString("GPU name: ") + GetGPUName() + '\n';
 		result += timeStamp + V3DString("maximum texture size: ") + GetMaxTextureSize() + '\n';

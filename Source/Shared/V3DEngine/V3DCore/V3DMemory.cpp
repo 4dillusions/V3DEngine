@@ -27,7 +27,7 @@ namespace V3D::V3DEngine::V3DCore
 		std::string result("Leaked objects:\n");
 
 		for (const auto i : memoryList)  // NOLINT(clang-diagnostic-range-loop-construct)
-			result += i.second + '\n';
+			result += i.second + static_cast<const char>('\n');
 
 		if (memoryList.empty())
 			result += "0 leaked object";
