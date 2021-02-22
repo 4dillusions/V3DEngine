@@ -14,8 +14,28 @@ Released under the terms of the GNU General Public License version 3 or later.
 using namespace V3D::V3DEngine::V3DCollections;
 using namespace V3D::V3DEngineTests::V3DTestObject;
 using namespace V3D::V3DEngine::V3DCore;
+
 namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 {
+	void V3DQueueTests::CtorDtorTest()
+	{
+		V3DTestObjectA::SetReferenceCounter(0);
+		V3DQueue<V3DTestObjectA> staticObjQueue { 3 };
+		V3DTest::AssertOk(staticObjQueue.IsEmpty(), V3DFILE_INFO);
+
+		staticObjQueue.Add(V3DTestObjectA());
+		V3DTest::AssertOk(!staticObjQueue.IsEmpty(), V3DFILE_INFO);
+
+		staticObjQueue.Add(V3DTestObjectA());
+		staticObjQueue.Add(V3DTestObjectA());
+		V3DTest::AssertOk(staticObjQueue.IsFull(), V3DFILE_INFO);
+		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == 3, V3DFILE_INFO);
+
+		staticObjQueue.~V3DQueue();
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == 0, V3DFILE_INFO);
+	}
+
 	void V3DQueueTests::QueueStaticTest()
 	{
 		V3DQueue<int> numberFIFO{ 5 };
@@ -117,6 +137,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 
 	void V3DQueueTests::RunAllTests()
 	{
+		CtorDtorTest();
 		QueueStaticTest();
 		QueueDynamicTest();
 	}

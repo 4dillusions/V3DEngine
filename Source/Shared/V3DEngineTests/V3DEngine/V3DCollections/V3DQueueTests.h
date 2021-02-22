@@ -18,6 +18,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		V3DQueueTests& operator=(const V3DQueueTests&) = delete;
 		V3DQueueTests& operator=(V3DQueueTests&&) = delete;
 
+		static void CtorDtorTest();
 		static void QueueStaticTest();
 		static void QueueDynamicTest();
 

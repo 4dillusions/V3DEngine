@@ -24,6 +24,18 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 {
 	void V3DDynamicArrayTests::CtorDtorTest()
 	{
+		V3DTestObjectA::SetReferenceCounter(0);
+		V3DDynamicArray<V3DTestObjectA> staticObjArrayReverse(20);
+		staticObjArrayReverse.Add(V3DTestObjectA());
+		staticObjArrayReverse.Add(V3DTestObjectA());
+		staticObjArrayReverse.Add(V3DTestObjectA());
+		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == staticObjArrayReverse.GetLength(), V3DFILE_INFO);
+		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == 3, V3DFILE_INFO);
+		staticObjArrayReverse.~V3DDynamicArray();
+		V3DTest::AssertOk(staticObjArrayReverse.GetLength() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == 0, V3DFILE_INFO);
+
 		V3DDynamicArray<int> intdArray;
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == V3DCollectionsTests::DynamicArrayMemoryAllocCount, V3DFILE_INFO);
 		intdArray.~V3DDynamicArray();

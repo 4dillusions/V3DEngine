@@ -24,6 +24,18 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 {
 	void V3DDecimalTreeTests::CtorDtorTest()
 	{
+		V3DTestObjectA::SetReferenceCounter(0);
+		V3DDecimalTree<int, V3DTestObjectA> staticObjDecimalTree;
+		staticObjDecimalTree.Add(1, V3DTestObjectA());
+		staticObjDecimalTree.Add(2, V3DTestObjectA());
+		staticObjDecimalTree.Add(3, V3DTestObjectA());
+		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == staticObjDecimalTree.GetLength() + 1, V3DFILE_INFO); //+1: root
+		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == 3 + 1, V3DFILE_INFO); //+1: root
+		staticObjDecimalTree.~V3DDecimalTree();
+		V3DTest::AssertOk(staticObjDecimalTree.GetLength() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == 0, V3DFILE_INFO);
+
 		V3DDecimalTree<int, int> intTree;
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == V3DCollectionsTests::DecimalTreeMemoryAllocCount, V3DFILE_INFO);
 		intTree.~V3DDecimalTree();

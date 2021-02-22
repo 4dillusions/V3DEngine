@@ -94,6 +94,7 @@ namespace V3D::V3DEngine::V3DCollections
 			}
 
 			DeleteNodeArray(currentAllItemArray);
+			length = 0;
 		}
 
 		[[nodiscard]] int GetLength() const

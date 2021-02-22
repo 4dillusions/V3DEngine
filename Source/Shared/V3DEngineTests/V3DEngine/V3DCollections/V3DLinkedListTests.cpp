@@ -23,6 +23,18 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 {
 	void V3DLinkedListTests::CtorDtorTest()
 	{
+		V3DTestObjectA::SetReferenceCounter(0);
+		V3DLinkedList<V3DTestObjectA> staticObjLinkedList;
+		staticObjLinkedList.Add(V3DTestObjectA());
+		staticObjLinkedList.Add(V3DTestObjectA());
+		staticObjLinkedList.Add(V3DTestObjectA());
+		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == staticObjLinkedList.GetLength() + 2, V3DFILE_INFO); //+2: head, tail
+		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == 3 + 2, V3DFILE_INFO); //+2: head, tail
+		staticObjLinkedList.~V3DLinkedList();
+		V3DTest::AssertOk(staticObjLinkedList.GetLength() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == 0, V3DFILE_INFO);
+
 		V3DLinkedList<int> intList;
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == V3DCollectionsTests::ListMemoryAllocCount, V3DFILE_INFO);
 		intList.~V3DLinkedList();
