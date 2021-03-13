@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{c5583712-36a2-4b83-b147-45df644613dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\V3DIO">
+      <UniqueIdentifier>{3906121f-d96b-4b93-b21e-4eadb25a4f33}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\V3DCore">
+      <UniqueIdentifier>{e358679a-53a8-4b0a-aa6f-532344e42540}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\V3DNetwork">
+      <UniqueIdentifier>{c22452a1-b53b-49ad-bf04-cab1834b28ac}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\Source\Android\V3DEngine\V3DEngineLibrary.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DOstream.h">
+      <Filter>Source\V3DIO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Android\V3DEngine\V3DCore\V3DEnvironment.h">
+      <Filter>Source\V3DCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Android\V3DEngine\android_native_app_glue.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Android\V3DEngine\V3DNetwork\V3DNetworkSystem.h">
+      <Filter>Source\V3DNetwork</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Android\V3DEngine\android_native_app_glue.hpp">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Android\V3DEngine\V3DNetwork\V3DSocketHelper.h">
+      <Filter>Source\V3DNetwork</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DOstream.cpp">
+      <Filter>Source\V3DIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DCore\V3DEnvironment.cpp">
+      <Filter>Source\V3DCore</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DFile.cpp">
+      <Filter>Source\V3DIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DFolder.cpp">
+      <Filter>Source\V3DIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DTextRW.cpp">
+      <Filter>Source\V3DIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DBinaryRW.cpp">
+      <Filter>Source\V3DIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DJsonIO.cpp">
+      <Filter>Source\V3DIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DSQLiteContext.cpp">
+      <Filter>Source\V3DIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DNetwork\V3DNet.cpp">
+      <Filter>Source\V3DNetwork</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DNetwork\V3DSocketAddressHelper.h">
+      <Filter>Source\V3DNetwork</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

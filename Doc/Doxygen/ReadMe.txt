@@ -1,0 +1,1 @@
+Doxygen was deprecated because github repo (and UML-s) is enough for understand the architecture.

@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Source\V3DIO">
+      <UniqueIdentifier>{c9e1d4d2-7dec-42fe-90d7-f7a80ff90e68}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\V3DCore">
+      <UniqueIdentifier>{de098aa9-0525-4f1d-accb-574137d9f248}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\V3DNetwork">
+      <UniqueIdentifier>{bc85a06c-3f74-4a21-b775-4f392a34aa70}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEngine\V3DEngineLibrary.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEngine\V3DIO\V3DOstream.h">
+      <Filter>Source\V3DIO</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEngine\V3DCore\V3DEnvironment.h">
+      <Filter>Source\V3DCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEngine\V3DNetwork\V3DNetworkSystem.h">
+      <Filter>Source\V3DNetwork</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEngine\V3DNetwork\V3DSocketAddressHelper.h">
+      <Filter>Source\V3DNetwork</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEngine\V3DNetwork\V3DSocketHelper.h">
+      <Filter>Source\V3DNetwork</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DIO\V3DOstream.cpp">
+      <Filter>Source\V3DIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DCore\V3DEnvironment.cpp">
+      <Filter>Source\V3DCore</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DIO\V3DFile.cpp">
+      <Filter>Source\V3DIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DIO\V3DFolder.cpp">
+      <Filter>Source\V3DIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DIO\V3DTextRW.cpp">
+      <Filter>Source\V3DIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DIO\V3DBinaryRW.cpp">
+      <Filter>Source\V3DIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DIO\V3DJsonIO.cpp">
+      <Filter>Source\V3DIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DIO\V3DSQLiteContext.cpp">
+      <Filter>Source\V3DIO</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DEngine.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DNetwork\V3DNet.cpp">
+      <Filter>Source\V3DNetwork</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
