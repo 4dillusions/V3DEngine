@@ -54,12 +54,12 @@ namespace V3D::V3DEngine::V3DIO
         //Log trigger helps show logs another environment for example in editor
         void SetLogTrigger(const std::function<void(const V3DCore::V3DString& log)>& logTrigger);
 
-        [[nodiscard]] V3DCore::V3DString const* GetBuffer() const;
+        V3DCore::V3DString const* GetBuffer() const;
 
-        [[nodiscard]] V3DCore::V3DString GetWarnings() const;
-        [[nodiscard]] V3DCore::V3DString GetErrors() const;
-        [[nodiscard]] int GetWarningCount() const;
-        [[nodiscard]] int GetErrorCount() const;
+        V3DCore::V3DString GetWarnings() const;
+        V3DCore::V3DString GetErrors() const;
+        int GetWarningCount() const;
+        int GetErrorCount() const;
 
         void WriteOutput(const V3DCore::V3DString& log);
         void WriteOutput(V3DLogMessageType messageType, const V3DCore::V3DString& log);

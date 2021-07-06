@@ -64,16 +64,16 @@ namespace V3D::V3DEngine::V3DMathematics
 		void SetScale(const V3DVector3D& vector);
 		static V3DMatrix4 GetScale(const V3DVector3D& vector);
 		bool IsHasScale();
-		[[nodiscard]] bool IsAffine() const;
-		[[nodiscard]] V3DMatrix4 InverseAffine() const;
-		[[nodiscard]] V3DMatrix4 ConcatenateAffine(const V3DMatrix4& value) const;
-		[[nodiscard]] V3DVector3D TransformAffine(const V3DVector3D& vector) const;
-		[[nodiscard]] V3DVector4D TransformAffine(const V3DVector4D& vector) const;
+		bool IsAffine() const;
+		V3DMatrix4 InverseAffine() const;
+		V3DMatrix4 ConcatenateAffine(const V3DMatrix4& value) const;
+		V3DVector3D TransformAffine(const V3DVector3D& vector) const;
+		V3DVector4D TransformAffine(const V3DVector4D& vector) const;
 
-		[[nodiscard]] V3DMatrix4 Concatenate(const V3DMatrix4& value) const;
-		[[nodiscard]] V3DMatrix4 Inverse() const;
-		[[nodiscard]] V3DMatrix4 Transpose() const;
-		[[nodiscard]] float Determinant() const;
+		V3DMatrix4 Concatenate(const V3DMatrix4& value) const;
+		V3DMatrix4 Inverse() const;
+		V3DMatrix4 Transpose() const;
+		float Determinant() const;
 		void Zero();
 		void Identity();
 	};

@@ -29,14 +29,14 @@ namespace V3D::V3DEngine::V3DNetwork
 		V3DSocketAddress& operator=(const V3DSocketAddress&) = delete;
 		V3DSocketAddress& operator=(V3DSocketAddress&&) = delete;
 
-		[[nodiscard]] sockaddr_in* GetSockAddress() const;
-		[[nodiscard]] V3DCore::V3DString GetIp() const;
-		[[nodiscard]] V3DCore::V3DString GetPort() const;
+		sockaddr_in* GetSockAddress() const;
+		V3DCore::V3DString GetIp() const;
+		V3DCore::V3DString GetPort() const;
 		
 		static V3DCore::V3DString GetPublicIpFromHostName(const char* hostname);
 		//static V3DCore::V3DString GetLocalHostName();
 		static V3DCore::V3DString GetLocalIp();
 
-		[[nodiscard]] V3DCore::V3DString ToString() const;
+		V3DCore::V3DString ToString() const;
 	};
 }

@@ -27,9 +27,9 @@ namespace V3D::V3DEngine::V3DIO
         V3DSQLiteContext& operator=(const V3DSQLiteContext&) = delete;
         V3DSQLiteContext& operator=(V3DSQLiteContext&&) = delete;
 
-		[[nodiscard]] V3DCollections::V3DDynamicArray<V3DCore::V3DString>& GetOutList();
-		[[nodiscard]] long long GetLastInsertedId() const;
-		[[nodiscard]] int GetLastModifiedRowCount() const;
+		V3DCollections::V3DDynamicArray<V3DCore::V3DString>& GetOutList();
+		long long GetLastInsertedId() const;
+		int GetLastModifiedRowCount() const;
 
 		bool ExecuteSQL(const char* sql, bool isPutOutList = false);
 	};

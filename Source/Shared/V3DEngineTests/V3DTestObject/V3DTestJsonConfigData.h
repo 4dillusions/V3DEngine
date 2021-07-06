@@ -15,6 +15,6 @@ namespace V3D::V3DEngineTests::V3DTestObject
 		float testNumber{};
 
 		bool Load(const char* jsonText);
-		[[nodiscard]] char* Save() const;
+		char* Save() const;
 	};
 }

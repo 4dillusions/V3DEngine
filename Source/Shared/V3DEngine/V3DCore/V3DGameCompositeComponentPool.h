@@ -54,7 +54,7 @@ namespace V3D::V3DEngine::V3DCore
 		
 		//bool IsLastVisible(const LFString& name);
 		
-		[[nodiscard]] int GetComponentsLength() const
+		int GetComponentsLength() const
 		{
 			return componentPool.GetLength();
 		}

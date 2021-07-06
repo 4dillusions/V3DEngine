@@ -25,7 +25,7 @@ namespace V3D::V3DEngineTests::V3DTestObject
 	    V3DTestPlayerSqlModel Select(V3DTestPlayerSqlModel& model) const;
         bool Insert(V3DTestPlayerSqlModel& model) const;
         bool Update(V3DTestPlayerSqlModel& model) const;
-	    [[nodiscard]] bool Delete(int id) const;
-	    [[nodiscard]] bool DeleteAll() const;
+	    bool Delete(int id) const;
+	    bool DeleteAll() const;
     };
 }

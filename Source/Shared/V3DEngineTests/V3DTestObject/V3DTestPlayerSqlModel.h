@@ -23,10 +23,10 @@ namespace V3D::V3DEngineTests::V3DTestObject
     	bool operator ==(const V3DTestPlayerSqlModel& value) const;
         bool operator !=(const V3DTestPlayerSqlModel& value) const;
 
-        [[nodiscard]] int GetId() const;
+        int GetId() const;
         void SetId(int id);
-        [[nodiscard]] V3D::V3DEngine::V3DCore::V3DString GetName() const;
+        V3D::V3DEngine::V3DCore::V3DString GetName() const;
         void SetName(const V3D::V3DEngine::V3DCore::V3DString& name);
-        [[nodiscard]] bool GetIsValid() const;
+        bool GetIsValid() const;
     };
 }

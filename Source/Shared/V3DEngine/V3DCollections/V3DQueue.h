@@ -98,12 +98,12 @@ namespace V3D::V3DEngine::V3DCollections
 			return *this;
 		}
 
-		[[nodiscard]] bool IsEmpty() const
+		bool IsEmpty() const
 		{
 			return front == -1 && rear == -1;
 		}
 
-		[[nodiscard]] bool IsFull() const
+		bool IsFull() const
 		{
 			return rear == queueSize - 1;
 		}

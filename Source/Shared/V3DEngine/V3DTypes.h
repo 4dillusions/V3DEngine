@@ -15,5 +15,4 @@ namespace V3D
 	using Float = float;
 	using Int = int;
 	using UInt = unsigned int;
-	
 }

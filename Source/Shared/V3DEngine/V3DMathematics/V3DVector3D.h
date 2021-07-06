@@ -64,12 +64,12 @@ namespace V3D::V3DEngine::V3DMathematics
 		bool operator>(const V3DVector3D& value) const;
 
 		void Zero();
-		[[nodiscard]] float Length() const;
-		[[nodiscard]] float Distance(const V3DVector3D& value) const;
-		[[nodiscard]] float DotProduct(const V3DVector3D& value) const;
-		[[nodiscard]] V3DVector3D CrossProduct(const V3DVector3D& value) const;
+		float Length() const;
+		float Distance(const V3DVector3D& value) const;
+		float DotProduct(const V3DVector3D& value) const;
+		V3DVector3D CrossProduct(const V3DVector3D& value) const;
 		float Normalise();
 		void Normalizing();
-		[[nodiscard]] V3DVector3D MidPoint(const V3DVector3D& value) const;
+		V3DVector3D MidPoint(const V3DVector3D& value) const;
 	};
 }

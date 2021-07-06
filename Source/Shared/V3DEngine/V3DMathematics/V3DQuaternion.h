@@ -36,10 +36,10 @@ namespace V3D::V3DEngine::V3DMathematics
 		V3DQuaternion operator*(const V3DQuaternion& value) const;
 		V3DQuaternion operator*(float scalar) const;
 
-		[[nodiscard]] float Length() const;
-		[[nodiscard]] float DotProduct(const V3DQuaternion& value) const;
-		[[nodiscard]] float RotationAngle() const;
-		[[nodiscard]] V3DVector3D RotationAxis() const;
+		float Length() const;
+		float DotProduct(const V3DQuaternion& value) const;
+		float RotationAngle() const;
+		V3DVector3D RotationAxis() const;
 
 		void ToRotationAxis(V3DVector3D& rotAxis) const;
 		void FromRotationMatrix(const V3DMatrix3& rotMatrix);

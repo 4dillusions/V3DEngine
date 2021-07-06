@@ -64,6 +64,6 @@ namespace V3D::V3DEngine::V3DMathematics
 		bool operator>(const V3DVector4D& value) const;
 
 		void Zero();
-		[[nodiscard]] float DotProduct(const V3DVector4D& value) const;
+		float DotProduct(const V3DVector4D& value) const;
 	};
 }

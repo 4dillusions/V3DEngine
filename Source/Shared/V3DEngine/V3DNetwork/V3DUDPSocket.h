@@ -41,7 +41,7 @@ namespace V3D::V3DEngine::V3DNetwork
 		int ReceiveFrom(char* messageOut, int messageLenght, V3DSocketAddress& fromAddressOut) const;
 		V3DCore::V3DString ReceiveFrom(V3DSocketAddress& fromAddressOut) const;
 		int ReceiveFromAny(char* messageOut, int messageLenght) const;
-		[[nodiscard]] V3DCore::V3DString ReceiveFromAny() const;
+		V3DCore::V3DString ReceiveFromAny() const;
 
 		void SetNonBlocking() const;
 	};
