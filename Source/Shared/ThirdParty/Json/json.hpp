@@ -5877,7 +5877,7 @@ class json_sax_acceptor
 
 
 #include <array> // array
-#include <clocale> // localeconv
+//#include <clocale> // localeconv //NDK version for SDK 19 doesn't implement the C++11 standard in the STL. locale.h header has stubs for localeconv() method
 #include <cstddef> // size_t
 #include <cstdio> // snprintf
 #include <cstdlib> // strtof, strtod, strtold, strtoll, strtoull
@@ -6013,13 +6013,9 @@ class lexer : public lexer_base<BasicJsonType>
     JSON_HEDLEY_PURE
     static char get_decimal_point() noexcept
     {
-        const auto* loc = localeconv();
-        JSON_ASSERT(loc != nullptr);
-
-    	if (loc != nullptr)
-			return (loc->decimal_point == nullptr) ? '.' : *(loc->decimal_point);
-
-        return ' ';
+        //NDK version for SDK 19 doesn't implement the C++11 standard in the STL. locale.h header has stubs for localeconv() method
+        
+        return '.';
     }
 
     /////////////////////
@@ -15510,13 +15506,13 @@ class serializer
     */
     serializer(output_adapter_t<char> s, const char ichar,
                error_handler_t error_handler_ = error_handler_t::strict)
-        : o(std::move(s))
-        , loc(std::localeconv())
-        , thousands_sep(loc->thousands_sep == nullptr ? '\0' : std::char_traits<char>::to_char_type(* (loc->thousands_sep)))
-        , decimal_point(loc->decimal_point == nullptr ? '\0' : std::char_traits<char>::to_char_type(* (loc->decimal_point)))
-        , indent_char(ichar)
-        , indent_string(512, indent_char)
-        , error_handler(error_handler_)
+        : o(std::move(s)),
+        loc(nullptr), //NDK version for SDK 19 doesn't implement the C++11 standard in the STL. locale.h header has stubs for localeconv() method
+        thousands_sep(','), //NDK version for SDK 19 doesn't implement the C++11 standard in the STL. locale.h header has stubs for localeconv() method
+        decimal_point('.'),//NDK version for SDK 19 doesn't implement the C++11 standard in the STL. locale.h header has stubs for localeconv() method
+        indent_char(ichar),
+        indent_string(512, indent_char),
+        error_handler(error_handler_)
     {}
 
     // delete because of pointer members

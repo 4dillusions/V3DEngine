@@ -3,10 +3,17 @@ Windows/Android - Visual Studio Community 2019 (16.4.5)
 Create solution: Solution/WindowsAndroid/V3DEngine.sln
 ******************************************************
 
-configuration	32bit	64bit	x86
-------------------------------------
-Android			ARM		ARM64	x86(emulator)
-Windows			x64		x64		x64
+configuration 	ARM32	ARM64	x86		x64
+--------------------------------------------
+Android			ARM		ARM64	x86		x64
+Windows			x64		x64		x64		x64
+
+configuration			Android API level
+------------------------------------------------
+static library		ARM32/x86 19	ARM64/x64 19
+execute
+	package (apk)	ARM32/x86 19	ARM64/x64 19
+	native activity	ARM32/x86 19	ARM64/x64 21
 
 
 Shared
