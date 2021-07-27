@@ -6,26 +6,26 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #include "V3DIOTests.h"
 
-#include "V3DLoggerTest.h"
-#include "V3DFileTest.h"
-#include "V3DFolderTest.h"
-#include "V3DTextRWTest.h"
-#include "V3DBinaryRWTest.h"
-#include "V3DJsonIOTest.h"
-#include "V3DMemoryStreamTest.h"
-#include "V3DSQLiteTest.h"
+#include "V3DLoggerTests.h"
+#include "V3DFileTests.h"
+#include "V3DFolderTests.h"
+#include "V3DTextRWTests.h"
+#include "V3DBinaryRWTests.h"
+#include "V3DJsonIOTests.h"
+#include "V3DMemoryStreamTests.h"
+#include "V3DSQLiteTests.h"
 
 namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 {	
 	void V3DIOTests::RunAllTests()
 	{
-		V3DLoggerTest::RunAllTests();
-		V3DFileTest::RunAllTests();
-		V3DFolderTest::RunAllTests();
-		V3DTextRWTest::RunAllTests();
-		V3DBinaryRWTest::RunAllTests();
-		V3DJsonIOTest::RunAllTests();
-		V3DMemoryStreamTest::RunAllTests();
-		V3DSQLiteTest::RunAllTests();
+		V3DLoggerTests::RunAllTests();
+		V3DFileTests::RunAllTests();
+		V3DFolderTests::RunAllTests();
+		V3DTextRWTests::RunAllTests();
+		V3DBinaryRWTests::RunAllTests();
+		V3DJsonIOTests::RunAllTests();
+		V3DMemoryStreamTests::RunAllTests();
+		V3DSQLiteTests::RunAllTests();
 	}
 }

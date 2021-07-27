@@ -6,30 +6,30 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #include "V3DCoreTests.h"
 
-#include "V3DTupleTest.h"
-#include "V3DStopperTest.h"
-#include "V3DTimeHourTest.h"
-#include "V3DWatchTest.h"
-#include "V3DMemoryTest.h"
-#include "V3DIocTest.h"
-#include "V3DStringTest.h"
-#include "V3DDateTimeTest.h"
-#include "V3DComponentTest.h"
-#include "V3DDelegateEventTest.h"
+#include "V3DTupleTests.h"
+#include "V3DStopperTests.h"
+#include "V3DTimeHourTests.h"
+#include "V3DWatchTests.h"
+#include "V3DMemoryTests.h"
+#include "V3DIocTests.h"
+#include "V3DStringTests.h"
+#include "V3DDateTimeTests.h"
+#include "V3DComponentTests.h"
+#include "V3DDelegateEventTests.h"
 
 namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 {
 	void V3DCoreTests::RunAllTests()
 	{
-		V3DTupleTest::RunAllTests();
-		V3DStopperTest::RunAllTests();
-		V3DTimeHourTest::RunAllTests();
-		V3DWatchTest::RunAllTests();
-		V3DMemoryTest::RunAllTests();
-		V3DIocTest::RunAllTests();
-		V3DStringTest::RunAllTests();
-		V3DDateTimeTest::RunAllTests();
-		V3DComponentTest::RunAllTests();
-		V3DDelegateEventTest::RunAllTests();
+		V3DTupleTests::RunAllTests();
+		V3DStopperTests::RunAllTests();
+		V3DTimeHourTests::RunAllTests();
+		V3DWatchTests::RunAllTests();
+		V3DMemoryTests::RunAllTests();
+		V3DIocTests::RunAllTests();
+		V3DStringTests::RunAllTests();
+		V3DDateTimeTests::RunAllTests();
+		V3DComponentTests::RunAllTests();
+		V3DDelegateEventTests::RunAllTests();
 	}
 }
