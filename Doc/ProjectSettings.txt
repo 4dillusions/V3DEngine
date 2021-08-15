@@ -8,13 +8,6 @@ configuration 	ARM32	ARM64	x86		x64
 Android			ARM		ARM64	x86		x64
 Windows			x64		x64		x64		x64
 
-configuration			Android API level
-------------------------------------------------
-static library		ARM32/x86 19	ARM64/x64 19
-execute
-	package (apk)	ARM32/x86 19	ARM64/x64 19
-	native activity	ARM32/x86 19	ARM64/x64 21
-
 
 Shared
 ++++++
@@ -79,8 +72,9 @@ General
 	Platform toolset: Clang 5.0
 	Config type: static library .a (lib), Dynamic library (app)
 	Target API level: 
-		V3DEngine, V3DEngine.Tests.packaging: android 19
-		V3DEngine, V3DEngine.Tests.NativeActivity: android 21
+		static library		ARM32/x86 19	ARM64/x64 19
+		package (apk)		ARM32/x86 19	ARM64/x64 19
+		native activity		ARM32/x86 19	ARM64/x64 21
 	
 VC++ directories
 	include directories: 	$(SolutionDir)..\..\Source\Android
