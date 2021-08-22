@@ -25,6 +25,9 @@
     <Filter Include="Source\V3DNetwork">
       <UniqueIdentifier>{bb9a8940-7c5e-4c43-af42-72428d66a19b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\V3DCryptography">
+      <UniqueIdentifier>{f8eb6129-0a00-4960-aafe-bc5f3f52aa34}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMacros.h">
@@ -201,6 +204,15 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DNetwork\V3DUDPSocket.h">
       <Filter>Source\V3DNetwork</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DCryptography\V3DCryptographyHelper.h">
+      <Filter>Source\V3DCryptography</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DCryptography\V3DHashMethod.h">
+      <Filter>Source\V3DCryptography</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DCryptography\V3DHashType.h">
+      <Filter>Source\V3DCryptography</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DGameEngine\V3DGameEngineFacade.cpp">
@@ -286,6 +298,12 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DNetwork\V3DUDPSocket.cpp">
       <Filter>Source\V3DNetwork</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DCryptography\V3DCryptographyHelper.cpp">
+      <Filter>Source\V3DCryptography</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DCryptography\V3DHashMethod.cpp">
+      <Filter>Source\V3DCryptography</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -25,6 +25,9 @@
     <Filter Include="Source\V3DEngine\V3DNetwork">
       <UniqueIdentifier>{e236de10-5fdc-49cc-bd4a-53ca790a5beb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\V3DEngine\V3DCryptography">
+      <UniqueIdentifier>{8914b0b0-089b-41bc-baf4-b2de4fb6bcff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTest.h">
@@ -219,6 +222,15 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DNetwork\V3DIpV4AddressTests.h">
       <Filter>Source\V3DEngine\V3DNetwork</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DCryptography\V3DCryptographyTests.h">
+      <Filter>Source\V3DEngine\V3DCryptography</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DCryptography\V3DCryptographyHelperTests.h">
+      <Filter>Source\V3DEngine\V3DCryptography</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DCryptography\V3DCryptographyMethodTests.h">
+      <Filter>Source\V3DEngine\V3DCryptography</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTest.cpp">
@@ -400,6 +412,15 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DNetwork\V3DIpV4AddressTests.cpp">
       <Filter>Source\V3DEngine\V3DNetwork</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DCryptography\V3DCryptographyTests.cpp">
+      <Filter>Source\V3DEngine\V3DCryptography</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DCryptography\V3DCryptographyHelperTests.cpp">
+      <Filter>Source\V3DEngine\V3DCryptography</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DCryptography\V3DCryptographyMethodTests.cpp">
+      <Filter>Source\V3DEngine\V3DCryptography</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

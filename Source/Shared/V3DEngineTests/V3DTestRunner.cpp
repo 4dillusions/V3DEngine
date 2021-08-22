@@ -13,6 +13,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngine/V3DIO/V3DIOTests.h"
 #include "V3DEngine/V3DCollections/V3DCollectionsTests.h"
 #include "V3DEngine/V3DNetwork/V3DNetworkTests.h"
+#include "V3DEngine/V3DCryptography/V3DCryptographyTests.h"
 #include "V3DEngine/V3DCore/V3DMemory.h"
 
 using namespace V3D::V3DEngine::V3DCore;
@@ -29,6 +30,7 @@ namespace V3D::V3DEngineTests::V3DEngine
 		V3DIO::V3DIOTests::RunAllTests();
 		V3DCollections::V3DCollectionsTests::RunAllTests();
 		V3DNetwork::V3DNetworkTests::RunAllTests();
+		V3DCryptography::V3DCryptographyTests::RunAllTests();
 
 		V3DTest::RunIntegrationTests();
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
