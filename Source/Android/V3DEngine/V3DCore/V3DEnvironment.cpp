@@ -21,6 +21,9 @@ namespace V3D::V3DEngine::V3DCore
 			#if defined(__i386__)
 				return "Android x86";
 			#endif
+			#if defined (_M_X64)
+				return "Android x64";
+			#endif
 		#endif
 
 		return "";
