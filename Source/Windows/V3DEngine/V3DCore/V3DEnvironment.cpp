@@ -55,7 +55,7 @@ namespace V3D::V3DEngine::V3DCore
 		case V3DAssetPathType::Level: return R"(Assets\Data\Level\)";
 		case V3DAssetPathType::Options: return R"(Assets\Data\Options\)";
 		case V3DAssetPathType::Physics: return R"(Assets\Data\Physics\)";
-		case V3DAssetPathType::UI: return R"(Assets\Data\UI\)";;
+		case V3DAssetPathType::UI: return R"(Assets\Data\UI\)";
 
 		case V3DAssetPathType::Internal: return "";
 

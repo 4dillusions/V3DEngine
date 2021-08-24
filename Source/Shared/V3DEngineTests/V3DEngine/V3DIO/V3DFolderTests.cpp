@@ -19,7 +19,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 	{
 		V3DTest::AssertOk(V3DFolder::IsExist(V3DAssetPathType::Options), V3DFILE_INFO);
 		//V3DTest::AssertOk(!V3DFolder::IsExist(V3DAssetPathType::Internal), V3DFILE_INFO); //negative test: internal "" maybe is exist or isnt...
-		V3DTest::AssertOk(!V3DFolder::IsExist(V3DAssetPathType()), V3DFILE_INFO); //negative test: "default" folder
+		V3DTest::AssertOk(!V3DFolder::IsExist((V3DAssetPathType)-1), V3DFILE_INFO); //negative test: "default" folder
 
 		auto fileList = V3DFolder::GetFileList(V3DAssetPathType::Options);
 		V3DTest::AssertOk(fileList.GetLength() == 2, V3DFILE_INFO);
