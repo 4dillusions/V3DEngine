@@ -5,7 +5,6 @@ Released under the terms of the GNU General Public License version 3 or later.
 */
 
 #include "V3DCoreTests.h"
-
 #include "V3DTupleTests.h"
 #include "V3DStopperTests.h"
 #include "V3DTimeHourTests.h"

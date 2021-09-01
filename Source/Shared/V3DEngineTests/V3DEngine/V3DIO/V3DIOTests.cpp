@@ -5,7 +5,6 @@ Released under the terms of the GNU General Public License version 3 or later.
 */
 
 #include "V3DIOTests.h"
-
 #include "V3DLoggerTests.h"
 #include "V3DFileTests.h"
 #include "V3DFolderTests.h"

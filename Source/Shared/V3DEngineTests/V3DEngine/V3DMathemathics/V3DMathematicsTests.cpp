@@ -5,7 +5,6 @@ Released under the terms of the GNU General Public License version 3 or later.
 */
 
 #include "V3DMathematicsTests.h"
-
 #include "V3DMathTests.h"
 #include "V3DVector2DTests.h"
 #include "V3DVector3DTests.h"

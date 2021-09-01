@@ -5,7 +5,6 @@ Released under the terms of the GNU General Public License version 3 or later.
 */
 
 #include "V3DAbstractEnvironment.h"
-
 #include "V3DDateTime.h"
 #include "V3DString.h"
 
