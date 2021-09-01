@@ -4,9 +4,8 @@ Copyright (c) 2020 by 4D Illusions. All rights reserved.
 Released under the terms of the GNU General Public License version 3 or later.
 */
 
-#include "V3DTestJSonUIControl.h"
+#include "V3DTestUIControl.h"
 #include "V3DEngine/V3DCore/V3DMemory.h"
-#include "V3DEngine/V3DMacros.h"
 #include "V3DEngine/V3DCore/V3DString.h"
 #include "ThirdParty/Json/json.hpp"
 
@@ -15,7 +14,7 @@ using json = nlohmann::json;
 
 namespace V3D::V3DEngineTests::V3DTestObject
 {
-	V3DTestJSonUIControl::~V3DTestJSonUIControl()
+	V3DTestUIControl::~V3DTestUIControl()
 	{
 		for (auto ptr : controls)
 			V3DMemory::Delete(ptr);
@@ -23,7 +22,7 @@ namespace V3D::V3DEngineTests::V3DTestObject
 		controls.clear();
 	}
 	
-	void V3DTestJSonUIControl::Load(const json& jsonObj, int hierarchyNum)
+	/*void V3DTestUIControl::Load(const json& jsonObj, int hierarchyNum)
 	{
 		strcpy(name, jsonObj.at("name").get<std::string>().c_str());
 		hierarchyCode = hierarchyNum;
@@ -33,13 +32,13 @@ namespace V3D::V3DEngineTests::V3DTestObject
 		if (!jsonObj["controls"].is_null())
 			for (const auto& controlJson : jsonObj["controls"])
 			{
-				auto control = V3DMemory::New<V3DTestJSonUIControl>(V3DFILE_INFO);
+				auto control = V3DMemory::New<V3DTestUIControl>(V3DFILE_INFO);
 				controls.push_back(control);
 				control->Load(controlJson, hierarchyNum + 1);
 			}
-	}
+	}*/
 	
-	void V3DTestJSonUIControl::WriteToString(V3DString& out)
+	void V3DTestUIControl::WriteToString(V3DString& out)
 	{
 		for (int i = 0; i < hierarchyCode; i++)
 			out += '-';

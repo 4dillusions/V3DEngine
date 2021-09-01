@@ -9,13 +9,15 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngine/V3DMacros.h"
 #include "V3DEngineTests/V3DTest.h"
 #include "V3DEngine/V3DIO/V3DMemoryStream.h"
-#include "V3DEngineTests/V3DTestObject/V3DTestBinaryData.h"
+#include "V3DEngineTests/V3DTestObject/V3DTestComplexData.h"
 #include "V3DEngine/V3DCore/V3DMemory.h"
 #include "V3DEngine/V3DIO/V3DBinaryRW.h"
+#include "V3DEngineTests/V3DTestObject/V3DTestComplexMemoryStreamRepository.h"
 
 using namespace V3D::V3DEngine::V3DIO;
 using namespace V3D::V3DEngineTests::V3DTestObject;
 using namespace V3D::V3DEngine::V3DCore;
+using namespace V3D::V3DEngine::V3DData;
 
 namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 {
@@ -43,18 +45,20 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 
 	void V3DMemoryStreamTests::WriteReadObjectTest()
 	{
-		const V3DTestBinaryData testDataW(V3DTestBinaryDataHead{ 2, 3 });
+		V3DIStreamRepository<V3DTestComplexData, V3DMemoryStream>* memoryStreamRepository = V3DMemory::New<V3DTestComplexMemoryStreamRepository>(V3DFILE_INFO);
+
+		const V3DTestComplexData testDataW(V3DTestComplexDataHead{ 2, 3 });
 		testDataW.vertices[0] = 10;
 		testDataW.vertices[1] = 20;
 		testDataW.uvs[0] = 1;
 		testDataW.uvs[1] = 2;
 		testDataW.uvs[2] = 3;
 		V3DMemoryStream streamW(testDataW.GetSize());
-		testDataW.Save(streamW);
+		memoryStreamRepository->WriteDataToStream(testDataW, streamW);
 
-		V3DTestBinaryData testDataR;
+		V3DTestComplexData testDataR;
 		V3DMemoryStream streamR(streamW.GetBuffer());
-		testDataR.Load(streamR);
+		memoryStreamRepository->ReadDataFromStream(streamR, testDataR);
 		V3DTest::AssertOk(testDataR.head->verticeCount == 2, V3DFILE_INFO);
 		V3DTest::AssertOk(testDataR.head->uvCount == 3, V3DFILE_INFO);
 		V3DTest::AssertOk(testDataR.vertices[0] == 10, V3DFILE_INFO);
@@ -62,26 +66,29 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 		V3DTest::AssertOk(testDataR.uvs[0] == 1, V3DFILE_INFO);
 		V3DTest::AssertOk(testDataR.uvs[1] == 2, V3DFILE_INFO);
 		V3DTest::AssertOk(testDataR.uvs[2] == 3, V3DFILE_INFO);
+
+		V3DMemory::Delete(memoryStreamRepository);
 	}
 
 	void V3DMemoryStreamTests::WriteReadObjectToFileTest()
 	{
+		V3DIStreamRepository<V3DTestComplexData, V3DMemoryStream>* memoryStreamRepository = V3DMemory::New<V3DTestComplexMemoryStreamRepository>(V3DFILE_INFO);
 		const char* TestModelDataFileName = "testModelData.dat";
 
-		const V3DTestBinaryData testDataW(V3DTestBinaryDataHead{ 2, 3 });
+		const V3DTestComplexData testDataW(V3DTestComplexDataHead{ 2, 3 });
 		testDataW.vertices[0] = 10;
 		testDataW.vertices[1] = 20;
 		testDataW.uvs[0] = 1;
 		testDataW.uvs[1] = 2;
 		testDataW.uvs[2] = 3;
 		V3DMemoryStream streamW(testDataW.GetSize());
-		testDataW.Save(streamW);
+		memoryStreamRepository->WriteDataToStream(testDataW, streamW);
 		V3DBinaryRW::Write(TestModelDataFileName, streamW.GetBuffer(), streamW.GetCurrentSize());
 
 		auto bufferR = V3DBinaryRW::Read(V3DAssetPathType::Internal, TestModelDataFileName);
 		V3DMemoryStream streamR(bufferR);
-		V3DTestBinaryData testDataR;
-		testDataR.Load(streamR);
+		V3DTestComplexData testDataR;
+		memoryStreamRepository->ReadDataFromStream(streamR, testDataR);
 		V3DTest::AssertOk(testDataR.head->verticeCount == 2, V3DFILE_INFO);
 		V3DTest::AssertOk(testDataR.head->uvCount == 3, V3DFILE_INFO);
 		V3DTest::AssertOk(testDataR.vertices[0] == 10, V3DFILE_INFO);
@@ -90,6 +97,8 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 		V3DTest::AssertOk(testDataR.uvs[1] == 2, V3DFILE_INFO);
 		V3DTest::AssertOk(testDataR.uvs[2] == 3, V3DFILE_INFO);
 		V3DMemory::DeleteArray(bufferR);
+
+		V3DMemory::Delete(memoryStreamRepository);
 	}
 	
 	void V3DMemoryStreamTests::RunAllTests()

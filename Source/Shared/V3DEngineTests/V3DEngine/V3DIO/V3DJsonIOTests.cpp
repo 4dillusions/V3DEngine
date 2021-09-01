@@ -10,13 +10,16 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngine/V3DMacros.h"
 #include "V3DEngine/V3DIO/V3DJsonIO.h"
 #include "V3DEngine/V3DCore/V3DString.h"
-#include "V3DEngineTests/V3DTestObject/V3DTestJsonConfigData.h"
+#include "V3DEngineTests/V3DTestObject/V3DTestConfigData.h"
+#include "V3DEngineTests/V3DTestObject/V3DTestConfigJsonRepository.h"
 
 #include "ThirdParty/Json/json.hpp"
-#include "V3DEngineTests/V3DTestObject/V3DTestJSonUIControl.h"
+#include "V3DEngineTests/V3DTestObject/V3DTestUIControl.h"
+#include "V3DEngineTests/V3DTestObject/V3DTestUIControlJsonRepository.h"
 
 using namespace V3D::V3DEngine::V3DIO;
 using namespace V3D::V3DEngine::V3DCore;
+using namespace V3D::V3DEngine::V3DData;
 using namespace V3D::V3DEngineTests::V3DTestObject;
 
 using json = nlohmann::json;
@@ -63,12 +66,16 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 				}
 			)";
 
-		V3DTestJsonConfigData data;
-		data.Load(jsonText);
+		V3DITextRepository<V3DTestConfigData>* configJsonRepository = V3DMemory::New<V3DTestConfigJsonRepository>(V3DFILE_INFO);
 
-		char* streamData = data.Save();
+		V3DTestConfigData data;
+		configJsonRepository->ConvertDataFromText(jsonText, data);
+
+		char* streamData = configJsonRepository->ConvertTextFromData(data);
 		V3DTest::AssertOk(V3DString(streamData) == V3DString(R"({"name":"Test 123","testNumber":3.140000104904175,"width":35})"), V3DFILE_INFO);
 		V3DMemory::DeleteArray(streamData);
+
+		V3DMemory::Delete(configJsonRepository);
 	}
 
 	void V3DJsonIOTests::UIBuildTest()
@@ -116,10 +123,11 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 				}
 			)";
 
-		const auto jsonObject = V3DJsonIO::GetJsonObject(jsonText);
+		V3DTestUIControl control;
 
-		V3DTestJSonUIControl control;
-		control.Load(jsonObject);
+		V3DITextRepository<V3DTestUIControl>* configJsonRepository = V3DMemory::New<V3DTestUIControlJsonRepository>(V3DFILE_INFO);
+		configJsonRepository->ConvertDataFromText(jsonText, control);
+		V3DMemory::Delete(configJsonRepository);
 
 		V3DString out;
 		control.WriteToString(out);

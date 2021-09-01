@@ -8,13 +8,10 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 namespace V3D::V3DEngineTests::V3DTestObject
 {
-	struct V3DTestJsonConfigData
+	struct V3DTestConfigData
 	{
 		char name[20]{};
 		int width{};
 		float testNumber{};
-
-		bool Load(const char* jsonText);
-		char* Save() const;
 	};
 }

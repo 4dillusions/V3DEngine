@@ -8,13 +8,13 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 namespace V3D::V3DEngineTests::V3DTestObject
 {
-	struct V3DTestBinaryDataHead final
+	struct V3DTestComplexDataHead final
 	{
 		const int verticeCount{};
 		const int uvCount{};
 
-		V3DTestBinaryDataHead() = default;
-		V3DTestBinaryDataHead(int verticeCount, int uvCount) : verticeCount{verticeCount}, uvCount{uvCount}
+		V3DTestComplexDataHead() = default;
+		V3DTestComplexDataHead(int verticeCount, int uvCount) : verticeCount{verticeCount}, uvCount{uvCount}
 		{ }
 	};
 }
