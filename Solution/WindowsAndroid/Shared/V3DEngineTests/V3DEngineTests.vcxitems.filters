@@ -28,6 +28,9 @@
     <Filter Include="Source\V3DEngine\V3DCryptography">
       <UniqueIdentifier>{8914b0b0-089b-41bc-baf4-b2de4fb6bcff}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\V3DEngine\V3DData">
+      <UniqueIdentifier>{f2727646-abab-4ed3-be5d-23157ec3053c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTest.h">
@@ -246,6 +249,12 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTestObject\V3DTestComplexMemoryStreamRepository.h">
       <Filter>Source\V3DTestObject</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DData\V3DDataTests.h">
+      <Filter>Source\V3DEngine\V3DData</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DData\V3DAppDataSecurityTests.h">
+      <Filter>Source\V3DEngine\V3DData</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTest.cpp">
@@ -445,6 +454,12 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTestObject\V3DTestComplexMemoryStreamRepository.cpp">
       <Filter>Source\V3DTestObject</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DData\V3DDataTests.cpp">
+      <Filter>Source\V3DEngine\V3DData</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DData\V3DAppDataSecurityTests.cpp">
+      <Filter>Source\V3DEngine\V3DData</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

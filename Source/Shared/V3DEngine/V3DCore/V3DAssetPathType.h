@@ -10,13 +10,21 @@ namespace V3D::V3DEngine::V3DCore
 {
 	enum class V3DAssetPathType : unsigned int
 	{
+		//Content
+		Model,
+		Shader,
 		Sound,
 		Texture,
-		Shader,
+
+		//Data
 		Level,
 		Options,
 		Physics,
 		UI,
+
+		AllFolderCount,
+
+		//root
 		Internal,
 	};
 }
