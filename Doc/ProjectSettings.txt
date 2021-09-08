@@ -31,7 +31,7 @@ General
 		.exe: $(SolutionDir)\Windows\Bin\$(Configuration)\$(Platform)\		
 		.dll/.lib: $(SolutionDir)\Windows\Bin\$(Configuration)\$(Platform)\Lib\<ThirdParty>\<LibName>
 	Target name: $(ProjectName)
-	Windows SDK: 10.0.10240.0
+	Windows SDK: 10.0.18362.0
 	Platform toolset: Visual Studio 2019 (v16.7.6)
 	C++ language: C++17
 	
