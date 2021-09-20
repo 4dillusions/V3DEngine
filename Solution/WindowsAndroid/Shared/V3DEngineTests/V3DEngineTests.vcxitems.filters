@@ -255,6 +255,9 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DData\V3DAppDataSecurityTests.h">
       <Filter>Source\V3DEngine\V3DData</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DCollections\V3DStackTests.h">
+      <Filter>Source\V3DEngine\V3DCollections</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTest.cpp">
@@ -460,6 +463,9 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DData\V3DAppDataSecurityTests.cpp">
       <Filter>Source\V3DEngine\V3DData</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DCollections\V3DStackTests.cpp">
+      <Filter>Source\V3DEngine\V3DCollections</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
