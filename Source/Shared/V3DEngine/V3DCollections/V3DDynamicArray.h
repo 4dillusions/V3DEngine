@@ -6,7 +6,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #pragma once
 
-#include "V3DDynamicArrayNode.h"
+#include "V3DArrayNode.h"
 #include "V3DEngine/V3DCore/V3DMemory.h"
 #include "V3DEngine/V3DMacros.h"
 
@@ -29,8 +29,8 @@ namespace V3D::V3DEngine::V3DCollections
 	template<typename T> class V3DDynamicArray final
 	{
 		const int MinDataSize { 100 };
-		V3DDynamicArrayNode<T>** dataArray{};
-		V3DDynamicArrayNode<T>* current{};
+		V3DArrayNode<T>** dataArray{};
+		V3DArrayNode<T>* current{};
 		int dataSize = MinDataSize;
 		int currentIndex{};
 		int length{};
@@ -43,22 +43,22 @@ namespace V3D::V3DEngine::V3DCollections
 				dataArray[i] = nullptr;
 		}
 
-		V3DDynamicArrayNode<T>** CreateDataArray(int size)
+		V3DArrayNode<T>** CreateDataArray(int size)
 		{
-			return V3DCore::V3DMemory::NewPointerArray<V3DDynamicArrayNode<T>>(V3DFILE_INFO, size);
+			return V3DCore::V3DMemory::NewPointerArray<V3DArrayNode<T>>(V3DFILE_INFO, size);
 		}
 
-		static void DeleteDataArray(V3DDynamicArrayNode<T>**& array)
+		static void DeleteDataArray(V3DArrayNode<T>**& array)
 		{
 			V3DCore::V3DMemory::DeletePointerArray(array);
 		}
 
-		V3DDynamicArrayNode<T> *CreateNode()
+		V3DArrayNode<T> *CreateNode()
 		{
-			return V3DCore::V3DMemory::New<V3DDynamicArrayNode<T>>(V3DFILE_INFO);
+			return V3DCore::V3DMemory::New<V3DArrayNode<T>>(V3DFILE_INFO);
 		}
 
-		static void DeleteNode(V3DDynamicArrayNode<T>*& node)
+		static void DeleteNode(V3DArrayNode<T>*& node)
 		{
 			V3DCore::V3DMemory::Delete(node);
 		}
@@ -154,7 +154,7 @@ namespace V3D::V3DEngine::V3DCollections
 			if (length == dataSize)
 			{
 				dataSize *= 2;
-				V3DDynamicArrayNode<T>** tempDataArray = CreateDataArray(dataSize);
+				V3DArrayNode<T>** tempDataArray = CreateDataArray(dataSize);
 				for (int i = 0; i < length; i++)
 					tempDataArray[i] = dataArray[i];
 
