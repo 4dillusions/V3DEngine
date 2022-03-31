@@ -32,7 +32,7 @@ namespace V3D::V3DEngine::V3DCore
 
 		void SetMinTimeEvent(const std::function<void()>& minTimeEvent);
 		void SetMaxTimeEvent(const std::function<void()>& maxTimeEvent);
-		[[nodiscard]] const V3DTimeHour& GetTime() const;
+		const V3DTimeHour& GetTime() const;
 		
 		void SetToZero();
 		void SetToMin();

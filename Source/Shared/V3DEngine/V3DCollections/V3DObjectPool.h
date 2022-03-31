@@ -142,7 +142,7 @@ namespace V3D::V3DEngine::V3DCollections
 			length = 0;
 		}
 
-		[[nodiscard]] int GetLength() const
+		int GetLength() const
 		{
 			return length;
 		}

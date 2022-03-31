@@ -43,9 +43,9 @@ namespace V3D::V3DEngine::V3DMathematics
 		V3DVector3D operator*(const V3DVector3D& vector) const;
 		V3DMatrix3 operator*(float scalar) const;
 		bool Inverse(V3DMatrix3& inverse, float tolerance = 1e-06) const;
-		[[nodiscard]] V3DMatrix3 Inverse(float tolerance = 1e-06) const;
-		[[nodiscard]] V3DMatrix3 Transpose() const;
-		[[nodiscard]] float Determinant() const;
+		V3DMatrix3 Inverse(float tolerance = 1e-06) const;
+		V3DMatrix3 Transpose() const;
+		float Determinant() const;
 		void Orthonormalize();
 
 		void Zero();

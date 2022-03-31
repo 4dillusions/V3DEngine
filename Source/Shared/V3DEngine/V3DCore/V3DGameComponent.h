@@ -29,11 +29,11 @@ namespace V3D::V3DEngine::V3DCore
 		bool operator==(const V3DGameComponent& value) const;
 		bool operator!=(const V3DGameComponent& value) const;
 
-		[[nodiscard]] unsigned long long int GetId() const;
-		[[nodiscard]] const char* GetName() const;
-		[[nodiscard]] bool GetIsAlive() const;
+		unsigned long long int GetId() const;
+		const char* GetName() const;
+		bool GetIsAlive() const;
 		virtual void SetIsAlive(bool isAlive);
-		[[nodiscard]] bool GetIsVisible() const;
+		bool GetIsVisible() const;
 		virtual void SetIsVisible(bool isVisible);
 
 		virtual void Update(double deltaTime) = 0;

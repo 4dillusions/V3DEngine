@@ -31,11 +31,11 @@ namespace V3D::V3DEngine::V3DMathematics
 		void SetPosition(const V3DVector2D& pos);
 		V3DVector2D& GetPosition();
 		void SetRadius(float radius);
-		[[nodiscard]] float GetRadius() const;
+		float GetRadius() const;
 
-		[[nodiscard]] bool Contains(int x, int y) const;
-		[[nodiscard]] bool Contains(const V3DVector2D& point) const;
-		[[nodiscard]] bool Contains(const V3DCircle& value) const;
-		[[nodiscard]] bool Intersects(const V3DCircle& value) const;
+		bool Contains(int x, int y) const;
+		bool Contains(const V3DVector2D& point) const;
+		bool Contains(const V3DCircle& value) const;
+		bool Intersects(const V3DCircle& value) const;
 	};
 }

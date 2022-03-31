@@ -5,6 +5,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 */
 
 #include "V3DTest.h"
+
 #include "V3DEngineTests/V3DTestIO.h"
 #include "V3DEngine/V3DCore/V3DEnvironment.h"
 #include "V3DEngine/V3DCore/V3DIoc.h"
@@ -12,6 +13,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #include <chrono>
 #include <string>
+#include <algorithm>
 
 using namespace V3D::V3DEngineTests::V3DTestObject;
 using namespace V3D::V3DEngine::V3DCore;
@@ -62,6 +64,8 @@ namespace V3D::V3DEngineTests
 	{
 		testIO.WriteOutput("\nTiming tests:");
 
+		int testTimingIndex = 1;
+		const auto TestTimingItemCount = std::count_if(timingList.begin(), timingList.end(), [](const std::pair<std::string, V3DTestTimingData>& t) {return t.second.isKip == false; });
 		for (const auto& mapItem : timingList)
 		{
 			if (mapItem.second.isKip)
@@ -75,8 +79,17 @@ namespace V3D::V3DEngineTests
 			auto end = std::chrono::system_clock::now();
 
 			auto functionName = mapItem.first.substr(0, mapItem.first.size() - 1);
-			testIO.WriteOutput(functionName + " " + testIO.ConvertToString(static_cast<int>(std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count())) + " ms");
+			V3DString counterText("Finished(");
+			counterText += static_cast<int>(TestTimingItemCount);
+			counterText += "/";
+			counterText += testTimingIndex;
+			counterText += ") ";
+
+			testIO.WriteOutput( counterText.ToChar() + functionName + " " + testIO.ConvertToString(static_cast<int>(std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count())) + " ms");
+			++testTimingIndex;
 		}
+
+		testIO.WriteOutput("\nTiming tests finished!");
 	}
 
 	void V3DTest::AddIntegrationTest(const std::function<void()>& integrationFunction)
@@ -92,7 +105,7 @@ namespace V3D::V3DEngineTests
 
 	void V3DTest::WriteStatistics()
 	{
-		static auto environment = V3DIoc<V3DEnvironment>::Get();
+		static auto environment = V3DIoc<V3DEnvironment>::GetSingleton();
 		
 		testIO.WriteOutput(std::string("UnitTest (") + V3DEnvironment::GetRunMode() + " " + environment.GetPlatformName() + ")");
 		testIO.WriteOutput("Passed: " + testIO.ConvertToString(tests) + '/' + testIO.ConvertToString(passedTests));

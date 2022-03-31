@@ -73,10 +73,10 @@ namespace V3D::V3DEngine::V3DCore
 
         explicit operator int() const; //hash code
 
-        [[nodiscard]] const char* ToChar() const;
-        [[nodiscard]] std::wstring ToWString() const;
-        [[nodiscard]] int ToInt() const;
-        [[nodiscard]] float ToFloat() const;
+        const char* ToChar() const;
+        std::wstring ToWString() const;
+        int ToInt() const;
+        float ToFloat() const;
 
     private:
         void IncrementDataSize(int dataSize = 0);
@@ -91,20 +91,20 @@ namespace V3D::V3DEngine::V3DCore
         static bool IsNumberDigit(char num);
         static void CopyToArray(const char* text, char* textArray);
 
-        [[nodiscard]] int GetTextLength() const;
-        [[nodiscard]] int GetTextLenghtWithoutSpace() const;
-        [[nodiscard]] bool IsEmpty() const;
-        [[nodiscard]] int GetDataSize() const;
-        [[nodiscard]] int GetHashCode() const;
+        int GetTextLength() const;
+        int GetTextLenghtWithoutSpace() const;
+        bool IsEmpty() const;
+        int GetDataSize() const;
+        int GetHashCode() const;
 
-        [[nodiscard]] bool Contains(const V3DString& text) const;
-        [[nodiscard]] bool Contains(char letter) const;
-        [[nodiscard]] int ContainsCount(const V3DString& text) const;
-        [[nodiscard]] int ContainsCount(char letter) const;
-        [[nodiscard]] bool IsStartsWith(const V3DString& text) const;
-        [[nodiscard]] bool IsStartsWith(char letter) const;
-        [[nodiscard]] bool IsEndsWith(const V3DString& text) const;
-        [[nodiscard]] bool IsEndsWith(char letter) const;
+        bool Contains(const V3DString& text) const;
+        bool Contains(char letter) const;
+        int ContainsCount(const V3DString& text) const;
+        int ContainsCount(char letter) const;
+        bool IsStartsWith(const V3DString& text) const;
+        bool IsStartsWith(char letter) const;
+        bool IsEndsWith(const V3DString& text) const;
+        bool IsEndsWith(char letter) const;
 
         void Replace(const V3DString& oldText, const V3DString& newText);
         void Replace(char oldLetter, char newLetter);
@@ -116,7 +116,7 @@ namespace V3D::V3DEngine::V3DCore
         void Trim();
         void Clear();
 
-        [[nodiscard]] V3DCollections::V3DDynamicArray<V3DString> Split(char separator) const;
-        [[nodiscard]] V3DCollections::V3DDynamicArray<V3DString> Split(const V3DString& text) const;
+        V3DCollections::V3DDynamicArray<V3DString> Split(char separator) const;
+        V3DCollections::V3DDynamicArray<V3DString> Split(const V3DString& text) const;
 	};
 }

@@ -5,33 +5,32 @@ Released under the terms of the GNU General Public License version 3 or later.
 */
 
 #include "V3DMathematicsTests.h"
-
-#include "V3DMathTest.h"
-#include "V3DVector2DTest.h"
-#include "V3DVector3DTest.h"
-#include "V3DCircleTest.h"
-#include "V3DRectangleTest.h"
-#include "V3DVector4DTest.h"
-#include "V3DMatrix3Test.h"
-#include "V3DMatrix4Test.h"
-#include "V3DQuaternionTest.h"
-#include "V3DRandomTest.h"
-#include "V3DRandomClassicTest.h"
+#include "V3DMathTests.h"
+#include "V3DVector2DTests.h"
+#include "V3DVector3DTests.h"
+#include "V3DCircleTests.h"
+#include "V3DRectangleTests.h"
+#include "V3DVector4DTests.h"
+#include "V3DMatrix3Tests.h"
+#include "V3DMatrix4Tests.h"
+#include "V3DQuaternionTests.h"
+#include "V3DRandomTests.h"
+#include "V3DRandomClassicTests.h"
 
 namespace V3D::V3DEngineTests::V3DEngine::V3DMathematics
 {
 	void V3DMathematicsTests::RunAllTests()
 	{
-		V3DMathTest::RunAllTests();
-		V3DVector2DTest::RunAllTests();
-		V3DVector3DTest::RunAllTests();
-		V3DCircleTest::RunAllTests();
-		V3DRectangleTest::RunAllTests();
-		V3DVector4DTest::RunAllTests();
-		V3DMatrix3Test::RunAllTests();
-		V3DMatrix4Test::RunAllTests();
-		V3DQuaternionTest::RunAllTests();
-		V3DRandomTest::RunAllTests();
-		V3DRandomClassicTest::RunAllTests();
+		V3DMathTests::RunAllTests();
+		V3DVector2DTests::RunAllTests();
+		V3DVector3DTests::RunAllTests();
+		V3DCircleTests::RunAllTests();
+		V3DRectangleTests::RunAllTests();
+		V3DVector4DTests::RunAllTests();
+		V3DMatrix3Tests::RunAllTests();
+		V3DMatrix4Tests::RunAllTests();
+		V3DQuaternionTests::RunAllTests();
+		V3DRandomTests::RunAllTests();
+		V3DRandomClassicTests::RunAllTests();
 	}
 }

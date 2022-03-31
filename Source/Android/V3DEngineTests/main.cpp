@@ -64,7 +64,7 @@ void android_main(struct android_app* state)
 	int events;
 	struct android_poll_source* source;
 
-	V3D::V3DEngine::V3DCore::V3DIoc<V3D::V3DEngine::V3DCore::V3DEnvironment>::Get().SetApp(state);
+	V3D::V3DEngine::V3DCore::V3DIoc<V3D::V3DEngine::V3DCore::V3DEnvironment>::GetSingleton().SetApp(state);
 	
 	while (true)
 	{

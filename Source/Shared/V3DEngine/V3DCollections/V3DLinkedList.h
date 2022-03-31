@@ -89,7 +89,7 @@ namespace V3D::V3DEngine::V3DCollections
 			DeleteNode(tail);
 		}
 
-		[[nodiscard]] int GetLength() const
+		int GetLength() const
 		{
 			return length;
 		}

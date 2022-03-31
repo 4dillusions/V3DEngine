@@ -170,13 +170,13 @@ namespace V3D::V3DEngine::V3DCore
 				if (isDebugMode || isUnitTestMode)
 					Remove(reinterpret_cast<int*>(obj[x]));
 
-				delete[]obj[x];
+				delete[] obj[x];
 			}
 
 			if (isDebugMode || isUnitTestMode)
 				Remove(reinterpret_cast<int*>(obj));
 
-			delete[]obj;
+			delete[] obj;
 
 			obj = nullptr;
 		}

@@ -6,7 +6,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #pragma once
 
-#include "V3DQueueNode.h"
+#include "V3DArrayNode.h"
 #include "V3DEngine/V3DCore/V3DMemory.h"
 
 namespace V3D::V3DEngine::V3DCollections
@@ -25,15 +25,15 @@ namespace V3D::V3DEngine::V3DCollections
 	template<typename T> class V3DQueue final
 	{
 		const int queueSize{};
-		V3DQueueNode<T>** queueArray{};
+		V3DArrayNode<T>** queueArray{};
 		int front{}, currentFront{}, rear{};
 
 		void CreateQueueArray()
 		{
-			queueArray = V3DCore::V3DMemory::NewPointerArray<V3DQueueNode<T>>(V3DFILE_INFO, queueSize);
+			queueArray = V3DCore::V3DMemory::NewPointerArray<V3DArrayNode<T>>(V3DFILE_INFO, queueSize);
 
 			for (int i = 0; i < queueSize; i++)
-				queueArray[i] = V3DCore::V3DMemory::New<V3DQueueNode<T>>(V3DFILE_INFO);
+				queueArray[i] = V3DCore::V3DMemory::New<V3DArrayNode<T>>(V3DFILE_INFO);
 		}
 		
 		void DeleteQueueArray()
@@ -98,12 +98,12 @@ namespace V3D::V3DEngine::V3DCollections
 			return *this;
 		}
 
-		[[nodiscard]] bool IsEmpty() const
+		bool IsEmpty() const
 		{
 			return front == -1 && rear == -1;
 		}
 
-		[[nodiscard]] bool IsFull() const
+		bool IsFull() const
 		{
 			return rear == queueSize - 1;
 		}

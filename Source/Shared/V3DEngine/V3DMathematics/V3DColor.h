@@ -170,6 +170,6 @@ namespace V3D::V3DEngine::V3DMathematics
 		V3DColor& operator=(const V3DColor&) = default;
 		V3DColor& operator=(V3DColor&&) = default;
 
-		[[nodiscard]] V3DVector3D ConvertToFloatColorRGB() const;
+		V3DVector3D ConvertToFloatColorRGB() const;
 	};
 }

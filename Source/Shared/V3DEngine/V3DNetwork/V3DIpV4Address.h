@@ -17,6 +17,6 @@ namespace V3D::V3DEngine::V3DNetwork
 		V3DIpV4Address(int addr1, int addr2, int addr3, int addr4);
 		explicit V3DIpV4Address (const V3DCore::V3DString& ipAddress);
 
-		[[nodiscard]] V3DCore::V3DString ToString() const;
+		V3DCore::V3DString ToString() const;
 	};
 }

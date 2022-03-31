@@ -14,11 +14,11 @@ namespace V3D::V3DEngine::V3DCore
     class V3DENGINE_API V3DEnvironment final : public V3DAbstractEnvironment
     {
     public:
-        [[nodiscard]] const char* GetPlatformName() const override;
-        [[nodiscard]] int GetWindowWidth() const override;
-        [[nodiscard]] int GetWindowHeight() const override;
-        [[nodiscard]] int GetScreenWidth() const override;
-        [[nodiscard]] int GetScreenHeight() const override;
-        [[nodiscard]] const char* GetAssetPath(V3DAssetPathType assetPath) const override;
+        const char* GetPlatformName() const override;
+        int GetWindowWidth() const override;
+        int GetWindowHeight() const override;
+        int GetScreenWidth() const override;
+        int GetScreenHeight() const override;
+        const char* GetAssetPath(V3DAssetPathType assetPath) const override;
     };
 }

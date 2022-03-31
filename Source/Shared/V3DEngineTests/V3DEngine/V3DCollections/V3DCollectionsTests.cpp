@@ -5,13 +5,13 @@ Released under the terms of the GNU General Public License version 3 or later.
 */
 
 #include "V3DCollectionsTests.h"
-
 #include "V3DObjectPoolTests.h"
 #include "V3DLinkedListTests.h"
 #include "V3DDynamicArrayTests.h"
 #include "V3DDecimalTreeTests.h"
 #include "StdTests.h"
 #include "V3DQueueTests.h"
+#include "V3DStackTests.h"
 
 namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 {
@@ -22,6 +22,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		V3DDynamicArrayTests::RunAllTests();
 		V3DDecimalTreeTests::RunAllTests();
 		V3DQueueTests::RunAllTests();
+		V3DStackTests::RunAllTests();
 		StdTests::RunAllTests();
 	}
 }

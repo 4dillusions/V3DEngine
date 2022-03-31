@@ -73,12 +73,12 @@ namespace V3D::V3DEngine::V3DMathematics
 		void Rotate90DegreeForward();
 		void Rotate90DegreeBackward();
 
-		[[nodiscard]] float Length() const;
-		[[nodiscard]] float Distance(const V3DVector2D& value) const;
-		[[nodiscard]] float DotProduct(const V3DVector2D& value) const;
-		[[nodiscard]] float CrossProduct(const V3DVector2D& value) const;
+		float Length() const;
+		float Distance(const V3DVector2D& value) const;
+		float DotProduct(const V3DVector2D& value) const;
+		float CrossProduct(const V3DVector2D& value) const;
 		float Normalise();
 		void Normalizing();
-		[[nodiscard]] V3DVector2D MidPoint(const V3DVector2D& value) const;
+		V3DVector2D MidPoint(const V3DVector2D& value) const;
 	};
 }

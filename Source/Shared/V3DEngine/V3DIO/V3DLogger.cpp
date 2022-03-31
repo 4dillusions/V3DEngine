@@ -88,17 +88,17 @@ namespace V3D::V3DEngine::V3DIO
 
 		switch (messageType)
 		{
-		case V3DLogMessageType::Info: text += V3DString(InfoTag) + " "; break;
+			case V3DLogMessageType::Info: text += V3DString(InfoTag) + " "; break;
 
-		case V3DLogMessageType::Warning:
-			text += V3DString(WarningTag) + " ";
-			warnings++;
-			break;
+			case V3DLogMessageType::Warning:
+				text += V3DString(WarningTag) + " ";
+				warnings++;
+				break;
 
-		case V3DLogMessageType::Error:
-			text += V3DString(ErrorTag) + " ";
-			errors++;
-			break;
+			case V3DLogMessageType::Error:
+				text += V3DString(ErrorTag) + " ";
+				errors++;
+				break;
 		}
 
 		text += log;

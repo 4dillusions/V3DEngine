@@ -37,9 +37,9 @@ namespace V3D::V3DEngine::V3DNetwork
 		void Listen() const;
 		V3DTCPSocket* Accept(V3DSocketAddress& fromAddress) const;
 		int Send(const char* message, int messageLenght) const;
-		[[nodiscard]] int Send(const V3DCore::V3DString& message) const;
+		int Send(const V3DCore::V3DString& message) const;
 		int Receive(char* messageOut, int messageLenght) const;
-		[[nodiscard]] V3DCore::V3DString Receive() const;
+		V3DCore::V3DString Receive() const;
 
 		void SetNonBlocking() const;
 	};

@@ -28,20 +28,20 @@ namespace V3D::V3DEngine::V3DMathematics
 		bool operator==(const V3DRectangle& value) const;
 		bool operator!=(const V3DRectangle& value) const;
 
-		[[nodiscard]] float GetLeft() const;
-		[[nodiscard]] float GetRight() const;
-		[[nodiscard]] float GetTop() const;
-		[[nodiscard]] float GetBottom() const;
+		float GetLeft() const;
+		float GetRight() const;
+		float GetTop() const;
+		float GetBottom() const;
 		void SetPosition(float x, float y);
 		void SetPosition(const V3DVector2D& pos);
 		V3DVector2D& GetPosition();
-		[[nodiscard]] V3DVector2D GetSize() const;
+		V3DVector2D GetSize() const;
 		void SetSize(const V3DVector2D& size);
-		[[nodiscard]] V3DVector2D GetCenter() const;
+		V3DVector2D GetCenter() const;
 
-		[[nodiscard]] bool Contains(float x, float y) const;
-		[[nodiscard]] bool Contains(const V3DVector2D& pofloat) const;
-		[[nodiscard]] bool Contains(const V3DRectangle& value) const;
-		[[nodiscard]] bool Intersects(const V3DRectangle& value) const;
+		bool Contains(float x, float y) const;
+		bool Contains(const V3DVector2D& pofloat) const;
+		bool Contains(const V3DRectangle& value) const;
+		bool Intersects(const V3DRectangle& value) const;
 	};
 }

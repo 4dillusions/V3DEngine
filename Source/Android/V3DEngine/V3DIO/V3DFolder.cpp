@@ -18,7 +18,7 @@ namespace V3D::V3DEngine::V3DIO
 {
 	V3DEnvironment* V3DFolder::GetEnvironment()
 	{
-		static auto environment = V3DIoc<V3DEnvironment>::Get();
+		static auto environment = V3DIoc<V3DEnvironment>::GetSingleton();
 		return &environment;
 	}
 	

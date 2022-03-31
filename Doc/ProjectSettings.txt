@@ -3,10 +3,10 @@ Windows/Android - Visual Studio Community 2019 (16.4.5)
 Create solution: Solution/WindowsAndroid/V3DEngine.sln
 ******************************************************
 
-configuration	32bit	64bit	x86
-------------------------------------
-Android			ARM		ARM64	x86(emulator)
-Windows			x64		x64		x64
+configuration 	ARM32	ARM64	x86		x64
+--------------------------------------------
+Android			ARM		ARM64	x86		x64
+Windows			x64		x64		x64		x64
 
 
 Shared
@@ -31,8 +31,8 @@ General
 		.exe: $(SolutionDir)\Windows\Bin\$(Configuration)\$(Platform)\		
 		.dll/.lib: $(SolutionDir)\Windows\Bin\$(Configuration)\$(Platform)\Lib\<ThirdParty>\<LibName>
 	Target name: $(ProjectName)
-	Windows SDK: 10.0.10240.0
-	Platform toolset: Visual Studio 2019 (v16.7.6)
+	Windows SDK: 10.0.18362.0
+	Platform toolset: Visual Studio 2022 (v143)
 	C++ language: C++17
 	
 Debugging
@@ -72,8 +72,9 @@ General
 	Platform toolset: Clang 5.0
 	Config type: static library .a (lib), Dynamic library (app)
 	Target API level: 
-		V3DEngine, V3DEngine.Tests.packaging: android 19
-		V3DEngine, V3DEngine.Tests.NativeActivity: android 21
+		static library		ARM32/x86 19	ARM64/x64 21
+		package (apk)		ARM32/x86 25	ARM64/x64 25
+		native activity		ARM32/x86 19	ARM64/x64 21
 	
 VC++ directories
 	include directories: 	$(SolutionDir)..\..\Source\Android
