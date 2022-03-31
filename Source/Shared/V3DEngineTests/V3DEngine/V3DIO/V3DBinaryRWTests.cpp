@@ -25,7 +25,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 	{
 		const char* TestDataFileName = "testData.dat";
 
-		V3DIFileRepository<V3DTestSimpleData>* simpleFileRepository = V3DMemory::New<V3DTestSimpleFileRepository>(V3DFILE_INFO);
+		V3DIFileRepository<V3DTestSimpleData>* simpleFileRepository = V3DMemory::New<V3DTestSimpleFileRepository<V3DTestSimpleData>>(V3DFILE_INFO);
 
 		V3DTestSimpleData testDataW;
 		testDataW.id = 23;
@@ -33,6 +33,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 		testDataW.text[1] = '2';
 		testDataW.text[2] = '3';
 		simpleFileRepository->Save(testDataW, TestDataFileName);
+		V3DTest::AssertOk(V3DFile::GetSize(V3DAssetPathType::Internal, TestDataFileName) == sizeof(V3DTestSimpleData), V3DFILE_INFO);
 
 		auto testDataR = simpleFileRepository->Load(V3DAssetPathType::Internal, TestDataFileName);
 		V3DTest::AssertOk(testDataR.id == 23, V3DFILE_INFO);
@@ -57,6 +58,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 		testDataW->uvs[1] = 2;
 		testDataW->uvs[2] = 3;
 		complexFileRepository->Save(testDataW, TestModelDataFileName);
+		V3DTest::AssertOk(V3DFile::GetSize(V3DAssetPathType::Internal, TestModelDataFileName) == static_cast<long>(testDataW->GetSize()), V3DFILE_INFO);
 		V3DMemory::Delete(testDataW);
 
 		auto testDataR = complexFileRepository->Load(V3DAssetPathType::Internal, TestModelDataFileName);
