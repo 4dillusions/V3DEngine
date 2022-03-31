@@ -31,11 +31,11 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 		V3DFile::Delete(dbExceptionName);
 
 		V3DIoc<V3DSQLiteContext*>::Register<V3DSQLiteContext>([&]() { return V3DMemory::New<V3DSQLiteContext>(V3DFILE_INFO, dbName); });
-		V3DIoc<V3DSQLiteContext*>::Create();
+		V3DIoc<V3DSQLiteContext*>::CreateSingleton();
 
 		if (V3DFile::IsExist(V3DAssetPathType::Internal, dbExceptionName))
 		{
-			V3DIoc<V3DSQLiteContext*>::DeleteInstance();
+			V3DIoc<V3DSQLiteContext*>::DeleteSingletonAndRegister();
 			V3DFile::Delete(dbExceptionName);
 			
 			return;
@@ -62,7 +62,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 		V3DTest::AssertOk(playerSQLRepository->Select(player2) != player2, V3DFILE_INFO);
 
 		V3DMemory::Delete(playerSQLRepository);
-		V3DIoc<V3DSQLiteContext*>::DeleteInstance();
+		V3DIoc<V3DSQLiteContext*>::DeleteSingletonAndRegister();
 		V3DFile::Delete(dbName);
 		V3DLogger::Get().SetOutputTypeFlag(V3DLogOutputType::ToFile, false);
 	}

@@ -25,7 +25,7 @@ namespace V3D::V3DEngine::V3DIO
 
 		//write error for editor, etc.
 		#ifdef _DEBUG //don't handle exceptions in Release mode
-			static const auto environment = V3DIoc<V3DEnvironment>::Get();  // NOLINT(readability-misleading-indentation)
+			static const auto environment = V3DIoc<V3DEnvironment>::GetSingleton();  // NOLINT(readability-misleading-indentation)
 			if (!environment.GetIsUnitTestMode())
 			{
 				try

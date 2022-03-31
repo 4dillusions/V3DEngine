@@ -15,7 +15,7 @@ using namespace V3D::V3DEngine::V3DCore;
 
 namespace V3D::V3DEngineTests::V3DTestObject
 {
-	V3DTestPlayerSqlRepository::V3DTestPlayerSqlRepository() : db{ V3DIoc<V3DSQLiteContext*>::Get() }
+	V3DTestPlayerSqlRepository::V3DTestPlayerSqlRepository() : db{ V3DIoc<V3DSQLiteContext*>::GetSingleton() }
 	{
 		bool isOk = false;
 		if (db != nullptr && db->ExecuteSQL("SELECT rowid FROM Player;") == false)

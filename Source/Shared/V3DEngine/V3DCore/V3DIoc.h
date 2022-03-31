@@ -32,7 +32,7 @@ namespace V3D::V3DEngine::V3DCore
 		V3DIoc& operator=(const V3DIoc&) = delete;
 		V3DIoc& operator=(V3DIoc&&) = delete;
 
-		static TInstance& Get()
+		static TInstance& GetSingleton()
 		{
 			static TInstance instance;
 
@@ -68,30 +68,40 @@ namespace V3D::V3DEngine::V3DCore
 				prototype = []() { return V3DMemory::New<TType>(V3DFILE_INFO); };
 		}
 
-		template <typename TType> static void Register(const std::function<TInstance * ()>& prototype)
+		template <typename TType> static void Register(const std::function<TInstance * ()>& otherPrototype)
 		{
-			if (prototype != nullptr && V3DIoc<TInstance*>::prototype == nullptr && instance == nullptr)
-				V3DIoc<TInstance*>::prototype = prototype;
+			if (otherPrototype != nullptr && prototype == nullptr && instance == nullptr)
+				prototype = otherPrototype;
 		}
 
-		static void Create()
+		static void CreateSingleton()
 		{
 			if (prototype != nullptr && instance == nullptr)
 				instance = prototype();
 		}
 
-		static void DeleteInstance()
+		static TInstance* CreateTransient()
+		{
+			return prototype();
+		}
+
+		static void DeleteSingletonAndRegister()
 		{
 			V3DMemory::Delete(instance);
 			prototype = nullptr;
 		}
 
-		static TInstance* Get()
+		static void DeleteRegister()
+		{
+			prototype = nullptr;
+		}
+
+		static TInstance* GetSingleton()
 		{
 			return instance;
 		}
 
-		static bool IsExist()
+		static bool IsSingletonExist()
 		{
 			return instance != nullptr;
 		}
