@@ -32,7 +32,7 @@ General
 		.dll/.lib: $(SolutionDir)\Windows\Bin\$(Configuration)\$(Platform)\Lib\<ThirdParty>\<LibName>
 	Target name: $(ProjectName)
 	Windows SDK: 10.0.18362.0
-	Platform toolset: Visual Studio 2019 (v16.7.6)
+	Platform toolset: Visual Studio 2022 (v143)
 	C++ language: C++17
 	
 Debugging
@@ -72,8 +72,8 @@ General
 	Platform toolset: Clang 5.0
 	Config type: static library .a (lib), Dynamic library (app)
 	Target API level: 
-		static library		ARM32/x86 19	ARM64/x64 19
-		package (apk)		ARM32/x86 19	ARM64/x64 19
+		static library		ARM32/x86 19	ARM64/x64 21
+		package (apk)		ARM32/x86 25	ARM64/x64 25
 		native activity		ARM32/x86 19	ARM64/x64 21
 	
 VC++ directories

@@ -31,6 +31,9 @@
     <Filter Include="Source\V3DEngine\V3DData">
       <UniqueIdentifier>{f2727646-abab-4ed3-be5d-23157ec3053c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\V3DEngine\V3DThreading">
+      <UniqueIdentifier>{eef199ae-a58b-4b54-97ce-006279058131}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTest.h">
@@ -258,6 +261,15 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DCollections\V3DStackTests.h">
       <Filter>Source\V3DEngine\V3DCollections</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DThreading\V3DThreadingTests.h">
+      <Filter>Source\V3DEngine\V3DThreading</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DThreading\V3DTaskPoolTests.h">
+      <Filter>Source\V3DEngine\V3DThreading</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTestObject\V3DTestContentData.h">
+      <Filter>Source\V3DTestObject</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTest.cpp">
@@ -443,9 +455,6 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DCryptography\V3DCryptographyMethodTests.cpp">
       <Filter>Source\V3DEngine\V3DCryptography</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTestObject\V3DTestSimpleFileRepository.cpp">
-      <Filter>Source\V3DTestObject</Filter>
-    </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTestObject\V3DTestComplexFileRepository.cpp">
       <Filter>Source\V3DTestObject</Filter>
     </ClCompile>
@@ -466,6 +475,12 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DCollections\V3DStackTests.cpp">
       <Filter>Source\V3DEngine\V3DCollections</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DThreading\V3DThreadingTests.cpp">
+      <Filter>Source\V3DEngine\V3DThreading</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DThreading\V3DTaskPoolTests.cpp">
+      <Filter>Source\V3DEngine\V3DThreading</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

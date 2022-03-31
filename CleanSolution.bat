@@ -1,6 +1,10 @@
 rem WindowsAndroid
 
 rem ####################################################################################
+rem clear temporary files
+del /s /q *.bak
+
+rem ####################################################################################
 rem clear Assets folder to Windows
 del /s /q Solution\WindowsAndroid\Windows\Bin\Debug\x64\Assets\*
 del /s /q Solution\WindowsAndroid\Windows\Bin\Release\x64\Assets\*
