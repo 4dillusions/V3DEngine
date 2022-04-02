@@ -12,7 +12,7 @@ namespace V3D::V3DEngine::V3DNetwork
 {
 	inline V3DCore::V3DString V3DSocketAddressGetLocalIp()
 	{
-		setenv("LANG", "C", 1);
+		setenv("LANG", "C", 1);  // NOLINT(concurrency-mt-unsafe)
 		
 		FILE* fp = popen("ip -f inet addr show", "r"); //Android 10+ `ifconfig` only works in rooted devices, another solution: 'ip -f inet addr show'
 		if (fp) 

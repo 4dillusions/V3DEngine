@@ -52,7 +52,7 @@ namespace V3D::V3DEngine::V3DIO
         void SetOutputTypeFlag(V3DLogOutputType outputType, bool isEnable);
 
         //Log trigger helps show logs another environment for example in editor
-        void SetLogTrigger(const std::function<void(const V3DCore::V3DString& log)>& logTrigger);
+        void SetLogTrigger(const std::function<void(const V3DCore::V3DString& log)>& otherLogTrigger);
 
         V3DCore::V3DString const* GetBuffer() const;
 
@@ -61,9 +61,9 @@ namespace V3D::V3DEngine::V3DIO
         int GetWarningCount() const;
         int GetErrorCount() const;
 
-        void WriteOutput(const V3DCore::V3DString& log);
+        void WriteOutput(const V3DCore::V3DString& log) const;
         void WriteOutput(V3DLogMessageType messageType, const V3DCore::V3DString& log);
         void WriteOutput(V3DLogMessageType messageType, const char* log);
-        void WriteOutput(const char* log);
+        void WriteOutput(const char* log) const;
     };
 }

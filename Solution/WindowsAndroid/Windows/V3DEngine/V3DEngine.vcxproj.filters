@@ -22,9 +22,6 @@
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEngine\V3DIO\V3DOstream.h">
       <Filter>Source\V3DIO</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Source\Windows\V3DEngine\V3DCore\V3DEnvironment.h">
-      <Filter>Source\V3DCore</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEngine\V3DNetwork\V3DNetworkSystem.h">
       <Filter>Source\V3DNetwork</Filter>
     </ClInclude>

@@ -4,7 +4,7 @@ Copyright (c) 2020 by 4D Illusions. All rights reserved.
 Released under the terms of the GNU General Public License version 3 or later.
 */
 
-#include "V3DEnvironment.h"
+#include "V3DEngine/V3DCore/V3DEnvironment.h"
 #include "V3DEngine/V3DCore/V3DAssetPathType.h"
 
 namespace V3D::V3DEngine::V3DCore
@@ -67,7 +67,9 @@ namespace V3D::V3DEngine::V3DCore
 
 			case V3DAssetPathType::Internal: return "";
 
-			default: return "default";
+			//default: return "default";
 		}
+
+		return nullptr;
 	}
 }

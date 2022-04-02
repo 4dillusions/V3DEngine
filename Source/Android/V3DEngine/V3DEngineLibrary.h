@@ -9,4 +9,4 @@ Released under the terms of the GNU General Public License version 3 or later.
 #define V3DENGINE_API /**/
 
 //assert function declaration
-#define __PRETTY_FUNCTION__ __FUNCTION__  // NOLINT(cppcoreguidelines-macro-usage)
+#define __PRETTY_FUNCTION__ __FUNCTION__  // NOLINT(cppcoreguidelines-macro-usage, bugprone-reserved-identifier, clang-diagnostic-reserved-macro-identifier)

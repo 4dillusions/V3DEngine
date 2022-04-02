@@ -15,8 +15,8 @@ namespace V3D::V3DEngine::V3DNetwork
 	{
 		char host[256];
 		gethostname(host, sizeof host);
-		struct hostent* host_entry = gethostbyname(host);
-		char* result = inet_ntoa(*reinterpret_cast<struct in_addr*>(host_entry->h_addr_list[1]));
+		const hostent* host_entry = gethostbyname(host);  // NOLINT(concurrency-mt-unsafe)
+		char* result = inet_ntoa(*reinterpret_cast<struct in_addr*>(host_entry->h_addr_list[1]));  // NOLINT(concurrency-mt-unsafe)
 
 		return V3DCore::V3DString(result);
 	}
