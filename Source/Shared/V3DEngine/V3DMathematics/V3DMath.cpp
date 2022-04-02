@@ -60,4 +60,14 @@ namespace V3D::V3DEngine::V3DMathematics
 	{
 		return (value & (value - 1)) == 0 && value > 0;
 	}
+
+	bool V3DMath::IsEqual(float value1, float value2)
+	{
+		return (value1 - value2) == 0.0f;
+	}
+
+	bool V3DMath::IsEqual(double value1, double value2)
+	{
+		return (value1 - value2) == 0.0;
+	}
 }

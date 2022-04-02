@@ -30,7 +30,7 @@ namespace V3D::V3DEngine::V3DMathematics
 		void SetPosition(float x, float y);
 		void SetPosition(const V3DVector2D& pos);
 		V3DVector2D& GetPosition();
-		void SetRadius(float radius);
+		void SetRadius(float otherRadius);
 		float GetRadius() const;
 
 		bool Contains(int x, int y) const;

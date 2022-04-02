@@ -55,15 +55,15 @@ namespace V3D::V3DEngine::V3DMathematics
 		void SetRotationYaw(float yaw); //Y axis
 		void SetRotationPitch(float pitch); //X axis
 		void SetRotationRoll(float roll); //Z axis
-		V3DVector2D GetTranslation2D();
-		V3DVector3D GetTranslation3D();
+		V3DVector2D GetTranslation2D() const;
+		V3DVector3D GetTranslation3D() const;
 		static V3DMatrix4 GetTranslation(const V3DVector2D& vector);
 		static V3DMatrix4 GetTranslation(const V3DVector3D& vector);
 		void MakeTranslation(const V3DVector2D& vector);
 		void MakeTranslation(const V3DVector3D& vector);
 		void SetScale(const V3DVector3D& vector);
 		static V3DMatrix4 GetScale(const V3DVector3D& vector);
-		bool IsHasScale();
+		bool IsHasScale() const;
 		bool IsAffine() const;
 		V3DMatrix4 InverseAffine() const;
 		V3DMatrix4 ConcatenateAffine(const V3DMatrix4& value) const;

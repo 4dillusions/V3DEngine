@@ -9,6 +9,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngine/V3DMacros.h"
 #include "V3DEngine/V3DMathematics/V3DMatrix3.h"
 #include "V3DEngine/V3DMathematics/V3DVector3D.h"
+#include "V3DEngine/V3DMathematics/V3DMath.h"
 
 // ReSharper disable once CppUnusedIncludeDirective
 #include <cmath>
@@ -91,10 +92,11 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DMathematics
 			2.0f, 5.0f, 8.0f,
 			3.0f, 6.0f, 9.0f), V3DFILE_INFO);
 
-		V3DTest::AssertOk(V3DMatrix3
-		(-5.0f, 0.0f, -1.0f,
-			1.0f, 2.0f, -1.0f,
-			-3.0f, 4.0f, 1.0f).Determinant() == -40.0f, V3DFILE_INFO);
+		V3DTest::AssertOk(
+			V3DMath::IsEqual(
+				V3DMatrix3(-5.0f, 0.0f, -1.0f,
+							1.0f, 2.0f, -1.0f,
+							-3.0f, 4.0f, 1.0f).Determinant(), -40.0f), V3DFILE_INFO);
 
 		V3DMatrix3 mat8
 		(-5.0f, 3.0f, -1.0f,

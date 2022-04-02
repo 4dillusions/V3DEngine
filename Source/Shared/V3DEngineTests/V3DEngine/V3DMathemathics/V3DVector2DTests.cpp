@@ -27,8 +27,8 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DMathematics
 
 		V3DTest::AssertOk(Vec == Vec2, V3DFILE_INFO);
 		V3DTest::AssertOk(Vec == Vec3, V3DFILE_INFO);
-		V3DTest::AssertOk(Vec4.x == 12, V3DFILE_INFO);
-		V3DTest::AssertOk(Vec4.y == 12, V3DFILE_INFO);
+		V3DTest::AssertOk(Vec4.x == 12.0f, V3DFILE_INFO);
+		V3DTest::AssertOk(Vec4.y == 12.0f, V3DFILE_INFO);
 		V3DTest::AssertOk(Vec != V3DVector2D(), V3DFILE_INFO);
 
 		V3DTest::AssertOk((V3DVector2D(1, 2) + V3DVector2D(3, 4)) == V3DVector2D(4, 6), V3DFILE_INFO);
@@ -74,13 +74,13 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DMathematics
 		V3DTest::AssertOk(vec2 == V3DVector2D(1, -1), V3DFILE_INFO);
 		V3DTest::AssertOk(vec3 == V3DVector2D(-1, 1), V3DFILE_INFO);
 
-		V3DTest::AssertOk(V3DVector2D(0, 8).Length() == 8, V3DFILE_INFO);
-		V3DTest::AssertOk(V3DVector2D(-6, 8).Length() == 10, V3DFILE_INFO);
-		V3DTest::AssertOk(V3DVector2D(5, 12).Length() == 13, V3DFILE_INFO);
-		V3DTest::AssertOk(V3DVector2D(-3, 0.5f).Distance(V3DVector2D(5, 6.5)) == 10, V3DFILE_INFO);
-		V3DTest::AssertOk(V3DVector2D(-6, 8).DotProduct(V3DVector2D(5, 12)) == 66, V3DFILE_INFO);
-		V3DTest::AssertOk(V3DVector2D(3, 1).CrossProduct(V3DVector2D(4, 8)) == 20, V3DFILE_INFO);
-		V3DTest::AssertOk(V3DVector2D(3, 4).Normalise() == 5, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DVector2D(0, 8).Length() == 8.0f, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DVector2D(-6, 8).Length() == 10.0f, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DVector2D(5, 12).Length() == 13.0f, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DVector2D(-3, 0.5f).Distance(V3DVector2D(5, 6.5)) == 10.0f, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DVector2D(-6, 8).DotProduct(V3DVector2D(5, 12)) == 66.0f, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DVector2D(3, 1).CrossProduct(V3DVector2D(4, 8)) == 20.0f, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DVector2D(3, 4).Normalise() == 5.0f, V3DFILE_INFO);
 
 		vec = V3DVector2D(3, 1);
 		vec.Normalizing();

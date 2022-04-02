@@ -5,6 +5,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 */
 
 #include "V3DRectangle.h"
+#include "V3DMath.h"
 
 namespace V3D::V3DEngine::V3DMathematics
 {
@@ -16,12 +17,12 @@ namespace V3D::V3DEngine::V3DMathematics
 
     bool V3DRectangle::operator==(const V3DRectangle& value) const
     {
-        return (position == value.position && width == value.width && height == value.height);
+        return (position == value.position && V3DMath::IsEqual(width, value.width) && V3DMath::IsEqual(height, value.height));
     }
 
     bool V3DRectangle::operator!=(const V3DRectangle& value) const
     {
-        return (position != value.position || width != value.width || height != value.height);
+        return (position != value.position || !V3DMath::IsEqual(width, value.width) || !V3DMath::IsEqual(height, value.height));
     }
 
     float V3DRectangle::GetLeft() const

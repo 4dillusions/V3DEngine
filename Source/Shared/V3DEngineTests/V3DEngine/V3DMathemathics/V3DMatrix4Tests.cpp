@@ -15,6 +15,8 @@ Released under the terms of the GNU General Public License version 3 or later.
 // ReSharper disable once CppUnusedIncludeDirective
 #include <cmath>
 
+#include "V3DEngine/V3DMathematics/V3DMath.h"
+
 using namespace V3D::V3DEngine::V3DMathematics;
 
 namespace V3D::V3DEngineTests::V3DEngine::V3DMathematics
@@ -93,28 +95,28 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DMathematics
 		matR2.m[0][2] = -sinf(90.0f);
 		matR2.m[2][0] = sinf(90.0f);
 		matR2.m[2][2] = cosf(90.0f);
-		V3DTest::AssertOk(matR.m[0][0] == matR2.m[0][0], V3DFILE_INFO);
-		V3DTest::AssertOk(matR.m[0][2] == matR2.m[0][2], V3DFILE_INFO);
-		V3DTest::AssertOk(matR.m[2][0] == matR2.m[2][0], V3DFILE_INFO);
-		V3DTest::AssertOk(matR.m[2][2] == matR2.m[2][2], V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMath::IsEqual(matR.m[0][0], matR2.m[0][0]), V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMath::IsEqual(matR.m[0][2], matR2.m[0][2]), V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMath::IsEqual(matR.m[2][0], matR2.m[2][0]), V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMath::IsEqual(matR.m[2][2], matR2.m[2][2]), V3DFILE_INFO);
 		matR.SetRotationPitch(90.0f); //X
 		matR2.m[1][1] = cosf(90.0f);
 		matR2.m[1][2] = sinf(90.0f);
 		matR2.m[2][1] = -sinf(90.0f);
 		matR2.m[2][2] = cosf(90.0f);
-		V3DTest::AssertOk(matR.m[1][1] == matR2.m[1][1], V3DFILE_INFO);
-		V3DTest::AssertOk(matR.m[1][2] == matR2.m[1][2], V3DFILE_INFO);
-		V3DTest::AssertOk(matR.m[2][1] == matR2.m[2][1], V3DFILE_INFO);
-		V3DTest::AssertOk(matR.m[2][2] == matR2.m[2][2], V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMath::IsEqual(matR.m[1][1], matR2.m[1][1]), V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMath::IsEqual(matR.m[1][2], matR2.m[1][2]), V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMath::IsEqual(matR.m[2][1], matR2.m[2][1]), V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMath::IsEqual(matR.m[2][2], matR2.m[2][2]), V3DFILE_INFO);
 		matR.SetRotationRoll(90.0f); //Z
 		matR2.m[0][0] = cosf(90.0f);
 		matR2.m[0][1] = sinf(90.0f);
 		matR2.m[1][0] = -sinf(90.0f);
 		matR2.m[1][1] = cosf(90.0f);
-		V3DTest::AssertOk(matR.m[0][0] == matR2.m[0][0], V3DFILE_INFO);
-		V3DTest::AssertOk(matR.m[0][1] == matR2.m[0][1], V3DFILE_INFO);
-		V3DTest::AssertOk(matR.m[1][0] == matR2.m[1][0], V3DFILE_INFO);
-		V3DTest::AssertOk(matR.m[1][1] == matR2.m[1][1], V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMath::IsEqual(matR.m[0][0], matR2.m[0][0]), V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMath::IsEqual(matR.m[0][1], matR2.m[0][1]), V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMath::IsEqual(matR.m[1][0], matR2.m[1][0]), V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMath::IsEqual(matR.m[1][1], matR2.m[1][1]), V3DFILE_INFO);
 
 		V3DMatrix4 mat4;
 		mat4.Identity();

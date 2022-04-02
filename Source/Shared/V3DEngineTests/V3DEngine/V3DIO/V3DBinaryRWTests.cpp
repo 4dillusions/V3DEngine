@@ -35,7 +35,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 		simpleFileRepository->Save(testDataW, TestDataFileName);
 		V3DTest::AssertOk(V3DFile::GetSize(V3DAssetPathType::Internal, TestDataFileName) == sizeof(V3DTestSimpleData), V3DFILE_INFO);
 
-		auto testDataR = simpleFileRepository->Load(V3DAssetPathType::Internal, TestDataFileName);
+		const auto testDataR = simpleFileRepository->Load(V3DAssetPathType::Internal, TestDataFileName);
 		V3DTest::AssertOk(testDataR.id == 23, V3DFILE_INFO);
 		V3DTest::AssertOk(testDataR.text[0] == '1', V3DFILE_INFO);
 		V3DTest::AssertOk(testDataR.text[1] == '2', V3DFILE_INFO);
@@ -64,8 +64,8 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 		auto testDataR = complexFileRepository->Load(V3DAssetPathType::Internal, TestModelDataFileName);
 		V3DTest::AssertOk(testDataR->head->verticeCount == 2, V3DFILE_INFO);
 		V3DTest::AssertOk(testDataR->head->uvCount == 3, V3DFILE_INFO);
-		V3DTest::AssertOk(testDataR->vertices[0] == 10, V3DFILE_INFO);
-		V3DTest::AssertOk(testDataR->vertices[1] == 20, V3DFILE_INFO);
+		V3DTest::AssertOk(testDataR->vertices[0] == 10.0f, V3DFILE_INFO);
+		V3DTest::AssertOk(testDataR->vertices[1] == 20.0f, V3DFILE_INFO);
 		V3DTest::AssertOk(testDataR->uvs[0] == 1, V3DFILE_INFO);
 		V3DTest::AssertOk(testDataR->uvs[1] == 2, V3DFILE_INFO);
 		V3DTest::AssertOk(testDataR->uvs[2] == 3, V3DFILE_INFO);

@@ -24,8 +24,8 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DMathematics
 
 		V3DTest::AssertOk(Vec == Vec2, V3DFILE_INFO);
 		V3DTest::AssertOk(Vec == Vec3, V3DFILE_INFO);
-		V3DTest::AssertOk(Vec4.x == 12, V3DFILE_INFO);
-		V3DTest::AssertOk(Vec4.y == 12, V3DFILE_INFO);
+		V3DTest::AssertOk(Vec4.x == 12.0f, V3DFILE_INFO);
+		V3DTest::AssertOk(Vec4.y == 12.0f, V3DFILE_INFO);
 		V3DTest::AssertOk(Vec != V3DVector4D(), V3DFILE_INFO);
 
 		V3DTest::AssertOk((V3DVector4D(1, 2, 3, 4) + V3DVector4D(3, 4, 5, 6)) == V3DVector4D(4, 6, 8, 10), V3DFILE_INFO);
@@ -64,7 +64,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DMathematics
 		V3DTest::AssertOk(vec == V3DVector4D(), V3DFILE_INFO);
 		V3DTest::AssertOk(vec == V3DVector4D(0, 0, 0, 0), V3DFILE_INFO);
 
-		V3DTest::AssertOk(V3DVector4D(1, 2, 3, 4).DotProduct(V3DVector4D(6, 7, 8, 9)) == 80, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DVector4D(1, 2, 3, 4).DotProduct(V3DVector4D(6, 7, 8, 9)) == 80.0f, V3DFILE_INFO);
 	}
 	
 	void V3DVector4DTests::RunAllTests()

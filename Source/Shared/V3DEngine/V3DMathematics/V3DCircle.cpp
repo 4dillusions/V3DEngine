@@ -5,6 +5,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 */
 
 #include "V3DCircle.h"
+#include "V3DMath.h"
 
 namespace V3D::V3DEngine::V3DMathematics
 {
@@ -16,12 +17,12 @@ namespace V3D::V3DEngine::V3DMathematics
 
 	bool V3DCircle::operator==(const V3DCircle& value) const
 	{
-		return (position == value.position && radius == value.radius);
+		return (position == value.position && V3DMath::IsEqual(radius, value.radius));
 	}
 
 	bool V3DCircle::operator!=(const V3DCircle& value) const
 	{
-		return (position != value.position || radius != value.radius);
+		return (position != value.position || !V3DMath::IsEqual(radius, value.radius));
 	}
 
 	void V3DCircle::SetPosition(float x, float y)
@@ -40,9 +41,9 @@ namespace V3D::V3DEngine::V3DMathematics
 		return this->position;
 	}
 
-	void V3DCircle::SetRadius(float radius)
+	void V3DCircle::SetRadius(float otherRadius)
 	{
-		this->radius = radius;
+		this->radius = otherRadius;
 	}
 
 	float V3DCircle::GetRadius() const

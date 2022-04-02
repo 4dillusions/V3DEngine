@@ -19,12 +19,12 @@ namespace V3D::V3DEngine::V3DMathematics
 
 	bool V3DVector2D::operator==(const V3DVector2D& value) const
 	{
-		return (x == value.x && y == value.y);
+		return (V3DMath::IsEqual(x, value.x) && V3DMath::IsEqual(y, value.y));
 	}
 
 	bool V3DVector2D::operator!=(const V3DVector2D& value) const
 	{
-		return (x != value.x || y != value.y);
+		return (!V3DMath::IsEqual(x, value.x) || !V3DMath::IsEqual(y, value.y));
 	}
 
 	V3DVector2D V3DVector2D::operator+(const V3DVector2D& value) const
@@ -278,7 +278,7 @@ namespace V3D::V3DEngine::V3DMathematics
 	{
 		const float Result = Length();
 
-		if (Result > 1e-08)
+		if (Result > 1e-08f)
 		{
 			const float Length = 1.0f / Result;
 			x *= Length;
@@ -290,10 +290,10 @@ namespace V3D::V3DEngine::V3DMathematics
 
 	void V3DVector2D::Normalizing()
 	{
-		const float _Length = Length();
+		const float LengthTmp = Length();
 
-		x /= _Length;
-		y /= _Length;
+		x /= LengthTmp;
+		y /= LengthTmp;
 	}
 
 	V3DVector2D V3DVector2D::MidPoint(const V3DVector2D& value) const

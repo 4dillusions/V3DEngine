@@ -31,7 +31,7 @@ namespace V3D::V3DEngineTests::V3DEngine
 		V3DCore::V3DCoreTests::RunAllTests();
 		V3DIO::V3DIOTests::RunAllTests();
 		V3DCollections::V3DCollectionsTests::RunAllTests();
-		//V3DNetwork::V3DNetworkTests::RunAllTests();
+		V3DNetwork::V3DNetworkTests::RunAllTests();
 		V3DCryptography::V3DCryptographyTests::RunAllTests();
 		V3DData::V3DDataTests::RunAllTests();
 		V3DThreading::V3DThreadingTests::RunAllTests();
