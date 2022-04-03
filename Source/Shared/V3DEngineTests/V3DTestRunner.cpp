@@ -17,6 +17,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngine/V3DData/V3DDataTests.h"
 #include "V3DEngine/V3DCore/V3DMemory.h"
 #include "V3DEngine/V3DThreading/V3DThreadingTests.h"
+#include "V3DEngine/V3DCore/V3DIocManager.h"
 
 using namespace V3D::V3DEngine::V3DCore;
 
@@ -24,6 +25,7 @@ namespace V3D::V3DEngineTests::V3DEngine
 {	
 	void V3DTestRunner::RunAllTests()
 	{
+		V3DIocManager iocManager;
 		V3DEnvironment::SetUnitTestMode();
 		
 		V3DTypesTests::RunAllTests();

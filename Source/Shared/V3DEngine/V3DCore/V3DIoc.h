@@ -20,7 +20,7 @@ namespace V3D::V3DEngine::V3DCore
 			
 		Static IOC for global static object
 		Ioc implements prototype, factory and singleton patterns together, called Inversion Of Control and Dependency Injection pattern (DI)
-		This Ioc supports one instance -> one prototype implementation
+		This Ioc supports one static instance
 	*/
 	template <typename TInstance> class V3DIoc final
 	{
@@ -47,7 +47,7 @@ namespace V3D::V3DEngine::V3DCore
 			
 		Dynamic IOC for subsystems and other dynamic main objects
 		Ioc implements prototype, factory and singleton patterns together, called Inversion Of Control and Dependency Injection pattern (DI)
-		This Ioc supports one instance -> one prototype implementation
+		This Ioc supports one dynamic instance and one dynamic prototype implementation for singleton or transient objects
 	*/
 	template <typename TInstance> class V3DIoc<TInstance*> final
 	{
