@@ -68,7 +68,7 @@ namespace V3D::V3DEngine::V3DIO
 		if (auto const asset = AAssetManager_open(static_cast<android_app*>(GetEnvironment()->GetApp())->activity->assetManager, fileFullName.ToChar(), AASSET_MODE_UNKNOWN))
 		{
 			const auto size = AAsset_getLength(asset);
-			char* buffer = static_cast<char*>(malloc(sizeof(char) * size));
+			char* buffer = V3DMemory::NewArrayExplicit<char>(V3DFILE_INFO, static_cast<unsigned>(size));
 
 			AAsset_read(asset, buffer, size);
 
@@ -76,7 +76,7 @@ namespace V3D::V3DEngine::V3DIO
 			result += buffer;
 			
 			AAsset_close(asset);
-			free(buffer);
+			V3DMemory::DeleteArray(buffer);
 		}
 		else
 		{

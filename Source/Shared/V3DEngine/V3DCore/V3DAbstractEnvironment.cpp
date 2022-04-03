@@ -93,7 +93,7 @@ namespace V3D::V3DEngine::V3DCore
 		V3DAbstractEnvironment::maxTextureSize = maxTextureSize;
 	}
 
-	const int V3DAbstractEnvironment::GetCpuCoreCount()
+	int V3DAbstractEnvironment::GetCpuCoreCount()
 	{
 		static int res{ static_cast<int>(std::thread::hardware_concurrency()) };
 

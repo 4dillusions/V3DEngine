@@ -10,7 +10,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 int main()
 {
 	V3D::V3DEngineTests::V3DEngine::V3DTestRunner::RunAllTests();
-	std::system("pause");
+	std::system("pause");  // NOLINT(concurrency-mt-unsafe)
 	
 	return 0;
 }

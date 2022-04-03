@@ -49,7 +49,7 @@ namespace V3D::V3DEngine::V3DCore
         void SetWindowSize(int width, int height);
         void SetScreenSize(int width, int height);
         static void SetGPUData(char* renderer, char* gpuName, int maxTextureSize);
-        static const int GetCpuCoreCount();
+        static int GetCpuCoreCount();
         static const char* GetRenderMode();
         static const char* GetGPUName();
         static int GetMaxTextureSize();

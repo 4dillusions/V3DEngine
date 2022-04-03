@@ -14,7 +14,7 @@ namespace V3D::V3DEngine::V3DCollections
 {
 	/*
 		Dynamic array data structure with static and dynamic objects.
-		Supports delete nodes while iterate, except RemoveAll
+		Supports deleting nodes while iterate, except RemoveAll
 
 		Mainly use for iterating
 

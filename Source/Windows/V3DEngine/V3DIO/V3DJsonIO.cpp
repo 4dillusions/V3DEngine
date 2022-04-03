@@ -45,7 +45,7 @@ namespace V3D::V3DEngine::V3DIO
 	char* V3DJsonIO::GetByteStream(const json& jsonObj)
 	{
 		const auto jsonText = jsonObj.dump();
-		char* result = new char[jsonText.length() + 1];
+		char* result = V3DMemory::NewArrayExplicit<char>(V3DFILE_INFO, jsonText.length() + 1);  // NOLINT(clang-diagnostic-shorten-64-to-32)
 		strcpy(result, jsonText.c_str());
 
 		return result;

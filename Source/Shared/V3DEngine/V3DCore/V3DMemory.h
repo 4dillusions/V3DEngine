@@ -12,7 +12,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 namespace V3D::V3DEngine::V3DCore
 {
-	//Avoid memory leaks with New/Delete instead of new/delete naked operators
+	//Avoid memory leaks with New/Delete instead of new/delete_ naked operators
 	class V3DENGINE_API V3DMemory final
 	{
 		static std::unordered_map<int*, const char*> memoryList;
@@ -130,6 +130,11 @@ namespace V3D::V3DEngine::V3DCore
 				V3DMemory::Add(reinterpret_cast<int*>(result), info);
 
 			return result;
+		}
+
+		template <typename T, typename TInfo> static T* NewArrayExplicit(TInfo info, unsigned int size)
+		{
+			return new T[size];
 		}
 
 		template <typename T> static void DeleteArray(T& obj)

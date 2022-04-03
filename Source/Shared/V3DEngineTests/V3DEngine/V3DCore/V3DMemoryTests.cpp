@@ -72,7 +72,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 
 	void V3DMemoryTests::MemoryAllocationCppNewTimingTest()
 	{
-		char* heap = new char[TestMemoryAllocsize];
+		char* heap = V3DMemory::NewArrayExplicit<char>(V3DFILE_INFO, TestMemoryAllocsize);
 		for (int i = 0; i < TestMemoryAllocsize; i++)
 			heap[i] = 'A';
 	}

@@ -16,7 +16,7 @@ namespace V3D::V3DEngine::V3DCollections
 {
 	/*
 		Decimal tree data structure with static and dynamic objects.
-		Supports delete nodes while iterate, except RemoveAll
+		Supports deleting nodes while iterate, except RemoveAll
 		Keys are compared by using (explicit casted) integer
 
 		Mainly use for searching

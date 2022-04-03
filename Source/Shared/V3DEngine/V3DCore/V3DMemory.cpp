@@ -10,6 +10,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngine/V3DIO/V3DLogger.h"
 
 #include <unordered_map>
+#include <string>
 
 using namespace V3D::V3DEngine::V3DIO;
 
@@ -40,6 +41,7 @@ namespace V3D::V3DEngine::V3DCore
 		memoryList.insert({ address, info });
 	}
 
+	// ReSharper disable once CppParameterMayBeConstPtrOrRef
 	void V3DMemory::Remove(int* address)
 	{
 		const auto search = memoryList.find(address);

@@ -12,7 +12,7 @@ namespace V3D::V3DEngine::V3DThreading
 {
 	/*
 		Based on static array datastructure for Tasks
-		Set job funcion starts new job on free slot of Task array
+		Set job funcion starts newer job on free slot of Task array
 		After the job finish the Task slot wait for next job
 	*/
 	template <typename TParam = void*> class V3DTaskPool final
