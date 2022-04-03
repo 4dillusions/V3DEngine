@@ -16,6 +16,7 @@ namespace V3D::V3DEngine::V3DCore
 
 namespace V3D::V3DEngine::V3DIO
 {
+    //definitions will be implement in platform specific .cpp
     class V3DENGINE_API V3DFolder final
     {
         static V3DCore::V3DEnvironment* GetEnvironment();

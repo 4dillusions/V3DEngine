@@ -20,6 +20,8 @@ namespace V3D::V3DEngine::V3DIO
     /*
         Raw text read/write from/to file
         It's not enable continuos writing
+
+        definitions will be implement in platform specific .cpp
     */
     class V3DENGINE_API V3DTextRW final
     {

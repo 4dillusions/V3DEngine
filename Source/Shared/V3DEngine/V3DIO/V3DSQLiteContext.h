@@ -12,6 +12,7 @@ struct sqlite3;
 
 namespace V3D::V3DEngine::V3DIO
 {
+	//definitions will be implement in platform specific .cpp
 	class V3DENGINE_API V3DSQLiteContext final
 	{
 		sqlite3* db{};

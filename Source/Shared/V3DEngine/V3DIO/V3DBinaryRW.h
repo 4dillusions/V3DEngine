@@ -19,6 +19,8 @@ namespace V3D::V3DEngine::V3DIO
     /*
         Binary stream (char*) read/write from/to file
         It enables continuos writing
+
+        definitions will be implement in platform specific .cpp
     */
     class V3DENGINE_API V3DBinaryRW final
     {
