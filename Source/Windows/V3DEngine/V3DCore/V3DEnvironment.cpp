@@ -63,6 +63,6 @@ namespace V3D::V3DEngine::V3DCore
 			//default: return "default";
 		}
 
-		return nullptr;
+		return "default";
 	}
 }

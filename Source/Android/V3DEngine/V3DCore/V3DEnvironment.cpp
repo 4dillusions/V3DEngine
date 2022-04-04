@@ -26,7 +26,7 @@ namespace V3D::V3DEngine::V3DCore
 			#endif
 		#endif
 
-		return "";
+		return "";  // NOLINT(clang-diagnostic-unreachable-code-return)
 	}
 
 	int V3DEnvironment::GetWindowWidth() const
@@ -70,6 +70,6 @@ namespace V3D::V3DEngine::V3DCore
 			//default: return "default";
 		}
 
-		return nullptr;
+		return "default";
 	}
 }
