@@ -56,6 +56,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DIO\V3DFile.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DIO\V3DFolder.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DIO\V3DIOStream.h" />
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DIO\V3DISQLContext.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DIO\V3DJsonIO.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DIO\V3DLogger.h" />
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DIO\V3DLogMessageType.h" />

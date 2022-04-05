@@ -7,11 +7,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 #pragma once
 
 #include "V3DEngine/V3DData/V3DISQLRepository.h"
-
-namespace V3D::V3DEngine::V3DIO
-{
-    class V3DSQLiteContext;
-}
+#include "V3DEngine/V3DIO/V3DISQLContext.h"
 
 namespace V3D::V3DEngineTests::V3DTestObject
 {
@@ -19,10 +15,10 @@ namespace V3D::V3DEngineTests::V3DTestObject
 
     class V3DTestPlayerSqlRepository : public V3D::V3DEngine::V3DData::V3DISQLRepository<V3DTestPlayerData>
     {
-        V3D::V3DEngine::V3DIO::V3DSQLiteContext* db{};
+        V3D::V3DEngine::V3DIO::V3DISQLContext* dbContext{};
 
     public:
-        V3DTestPlayerSqlRepository();
+        V3DTestPlayerSqlRepository(V3D::V3DEngine::V3DIO::V3DISQLContext* context);
 
 	    V3DTestPlayerData Select(const V3DTestPlayerData& data) const override;
         bool Insert(V3DTestPlayerData& data) const override;
