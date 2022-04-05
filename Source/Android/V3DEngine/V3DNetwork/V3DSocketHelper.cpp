@@ -4,18 +4,17 @@ Copyright (c) 2020 by 4D Illusions. All rights reserved.
 Released under the terms of the GNU General Public License version 3 or later.
 */
 
-#pragma once
-
+#include "V3DEngine/V3DNetwork/V3DSocketHelper.h"
 #include "V3DNetworkSystem.h"
 
 namespace V3D::V3DEngine::V3DNetwork
 {
-	inline void V3DSocketClose(SOCKET socket)
+	void V3DSocketHelper::Close(int socket)
 	{
 		close(socket);
 	}
 
-	inline void V3DSocketSetNonBlocking(SOCKET socket)
+	void V3DSocketHelper::SetNonBlocking(int socket)
 	{
 		int flags = fcntl(socket, F_GETFL, 0);
 		flags = flags | O_NONBLOCK;

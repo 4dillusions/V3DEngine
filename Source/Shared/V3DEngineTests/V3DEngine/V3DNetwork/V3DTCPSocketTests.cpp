@@ -11,6 +11,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngine/V3DNetwork/V3DTCPSocket.h"
 #include "V3DEngine/V3DNetwork/V3DSocketAddress.h"
 #include "V3DEngine/V3DNetwork/V3DIpV4Address.h"
+#include "V3DEngine/V3DNetwork/V3DNetworkSystem.h"
 
 #include <thread>
 #include <chrono>
@@ -24,14 +25,14 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DNetwork
 	{
 		V3DNet::Init();
 
-		V3DSocketAddress localAddress(24000, V3DIpV4Address(127, 0, 0, 1));
-		const int MessageByteBufferSize = 1024;
+		const V3DSocketAddress localAddress(24000, V3DIpV4Address(127, 0, 0, 1));
+		constexpr int MessageByteBufferSize = 1024;
 		char messageByteBuffer[MessageByteBufferSize];
 		const V3DString Message("Hello!");
 
 		auto Server = [&]()
 		{
-			V3DSocketAddress remoteAddress{};
+			const V3DSocketAddress remoteAddress{};
 			auto listenerSocket = V3DMemory::New<V3DTCPSocket>(V3DFILE_INFO);
 			listenerSocket->Bind(localAddress);
 			listenerSocket->Listen();

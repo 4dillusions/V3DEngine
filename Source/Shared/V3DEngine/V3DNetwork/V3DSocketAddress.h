@@ -20,7 +20,7 @@ namespace V3D::V3DEngine::V3DNetwork
 		
 	public:
 		V3DSocketAddress();
-		V3DSocketAddress(unsigned short int port);
+		explicit V3DSocketAddress(unsigned short int port);
 		V3DSocketAddress(unsigned short int port, const char* ip);
 		V3DSocketAddress(unsigned short int port, const V3DIpV4Address& ip);
 		V3DSocketAddress(const V3DSocketAddress&) = delete;

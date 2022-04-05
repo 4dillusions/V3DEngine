@@ -7,7 +7,6 @@ Released under the terms of the GNU General Public License version 3 or later.
 #pragma once
 
 #include "V3DEngine/V3DEngineLibrary.h"
-#include "V3DEngine/V3DNetwork/V3DSocketHelper.h"
 
 namespace V3D::V3DEngine::V3DCore
 {
@@ -20,26 +19,26 @@ namespace V3D::V3DEngine::V3DNetwork
 
 	class V3DENGINE_API V3DUDPSocket final
 	{
-		SOCKET udpSocket;
-		static const int MessageBufferSize{ 512 };
+		int udpSocket;
+		static constexpr int MessageBufferSize{ 512 };
 
 	public:
 		V3DUDPSocket();
-		explicit V3DUDPSocket(SOCKET udpSocket);
+		explicit V3DUDPSocket(int udpSocket);
 		V3DUDPSocket(const V3DUDPSocket&) = delete;
 		V3DUDPSocket(V3DUDPSocket&&) = delete;
 		~V3DUDPSocket();
 		V3DUDPSocket& operator=(const V3DUDPSocket&) = delete;
 		V3DUDPSocket& operator=(V3DUDPSocket&&) = delete;
 	
-		void Bind(V3DSocketAddress& toAddress) const;
+		void Bind(const V3DSocketAddress& toAddress) const;
 		void BindAny(unsigned short int port = 0) const;
-		int SendTo(const char* message, int messageLenght, V3DSocketAddress& toAddress) const;
-		int SendTo(const V3DCore::V3DString& message, V3DSocketAddress& toAddress) const;
-		int SendToAll(const char* message, int messageLenght, V3DSocketAddress& localAddress) const;
-		int SendToAll(const V3DCore::V3DString& message, V3DSocketAddress& localAddress) const;
-		int ReceiveFrom(char* messageOut, int messageLenght, V3DSocketAddress& fromAddressOut) const;
-		V3DCore::V3DString ReceiveFrom(V3DSocketAddress& fromAddressOut) const;
+		int SendTo(const char* message, int messageLenght, const V3DSocketAddress& toAddress) const;
+		int SendTo(const V3DCore::V3DString& message, const V3DSocketAddress& toAddress) const;
+		int SendToAll(const char* message, int messageLenght, const V3DSocketAddress& localAddress) const;
+		int SendToAll(const V3DCore::V3DString& message, const V3DSocketAddress& localAddress) const;
+		int ReceiveFrom(char* messageOut, int messageLenght, const V3DSocketAddress& fromAddressOut) const;
+		V3DCore::V3DString ReceiveFrom(const V3DSocketAddress& fromAddressOut) const;
 		int ReceiveFromAny(char* messageOut, int messageLenght) const;
 		V3DCore::V3DString ReceiveFromAny() const;
 
