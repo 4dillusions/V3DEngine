@@ -25,9 +25,6 @@
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEngine\V3DNetwork\V3DNetworkSystem.h">
       <Filter>Source\V3DNetwork</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Source\Windows\V3DEngine\V3DNetwork\V3DSocketAddressHelper.h">
-      <Filter>Source\V3DNetwork</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEngine\V3DNetwork\V3DSocketHelper.h">
       <Filter>Source\V3DNetwork</Filter>
     </ClInclude>
@@ -61,6 +58,9 @@
       <Filter>Source</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DNetwork\V3DNet.cpp">
+      <Filter>Source\V3DNetwork</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DNetwork\V3DSocketAddressPartial.cpp">
       <Filter>Source\V3DNetwork</Filter>
     </ClCompile>
   </ItemGroup>

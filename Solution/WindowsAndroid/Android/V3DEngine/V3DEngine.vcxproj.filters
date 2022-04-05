@@ -62,7 +62,7 @@
     <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DNetwork\V3DNet.cpp">
       <Filter>Source\V3DNetwork</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DNetwork\V3DSocketAddressHelper.h">
+    <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DNetwork\V3DSocketAddressPartial.cpp">
       <Filter>Source\V3DNetwork</Filter>
     </ClCompile>
   </ItemGroup>
