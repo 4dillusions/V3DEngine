@@ -18,38 +18,11 @@ namespace V3D::V3DEngine::V3DCore
 			-execute, dynamic lib
 			-execute + static lib
 			
-		Static IOC for global static object
-		Ioc implements prototype, factory and singleton patterns together, called Inversion Of Control and Dependency Injection pattern (DI)
-		This Ioc supports one static instance
-	*/
-	template <typename TInstance> class V3DIoc final
-	{
-	public:
-		V3DIoc() = delete;
-		V3DIoc(const V3DIoc&) = delete;
-		V3DIoc(V3DIoc&&) = delete;
-		~V3DIoc() = delete;
-		V3DIoc& operator=(const V3DIoc&) = delete;
-		V3DIoc& operator=(V3DIoc&&) = delete;
-
-		static TInstance& GetSingleton()
-		{
-			static TInstance instance;
-
-			return instance;
-		}
-	};
-
-	/*
-		It is working only in one assembly:
-			-execute, dynamic lib
-			-execute + static lib
-			
 		Dynamic IOC for subsystems and other dynamic main objects
 		Ioc implements prototype, factory and singleton patterns together, called Inversion Of Control and Dependency Injection pattern (DI)
 		This Ioc supports one dynamic instance and one dynamic prototype implementation for singleton or transient objects
 	*/
-	template <typename TInstance> class V3DIoc<TInstance*> final
+	template <typename TInstance> class V3DIoc final
 	{
 		static TInstance* instance;
 		static std::function<TInstance * ()> prototype;
@@ -107,6 +80,6 @@ namespace V3D::V3DEngine::V3DCore
 		}
 	};
 
-	template <typename TInstance> TInstance* V3DIoc<TInstance*>::instance = nullptr;
-	template <typename TInstance> std::function<TInstance * ()> V3DIoc<TInstance*>::prototype = nullptr;
+	template <typename TInstance> TInstance* V3DIoc<TInstance>::instance = nullptr;
+	template <typename TInstance> std::function<TInstance * ()> V3DIoc<TInstance>::prototype = nullptr;
 }

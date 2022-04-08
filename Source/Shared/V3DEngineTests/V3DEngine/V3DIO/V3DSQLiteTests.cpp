@@ -29,7 +29,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 		V3DFile::Delete("test.db");
 		V3DFile::Delete(dbExceptionName);
 
-		auto dbContext = V3DIoc<V3DISQLContext*>::CreateTransient();
+		auto dbContext = V3DIoc<V3DISQLContext>::CreateTransient();
 		
 		if (V3DFile::IsExist(V3DAssetPathType::Internal, dbExceptionName))
 		{

@@ -14,11 +14,11 @@ namespace V3D::V3DEngine::V3DCore
 {
 	void V3DIocManager::RegisterAndCreateSingletons()
 	{
-		V3DIoc<V3DISQLContext*>::Register<V3DSQLiteContext>([&] { return V3DMemory::New<V3DSQLiteContext>(V3DFILE_INFO, "test.db"); });
+		V3DIoc<V3DISQLContext>::Register<V3DSQLiteContext>([&] { return V3DMemory::New<V3DSQLiteContext>(V3DFILE_INFO, "test.db"); });
 	}
 		
 	void V3DIocManager::DeleteSingletonsAndRegisters()
 	{
-		V3DIoc<V3DISQLContext*>::DeleteSingletonAndRegister();
+		V3DIoc<V3DISQLContext>::DeleteSingletonAndRegister();
 	}
 }
