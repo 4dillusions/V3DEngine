@@ -6,7 +6,9 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #include "V3DEngine/V3DIO/V3DJsonIO.h"
 #include "V3DEngine/V3DIO/V3DLogger.h"
-#include "V3DEngine/V3DCore/V3DIoc.h"
+#include "V3DEngine/V3DCore/V3DEnvironment.h"
+#include "V3DEngine/V3DCore/V3DMemory.h"
+#include "V3DEngine/V3DMacros.h"
 
 #include "ThirdParty/Json/json.hpp"
 
@@ -25,8 +27,7 @@ namespace V3D::V3DEngine::V3DIO
 
 		//write error for editor, etc.
 		#ifdef _DEBUG //don't handle exceptions in Release mode
-			static const auto environment = V3DIoc<V3DEnvironment>::GetSingleton();  // NOLINT(readability-misleading-indentation)
-			if (!environment.GetIsUnitTestMode())
+			if (!V3DEnvironment::GetIsUnitTestMode())
 			{
 				try
 				{

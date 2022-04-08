@@ -30,7 +30,7 @@
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DIO\V3DOstream.cpp">
       <Filter>Source\V3DIO</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DCore\V3DEnvironment.cpp">
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DCore\V3DEnvironmentPartial.cpp">
       <Filter>Source\V3DCore</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DIO\V3DFile.cpp">

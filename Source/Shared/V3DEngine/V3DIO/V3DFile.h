@@ -9,18 +9,11 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngine/V3DEngineLibrary.h"
 #include "V3DEngine/V3DCore/V3DAssetPathType.h"
 
-namespace V3D::V3DEngine::V3DCore
-{
-    class V3DEnvironment;
-}
-
 namespace V3D::V3DEngine::V3DIO
 {
     //definitions will be implement in platform specific .cpp
     class V3DENGINE_API V3DFile final
     {
-        static V3DCore::V3DEnvironment* GetEnvironment();
-    	
     public:
         V3DFile() = delete;
         V3DFile(const V3DFile&) = delete;

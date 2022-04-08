@@ -16,7 +16,7 @@
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEngine\V3DNetwork\V3DNetworkSystem.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DCore\V3DEnvironment.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DCore\V3DEnvironmentPartial.cpp" />
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DEngine.cpp" />
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DIO\V3DBinaryRW.cpp" />
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DIO\V3DFile.cpp" />

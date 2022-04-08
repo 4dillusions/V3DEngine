@@ -38,7 +38,7 @@ namespace V3D::V3DEngine::V3DCore
 		{
 			T* result = new T;
 
-			static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
+			const static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
 			if (isDebugMode || isUnitTestMode)
 				V3DMemory::Add(reinterpret_cast<int*>(result), info);
 
@@ -49,7 +49,7 @@ namespace V3D::V3DEngine::V3DCore
 		{
 			T* result = new T(p1);
 
-			static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
+			const static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
 			if (isDebugMode || isUnitTestMode)
 				V3DMemory::Add(reinterpret_cast<int*>(result), info);
 
@@ -60,7 +60,7 @@ namespace V3D::V3DEngine::V3DCore
 		{
 			T* result = new T(p1, p2);
 
-			static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
+			const static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
 			if (isDebugMode || isUnitTestMode)
 				V3DMemory::Add(reinterpret_cast<int*>(result), info);
 
@@ -71,7 +71,7 @@ namespace V3D::V3DEngine::V3DCore
 		{
 			T* result = new T(p1, p2, p3);
 
-			static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
+			const static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
 			if (isDebugMode || isUnitTestMode)
 				V3DMemory::Add(reinterpret_cast<int*>(result), info);
 
@@ -82,7 +82,7 @@ namespace V3D::V3DEngine::V3DCore
 		{
 			T* result = new T(p1, p2, p3, p4);
 
-			static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
+			const static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
 			if (isDebugMode || isUnitTestMode)
 				V3DMemory::Add(reinterpret_cast<int*>(result), info);
 
@@ -93,7 +93,7 @@ namespace V3D::V3DEngine::V3DCore
 		{
 			T* result = new T(p1, p2, p3, p4, p5);
 
-			static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
+			const static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
 			if (isDebugMode || isUnitTestMode)
 				V3DMemory::Add(reinterpret_cast<int*>(result), info);
 
@@ -104,7 +104,7 @@ namespace V3D::V3DEngine::V3DCore
 		{
 			T* result = new T(p1, p2, p3, p4, p5, p6);
 
-			static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
+			const static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
 			if (isDebugMode || isUnitTestMode)
 				V3DMemory::Add(reinterpret_cast<int*>(result), info);
 
@@ -113,7 +113,7 @@ namespace V3D::V3DEngine::V3DCore
 
 		template <typename T> static void Delete(T& obj)
 		{
-			static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
+			const static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
 			if (isDebugMode || isUnitTestMode)
 				Remove(reinterpret_cast<int*>(obj));
 
@@ -125,7 +125,7 @@ namespace V3D::V3DEngine::V3DCore
 		{
 			T* result = new T[size];
 
-			static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
+			const static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
 			if (isDebugMode || isUnitTestMode)
 				V3DMemory::Add(reinterpret_cast<int*>(result), info);
 
@@ -139,7 +139,7 @@ namespace V3D::V3DEngine::V3DCore
 
 		template <typename T> static void DeleteArray(T& obj)
 		{
-			static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
+			const static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
 			if (isDebugMode || isUnitTestMode)
 				Remove(reinterpret_cast<int*>(obj));
 
@@ -151,7 +151,7 @@ namespace V3D::V3DEngine::V3DCore
 		{
 			T** result = new T * [size];
 
-			static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
+			const static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
 			if (isDebugMode || isUnitTestMode)
 				V3DMemory::Add(reinterpret_cast<int*>(result), info);
 
@@ -168,7 +168,7 @@ namespace V3D::V3DEngine::V3DCore
 
 		template <typename T> static void DeleteMatrix(T& obj, unsigned int sizeX)
 		{
-			static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
+			const static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
 			
 			for (unsigned int x = 0; x < sizeX; ++x)
 			{
@@ -190,7 +190,7 @@ namespace V3D::V3DEngine::V3DCore
 		{
 			T** result = new T * [size];
 
-			static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
+			const static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
 			if (isDebugMode || isUnitTestMode)
 				V3DMemory::Add(reinterpret_cast<int*>(result), info);
 
@@ -199,7 +199,7 @@ namespace V3D::V3DEngine::V3DCore
 
 		template <typename T> static void DeletePointerArray(T& obj)
 		{
-			static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
+			const static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
 			if (isDebugMode || isUnitTestMode)
 				Remove(reinterpret_cast<int*>(obj));
 

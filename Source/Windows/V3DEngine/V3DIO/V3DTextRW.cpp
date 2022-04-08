@@ -5,7 +5,6 @@ Released under the terms of the GNU General Public License version 3 or later.
 */
 
 #include "V3DEngine/V3DIO/V3DTextRW.h"
-#include "V3DEngine/V3DCore/V3DIoc.h"
 #include "V3DEngine/V3DIO/V3DLogger.h"
 
 #include <fstream>
@@ -15,18 +14,12 @@ using namespace V3D::V3DEngine::V3DCollections;
 
 namespace V3D::V3DEngine::V3DIO
 {
-	V3DEnvironment* V3DTextRW::GetEnvironment()
-	{
-		static auto environment = V3DIoc<V3DEnvironment>::GetSingleton();
-		return &environment;
-	}
-
 	V3DString V3DTextRW::Read(V3DAssetPathType path, const char* fileName)
 	{
 		V3DString result;
 
 		V3DString fileFullName;
-		fileFullName += V3DString(GetEnvironment()->GetAssetPath(path));
+		fileFullName += V3DString(V3DEnvironment::GetAssetPath(path));
 		fileFullName += fileName;
 		
 		std::ifstream stream(fileFullName.ToChar(), std::ios::in);

@@ -12,7 +12,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngineTests/V3DTestObject/V3DTestContentData.h"
 #include "V3DEngineTests/V3DTestObject/V3DTestSimpleFileRepository.h"
 #include "V3DEngine/V3DCore/V3DString.h"
-#include "V3DEngine/V3DCore/V3DAbstractEnvironment.h"
+#include "V3DEngine/V3DCore/V3DEnvironment.h"
 #include "V3DEngine/V3DIO/V3DFile.h"
 
 #include <cassert>
@@ -30,7 +30,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DThreading
 	atomic workerCounter{ 0 };
 	constexpr int LoopCount = 200;
 	V3DTaskPool<void*>* pool;
-	const int PoolSize = V3DAbstractEnvironment::GetCpuCoreCount() - 1;
+	const int PoolSize = V3DEnvironment::GetCpuCoreCount() - 1;
 	int memoryLeakCount;
 	
 	void TestFunc1() { (void)sqrt(1000); ++jobCounter; }

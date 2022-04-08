@@ -9,11 +9,6 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngine/V3DEngineLibrary.h"
 #include "V3DEngine/V3DCore/V3DAssetPathType.h"
 
-namespace V3D::V3DEngine::V3DCore
-{
-    class V3DEnvironment;
-}
-
 namespace V3D::V3DEngine::V3DIO
 {
     /*
@@ -24,8 +19,6 @@ namespace V3D::V3DEngine::V3DIO
     */
     class V3DENGINE_API V3DBinaryRW final
     {
-        static V3DCore::V3DEnvironment* GetEnvironment();
-    	
     public:
         V3DBinaryRW() = delete;
         V3DBinaryRW(const V3DBinaryRW&) = delete;

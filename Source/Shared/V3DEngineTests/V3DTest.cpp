@@ -6,7 +6,6 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #include "V3DTest.h"
 #include "V3DEngine/V3DCore/V3DEnvironment.h"
-#include "V3DEngine/V3DCore/V3DIoc.h"
 #include "V3DEngine/V3DCore/V3DString.h"
 
 #include <chrono>
@@ -112,9 +111,7 @@ namespace V3D::V3DEngineTests
 
 	void V3DTest::WriteStatistics()
 	{
-		static auto environment = V3DIoc<V3DEnvironment>::GetSingleton();
-		
-		WriteOutput(std::string("UnitTest (") + V3DEnvironment::GetRunMode() + " " + environment.GetPlatformName() + ")");
+		WriteOutput(std::string("UnitTest (") + V3DEnvironment::GetRunMode() + " " + V3DEnvironment::GetPlatformName() + ")");
 		WriteOutput("Passed: " + ConvertToString(tests) + '/' + ConvertToString(passedTests));
 		WriteOutput("Unit test Errors:");
 

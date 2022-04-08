@@ -9,7 +9,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 namespace V3D::V3DEngine::V3DCore
 {
-	const char* V3DEnvironment::GetPlatformName() const
+	const char* V3DEnvironment::GetPlatformName()
 	{
 		#if defined(__clang__)
 			#if defined(__aarch64__)
@@ -29,27 +29,27 @@ namespace V3D::V3DEngine::V3DCore
 		return "";  // NOLINT(clang-diagnostic-unreachable-code-return)
 	}
 
-	int V3DEnvironment::GetWindowWidth() const
+	int V3DEnvironment::GetWindowWidth()
 	{
 		return GetScreenWidth();
 	}
 	
-	int V3DEnvironment::GetWindowHeight() const
+	int V3DEnvironment::GetWindowHeight()
 	{
 		return GetScreenHeight();
 	}
 	
-	int V3DEnvironment::GetScreenWidth() const
+	int V3DEnvironment::GetScreenWidth()
 	{
 		return screenWidth;
 	}
 	
-	int V3DEnvironment::GetScreenHeight() const
+	int V3DEnvironment::GetScreenHeight()
 	{
 		return screenHeight;
 	}
 
-	const char* V3DEnvironment::GetAssetPath(V3DAssetPathType assetPath) const
+	const char* V3DEnvironment::GetAssetPath(V3DAssetPathType assetPath)
 	{
 		switch (assetPath)
 		{

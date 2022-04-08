@@ -5,7 +5,6 @@ Released under the terms of the GNU General Public License version 3 or later.
 */
 
 #include "V3DEngine/V3DIO/V3DBinaryRW.h"
-#include "V3DEngine/V3DCore/V3DIoc.h"
 #include "V3DEngine/V3DIO/V3DLogger.h"
 #include "V3DEngine/V3DCore/V3DString.h"
 
@@ -15,18 +14,12 @@ using namespace V3D::V3DEngine::V3DCore;
 
 namespace V3D::V3DEngine::V3DIO
 {
-	V3DEnvironment* V3DBinaryRW::GetEnvironment()
-	{
-		static auto environment = V3DIoc<V3DEnvironment>::GetSingleton();
-		return &environment;
-	}
-
 	char* V3DBinaryRW::Read(V3DAssetPathType path, const char* fileName)
 	{
 		char* result{};
 
 		V3DString fileFullName;
-		fileFullName += V3DString(GetEnvironment()->GetAssetPath(path));
+		fileFullName += V3DString(V3DEnvironment::GetAssetPath(path));
 		fileFullName += fileName;
 
 		std::ifstream stream(fileFullName.ToChar(), std::ios::binary);
