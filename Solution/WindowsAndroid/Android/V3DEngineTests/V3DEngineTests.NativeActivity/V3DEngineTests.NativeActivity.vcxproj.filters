@@ -9,10 +9,8 @@
     <ClCompile Include="..\..\..\..\..\Source\Android\V3DEngineTests\main.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\Source\Android\V3DEngineTests\V3DTestIO.h">
+    <ClCompile Include="..\..\..\..\..\Source\Android\V3DEngineTests\V3DTestPartial.cpp">
       <Filter>Source</Filter>
-    </ClInclude>
+    </ClCompile>
   </ItemGroup>
 </Project>

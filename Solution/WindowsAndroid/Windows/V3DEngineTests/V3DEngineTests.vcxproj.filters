@@ -13,10 +13,8 @@
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEngineTests\V3DEngineTestsApp.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\..\..\Source\Windows\V3DEngineTests\V3DTestIO.h">
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEngineTests\V3DTestPartial.cpp">
       <Filter>Source</Filter>
-    </ClInclude>
+    </ClCompile>
   </ItemGroup>
 </Project>

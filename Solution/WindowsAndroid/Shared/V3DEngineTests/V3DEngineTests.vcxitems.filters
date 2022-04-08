@@ -57,9 +57,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DIO\V3DIOTests.h">
       <Filter>Source\V3DEngine\V3DIO</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DITestIO.h">
-      <Filter>Source</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DCollections\V3DCollectionsTests.h">
       <Filter>Source\V3DEngine\V3DCollections</Filter>
     </ClInclude>

@@ -5,8 +5,6 @@ Released under the terms of the GNU General Public License version 3 or later.
 */
 
 #include "V3DTest.h"
-
-#include "V3DEngineTests/V3DTestIO.h"
 #include "V3DEngine/V3DCore/V3DEnvironment.h"
 #include "V3DEngine/V3DCore/V3DIoc.h"
 #include "V3DEngine/V3DCore/V3DString.h"
@@ -26,14 +24,23 @@ namespace V3D::V3DEngineTests
 	std::list<const char*> V3DTest::errorList;
 	std::map<std::string, V3DTestTimingData> V3DTest::timingList;
 	std::list<std::function<void()>> V3DTest::integrationList;
-	V3DITestIO<V3DTestIO>& V3DTest::testIO = V3DTestIO::Get();
 
-	void V3DTest::Init()
+	void V3DTest::Reset()
 	{	
 		errorCounter = 0;
 		tests = 0;
 		passedTests = 0;
 		errorList.clear();
+	}
+
+	std::string V3DTest::ConvertToString(int value)
+	{
+		/*char result[10];
+		sprintf(result, "%d", value);
+
+		return result;*/
+
+		return std::to_string(value);
 	}
 
 	void V3DTest::AssertOk(bool isOk, const char* info)
@@ -52,7 +59,7 @@ namespace V3D::V3DEngineTests
 	void V3DTest::AddTimingTest(const std::string& timingFunctionName, const V3DTestTimingData& timingTestData)
 	{
 		if (timingList.find(timingFunctionName) == timingList.end())
-			timingList.insert({ timingFunctionName + testIO.ConvertToString(timingTestData.orderIndex), timingTestData });
+			timingList.insert({ timingFunctionName + ConvertToString(timingTestData.orderIndex), timingTestData });
 	}
 
 	void V3DTest::AddTimingTest(const std::string& timingFunctionName, const std::function<void()>& timingFunction)
@@ -62,7 +69,7 @@ namespace V3D::V3DEngineTests
 
 	void V3DTest::RunTimingTests()
 	{
-		testIO.WriteOutput("\nTiming tests:");
+		WriteOutput("\nTiming tests:");
 
 		int testTimingIndex = 1;
 		const auto TestTimingItemCount = std::count_if(timingList.begin(), timingList.end(), [](const std::pair<std::string, V3DTestTimingData>& t) {return t.second.isKip == false; });
@@ -85,11 +92,11 @@ namespace V3D::V3DEngineTests
 			counterText += testTimingIndex;
 			counterText += ") ";
 
-			testIO.WriteOutput( counterText.ToChar() + functionName + " " + testIO.ConvertToString(static_cast<int>(std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count())) + " ms");
+			WriteOutput( counterText.ToChar() + functionName + " " + ConvertToString(static_cast<int>(std::chrono::duration_cast<std::chrono::milliseconds>(end - start).count())) + " ms");
 			++testTimingIndex;
 		}
 
-		testIO.WriteOutput("\nTiming tests finished!");
+		WriteOutput("\nTiming tests finished!");
 	}
 
 	void V3DTest::AddIntegrationTest(const std::function<void()>& integrationFunction)
@@ -107,20 +114,20 @@ namespace V3D::V3DEngineTests
 	{
 		static auto environment = V3DIoc<V3DEnvironment>::GetSingleton();
 		
-		testIO.WriteOutput(std::string("UnitTest (") + V3DEnvironment::GetRunMode() + " " + environment.GetPlatformName() + ")");
-		testIO.WriteOutput("Passed: " + testIO.ConvertToString(tests) + '/' + testIO.ConvertToString(passedTests));
-		testIO.WriteOutput("Unit test Errors:");
+		WriteOutput(std::string("UnitTest (") + V3DEnvironment::GetRunMode() + " " + environment.GetPlatformName() + ")");
+		WriteOutput("Passed: " + ConvertToString(tests) + '/' + ConvertToString(passedTests));
+		WriteOutput("Unit test Errors:");
 
 		if (errorCounter > 0)
 		{
 			for (const auto text : errorList)
-				testIO.WriteOutput(text);
+				WriteOutput(text);
 		}
 		else
-			testIO.WriteOutput("0 error");
+			WriteOutput("0 error");
 
-		testIO.WriteOutput(V3DMemory::GetStatistics().ToChar());
+		WriteOutput(V3DMemory::GetStatistics().ToChar());
 
-		Init();
+		Reset();
 	}
 }
