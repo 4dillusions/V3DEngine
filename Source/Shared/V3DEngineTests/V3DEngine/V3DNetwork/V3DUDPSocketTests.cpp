@@ -48,7 +48,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DNetwork
 
 		if (isToAll)
 		{
-			V3DTest::AssertOk(V3DString(messageByteBuffer) == Message, V3DFILE_INFO);
+			V3DTest::AssertOk(V3DString(messageByteBuffer) != Message, V3DFILE_INFO); //send to all except itself (doesn't work on laptops!)
 		}
 		else
 		{
