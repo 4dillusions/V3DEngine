@@ -17,11 +17,11 @@ namespace V3D::V3DEngine::V3DNetwork
 {
 	V3DString V3DSocketAddress::GetLocalIp()
 	{
-		char host[256];
-		gethostname(host, sizeof host);
-		const hostent* host_entry = gethostbyname(host);  // NOLINT(concurrency-mt-unsafe)
+		char hostName[256];
+		gethostname(hostName, sizeof hostName);
 
-		if (host_entry == nullptr)
+		const hostent* host = gethostbyname(hostName);  // NOLINT(concurrency-mt-unsafe)
+		if (host == nullptr)
 		{
 			assert(false, "host_entry == nullptr");
 			V3DLogger::Get().WriteOutput(V3DLogMessageType::Error, "V3DNetwork::V3DSocketAddressGetLocalIp() - host_entry == nullptr");
@@ -48,8 +48,8 @@ namespace V3D::V3DEngine::V3DNetwork
 			return V3DCore::V3DString();
 		}
 
-		char* result = inet_ntoa(*reinterpret_cast<struct in_addr*>(host_entry->h_addr_list[1]));  // NOLINT(concurrency-mt-unsafe)
-
+		char* result = inet_ntoa(*(struct in_addr*)*host->h_addr_list);
+		
 		return V3DString(result);
 	}
 }
