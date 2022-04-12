@@ -17,10 +17,9 @@ namespace V3D::V3DEngine::V3DNetwork
 {
 	V3DTCPSocket::V3DTCPSocket()
 	{
-		// ReSharper disable once CppRedundantCastExpression
-		tcpSocket = static_cast<SOCKET>(socket(AF_INET, SOCK_STREAM, 0));  // NOLINT(bugprone-narrowing-conversions, cppcoreguidelines-narrowing-conversions, clang-diagnostic-shorten-64-to-32)
+		tcpSocket = socket(AF_INET, SOCK_STREAM, 0);
 		
-		if (static_cast<SOCKET>(tcpSocket) == INVALID_SOCKET)
+		if (tcpSocket == INVALID_SOCKET)
 			V3DLogger::Get().WriteOutput(V3DLogMessageType::Error, "Can't create TCPSocket!");
 		else
 			V3DLogger::Get().WriteOutput("OK - create TCPSocket");
@@ -74,7 +73,7 @@ namespace V3D::V3DEngine::V3DNetwork
 	
 	int V3DTCPSocket::Send(const char* message, int messageLenght) const
 	{
-		return send(tcpSocket, message, messageLenght, 0);
+		return static_cast<int>(send(tcpSocket, message, messageLenght, 0));
 	}
 
 	int V3DTCPSocket::Send(const V3DString& message) const
@@ -84,7 +83,7 @@ namespace V3D::V3DEngine::V3DNetwork
 
 	int V3DTCPSocket::Receive(char* messageOut, int messageLenght) const
 	{
-		return recv(tcpSocket, messageOut, messageLenght, 0);
+		return static_cast<int>(recv(tcpSocket, messageOut, messageLenght, 0));
 	}
 
 	V3DString V3DTCPSocket::Receive() const

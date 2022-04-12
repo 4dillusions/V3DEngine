@@ -51,7 +51,7 @@ namespace V3D::V3DEngine::V3DNetwork
 	
 	int V3DUDPSocket::SendTo(const char* message, int messageLenght, const V3DSocketAddress& toAddress) const
 	{
-		return sendto(udpSocket, message, messageLenght, 0, reinterpret_cast<sockaddr*>(toAddress.GetSockAddress()), sizeof(sockaddr_in));
+		return static_cast<int>(sendto(udpSocket, message, messageLenght, 0, reinterpret_cast<sockaddr*>(toAddress.GetSockAddress()), sizeof(sockaddr_in)));
 	}
 
 	int V3DUDPSocket::SendTo(const V3DString& message, const V3DSocketAddress& toAddress) const
@@ -59,35 +59,40 @@ namespace V3D::V3DEngine::V3DNetwork
 		return SendTo(message.ToChar(), message.GetTextLength(), toAddress);
 	}
 
-	int V3DUDPSocket::SendToAll(const char* message, int messageLenght, const V3DSocketAddress& localAddress) const
+	int V3DUDPSocket::SendToLocalAll(const char* message, int messageLenght, const V3DSocketAddress& localAddress) const
 	{
 		const unsigned short int port = static_cast<unsigned short>(localAddress.GetPort().ToInt());
+
+		//unfortunately broadcast sending address doesn't work on all networks
+		/*V3DIpV4Address ip(localAddress.GetIp());
+		ip.addr4 = 255;
+		const V3DSocketAddress address(port, ip);
+		
+		return SendTo(message, messageLenght, address);*/
+
 		V3DIpV4Address ip(localAddress.GetIp());
 		const int localIpAddr4 = ip.addr4;
-		
+
+		int result = 0;
 		for (int ipAddr4 = 0; ipAddr4 < 255; ipAddr4++)
 		{
 			ip.addr4 = ipAddr4;
-
-			if (ipAddr4 != localIpAddr4)
-			{
-				V3DSocketAddress address(port, ip);
-				[[maybe_unused]] auto res = SendTo(message, messageLenght, address);
-			}
+			V3DSocketAddress address(port, ip);
+			result = SendTo(message, messageLenght, address);
 		}
 
-		return 0;
+		return result;
 	}
 
-	int V3DUDPSocket::SendToAll(const V3DString& message, const V3DSocketAddress& localAddress) const
+	int V3DUDPSocket::SendToLocalAll(const V3DString& message, const V3DSocketAddress& localAddress) const
 	{
-		return SendToAll(message.ToChar(), message.GetTextLength(), localAddress);
+		return SendToLocalAll(message.ToChar(), message.GetTextLength(), localAddress);
 	}
 	
 	int V3DUDPSocket::ReceiveFrom(char* messageOut, int messageLenght, const V3DSocketAddress& fromAddressOut) const
 	{
 		socklen_t fromLenght = sizeof(sockaddr_in);
-		return recvfrom(udpSocket, messageOut, messageLenght, 0, reinterpret_cast<sockaddr*>(fromAddressOut.GetSockAddress()), &fromLenght);
+		return static_cast<int>(recvfrom(udpSocket, messageOut, messageLenght, 0, reinterpret_cast<sockaddr*>(fromAddressOut.GetSockAddress()), &fromLenght));
 	}
 
 	V3DString V3DUDPSocket::ReceiveFrom(const V3DSocketAddress& fromAddressOut) const

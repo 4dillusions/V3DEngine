@@ -35,8 +35,8 @@ namespace V3D::V3DEngine::V3DNetwork
 		void BindAny(unsigned short int port = 0) const;
 		int SendTo(const char* message, int messageLenght, const V3DSocketAddress& toAddress) const;
 		int SendTo(const V3DCore::V3DString& message, const V3DSocketAddress& toAddress) const;
-		int SendToAll(const char* message, int messageLenght, const V3DSocketAddress& localAddress) const;
-		int SendToAll(const V3DCore::V3DString& message, const V3DSocketAddress& localAddress) const;
+		int SendToLocalAll(const char* message, int messageLenght, const V3DSocketAddress& localAddress) const;
+		int SendToLocalAll(const V3DCore::V3DString& message, const V3DSocketAddress& localAddress) const;
 		int ReceiveFrom(char* messageOut, int messageLenght, const V3DSocketAddress& fromAddressOut) const;
 		V3DCore::V3DString ReceiveFrom(const V3DSocketAddress& fromAddressOut) const;
 		int ReceiveFromAny(char* messageOut, int messageLenght) const;

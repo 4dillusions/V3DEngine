@@ -20,7 +20,7 @@ namespace V3D::V3DEngine::V3DNetwork
 		char hostName[256];
 		gethostname(hostName, sizeof hostName);
 
-		const hostent* host = gethostbyname(hostName);  // NOLINT(concurrency-mt-unsafe)
+		const struct hostent* host = gethostbyname(hostName);  // NOLINT(concurrency-mt-unsafe)
 		if (host == nullptr)
 		{
 			assert(false, "host_entry == nullptr");
@@ -48,7 +48,8 @@ namespace V3D::V3DEngine::V3DNetwork
 			return V3DCore::V3DString();
 		}
 
-		char* result = inet_ntoa(*(struct in_addr*)*host->h_addr_list);
+		auto addrList = (host->h_addr_list[1] != nullptr) ? host->h_addr_list[1] : host->h_addr_list[0];
+		char* result = inet_ntoa(*reinterpret_cast<struct in_addr*>(addrList));
 		
 		return V3DString(result);
 	}
