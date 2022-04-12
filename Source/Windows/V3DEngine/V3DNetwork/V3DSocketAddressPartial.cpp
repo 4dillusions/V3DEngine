@@ -20,37 +20,37 @@ namespace V3D::V3DEngine::V3DNetwork
 		char hostName[256];
 		gethostname(hostName, sizeof hostName);
 
-		const struct hostent* host = gethostbyname(hostName);  // NOLINT(concurrency-mt-unsafe)
+		const hostent* host = gethostbyname(hostName);  // NOLINT(concurrency-mt-unsafe)
 		if (host == nullptr)
 		{
 			assert(false, "host_entry == nullptr");
 			V3DLogger::Get().WriteOutput(V3DLogMessageType::Error, "V3DNetwork::V3DSocketAddressGetLocalIp() - host_entry == nullptr");
-			return V3DCore::V3DString();
+			return V3DString{};
 		}
 
-		auto dwError = WSAGetLastError();
+		const auto dwError = WSAGetLastError();
 		if (dwError == WSAHOST_NOT_FOUND)
 		{
 			assert(false, "Host not found");
 			V3DLogger::Get().WriteOutput(V3DLogMessageType::Error, "V3DNetwork::V3DSocketAddressGetLocalIp() - Host not found");
-			return V3DCore::V3DString();
+			return V3DString{};
 		}
 		if (dwError == WSANO_DATA)
 		{
 			assert(false, "No data record found");
 			V3DLogger::Get().WriteOutput(V3DLogMessageType::Error, "V3DNetwork::V3DSocketAddressGetLocalIp() - No data record found");
-			return V3DCore::V3DString();
+			return V3DString{};
 		}
 		if (dwError != 0)
 		{
 			assert(false, "Function failed with error");
 			V3DLogger::Get().WriteOutput(V3DLogMessageType::Error, "V3DNetwork::V3DSocketAddressGetLocalIp() - Function failed with error");
-			return V3DCore::V3DString();
+			return V3DString{};
 		}
 
-		auto addrList = (host->h_addr_list[1] != nullptr) ? host->h_addr_list[1] : host->h_addr_list[0];
-		char* result = inet_ntoa(*reinterpret_cast<struct in_addr*>(addrList));
-		
+		const auto addrList = (host->h_addr_list[1] != nullptr) ? host->h_addr_list[1] : host->h_addr_list[0];
+		char* result = inet_ntoa(*reinterpret_cast<struct in_addr*>(addrList));  // NOLINT(concurrency-mt-unsafe)
+
 		return V3DString(result);
 	}
 }

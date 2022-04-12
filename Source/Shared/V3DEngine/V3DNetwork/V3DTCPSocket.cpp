@@ -17,9 +17,9 @@ namespace V3D::V3DEngine::V3DNetwork
 {
 	V3DTCPSocket::V3DTCPSocket()
 	{
-		tcpSocket = socket(AF_INET, SOCK_STREAM, 0);
+		tcpSocket = static_cast<int>(socket(AF_INET, SOCK_STREAM, 0));
 		
-		if (tcpSocket == INVALID_SOCKET)
+		if (tcpSocket == static_cast<int>(INVALID_SOCKET))
 			V3DLogger::Get().WriteOutput(V3DLogMessageType::Error, "Can't create TCPSocket!");
 		else
 			V3DLogger::Get().WriteOutput("OK - create TCPSocket");

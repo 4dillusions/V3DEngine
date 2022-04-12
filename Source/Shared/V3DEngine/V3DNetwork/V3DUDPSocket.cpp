@@ -71,8 +71,6 @@ namespace V3D::V3DEngine::V3DNetwork
 		return SendTo(message, messageLenght, address);*/
 
 		V3DIpV4Address ip(localAddress.GetIp());
-		const int localIpAddr4 = ip.addr4;
-
 		int result = 0;
 		for (int ipAddr4 = 0; ipAddr4 < 255; ipAddr4++)
 		{
