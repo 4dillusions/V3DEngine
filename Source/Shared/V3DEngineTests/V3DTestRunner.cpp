@@ -36,7 +36,7 @@ namespace V3D::V3DEngineTests::V3DEngine
 		V3DNetwork::V3DNetworkTests::RunAllTests();
 		V3DCryptography::V3DCryptographyTests::RunAllTests();
 		V3DData::V3DDataTests::RunAllTests();
-//		V3DThreading::V3DThreadingTests::RunAllTests();
+		//V3DThreading::V3DThreadingTests::RunAllTests();
 
 		V3DTest::RunIntegrationTests();
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);

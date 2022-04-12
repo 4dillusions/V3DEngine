@@ -108,9 +108,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DCore\V3DTimeSpan.h">
       <Filter>Source\V3DCore</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DIO\V3DIOStream.h">
-      <Filter>Source\V3DIO</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DCollections\V3DObjectPool.h">
       <Filter>Source\V3DCollections</Filter>
     </ClInclude>

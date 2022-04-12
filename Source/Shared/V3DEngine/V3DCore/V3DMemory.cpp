@@ -25,7 +25,8 @@ namespace V3D::V3DEngine::V3DCore
 
 	V3DString V3DMemory::GetStatistics()
 	{
-		std::string result("Leaked objects:\n");
+		std::string result;
+		result = "Leaked objects:\n";
 
 		for (const auto i : memoryList)  // NOLINT(clang-diagnostic-range-loop-construct)
 			result += i.second + static_cast<const char>('\n');
@@ -51,7 +52,6 @@ namespace V3D::V3DEngine::V3DCore
 
 	void V3DMemory::WriteStatistics()
 	{
-		V3DLogger::Get().DeleteBuffer();
 		V3DLogger::Get().WriteOutput("");
 		V3DLogger::Get().WriteOutput(GetStatistics());
 	}

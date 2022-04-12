@@ -5,10 +5,8 @@ Released under the terms of the GNU General Public License version 3 or later.
 */
 
 #include "V3DLogger.h"
-#include "V3DEngine/V3DMacros.h"
 #include "V3DEngine/V3DCore/V3DMemory.h"
 #include "V3DEngine/V3DCore/V3DDateTime.h"
-#include "V3DEngine/V3DIO/V3DOstream.h"
 
 using namespace V3D::V3DEngine::V3DCore;
 
@@ -16,13 +14,15 @@ namespace V3D::V3DEngine::V3DIO
 {
 	V3DLogger::V3DLogger()
 	{
-		static V3DOstream stream;
-		oStream = &stream;
-
-		buffer = V3DMemory::New<V3DString>(V3DFILE_INFO);
+		buffer = V3DMemory::NewExplicit<V3DString>(true);
 
 		for (bool& outputType : outputTypes)
 			outputType = false;
+	}
+
+	V3DLogger::~V3DLogger()
+	{
+		V3DMemory::Delete(buffer);
 	}
 
 	V3DLogger& V3DLogger::Get()
@@ -30,11 +30,6 @@ namespace V3D::V3DEngine::V3DIO
 		static V3DLogger instance;
 
 		return instance;
-	}
-
-	void V3DLogger::DeleteBuffer()
-	{
-		V3DMemory::Delete(buffer);
 	}
 	
 	void V3DLogger::SetOutputTypeFlag(V3DLogOutputType outputType, bool isEnable)
@@ -112,12 +107,12 @@ namespace V3D::V3DEngine::V3DIO
 
 		if (outputTypes[static_cast<unsigned int>(V3DLogOutputType::ToOutput)])
 		{
-			oStream->WriteLineToOutput(Text.ToChar());
+			WriteLineToOutput(Text.ToChar());
 		}
 
 		if (outputTypes[static_cast<unsigned int>(V3DLogOutputType::ToFile)])
 		{
-			oStream->WriteLineToFile(Text.ToChar());
+			WriteLineToFile(Text.ToChar());
 		}
 
 		if (outputTypes[static_cast<unsigned int>(V3DLogOutputType::ToLogTrigger)] && logTrigger != nullptr)

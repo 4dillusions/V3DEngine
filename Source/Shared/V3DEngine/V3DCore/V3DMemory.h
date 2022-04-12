@@ -44,7 +44,7 @@ namespace V3D::V3DEngine::V3DCore
 
 			return result;
 		}
-
+		
 		template <typename T, typename TInfo, typename P1> static T* New(TInfo info, P1 p1)
 		{
 			T* result = new T(p1);
@@ -54,6 +54,11 @@ namespace V3D::V3DEngine::V3DCore
 				V3DMemory::Add(reinterpret_cast<int*>(result), info);
 
 			return result;
+		}
+
+		template <typename T, typename P1> static T* NewExplicit(P1 p1)
+		{
+			return new T(p1);
 		}
 
 		template <typename T, typename TInfo, typename P1, typename P2> static T* New(TInfo info, P1 p1, P2 p2)
@@ -132,7 +137,7 @@ namespace V3D::V3DEngine::V3DCore
 			return result;
 		}
 
-		template <typename T, typename TInfo> static T* NewArrayExplicit(TInfo info, unsigned int size)
+		template <typename T> static T* NewArrayExplicit(unsigned int size)
 		{
 			return new T[size];
 		}

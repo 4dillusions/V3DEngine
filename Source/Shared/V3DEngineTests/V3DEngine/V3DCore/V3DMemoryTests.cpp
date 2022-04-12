@@ -35,7 +35,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 	
 	void V3DMemoryTests::MatrixTest()
 	{
-		const int MatrixSize = 5;
+		constexpr int MatrixSize = 5;
 		int** matrix = V3DMemory::NewMatrix<int>(V3DFILE_INFO, MatrixSize);
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 1 + MatrixSize, V3DFILE_INFO);
 		V3DMemory::DeleteMatrix(matrix, MatrixSize);
@@ -44,7 +44,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 	
 	void V3DMemoryTests::PointerArrayTest()
 	{
-		const int PointerArraySize = 10;
+		constexpr int PointerArraySize = 10;
 		V3DTestObjectA::SetReferenceCounter(0);
 		V3DTestObjectA** pointerArray = V3DMemory::NewPointerArray<V3DTestObjectA>(V3DFILE_INFO, PointerArraySize);
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 1, V3DFILE_INFO);
@@ -72,7 +72,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 
 	void V3DMemoryTests::MemoryAllocationCppNewTimingTest()
 	{
-		char* heap = V3DMemory::NewArrayExplicit<char>(V3DFILE_INFO, TestMemoryAllocsize);
+		char* heap = V3DMemory::NewArrayExplicit<char>(TestMemoryAllocsize);
 		for (int i = 0; i < TestMemoryAllocsize; i++)
 			heap[i] = 'A';
 	}

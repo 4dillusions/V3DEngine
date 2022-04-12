@@ -38,7 +38,6 @@
     <ClInclude Include="..\..\..\..\Source\Android\V3DEngine\android_native_app_glue.h" />
     <ClInclude Include="..\..\..\..\Source\Android\V3DEngine\android_native_app_glue.hpp" />
     <ClInclude Include="..\..\..\..\Source\Android\V3DEngine\V3DEngineLibrary.h" />
-    <ClInclude Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DOstream.h" />
     <ClInclude Include="..\..\..\..\Source\Android\V3DEngine\V3DNetwork\V3DNetworkSystem.h" />
   </ItemGroup>
   <ItemGroup>
@@ -47,7 +46,7 @@
     <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DFile.cpp" />
     <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DFolder.cpp" />
     <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DJsonIO.cpp" />
-    <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DOstream.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DLoggerPartial.cpp" />
     <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DSQLiteContext.cpp" />
     <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DTextRW.cpp" />
     <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DNetwork\V3DNet.cpp" />
