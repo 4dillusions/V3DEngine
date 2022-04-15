@@ -18,6 +18,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngine/V3DCore/V3DMemory.h"
 #include "V3DEngine/V3DThreading/V3DThreadingTests.h"
 #include "V3DEngine/V3DCore/V3DIocManager.h"
+#include "V3DEngineTests/V3DTestMock/V3DFakeitTests.h"
 
 using namespace V3D::V3DEngine::V3DCore;
 
@@ -37,6 +38,8 @@ namespace V3D::V3DEngineTests::V3DEngine
 		V3DCryptography::V3DCryptographyTests::RunAllTests();
 		V3DData::V3DDataTests::RunAllTests();
 		//V3DThreading::V3DThreadingTests::RunAllTests();
+
+		V3DTestMock::V3DFakeitTests::RunAllTests();
 
 		V3DTest::RunIntegrationTests();
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
