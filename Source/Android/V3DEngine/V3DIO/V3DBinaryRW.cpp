@@ -5,7 +5,6 @@ Released under the terms of the GNU General Public License version 3 or later.
 */
 
 #include "V3DEngine/V3DIO/V3DBinaryRW.h"
-#include "V3DEngine/V3DCore/V3DIoc.h"
 #include "V3DEngine/V3DIO/V3DLogger.h"
 #include "V3DEngine/V3DCore/V3DString.h"
 
@@ -17,12 +16,6 @@ using namespace V3D::V3DEngine::V3DCore;
 
 namespace V3D::V3DEngine::V3DIO
 {
-	V3DEnvironment* V3DBinaryRW::GetEnvironment()
-	{
-		static auto environment = V3DIoc<V3DEnvironment>::GetSingleton();
-		return &environment;
-	}
-
 	char* V3DBinaryRW::Read(V3DAssetPathType path, const char* fileName)
 	{
 		char* result{};
@@ -37,12 +30,12 @@ namespace V3D::V3DEngine::V3DIO
 
 		if (path == V3DAssetPathType::Internal)
 		{
-			fileFullName += V3DString(static_cast<android_app*>(GetEnvironment()->GetApp())->activity->internalDataPath);
+			fileFullName += V3DString(static_cast<android_app*>(V3DEnvironment::GetApp())->activity->internalDataPath);
 			fileFullName += '/';
 		}
 		else
 		{
-			fileFullName += V3DString(GetEnvironment()->GetAssetPath(path));
+			fileFullName += V3DString(V3DEnvironment::GetAssetPath(path));
 		}
 
 		fileFullName += fileName;
@@ -67,7 +60,7 @@ namespace V3D::V3DEngine::V3DIO
 			return result;
 		}
 
-		if (auto const asset = AAssetManager_open(static_cast<android_app*>(GetEnvironment()->GetApp())->activity->assetManager, fileFullName.ToChar(), AASSET_MODE_UNKNOWN))
+		if (auto const asset = AAssetManager_open(static_cast<android_app*>(V3DEnvironment::GetApp())->activity->assetManager, fileFullName.ToChar(), AASSET_MODE_UNKNOWN))
 		{
 			const auto size = AAsset_getLength(asset);
 			char* buffer = V3DMemory::NewArray<char>(V3DFILE_INFO, (sizeof(char) * size) + 1);
@@ -88,7 +81,7 @@ namespace V3D::V3DEngine::V3DIO
 	void V3DBinaryRW::Write(const char* fileName, char* data, unsigned long long size, unsigned long long offset)
 	{
 		V3DString fileFullName;
-		fileFullName += V3DString(static_cast<android_app*>(GetEnvironment()->GetApp())->activity->internalDataPath);
+		fileFullName += V3DString(static_cast<android_app*>(V3DEnvironment::GetApp())->activity->internalDataPath);
 		fileFullName += '/';
 		fileFullName += fileName;
 

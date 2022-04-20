@@ -76,12 +76,10 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 
 		V3DMemory::Delete(logTriggerText);
 		logger.SetLogTrigger(nullptr);
-		logger.DeleteBuffer();
 		logger.SetOutputTypeFlag(V3DLogOutputType::ToFile, false);
 		logger.SetOutputTypeFlag(V3DLogOutputType::ToBuffer, false);
 		logger.SetOutputTypeFlag(V3DLogOutputType::ToLogTrigger, false);
 
-		
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
 	}
 

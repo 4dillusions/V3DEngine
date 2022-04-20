@@ -6,6 +6,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #include "V3DMatrix3.h"
 #include "V3DVector3D.h"
+#include "V3DMath.h"
 
 #include <cmath>
 
@@ -118,9 +119,9 @@ namespace V3D::V3DEngine::V3DMathematics
 
 	bool V3DMatrix3::operator==(const V3DMatrix3& value) const
 	{
-		if (m[0][0] != value.m[0][0] || m[0][1] != value.m[0][1] || m[0][2] != value.m[0][2] ||
-			m[1][0] != value.m[1][0] || m[1][1] != value.m[1][1] || m[1][2] != value.m[1][2] ||
-			m[2][0] != value.m[2][0] || m[2][1] != value.m[2][1] || m[2][2] != value.m[2][2])
+		if (!V3DMath::IsEqual(m[0][0], value.m[0][0]) || !V3DMath::IsEqual(m[0][1], value.m[0][1]) || !V3DMath::IsEqual(m[0][2], value.m[0][2]) ||
+			!V3DMath::IsEqual(m[1][0], value.m[1][0]) || !V3DMath::IsEqual(m[1][1], value.m[1][1]) || !V3DMath::IsEqual(m[1][2], value.m[1][2]) ||
+			!V3DMath::IsEqual(m[2][0], value.m[2][0]) || !V3DMath::IsEqual(m[2][1], value.m[2][1]) || !V3DMath::IsEqual(m[2][2], value.m[2][2]))
 			return false;
 
 		return true;
@@ -128,9 +129,9 @@ namespace V3D::V3DEngine::V3DMathematics
 
 	bool V3DMatrix3::operator!=(const V3DMatrix3& value) const
 	{
-		if (m[0][0] != value.m[0][0] || m[0][1] != value.m[0][1] || m[0][2] != value.m[0][2] ||
-			m[1][0] != value.m[1][0] || m[1][1] != value.m[1][1] || m[1][2] != value.m[1][2] ||
-			m[2][0] != value.m[2][0] || m[2][1] != value.m[2][1] || m[2][2] != value.m[2][2])
+		if (!V3DMath::IsEqual(m[0][0], value.m[0][0]) || !V3DMath::IsEqual(m[0][1], value.m[0][1]) || !V3DMath::IsEqual(m[0][2], value.m[0][2]) ||
+			!V3DMath::IsEqual(m[1][0], value.m[1][0]) || !V3DMath::IsEqual(m[1][1], value.m[1][1]) || !V3DMath::IsEqual(m[1][2], value.m[1][2]) ||
+			!V3DMath::IsEqual(m[2][0], value.m[2][0]) || !V3DMath::IsEqual(m[2][1], value.m[2][1]) || !V3DMath::IsEqual(m[2][2], value.m[2][2]))
 			return true;
 
 		return false;

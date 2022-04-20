@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29728.190
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32407.343
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Android", "Android", "{5A0C572A-D959-402A-8B67-CE4BF6B8417B}"
 EndProject
@@ -45,6 +45,18 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQLite", "SQLite", "{5297B740-CB77-48C1-ADC6-26ECEDA8287A}"
 	ProjectSection(SolutionItems) = preProject
 		..\..\Source\Windows\ThirdParty\SQLite\sqlite3.h = ..\..\Source\Windows\ThirdParty\SQLite\sqlite3.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Fakeit", "Fakeit", "{50B4E225-8FCE-4F20-8E22-550F2AD5A38E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "standalone", "standalone", "{F884C255-B850-4742-B5DF-E50655CBA587}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Source\Shared\ThirdParty\Fakeit\standalone\fakeit.hpp = ..\..\Source\Shared\ThirdParty\Fakeit\standalone\fakeit.hpp
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PicoHash", "PicoHash", "{F6167965-865C-4A1A-BA07-334002FF81CD}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Source\Shared\ThirdParty\PicoHash\picohash.h = ..\..\Source\Shared\ThirdParty\PicoHash\picohash.h
 	EndProjectSection
 EndProject
 Global
@@ -174,6 +186,9 @@ Global
 		{C16F7609-1DD0-4C6B-B7C8-7A1C6A6258DF} = {1A6B2D8F-2A19-4E24-9A12-DBB91BB3638B}
 		{970B57C8-591E-4313-93C2-949EB5759425} = {011AC25E-A921-4289-8C5B-A3D874DD70CF}
 		{5297B740-CB77-48C1-ADC6-26ECEDA8287A} = {97B97F08-4B61-4C5F-A577-FE96950771FE}
+		{50B4E225-8FCE-4F20-8E22-550F2AD5A38E} = {1A6B2D8F-2A19-4E24-9A12-DBB91BB3638B}
+		{F884C255-B850-4742-B5DF-E50655CBA587} = {50B4E225-8FCE-4F20-8E22-550F2AD5A38E}
+		{F6167965-865C-4A1A-BA07-334002FF81CD} = {1A6B2D8F-2A19-4E24-9A12-DBB91BB3638B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0C445ECF-1191-424E-93F8-CAA5EC40B04B}

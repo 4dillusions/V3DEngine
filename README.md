@@ -22,3 +22,4 @@ Depencies
 - [JSON for modern C++](https://github.com/nlohmann/json/releases) config & communication
 - [picohash](https://github.com/kazuho/picohash) header-file-only implementation of MD5, SHA1, SHA224, SHA256, HMAC
 - [SQLite](https://github.com/sqlite/sqlite) embedded database support for gameserver
+- [Fakeit (cancelled)](https://github.com/eranpeer/FakeIt) simple mocking framework for C++

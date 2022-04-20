@@ -11,12 +11,14 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngineTests/V3DTestObject/V3DTestComplexData.h"
 #include "V3DEngine/V3DCore/V3DMemory.h"
 #include "V3DEngine/V3DIO/V3DBinaryRW.h"
+#include "V3DEngine/V3DMathematics/V3DMath.h"
 #include "V3DEngineTests/V3DTestObject/V3DTestComplexMemoryStreamRepository.h"
 
 using namespace V3D::V3DEngine::V3DIO;
 using namespace V3D::V3DEngineTests::V3DTestObject;
 using namespace V3D::V3DEngine::V3DCore;
 using namespace V3D::V3DEngine::V3DData;
+using namespace V3D::V3DEngine::V3DMathematics;
 
 namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 {
@@ -38,7 +40,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 		streamOut.Read(x2);
 		streamOut.Read(x3);
 		V3DTest::AssertOk(x1 == x, V3DFILE_INFO);
-		V3DTest::AssertOk(x2 == y, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMath::IsEqual(x2, y), V3DFILE_INFO);
 		V3DTest::AssertOk(x3 == x, V3DFILE_INFO);
 	}
 
@@ -60,8 +62,8 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 		memoryStreamRepository->ReadDataFromStream(streamR, testDataR);
 		V3DTest::AssertOk(testDataR.head->verticeCount == 2, V3DFILE_INFO);
 		V3DTest::AssertOk(testDataR.head->uvCount == 3, V3DFILE_INFO);
-		V3DTest::AssertOk(testDataR.vertices[0] == 10, V3DFILE_INFO);
-		V3DTest::AssertOk(testDataR.vertices[1] == 20, V3DFILE_INFO);
+		V3DTest::AssertOk(testDataR.vertices[0] == 10.0f, V3DFILE_INFO);
+		V3DTest::AssertOk(testDataR.vertices[1] == 20.0f, V3DFILE_INFO);
 		V3DTest::AssertOk(testDataR.uvs[0] == 1, V3DFILE_INFO);
 		V3DTest::AssertOk(testDataR.uvs[1] == 2, V3DFILE_INFO);
 		V3DTest::AssertOk(testDataR.uvs[2] == 3, V3DFILE_INFO);
@@ -90,8 +92,8 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 		memoryStreamRepository->ReadDataFromStream(streamR, testDataR);
 		V3DTest::AssertOk(testDataR.head->verticeCount == 2, V3DFILE_INFO);
 		V3DTest::AssertOk(testDataR.head->uvCount == 3, V3DFILE_INFO);
-		V3DTest::AssertOk(testDataR.vertices[0] == 10, V3DFILE_INFO);
-		V3DTest::AssertOk(testDataR.vertices[1] == 20, V3DFILE_INFO);
+		V3DTest::AssertOk(testDataR.vertices[0] == 10.0f, V3DFILE_INFO);
+		V3DTest::AssertOk(testDataR.vertices[1] == 20.0f, V3DFILE_INFO);
 		V3DTest::AssertOk(testDataR.uvs[0] == 1, V3DFILE_INFO);
 		V3DTest::AssertOk(testDataR.uvs[1] == 2, V3DFILE_INFO);
 		V3DTest::AssertOk(testDataR.uvs[2] == 3, V3DFILE_INFO);

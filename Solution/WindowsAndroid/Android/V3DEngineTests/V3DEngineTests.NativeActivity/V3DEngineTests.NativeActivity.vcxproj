@@ -309,9 +309,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\..\Source\Android\V3DEngineTests\main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\Source\Android\V3DEngineTests\V3DTestIO.h" />
+    <ClCompile Include="..\..\..\..\..\Source\Android\V3DEngineTests\V3DTestPartial.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

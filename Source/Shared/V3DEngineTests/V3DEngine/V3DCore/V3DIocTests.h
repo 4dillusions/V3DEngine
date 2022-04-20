@@ -18,7 +18,6 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 		V3DIocTests& operator=(const V3DIocTests&) = delete;
 		V3DIocTests& operator=(V3DIocTests&&) = delete;
 
-		static void StaticTest();
 		static void DynamicTest();
 		
 		static void RunAllTests();

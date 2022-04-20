@@ -10,21 +10,16 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngine/V3DCore/V3DAssetPathType.h"
 #include "V3DEngine/V3DCore/V3DString.h"
 
-namespace V3D::V3DEngine::V3DCore
-{
-    class V3DEnvironment;
-}
-
 namespace V3D::V3DEngine::V3DIO
 {
     /*
         Raw text read/write from/to file
         It's not enable continuos writing
+
+        definitions will be implement in platform specific .cpp
     */
     class V3DENGINE_API V3DTextRW final
     {
-        static V3DCore::V3DEnvironment* GetEnvironment();
-        
     public:
         V3DTextRW() = delete;
         V3DTextRW(const V3DTextRW&) = delete;

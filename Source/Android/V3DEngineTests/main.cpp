@@ -6,7 +6,6 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #include "V3DEngine/android_native_app_glue.hpp"
 #include "V3DEngineTests/V3DTestRunner.h"
-#include "V3DEngine/V3DCore/V3DIoc.h"
 #include "V3DEngine/V3DCore/V3DEnvironment.h"
 
 struct engine
@@ -64,7 +63,7 @@ void android_main(struct android_app* state)
 	int events;
 	struct android_poll_source* source;
 
-	V3D::V3DEngine::V3DCore::V3DIoc<V3D::V3DEngine::V3DCore::V3DEnvironment>::GetSingleton().SetApp(state);
+	V3D::V3DEngine::V3DCore::V3DEnvironment::SetApp(state);
 	
 	while (true)
 	{

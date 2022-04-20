@@ -44,5 +44,7 @@ namespace V3D::V3DEngine::V3DMathematics
 		static float Log(int x, float value);
 		static float Pow(int x, float value);
 		static bool IsPowerOfTwo(int value);
+		static bool IsEqual(float value1, float value2);
+		static bool IsEqual(double value1, double value2);
 	};
 }

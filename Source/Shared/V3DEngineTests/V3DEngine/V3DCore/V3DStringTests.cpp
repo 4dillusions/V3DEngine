@@ -9,8 +9,10 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngine/V3DCore/V3DString.h"
 #include "V3DEngine/V3DCore/V3DMemory.h"
 #include "V3DEngine/V3DMacros.h"
+#include "V3DEngine/V3DMathematics/V3DMath.h"
 
 using namespace V3D::V3DEngine::V3DCore;
+using namespace V3D::V3DEngine::V3DMathematics;
 
 namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 {
@@ -22,7 +24,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 		txt.~V3DString();
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
 		
-		const auto StringTestCtorOperators = []()
+		constexpr auto StringTestCtorOperators = []()
 		{
 			const V3DString Text("test123");
 
@@ -66,7 +68,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 	
 	void V3DStringTests::ReturnTest()
 	{
-		const auto StringTestReturn = []()
+		constexpr auto StringTestReturn = []()
 		{
 			V3DString result("hoho");
 
@@ -78,7 +80,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 	
 	void V3DStringTests::ToTest()
 	{
-		const auto StringTestTo = []()
+		constexpr auto StringTestTo = []()
 		{
 			V3DString text;
 
@@ -89,7 +91,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 			V3DTest::AssertOk(0 == text.ToInt(), V3DFILE_INFO);
 
 			text = 3.1482488038f;
-			V3DTest::AssertOk(3.1482488038f == text.ToFloat(), V3DFILE_INFO);
+			V3DTest::AssertOk(V3DMath::IsEqual(3.1482488038f, text.ToFloat()), V3DFILE_INFO);
 			V3DTest::AssertOk(0 == text.ToInt(), V3DFILE_INFO);
 		};
 		StringTestTo();
@@ -100,7 +102,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 	{
 		const char* Ctext1 = "appletree123";
 		const char* Ctext2 = "appletree123";
-		const char Ctext3[20] = "appletree124";
+		constexpr char Ctext3[20] = "appletree124";
 
 		V3DTest::AssertOk(V3DString::GetHashCode(Ctext1) == V3DString::GetHashCode(Ctext2), V3DFILE_INFO);
 		V3DTest::AssertOk(V3DString::GetHashCode(Ctext1) != V3DString::GetHashCode(Ctext3), V3DFILE_INFO);
@@ -124,7 +126,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 	
 	void V3DStringTests::GetTest()
 	{
-		const auto StringTestGet = []()
+		constexpr auto StringTestGet = []()
 		{
 			V3DTest::AssertOk(8 == V3DString::GetNumberLength(12345678), V3DFILE_INFO);
 
@@ -211,7 +213,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 	
 	void V3DStringTests::IsTest()
 	{
-		const auto StringTestIs = []()
+		constexpr auto StringTestIs = []()
 		{
 			const V3DString Example("X-Ample123_123B");
 			const V3DString Example2("arvizturo tukorfurogep");
@@ -268,7 +270,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 	
 	void V3DStringTests::CopyArrayTest()
 	{
-		const auto StringTestCopyArray = []()
+		constexpr auto StringTestCopyArray = []()
 		{
 			char text[20];
 			V3DString::CopyToArray("hello123", text);
@@ -280,7 +282,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 	
 	void V3DStringTests::ReplaceRemoveTest()
 	{
-		const auto StringTestReplaceRemove = []()
+		constexpr auto StringTestReplaceRemove = []()
 		{
 			V3DString text("X-Ample123_123B");
 
@@ -326,10 +328,10 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 	
 	void V3DStringTests::LargeTest()
 	{
-		const auto StringTestLarge = []()
+		constexpr auto StringTestLarge = []()
 		{
 			V3DString text;
-			const int TextSize = 1200;
+			constexpr int TextSize = 1200;
 
 			char largeText[TextSize];
 			for (int index = 0; index < TextSize - 1; index++)
@@ -352,7 +354,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 	
 	void V3DStringTests::CopyTest()
 	{
-		const auto StringTestCopy = []() { return V3DString("hoho1234!"); };
+		constexpr auto StringTestCopy = []() { return V3DString("hoho1234!"); };
 		V3DTest::AssertOk(StringTestCopy() == V3DString("hoho1234!"), V3DFILE_INFO);
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
 	}

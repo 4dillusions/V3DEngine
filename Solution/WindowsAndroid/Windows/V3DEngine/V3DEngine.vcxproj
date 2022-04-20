@@ -11,24 +11,22 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\Source\Windows\V3DEngine\V3DCore\V3DEnvironment.h" />
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEngine\V3DEngineLibrary.h" />
-    <ClInclude Include="..\..\..\..\Source\Windows\V3DEngine\V3DIO\V3DOstream.h" />
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEngine\V3DNetwork\V3DNetworkSystem.h" />
-    <ClInclude Include="..\..\..\..\Source\Windows\V3DEngine\V3DNetwork\V3DSocketAddressHelper.h" />
-    <ClInclude Include="..\..\..\..\Source\Windows\V3DEngine\V3DNetwork\V3DSocketHelper.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DCore\V3DEnvironment.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DCore\V3DEnvironmentPartial.cpp" />
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DEngine.cpp" />
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DIO\V3DBinaryRW.cpp" />
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DIO\V3DFile.cpp" />
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DIO\V3DFolder.cpp" />
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DIO\V3DJsonIO.cpp" />
-    <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DIO\V3DOstream.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DIO\V3DLoggerPartial.cpp" />
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DIO\V3DSQLiteContext.cpp" />
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DIO\V3DTextRW.cpp" />
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DNetwork\V3DNet.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DNetwork\V3DSocketAddressPartial.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DNetwork\V3DSocketHelper.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

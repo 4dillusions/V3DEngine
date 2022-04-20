@@ -5,6 +5,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 */
 
 #include "V3DVector3D.h"
+#include "V3DMath.h"
 
 #include <cmath>
 
@@ -18,12 +19,12 @@ namespace V3D::V3DEngine::V3DMathematics
 
 	bool V3DVector3D::operator==(const V3DVector3D& value) const
 	{
-		return (x == value.x && y == value.y && z == value.z);
+		return (V3DMath::IsEqual(x, value.x) && V3DMath::IsEqual(y, value.y) && V3DMath::IsEqual(z, value.z));
 	}
 
 	bool V3DVector3D::operator!=(const V3DVector3D& value) const
 	{
-		return (x != value.x || y != value.y || z != value.z);
+		return (!V3DMath::IsEqual(x, value.x) || !V3DMath::IsEqual(y, value.y) || !V3DMath::IsEqual(z, value.z));
 	}
 
 	V3DVector3D V3DVector3D::operator+(const V3DVector3D& value) const
@@ -226,7 +227,7 @@ namespace V3D::V3DEngine::V3DMathematics
 	{
 		const float Result = Length();
 
-		if (Result > 1e-08)
+		if (Result > 1e-08f)
 		{
 			const float Length = 1.0f / Result;
 			x *= Length;
@@ -239,11 +240,11 @@ namespace V3D::V3DEngine::V3DMathematics
 
 	void V3DVector3D::Normalizing()
 	{
-		const float _Length = Length();
+		const float LengthTmp = Length();
 
-		x /= _Length;
-		y /= _Length;
-		z /= _Length;
+		x /= LengthTmp;
+		y /= LengthTmp;
+		z /= LengthTmp;
 	}
 
 	V3DVector3D V3DVector3D::MidPoint(const V3DVector3D& value) const

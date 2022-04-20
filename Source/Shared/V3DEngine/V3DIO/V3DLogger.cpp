@@ -5,10 +5,8 @@ Released under the terms of the GNU General Public License version 3 or later.
 */
 
 #include "V3DLogger.h"
-#include "V3DEngine/V3DMacros.h"
 #include "V3DEngine/V3DCore/V3DMemory.h"
 #include "V3DEngine/V3DCore/V3DDateTime.h"
-#include "V3DEngine/V3DIO/V3DOstream.h"
 
 using namespace V3D::V3DEngine::V3DCore;
 
@@ -16,13 +14,15 @@ namespace V3D::V3DEngine::V3DIO
 {
 	V3DLogger::V3DLogger()
 	{
-		static V3DOstream stream;
-		oStream = &stream;
-
-		buffer = V3DMemory::New<V3DString>(V3DFILE_INFO);
+		buffer = V3DMemory::NewExplicit<V3DString>(true);
 
 		for (bool& outputType : outputTypes)
 			outputType = false;
+	}
+
+	V3DLogger::~V3DLogger()
+	{
+		V3DMemory::Delete(buffer);
 	}
 
 	V3DLogger& V3DLogger::Get()
@@ -31,20 +31,15 @@ namespace V3D::V3DEngine::V3DIO
 
 		return instance;
 	}
-
-	void V3DLogger::DeleteBuffer()
-	{
-		V3DMemory::Delete(buffer);
-	}
 	
 	void V3DLogger::SetOutputTypeFlag(V3DLogOutputType outputType, bool isEnable)
 	{
 		outputTypes[static_cast<unsigned int>(outputType)] = isEnable;
 	}
 
-	void V3DLogger::SetLogTrigger(const std::function<void(const V3DString& log)>& logTrigger)
+	void V3DLogger::SetLogTrigger(const std::function<void(const V3DString& log)>& otherLogTrigger)
 	{
-		this->logTrigger = logTrigger;
+		logTrigger = otherLogTrigger;
 	}
 
 	V3DString const* V3DLogger::GetBuffer() const
@@ -72,7 +67,7 @@ namespace V3D::V3DEngine::V3DIO
 		return errors;
 	}
 
-	void V3DLogger::WriteOutput(const V3DString& log)
+	void V3DLogger::WriteOutput(const V3DString& log) const
 	{
 		WriteOutput(log.ToChar());
 	}
@@ -106,18 +101,18 @@ namespace V3D::V3DEngine::V3DIO
 		WriteOutput(text);
 	}
 
-	void V3DLogger::WriteOutput(const char* log)
+	void V3DLogger::WriteOutput(const char* log) const
 	{
 		const V3DString Text = V3DDateTime::GetTimeStamp() + log;
 
 		if (outputTypes[static_cast<unsigned int>(V3DLogOutputType::ToOutput)])
 		{
-			oStream->WriteLineToOutput(Text.ToChar());
+			WriteLineToOutput(Text.ToChar());
 		}
 
 		if (outputTypes[static_cast<unsigned int>(V3DLogOutputType::ToFile)])
 		{
-			oStream->WriteLineToFile(Text.ToChar());
+			WriteLineToFile(Text.ToChar());
 		}
 
 		if (outputTypes[static_cast<unsigned int>(V3DLogOutputType::ToLogTrigger)] && logTrigger != nullptr)

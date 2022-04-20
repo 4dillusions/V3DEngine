@@ -6,7 +6,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #pragma once
 
-#include "V3DEngine/V3DIO/V3DIOStream.h"
+#include "V3DEngine/V3DEngineLibrary.h"
 #include "V3DLogMessageType.h"
 #include "V3DLogOutputType.h"
 
@@ -24,12 +24,15 @@ namespace V3D::V3DEngine::V3DIO
         bool outputTypes[static_cast<unsigned int>(V3DLogOutputType::Count)]{};
         std::function<void(const V3DCore::V3DString& log)> logTrigger = nullptr;
 
-        V3DIOstream* oStream;    	
         V3DCore::V3DString* buffer{};
 
         int warnings = 0, errors = 0;
 
         V3DLogger();
+        ~V3DLogger();
+
+        static void WriteLineToFile(const char* log);
+        static void WriteLineToOutput(const char* log);
 
     public:
         const char* const LogFileName = "Log.txt";
@@ -40,19 +43,15 @@ namespace V3D::V3DEngine::V3DIO
 
         V3DLogger(const V3DLogger&) = delete;
         V3DLogger(V3DLogger&&) = delete;
-        ~V3DLogger() = default;
         V3DLogger& operator=(const V3DLogger&) = delete;
         V3DLogger& operator=(V3DLogger&&) = delete;
 
         static V3DLogger& Get();
         
-        //Avoid buffer leak before detecting
-        void DeleteBuffer();
-
         void SetOutputTypeFlag(V3DLogOutputType outputType, bool isEnable);
 
         //Log trigger helps show logs another environment for example in editor
-        void SetLogTrigger(const std::function<void(const V3DCore::V3DString& log)>& logTrigger);
+        void SetLogTrigger(const std::function<void(const V3DCore::V3DString& log)>& otherLogTrigger);
 
         V3DCore::V3DString const* GetBuffer() const;
 
@@ -61,9 +60,9 @@ namespace V3D::V3DEngine::V3DIO
         int GetWarningCount() const;
         int GetErrorCount() const;
 
-        void WriteOutput(const V3DCore::V3DString& log);
+        void WriteOutput(const V3DCore::V3DString& log) const;
         void WriteOutput(V3DLogMessageType messageType, const V3DCore::V3DString& log);
         void WriteOutput(V3DLogMessageType messageType, const char* log);
-        void WriteOutput(const char* log);
+        void WriteOutput(const char* log) const;
     };
 }

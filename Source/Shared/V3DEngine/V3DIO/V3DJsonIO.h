@@ -11,7 +11,8 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "ThirdParty/Json/json_fwd.hpp"
 
 namespace V3D::V3DEngine::V3DIO
-{	
+{
+    //definitions will be implement in platform specific .cpp
     class V3DENGINE_API V3DJsonIO final
     {
     public:

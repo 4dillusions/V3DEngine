@@ -8,9 +8,6 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DIpV4Address.h"
 #include "V3DEngine/V3DIO/V3DLogger.h"
 #include "V3DEngine/V3DNetwork/V3DNetworkSystem.h"
-// ReSharper disable CppUnusedIncludeDirective
-#include "V3DEngine/V3DNetwork/V3DSocketAddressHelper.h"
-// ReSharper restore CppUnusedIncludeDirective
 
 using namespace V3D::V3DEngine::V3DCore;
 using namespace V3D::V3DEngine::V3DIO;
@@ -36,8 +33,8 @@ namespace V3D::V3DEngine::V3DNetwork
 	
 	V3DSocketAddress::V3DSocketAddress(unsigned short int port, const V3DIpV4Address& ip) : V3DSocketAddress(port)
 	{
-		const int Multiply1 = 256 * 256 * 256;
-		const int Multiply2 = 256 * 256;
+		constexpr int Multiply1 = 256 * 256 * 256;
+		constexpr int Multiply2 = 256 * 256;
 		
 		sockAddress->sin_addr.s_addr = htonl(ip.addr1 * Multiply1 + ip.addr2 * Multiply2 + ip.addr3 * 256 + ip.addr4); //inet_pton(AF_INET, ip.ToString().ToChar(), &sockAddress->sin_addr);
 	}
@@ -54,13 +51,12 @@ namespace V3D::V3DEngine::V3DNetwork
 
 	V3DString V3DSocketAddress::GetIp() const
 	{
-		const int HostNameLenght = 16;
-		char host[HostNameLenght];
-		memset(host, 0, HostNameLenght);
+		constexpr int HostNameLenght = 16;
+		char host[HostNameLenght] = {};
 		inet_ntop(AF_INET, &sockAddress->sin_addr, host, HostNameLenght);
 
 		int realLen = 0;
-		for (char i : host)
+		for (const char i : host)
 		{
 			if (i == '\00')
 				break;
@@ -88,16 +84,11 @@ namespace V3D::V3DEngine::V3DNetwork
 			return V3DString();
 		}
 
-		auto* address = reinterpret_cast<struct sockaddr_in*>(addressInfo->ai_addr);
+		const auto* address = reinterpret_cast<struct sockaddr_in*>(addressInfo->ai_addr);
 		char str[INET_ADDRSTRLEN];
 		inet_ntop(AF_INET, &address->sin_addr, str, INET_ADDRSTRLEN);
 
 		return V3DString(str);
-	}
-
-	V3DString V3DSocketAddress::GetLocalIp()
-	{
-		return V3DSocketAddressGetLocalIp();
 	}
 	
 	/*V3DString V3DSocketAddress::GetLocalHostName()

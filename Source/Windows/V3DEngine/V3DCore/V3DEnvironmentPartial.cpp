@@ -4,14 +4,14 @@ Copyright (c) 2020 by 4D Illusions. All rights reserved.
 Released under the terms of the GNU General Public License version 3 or later.
 */
 
-#include "V3DEnvironment.h"
+#include "V3DEngine/V3DCore/V3DEnvironment.h"
 #include "V3DEngine/V3DCore/V3DAssetPathType.h"
 
 #include <Windows.h>
 
 namespace V3D::V3DEngine::V3DCore
 {
-	const char* V3DEnvironment::GetPlatformName() const
+	const char* V3DEnvironment::GetPlatformName()
 	{
 		#if defined(_MSVC_LANG)
 			#if defined(_WIN64)
@@ -20,32 +20,29 @@ namespace V3D::V3DEngine::V3DCore
 				return "Windows x86";
 			#endif
 		#endif
-
-		// ReSharper disable once CppUnreachableCode
-		return "";
 	}
 
-	int V3DEnvironment::GetWindowWidth() const
+	int V3DEnvironment::GetWindowWidth()
 	{
 		return windowWidth;
 	}
 
-	int V3DEnvironment::GetWindowHeight() const
+	int V3DEnvironment::GetWindowHeight()
 	{
 		return windowHeight;
 	}
 
-	int V3DEnvironment::GetScreenWidth() const
+	int V3DEnvironment::GetScreenWidth()
 	{
 		return GetSystemMetrics(SM_CXSCREEN);
 	}
 
-	int V3DEnvironment::GetScreenHeight() const
+	int V3DEnvironment::GetScreenHeight()
 	{
 		return GetSystemMetrics(SM_CYSCREEN);
 	}
 
-	const char* V3DEnvironment::GetAssetPath(V3DAssetPathType assetPath) const
+	const char* V3DEnvironment::GetAssetPath(V3DAssetPathType assetPath)
 	{
 		switch (assetPath)
 		{
@@ -63,7 +60,9 @@ namespace V3D::V3DEngine::V3DCore
 
 			case V3DAssetPathType::Internal: return "";
 
-			default: return "default";
+			//default: return "default";
 		}
+
+		return "default";
 	}
 }

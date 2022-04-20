@@ -9,6 +9,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DVector2D.h"
 #include "V3DVector3D.h"
 #include "V3DVector4D.h"
+#include "V3DMath.h"
 
 #include <cmath>
 
@@ -174,10 +175,10 @@ namespace V3D::V3DEngine::V3DMathematics
 
 	bool V3DMatrix4::operator==(const V3DMatrix4& value) const
 	{
-		if (m[0][0] != value.m[0][0] || m[0][1] != value.m[0][1] || m[0][2] != value.m[0][2] || m[0][3] != value.m[0][3] ||
-			m[1][0] != value.m[1][0] || m[1][1] != value.m[1][1] || m[1][2] != value.m[1][2] || m[1][3] != value.m[1][3] ||
-			m[2][0] != value.m[2][0] || m[2][1] != value.m[2][1] || m[2][2] != value.m[2][2] || m[2][3] != value.m[2][3] ||
-			m[3][0] != value.m[3][0] || m[3][1] != value.m[3][1] || m[3][2] != value.m[3][2] || m[3][3] != value.m[3][3])
+		if (!V3DMath::IsEqual(m[0][0], value.m[0][0]) || !V3DMath::IsEqual(m[0][1], value.m[0][1]) || !V3DMath::IsEqual(m[0][2], value.m[0][2]) || !V3DMath::IsEqual(m[0][3], value.m[0][3]) ||
+			!V3DMath::IsEqual(m[1][0], value.m[1][0]) || !V3DMath::IsEqual(m[1][1], value.m[1][1]) || !V3DMath::IsEqual(m[1][2], value.m[1][2]) || !V3DMath::IsEqual(m[1][3], value.m[1][3]) ||
+			!V3DMath::IsEqual(m[2][0], value.m[2][0]) || !V3DMath::IsEqual(m[2][1], value.m[2][1]) || !V3DMath::IsEqual(m[2][2], value.m[2][2]) || !V3DMath::IsEqual(m[2][3], value.m[2][3]) ||
+			!V3DMath::IsEqual(m[3][0], value.m[3][0]) || !V3DMath::IsEqual(m[3][2], value.m[3][2]) || !V3DMath::IsEqual(m[3][2], value.m[3][2]) || !V3DMath::IsEqual(m[3][3], value.m[3][3]))
 			return false;
 
 		return true;
@@ -185,10 +186,10 @@ namespace V3D::V3DEngine::V3DMathematics
 
 	bool V3DMatrix4::operator!=(const V3DMatrix4& value) const
 	{
-		if (m[0][0] != value.m[0][0] || m[0][1] != value.m[0][1] || m[0][2] != value.m[0][2] || m[0][3] != value.m[0][3] ||
-			m[1][0] != value.m[1][0] || m[1][1] != value.m[1][1] || m[1][2] != value.m[1][2] || m[1][3] != value.m[1][3] ||
-			m[2][0] != value.m[2][0] || m[2][1] != value.m[2][1] || m[2][2] != value.m[2][2] || m[2][3] != value.m[2][3] ||
-			m[3][0] != value.m[3][0] || m[3][1] != value.m[3][1] || m[3][2] != value.m[3][2] || m[3][3] != value.m[3][3])
+		if (!V3DMath::IsEqual(m[0][0], value.m[0][0]) || !V3DMath::IsEqual(m[0][1], value.m[0][1]) || !V3DMath::IsEqual(m[0][2], value.m[0][2]) || !V3DMath::IsEqual(m[0][3], value.m[0][3]) ||
+			!V3DMath::IsEqual(m[1][0], value.m[1][0]) || !V3DMath::IsEqual(m[1][1], value.m[1][1]) || !V3DMath::IsEqual(m[1][2], value.m[1][2]) || !V3DMath::IsEqual(m[1][3], value.m[1][3]) ||
+			!V3DMath::IsEqual(m[2][0], value.m[2][0]) || !V3DMath::IsEqual(m[2][1], value.m[2][1]) || !V3DMath::IsEqual(m[2][2], value.m[2][2]) || !V3DMath::IsEqual(m[2][3], value.m[2][3]) ||
+			!V3DMath::IsEqual(m[3][0], value.m[3][0]) || !V3DMath::IsEqual(m[3][2], value.m[3][2]) || !V3DMath::IsEqual(m[3][2], value.m[3][2]) || !V3DMath::IsEqual(m[3][3], value.m[3][3]))
 			return true;
 
 		return false;
@@ -258,12 +259,12 @@ namespace V3D::V3DEngine::V3DMathematics
 		m[1][0] = -sinf(roll); m[1][1] = cosf(roll);
 	}
 
-	V3DVector2D V3DMatrix4::GetTranslation2D()
+	V3DVector2D V3DMatrix4::GetTranslation2D() const
 	{
 		return V3DVector2D(m[0][3], m[1][3]);
 	}
 
-	V3DVector3D V3DMatrix4::GetTranslation3D()
+	V3DVector3D V3DMatrix4::GetTranslation3D() const
 	{
 		return V3DVector3D(m[0][3], m[1][3], m[2][3]);
 	}
@@ -327,9 +328,9 @@ namespace V3D::V3DEngine::V3DMathematics
 		return result;
 	}
 
-	bool V3DMatrix4::IsHasScale()
+	bool V3DMatrix4::IsHasScale() const
 	{
-		const auto RealEqual = [](float a, float b, float tolerance) { return (fabs(b - a) <= tolerance) ? true : false; };
+		constexpr auto RealEqual = [](float a, float b, float tolerance) { return (fabs(b - a) <= tolerance) ? true : false; };
 
 		float t = m[0][0] * m[0][0] + m[1][0] * m[1][0] + m[2][0] * m[2][0];
 		if (!RealEqual(t, 1.0f, 1e-04f))
@@ -348,7 +349,7 @@ namespace V3D::V3DEngine::V3DMathematics
 
 	bool V3DMatrix4::IsAffine() const
 	{
-		return m[3][0] == 0 && m[3][1] == 0 && m[3][2] == 0 && m[3][3] == 1;
+		return m[3][0] == 0.0f && m[3][1] == 0.0f && m[3][2] == 0.0f && m[3][3] == 1.0f;
 	}
 
 	V3DMatrix4 V3DMatrix4::InverseAffine() const
@@ -530,7 +531,7 @@ namespace V3D::V3DEngine::V3DMathematics
 
 	float V3DMatrix4::Determinant() const
 	{
-		const auto Minor = [](const V3DMatrix4& value, const int r0, const int r1, const int r2, const int c0, const int c1, const int c2)
+		constexpr auto Minor = [](const V3DMatrix4& value, const int r0, const int r1, const int r2, const int c0, const int c1, const int c2)
 		{
 			return value(r0, c0) * (value(r1, c1) * value(r2, c2) - value(r2, c1) * value(r1, c2)) -
 				value(r0, c1) * (value(r1, c0) * value(r2, c2) - value(r2, c0) * value(r1, c2)) +

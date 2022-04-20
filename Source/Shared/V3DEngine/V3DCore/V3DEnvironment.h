@@ -13,7 +13,7 @@ namespace V3D::V3DEngine::V3DCore
 	enum class V3DAssetPathType : unsigned;
 	class V3DString;
 	
-	class V3DENGINE_API V3DAbstractEnvironment
+	class V3DENGINE_API V3DEnvironment
 	{
         static void* app;
         static bool isUnitTestMode;
@@ -22,17 +22,18 @@ namespace V3D::V3DEngine::V3DCore
 		static char *gpuName;
         static int maxTextureSize;
         static char* gameName;
-
-    protected:
-        int windowWidth{}, windowHeight{}, screenWidth{}, screenHeight{};
+        static int windowWidth;
+        static int windowHeight;
+        static int screenWidth;
+        static int screenHeight;
 		
 	public:
-        V3DAbstractEnvironment() = default;
-        V3DAbstractEnvironment(const V3DAbstractEnvironment&) = default;
-        V3DAbstractEnvironment(V3DAbstractEnvironment&&) = default;
-        virtual ~V3DAbstractEnvironment() = default;
-        V3DAbstractEnvironment& operator=(const V3DAbstractEnvironment&) = delete;
-        V3DAbstractEnvironment& operator=(V3DAbstractEnvironment&&) = delete;
+        V3DEnvironment() = default;
+        V3DEnvironment(const V3DEnvironment&) = default;
+        V3DEnvironment(V3DEnvironment&&) = default;
+        virtual ~V3DEnvironment() = default;
+        V3DEnvironment& operator=(const V3DEnvironment&) = delete;
+        V3DEnvironment& operator=(V3DEnvironment&&) = delete;
 
         static bool GetIsRunModeDebug();
         static const char* GetRunMode();
@@ -46,24 +47,24 @@ namespace V3D::V3DEngine::V3DCore
 
         static void SetApp(void* application);
         static void* GetApp();
-        void SetWindowSize(int width, int height);
-        void SetScreenSize(int width, int height);
+        static void SetWindowSize(int width, int height);
+        static void SetScreenSize(int width, int height);
         static void SetGPUData(char* renderer, char* gpuName, int maxTextureSize);
-        static const int GetCpuCoreCount();
+        static int GetCpuCoreCount();
         static const char* GetRenderMode();
         static const char* GetGPUName();
         static int GetMaxTextureSize();
         static const char* GetGameName();
         static void SetGameName(char* gameName);
+        static bool GetIsWindowOrientationPortrait();
+        static V3DString GetSystemInfo();
 
-        virtual const char* GetPlatformName() const = 0;
-        virtual int GetWindowWidth() const = 0;
-        virtual int GetWindowHeight() const = 0;
-        virtual int GetScreenWidth() const = 0;
-        virtual int GetScreenHeight() const = 0;
-        virtual const char* GetAssetPath(V3DAssetPathType assetPath) const = 0;
-		
-        bool GetIsWindowOrientationPortrait() const;
-        V3DString GetSystemInfo() const;
+        //definitions will be implement in platform specific .cpp
+        static const char* GetPlatformName();
+        static int GetWindowWidth();
+        static int GetWindowHeight();
+        static int GetScreenWidth();
+        static int GetScreenHeight();
+        static const char* GetAssetPath(V3DAssetPathType assetPath);
 	};
 }

@@ -5,6 +5,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 */
 
 #include "V3DVector4D.h"
+#include "V3DMath.h"
 
 namespace V3D::V3DEngine::V3DMathematics
 {
@@ -16,12 +17,12 @@ namespace V3D::V3DEngine::V3DMathematics
 
 	bool V3DVector4D::operator==(const V3DVector4D& value) const
 	{
-		return (x == value.x && y == value.y && z == value.z && w == value.w);
+		return (V3DMath::IsEqual(x, value.x) && V3DMath::IsEqual(y, value.y) && V3DMath::IsEqual(z, value.z) && V3DMath::IsEqual(w, value.w));
 	}
 
 	bool V3DVector4D::operator!=(const V3DVector4D& value) const
 	{
-		return (x != value.x || y != value.y || z != value.z || w != value.w);
+		return (!V3DMath::IsEqual(x, value.x) || !V3DMath::IsEqual(y, value.y) || !V3DMath::IsEqual(z, value.z) || !V3DMath::IsEqual(w, value.w));
 	}
 
 	V3DVector4D V3DVector4D::operator+(const V3DVector4D& value) const

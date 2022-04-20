@@ -8,6 +8,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngineTests/V3DTest.h"
 #include "V3DEngine/V3DMacros.h"
 #include "V3DEngine/V3DMathematics/V3DVector3D.h"
+#include "V3DEngine/V3DMathematics/V3DMath.h"
 
 // ReSharper disable once CppUnusedIncludeDirective
 #include <cmath>
@@ -27,8 +28,8 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DMathematics
 
 		V3DTest::AssertOk(Vec == Vec2, V3DFILE_INFO);
 		V3DTest::AssertOk(Vec == Vec3, V3DFILE_INFO);
-		V3DTest::AssertOk(Vec4.x == 12, V3DFILE_INFO);
-		V3DTest::AssertOk(Vec4.y == 12, V3DFILE_INFO);
+		V3DTest::AssertOk(Vec4.x == 12.0f, V3DFILE_INFO);
+		V3DTest::AssertOk(Vec4.y == 12.0f, V3DFILE_INFO);
 		V3DTest::AssertOk(Vec != V3DVector3D(), V3DFILE_INFO);
 
 		V3DTest::AssertOk((V3DVector3D(1, 2, 3) + V3DVector3D(3, 4, 5)) == V3DVector3D(4, 6, 8), V3DFILE_INFO);
@@ -67,11 +68,11 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DMathematics
 		V3DTest::AssertOk(vec == V3DVector3D(), V3DFILE_INFO);
 		V3DTest::AssertOk(vec == V3DVector3D(0, 0, 0), V3DFILE_INFO);
 
-		V3DTest::AssertOk(V3DVector3D(2, 1, 2).Length() == 3, V3DFILE_INFO);
-		V3DTest::AssertOk(V3DVector3D(2, 1, 2).Distance(V3DVector3D(4, 2, 4)) == 3, V3DFILE_INFO);
-		V3DTest::AssertOk(V3DVector3D(1, 2, 3).DotProduct(V3DVector3D(6, 7, 8)) == 44, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DVector3D(2, 1, 2).Length() == 3.0f, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DVector3D(2, 1, 2).Distance(V3DVector3D(4, 2, 4)) == 3.0f, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DVector3D(1, 2, 3).DotProduct(V3DVector3D(6, 7, 8)) == 44.0f, V3DFILE_INFO);
 		V3DTest::AssertOk(V3DVector3D(2, 3, 4).CrossProduct(V3DVector3D(5, 6, 7)) == V3DVector3D(-3, 6, -3), V3DFILE_INFO);
-		V3DTest::AssertOk(V3DVector3D(2, 1, 2).Normalise() == V3DVector3D(2, 1, 2).Length(), V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMath::IsEqual(V3DVector3D(2, 1, 2).Normalise(), V3DVector3D(2, 1, 2).Length()), V3DFILE_INFO);
 
 		vec = V3DVector3D{ 3, 1, 2 };
 		vec.Normalizing();

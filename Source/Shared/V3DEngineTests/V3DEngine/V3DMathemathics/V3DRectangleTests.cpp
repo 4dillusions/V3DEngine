@@ -23,10 +23,10 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DMathematics
 		V3DTest::AssertOk(Rectangle == Rectangle2, V3DFILE_INFO);
 		V3DTest::AssertOk(Rectangle == Rectangle3, V3DFILE_INFO);
 		V3DTest::AssertOk(Rectangle != V3DRectangle(), V3DFILE_INFO);
-		V3DTest::AssertOk(Rectangle.GetLeft() == 0, V3DFILE_INFO);
-		V3DTest::AssertOk(Rectangle.GetRight() == 20, V3DFILE_INFO);
-		V3DTest::AssertOk(Rectangle.GetTop() == 0, V3DFILE_INFO);
-		V3DTest::AssertOk(Rectangle.GetBottom() == 30, V3DFILE_INFO);
+		V3DTest::AssertOk(Rectangle.GetLeft() == 0.0f, V3DFILE_INFO);
+		V3DTest::AssertOk(Rectangle.GetRight() == 20.0f, V3DFILE_INFO);
+		V3DTest::AssertOk(Rectangle.GetTop() == 0.0f, V3DFILE_INFO);
+		V3DTest::AssertOk(Rectangle.GetBottom() == 30.0f, V3DFILE_INFO);
 		V3DTest::AssertOk(Rectangle.Contains(10, 29), V3DFILE_INFO);
 		V3DTest::AssertOk(!Rectangle.Contains(20, 30), V3DFILE_INFO);
 		V3DTest::AssertOk(Rectangle.Contains(V3DRectangle(0, 0, 5, 10)), V3DFILE_INFO);

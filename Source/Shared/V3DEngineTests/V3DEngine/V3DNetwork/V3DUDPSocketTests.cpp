@@ -21,11 +21,12 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DNetwork
 	{
 		V3DNet::Init();
 
-		const int port = 24000;
-		V3DSocketAddress localAddress(port, V3DIpV4Address(127, 0, 0, 1));
-		const int MessageByteBufferSize = 1024;
+		constexpr int port = 24000;
+		const V3DSocketAddress localHostAddress(port, V3DIpV4Address(127, 0, 0, 1));
+		const V3DSocketAddress privateAddress(port, V3DIpV4Address(V3DSocketAddress::GetLocalIp()));
+		constexpr int MessageByteBufferSize = 1024;
 		char messageByteBuffer[MessageByteBufferSize];
-		const V3DString Message(isToAll ? "Hello broadcast" : "Hello!");
+		const V3DString Message(isToAll ? "Hello broadcast!" : "Hello!");
 
 		auto receiverSocket = V3DMemory::New<V3DUDPSocket>(V3DFILE_INFO);
 		receiverSocket->SetNonBlocking();
@@ -34,27 +35,25 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DNetwork
 		auto senderSocket = V3DMemory::New<V3DUDPSocket>(V3DFILE_INFO);
 		senderSocket->BindAny();
 
+		int senderRes;
 		if (isToAll)
-		{
-			V3DSocketAddress localPublicAddress(port, V3DIpV4Address(V3DSocketAddress::GetLocalIp()));
-			senderSocket->SendToAll(Message, localPublicAddress);
-		}
+			senderRes = senderSocket->SendToLocalAll(Message, privateAddress);
 		else
-			senderSocket->SendTo(Message, localAddress);
+			senderRes = senderSocket->SendTo(Message, localHostAddress);
+
+		V3DTest::AssertOk(senderRes == Message.GetTextLength(), V3DFILE_INFO);
 
 		memset(messageByteBuffer, 0, MessageByteBufferSize);
-		V3DSocketAddress senderAddress{};
-		receiverSocket->ReceiveFrom(messageByteBuffer, MessageByteBufferSize, senderAddress);
+		const V3DSocketAddress senderAddress{};
+		const int receiverRes = receiverSocket->ReceiveFrom(messageByteBuffer, MessageByteBufferSize, senderAddress);
+
+		V3DTest::AssertOk(receiverRes == Message.GetTextLength(), V3DFILE_INFO);
+		V3DTest::AssertOk(V3DString(messageByteBuffer) == Message, V3DFILE_INFO);
 
 		if (isToAll)
-		{
-			V3DTest::AssertOk(V3DString(messageByteBuffer) != Message, V3DFILE_INFO);
-		}
+			V3DTest::AssertOk(senderAddress.GetIp() == privateAddress.GetIp(), V3DFILE_INFO);
 		else
-		{
-			V3DTest::AssertOk(senderAddress.GetIp() == localAddress.GetIp(), V3DFILE_INFO);
-			V3DTest::AssertOk(V3DString(messageByteBuffer) == Message, V3DFILE_INFO);
-		}
+			V3DTest::AssertOk(senderAddress.GetIp() == localHostAddress.GetIp(), V3DFILE_INFO);
 
 		V3DMemory::Delete(receiverSocket);
 		V3DMemory::Delete(senderSocket);

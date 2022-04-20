@@ -19,27 +19,12 @@
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEngine\V3DEngineLibrary.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Source\Windows\V3DEngine\V3DIO\V3DOstream.h">
-      <Filter>Source\V3DIO</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Source\Windows\V3DEngine\V3DCore\V3DEnvironment.h">
-      <Filter>Source\V3DCore</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEngine\V3DNetwork\V3DNetworkSystem.h">
-      <Filter>Source\V3DNetwork</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Source\Windows\V3DEngine\V3DNetwork\V3DSocketAddressHelper.h">
-      <Filter>Source\V3DNetwork</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\Source\Windows\V3DEngine\V3DNetwork\V3DSocketHelper.h">
       <Filter>Source\V3DNetwork</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DIO\V3DOstream.cpp">
-      <Filter>Source\V3DIO</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DCore\V3DEnvironment.cpp">
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DCore\V3DEnvironmentPartial.cpp">
       <Filter>Source\V3DCore</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DIO\V3DFile.cpp">
@@ -65,6 +50,15 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DNetwork\V3DNet.cpp">
       <Filter>Source\V3DNetwork</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DNetwork\V3DSocketAddressPartial.cpp">
+      <Filter>Source\V3DNetwork</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DNetwork\V3DSocketHelper.cpp">
+      <Filter>Source\V3DNetwork</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DIO\V3DLoggerPartial.cpp">
+      <Filter>Source\V3DIO</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

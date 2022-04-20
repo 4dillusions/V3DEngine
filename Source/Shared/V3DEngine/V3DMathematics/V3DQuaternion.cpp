@@ -21,12 +21,12 @@ namespace V3D::V3DEngine::V3DMathematics
 
 	bool V3DQuaternion::operator==(const V3DQuaternion& value) const
 	{
-		return (w == value.w && x == value.x && y == value.y && z == value.z);
+		return (V3DMath::IsEqual(w ,value.w) && V3DMath::IsEqual(x, value.x) && V3DMath::IsEqual(y ,value.y) && V3DMath::IsEqual(z, value.z));
 	}
 
 	bool V3DQuaternion::operator!=(const V3DQuaternion& value) const
 	{
-		return (w != value.w || x != value.x || y != value.y || z != value.z);
+		return (!V3DMath::IsEqual(w, value.w) || !V3DMath::IsEqual(x, value.x) || !V3DMath::IsEqual(y, value.y) || !V3DMath::IsEqual(z, value.z));
 	}
 
 	V3DQuaternion V3DQuaternion::operator+(const V3DQuaternion& value) const
@@ -92,7 +92,7 @@ namespace V3D::V3DEngine::V3DMathematics
 		const float diagonal = rotMatrix.m[0][0] + rotMatrix.m[1][1] + rotMatrix.m[2][2];
 		float fRoot;
 
-		if (diagonal > 0.0)
+		if (diagonal > 0.0f)
 		{
 			fRoot = sqrt(diagonal + 1.0f);
 			w = 0.5f * fRoot;
@@ -104,7 +104,7 @@ namespace V3D::V3DEngine::V3DMathematics
 		}
 		else
 		{
-			static const unsigned long s_iNext[3] = { 1, 2, 0 };
+			static constexpr unsigned long s_iNext[3] = { 1, 2, 0 };
 			unsigned long i = 0;
 			if (rotMatrix.m[1][1] > rotMatrix.m[0][0])
 				i = 1;
@@ -166,11 +166,11 @@ namespace V3D::V3DEngine::V3DMathematics
 
 	void V3DQuaternion::Normalizing()
 	{
-		const float _Length = Length();
+		const float LengthTmp = Length();
 
-		w /= _Length;
-		x /= _Length;
-		y /= _Length;
-		z /= _Length;
+		w /= LengthTmp;
+		x /= LengthTmp;
+		y /= LengthTmp;
+		z /= LengthTmp;
 	}
 }

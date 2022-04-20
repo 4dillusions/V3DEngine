@@ -10,6 +10,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngine/V3DIO/V3DLogger.h"
 
 #include <unordered_map>
+#include <string>
 
 using namespace V3D::V3DEngine::V3DIO;
 
@@ -24,7 +25,8 @@ namespace V3D::V3DEngine::V3DCore
 
 	V3DString V3DMemory::GetStatistics()
 	{
-		std::string result("Leaked objects:\n");
+		std::string result;
+		result = "Leaked objects:\n";
 
 		for (const auto i : memoryList)  // NOLINT(clang-diagnostic-range-loop-construct)
 			result += i.second + static_cast<const char>('\n');
@@ -40,6 +42,7 @@ namespace V3D::V3DEngine::V3DCore
 		memoryList.insert({ address, info });
 	}
 
+	// ReSharper disable once CppParameterMayBeConstPtrOrRef
 	void V3DMemory::Remove(int* address)
 	{
 		const auto search = memoryList.find(address);
@@ -49,7 +52,6 @@ namespace V3D::V3DEngine::V3DCore
 
 	void V3DMemory::WriteStatistics()
 	{
-		V3DLogger::Get().DeleteBuffer();
 		V3DLogger::Get().WriteOutput("");
 		V3DLogger::Get().WriteOutput(GetStatistics());
 	}

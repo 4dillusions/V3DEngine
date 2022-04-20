@@ -30,6 +30,16 @@ namespace V3D::V3DEngine::V3DCore
 		*this = std::move(value);
 	}
 
+	V3DString::V3DString(bool isExplicitInstance)
+	{
+		if (isExplicitInstance)
+			data = V3DMemory::NewArrayExplicit<char>(dataSize);
+		else
+			data = V3DMemory::NewArray<char>(V3DFILE_INFO, dataSize);
+
+		data[0] = NullCharacter;
+	}
+
 	V3DString::V3DString(const char* text)
 	{
 		textLenght = GetTextLength(text);
@@ -343,7 +353,8 @@ namespace V3D::V3DEngine::V3DCore
 
 	std::wstring V3DString::ToWString() const
 	{
-		std::string stdText(data);
+		std::string stdText;
+		stdText = data;
 		std::wstring wsText;
 		wsText.assign(stdText.begin(), stdText.end());
 		wsText.append(L"\r\n");
@@ -408,12 +419,12 @@ namespace V3D::V3DEngine::V3DCore
 		return result;
 	}
 
-	void V3DString::IncrementDataSize(int dataSize)
+	void V3DString::IncrementDataSize(int otherDataSize)
 	{
-		if (dataSize == 0)
+		if (otherDataSize == 0)
 			this->dataSize *= 2;
 		else
-			this->dataSize = dataSize;
+			this->dataSize = otherDataSize;
 
 		const V3DString temp(*this);
 		*this = temp;
@@ -796,7 +807,7 @@ namespace V3D::V3DEngine::V3DCore
 			'\f' (0x0c) feed(FF)
 			'\r' (0x0d) carriage return (CR)
 		*/
-		char whiteSpaceCharacters[] = " \t\n\v\f\r";
+		constexpr char whiteSpaceCharacters[] = " \t\n\v\f\r";
 		const auto TempText = V3DMemory::NewArray<char>(V3DFILE_INFO, textLenght + 1);
 
 		int newTextLenght = 0;

@@ -10,6 +10,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 namespace V3D::V3DEngine::V3DNetwork
 {
+	//definitions will be implement in platform specific .cpp
 	class V3DENGINE_API V3DNet final
 	{
 	public:

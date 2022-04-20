@@ -4,7 +4,7 @@ Copyright (c) 2020 by 4D Illusions. All rights reserved.
 Released under the terms of the GNU General Public License version 3 or later.
 */
 
-#include "V3DAbstractEnvironment.h"
+#include "V3DEnvironment.h"
 #include "V3DDateTime.h"
 #include "V3DString.h"
 
@@ -12,15 +12,19 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 namespace V3D::V3DEngine::V3DCore
 {
-	void* V3DAbstractEnvironment::app{};
-	bool V3DAbstractEnvironment::isUnitTestMode = false;
-	bool V3DAbstractEnvironment::isVsyncEnable = false;
-	char* V3DAbstractEnvironment::renderer{};
-	char* V3DAbstractEnvironment::gpuName{};
-	int V3DAbstractEnvironment::maxTextureSize{};
-	char* V3DAbstractEnvironment::gameName{};
+	void* V3DEnvironment::app{};
+	bool V3DEnvironment::isUnitTestMode = false;
+	bool V3DEnvironment::isVsyncEnable = false;
+	char* V3DEnvironment::renderer{};
+	char* V3DEnvironment::gpuName{};
+	int V3DEnvironment::maxTextureSize{};
+	char* V3DEnvironment::gameName{};
+	int V3DEnvironment::windowWidth{};
+	int V3DEnvironment::windowHeight{};
+	int V3DEnvironment::screenWidth{};
+	int V3DEnvironment::screenHeight{};
 	
-	bool V3DAbstractEnvironment::GetIsRunModeDebug()
+	bool V3DEnvironment::GetIsRunModeDebug()
 	{
 		#ifdef _DEBUG
 			return true;
@@ -29,108 +33,108 @@ namespace V3D::V3DEngine::V3DCore
 		#endif
 	}
 	
-	const char* V3DAbstractEnvironment::GetRunMode()
+	const char* V3DEnvironment::GetRunMode()
 	{
 		return GetIsRunModeDebug() ? "DEBUG" : "RELEASE";
 	}
 
-	bool V3DAbstractEnvironment::GetIsUnitTestMode()
+	bool V3DEnvironment::GetIsUnitTestMode()
 	{
 		return isUnitTestMode;
 	}
 
-	const char* V3DAbstractEnvironment::GetEngineName()
+	const char* V3DEnvironment::GetEngineName()
 	{
 		return "V3D Engine";
 	}
 
-	const char* V3DAbstractEnvironment::GetEngineVersion()
+	const char* V3DEnvironment::GetEngineVersion()
 	{
 		return "1.0";
 	}
 
-	void V3DAbstractEnvironment::SetUnitTestMode()
+	void V3DEnvironment::SetUnitTestMode()
 	{
 		isUnitTestMode = true;
 	}
 	
-	bool V3DAbstractEnvironment::GetIsVSyncEnable()
+	bool V3DEnvironment::GetIsVSyncEnable()
 	{
 		return isVsyncEnable;
 	}
 	
-	void V3DAbstractEnvironment::SetIsVSyncEnable(bool isVsyncEnable)
+	void V3DEnvironment::SetIsVSyncEnable(bool isVsyncEnable)
 	{
-		V3DAbstractEnvironment::isVsyncEnable = isVsyncEnable;
+		V3DEnvironment::isVsyncEnable = isVsyncEnable;
 	}
 
-	void V3DAbstractEnvironment::SetApp(void* application)
+	void V3DEnvironment::SetApp(void* application)
 	{
 		app = application;
 	}
 
-	void* V3DAbstractEnvironment::GetApp()
+	void* V3DEnvironment::GetApp()
 	{
 		return app;
 	}
 
-	void V3DAbstractEnvironment::SetWindowSize(int width, int height)
+	void V3DEnvironment::SetWindowSize(int width, int height)
 	{
 		windowWidth = width;
 		windowHeight = height;
 	}
 
-	void V3DAbstractEnvironment::SetScreenSize(int width, int height)
+	void V3DEnvironment::SetScreenSize(int width, int height)
 	{
 		screenWidth = width;
 		screenHeight = height;
 	}
 
-	void V3DAbstractEnvironment::SetGPUData(char* renderer, char* gpuName, int maxTextureSize)
+	void V3DEnvironment::SetGPUData(char* renderer, char* gpuName, int maxTextureSize)
 	{
-		V3DAbstractEnvironment::renderer = renderer;
-		V3DAbstractEnvironment::gpuName = gpuName;
-		V3DAbstractEnvironment::maxTextureSize = maxTextureSize;
+		V3DEnvironment::renderer = renderer;
+		V3DEnvironment::gpuName = gpuName;
+		V3DEnvironment::maxTextureSize = maxTextureSize;
 	}
 
-	const int V3DAbstractEnvironment::GetCpuCoreCount()
+	int V3DEnvironment::GetCpuCoreCount()
 	{
 		static int res{ static_cast<int>(std::thread::hardware_concurrency()) };
 
 		return res;
 	}
 
-	const char* V3DAbstractEnvironment::GetRenderMode()
+	const char* V3DEnvironment::GetRenderMode()
 	{
 		return renderer;
 	}
 
-	const char* V3DAbstractEnvironment::GetGPUName()
+	const char* V3DEnvironment::GetGPUName()
 	{
 		return gpuName;
 	}
 
-	int V3DAbstractEnvironment::GetMaxTextureSize()
+	int V3DEnvironment::GetMaxTextureSize()
 	{
 		return maxTextureSize;
 	}
 
-	const char* V3DAbstractEnvironment::GetGameName()
+	const char* V3DEnvironment::GetGameName()
 	{
 		return gameName;
 	}
 
-	void V3DAbstractEnvironment::SetGameName(char* gameName)
+	void V3DEnvironment::SetGameName(char* gameName)
 	{
-		V3DAbstractEnvironment::gameName = gameName;
+		V3DEnvironment::gameName = gameName;
 	}
 
-	bool V3DAbstractEnvironment::GetIsWindowOrientationPortrait() const
+	bool V3DEnvironment::GetIsWindowOrientationPortrait()
 	{
 		return windowHeight > windowWidth;
 	}
 
-	V3DString V3DAbstractEnvironment::GetSystemInfo() const
+	V3DString V3DEnvironment::GetSystemInfo()
 	{
 		V3DString result;
 		

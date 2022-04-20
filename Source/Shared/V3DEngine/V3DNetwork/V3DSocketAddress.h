@@ -20,7 +20,7 @@ namespace V3D::V3DEngine::V3DNetwork
 		
 	public:
 		V3DSocketAddress();
-		V3DSocketAddress(unsigned short int port);
+		explicit V3DSocketAddress(unsigned short int port);
 		V3DSocketAddress(unsigned short int port, const char* ip);
 		V3DSocketAddress(unsigned short int port, const V3DIpV4Address& ip);
 		V3DSocketAddress(const V3DSocketAddress&) = delete;
@@ -35,7 +35,7 @@ namespace V3D::V3DEngine::V3DNetwork
 		
 		static V3DCore::V3DString GetPublicIpFromHostName(const char* hostname);
 		//static V3DCore::V3DString GetLocalHostName();
-		static V3DCore::V3DString GetLocalIp();
+		static V3DCore::V3DString GetLocalIp(); //it will be implemented partial .cpp in platform side
 
 		V3DCore::V3DString ToString() const;
 	};

@@ -18,13 +18,13 @@ namespace V3D::V3DEngine::V3DCore
 	*/
 	class V3DENGINE_API V3DString final
 	{
-        static const char NullCharacter = '\0';
-        static const char FloatNumberSplit = '.';
-        static const char SpaceCharacter = ' ';
+        static constexpr char NullCharacter = '\0';
+        static constexpr char FloatNumberSplit = '.';
+        static constexpr char SpaceCharacter = ' ';
 
-        static const int MinDataSize = 512;
-        static const int MaxNumberDigits = 10;
-        static const int NumberToChar = 48;
+        static constexpr int MinDataSize = 512;
+        static constexpr int MaxNumberDigits = 10;
+        static constexpr int NumberToChar = 48;
 
         int dataSize = MinDataSize;
         char* data{};
@@ -37,6 +37,7 @@ namespace V3D::V3DEngine::V3DCore
         V3DString(const V3DString& value);
         V3DString(V3DString&& value) noexcept;
 
+        explicit V3DString(bool isExplicitInstance);
         explicit V3DString(const char* text);
         explicit V3DString(char letter);
         explicit V3DString(int number);
@@ -79,7 +80,7 @@ namespace V3D::V3DEngine::V3DCore
         float ToFloat() const;
 
     private:
-        void IncrementDataSize(int dataSize = 0);
+        void IncrementDataSize(int otherDataSize = 0);
 
     public:
         static int GetHashCode(const char* text, int hashIndex = 0);
