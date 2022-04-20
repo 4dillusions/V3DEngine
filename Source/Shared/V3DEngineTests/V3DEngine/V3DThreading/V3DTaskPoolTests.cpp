@@ -28,10 +28,10 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DThreading
 {
 	atomic jobCounter{ 0 };
 	atomic workerCounter{ 0 };
+	atomic memoryLeakCount{ 0 };
 	constexpr int LoopCount = 200;
 	V3DTaskPool<void*>* pool;
 	const int PoolSize = V3DEnvironment::GetCpuCoreCount() - 1;
-	int memoryLeakCount;
 	
 	void TestFunc1() { (void)sqrt(1000); ++jobCounter; }
 	void TestFunc2() { (void)sqrt(20000); ++jobCounter; }
@@ -40,36 +40,36 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DThreading
 
 	void V3DTaskPoolTests::PoolStressTest()
 	{
-		jobCounter = 0;
-		workerCounter = 0;
+		jobCounter.store(0);
+		workerCounter.store(0);
 
-		memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+		memoryLeakCount.store(V3DMemory::GetMemoryLeakCount());
 		pool = V3DMemory::New<V3DTaskPool<void*>>(V3DFILE_INFO, PoolSize);
 
 		for (int i = 0; i < 100; i++)
 			for (int j = 0; j < LoopCount; j++)
 			{
 				pool->SetJobFunction(TestFunc1);
-				++workerCounter;
+				workerCounter.store(workerCounter.load() + 1);
 
 				pool->SetJobFunction(TestFunc2);
-				++workerCounter;
+				workerCounter.store(workerCounter.load() + 1);
 
 				pool->SetJobFunction(TestFunc3);
-				++workerCounter;
+				workerCounter.store(workerCounter.load() + 1);
 
 				pool->SetJobFunction(TestFunc4);
-				++workerCounter;
+				workerCounter.store(workerCounter.load() + 1);
 			}
 
-		while (jobCounter < LoopCount * 4 * 100)
+		while (jobCounter.load() < LoopCount * 4 * 100)
 			;
 
 		V3DMemory::Delete(pool);
-		V3DTest::AssertOk(memoryLeakCount == V3DMemory::GetMemoryLeakCount(), V3DFILE_INFO);
+		V3DTest::AssertOk(memoryLeakCount.load() == V3DMemory::GetMemoryLeakCount(), V3DFILE_INFO);
 
-		V3DTest::AssertOk(jobCounter == LoopCount * 4 * 100, V3DFILE_INFO);
-		V3DTest::AssertOk(workerCounter == LoopCount * 4 * 100, V3DFILE_INFO);
+		V3DTest::AssertOk(jobCounter.load() == LoopCount * 4 * 100, V3DFILE_INFO);
+		V3DTest::AssertOk(workerCounter.load() == LoopCount * 4 * 100, V3DFILE_INFO);
 	}
 
 	void V3DTaskPoolTests::ThreadVsPoolTimingTest()
@@ -78,7 +78,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DThreading
 			{
 				[&]
 				{
-					jobCounter = 0;
+					jobCounter.store(0);
 					
 					for (int i = 0; i < LoopCount; i++)
 					{
@@ -92,7 +92,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DThreading
 						t4.join();
 					}
 
-					assert(jobCounter == LoopCount * 4);
+					assert(jobCounter.load() == LoopCount * 4);
 				}, false, 0
 			});
 
@@ -100,7 +100,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DThreading
 			{
 				[&]
 				{
-					memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+					memoryLeakCount.store(V3DMemory::GetMemoryLeakCount());
 					pool = V3DMemory::New<V3DTaskPool<void*>>(V3DFILE_INFO, PoolSize);
 				}, true, 0
 			});
@@ -109,8 +109,8 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DThreading
 			{
 				[&]
 				{
-					jobCounter = 0;
-					workerCounter = 0;
+					jobCounter.store(0);
+					workerCounter.store(0);
 
 					for (int i = 0; i < LoopCount; i++)
 					{
@@ -127,14 +127,14 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DThreading
 						++workerCounter;
 					}
 
-					while (jobCounter < LoopCount * 4)
+					while (jobCounter.load() < LoopCount * 4)
 						;
 
 					V3DMemory::Delete(pool);
 
-					assert(memoryLeakCount == V3DMemory::GetMemoryLeakCount());
-					assert(jobCounter == LoopCount * 4);
-					assert(workerCounter == LoopCount * 4);
+					assert(memoryLeakCount.load() == V3DMemory::GetMemoryLeakCount());
+					assert(jobCounter.load() == LoopCount * 4);
+					assert(workerCounter.load() == LoopCount * 4);
 				}, false, 1
 			});
 	}
@@ -151,9 +151,9 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DThreading
 			for (int j = 0; j < ContentCount; j++)
 				(void)data->bytes[j];
 
-			V3DMemory::DeleteArray(data);
-			V3DMemory::DeleteArray(simpleFileRepository);
-			++contentCounter;
+			V3DMemory::Delete(data);
+			V3DMemory::Delete(simpleFileRepository);
+			contentCounter.store(contentCounter.load() + 1);
 		};
 
 		//GenerateContents
@@ -161,7 +161,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DThreading
 			{
 				[&]
 				{
-					memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+					memoryLeakCount.store(V3DMemory::GetMemoryLeakCount());
 					V3DIFileRepository<V3DTestContentData*>* simpleFileRepository = V3DMemory::New<V3DTestSimpleFileRepository<V3DTestContentData*>>(V3DFILE_INFO);
 					auto data = V3DMemory::New<V3DTestContentData>(V3DFILE_INFO);
 
@@ -177,10 +177,10 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DThreading
 						simpleFileRepository->Save(data, name.ToChar());
 						assert(V3DFile::GetSize(V3DAssetPathType::Internal, name.ToChar()) == V3DTestContentData::Size);
 					}
-					
+
 					V3DMemory::Delete(data);
-					V3DMemory::DeleteArray(simpleFileRepository);
-					assert(memoryLeakCount == V3DMemory::GetMemoryLeakCount());
+					V3DMemory::Delete(simpleFileRepository);
+					assert(memoryLeakCount.load() == V3DMemory::GetMemoryLeakCount());
 				}, true, 0
 			});
 
@@ -189,9 +189,9 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DThreading
 			{
 				[&]
 				{
-					contentCounter = 0;
-					memoryLeakCount = V3DMemory::GetMemoryLeakCount();
-					
+					contentCounter.store(0);
+					memoryLeakCount.store(V3DMemory::GetMemoryLeakCount());
+
 					for (int i = 0; i < ContentCount; i++)
 					{
 						V3DString name("data");
@@ -201,20 +201,20 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DThreading
 						LoadContent(name);
 					}
 
-					assert(contentCounter == ContentCount);
-					assert(memoryLeakCount == V3DMemory::GetMemoryLeakCount());
+					assert(contentCounter.load() == ContentCount);
+					assert(memoryLeakCount.load() == V3DMemory::GetMemoryLeakCount());
 				}, false, 1
 			});
 
-		//LoadContentsTaskPool, RemoveContents
+		//LoadContentsTaskPool
 		V3DTest::AddTimingTest("V3DTaskPoolLoadContentTimingTest", V3DTestTimingData
 			{
 				[&]
 				{
-					contentCounter = 0;
-					memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+					contentCounter.store(0);
+					//memoryLeakCount.store(V3DMemory::GetMemoryLeakCount());
 					auto taskPool = V3DMemory::New<V3DTaskPool<V3DString>>(V3DFILE_INFO, PoolSize);
-					
+
 					for (int i = 0; i < ContentCount; i++)
 					{
 						V3DString name("data");
@@ -224,11 +224,21 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DThreading
 						taskPool->SetJobFunction(LoadContent, name);
 					}
 
-					while (contentCounter < 10)
+					while (contentCounter.load() < 10)
 						;
 
 					V3DMemory::Delete(taskPool);
 
+					//assert(memoryLeakCount.load() == V3DMemory::GetMemoryLeakCount());
+					assert(contentCounter.load() == ContentCount);
+				}, false, 2
+			});
+
+		//RemoveContents
+		V3DTest::AddTimingTest("V3DTaskPoolLoadContentTimingTest", V3DTestTimingData
+			{
+				[&]
+				{
 					for (int i = 0; i < ContentCount; i++)
 					{
 						V3DString name("data");
@@ -237,10 +247,8 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DThreading
 
 						V3DFile::Delete(name.ToChar());
 					}
-					                                                         
-					assert(contentCounter == ContentCount);
-					assert(memoryLeakCount == V3DMemory::GetMemoryLeakCount());
-				}, false, 2
+
+				}, true, 3
 			});
 	}
 	
