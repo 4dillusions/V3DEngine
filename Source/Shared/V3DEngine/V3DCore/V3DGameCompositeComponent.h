@@ -27,7 +27,7 @@ namespace V3D::V3DEngine::V3DCore
 
 		virtual V3DGameComponent* Find(const char* name);
 		virtual V3DGameComponent* Find(const V3DGameComponent* gameComponent);
-		//bool IsLastVisible(const LFString& name);
+		//bool IsLastVisible(const V3DString& name);
 		int GetComponentsLength() const;
 
 		virtual void Add(V3DGameComponent* gameComponent);

@@ -52,7 +52,7 @@ namespace V3D::V3DEngine::V3DCore
 			return nullptr;
 		}
 		
-		//bool IsLastVisible(const LFString& name);
+		//bool IsLastVisible(const V3DString& name);
 		
 		int GetComponentsLength() const
 		{

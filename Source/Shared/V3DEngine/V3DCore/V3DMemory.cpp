@@ -16,7 +16,7 @@ using namespace V3D::V3DEngine::V3DIO;
 
 namespace V3D::V3DEngine::V3DCore
 {
-	std::unordered_map<int*, const char*> V3DMemory::memoryList;
+	std::unordered_map<int*, V3DMemoryInfo> V3DMemory::memoryList;
 
 	int V3DMemory::GetMemoryLeakCount()
 	{
@@ -28,8 +28,8 @@ namespace V3D::V3DEngine::V3DCore
 		std::string result;
 		result = "Leaked objects:\n";
 
-		for (const auto i : memoryList)  // NOLINT(clang-diagnostic-range-loop-construct)
-			result += i.second + static_cast<const char>('\n');
+		for (const auto& i : memoryList)  // NOLINT(clang-diagnostic-range-loop-construct)
+			result += i.second.info + static_cast<const char>('\n');
 
 		if (memoryList.empty())
 			result += "0 leaked object";
@@ -37,16 +37,16 @@ namespace V3D::V3DEngine::V3DCore
 		return V3DString(result.c_str());
 	}
 
-	void V3DMemory::Add(int* address, const char* info)
+	void V3DMemory::Add(int* address, const V3DMemoryInfo& info)
 	{
 		memoryList.insert({ address, info });
 	}
 
 	// ReSharper disable once CppParameterMayBeConstPtrOrRef
-	void V3DMemory::Remove(int* address)
+	void V3DMemory::Remove(int* address, V3DMemoryAllocatorType allocType)
 	{
 		const auto search = memoryList.find(address);
-		if (search != memoryList.end())
+		if (search != memoryList.end() && search->second.allocType == allocType)
 			memoryList.erase(search);
 	}
 
