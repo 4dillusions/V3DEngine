@@ -6734,7 +6734,6 @@ class lexer : public lexer_base<BasicJsonType>
                     }
                 }
             }
-            break;
 
             // multi-line comments skip input until */ is read
             case '*':
@@ -6749,7 +6748,6 @@ class lexer : public lexer_base<BasicJsonType>
                             error_message = "invalid comment; missing closing '*/'";
                             return false;
                         }
-                        break;
 
                         case '*':
                         {
@@ -6765,14 +6763,12 @@ class lexer : public lexer_base<BasicJsonType>
                                 }
                             }
                         }
-                        break;
 
                         default:
                             break;
                     }
                 }
             }
-            break;
 
             // unexpected character after reading '/'
             default:
@@ -6780,7 +6776,6 @@ class lexer : public lexer_base<BasicJsonType>
                 error_message = "invalid comment; expecting '/' or '*' after '/'";
                 return false;
             }
-            break;
         }
     }
 
