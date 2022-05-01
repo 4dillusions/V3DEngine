@@ -11,7 +11,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 namespace V3D::V3DEngineTests::V3DTestObject
 {
-    struct V3DTestPlayerData;
+    class V3DTestPlayerData;
 
     class V3DTestPlayerSqlRepository : public V3D::V3DEngine::V3DData::V3DISQLRepository<V3DTestPlayerData>
     {

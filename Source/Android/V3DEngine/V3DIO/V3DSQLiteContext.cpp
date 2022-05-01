@@ -15,6 +15,7 @@ namespace V3D::V3DEngine::V3DIO
 {
 	V3DSQLiteContext::V3DSQLiteContext(const char* dbName)
 	{
+		db = nullptr; //avoid not using warning
 		V3DBinaryRW::Write("NotImplemented.db", nullptr, 0);
 	}
 	

@@ -282,7 +282,7 @@ inline void _picohash_md5_update(_picohash_md5_ctx_t *ctx, const void *data, siz
     saved_lo = ctx->lo;
     if ((ctx->lo = (saved_lo + size) & 0x1fffffff) < saved_lo)
         ctx->hi++;
-    ctx->hi += size >> 29;
+    ctx->hi += (uint32_t)size >> 29;
 
     used = saved_lo & 0x3f;
 
@@ -606,7 +606,7 @@ inline void _picohash_sha256_update(_picohash_sha256_ctx_t *ctx, const void *dat
             if (n > len)
                 n = len;
             memcpy(ctx->buf + ctx->curlen, in, (size_t)n);
-            ctx->curlen += n;
+            ctx->curlen += (uint32_t)n;
             in += n;
             len -= n;
             if (ctx->curlen == 64) {
