@@ -21,6 +21,7 @@ Released under the terms of the GNU General Public License version 3 or later.
  *
  */
 
+// ReSharper disable CppUnusedIncludeDirective
 #ifndef _ANDROID_NATIVE_APP_GLUE_H
 #define _ANDROID_NATIVE_APP_GLUE_H
 

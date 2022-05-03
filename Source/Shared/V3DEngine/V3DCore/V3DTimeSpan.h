@@ -6,6 +6,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #pragma once
 
+// ReSharper disable once CppUnusedIncludeDirective
 #include "V3DEngine/V3DEngineLibrary.h"
 
 namespace V3D::V3DEngine::V3DCore

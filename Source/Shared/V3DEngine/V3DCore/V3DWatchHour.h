@@ -29,7 +29,7 @@ namespace V3D::V3DEngine::V3DCore
 		V3DWatchHour& operator=(V3DWatchHour&&) = delete;
 		
 		explicit V3DWatchHour(const V3DTimeHour& currentTime, const V3DTimeHour& minTime = V3DTimeHour{}, const V3DTimeHour& maxTime = V3DTimeHour{});
-
+		
 		void SetMinTimeEvent(const std::function<void()>& minTimeEvent);
 		void SetMaxTimeEvent(const std::function<void()>& maxTimeEvent);
 		const V3DTimeHour& GetTime() const;

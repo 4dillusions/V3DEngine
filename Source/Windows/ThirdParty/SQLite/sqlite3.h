@@ -12103,7 +12103,8 @@ struct fts5_tokenizer {
       int flags,            /* Mask of FTS5_TOKENIZE_* flags */
       const char *pText, int nText,
       int (*xToken)(
-        void *pCtx,         /* Copy of 2nd argument to xTokenize() */
+	      // ReSharper disable once CppDeclarationHidesLocal
+	      void *pCtx,         /* Copy of 2nd argument to xTokenize() */
         int tflags,         /* Mask of FTS5_TOKEN_* flags */
         const char *pToken, /* Pointer to buffer containing token */
         int nToken,         /* Size of token in bytes */

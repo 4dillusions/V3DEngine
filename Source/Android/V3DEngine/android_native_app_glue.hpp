@@ -21,6 +21,8 @@ Released under the terms of the GNU General Public License version 3 or later.
  *
  */
 
+// ReSharper disable once CppMissingIncludeGuard
+// ReSharper disable CppNonInlineFunctionDefinitionInHeaderFile
 #include <jni.h>
 
 #include <errno.h>

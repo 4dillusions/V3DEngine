@@ -6,7 +6,6 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #pragma once
 
-#include "V3DTestSimpleData.h"
 #include "V3DEngine/V3DData/V3DIFileRepository.h"
 #include "V3DEngine/V3DIO/V3DBinaryRW.h"
 #include "V3DEngine/V3DCore/V3DMemory.h"

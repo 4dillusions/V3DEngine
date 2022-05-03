@@ -10,6 +10,7 @@
  * The SHA224/SHA256 implementation is based on a public domain implementation
  * by Sam Hocevar <sam@hocevar.net> for LibTomCrypt.
  */
+// ReSharper disable CppUnusedIncludeDirective
 #ifndef _picohash_h_
 #define _picohash_h_
 

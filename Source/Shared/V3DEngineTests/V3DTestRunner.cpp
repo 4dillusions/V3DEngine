@@ -42,7 +42,7 @@ namespace V3D::V3DEngineTests::V3DEngine
 		V3DTestMock::V3DFakeitTests::RunAllTests();
 
 		V3DTest::RunIntegrationTests();
-		//V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
 		V3DTest::WriteStatistics();
 		V3DTest::RunTimingTests();
 	}
