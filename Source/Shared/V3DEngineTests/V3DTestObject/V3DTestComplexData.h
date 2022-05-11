@@ -26,11 +26,11 @@ namespace V3D::V3DEngineTests::V3DTestObject
 
 		struct DataSize
 		{
-			const unsigned long long HeadSize;
-			const unsigned long long VerticeSize;
-			const unsigned long long UvSize;
+			const long HeadSize;
+			const long VerticeSize;
+			const long UvSize;
 
-			DataSize(const V3DTestComplexDataHead* head) : HeadSize{ sizeof(V3DTestComplexDataHead) }, VerticeSize{ sizeof(*vertices) * head->verticeCount }, UvSize{ sizeof(*uvs) * head->uvCount }
+			DataSize(const V3DTestComplexDataHead* head) : HeadSize{ sizeof(V3DTestComplexDataHead) }, VerticeSize{ static_cast<long>(sizeof(*vertices)) * head->verticeCount }, UvSize{ static_cast<int>(sizeof(*uvs)) * head->uvCount }  
 			{ }
 		};
 
@@ -43,6 +43,6 @@ namespace V3D::V3DEngineTests::V3DTestObject
 		explicit V3DTestComplexData(const V3DTestComplexDataHead& dataHead);
 		~V3DTestComplexData();
 
-		unsigned long long GetSize() const;
+		long GetSize() const;
 	};
 }

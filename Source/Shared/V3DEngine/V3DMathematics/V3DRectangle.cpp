@@ -63,7 +63,7 @@ namespace V3D::V3DEngine::V3DMathematics
 
     V3DVector2D V3DRectangle::GetSize() const
     {
-        return V3DVector2D(width, height);
+        return {width, height};
     }
 
     void V3DRectangle::SetSize(const V3DVector2D& size)
@@ -74,7 +74,7 @@ namespace V3D::V3DEngine::V3DMathematics
 
     V3DVector2D V3DRectangle::GetCenter() const
     {
-        return V3DVector2D(position.x + (width / 2), position.y + (height / 2));
+        return {position.x + (width / 2), position.y + (height / 2)};
     }
 
     bool V3DRectangle::Contains(float x, float y) const

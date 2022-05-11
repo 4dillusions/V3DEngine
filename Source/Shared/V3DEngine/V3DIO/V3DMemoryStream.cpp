@@ -14,15 +14,15 @@ using namespace V3D::V3DEngine::V3DCore;
 
 namespace V3D::V3DEngine::V3DIO
 {
-	V3DMemoryStream::V3DMemoryStream(unsigned long long maxSize) : MaxSize{maxSize}, isBufferAllocated{ true }
+	V3DMemoryStream::V3DMemoryStream(long maxSize) : isBufferAllocated{ true }, MaxSize{maxSize}
 	{
 		buffer = V3DMemory::NewArray<char>(V3DFILE_INFO, MaxSize);
 	}
 
-	V3DMemoryStream::V3DMemoryStream(unsigned long long maxSize, char* bufferData) : MaxSize{ maxSize }, buffer{ bufferData }, isBufferAllocated{ false }
+	V3DMemoryStream::V3DMemoryStream(long maxSize, char* bufferData) : isBufferAllocated{ false }, buffer{ bufferData }, MaxSize{ maxSize }
 	{ }
 
-	V3DMemoryStream::V3DMemoryStream(char* bufferData) : MaxSize{ 0 }, buffer{ bufferData }, isBufferAllocated{ false }
+	V3DMemoryStream::V3DMemoryStream(char* bufferData) : isBufferAllocated{ false }, buffer{ bufferData }, MaxSize{ 0 }
 	{ }
 
 	V3DMemoryStream::~V3DMemoryStream()
@@ -38,18 +38,18 @@ namespace V3D::V3DEngine::V3DIO
 		return buffer;
 	}
 
-	unsigned long long V3DMemoryStream::GetCurrentSize() const
+	long V3DMemoryStream::GetCurrentSize() const
 	{
 		return head;
 	}
 
-	void V3DMemoryStream::Write(const void* data, unsigned long long dataSize)
+	void V3DMemoryStream::Write(const void* data, long dataSize)
 	{
 		memcpy(buffer + head, data, dataSize);
 		head += dataSize;
 	}
 
-	void V3DMemoryStream::Read(void* dataOut, unsigned long long dataSize)
+	void V3DMemoryStream::Read(void* dataOut, long dataSize)
 	{
 		memcpy(dataOut, buffer + head, dataSize);
 		head += dataSize;

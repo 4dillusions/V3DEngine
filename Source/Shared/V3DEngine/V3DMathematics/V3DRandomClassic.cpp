@@ -21,7 +21,7 @@ namespace V3D::V3DEngine::V3DMathematics
 	{
 		[[maybe_unused]] static V3DRandomClassic random;
 
-		return static_cast<float>((rand() % (static_cast<int>(++max) - static_cast<int>(min))) + static_cast<int>(min));
+		return static_cast<float>((rand() % (static_cast<int>(++max) - static_cast<int>(min))) + static_cast<int>(min));  // NOLINT(concurrency-mt-unsafe)
 	}
 	
 	int V3DRandomClassic::CreateRandom(int min, int max)
@@ -31,6 +31,6 @@ namespace V3D::V3DEngine::V3DMathematics
 
 	V3DVector2D V3DRandomClassic::CreateRandom(const V3DVector2D& min, const V3DVector2D& max)
 	{
-		return V3DVector2D(CreateRandom(min.x, max.x), CreateRandom(min.y, max.y));
+		return { CreateRandom(min.x, max.x), CreateRandom(min.y, max.y) };
 	}
 }

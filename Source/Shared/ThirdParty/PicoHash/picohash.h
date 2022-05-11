@@ -11,6 +11,14 @@
  * by Sam Hocevar <sam@hocevar.net> for LibTomCrypt.
  */
 // ReSharper disable CppUnusedIncludeDirective
+// ReSharper disable CppClangTidyModernizeDeprecatedHeaders
+// ReSharper disable CppClangTidyClangDiagnosticReservedMacroIdentifier
+// ReSharper disable CppClangTidyBugproneReservedIdentifier
+// ReSharper disable CppClangTidyModernizeUseAuto
+// ReSharper disable CppCStyleCast
+// ReSharper disable CppClangTidyBugproneMacroParentheses
+// ReSharper disable CppJoinDeclarationAndAssignment
+// ReSharper disable CppClangTidyBugproneImplicitWideningOfMultiplicationResult
 #ifndef _picohash_h_
 #define _picohash_h_
 

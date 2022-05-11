@@ -29,47 +29,47 @@ namespace V3D::V3DEngine::V3DMathematics
 
 	V3DVector2D V3DVector2D::operator+(const V3DVector2D& value) const
 	{
-		return V3DVector2D(x + value.x, y + value.y);
+		return {x + value.x, y + value.y};
 	}
 
 	V3DVector2D V3DVector2D::operator+(float size) const
 	{
-		return V3DVector2D(x + size, y + size);
+		return {x + size, y + size};
 	}
 
 	V3DVector2D V3DVector2D::operator-(const V3DVector2D& value) const
 	{
-		return V3DVector2D(x - value.x, y - value.y);
+		return {x - value.x, y - value.y};
 	}
 
 	V3DVector2D V3DVector2D::operator-(float size) const
 	{
-		return V3DVector2D(x - size, y - size);
+		return {x - size, y - size};
 	}
 
 	V3DVector2D V3DVector2D::operator*(const V3DVector2D& value) const
 	{
-		return V3DVector2D(x * value.x, y * value.y);
+		return {x * value.x, y * value.y};
 	}
 
 	V3DVector2D V3DVector2D::operator*(float size) const
 	{
-		return V3DVector2D(x * size, y * size);
+		return {x * size, y * size};
 	}
 
 	V3DVector2D V3DVector2D::operator/(const V3DVector2D& value) const
 	{
-		return V3DVector2D(x / value.x, y / value.y);
+		return {x / value.x, y / value.y};
 	}
 
 	V3DVector2D V3DVector2D::operator/(float size) const
 	{
-		return V3DVector2D(x / size, y / size);
+		return {x / size, y / size};
 	}
 
 	V3DVector2D V3DVector2D::operator-() const
 	{
-		return V3DVector2D(-x, -y);
+		return {-x, -y};
 	}
 
 	const V3DVector2D& V3DVector2D::operator++()
@@ -298,6 +298,6 @@ namespace V3D::V3DEngine::V3DMathematics
 
 	V3DVector2D V3DVector2D::MidPoint(const V3DVector2D& value) const
 	{
-		return V3DVector2D((x + value.x) * 0.5f, (y + value.y) * 0.5f);
+		return {(x + value.x) * 0.5f, (y + value.y) * 0.5f};
 	}
 }

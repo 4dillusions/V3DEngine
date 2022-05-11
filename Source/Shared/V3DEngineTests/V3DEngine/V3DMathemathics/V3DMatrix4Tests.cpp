@@ -128,7 +128,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DMathematics
 			0.0f, 0.0f, 2.0f, 0.0f,
 			0.0f, 0.0f, 0.0f, 1.0f), V3DFILE_INFO);
 		V3DTest::AssertOk(mat4.IsHasScale() == true, V3DFILE_INFO);
-		V3DTest::AssertOk(mat4 == V3DMatrix4().GetScale(V3DVector3D(2, 2, 2)), V3DFILE_INFO);
+		V3DTest::AssertOk(mat4 == V3DMatrix4::GetScale(V3DVector3D(2, 2, 2)), V3DFILE_INFO);
 
 		mat4.Identity();
 		V3DTest::AssertOk(mat4.IsAffine() == true, V3DFILE_INFO);

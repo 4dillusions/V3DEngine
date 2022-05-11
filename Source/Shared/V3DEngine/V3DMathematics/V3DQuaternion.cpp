@@ -31,28 +31,27 @@ namespace V3D::V3DEngine::V3DMathematics
 
 	V3DQuaternion V3DQuaternion::operator+(const V3DQuaternion& value) const
 	{
-		return V3DQuaternion(w + value.w, x + value.x, y + value.y, z + value.z);
+		return {w + value.w, x + value.x, y + value.y, z + value.z};
 	}
 
 	V3DQuaternion V3DQuaternion::operator-(const V3DQuaternion& value) const
 	{
-		return V3DQuaternion(w - value.w, x - value.x, y - value.y, z - value.z);
+		return {w - value.w, x - value.x, y - value.y, z - value.z};
 	}
 
 	V3DQuaternion V3DQuaternion::operator*(const V3DQuaternion& value) const
 	{
-		return V3DQuaternion
-		(
+		return {
 			w * value.w - x * value.x - y * value.y - z * value.z,
 			w * value.x + x * value.w + y * value.z - z * value.y,
 			w * value.y + y * value.w + z * value.x - x * value.z,
 			w * value.z + z * value.w + x * value.y - y * value.x
-		);
+		};
 	}
 
 	V3DQuaternion V3DQuaternion::operator*(float scalar) const
 	{
-		return V3DQuaternion(scalar * w, scalar * x, scalar * y, scalar * z);
+		return {scalar * w, scalar * x, scalar * y, scalar * z};
 	}
 
 	float V3DQuaternion::Length() const
@@ -76,7 +75,7 @@ namespace V3D::V3DEngine::V3DMathematics
 
 	V3DVector3D V3DQuaternion::RotationAxis() const
 	{
-		return V3DVector3D(x, y, z);
+		return {x, y, z};
 	}
 
 	void V3DQuaternion::ToRotationAxis(V3DVector3D& rotAxis) const

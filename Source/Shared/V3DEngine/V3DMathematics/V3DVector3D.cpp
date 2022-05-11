@@ -29,47 +29,47 @@ namespace V3D::V3DEngine::V3DMathematics
 
 	V3DVector3D V3DVector3D::operator+(const V3DVector3D& value) const
 	{
-		return V3DVector3D(x + value.x, y + value.y, z + value.z);
+		return {x + value.x, y + value.y, z + value.z};
 	}
 
 	V3DVector3D V3DVector3D::operator+(float size) const
 	{
-		return V3DVector3D(x + size, y + size, z + size);
+		return {x + size, y + size, z + size};
 	}
 
 	V3DVector3D V3DVector3D::operator-(const V3DVector3D& value) const
 	{
-		return V3DVector3D(x - value.x, y - value.y, z - value.z);
+		return {x - value.x, y - value.y, z - value.z};
 	}
 
 	V3DVector3D V3DVector3D::operator-(float size) const
 	{
-		return V3DVector3D(x - size, y - size, z - size);
+		return {x - size, y - size, z - size};
 	}
 
 	V3DVector3D V3DVector3D::operator*(const V3DVector3D& value) const
 	{
-		return V3DVector3D(x * value.x, y * value.y, z * value.z);
+		return {x * value.x, y * value.y, z * value.z};
 	}
 
 	V3DVector3D V3DVector3D::operator*(float size) const
 	{
-		return V3DVector3D(x * size, y * size, z * size);
+		return {x * size, y * size, z * size};
 	}
 
 	V3DVector3D V3DVector3D::operator/(const V3DVector3D& value) const
 	{
-		return V3DVector3D(x / value.x, y / value.y, z / value.z);
+		return {x / value.x, y / value.y, z / value.z};
 	}
 
 	V3DVector3D V3DVector3D::operator/(float size) const
 	{
-		return V3DVector3D(x / size, y / size, z / size);
+		return {x / size, y / size, z / size};
 	}
 
 	V3DVector3D V3DVector3D::operator-() const
 	{
-		return V3DVector3D(-x, -y, -z);
+		return {-x, -y, -z};
 	}
 
 	const V3DVector3D& V3DVector3D::operator++()
@@ -220,7 +220,7 @@ namespace V3D::V3DEngine::V3DMathematics
 
 	V3DVector3D V3DVector3D::CrossProduct(const V3DVector3D& value) const
 	{
-		return V3DVector3D(y * value.z - z * value.y, z * value.x - x * value.z, x * value.y - y * value.x);
+		return {y * value.z - z * value.y, z * value.x - x * value.z, x * value.y - y * value.x};
 	}
 
 	float V3DVector3D::Normalise()
@@ -249,6 +249,6 @@ namespace V3D::V3DEngine::V3DMathematics
 
 	V3DVector3D V3DVector3D::MidPoint(const V3DVector3D& value) const
 	{
-		return V3DVector3D((x + value.x) * 0.5f, (y + value.y) * 0.5f, (z + value.z) * 0.5f);
+		return {(x + value.x) * 0.5f, (y + value.y) * 0.5f, (z + value.z) * 0.5f};
 	}
 }

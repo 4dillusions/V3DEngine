@@ -15,7 +15,7 @@ namespace V3D::V3DEngine::V3DCore
 	{
 		time_t currentTime;
 		time(&currentTime);
-		struct tm* localTime = localtime(&currentTime);
+		struct tm* localTime = localtime(&currentTime);  // NOLINT(concurrency-mt-unsafe)
 		localTime->tm_year += 1900;
 		localTime->tm_mon += 1;
 

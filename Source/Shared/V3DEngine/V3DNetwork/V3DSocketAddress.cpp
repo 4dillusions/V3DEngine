@@ -81,7 +81,7 @@ namespace V3D::V3DEngine::V3DNetwork
 		if (getaddrinfo(hostname, nullptr, nullptr, &addressInfo) != 0)
 		{
 			V3DLogger::Get().WriteOutput(V3DLogMessageType::Error, V3DString("Can't get ip from hostname! '") + hostname + "'");
-			return V3DString();
+			return {};
 		}
 
 		const auto* address = reinterpret_cast<struct sockaddr_in*>(addressInfo->ai_addr);

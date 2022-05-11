@@ -12,13 +12,13 @@ namespace V3D::V3DEngine::V3DIO
 {
 	class V3DENGINE_API V3DMemoryStream final
 	{
-		const unsigned long long MaxSize;
-		unsigned long long head{};
-		char* buffer{};
 		bool isBufferAllocated;
+		char* buffer{};
+		long head{};
+		const long MaxSize;
 
-		void Write(const void* data, unsigned long long dataSize);
-		void Read(void* dataOut, unsigned long long dataSize);
+		void Write(const void* data, long dataSize);
+		void Read(void* dataOut, long dataSize);
 		
 	public:
 		V3DMemoryStream() = delete;
@@ -27,13 +27,13 @@ namespace V3D::V3DEngine::V3DIO
 		V3DMemoryStream& operator=(const V3DMemoryStream&) = delete;
 		V3DMemoryStream& operator=(V3DMemoryStream&&) = delete;
 
-		explicit V3DMemoryStream(unsigned long long maxSize);
-		explicit V3DMemoryStream(unsigned long long maxSize, char* bufferData);
+		explicit V3DMemoryStream(long maxSize);
+		explicit V3DMemoryStream(long maxSize, char* bufferData);
 		explicit V3DMemoryStream(char* bufferData);
 		~V3DMemoryStream();
 
 		char* GetBuffer() const;
-		unsigned long long GetCurrentSize() const;
+		long GetCurrentSize() const;
 
 		template<typename T> void Read(T& data)
 		{

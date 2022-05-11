@@ -25,9 +25,9 @@ namespace V3D::V3DEngine::V3DIO
 		std::ifstream stream(fileFullName.ToChar(), std::ios::binary);
 		if (stream)
 		{
-			stream.seekg(0, stream.end);
+			stream.seekg(0, std::ifstream::end);
 			const auto length = stream.tellg();
-			stream.seekg(0, stream.beg);
+			stream.seekg(0, std::ifstream::beg);
 
 			result = V3DMemory::NewArray<char>(V3DFILE_INFO, length);
 			stream.read(result, length);
@@ -44,7 +44,7 @@ namespace V3D::V3DEngine::V3DIO
 		return result;
 	}
 
-	void V3DBinaryRW::Write(const char* fileName, char* data, unsigned long long size, unsigned long long offset)
+	void V3DBinaryRW::Write(const char* fileName, char* data, long size, long offset)
 	{
 		V3DString fileFullName;		
 		fileFullName += fileName;
@@ -52,7 +52,7 @@ namespace V3D::V3DEngine::V3DIO
 		const std::ofstream::openmode flags = offset == 0 ? std::ofstream::binary : std::ofstream::binary | std::ofstream::out | std::ofstream::app;
 		std::ofstream outfile(fileFullName.ToChar(), flags);
 
-		outfile.seekp(offset, outfile.beg);
+		outfile.seekp(offset, std::ofstream::beg);
 		outfile.write(data, size);
 		outfile.close();
 	}
