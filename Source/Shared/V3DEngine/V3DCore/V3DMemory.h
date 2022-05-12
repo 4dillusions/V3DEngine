@@ -10,6 +10,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DMemoryInfo.h"
 #include "V3DMemoryAllocatorTypes.h"
 
+// ReSharper disable once CppUnusedIncludeDirective
 #include <unordered_map>
 
 namespace V3D::V3DEngine::V3DCore

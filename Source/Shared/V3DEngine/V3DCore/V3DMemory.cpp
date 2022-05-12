@@ -4,8 +4,8 @@ Copyright (c) 2020 by 4D Illusions. All rights reserved.
 Released under the terms of the GNU General Public License version 3 or later.
 */
 
+// ReSharper disable CppUnusedIncludeDirective
 #include "V3DMemory.h"
-// ReSharper disable once CppUnusedIncludeDirective
 #include "V3DString.h" 
 #include "V3DEngine/V3DIO/V3DLogger.h"
 
