@@ -16,9 +16,9 @@ namespace V3D::V3DEngineTests::V3DTestObject
 	
 	class V3DTestObjectB final : public V3DITestObject
 	{
+		bool isAlive{ true };
 		static int referenceCounter;
 		int id{};
-		bool isAlive{ true };
 
 	public:
 		V3DTestObjectB() = default;

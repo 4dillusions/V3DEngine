@@ -19,6 +19,10 @@
 // ReSharper disable CppClangTidyBugproneMacroParentheses
 // ReSharper disable CppJoinDeclarationAndAssignment
 // ReSharper disable CppClangTidyBugproneImplicitWideningOfMultiplicationResult
+// ReSharper disable CppClangTidyClangDiagnosticReservedIdentifier
+// ReSharper disable CppClangTidyReadabilityInconsistentDeclarationParameterName
+// ReSharper disable CppParameterMayBeConstPtrOrRef
+// ReSharper disable CppVariableCanBeMadeConstexpr
 #ifndef _picohash_h_
 #define _picohash_h_
 

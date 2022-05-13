@@ -37,7 +37,7 @@ namespace V3D::V3DEngine::V3DIO
 
 	int V3DSQLiteContext::OutputListCallback(void* customData, int columnCount, char** field, char** columnName)
 	{
-		auto list = static_cast<V3DDynamicArray<V3DString>*>(customData);
+		const auto list = static_cast<V3DDynamicArray<V3DString>*>(customData);
 
 		for (int index = 0; index < columnCount; index++)
 			list->Add(V3DString(field[index]));

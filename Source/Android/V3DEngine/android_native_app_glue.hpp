@@ -32,6 +32,9 @@ Released under the terms of the GNU General Public License version 3 or later.
 // ReSharper disable CppClangTidyConcurrencyMtUnsafe
 // ReSharper disable CppCStyleCast
 // ReSharper disable CppClangTidyClangDiagnosticFormatPedantic
+// ReSharper disable CppZeroConstantCanBeReplacedWithNullptr
+// ReSharper disable CppParameterMayBeConstPtrOrRef
+// ReSharper disable CppLocalVariableMayBeConst
 #include <jni.h>
 
 #include <cerrno>

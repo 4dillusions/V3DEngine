@@ -17,8 +17,8 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCryptography
 {
 	void V3DCryptographyHelperTests::ConvertHexArrayToStringTest()
 	{
-		unsigned char hexArray[] = { 0xFF, 0xEE, 0xDD, 0xCC, 0xBB, 0xAA, 0x99, 0x88, 0x77, 0x66, 0x55, 0x44, 0x33, 0x22, 0x11, 0x00 };
-		const int hexArrayLen = sizeof(hexArray) / sizeof(*hexArray);
+		const unsigned char hexArray[] = { 0xFF, 0xEE, 0xDD, 0xCC, 0xBB, 0xAA, 0x99, 0x88, 0x77, 0x66, 0x55, 0x44, 0x33, 0x22, 0x11, 0x00 };
+		constexpr int hexArrayLen = std::size(hexArray); //sizeof(hexArray) / sizeof(*hexArray);
 		const V3DString hexString("ffeeddccbbaa99887766554433221100");
 
 		const auto hexStringResult = V3DCryptographyHelper::ConvertHexArrayToString(hexArray, hexArrayLen);

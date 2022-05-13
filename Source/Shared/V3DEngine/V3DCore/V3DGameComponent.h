@@ -13,10 +13,10 @@ namespace V3D::V3DEngine::V3DCore
 	class V3DENGINE_API V3DGameComponent
 	{
 	public:
-		const unsigned long long int Id{};
-		const char* Name{};
 		bool isAlive{ true }, isVisible{ true };
-
+		const char* Name{};
+		const unsigned long long int Id{};
+		
 		V3DGameComponent();
 		explicit V3DGameComponent(const char* name);
 		V3DGameComponent(const V3DGameComponent&) = delete;

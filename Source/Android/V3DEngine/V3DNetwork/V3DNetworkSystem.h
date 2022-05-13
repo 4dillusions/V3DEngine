@@ -18,8 +18,8 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include <sys/types.h>
 
 typedef int SOCKET;
-const int NO_ERROR = 0;
-const int INVALID_SOCKET = -1;
-const int WSAECONNRESET = ECONNRESET;
-const int WSAEWOULDBLOCK = EAGAIN;
-const int SOCKET_ERROR = -1;
+constexpr int NO_ERROR = 0;
+constexpr int INVALID_SOCKET = -1;
+constexpr int WSAECONNRESET = ECONNRESET;
+constexpr int WSAEWOULDBLOCK = EAGAIN;
+constexpr int SOCKET_ERROR = -1;

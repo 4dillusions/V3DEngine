@@ -31,8 +31,8 @@ namespace V3D::V3DEngine::V3DCollections
 	*/
 	template<typename TKey, typename TItem> class V3DDecimalTree final
 	{
-		static const int DigitSize = 10;
-		static const int NumberSystemSize = 10;
+		static constexpr int DigitSize = 10;
+		static constexpr int NumberSystemSize = 10;
 		V3DDecimalTreeNode<TKey, TItem>* root{}, * current{}, ** currentAllItemArray{};
 		int currentIndex{}, length{};
 

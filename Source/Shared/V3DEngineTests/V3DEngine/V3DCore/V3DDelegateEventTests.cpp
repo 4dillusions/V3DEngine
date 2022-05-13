@@ -39,7 +39,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 	
 	void V3DDelegateEventTests::DelegateParamAddRemoveTest()
 	{
-		const V3DArgsTest EventArgs{ 5 };
+		constexpr V3DArgsTest EventArgs{ 5 };
 		int x = 100;
 		auto obj = V3DMemory::New<V3DTestObjectB>(V3DFILE_INFO);
 
@@ -88,7 +88,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 	void V3DDelegateEventTests::EventParamAddRemoveTest()
 	{
 		int x = 100;
-		const V3DArgsTest EventArgs{ 5 };
+		constexpr V3DArgsTest EventArgs{ 5 };
 		auto obj = V3DMemory::New<V3DTestObjectB>(V3DFILE_INFO);
 
 		const std::function<void(const V3DArgsTest& args)> Func1 = [&x](const V3DArgsTest& args) { x += args.x; };

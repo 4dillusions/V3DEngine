@@ -10,7 +10,7 @@ namespace V3D::V3DEngineTests::V3DTestObject
 {
 	struct V3DTestSimpleData final
 	{
-		int id{};
 		char text[10]{};
+		int id{};
 	};
 }

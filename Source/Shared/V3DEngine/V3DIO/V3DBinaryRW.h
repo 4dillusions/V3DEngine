@@ -28,6 +28,6 @@ namespace V3D::V3DEngine::V3DIO
         V3DBinaryRW& operator=(V3DBinaryRW&&) = delete;        
 
         static char* Read(V3DCore::V3DAssetPathType path, const char* fileName);
-        static void Write(const char* fileName, char* data, long size, long offset = 0);
+        static void Write(const char* fileName, const char* data, long size, long offset = 0);
     };
 }

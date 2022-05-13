@@ -78,7 +78,7 @@ namespace V3D::V3DEngine::V3DIO
 		return nullptr;
 	}
 	
-	void V3DBinaryRW::Write(const char* fileName, char* data, long size, long offset)
+	void V3DBinaryRW::Write(const char* fileName, const char* data, long size, long offset)
 	{
 		V3DString fileFullName;
 		fileFullName += V3DString(static_cast<android_app*>(V3DEnvironment::GetApp())->activity->internalDataPath);

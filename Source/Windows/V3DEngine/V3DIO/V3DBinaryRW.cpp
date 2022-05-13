@@ -44,7 +44,7 @@ namespace V3D::V3DEngine::V3DIO
 		return result;
 	}
 
-	void V3DBinaryRW::Write(const char* fileName, char* data, long size, long offset)
+	void V3DBinaryRW::Write(const char* fileName, const char* data, long size, long offset)
 	{
 		V3DString fileFullName;		
 		fileFullName += fileName;

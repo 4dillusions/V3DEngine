@@ -23,12 +23,12 @@ namespace V3D::V3DEngine::V3DThreading
 	protected:	
 		std::thread* jobThread{};
 
+		std::condition_variable condition;
+		std::mutex conditionMutex;
+
 		std::atomic<bool> isActive{ true };
 		std::atomic<bool> isNeedWait{ true };
 		std::atomic<bool> isWorking{ true };
-
-		std::condition_variable condition;
-		std::mutex conditionMutex;
 		
 		V3DTaskBase() = default;
 		

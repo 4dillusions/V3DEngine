@@ -31,7 +31,7 @@ namespace V3D::V3DEngine::V3DCore
 		return &result;
 	}
 	
-	V3DString V3DDateTime::GetTimeStamp(V3DTimeSpan* now)
+	V3DString V3DDateTime::GetTimeStamp(const V3DTimeSpan* now)
 	{
 		if (now == nullptr)
 			now = GetNow();
@@ -39,7 +39,7 @@ namespace V3D::V3DEngine::V3DCore
 		return V3DString('[') + now->day + "." + now->month + "." + now->year + " " + now->hour + ":" + now->min + ":" + now->sec + "] ";
 	}
 	
-	V3DString V3DDateTime::GetSqlTimeStamp(V3DTimeSpan* now)
+	V3DString V3DDateTime::GetSqlTimeStamp(const V3DTimeSpan* now)
 	{
 		if (now == nullptr)
 			now = GetNow();
@@ -47,7 +47,7 @@ namespace V3D::V3DEngine::V3DCore
 		return V3DString(now->year) + "-" + now->month + "-" + now->day + " " + now->hour + ":" + now->min + ":" + now->sec + "." + now->millisec;
 	}
 	
-	V3DString V3DDateTime::GetSQLTimeStampNumbers(V3DTimeSpan* now)
+	V3DString V3DDateTime::GetSQLTimeStampNumbers(const V3DTimeSpan* now)
 	{
 		if (now == nullptr)
 			now = GetNow();

@@ -19,13 +19,13 @@ namespace V3D::V3DEngine::V3DData
 	{
 		V3DString textForHash;
 
-		for (int assetPathType = 0; assetPathType < (int)V3DAssetPathType::AllFolderCount; assetPathType++)
+		for (int assetPathType = 0; assetPathType < static_cast<int>(V3DAssetPathType::AllFolderCount); assetPathType++)
 		{
-			auto fileList = V3DFolder::GetFileList((V3DAssetPathType)assetPathType);
+			auto fileList = V3DFolder::GetFileList(static_cast<V3DAssetPathType>(assetPathType));
 			for (fileList.First(); fileList.IsDone(); fileList.Next())
 			{
 				textForHash += *fileList.GetCurrent();
-				textForHash += (int)V3DFile::GetSize((V3DAssetPathType)assetPathType, fileList.GetCurrent()->ToChar()); //1 file max size: 2 billion bytes (2.147.483.647) ~ 2.047 Mb ~ 2 Gb
+				textForHash += static_cast<int>(V3DFile::GetSize(static_cast<V3DAssetPathType>(assetPathType), fileList.GetCurrent()->ToChar())); //1 file max size: 2 billion bytes (2.147.483.647) ~ 2.047 Mb ~ 2 Gb
 			}
 		}
 

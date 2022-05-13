@@ -30,8 +30,8 @@ namespace V3D::V3DEngine::V3DCore
 		
 		explicit V3DWatchHour(const V3DTimeHour& currentTime, const V3DTimeHour& minTime = V3DTimeHour{}, const V3DTimeHour& maxTime = V3DTimeHour{});
 		
-		void SetMinTimeEvent(const std::function<void()>& minTimeEvent);
-		void SetMaxTimeEvent(const std::function<void()>& maxTimeEvent);
+		void SetMinTimeEvent(const std::function<void()>& minTimeEventFunc);
+		void SetMaxTimeEvent(const std::function<void()>& maxTimeEventFunc);
 		const V3DTimeHour& GetTime() const;
 		
 		void SetToZero();

@@ -11,12 +11,12 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 	class V3DCollectionsTests final
 	{
 	public:
-		static const int PoolMemoryAllocCount = 2;
-		static const int ListMemoryAllocCount = 2;
-		static const int DynamicArrayMemoryAllocCount = 1;
-		static const int DecimalTreeMemoryAllocCount = 1;
-		static const int Size = 10;
-		static const int BigSize = 10'000;
+		static constexpr int PoolMemoryAllocCount = 2;
+		static constexpr int ListMemoryAllocCount = 2;
+		static constexpr int DynamicArrayMemoryAllocCount = 1;
+		static constexpr int DecimalTreeMemoryAllocCount = 1;
+		static constexpr int Size = 10;
+		static constexpr int BigSize = 10'000;
 		
 		V3DCollectionsTests() = delete;
 		V3DCollectionsTests(const V3DCollectionsTests&) = delete;

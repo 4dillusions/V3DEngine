@@ -11,8 +11,8 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DMathematics
 	class V3DMathematicsTests final
 	{
 	public:
-		static const int RandomCountSize = 100'000;
-		static const int MaxRandom = 1'000;
+		static constexpr int RandomCountSize = 100'000;
+		static constexpr int MaxRandom = 1'000;
 		
 		V3DMathematicsTests() = delete;
 		V3DMathematicsTests(const V3DMathematicsTests&) = delete;

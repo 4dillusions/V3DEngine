@@ -21,7 +21,7 @@ namespace V3D::V3DEngine::V3DCore
 		explicit V3DGameCompositeComponent(const char* name);
 		V3DGameCompositeComponent(const V3DGameCompositeComponent&) = delete;
 		V3DGameCompositeComponent(V3DGameCompositeComponent&&) = delete;
-		virtual ~V3DGameCompositeComponent();
+		~V3DGameCompositeComponent() override;
 		V3DGameCompositeComponent& operator=(const V3DGameCompositeComponent&) = delete;
 		V3DGameCompositeComponent& operator=(V3DGameCompositeComponent&&) = delete;
 

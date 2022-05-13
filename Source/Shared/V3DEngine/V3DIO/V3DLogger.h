@@ -23,11 +23,10 @@ namespace V3D::V3DEngine::V3DIO
     {
         bool outputTypes[static_cast<unsigned int>(V3DLogOutputType::Count)]{};
         std::function<void(const V3DCore::V3DString& log)> logTrigger = nullptr;
-
-        V3DCore::V3DString* buffer{};
-
         int warnings = 0, errors = 0;
-
+        
+        V3DCore::V3DString* buffer{};
+        
         V3DLogger();
         ~V3DLogger();
 
