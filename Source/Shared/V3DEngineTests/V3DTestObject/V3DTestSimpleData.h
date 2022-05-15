@@ -8,9 +8,9 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 namespace V3D::V3DEngineTests::V3DTestObject
 {
-	struct V3DTestSimpleData final
+	struct V3DTestSimpleData final  // NOLINT(clang-diagnostic-padded)
 	{
-		char text[10]{};
 		int id{};
+		char text[10]{};
 	};
 }

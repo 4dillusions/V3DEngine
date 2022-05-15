@@ -23,6 +23,11 @@
 // ReSharper disable CppClangTidyReadabilityInconsistentDeclarationParameterName
 // ReSharper disable CppParameterMayBeConstPtrOrRef
 // ReSharper disable CppVariableCanBeMadeConstexpr
+// ReSharper disable CppClangTidyClangDiagnosticPadded
+// ReSharper disable CppClangTidyClangDiagnosticCastAlign
+// ReSharper disable CppClangTidyClangDiagnosticImplicitIntConversion
+// ReSharper disable CppClangTidyClangDiagnosticExtraSemiStmt
+// ReSharper disable CppClangTidyClangDiagnosticCastQual
 #ifndef _picohash_h_
 #define _picohash_h_
 

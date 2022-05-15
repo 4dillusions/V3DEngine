@@ -44,9 +44,9 @@ namespace V3D::V3DEngine::V3DCore
 		return isAlive;
 	}
 
-	void V3DGameComponent::SetIsAlive(bool isAlive)
+	void V3DGameComponent::SetIsAlive(bool isAliveValue)
 	{
-		this->isAlive = isAlive;
+		isAlive = isAliveValue;
 	}
 
 	bool V3DGameComponent::GetIsVisible() const
@@ -54,8 +54,8 @@ namespace V3D::V3DEngine::V3DCore
 		return isVisible;
 	}
 
-	void V3DGameComponent::SetIsVisible(bool isVisible)
+	void V3DGameComponent::SetIsVisible(bool isVisibleValue)
 	{
-		this->isVisible = isVisible;
+		isVisible = isVisibleValue;
 	}
 }

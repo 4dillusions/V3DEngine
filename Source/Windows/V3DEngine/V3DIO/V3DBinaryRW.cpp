@@ -29,7 +29,7 @@ namespace V3D::V3DEngine::V3DIO
 			const auto length = stream.tellg();
 			stream.seekg(0, std::ifstream::beg);
 
-			result = V3DMemory::NewArray<char>(V3DFILE_INFO, length);
+			result = V3DMemory::NewArray<char>(V3DFILE_INFO, static_cast<unsigned>(length));
 			stream.read(result, length);
 			stream.close();
 		}

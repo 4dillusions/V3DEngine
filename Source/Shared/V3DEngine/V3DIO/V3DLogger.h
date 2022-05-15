@@ -21,8 +21,8 @@ namespace V3D::V3DEngine::V3DIO
 {
     class V3DENGINE_API V3DLogger final
     {
-        bool outputTypes[static_cast<unsigned int>(V3DLogOutputType::Count)]{};
         std::function<void(const V3DCore::V3DString& log)> logTrigger = nullptr;
+        bool outputTypes[static_cast<unsigned int>(V3DLogOutputType::Count)]{};
         int warnings = 0, errors = 0;
         
         V3DCore::V3DString* buffer{};

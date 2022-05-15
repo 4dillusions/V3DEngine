@@ -25,7 +25,7 @@ namespace V3D::V3DEngine::V3DCryptography
 		V3DHashType hashType;
 		int arraySize;
 
-		unsigned char* CreateHexArray(int arraySize) const;
+		unsigned char* CreateHexArray(int arraySizeValue) const;
 		
 		void InitPicohash(void* picoContext) const;
 		void InitPicohashHMAC(void* picoContext, const V3DCore::V3DString& key) const;

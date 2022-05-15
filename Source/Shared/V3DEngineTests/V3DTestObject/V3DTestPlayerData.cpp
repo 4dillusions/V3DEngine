@@ -10,10 +10,10 @@ using namespace V3D::V3DEngine::V3DCore;
 
 namespace V3D::V3DEngineTests::V3DTestObject
 {
-    V3DTestPlayerData::V3DTestPlayerData(const V3DString& name) :  name{name}
+    V3DTestPlayerData::V3DTestPlayerData(V3DString name) :  name{std::move(name)}
     { }
 	
-    V3DTestPlayerData::V3DTestPlayerData(int id, const V3DString& name) : id{id}, name{name}
+    V3DTestPlayerData::V3DTestPlayerData(int id, V3DString name) : id{id}, name{std::move(name)}
     { }
 	
     bool V3DTestPlayerData::operator==(const V3DTestPlayerData& value) const
@@ -31,9 +31,9 @@ namespace V3D::V3DEngineTests::V3DTestObject
         return id;
     }
 	
-    void V3DTestPlayerData::SetId(int id)
+    void V3DTestPlayerData::SetId(int idValue)
     {
-        this->id = id;
+        id = idValue;
     }
 	
     V3DString V3DTestPlayerData::GetName() const
@@ -41,9 +41,9 @@ namespace V3D::V3DEngineTests::V3DTestObject
         return name;
     }
 	
-    void V3DTestPlayerData::SetName(const V3DString& name)
+    void V3DTestPlayerData::SetName(const V3DString& nameValue)
     {
-        this->name = name;
+        name = nameValue;
     }
 	
     bool V3DTestPlayerData::GetIsValid() const

@@ -13,10 +13,10 @@ namespace V3D::V3DEngine::V3DIO
 	class V3DENGINE_API V3DMemoryStream final
 	{
 		bool isBufferAllocated;
-		char* buffer{};
+		char* buffer{};  // NOLINT(clang-diagnostic-padded)
 		long head{};
 		const long MaxSize;
-
+		
 		void Write(const void* data, long dataSize);
 		void Read(void* dataOut, long dataSize);
 		

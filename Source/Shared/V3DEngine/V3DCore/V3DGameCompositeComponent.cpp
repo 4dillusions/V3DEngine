@@ -111,19 +111,19 @@ namespace V3D::V3DEngine::V3DCore
 		}
 	}
 
-	void V3DGameCompositeComponent::SetIsAlive(bool isAlive)
+	void V3DGameCompositeComponent::SetIsAlive(bool isAliveValue)
 	{
-		this->isAlive = isAlive;
+		isAlive = isAliveValue;
 
 		for (componentList.First(); componentList.IsDone(); componentList.Next())
-			(*componentList.GetCurrent())->SetIsAlive(isAlive);
+			(*componentList.GetCurrent())->SetIsAlive(isAliveValue);
 	}
 
-	void V3DGameCompositeComponent::SetIsVisible(bool isVisible)
+	void V3DGameCompositeComponent::SetIsVisible(bool isVisibleValue)
 	{
-		this->isVisible = isVisible;
+		isVisible = isVisibleValue;
 
 		for (componentList.First(); componentList.IsDone(); componentList.Next())
-			(*componentList.GetCurrent())->SetIsVisible(isVisible);
+			(*componentList.GetCurrent())->SetIsVisible(isVisibleValue);
 	}
 }

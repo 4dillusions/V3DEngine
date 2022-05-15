@@ -10,7 +10,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 namespace V3D::V3DEngineTests::V3DTestObject
 {
-	class V3DTestLayer final : public V3D::V3DEngine::V3DCore::V3DGameCompositeComponent
+	class V3DTestLayer final : public V3D::V3DEngine::V3DCore::V3DGameCompositeComponent  // NOLINT(clang-diagnostic-weak-vtables)
 	{
 	public:
 		V3DTestLayer();

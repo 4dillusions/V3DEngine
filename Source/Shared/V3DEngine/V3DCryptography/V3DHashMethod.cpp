@@ -23,13 +23,12 @@ namespace V3D::V3DEngine::V3DCryptography
 			case V3DHashType::SHA1: arraySize = PICOHASH_SHA1_DIGEST_LENGTH; break;
 			case V3DHashType::SHA224: arraySize = PICOHASH_SHA224_DIGEST_LENGTH; break;
 			case V3DHashType::SHA256: arraySize = PICOHASH_SHA256_DIGEST_LENGTH; break;
-			default: break;
 		}
 	}
 
-	unsigned char* V3DHashMethod::CreateHexArray(int arraySize) const
+	unsigned char* V3DHashMethod::CreateHexArray(int arraySizeValue) const
 	{
-		return V3DMemory::NewArray<unsigned char>(V3DFILE_INFO, arraySize);;
+		return V3DMemory::NewArray<unsigned char>(V3DFILE_INFO, arraySizeValue);
 	}
 
 	void V3DHashMethod::InitPicohash(void* picoContext) const
@@ -42,7 +41,6 @@ namespace V3D::V3DEngine::V3DCryptography
 			case V3DHashType::SHA1: picohash_init_sha1(ctx); break;
 			case V3DHashType::SHA224: picohash_init_sha224(ctx); break;
 			case V3DHashType::SHA256: picohash_init_sha256(ctx); break;
-			default: break;
 		}
 	}
 
@@ -56,7 +54,6 @@ namespace V3D::V3DEngine::V3DCryptography
 			case V3DHashType::SHA1: picohash_init_hmac(ctx, picohash_init_sha1, key.ToChar(), key.GetTextLength()); break;
 			case V3DHashType::SHA224: picohash_init_hmac(ctx, picohash_init_sha224, key.ToChar(), key.GetTextLength()); break;
 			case V3DHashType::SHA256: picohash_init_hmac(ctx, picohash_init_sha256, key.ToChar(), key.GetTextLength()); break;
-			default: break;
 		}
 	}
 

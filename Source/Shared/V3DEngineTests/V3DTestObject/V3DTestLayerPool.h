@@ -11,7 +11,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 namespace V3D::V3DEngineTests::V3DTestObject
 {
-	class V3DTestLayerPool final : public V3D::V3DEngine::V3DCore::V3DGameCompositeComponentPool<V3DTestSprite>
+	class V3DTestLayerPool final : public V3D::V3DEngine::V3DCore::V3DGameCompositeComponentPool<V3DTestSprite>  // NOLINT(clang-diagnostic-weak-vtables)
 	{
 	public:
 		explicit V3DTestLayerPool(int size);

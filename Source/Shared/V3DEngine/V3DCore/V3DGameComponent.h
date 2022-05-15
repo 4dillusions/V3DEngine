@@ -4,6 +4,7 @@ Copyright (c) 2020 by 4D Illusions. All rights reserved.
 Released under the terms of the GNU General Public License version 3 or later.
 */
 
+// ReSharper disable CppClangTidyClangDiagnosticPadded
 #pragma once
 
 #include "V3DEngine/V3DEngineLibrary.h"
@@ -32,9 +33,9 @@ namespace V3D::V3DEngine::V3DCore
 		unsigned long long int GetId() const;
 		const char* GetName() const;
 		bool GetIsAlive() const;
-		virtual void SetIsAlive(bool isAlive);
+		virtual void SetIsAlive(bool isAliveValue);
 		bool GetIsVisible() const;
-		virtual void SetIsVisible(bool isVisible);
+		virtual void SetIsVisible(bool isVisibleValue);
 
 		virtual void Update(double deltaTime) = 0;
 	};

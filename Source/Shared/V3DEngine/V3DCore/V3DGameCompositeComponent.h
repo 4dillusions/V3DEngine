@@ -14,7 +14,7 @@ namespace V3D::V3DEngine::V3DCore
 	class V3DENGINE_API V3DGameCompositeComponent : public V3DGameComponent
 	{
 	protected:
-		V3DCollections::V3DLinkedList<V3DGameComponent*> componentList;
+		V3DCollections::V3DLinkedList<V3DGameComponent*> componentList;  // NOLINT(clang-diagnostic-padded)
 
 	public:
 		V3DGameCompositeComponent();
@@ -36,7 +36,7 @@ namespace V3D::V3DEngine::V3DCore
 		
 		//V3DGameComponent abstraction
 		void Update(double deltaTime) override;
-		void SetIsAlive(bool isAlive) override;
-		void SetIsVisible(bool isVisible) override;
+		void SetIsAlive(bool isAliveValue) override;
+		void SetIsVisible(bool isVisibleValue) override;
 	};
 }
