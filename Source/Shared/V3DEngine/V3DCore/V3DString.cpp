@@ -353,8 +353,8 @@ namespace V3D::V3DEngine::V3DCore
 
 	std::wstring V3DString::ToWString() const
 	{
-		std::string stdText;
-		stdText = data;
+		std::string stdText; //std::string stdText = data;
+		stdText.append(data);
 		std::wstring wsText;
 		wsText.assign(stdText.begin(), stdText.end());
 		wsText.append(L"\r\n");

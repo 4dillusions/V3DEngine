@@ -6,6 +6,8 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #pragma once
 
+#include <algorithm>
+
 #include "V3DArrayNode.h"
 #include "V3DEngine/V3DCore/V3DMemory.h"
 #include "V3DEngine/V3DMacros.h"

@@ -18,7 +18,7 @@ namespace V3D::V3DEngine::V3DCore
 	//Avoid memory leaks with New/Delete instead of new/delete_ naked operators
 	class V3DENGINE_API V3DMemory final
 	{
-		static std::unordered_map<int*, V3DMemoryInfo> memoryList;
+		static std::unordered_map<int*, V3DMemoryInfo> memoryDictionary;
 		inline static bool isDebugMode{ V3DEnvironment::GetIsRunModeDebug() };
 		
 	public:

@@ -14,4 +14,9 @@ namespace V3D::V3DEngineTests
 	{
 		std::cout << text << std::endl;
 	}
+
+	void V3DTest::WriteOutput(const char* text)
+	{
+		std::cout << text << std::endl;
+	}
 }

@@ -16,11 +16,11 @@ using namespace V3D::V3DEngine::V3DIO;
 
 namespace V3D::V3DEngine::V3DCore
 {
-	std::unordered_map<int*, V3DMemoryInfo> V3DMemory::memoryList;
+	std::unordered_map<int*, V3DMemoryInfo> V3DMemory::memoryDictionary;
 
 	int V3DMemory::GetMemoryLeakCount()
 	{
-		return static_cast<int>(memoryList.size());
+		return static_cast<int>(memoryDictionary.size());
 	}
 
 	V3DString V3DMemory::GetStatistics()
@@ -28,10 +28,10 @@ namespace V3D::V3DEngine::V3DCore
 		std::string result;
 		result = "Leaked objects:\n";
 
-		for (const auto& i : memoryList)  // NOLINT(clang-diagnostic-range-loop-construct)
+		for (const auto& i : memoryDictionary)  // NOLINT(clang-diagnostic-range-loop-construct)
 			result += i.second.info + static_cast<const char>('\n');
 
-		if (memoryList.empty())
+		if (memoryDictionary.empty())
 			result += "0 leaked object";
 		
 		return V3DString(result.c_str());
@@ -39,15 +39,15 @@ namespace V3D::V3DEngine::V3DCore
 
 	void V3DMemory::Add(int* address, const V3DMemoryInfo& info)
 	{
-		memoryList.insert({ address, info });
+		memoryDictionary.insert({ address, info });
 	}
 
 	// ReSharper disable once CppParameterMayBeConstPtrOrRef
 	void V3DMemory::Remove(int* address, V3DMemoryAllocatorType allocType)
 	{
-		const auto search = memoryList.find(address);
-		if (search != memoryList.end() && search->second.allocType == allocType)
-			memoryList.erase(search);
+		const auto search = memoryDictionary.find(address);
+		if (search != memoryDictionary.end() && search->second.allocType == allocType)
+			memoryDictionary.erase(search);
 	}
 
 	void V3DMemory::WriteStatistics()

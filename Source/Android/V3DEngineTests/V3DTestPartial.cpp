@@ -14,4 +14,9 @@ namespace V3D::V3DEngineTests
 	{
 		__android_log_print(ANDROID_LOG_VERBOSE, "V3DEngineTests", "%s", text.c_str());
 	}
+
+	void V3DTest::WriteOutput(const char* text)
+	{
+		__android_log_print(ANDROID_LOG_VERBOSE, "V3DEngineTests", "%s", text);
+	}
 }
