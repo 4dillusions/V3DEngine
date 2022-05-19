@@ -20,7 +20,7 @@ namespace V3D::V3DEngine::V3DCore
 	public:
 		V3DGameCompositeComponentPool(const V3DGameCompositeComponentPool&) = delete;
 		V3DGameCompositeComponentPool(V3DGameCompositeComponentPool&&) = delete;
-		virtual ~V3DGameCompositeComponentPool() = default;
+		~V3DGameCompositeComponentPool() override = default;
 		V3DGameCompositeComponentPool& operator=(const V3DGameCompositeComponentPool&) = delete;
 		V3DGameCompositeComponentPool& operator=(V3DGameCompositeComponentPool&&) = delete;
 		
@@ -52,7 +52,7 @@ namespace V3D::V3DEngine::V3DCore
 			return nullptr;
 		}
 		
-		//bool IsLastVisible(const LFString& name);
+		//bool IsLastVisible(const V3DString& name);
 		
 		int GetComponentsLength() const
 		{
@@ -88,20 +88,20 @@ namespace V3D::V3DEngine::V3DCore
 			}
 		}
 		
-		void SetIsAlive(bool isAlive) override
+		void SetIsAlive(bool isAliveValue) override
 		{
-			this->isAlive = isAlive;
+			isAlive = isAliveValue;
 
 			for (componentPool.First(); componentPool.IsDone(); componentPool.Next())
-				componentPool.GetCurrent()->SetIsAlive(isAlive);
+				componentPool.GetCurrent()->SetIsAlive(isAliveValue);
 		}
 		
-		void SetIsVisible(bool isVisible) override
+		void SetIsVisible(bool isVisibleValue) override
 		{
-			this->isVisible = isVisible;
+			isVisible = isVisibleValue;
 
 			for (componentPool.First(); componentPool.IsDone(); componentPool.Next())
-				componentPool.GetCurrent()->SetIsVisible(isVisible);
+				componentPool.GetCurrent()->SetIsVisible(isVisibleValue);
 		}
 	};
 }

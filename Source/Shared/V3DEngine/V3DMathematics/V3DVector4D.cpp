@@ -27,47 +27,47 @@ namespace V3D::V3DEngine::V3DMathematics
 
 	V3DVector4D V3DVector4D::operator+(const V3DVector4D& value) const
 	{
-		return V3DVector4D(x + value.x, y + value.y, z + value.z, w + value.w);
+		return { x + value.x, y + value.y, z + value.z, w + value.w };
 	}
 
 	V3DVector4D V3DVector4D::operator+(const float size) const
 	{
-		return V3DVector4D(x + size, y + size, z + size, w + size);
+		return { x + size, y + size, z + size, w + size };
 	}
 
 	V3DVector4D V3DVector4D::operator-(const V3DVector4D& value) const
 	{
-		return V3DVector4D(x - value.x, y - value.y, z - value.z, w - value.w);
+		return { x - value.x, y - value.y, z - value.z, w - value.w };
 	}
 
 	V3DVector4D V3DVector4D::operator-(const float size) const
 	{
-		return V3DVector4D(x - size, y - size, z - size, w - size);
+		return { x - size, y - size, z - size, w - size };
 	}
 
 	V3DVector4D V3DVector4D::operator*(const V3DVector4D& value) const
 	{
-		return V3DVector4D(x * value.x, y * value.y, z * value.z, w * value.w);
+		return { x * value.x, y * value.y, z * value.z, w * value.w };
 	}
 
 	V3DVector4D V3DVector4D::operator*(const float size) const
 	{
-		return V3DVector4D(x * size, y * size, z * size, w * size);
+		return { x * size, y * size, z * size, w * size };
 	}
 
 	V3DVector4D V3DVector4D::operator/(const V3DVector4D& value) const
 	{
-		return V3DVector4D(x / value.x, y / value.y, z / value.z, w / value.w);
+		return { x / value.x, y / value.y, z / value.z, w / value.w };
 	}
 
 	V3DVector4D V3DVector4D::operator/(const float size) const
 	{
-		return V3DVector4D(x / size, y / size, z / size, w / size);
+		return { x / size, y / size, z / size, w / size };
 	}
 
 	V3DVector4D V3DVector4D::operator-() const
 	{
-		return V3DVector4D(-x, -y, -z, -w);
+		return { -x, -y, -z, -w };
 	}
 
 	const V3DVector4D& V3DVector4D::operator++()

@@ -10,15 +10,15 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 namespace V3D::V3DEngine::V3DIO
 {
-	class V3DENGINE_API V3DMemoryStream final
+	class V3DENGINE_API V3DMemoryStream final  // NOLINT(clang-diagnostic-padded)
 	{
-		const unsigned long long MaxSize;
-		unsigned long long head{};
-		char* buffer{};
 		bool isBufferAllocated;
-
-		void Write(const void* data, unsigned long long dataSize);
-		void Read(void* dataOut, unsigned long long dataSize);
+		char* buffer{};  // NOLINT(clang-diagnostic-padded)
+		unsigned int head{};
+		const unsigned int MaxSize;
+		
+		void Write(const void* data, unsigned int dataSize);
+		void Read(void* dataOut, unsigned int dataSize);
 		
 	public:
 		V3DMemoryStream() = delete;
@@ -27,13 +27,13 @@ namespace V3D::V3DEngine::V3DIO
 		V3DMemoryStream& operator=(const V3DMemoryStream&) = delete;
 		V3DMemoryStream& operator=(V3DMemoryStream&&) = delete;
 
-		explicit V3DMemoryStream(unsigned long long maxSize);
-		explicit V3DMemoryStream(unsigned long long maxSize, char* bufferData);
+		explicit V3DMemoryStream(unsigned int maxSize);
+		explicit V3DMemoryStream(unsigned int maxSize, char* bufferData);
 		explicit V3DMemoryStream(char* bufferData);
 		~V3DMemoryStream();
 
 		char* GetBuffer() const;
-		unsigned long long GetCurrentSize() const;
+		unsigned int GetCurrentSize() const;
 
 		template<typename T> void Read(T& data)
 		{

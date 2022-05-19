@@ -14,20 +14,20 @@ namespace V3D::V3DEngine::V3DCore
 	class V3DENGINE_API V3DGameCompositeComponent : public V3DGameComponent
 	{
 	protected:
-		V3DCollections::V3DLinkedList<V3DGameComponent*> componentList;
+		V3DCollections::V3DLinkedList<V3DGameComponent*> componentList;  // NOLINT(clang-diagnostic-padded)
 
 	public:
 		V3DGameCompositeComponent();
 		explicit V3DGameCompositeComponent(const char* name);
 		V3DGameCompositeComponent(const V3DGameCompositeComponent&) = delete;
 		V3DGameCompositeComponent(V3DGameCompositeComponent&&) = delete;
-		virtual ~V3DGameCompositeComponent();
+		~V3DGameCompositeComponent() override;
 		V3DGameCompositeComponent& operator=(const V3DGameCompositeComponent&) = delete;
 		V3DGameCompositeComponent& operator=(V3DGameCompositeComponent&&) = delete;
 
 		virtual V3DGameComponent* Find(const char* name);
 		virtual V3DGameComponent* Find(const V3DGameComponent* gameComponent);
-		//bool IsLastVisible(const LFString& name);
+		//bool IsLastVisible(const V3DString& name);
 		int GetComponentsLength() const;
 
 		virtual void Add(V3DGameComponent* gameComponent);
@@ -36,7 +36,7 @@ namespace V3D::V3DEngine::V3DCore
 		
 		//V3DGameComponent abstraction
 		void Update(double deltaTime) override;
-		void SetIsAlive(bool isAlive) override;
-		void SetIsVisible(bool isVisible) override;
+		void SetIsAlive(bool isAliveValue) override;
+		void SetIsVisible(bool isVisibleValue) override;
 	};
 }

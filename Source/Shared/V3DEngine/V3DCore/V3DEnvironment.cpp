@@ -63,9 +63,9 @@ namespace V3D::V3DEngine::V3DCore
 		return isVsyncEnable;
 	}
 	
-	void V3DEnvironment::SetIsVSyncEnable(bool isVsyncEnable)
+	void V3DEnvironment::SetIsVSyncEnable(bool isVsyncEnableValue)
 	{
-		V3DEnvironment::isVsyncEnable = isVsyncEnable;
+		isVsyncEnable = isVsyncEnableValue;
 	}
 
 	void V3DEnvironment::SetApp(void* application)
@@ -90,11 +90,11 @@ namespace V3D::V3DEngine::V3DCore
 		screenHeight = height;
 	}
 
-	void V3DEnvironment::SetGPUData(char* renderer, char* gpuName, int maxTextureSize)
+	void V3DEnvironment::SetGPUData(char* rendererValue, char* gpuNameValue, int maxTextureSizeValue)
 	{
-		V3DEnvironment::renderer = renderer;
-		V3DEnvironment::gpuName = gpuName;
-		V3DEnvironment::maxTextureSize = maxTextureSize;
+		renderer = rendererValue;
+		gpuName = gpuNameValue;
+		maxTextureSize = maxTextureSizeValue;
 	}
 
 	int V3DEnvironment::GetCpuCoreCount()
@@ -124,9 +124,9 @@ namespace V3D::V3DEngine::V3DCore
 		return gameName;
 	}
 
-	void V3DEnvironment::SetGameName(char* gameName)
+	void V3DEnvironment::SetGameName(char* gameNameValue)
 	{
-		V3DEnvironment::gameName = gameName;
+		gameName = gameNameValue;
 	}
 
 	bool V3DEnvironment::GetIsWindowOrientationPortrait()

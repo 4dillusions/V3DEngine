@@ -6,6 +6,8 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #pragma once
 
+#include <algorithm>
+
 #include "V3DArrayNode.h"
 #include "V3DEngine/V3DCore/V3DMemory.h"
 #include "V3DEngine/V3DMacros.h"
@@ -29,11 +31,11 @@ namespace V3D::V3DEngine::V3DCollections
 	template<typename T> class V3DDynamicArray final
 	{
 		const int MinDataSize { 100 };
-		V3DArrayNode<T>** dataArray{};
-		V3DArrayNode<T>* current{};
 		int dataSize = MinDataSize;
 		int currentIndex{};
 		int length{};
+		V3DArrayNode<T>* current{};
+		V3DArrayNode<T>** dataArray{};
 
 		void Init()
 		{

@@ -11,14 +11,14 @@ namespace V3D::V3DEngine::V3DCore
 	V3DWatchHour::V3DWatchHour(const V3DTimeHour& time, const V3DTimeHour& minTime, const V3DTimeHour& maxTime) : time{ time }, MinTime{ minTime }, MaxTime{ maxTime }
 	{ }
 
-	void V3DWatchHour::SetMinTimeEvent(const std::function<void()>& minTimeEvent)
+	void V3DWatchHour::SetMinTimeEvent(const std::function<void()>& minTimeEventFunc)
 	{
-		this->minTimeEvent = minTimeEvent;
+		minTimeEvent = minTimeEventFunc;
 	}
 
-	void V3DWatchHour::SetMaxTimeEvent(const std::function<void()>& maxTimeEvent)
+	void V3DWatchHour::SetMaxTimeEvent(const std::function<void()>& maxTimeEventFunc)
 	{
-		this->maxTimeEvent = maxTimeEvent;
+		maxTimeEvent = maxTimeEventFunc;
 	}
 
 	const V3DTimeHour& V3DWatchHour::GetTime() const

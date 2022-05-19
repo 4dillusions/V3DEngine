@@ -11,7 +11,7 @@ namespace V3D::V3DEngine::V3DCore
 	V3DGameComponent::V3DGameComponent() : V3DGameComponent(nullptr)
 	{ }
 	
-	V3DGameComponent::V3DGameComponent(const char* name) : Id{ reinterpret_cast<unsigned long long int>(this) }, Name{ name }
+	V3DGameComponent::V3DGameComponent(const char* name) : Name{ name }, Id{ reinterpret_cast<unsigned long long int>(this) }
 	{ }
 	
 	bool V3DGameComponent::operator<(const V3DGameComponent& value) const
@@ -44,9 +44,9 @@ namespace V3D::V3DEngine::V3DCore
 		return isAlive;
 	}
 
-	void V3DGameComponent::SetIsAlive(bool isAlive)
+	void V3DGameComponent::SetIsAlive(bool isAliveValue)
 	{
-		this->isAlive = isAlive;
+		isAlive = isAliveValue;
 	}
 
 	bool V3DGameComponent::GetIsVisible() const
@@ -54,8 +54,8 @@ namespace V3D::V3DEngine::V3DCore
 		return isVisible;
 	}
 
-	void V3DGameComponent::SetIsVisible(bool isVisible)
+	void V3DGameComponent::SetIsVisible(bool isVisibleValue)
 	{
-		this->isVisible = isVisible;
+		isVisible = isVisibleValue;
 	}
 }

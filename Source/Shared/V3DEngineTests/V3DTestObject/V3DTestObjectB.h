@@ -4,6 +4,7 @@ Copyright (c) 2020 by 4D Illusions. All rights reserved.
 Released under the terms of the GNU General Public License version 3 or later.
 */
 
+// ReSharper disable CppClangTidyClangDiagnosticPadded
 #pragma once
 
 #include "V3DITestObject.h"
@@ -18,6 +19,7 @@ namespace V3D::V3DEngineTests::V3DTestObject
 	{
 		static int referenceCounter;
 		int id{};
+
 		bool isAlive{ true };
 
 	public:
@@ -36,8 +38,8 @@ namespace V3D::V3DEngineTests::V3DTestObject
 		
 		char GetTypeCode() override;
 		int GetId() override;
-		void SetId(int id) override;
+		void SetId(int idValue) override;
 		bool GetIsAlive() override;
-		void SetIsAlive(bool isAlive) override;
+		void SetIsAlive(bool isAliveValue) override;
 	};
 }

@@ -43,7 +43,7 @@ namespace V3D::V3DEngineTests::V3DTestObject
 		for (int i = 0; i < hierarchyCode; i++)
 			out += '-';
 
-		for (auto letter : name)
+		for (const auto letter : name)
 			if (letter != '\0')
 				out += letter;
 		

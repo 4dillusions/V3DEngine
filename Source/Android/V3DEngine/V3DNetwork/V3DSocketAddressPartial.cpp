@@ -19,7 +19,7 @@ namespace V3D::V3DEngine::V3DNetwork
 		if (fp)
 		{
 			char* ip = nullptr, * delimiter;
-			size_t count; //ambiguous symbol size_t
+			size_t count;
 			while ((getline(&ip, &count, fp) > 0) && ip)
 			{
 				if ((ip = strstr(ip, "inet ")))

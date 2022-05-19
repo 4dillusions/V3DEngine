@@ -8,14 +8,11 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 namespace V3D::V3DEngine::V3DCore
 {
-	enum class V3DVFSPath : int
+	enum class V3DMemoryAllocatorType : unsigned int
 	{
-		No,
-		Image,
-		Sound,
-		ShaderEffect,
-		DataRead,
-		DataReadWrite,
+		NewMem,
+		NewArrayMem,
+		NewMatrixMem,
+		NewPointerArrayMem,
 	};
 }
-		

@@ -40,9 +40,9 @@ namespace V3D::V3DEngineTests::V3DTestObject
 		return id;
 	}
 
-	void V3DTestObjectA::SetId(int id)
+	void V3DTestObjectA::SetId(int idValue)
 	{
-		this->id = id;
+		id = idValue;
 	}
 
 	bool V3DTestObjectA::GetIsAlive()
@@ -50,9 +50,9 @@ namespace V3D::V3DEngineTests::V3DTestObject
 		return isAlive;
 	}
 
-	void V3DTestObjectA::SetIsAlive(bool isAlive)
+	void V3DTestObjectA::SetIsAlive(bool isAliveValue)
 	{
-		this->isAlive = isAlive;
+		isAlive = isAliveValue;
 	}
 
 	int V3DTestObjectA::GetReferenceCounter()

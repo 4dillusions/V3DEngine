@@ -17,16 +17,16 @@ namespace V3D::V3DEngineTests::V3DTestObject
 
     public:
         V3DTestPlayerData() = default;
-        explicit V3DTestPlayerData(const V3D::V3DEngine::V3DCore::V3DString& name);
-        V3DTestPlayerData(int id, const V3D::V3DEngine::V3DCore::V3DString& name);
+        explicit V3DTestPlayerData(V3D::V3DEngine::V3DCore::V3DString name);
+        V3DTestPlayerData(int id, V3D::V3DEngine::V3DCore::V3DString name);
 
     	bool operator ==(const V3DTestPlayerData& value) const;
         bool operator !=(const V3DTestPlayerData& value) const;
 
         int GetId() const;
-        void SetId(int id);
+        void SetId(int idValue);
         V3D::V3DEngine::V3DCore::V3DString GetName() const;
-        void SetName(const V3D::V3DEngine::V3DCore::V3DString& name);
+        void SetName(const V3D::V3DEngine::V3DCore::V3DString& nameValue);
         bool GetIsValid() const;
     };
 }

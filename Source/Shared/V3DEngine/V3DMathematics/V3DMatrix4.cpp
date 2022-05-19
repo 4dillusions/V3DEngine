@@ -210,21 +210,22 @@ namespace V3D::V3DEngine::V3DMathematics
 
 	V3DVector4D V3DMatrix4::operator*(const V3DVector4D& vector) const
 	{
-		return V3DVector4D(
+		return {
 			m[0][0] * vector.x + m[0][1] * vector.y + m[0][2] * vector.z + m[0][3] * vector.w,
 			m[1][0] * vector.x + m[1][1] * vector.y + m[1][2] * vector.z + m[1][3] * vector.w,
 			m[2][0] * vector.x + m[2][1] * vector.y + m[2][2] * vector.z + m[2][3] * vector.w,
 			m[3][0] * vector.x + m[3][1] * vector.y + m[3][2] * vector.z + m[3][3] * vector.w
-		);
+		};
 	}
 
 	V3DMatrix4 V3DMatrix4::operator*(float scalar) const
 	{
-		return V3DMatrix4(
+		return {
 			scalar * m[0][0], scalar * m[0][1], scalar * m[0][2], scalar * m[0][3],
 			scalar * m[1][0], scalar * m[1][1], scalar * m[1][2], scalar * m[1][3],
 			scalar * m[2][0], scalar * m[2][1], scalar * m[2][2], scalar * m[2][3],
-			scalar * m[3][0], scalar * m[3][1], scalar * m[3][2], scalar * m[3][3]);
+			scalar * m[3][0], scalar * m[3][1], scalar * m[3][2], scalar * m[3][3]
+		};
 	}
 
 	void V3DMatrix4::SetTranslation(const V3DVector2D& vector)
@@ -261,12 +262,12 @@ namespace V3D::V3DEngine::V3DMathematics
 
 	V3DVector2D V3DMatrix4::GetTranslation2D() const
 	{
-		return V3DVector2D(m[0][3], m[1][3]);
+		return { m[0][3], m[1][3] };
 	}
 
 	V3DVector3D V3DMatrix4::GetTranslation3D() const
 	{
-		return V3DVector3D(m[0][3], m[1][3], m[2][3]);
+		return { m[0][3], m[1][3], m[2][3] };
 	}
 
 	V3DMatrix4 V3DMatrix4::GetTranslation(const V3DVector3D& vector)
@@ -387,16 +388,16 @@ namespace V3D::V3DEngine::V3DMathematics
 		const float R13 = -(R10 * M03 + R11 * m13 + R12 * m23);
 		const float R23 = -(R20 * M03 + R21 * m13 + R22 * m23);
 
-		return V3DMatrix4(
+		return {
 			R00, R01, R02, R03,
 			R10, R11, R12, R13,
 			R20, R21, R22, R23,
-			0, 0, 0, 1);
+			0, 0, 0, 1 };
 	}
 
 	V3DMatrix4 V3DMatrix4::ConcatenateAffine(const V3DMatrix4& value) const
 	{
-		return V3DMatrix4(
+		return {
 			m[0][0] * value.m[0][0] + m[0][1] * value.m[1][0] + m[0][2] * value.m[2][0],
 			m[0][0] * value.m[0][1] + m[0][1] * value.m[1][1] + m[0][2] * value.m[2][1],
 			m[0][0] * value.m[0][2] + m[0][1] * value.m[1][2] + m[0][2] * value.m[2][2],
@@ -412,24 +413,24 @@ namespace V3D::V3DEngine::V3DMathematics
 			m[2][0] * value.m[0][2] + m[2][1] * value.m[1][2] + m[2][2] * value.m[2][2],
 			m[2][0] * value.m[0][3] + m[2][1] * value.m[1][3] + m[2][2] * value.m[2][3] + m[2][3],
 
-			0, 0, 0, 1);
+			0, 0, 0, 1 };
 	}
 
 	V3DVector3D V3DMatrix4::TransformAffine(const V3DVector3D& vector) const
 	{
-		return V3DVector3D(
+		return {
 			m[0][0] * vector.x + m[0][1] * vector.y + m[0][2] * vector.z + m[0][3],
 			m[1][0] * vector.x + m[1][1] * vector.y + m[1][2] * vector.z + m[1][3],
-			m[2][0] * vector.x + m[2][1] * vector.y + m[2][2] * vector.z + m[2][3]);
+			m[2][0] * vector.x + m[2][1] * vector.y + m[2][2] * vector.z + m[2][3] };
 	}
 
 	V3DVector4D V3DMatrix4::TransformAffine(const V3DVector4D& vector) const
 	{
-		return V3DVector4D(
+		return {
 			m[0][0] * vector.x + m[0][1] * vector.y + m[0][2] * vector.z + m[0][3] * vector.w,
 			m[1][0] * vector.x + m[1][1] * vector.y + m[1][2] * vector.z + m[1][3] * vector.w,
 			m[2][0] * vector.x + m[2][1] * vector.y + m[2][2] * vector.z + m[2][3] * vector.w,
-			vector.w);
+			vector.w };
 	}
 
 	V3DMatrix4 V3DMatrix4::Concatenate(const V3DMatrix4& value) const
@@ -514,19 +515,19 @@ namespace V3D::V3DEngine::V3DMathematics
 		const float D23 = -(v4 * M00 - v2 * m01 + v0 * m03) * InvDet;
 		const float D33 = +(v3 * M00 - v1 * m01 + v0 * m02) * InvDet;
 
-		return V3DMatrix4(
+		return {
 			D00, D01, D02, D03,
 			D10, D11, D12, D13,
 			D20, D21, D22, D23,
-			D30, D31, D32, D33);
+			D30, D31, D32, D33 };
 	}
 
 	V3DMatrix4 V3DMatrix4::Transpose() const
 	{
-		return V3DMatrix4(m[0][0], m[1][0], m[2][0], m[3][0],
+		return { m[0][0], m[1][0], m[2][0], m[3][0],
 			m[0][1], m[1][1], m[2][1], m[3][1],
 			m[0][2], m[1][2], m[2][2], m[3][2],
-			m[0][3], m[1][3], m[2][3], m[3][3]);
+			m[0][3], m[1][3], m[2][3], m[3][3] };
 	}
 
 	float V3DMatrix4::Determinant() const

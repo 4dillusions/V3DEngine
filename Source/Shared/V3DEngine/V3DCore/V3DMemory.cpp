@@ -4,8 +4,8 @@ Copyright (c) 2020 by 4D Illusions. All rights reserved.
 Released under the terms of the GNU General Public License version 3 or later.
 */
 
+// ReSharper disable CppUnusedIncludeDirective
 #include "V3DMemory.h"
-// ReSharper disable once CppUnusedIncludeDirective
 #include "V3DString.h" 
 #include "V3DEngine/V3DIO/V3DLogger.h"
 
@@ -16,11 +16,11 @@ using namespace V3D::V3DEngine::V3DIO;
 
 namespace V3D::V3DEngine::V3DCore
 {
-	std::unordered_map<int*, const char*> V3DMemory::memoryList;
+	std::unordered_map<int*, V3DMemoryInfo> V3DMemory::memoryDictionary;
 
 	int V3DMemory::GetMemoryLeakCount()
 	{
-		return static_cast<int>(memoryList.size());
+		return static_cast<int>(memoryDictionary.size());
 	}
 
 	V3DString V3DMemory::GetStatistics()
@@ -28,26 +28,26 @@ namespace V3D::V3DEngine::V3DCore
 		std::string result;
 		result = "Leaked objects:\n";
 
-		for (const auto i : memoryList)  // NOLINT(clang-diagnostic-range-loop-construct)
-			result += i.second + static_cast<const char>('\n');
+		for (const auto& i : memoryDictionary)  // NOLINT(clang-diagnostic-range-loop-construct)
+			result += i.second.info + static_cast<const char>('\n');
 
-		if (memoryList.empty())
+		if (memoryDictionary.empty())
 			result += "0 leaked object";
 		
 		return V3DString(result.c_str());
 	}
 
-	void V3DMemory::Add(int* address, const char* info)
+	void V3DMemory::Add(int* address, const V3DMemoryInfo& info)
 	{
-		memoryList.insert({ address, info });
+		memoryDictionary.insert({ address, info });
 	}
 
 	// ReSharper disable once CppParameterMayBeConstPtrOrRef
-	void V3DMemory::Remove(int* address)
+	void V3DMemory::Remove(int* address, V3DMemoryAllocatorType allocType)
 	{
-		const auto search = memoryList.find(address);
-		if (search != memoryList.end())
-			memoryList.erase(search);
+		const auto search = memoryDictionary.find(address);
+		if (search != memoryDictionary.end() && search->second.allocType == allocType)
+			memoryDictionary.erase(search);
 	}
 
 	void V3DMemory::WriteStatistics()

@@ -16,7 +16,7 @@ namespace V3D::V3DEngine::V3DCore
 	{
 		V3DTimeHour time;
 		const V3DTimeHour MinTime, MaxTime;
-		std::function<void()> minTimeEvent = nullptr;
+		std::function<void()> minTimeEvent = nullptr;  // NOLINT(clang-diagnostic-padded)
 		std::function<void()> maxTimeEvent = nullptr;
 
 		void ChangeTime();
@@ -29,9 +29,9 @@ namespace V3D::V3DEngine::V3DCore
 		V3DWatchHour& operator=(V3DWatchHour&&) = delete;
 		
 		explicit V3DWatchHour(const V3DTimeHour& currentTime, const V3DTimeHour& minTime = V3DTimeHour{}, const V3DTimeHour& maxTime = V3DTimeHour{});
-
-		void SetMinTimeEvent(const std::function<void()>& minTimeEvent);
-		void SetMaxTimeEvent(const std::function<void()>& maxTimeEvent);
+		
+		void SetMinTimeEvent(const std::function<void()>& minTimeEventFunc);
+		void SetMaxTimeEvent(const std::function<void()>& maxTimeEventFunc);
 		const V3DTimeHour& GetTime() const;
 		
 		void SetToZero();

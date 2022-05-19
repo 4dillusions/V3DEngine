@@ -7,7 +7,10 @@ Released under the terms of the GNU General Public License version 3 or later.
 #pragma once
 
 #include "V3DEngine/V3DCore/V3DEnvironment.h"
+#include "V3DMemoryInfo.h"
+#include "V3DMemoryAllocatorTypes.h"
 
+// ReSharper disable once CppUnusedIncludeDirective
 #include <unordered_map>
 
 namespace V3D::V3DEngine::V3DCore
@@ -15,7 +18,7 @@ namespace V3D::V3DEngine::V3DCore
 	//Avoid memory leaks with New/Delete instead of new/delete_ naked operators
 	class V3DENGINE_API V3DMemory final
 	{
-		static std::unordered_map<int*, const char*> memoryList;
+		static std::unordered_map<int*, V3DMemoryInfo> memoryDictionary;
 		inline static bool isDebugMode{ V3DEnvironment::GetIsRunModeDebug() };
 		
 	public:
@@ -28,8 +31,8 @@ namespace V3D::V3DEngine::V3DCore
 
 		static V3DString GetStatistics();
 
-		static void Add(int* address, const char* info);
-		static void Remove(int* address);
+		static void Add(int* address, const V3DMemoryInfo& info);
+		static void Remove(int* address, V3DMemoryAllocatorType allocType);
 		static int GetMemoryLeakCount();
 		static void WriteStatistics();
 		static void WriteStatisticsForTests();
@@ -40,7 +43,7 @@ namespace V3D::V3DEngine::V3DCore
 
 			const static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
 			if (isDebugMode || isUnitTestMode)
-				V3DMemory::Add(reinterpret_cast<int*>(result), info);
+				V3DMemory::Add(reinterpret_cast<int*>(result), { info , V3DMemoryAllocatorType::NewMem });
 
 			return result;
 		}
@@ -51,7 +54,7 @@ namespace V3D::V3DEngine::V3DCore
 
 			const static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
 			if (isDebugMode || isUnitTestMode)
-				V3DMemory::Add(reinterpret_cast<int*>(result), info);
+				V3DMemory::Add(reinterpret_cast<int*>(result), { info , V3DMemoryAllocatorType::NewMem });
 
 			return result;
 		}
@@ -67,7 +70,7 @@ namespace V3D::V3DEngine::V3DCore
 
 			const static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
 			if (isDebugMode || isUnitTestMode)
-				V3DMemory::Add(reinterpret_cast<int*>(result), info);
+				V3DMemory::Add(reinterpret_cast<int*>(result), { info , V3DMemoryAllocatorType::NewMem });
 
 			return result;
 		}
@@ -78,7 +81,7 @@ namespace V3D::V3DEngine::V3DCore
 
 			const static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
 			if (isDebugMode || isUnitTestMode)
-				V3DMemory::Add(reinterpret_cast<int*>(result), info);
+				V3DMemory::Add(reinterpret_cast<int*>(result), { info , V3DMemoryAllocatorType::NewMem });
 
 			return result;
 		}
@@ -89,7 +92,7 @@ namespace V3D::V3DEngine::V3DCore
 
 			const static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
 			if (isDebugMode || isUnitTestMode)
-				V3DMemory::Add(reinterpret_cast<int*>(result), info);
+				V3DMemory::Add(reinterpret_cast<int*>(result), { info , V3DMemoryAllocatorType::NewMem });
 
 			return result;
 		}
@@ -100,7 +103,7 @@ namespace V3D::V3DEngine::V3DCore
 
 			const static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
 			if (isDebugMode || isUnitTestMode)
-				V3DMemory::Add(reinterpret_cast<int*>(result), info);
+				V3DMemory::Add(reinterpret_cast<int*>(result), { info , V3DMemoryAllocatorType::NewMem });
 
 			return result;
 		}
@@ -111,7 +114,7 @@ namespace V3D::V3DEngine::V3DCore
 
 			const static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
 			if (isDebugMode || isUnitTestMode)
-				V3DMemory::Add(reinterpret_cast<int*>(result), info);
+				V3DMemory::Add(reinterpret_cast<int*>(result), { info , V3DMemoryAllocatorType::NewMem });
 
 			return result;
 		}
@@ -120,7 +123,7 @@ namespace V3D::V3DEngine::V3DCore
 		{
 			const static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
 			if (isDebugMode || isUnitTestMode)
-				Remove(reinterpret_cast<int*>(obj));
+				Remove(reinterpret_cast<int*>(obj), V3DMemoryAllocatorType::NewMem);
 
 			delete obj;
 			obj = nullptr;
@@ -132,7 +135,7 @@ namespace V3D::V3DEngine::V3DCore
 
 			const static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
 			if (isDebugMode || isUnitTestMode)
-				V3DMemory::Add(reinterpret_cast<int*>(result), info);
+				V3DMemory::Add(reinterpret_cast<int*>(result), { info , V3DMemoryAllocatorType::NewArrayMem });
 
 			return result;
 		}
@@ -146,7 +149,7 @@ namespace V3D::V3DEngine::V3DCore
 		{
 			const static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
 			if (isDebugMode || isUnitTestMode)
-				Remove(reinterpret_cast<int*>(obj));
+				Remove(reinterpret_cast<int*>(obj), V3DMemoryAllocatorType::NewArrayMem);
 
 			delete[]obj;
 			obj = nullptr;
@@ -158,14 +161,14 @@ namespace V3D::V3DEngine::V3DCore
 
 			const static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
 			if (isDebugMode || isUnitTestMode)
-				V3DMemory::Add(reinterpret_cast<int*>(result), info);
+				V3DMemory::Add(reinterpret_cast<int*>(result), { info , V3DMemoryAllocatorType::NewMatrixMem });
 
 			for (unsigned int x = 0; x < size; ++x)
 			{
 				result[x] = new T[size];
 
 				if (isDebugMode || isUnitTestMode)
-					V3DMemory::Add(reinterpret_cast<int*>(result[x]), info);
+					V3DMemory::Add(reinterpret_cast<int*>(result[x]), { info , V3DMemoryAllocatorType::NewMatrixMem });
 			}
 
 			return result;
@@ -178,13 +181,13 @@ namespace V3D::V3DEngine::V3DCore
 			for (unsigned int x = 0; x < sizeX; ++x)
 			{
 				if (isDebugMode || isUnitTestMode)
-					Remove(reinterpret_cast<int*>(obj[x]));
+					Remove(reinterpret_cast<int*>(obj[x]), V3DMemoryAllocatorType::NewMatrixMem);
 
 				delete[] obj[x];
 			}
 
 			if (isDebugMode || isUnitTestMode)
-				Remove(reinterpret_cast<int*>(obj));
+				Remove(reinterpret_cast<int*>(obj), V3DMemoryAllocatorType::NewMatrixMem);
 
 			delete[] obj;
 
@@ -197,7 +200,7 @@ namespace V3D::V3DEngine::V3DCore
 
 			const static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
 			if (isDebugMode || isUnitTestMode)
-				V3DMemory::Add(reinterpret_cast<int*>(result), info);
+				V3DMemory::Add(reinterpret_cast<int*>(result), { info , V3DMemoryAllocatorType::NewPointerArrayMem });
 
 			return result;
 		}
@@ -206,7 +209,7 @@ namespace V3D::V3DEngine::V3DCore
 		{
 			const static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
 			if (isDebugMode || isUnitTestMode)
-				Remove(reinterpret_cast<int*>(obj));
+				Remove(reinterpret_cast<int*>(obj), V3DMemoryAllocatorType::NewPointerArrayMem);
 
 			delete[] obj;
 

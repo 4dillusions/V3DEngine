@@ -12,10 +12,10 @@ namespace V3D::V3DEngineTests::V3DTestObject
 {
 	class V3DTestObjectA final : public V3DITestObject
 	{
-		static int referenceCounter;
-		int id{};
 		bool isAlive{ true };
-
+		int id{};  // NOLINT(clang-diagnostic-padded)
+		static int referenceCounter;
+		
 	public:
 		V3DTestObjectA();
 		explicit V3DTestObjectA(int id);
@@ -27,9 +27,9 @@ namespace V3D::V3DEngineTests::V3DTestObject
 
 		char GetTypeCode() override;
 		int GetId() override;
-		void SetId(int id) override;
+		void SetId(int idValue) override;
 		bool GetIsAlive() override;
-		void SetIsAlive(bool isAlive) override;
+		void SetIsAlive(bool isAliveValue) override;
 
 		static int GetReferenceCounter();
 		static void SetReferenceCounter(int counter);

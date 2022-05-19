@@ -10,7 +10,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 namespace V3D::V3DEngine::V3DCore
 {
-	enum class V3DAssetPathType : unsigned;
+	enum class V3DAssetPathType : unsigned int;
 	class V3DString;
 	
 	class V3DENGINE_API V3DEnvironment
@@ -43,19 +43,19 @@ namespace V3D::V3DEngine::V3DCore
 
         static void SetUnitTestMode();
         static bool GetIsVSyncEnable();
-        static void SetIsVSyncEnable(bool isVsyncEnable);
+        static void SetIsVSyncEnable(bool isVsyncEnableValue);
 
         static void SetApp(void* application);
         static void* GetApp();
         static void SetWindowSize(int width, int height);
         static void SetScreenSize(int width, int height);
-        static void SetGPUData(char* renderer, char* gpuName, int maxTextureSize);
+        static void SetGPUData(char* rendererValue, char* gpuNameValue, int maxTextureSizeValue);
         static int GetCpuCoreCount();
         static const char* GetRenderMode();
         static const char* GetGPUName();
         static int GetMaxTextureSize();
         static const char* GetGameName();
-        static void SetGameName(char* gameName);
+        static void SetGameName(char* gameNameValue);
         static bool GetIsWindowOrientationPortrait();
         static V3DString GetSystemInfo();
 

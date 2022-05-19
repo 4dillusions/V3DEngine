@@ -10,6 +10,24 @@
  * The SHA224/SHA256 implementation is based on a public domain implementation
  * by Sam Hocevar <sam@hocevar.net> for LibTomCrypt.
  */
+// ReSharper disable CppUnusedIncludeDirective
+// ReSharper disable CppClangTidyModernizeDeprecatedHeaders
+// ReSharper disable CppClangTidyClangDiagnosticReservedMacroIdentifier
+// ReSharper disable CppClangTidyBugproneReservedIdentifier
+// ReSharper disable CppClangTidyModernizeUseAuto
+// ReSharper disable CppCStyleCast
+// ReSharper disable CppClangTidyBugproneMacroParentheses
+// ReSharper disable CppJoinDeclarationAndAssignment
+// ReSharper disable CppClangTidyBugproneImplicitWideningOfMultiplicationResult
+// ReSharper disable CppClangTidyClangDiagnosticReservedIdentifier
+// ReSharper disable CppClangTidyReadabilityInconsistentDeclarationParameterName
+// ReSharper disable CppParameterMayBeConstPtrOrRef
+// ReSharper disable CppVariableCanBeMadeConstexpr
+// ReSharper disable CppClangTidyClangDiagnosticPadded
+// ReSharper disable CppClangTidyClangDiagnosticCastAlign
+// ReSharper disable CppClangTidyClangDiagnosticImplicitIntConversion
+// ReSharper disable CppClangTidyClangDiagnosticExtraSemiStmt
+// ReSharper disable CppClangTidyClangDiagnosticCastQual
 #ifndef _picohash_h_
 #define _picohash_h_
 
@@ -277,6 +295,7 @@ inline void _picohash_md5_init(_picohash_md5_ctx_t *ctx)
 inline void _picohash_md5_update(_picohash_md5_ctx_t *ctx, const void *data, size_t size)
 {
     uint_fast32_t saved_lo;
+    // ReSharper disable once CppTooWideScope
     unsigned long used, free;
 
     saved_lo = ctx->lo;

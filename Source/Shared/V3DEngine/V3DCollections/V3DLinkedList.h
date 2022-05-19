@@ -26,7 +26,7 @@ namespace V3D::V3DEngine::V3DCollections
 		static remove/delete:		no
 		continuously remove/delete: yes/no
 	*/
-	template<typename T> class V3DLinkedList final
+	template<typename T> class V3DLinkedList final  // NOLINT(clang-diagnostic-padded)
 	{
 		V3DLinkedListNode<T>* head{}, * tail{}, * current{};
 		int length{};

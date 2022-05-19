@@ -10,7 +10,7 @@ namespace V3D::V3DEngine::V3DCollections
 {
 	template<typename TKey, typename TItem> struct V3DDecimalTreeNode final
 	{
-		static const int ChildSize = 10;
+		static constexpr int ChildSize = 10;
 		TKey key{};
 		TItem data{};
 		TItem* dataFlag{};
@@ -25,22 +25,22 @@ namespace V3D::V3DEngine::V3DCollections
 
 		void RemoveAllChildrenData()
 		{
-			for (int i = 0; i < ChildSize; i++)
-				if (children[i] != nullptr)
+			for (auto& i : children)
+				if (i != nullptr)
 				{
-					children[i]->dataFlag = nullptr;
-					children[i]->RemoveAllChildrenData();
+					i->dataFlag = nullptr;
+					i->RemoveAllChildrenData();
 				}
 		}
 
 		void DeleteAllChildrenNode()
 		{
-			for (int i = 0; i < ChildSize; i++)
+			for (auto& i : children)
 			{
-				if (children[i] != nullptr)
-					children[i]->DeleteAllChildrenNode();
+				if (i != nullptr)
+					i->DeleteAllChildrenNode();
 
-				V3DCore::V3DMemory::Delete(children[i]);
+				V3DCore::V3DMemory::Delete(i);
 			}	
 		}
 
@@ -52,9 +52,9 @@ namespace V3D::V3DEngine::V3DCollections
 				index++;
 			}
 			
-			for (int i = 0; i < ChildSize; i++)
-				if (children[i] != nullptr)
-					children[i]->GetAllChildren(allItemArray, std::move(index));  // NOLINT(bugprone-use-after-move, performance-move-const-arg)
+			for (auto& i : children)
+				if (i != nullptr)
+					i->GetAllChildren(allItemArray, std::move(index));  // NOLINT(bugprone-use-after-move, performance-move-const-arg)
 		}
 	};
 }

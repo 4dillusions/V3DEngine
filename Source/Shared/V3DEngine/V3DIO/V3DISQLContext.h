@@ -10,7 +10,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 namespace V3D::V3DEngine::V3DIO
 {
-    class V3DISQLContext  // NOLINT(clang-diagnostic-weak-vtables)
+    class V3DENGINE_API V3DISQLContext  // NOLINT(clang-diagnostic-weak-vtables)
     {
     public:
         V3DISQLContext() = default;

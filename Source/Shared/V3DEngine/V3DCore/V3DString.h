@@ -8,6 +8,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #include "V3DEngine/V3DCollections/V3DDynamicArray.h"
 
+// ReSharper disable once CppUnusedIncludeDirective
 #include <string>
 
 namespace V3D::V3DEngine::V3DCore
@@ -27,7 +28,7 @@ namespace V3D::V3DEngine::V3DCore
         static constexpr int NumberToChar = 48;
 
         int dataSize = MinDataSize;
-        char* data{};
+        char* data{};  // NOLINT(clang-diagnostic-padded)
         int textLenght{};
         int hashCode{};
 

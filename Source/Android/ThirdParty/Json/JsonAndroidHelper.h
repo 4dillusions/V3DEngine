@@ -11,6 +11,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 	undefined reference to 'wcstof'
 */
 
+// ReSharper disable CppNonInlineFunctionDefinitionInHeaderFile
 #pragma once
 
 long long wcstoll(const wchar_t* str, wchar_t** str_end, int base)

@@ -15,7 +15,7 @@ namespace V3D::V3DEngine::V3DCore
 	{
 		time_t currentTime;
 		time(&currentTime);
-		struct tm* localTime = localtime(&currentTime);
+		struct tm* localTime = localtime(&currentTime);  // NOLINT(concurrency-mt-unsafe)
 		localTime->tm_year += 1900;
 		localTime->tm_mon += 1;
 
@@ -31,7 +31,7 @@ namespace V3D::V3DEngine::V3DCore
 		return &result;
 	}
 	
-	V3DString V3DDateTime::GetTimeStamp(V3DTimeSpan* now)
+	V3DString V3DDateTime::GetTimeStamp(const V3DTimeSpan* now)
 	{
 		if (now == nullptr)
 			now = GetNow();
@@ -39,7 +39,7 @@ namespace V3D::V3DEngine::V3DCore
 		return V3DString('[') + now->day + "." + now->month + "." + now->year + " " + now->hour + ":" + now->min + ":" + now->sec + "] ";
 	}
 	
-	V3DString V3DDateTime::GetSqlTimeStamp(V3DTimeSpan* now)
+	V3DString V3DDateTime::GetSqlTimeStamp(const V3DTimeSpan* now)
 	{
 		if (now == nullptr)
 			now = GetNow();
@@ -47,7 +47,7 @@ namespace V3D::V3DEngine::V3DCore
 		return V3DString(now->year) + "-" + now->month + "-" + now->day + " " + now->hour + ":" + now->min + ":" + now->sec + "." + now->millisec;
 	}
 	
-	V3DString V3DDateTime::GetSQLTimeStampNumbers(V3DTimeSpan* now)
+	V3DString V3DDateTime::GetSQLTimeStampNumbers(const V3DTimeSpan* now)
 	{
 		if (now == nullptr)
 			now = GetNow();

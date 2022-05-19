@@ -21,9 +21,9 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 		const char* TestFake = "fake.dat";
 		
 		V3DTest::AssertOk(V3DFile::IsExist(V3DAssetPathType::Options, TestAsset), V3DFILE_INFO);
-
-		V3DTest::AssertOk(V3DFile::GetSize(V3DAssetPathType::Options, TestFake) == -1, V3DFILE_INFO);
-		V3DTest::AssertOk(V3DFile::GetSize(V3DAssetPathType::Internal, TestFake) == -1, V3DFILE_INFO);
+		
+		V3DTest::AssertOk(V3DFile::GetSize(V3DAssetPathType::Options, TestFake) == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DFile::GetSize(V3DAssetPathType::Internal, TestFake) == 0, V3DFILE_INFO);
 		V3DTest::AssertOk(V3DFile::GetSize(V3DAssetPathType::Options, TestAsset) == 295, V3DFILE_INFO);
 
 		V3DFile::Create(TestInternal);

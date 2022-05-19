@@ -36,8 +36,8 @@ namespace V3D::V3DEngine::V3DIO
 	{
 		outputTypes[static_cast<unsigned int>(outputType)] = isEnable;
 	}
-
-	void V3DLogger::SetLogTrigger(const std::function<void(const V3DString& log)>& otherLogTrigger)
+	
+	void V3DLogger::SetLogTrigger(const std::function<void(const V3DCore::V3DString& log)>& otherLogTrigger)
 	{
 		logTrigger = otherLogTrigger;
 	}

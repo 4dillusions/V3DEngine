@@ -166,6 +166,6 @@ namespace V3D::V3DEngine::V3DMathematics
 
 	V3DVector3D V3DColor::ConvertToFloatColorRGB() const
 	{
-		return V3DVector3D(1 / (255 / static_cast<float>(r)), 1 / (255 / static_cast<float>(g)), 1 / (255 / static_cast<float>(b)));
+		return {1 / (255 / static_cast<float>(r)), 1 / (255 / static_cast<float>(g)), 1 / (255 / static_cast<float>(b))};
 	}
 }

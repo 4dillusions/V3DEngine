@@ -4,11 +4,12 @@ Copyright (c) 2020 by 4D Illusions. All rights reserved.
 Released under the terms of the GNU General Public License version 3 or later.
 */
 
+// ReSharper disable CppUnusedIncludeDirective
+
 #include "V3DEngine/V3DIO/V3DJsonIO.h"
 #include "V3DEngine/V3DCore/V3DMemory.h"
 #include "V3DEngine/V3DMacros.h"
 #include "ThirdParty/Json/json.hpp"
-// ReSharper disable once CppUnusedIncludeDirective
 #include "ThirdParty/Json/JsonAndroidHelper.h"
 
 using namespace V3D::V3DEngine::V3DCore;
@@ -29,7 +30,7 @@ namespace V3D::V3DEngine::V3DIO
 	char* V3DJsonIO::GetByteStream(const json& jsonObj)
 	{
 		const auto jsonText = jsonObj.dump();
-		const auto result = V3DMemory::NewArray<char>(V3DFILE_INFO, jsonText.length() + 1);
+		const auto result = V3DMemory::NewArray<char>(V3DFILE_INFO, static_cast<unsigned int>(jsonText.length()) + 1);
 		strcpy(result, jsonText.c_str());
 
 		return result;

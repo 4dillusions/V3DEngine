@@ -21,14 +21,14 @@ namespace V3D::V3DEngine::V3DThreading
 	class V3DENGINE_API V3DTaskBase
 	{
 	protected:	
-		std::thread* jobThread{};
-
 		std::atomic<bool> isActive{ true };
 		std::atomic<bool> isNeedWait{ true };
 		std::atomic<bool> isWorking{ true };
 
-		std::condition_variable condition;
+		std::thread* jobThread{};  // NOLINT(clang-diagnostic-padded)
+
 		std::mutex conditionMutex;
+		std::condition_variable condition;
 		
 		V3DTaskBase() = default;
 		

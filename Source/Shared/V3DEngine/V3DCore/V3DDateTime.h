@@ -22,8 +22,8 @@ namespace V3D::V3DEngine::V3DCore
 		V3DDateTime& operator=(V3DDateTime&&) = delete;
 
 		static V3DTimeSpan* GetNow();
-		static V3DString GetTimeStamp(V3DTimeSpan* now = nullptr); //for logging
-		static V3DString GetSqlTimeStamp(V3DTimeSpan* now = nullptr); //for MySQL (fractional-second time datatypes supported in MySQL 5.6.4 or later), for SQLite tested on version 3.33.0
-		static V3DString GetSQLTimeStampNumbers(V3DTimeSpan* now = nullptr); //for MySQL (under the version 5.6.4)
+		static V3DString GetTimeStamp(const V3DTimeSpan* now = nullptr); //for logging
+		static V3DString GetSqlTimeStamp(const V3DTimeSpan* now = nullptr); //for MySQL (fractional-second time datatypes supported in MySQL 5.6.4 or later), for SQLite tested on version 3.33.0
+		static V3DString GetSQLTimeStampNumbers(const V3DTimeSpan* now = nullptr); //for MySQL (under the version 5.6.4)
 	};
 }

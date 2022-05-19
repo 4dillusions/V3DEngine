@@ -6,7 +6,6 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #pragma once
 
-#include "V3DEngine/V3DEngineLibrary.h"
 #include "V3DEngine/V3DCore/V3DAssetPathType.h"
 #include "V3DEngine/V3DCore/V3DString.h"
 

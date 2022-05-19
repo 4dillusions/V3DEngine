@@ -39,7 +39,7 @@ namespace V3D::V3DEngineTests::V3DTestObject
 	{
 		const V3DTestComplexData::DataSize dataSize(data->head);
 
-		unsigned long long offset = 0;
+		unsigned int offset = 0;
 		V3DBinaryRW::Write(fileName, reinterpret_cast<char*>(data->head), dataSize.HeadSize, offset);
 
 		offset += dataSize.HeadSize;

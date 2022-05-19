@@ -4,6 +4,7 @@ Copyright (c) 2020 by 4D Illusions. All rights reserved.
 Released under the terms of the GNU General Public License version 3 or later.
 */
 
+// ReSharper disable CppUnusedIncludeDirective
 #pragma once
 
 #include "V3DEngine/V3DEngineLibrary.h"
@@ -28,6 +29,6 @@ namespace V3D::V3DEngine::V3DIO
         V3DBinaryRW& operator=(V3DBinaryRW&&) = delete;        
 
         static char* Read(V3DCore::V3DAssetPathType path, const char* fileName);
-        static void Write(const char* fileName, char* data, unsigned long long size, unsigned long long offset = 0);
+        static void Write(const char* fileName, const char* data, unsigned int size, unsigned int offset = 0);
     };
 }

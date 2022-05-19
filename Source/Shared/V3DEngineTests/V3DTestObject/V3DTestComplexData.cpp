@@ -32,7 +32,7 @@ namespace V3D::V3DEngineTests::V3DTestObject
 			V3DMemory::DeleteArray(dataStream);
 	}
 
-	unsigned long long V3DTestComplexData::GetSize() const
+	unsigned int V3DTestComplexData::GetSize() const
 	{
 		const DataSize dataSize(head);
 

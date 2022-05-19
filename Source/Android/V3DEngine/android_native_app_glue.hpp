@@ -21,11 +21,25 @@ Released under the terms of the GNU General Public License version 3 or later.
  *
  */
 
+// ReSharper disable once CppMissingIncludeGuard
+// ReSharper disable CppNonInlineFunctionDefinitionInHeaderFile
+// ReSharper disable CppClangTidyHicppMultiwayPathsCovered
+// ReSharper disable CppDefaultCaseNotHandledInSwitchStatement
+// ReSharper disable CppClangTidyBugproneSignedCharMisuse
+// ReSharper disable CppClangTidyModernizeUseAuto
+// ReSharper disable CppUseAuto
+// ReSharper disable CppRedundantElaboratedTypeSpecifier
+// ReSharper disable CppClangTidyConcurrencyMtUnsafe
+// ReSharper disable CppCStyleCast
+// ReSharper disable CppClangTidyClangDiagnosticFormatPedantic
+// ReSharper disable CppZeroConstantCanBeReplacedWithNullptr
+// ReSharper disable CppParameterMayBeConstPtrOrRef
+// ReSharper disable CppLocalVariableMayBeConst
 #include <jni.h>
 
-#include <errno.h>
-#include <stdlib.h>
-#include <string.h>
+#include <cerrno>
+#include <cstdlib>
+#include <cstring>
 #include <unistd.h>
 #include <sys/resource.h>
 

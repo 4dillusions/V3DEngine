@@ -53,7 +53,7 @@ namespace V3D::V3DEngine::V3DIO
 		return false;
 	}
 
-	long V3DFile::GetSize(V3DAssetPathType path, const char* fileName)
+	unsigned long long V3DFile::GetSize(V3DAssetPathType path, const char* fileName)
 	{
 		V3DString fileFullName;
 
@@ -81,7 +81,7 @@ namespace V3D::V3DEngine::V3DIO
 				return length;
 			}
 
-			return -1;
+			return 0;
 		}
 
 		if (auto const asset = AAssetManager_open(static_cast<android_app*>(V3DEnvironment::GetApp())->activity->assetManager, fileFullName.ToChar(), AASSET_MODE_UNKNOWN))
@@ -92,7 +92,7 @@ namespace V3D::V3DEngine::V3DIO
 			return size;
 		}
 		
-		return -1;
+		return 0;
 	}
 	
 	void V3DFile::Create(const char* fileName)
