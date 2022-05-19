@@ -28,7 +28,7 @@ namespace V3D::V3DEngine::V3DCore
         static constexpr int NumberToChar = 48;
 
         int dataSize = MinDataSize;
-        char* data{};
+        char* data{};  // NOLINT(clang-diagnostic-padded)
         int textLenght{};
         int hashCode{};
 

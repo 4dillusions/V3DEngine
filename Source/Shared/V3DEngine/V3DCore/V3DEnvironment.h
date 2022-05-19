@@ -10,7 +10,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 namespace V3D::V3DEngine::V3DCore
 {
-	enum class V3DAssetPathType : unsigned;
+	enum class V3DAssetPathType : unsigned int;
 	class V3DString;
 	
 	class V3DENGINE_API V3DEnvironment

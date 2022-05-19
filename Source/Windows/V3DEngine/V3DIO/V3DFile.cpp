@@ -22,16 +22,16 @@ namespace V3D::V3DEngine::V3DIO
 		return exists(std::filesystem::path(fileFullName.ToChar()));
 	}
 
-	long V3DFile::GetSize(V3DAssetPathType path, const char* fileName)
+	unsigned long long V3DFile::GetSize(V3DAssetPathType path, const char* fileName)
 	{
 		V3DString fileFullName;
 		fileFullName += V3DString(V3DEnvironment::GetAssetPath(path));
 		fileFullName += fileName;
 
 		if (!exists(std::filesystem::path(fileFullName.ToChar())))
-			return -1;
+			return 0;
 		
-		return std::filesystem::file_size(fileFullName.ToChar());  // NOLINT(bugprone-narrowing-conversions, cppcoreguidelines-narrowing-conversions, clang-diagnostic-shorten-64-to-32)
+		return std::filesystem::file_size(fileFullName.ToChar());
 	}
 	
 	void V3DFile::Create(const char* fileName)

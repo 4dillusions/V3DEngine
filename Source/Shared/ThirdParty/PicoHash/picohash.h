@@ -295,6 +295,7 @@ inline void _picohash_md5_init(_picohash_md5_ctx_t *ctx)
 inline void _picohash_md5_update(_picohash_md5_ctx_t *ctx, const void *data, size_t size)
 {
     uint_fast32_t saved_lo;
+    // ReSharper disable once CppTooWideScope
     unsigned long used, free;
 
     saved_lo = ctx->lo;

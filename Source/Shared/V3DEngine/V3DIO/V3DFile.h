@@ -24,7 +24,7 @@ namespace V3D::V3DEngine::V3DIO
         V3DFile& operator=(V3DFile&&) = delete;        
 
         static bool IsExist(V3DCore::V3DAssetPathType path, const char* fileName);
-    	static long GetSize(V3DCore::V3DAssetPathType path, const char* fileName);
+    	static unsigned long long GetSize(V3DCore::V3DAssetPathType path, const char* fileName);
         static void Create(const char* fileName);
         static void Delete(const char* fileName);
     };

@@ -30,7 +30,7 @@ namespace V3D::V3DEngine::V3DIO
 	char* V3DJsonIO::GetByteStream(const json& jsonObj)
 	{
 		const auto jsonText = jsonObj.dump();
-		const auto result = V3DMemory::NewArray<char>(V3DFILE_INFO, jsonText.length() + 1);
+		const auto result = V3DMemory::NewArray<char>(V3DFILE_INFO, static_cast<unsigned int>(jsonText.length()) + 1);
 		strcpy(result, jsonText.c_str());
 
 		return result;

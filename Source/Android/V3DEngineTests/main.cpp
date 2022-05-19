@@ -5,6 +5,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 */
 
 // ReSharper disable CppParameterMayBeConstPtrOrRef
+// ReSharper disable CppClangTidyClangDiagnosticPadded
 #include "V3DEngine/android_native_app_glue.hpp"
 #include "V3DEngineTests/V3DTestRunner.h"
 #include "V3DEngine/V3DCore/V3DEnvironment.h"

@@ -29,7 +29,7 @@ namespace V3D::V3DEngine::V3DIO
 			const auto length = stream.tellg();
 			stream.seekg(0, std::ifstream::beg);
 
-			result = V3DMemory::NewArray<char>(V3DFILE_INFO, static_cast<unsigned>(length));
+			result = V3DMemory::NewArray<char>(V3DFILE_INFO, static_cast<unsigned int>(length));
 			stream.read(result, length);
 			stream.close();
 		}
@@ -44,7 +44,7 @@ namespace V3D::V3DEngine::V3DIO
 		return result;
 	}
 
-	void V3DBinaryRW::Write(const char* fileName, const char* data, long size, long offset)
+	void V3DBinaryRW::Write(const char* fileName, const char* data, unsigned int size, unsigned int offset)
 	{
 		V3DString fileFullName;		
 		fileFullName += fileName;

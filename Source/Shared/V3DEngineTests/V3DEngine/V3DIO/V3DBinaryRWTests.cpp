@@ -58,7 +58,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 		testDataW->uvs[1] = 2;
 		testDataW->uvs[2] = 3;
 		complexFileRepository->Save(testDataW, TestModelDataFileName);
-		V3DTest::AssertOk(V3DFile::GetSize(V3DAssetPathType::Internal, TestModelDataFileName) == static_cast<long>(testDataW->GetSize()), V3DFILE_INFO);
+		V3DTest::AssertOk(V3DFile::GetSize(V3DAssetPathType::Internal, TestModelDataFileName) == testDataW->GetSize(), V3DFILE_INFO);
 		V3DMemory::Delete(testDataW);
 
 		auto testDataR = complexFileRepository->Load(V3DAssetPathType::Internal, TestModelDataFileName);

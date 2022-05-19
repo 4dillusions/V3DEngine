@@ -24,6 +24,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 // ReSharper disable CppUnusedIncludeDirective
 // ReSharper disable CppClangTidyBugproneReservedIdentifier
 // ReSharper disable CppClangTidyClangDiagnosticReservedMacroIdentifier
+// ReSharper disable CppClangTidyClangDiagnosticPadded
 #ifndef _ANDROID_NATIVE_APP_GLUE_H
 #define _ANDROID_NATIVE_APP_GLUE_H
 

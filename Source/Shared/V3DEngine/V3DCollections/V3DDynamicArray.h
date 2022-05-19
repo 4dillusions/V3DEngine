@@ -31,11 +31,11 @@ namespace V3D::V3DEngine::V3DCollections
 	template<typename T> class V3DDynamicArray final
 	{
 		const int MinDataSize { 100 };
-		V3DArrayNode<T>** dataArray{};
-		V3DArrayNode<T>* current{};
 		int dataSize = MinDataSize;
 		int currentIndex{};
 		int length{};
+		V3DArrayNode<T>* current{};
+		V3DArrayNode<T>** dataArray{};
 
 		void Init()
 		{

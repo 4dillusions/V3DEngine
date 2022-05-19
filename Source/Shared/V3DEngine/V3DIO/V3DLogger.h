@@ -19,13 +19,13 @@ namespace V3D::V3DEngine::V3DCore
 
 namespace V3D::V3DEngine::V3DIO
 {
-    class V3DENGINE_API V3DLogger final
+    class V3DENGINE_API V3DLogger final  // NOLINT(clang-diagnostic-padded)
     {
         std::function<void(const V3DCore::V3DString& log)> logTrigger = nullptr;
         bool outputTypes[static_cast<unsigned int>(V3DLogOutputType::Count)]{};
         int warnings = 0, errors = 0;
         
-        V3DCore::V3DString* buffer{};
+        V3DCore::V3DString* buffer{};  // NOLINT(clang-diagnostic-padded)
         
         V3DLogger();
         ~V3DLogger();
