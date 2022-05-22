@@ -11,14 +11,14 @@ namespace V3D::V3DEngine::V3DCore
 	V3DWatchHour::V3DWatchHour(const V3DTimeHour& time, const V3DTimeHour& minTime, const V3DTimeHour& maxTime) : time{ time }, MinTime{ minTime }, MaxTime{ maxTime }
 	{ }
 
-	void V3DWatchHour::SetMinTimeEvent(const std::function<void()>& minTimeEventFunc)
+	void V3DWatchHour::SetMinTimeAction(const V3DAction& minTimeActionValue)
 	{
-		minTimeEvent = minTimeEventFunc;
+		minTimeAction.Set(minTimeActionValue);
 	}
 
-	void V3DWatchHour::SetMaxTimeEvent(const std::function<void()>& maxTimeEventFunc)
+	void V3DWatchHour::SetMaxTimeAction(const V3DAction& maxTimeActionValue)
 	{
-		maxTimeEvent = maxTimeEventFunc;
+		maxTimeAction.Set(maxTimeActionValue);
 	}
 
 	const V3DTimeHour& V3DWatchHour::GetTime() const
@@ -57,12 +57,12 @@ namespace V3D::V3DEngine::V3DCore
 		time.Clamp();
 
 		if (time == MinTime)
-			if (minTimeEvent != nullptr)
-				minTimeEvent();
+			if (!minTimeAction.IsEmpty())
+				minTimeAction.Invoke();
 
 		if (time == MaxTime)
-			if (maxTimeEvent != nullptr)
-				maxTimeEvent();
+			if (!maxTimeAction.IsEmpty())
+				maxTimeAction.Invoke();
 	}
 
 	void V3DWatchHour::IncreaseSeconds()

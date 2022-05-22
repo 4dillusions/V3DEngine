@@ -7,8 +7,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 #pragma once
 
 #include "V3DTimeHour.h"
-
-#include <functional>
+#include "V3DEngine/V3DCore/V3DAction.h"
 
 namespace V3D::V3DEngine::V3DCore
 {
@@ -16,8 +15,8 @@ namespace V3D::V3DEngine::V3DCore
 	{
 		V3DTimeHour time;
 		const V3DTimeHour MinTime, MaxTime;
-		std::function<void()> minTimeEvent = nullptr;  // NOLINT(clang-diagnostic-padded)
-		std::function<void()> maxTimeEvent = nullptr;
+		V3DAction minTimeAction;
+		V3DAction maxTimeAction;
 
 		void ChangeTime();
 
@@ -30,8 +29,8 @@ namespace V3D::V3DEngine::V3DCore
 		
 		explicit V3DWatchHour(const V3DTimeHour& currentTime, const V3DTimeHour& minTime = V3DTimeHour{}, const V3DTimeHour& maxTime = V3DTimeHour{});
 		
-		void SetMinTimeEvent(const std::function<void()>& minTimeEventFunc);
-		void SetMaxTimeEvent(const std::function<void()>& maxTimeEventFunc);
+		void SetMinTimeAction(const V3DAction& minTimeActionValue);
+		void SetMaxTimeAction(const V3DAction& maxTimeActionValue);
 		const V3DTimeHour& GetTime() const;
 		
 		void SetToZero();

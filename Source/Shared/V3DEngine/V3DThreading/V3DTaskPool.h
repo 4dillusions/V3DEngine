@@ -66,10 +66,20 @@ namespace V3D::V3DEngine::V3DThreading
 			data[index]->SetJobFunction(jobFunction);
 		}
 
+		template<typename TObject> void SetJobFunction(void(TObject::* jobFunction)() const, TObject& object) const
+		{
+			SetJobFunction(std::bind(jobFunction, object));  // NOLINT(modernize-avoid-bind)
+		}
+
 		void SetJobFunction(const std::function<void(TParam)>& jobFunction, const TParam& param) const
 		{
 			int index = GetAvailableTaskIndex();
 			data[index]->SetJobFunction(jobFunction, param);
+		}
+
+		template<typename TObject> void SetJobFunction(void(TObject::* jobFunction)(TParam) const, TObject& object, const TParam& param) const
+		{
+			SetJobFunction(std::bind(jobFunction, object, std::placeholders::_1), param);  // NOLINT(modernize-avoid-bind)
 		}
 	};
 }

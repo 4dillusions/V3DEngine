@@ -19,6 +19,13 @@ namespace V3D::V3DEngine::V3DCore
 
 	public:
 		V3DFunc() = default;
+
+		explicit V3DFunc(const std::function<TResult()>& function) : func { function }
+		{ }
+
+		template<typename TObject> V3DFunc(TResult(TObject::* function)() const, TObject& object) : func{ std::bind(function, object) }
+		{ }
+
 		V3DFunc(const V3DFunc&) = delete;
 		V3DFunc(V3DFunc&&) = delete;
 		~V3DFunc() = default;
@@ -37,10 +44,15 @@ namespace V3D::V3DEngine::V3DCore
 
 		template<typename TObject> void Set(TResult(TObject::* function)() const, TObject& object)
 		{
-			Set(std::bind(function, object));
+			func = std::bind(function, object);  // NOLINT(modernize-avoid-bind)
 		}
 
-		TResult Invoke()
+		void Set(const V3DFunc& function)
+		{
+			func = function.func;
+		}
+		
+		TResult Invoke() const
 		{
 			return func();
 		}
@@ -55,6 +67,13 @@ namespace V3D::V3DEngine::V3DCore
 
 	public:
 		V3DFunc1() = default;
+
+		explicit V3DFunc1(const std::function<TResult(TParam param)>& function) : func{ function }
+		{ }
+
+		template<typename TObject> V3DFunc1(TResult(TObject::* function)(TParam param) const, TObject& object) : func{ std::bind(function, object, std::placeholders::_1) }
+		{ }
+
 		V3DFunc1(const V3DFunc1&) = delete;
 		V3DFunc1(V3DFunc1&&) = delete;
 		~V3DFunc1() = default;
@@ -73,10 +92,15 @@ namespace V3D::V3DEngine::V3DCore
 
 		template<typename TObject> void Set(TResult(TObject::* function)(TParam param) const, TObject& object)
 		{
-			Set(std::bind(function, object, std::placeholders::_1));
+			func = std::bind(function, object, std::placeholders::_1); // NOLINT(modernize-avoid-bind)
 		}
 
-		TResult Invoke(TParam param)
+		void Set(const V3DFunc1& function)
+		{
+			func = function.func;
+		}
+
+		TResult Invoke(TParam param) const
 		{
 			return func(param);
 		}
@@ -91,6 +115,13 @@ namespace V3D::V3DEngine::V3DCore
 
 	public:
 		V3DFunc2() = default;
+
+		explicit V3DFunc2(const std::function<TResult(TParam1 param1, TParam2 param2)>& function) : func{ function }
+		{ }
+
+		template<typename TObject> V3DFunc2(TResult(TObject::* function)(TParam1 param1, TParam2 param2) const, TObject& object) : func{ std::bind(function, object, std::placeholders::_1, std::placeholders::_2) }
+		{ }
+
 		V3DFunc2(const V3DFunc2&) = delete;
 		V3DFunc2(V3DFunc2&&) = delete;
 		~V3DFunc2() = default;
@@ -109,10 +140,15 @@ namespace V3D::V3DEngine::V3DCore
 
 		template<typename TObject> void Set(TResult(TObject::* function)(TParam1 param1, TParam2 param2) const, TObject& object)
 		{
-			Set(std::bind(function, object, std::placeholders::_1, std::placeholders::_2));
+			func = std::bind(function, object, std::placeholders::_1, std::placeholders::_2); // NOLINT(modernize-avoid-bind)
 		}
 
-		TResult Invoke(TParam1 param1, TParam2 param2)
+		void Set(const V3DFunc2& function)
+		{
+			func = function.func;
+		}
+
+		TResult Invoke(TParam1 param1, TParam2 param2) const
 		{
 			return func(param1, param2);
 		}
@@ -127,6 +163,13 @@ namespace V3D::V3DEngine::V3DCore
 
 	public:
 		V3DFunc3() = default;
+
+		explicit V3DFunc3(const std::function<TResult(TParam1 param1, TParam2 param2, TParam3 param3)>& function) : func{ function }
+		{ }
+
+		template<typename TObject> V3DFunc3(TResult(TObject::* function)(TParam1 param1, TParam2 param2, TParam3 param3) const, TObject& object) : func{ std::bind(function, object, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3) }
+		{ }
+
 		V3DFunc3(const V3DFunc3&) = delete;
 		V3DFunc3(V3DFunc3&&) = delete;
 		~V3DFunc3() = default;
@@ -145,10 +188,15 @@ namespace V3D::V3DEngine::V3DCore
 
 		template<typename TObject> void Set(TResult(TObject::* function)(TParam1 param1, TParam2 param2, TParam3 param3) const, TObject& object)
 		{
-			Set(std::bind(function, object, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3));
+			func = std::bind(function, object, std::placeholders::_1, std::placeholders::_2, std::placeholders::_3); // NOLINT(modernize-avoid-bind)
 		}
 
-		TResult Invoke(TParam1 param1, TParam2 param2, TParam3 param3)
+		void Set(const V3DFunc3& function)
+		{
+			func = function.func;
+		}
+
+		TResult Invoke(TParam1 param1, TParam2 param2, TParam3 param3) const
 		{
 			return func(param1, param2, param3);
 		}

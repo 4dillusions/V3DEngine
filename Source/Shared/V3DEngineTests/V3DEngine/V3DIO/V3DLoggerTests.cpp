@@ -19,7 +19,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 	{
 		auto logTriggerText = V3DMemory::New<V3DString>(V3DFILE_INFO);
 		auto& logger = V3DLogger::Get();
-		logger.SetLogTrigger([&logTriggerText](const V3DString& log) { *logTriggerText += log; });
+		logger.SetLogTrigger(V3DAction1<const V3DString&>([&logTriggerText](const V3DString& log) { *logTriggerText += log; }));
 
 		logger.WriteOutput(V3DLogMessageType::Error, V3DString("Testing log system 1"));
 		logger.WriteOutput(V3DLogMessageType::Info, "Testing log system 2");
@@ -75,7 +75,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 		V3DTest::AssertOk(logTriggerText->Contains(V3DString("Testing log system 3330")), V3DFILE_INFO);
 
 		V3DMemory::Delete(logTriggerText);
-		logger.SetLogTrigger(nullptr);
+		logger.SetLogTrigger(V3DAction1<const V3DString&>(nullptr));
 		logger.SetOutputTypeFlag(V3DLogOutputType::ToFile, false);
 		logger.SetOutputTypeFlag(V3DLogOutputType::ToBuffer, false);
 		logger.SetOutputTypeFlag(V3DLogOutputType::ToLogTrigger, false);

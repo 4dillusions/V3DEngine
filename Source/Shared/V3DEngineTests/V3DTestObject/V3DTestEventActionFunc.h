@@ -25,9 +25,24 @@ namespace V3D::V3DEngineTests::V3DTestObject
 			x += number;
 		}
 
+		void MultiplicationXWithNumber() const
+		{
+			x *= number;
+		}
+
 		void IncrementXWithArgs(const V3DArgsTest& args) const
 		{
 			x += args.x;
+		}
+
+		void IncrementXWithParam(int param) const
+		{
+			x += param;
+		}
+
+		void MultiplicationXWithParam(int param) const
+		{
+			x *= param;
 		}
 
 		int SumParam() const

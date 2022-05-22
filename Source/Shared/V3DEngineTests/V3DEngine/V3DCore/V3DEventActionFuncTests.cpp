@@ -32,6 +32,10 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 		obj->TestAction.Set(&V3DTestEventActionFunc::AddParam, test);
 		obj->TestAction.Invoke();
 		V3DTest::AssertOk(x == 110, V3DFILE_INFO);
+		obj->TestAction.Set(nullptr);
+		obj->TestAction.Set(V3DAction(& V3DTestEventActionFunc::AddParam, test));
+		obj->TestAction.Invoke();
+		V3DTest::AssertOk(x == 120, V3DFILE_INFO);
 
 		V3DTest::AssertOk(obj->TestAction1.IsEmpty(), V3DFILE_INFO);
 		x = 100;
@@ -43,6 +47,10 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 		obj->TestAction1.Set(&V3DTestEventActionFunc::AddParam, test);
 		obj->TestAction1.Invoke(10);
 		V3DTest::AssertOk(x == 110, V3DFILE_INFO);
+		obj->TestAction1.Set(nullptr);
+		obj->TestAction1.Set(V3DAction1(&V3DTestEventActionFunc::AddParam, test));
+		obj->TestAction1.Invoke(20);
+		V3DTest::AssertOk(x == 130, V3DFILE_INFO);
 
 		V3DTest::AssertOk(obj->TestAction2.IsEmpty(), V3DFILE_INFO);
 		x = 100;
@@ -54,6 +62,10 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 		obj->TestAction2.Set(&V3DTestEventActionFunc::AddParam, test);
 		obj->TestAction2.Invoke(10, 20);
 		V3DTest::AssertOk(x == 130, V3DFILE_INFO);
+		obj->TestAction2.Set(nullptr);
+		obj->TestAction2.Set(V3DAction2(&V3DTestEventActionFunc::AddParam, test));
+		obj->TestAction2.Invoke(20, 30);
+		V3DTest::AssertOk(x == 180, V3DFILE_INFO);
 
 		V3DTest::AssertOk(obj->TestAction3.IsEmpty(), V3DFILE_INFO);
 		x = 100;
@@ -65,6 +77,10 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 		obj->TestAction3.Set(&V3DTestEventActionFunc::AddParam, test);
 		obj->TestAction3.Invoke(10, 20, 30);
 		V3DTest::AssertOk(x == 160, V3DFILE_INFO);
+		obj->TestAction3.Set(nullptr);
+		obj->TestAction3.Set(V3DAction3(&V3DTestEventActionFunc::AddParam, test));
+		obj->TestAction3.Invoke(20, 30, 40);
+		V3DTest::AssertOk(x == 250, V3DFILE_INFO);
 
 		V3DMemory::Delete(obj);
 	}
@@ -83,6 +99,10 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 		obj->TestFunc.Set(&V3DTestEventActionFunc::SumParam, test);
 		x = obj->TestFunc.Invoke();
 		V3DTest::AssertOk(x == 10, V3DFILE_INFO);
+		obj->TestFunc.Set(nullptr);
+		obj->TestFunc.Set(V3DFunc(&V3DTestEventActionFunc::SumParam, test));
+		x = obj->TestFunc.Invoke();
+		V3DTest::AssertOk(x == 10, V3DFILE_INFO);
 
 		V3DTest::AssertOk(obj->TestFunc1.IsEmpty(), V3DFILE_INFO);
 		auto Func1 = [](int param) { return param; };
@@ -92,6 +112,10 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 		obj->TestFunc1.Set(&V3DTestEventActionFunc::SumParam, test);
 		x = obj->TestFunc1.Invoke(10);
 		V3DTest::AssertOk(x == 10, V3DFILE_INFO);
+		obj->TestFunc1.Set(nullptr);
+		obj->TestFunc1.Set(V3DFunc1(&V3DTestEventActionFunc::SumParam, test));
+		x = obj->TestFunc1.Invoke(20);
+		V3DTest::AssertOk(x == 20, V3DFILE_INFO);
 
 		V3DTest::AssertOk(obj->TestFunc2.IsEmpty(), V3DFILE_INFO);
 		auto Func2 = [](int param1, int param2) { return param1 + param2; };
@@ -101,6 +125,10 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 		obj->TestFunc2.Set(&V3DTestEventActionFunc::SumParam, test);
 		x = obj->TestFunc2.Invoke(10, 20);
 		V3DTest::AssertOk(x == 30, V3DFILE_INFO);
+		obj->TestFunc2.Set(nullptr);
+		obj->TestFunc2.Set(V3DFunc2(&V3DTestEventActionFunc::SumParam, test));
+		x = obj->TestFunc2.Invoke(20, 30);
+		V3DTest::AssertOk(x == 50, V3DFILE_INFO);
 
 		V3DTest::AssertOk(obj->TestFunc3.IsEmpty(), V3DFILE_INFO);
 		auto Func3 = [](int param1, int param2, int param3) { return param1 + param2 + param3; };
@@ -110,6 +138,10 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 		obj->TestFunc3.Set(&V3DTestEventActionFunc::SumParam, test);
 		x = obj->TestFunc3.Invoke(10, 20, 30);
 		V3DTest::AssertOk(x == 60, V3DFILE_INFO);
+		obj->TestFunc3.Set(nullptr);
+		obj->TestFunc3.Set(V3DFunc3(&V3DTestEventActionFunc::SumParam, test));
+		x = obj->TestFunc3.Invoke(20, 30, 40);
+		V3DTest::AssertOk(x == 90, V3DFILE_INFO);
 
 		V3DMemory::Delete(obj);
 	}

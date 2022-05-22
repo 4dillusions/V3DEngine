@@ -8,6 +8,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngineTests/V3DTest.h"
 #include "V3DEngine/V3DMacros.h"
 #include "V3DEngine/V3DThreading/V3DTaskPool.h"
+#include "V3DEngineTests/V3DTestObject/V3DTestEventActionFunc.h"
 #include "V3DEngine/V3DData/V3DIFileRepository.h"
 #include "V3DEngineTests/V3DTestObject/V3DTestContentData.h"
 #include "V3DEngineTests/V3DTestObject/V3DTestSimpleFileRepository.h"
@@ -37,6 +38,25 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DThreading
 	void TestFunc2() { (void)sqrt(20000); ++jobCounter; }
 	void TestFunc3() { (void)sqrt(300000); ++jobCounter; }
 	void TestFunc4() { (void)sqrt(4000000); ++jobCounter; }
+
+	void V3DTaskPoolTests::PoolObjectMethodTest()
+	{
+		int x = 100;
+		V3DTestEventActionFunc test(x, 10);
+
+		pool = V3DMemory::New<V3DTaskPool<void*>>(V3DFILE_INFO, 2);
+		pool->SetJobFunction(&V3DTestEventActionFunc::IncrementXWithNumber, test);
+		pool->SetJobFunction(&V3DTestEventActionFunc::MultiplicationXWithNumber, test);
+		V3DMemory::Delete(pool);
+		V3DTest::AssertOk(x == 1100, V3DFILE_INFO);
+
+		x = 100;
+		auto pool2 = V3DMemory::New<V3DTaskPool<int>>(V3DFILE_INFO, 2);
+		pool2->SetJobFunction(&V3DTestEventActionFunc::IncrementXWithParam, test, 10);
+		pool2->SetJobFunction(&V3DTestEventActionFunc::MultiplicationXWithParam, test, 20);
+		V3DMemory::Delete(pool2);
+		V3DTest::AssertOk(x == 2200, V3DFILE_INFO);
+	}
 
 	void V3DTaskPoolTests::PoolStressTest()
 	{
@@ -254,6 +274,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DThreading
 	
 	void V3DTaskPoolTests::RunAllTests()
 	{
+		PoolObjectMethodTest();
 		PoolStressTest();
 		
 		ThreadVsPoolTimingTest();

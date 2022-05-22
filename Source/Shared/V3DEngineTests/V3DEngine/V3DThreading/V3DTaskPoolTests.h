@@ -18,6 +18,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DThreading
 		V3DTaskPoolTests& operator=(const V3DTaskPoolTests&) = delete;
 		V3DTaskPoolTests& operator=(V3DTaskPoolTests&&) = delete;
 
+		static void PoolObjectMethodTest();
 		static void PoolStressTest();
 
 		static void ThreadVsPoolTimingTest();
