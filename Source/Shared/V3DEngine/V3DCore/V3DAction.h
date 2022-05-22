@@ -25,6 +25,11 @@ namespace V3D::V3DEngine::V3DCore
 		V3DAction& operator=(const V3DAction&) = delete;
 		V3DAction& operator=(V3DAction&&) = delete;
 
+		bool IsEmpty() const
+		{
+			return func == nullptr;
+		}
+
 		void Set(const std::function<void()>& function)
 		{
 			func = function;
@@ -35,7 +40,7 @@ namespace V3D::V3DEngine::V3DCore
 			Set(std::bind(function, object));
 		}
 
-		void Invoke()
+		void Invoke() const
 		{
 			func();
 		}
@@ -55,6 +60,11 @@ namespace V3D::V3DEngine::V3DCore
 		~V3DAction1() = default;
 		V3DAction1& operator=(const V3DAction1&) = delete;
 		V3DAction1& operator=(V3DAction1&&) = delete;
+
+		bool IsEmpty() const
+		{
+			return func == nullptr;
+		}
 
 		void Set(const std::function<void(TParam param)>& function)
 		{
@@ -87,6 +97,11 @@ namespace V3D::V3DEngine::V3DCore
 		V3DAction2& operator=(const V3DAction2&) = delete;
 		V3DAction2& operator=(V3DAction2&&) = delete;
 
+		bool IsEmpty() const
+		{
+			return func == nullptr;
+		}
+
 		void Set(const std::function<void(TParam1 param1, TParam2 param2)>& function)
 		{
 			func = function;
@@ -117,6 +132,11 @@ namespace V3D::V3DEngine::V3DCore
 		~V3DAction3() = default;
 		V3DAction3& operator=(const V3DAction3&) = delete;
 		V3DAction3& operator=(V3DAction3&&) = delete;
+
+		bool IsEmpty() const
+		{
+			return func == nullptr;
+		}
 
 		void Set(const std::function<void(TParam1 param1, TParam2 param2, TParam3 param3)>& function)
 		{

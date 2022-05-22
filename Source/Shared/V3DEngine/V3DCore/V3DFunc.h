@@ -25,6 +25,11 @@ namespace V3D::V3DEngine::V3DCore
 		V3DFunc& operator=(const V3DFunc&) = delete;
 		V3DFunc& operator=(V3DFunc&&) = delete;
 
+		bool IsEmpty() const
+		{
+			return func == nullptr;
+		}
+
 		void Set(const std::function<TResult()>& function)
 		{
 			func = function;
@@ -55,6 +60,11 @@ namespace V3D::V3DEngine::V3DCore
 		~V3DFunc1() = default;
 		V3DFunc1& operator=(const V3DFunc1&) = delete;
 		V3DFunc1& operator=(V3DFunc1&&) = delete;
+
+		bool IsEmpty() const
+		{
+			return func == nullptr;
+		}
 
 		void Set(const std::function<TResult(TParam param)>& function)
 		{
@@ -87,6 +97,11 @@ namespace V3D::V3DEngine::V3DCore
 		V3DFunc2& operator=(const V3DFunc2&) = delete;
 		V3DFunc2& operator=(V3DFunc2&&) = delete;
 
+		bool IsEmpty() const
+		{
+			return func == nullptr;
+		}
+
 		void Set(const std::function<TResult(TParam1 param1, TParam2 param2)>& function)
 		{
 			func = function;
@@ -117,6 +132,11 @@ namespace V3D::V3DEngine::V3DCore
 		~V3DFunc3() = default;
 		V3DFunc3& operator=(const V3DFunc3&) = delete;
 		V3DFunc3& operator=(V3DFunc3&&) = delete;
+
+		bool IsEmpty() const
+		{
+			return func == nullptr;
+		}
 
 		void Set(const std::function<TResult(TParam1 param1, TParam2 param2, TParam3 param3)>& function)
 		{
