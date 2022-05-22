@@ -9,8 +9,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngine/V3DEngineLibrary.h"
 #include "V3DLogMessageType.h"
 #include "V3DLogOutputType.h"
-
-#include <functional>
+#include "V3DEngine/V3DCore/V3DAction.h"
 
 namespace V3D::V3DEngine::V3DCore
 {
@@ -21,7 +20,7 @@ namespace V3D::V3DEngine::V3DIO
 {
     class V3DENGINE_API V3DLogger final  // NOLINT(clang-diagnostic-padded)
     {
-        std::function<void(const V3DCore::V3DString& log)> logTrigger = nullptr;
+        V3DCore::V3DAction1<const V3DCore::V3DString&> logTrigger;
         bool outputTypes[static_cast<unsigned int>(V3DLogOutputType::Count)]{};
         int warnings = 0, errors = 0;
         
@@ -50,7 +49,7 @@ namespace V3D::V3DEngine::V3DIO
         void SetOutputTypeFlag(V3DLogOutputType outputType, bool isEnable);
 
         //Log trigger helps show logs another environment for example in editor
-        void SetLogTrigger(const std::function<void(const V3DCore::V3DString& log)>& otherLogTrigger);
+        void SetLogTrigger(const V3DCore::V3DAction1<const V3DCore::V3DString&>& otherLogTrigger);
 
         V3DCore::V3DString const* GetBuffer() const;
 

@@ -8,9 +8,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #include "V3DMemory.h"
 #include "V3DEngine/V3DMacros.h"
-
-// ReSharper disable once CppUnusedIncludeDirective
-#include <functional>
+#include "V3DEngine/V3DCore/V3DFunc.h"
 
 namespace V3D::V3DEngine::V3DCore
 {
@@ -18,7 +16,7 @@ namespace V3D::V3DEngine::V3DCore
 		It is working only in one assembly:
 			-execute, dynamic lib
 			-execute + static lib
-			
+
 		Dynamic IOC for subsystems and other dynamic main objects
 		Ioc implements prototype, factory and singleton patterns together, called Inversion Of Control and Dependency Injection pattern (DI)
 		This Ioc supports one dynamic instance and one dynamic prototype implementation for singleton or transient objects
@@ -26,7 +24,7 @@ namespace V3D::V3DEngine::V3DCore
 	template <typename TInstance> class V3DIoc final
 	{
 		static TInstance* instance;
-		static std::function<TInstance * ()> prototype;
+		static V3DFunc<TInstance*> prototype;
 
 	public:
 		V3DIoc() = delete;
@@ -38,36 +36,36 @@ namespace V3D::V3DEngine::V3DCore
 
 		template <typename TType> static void Register()
 		{
-			if (prototype == nullptr && instance == nullptr)
-				prototype = []() { return V3DMemory::New<TType>(V3DFILE_INFO); };
+			if (prototype.IsEmpty() && instance == nullptr)
+				prototype.Set([] { return V3DMemory::New<TType>(V3DFILE_INFO); });
 		}
 
-		template <typename TType> static void Register(const std::function<TInstance * ()>& otherPrototype)
+		template <typename TType> static void Register(const V3DFunc<TInstance*>& otherPrototype)
 		{
-			if (otherPrototype != nullptr && prototype == nullptr && instance == nullptr)
-				prototype = otherPrototype;
+			if (!otherPrototype.IsEmpty() && prototype.IsEmpty() && instance == nullptr)
+				prototype.Set(otherPrototype);
 		}
 
 		static void CreateSingleton()
 		{
-			if (prototype != nullptr && instance == nullptr)
-				instance = prototype();
+			if (!prototype.IsEmpty() && instance == nullptr)
+				instance = prototype.Invoke();
 		}
 
 		static TInstance* CreateTransient()
 		{
-			return prototype();
+			return prototype.Invoke();
 		}
 
 		static void DeleteSingletonAndRegister()
 		{
 			V3DMemory::Delete(instance);
-			prototype = nullptr;
+			prototype.Set(nullptr);
 		}
 
 		static void DeleteRegister()
 		{
-			prototype = nullptr;
+			prototype.Set(nullptr);
 		}
 
 		static TInstance* GetSingleton()
@@ -82,5 +80,5 @@ namespace V3D::V3DEngine::V3DCore
 	};
 
 	template <typename TInstance> TInstance* V3DIoc<TInstance>::instance = nullptr;
-	template <typename TInstance> std::function<TInstance * ()> V3DIoc<TInstance>::prototype = nullptr;
+	template <typename TInstance> V3DFunc<TInstance*> V3DIoc<TInstance>::prototype;
 }

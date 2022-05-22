@@ -21,7 +21,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 		V3DWatchHour watch(V3DTimeHour(1, 0), MinTime, MaxTime);
 
 		bool isMaxTime = false;
-		watch.SetMaxTimeEvent([&isMaxTime]() { isMaxTime = true; });
+		watch.SetMaxTimeAction(V3DAction([&isMaxTime]() { isMaxTime = true; }));
 		for (int i = 0; i < 60; i++)
 			watch.IncreaseSeconds();
 
@@ -29,7 +29,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 		V3DTest::AssertOk(watch.GetTime() == MaxTime, V3DFILE_INFO);
 
 		bool isMinTime = false;
-		watch.SetMinTimeEvent([&isMinTime]() { isMinTime = true; });
+		watch.SetMinTimeAction(V3DAction([&isMinTime]() { isMinTime = true; }));
 		for (int i = 0; i < 120; i++)
 			watch.DecreaseSeconds();
 

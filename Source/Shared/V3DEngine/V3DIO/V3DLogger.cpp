@@ -37,9 +37,9 @@ namespace V3D::V3DEngine::V3DIO
 		outputTypes[static_cast<unsigned int>(outputType)] = isEnable;
 	}
 	
-	void V3DLogger::SetLogTrigger(const std::function<void(const V3DCore::V3DString& log)>& otherLogTrigger)
+	void V3DLogger::SetLogTrigger(const V3DAction1<const V3DString&>& otherLogTrigger)
 	{
-		logTrigger = otherLogTrigger;
+		logTrigger.Set(otherLogTrigger);
 	}
 
 	V3DString const* V3DLogger::GetBuffer() const
@@ -115,9 +115,9 @@ namespace V3D::V3DEngine::V3DIO
 			WriteLineToFile(Text.ToChar());
 		}
 
-		if (outputTypes[static_cast<unsigned int>(V3DLogOutputType::ToLogTrigger)] && logTrigger != nullptr)
+		if (outputTypes[static_cast<unsigned int>(V3DLogOutputType::ToLogTrigger)] && !logTrigger.IsEmpty())
 		{
-			logTrigger(Text);
+			logTrigger.Invoke(Text);
 		}
 
 		if (outputTypes[static_cast<unsigned int>(V3DLogOutputType::ToBuffer)])
