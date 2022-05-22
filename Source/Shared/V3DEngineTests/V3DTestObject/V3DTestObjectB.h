@@ -8,7 +8,8 @@ Released under the terms of the GNU General Public License version 3 or later.
 #pragma once
 
 #include "V3DITestObject.h"
-#include "V3DEngine/V3DCore/V3DDelegate.h"
+#include "V3DEngine/V3DCore/V3DAction.h"
+#include "V3DEngine/V3DCore/V3DFunc.h"
 #include "V3DEngine/V3DCore/V3DEvent.h"
 
 namespace V3D::V3DEngineTests::V3DTestObject
@@ -30,8 +31,14 @@ namespace V3D::V3DEngineTests::V3DTestObject
 		V3DTestObjectB& operator=(const V3DTestObjectB&) = delete;
 		V3DTestObjectB& operator=(V3DTestObjectB&&) = delete;
 
-		V3D::V3DEngine::V3DCore::V3DDelegate<void()> TestNoParamDelegate;
-		V3D::V3DEngine::V3DCore::V3DDelegate<V3DArgsTest> TestParamDelegate;
+		V3D::V3DEngine::V3DCore::V3DAction TestAction;
+		V3D::V3DEngine::V3DCore::V3DAction1<int> TestAction1;
+		V3D::V3DEngine::V3DCore::V3DAction2<int, int> TestAction2;
+		V3D::V3DEngine::V3DCore::V3DAction3<int, int, int> TestAction3;
+		V3D::V3DEngine::V3DCore::V3DFunc<int> TestFunc;
+		V3D::V3DEngine::V3DCore::V3DFunc1<int, int> TestFunc1;
+		V3D::V3DEngine::V3DCore::V3DFunc2<int, int, int> TestFunc2;
+		V3D::V3DEngine::V3DCore::V3DFunc3<int, int, int, int> TestFunc3;
 		V3D::V3DEngine::V3DCore::V3DEvent<void()> TestNoParamEvent;
 		V3D::V3DEngine::V3DCore::V3DEvent<V3DArgsTest> TestParamEvent;
 		//void PerformTestEvent(Args args);

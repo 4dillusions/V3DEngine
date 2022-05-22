@@ -12,6 +12,9 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 namespace V3D::V3DEngine::V3DCore
 {
+	/*
+		It is a function list with TArgs param
+	*/
 	template <typename TArgs> class V3DEvent final
 	{
 		V3DCollections::V3DLinkedList<std::function<void(const TArgs& args)>> functionList;
@@ -24,12 +27,17 @@ namespace V3D::V3DEngine::V3DCore
 		V3DEvent& operator=(const V3DEvent&) = delete;
 		V3DEvent& operator=(V3DEvent&&) = delete;
 
-		void operator += (const std::function<void(const TArgs& args)>& function)
+		void Add(const std::function<void(const TArgs& args)>& function)
 		{
 			functionList.Add(function);
 		}
+
+		template<typename TObject> void Add(void(TObject::* func)(const TArgs& args) const, TObject& object)
+		{
+			Add(std::bind(func, object, std::placeholders::_1));  // NOLINT(modernize-avoid-bind)
+		}
 		
-		void operator -= (const std::function<void(const TArgs& args)>& function)
+		void Remove(const std::function<void(const TArgs& args)>& function)
 		{
 			for (functionList.First(); functionList.IsDone(); functionList.Next())
 				if (functionList.GetCurrent()->template target<void(const TArgs & args)>() == function.template target<void(const TArgs & args)>())
@@ -38,14 +46,22 @@ namespace V3D::V3DEngine::V3DCore
 					break;
 				}
 		}
+
+		template<typename TObject> void Remove(void(TObject::* func)(const TArgs& args) const, TObject& object)
+		{
+			Remove(std::bind(func, object, std::placeholders::_1));  // NOLINT(modernize-avoid-bind)
+		}
 		
-		void operator () (const TArgs& args)
+		void Invoke(const TArgs& args)
 		{
 			for (functionList.First(); functionList.IsDone(); functionList.Next())
 				(*functionList.GetCurrent())(args);
 		}
 	};
 
+	/*
+		It is a function list without param
+	*/
 	template <> class V3DEvent<void()> final
 	{
 		V3DCollections::V3DLinkedList<std::function<void()>> functionList;
@@ -58,12 +74,17 @@ namespace V3D::V3DEngine::V3DCore
 		V3DEvent& operator=(const V3DEvent&) = delete;
 		V3DEvent& operator=(V3DEvent&&) = delete;
 
-		void operator += (const std::function<void()>& function)
+		void Add(const std::function<void()>& function)
 		{
 			functionList.Add(function);
 		}
 
-		void operator -= (const std::function<void()>& function)
+		template<typename TObject> void Add(void(TObject::* func)() const, TObject& object)
+		{
+			Add(std::bind(func, object));  // NOLINT(modernize-avoid-bind)
+		}
+
+		void Remove(const std::function<void()>& function)
 		{
 			for (functionList.First(); functionList.IsDone(); functionList.Next())
 				if (functionList.GetCurrent()->target<void()>() == function.target<void()>())
@@ -73,7 +94,12 @@ namespace V3D::V3DEngine::V3DCore
 				}
 		}
 
-		void operator () ()
+		template<typename TObject> void Remove(void(TObject::* func)() const, TObject& object)
+		{
+			Remove(std::bind(func, object));  // NOLINT(modernize-avoid-bind)
+		}
+
+		void Invoke()
 		{
 			for (functionList.First(); functionList.IsDone(); functionList.Next())
 				(*functionList.GetCurrent())();

@@ -14,7 +14,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DStringTests.h"
 #include "V3DDateTimeTests.h"
 #include "V3DComponentTests.h"
-#include "V3DDelegateEventTests.h"
+#include "V3DEventActionFuncTests.h"
 
 namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 {
@@ -29,6 +29,6 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 		V3DStringTests::RunAllTests();
 		V3DDateTimeTests::RunAllTests();
 		V3DComponentTests::RunAllTests();
-		V3DDelegateEventTests::RunAllTests();
+		V3DEventActionFuncTests::RunAllTests();
 	}
 }
