@@ -60,6 +60,15 @@ namespace V3D::V3DEngine::V3DThreading
 		}
 
 	public:
+		bool GetIsWorking()
+		{
+			for (int i = 0; i < PoolSize; i++)
+				if (data[i]->GetIsWorking())
+					return true;
+					
+			return false;
+		}
+
 		void SetJobFunction(const std::function<void()>& jobFunction) const
 		{
 			int index = GetAvailableTaskIndex();

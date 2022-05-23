@@ -47,15 +47,22 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DThreading
 		pool = V3DMemory::New<V3DTaskPool<void*>>(V3DFILE_INFO, 2);
 		pool->SetJobFunction(&V3DTestEventActionFunc::IncrementXWithNumber, test);
 		pool->SetJobFunction(&V3DTestEventActionFunc::MultiplicationXWithNumber, test);
-		V3DMemory::Delete(pool);
+
+		while (pool->GetIsWorking())
+			;
 		V3DTest::AssertOk(x == 1100, V3DFILE_INFO);
+		V3DMemory::Delete(pool);
 
 		x = 100;
 		auto pool2 = V3DMemory::New<V3DTaskPool<int>>(V3DFILE_INFO, 2);
 		pool2->SetJobFunction(&V3DTestEventActionFunc::IncrementXWithParam, test, 10);
 		pool2->SetJobFunction(&V3DTestEventActionFunc::MultiplicationXWithParam, test, 20);
-		V3DMemory::Delete(pool2);
+
+		while (pool2->GetIsWorking())
+			;
 		V3DTest::AssertOk(x == 2200, V3DFILE_INFO);
+		V3DMemory::Delete(pool2);
+		
 	}
 
 	void V3DTaskPoolTests::PoolStressTest()
@@ -82,7 +89,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DThreading
 				workerCounter.store(workerCounter.load() + 1);
 			}
 
-		while (jobCounter.load() < LoopCount * 4 * 100)
+		while (pool->GetIsWorking()) //while (jobCounter.load() < LoopCount * 4 * 100)
 			;
 
 		V3DMemory::Delete(pool);
@@ -146,8 +153,8 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DThreading
 						pool->SetJobFunction(TestFunc4);
 						++workerCounter;
 					}
-
-					while (jobCounter.load() < LoopCount * 4)
+					
+					while (pool->GetIsWorking()) //while (jobCounter.load() < LoopCount * 4)
 						;
 
 					V3DMemory::Delete(pool);
@@ -244,7 +251,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DThreading
 						taskPool->SetJobFunction(LoadContent, name);
 					}
 
-					while (contentCounter.load() < 10)
+					while(taskPool->GetIsWorking()) //while (contentCounter.load() < 10)
 						;
 
 					V3DMemory::Delete(taskPool);
