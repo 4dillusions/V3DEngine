@@ -21,7 +21,7 @@ namespace V3D::V3DEngine::V3DNetwork
 		// ReSharper disable once CppRedundantCastExpression
 		udpSocket = socket(AF_INET, SOCK_DGRAM, 0); // NOLINT(bugprone-narrowing-conversions, cppcoreguidelines-narrowing-conversions, clang-diagnostic-shorten-64-to-32)
 		
-		if (static_cast<SOCKET>(udpSocket) == INVALID_SOCKET)
+		if (udpSocket == INVALID_SOCKET)
 			V3DLogger::Get().WriteOutput(V3DLogMessageType::Error, "Can't create UDPSocket!");
 		else
 			V3DLogger::Get().WriteOutput("OK - create UDPSocket");

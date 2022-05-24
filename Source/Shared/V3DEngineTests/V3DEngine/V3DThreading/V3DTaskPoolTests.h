@@ -22,6 +22,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DThreading
 		static void PoolStressTest();
 
 		static void ThreadVsPoolTimingTest();
+		static void ThreadPerSystemPoolTimingTest();
 		static void LoadContentTimingTest();
 
 		static void RunAllTests();

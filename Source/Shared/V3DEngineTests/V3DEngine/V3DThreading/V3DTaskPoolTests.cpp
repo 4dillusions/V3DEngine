@@ -45,17 +45,19 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DThreading
 		V3DTestEventActionFunc test(x, 10);
 
 		pool = V3DMemory::New<V3DTaskPool<void*>>(V3DFILE_INFO, 2);
-		pool->SetJobFunction(&V3DTestEventActionFunc::IncrementXWithNumber, test);
-		pool->SetJobFunction(&V3DTestEventActionFunc::MultiplicationXWithNumber, test);
-		V3DMemory::Delete(pool);
+		pool->SubmitJobFunction(&V3DTestEventActionFunc::IncrementXWithNumber, test);
+		pool->SubmitJobFunction(&V3DTestEventActionFunc::MultiplicationXWithNumber, test);
+		pool->WaitForFinish();
 		V3DTest::AssertOk(x == 1100, V3DFILE_INFO);
+		V3DMemory::Delete(pool);
 
 		x = 100;
 		auto pool2 = V3DMemory::New<V3DTaskPool<int>>(V3DFILE_INFO, 2);
-		pool2->SetJobFunction(&V3DTestEventActionFunc::IncrementXWithParam, test, 10);
-		pool2->SetJobFunction(&V3DTestEventActionFunc::MultiplicationXWithParam, test, 20);
-		V3DMemory::Delete(pool2);
+		pool2->SubmitJobFunction(&V3DTestEventActionFunc::IncrementXWithParam, test, 10);
+		pool2->SubmitJobFunction(&V3DTestEventActionFunc::MultiplicationXWithParam, test, 20);
+		pool2->WaitForFinish();
 		V3DTest::AssertOk(x == 2200, V3DFILE_INFO);
+		V3DMemory::Delete(pool2);
 	}
 
 	void V3DTaskPoolTests::PoolStressTest()
@@ -69,21 +71,20 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DThreading
 		for (int i = 0; i < 100; i++)
 			for (int j = 0; j < LoopCount; j++)
 			{
-				pool->SetJobFunction(TestFunc1);
+				pool->SubmitJobFunction(TestFunc1);
 				workerCounter.store(workerCounter.load() + 1);
 
-				pool->SetJobFunction(TestFunc2);
+				pool->SubmitJobFunction(TestFunc2);
 				workerCounter.store(workerCounter.load() + 1);
 
-				pool->SetJobFunction(TestFunc3);
+				pool->SubmitJobFunction(TestFunc3);
 				workerCounter.store(workerCounter.load() + 1);
 
-				pool->SetJobFunction(TestFunc4);
+				pool->SubmitJobFunction(TestFunc4);
 				workerCounter.store(workerCounter.load() + 1);
 			}
 
-		while (jobCounter.load() < LoopCount * 4 * 100)
-			;
+		pool->WaitForFinish();
 
 		V3DMemory::Delete(pool);
 		V3DTest::AssertOk(memoryLeakCount.load() == V3DMemory::GetMemoryLeakCount(), V3DFILE_INFO);
@@ -94,6 +95,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DThreading
 
 	void V3DTaskPoolTests::ThreadVsPoolTimingTest()
 	{
+		//run functions on threads step by step
 		V3DTest::AddTimingTest("V3DTaskPoolThreadTimingTest", V3DTestTimingData
 			{
 				[&]
@@ -116,6 +118,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DThreading
 				}, false, 0
 			});
 
+		//create pool
 		V3DTest::AddTimingTest("V3DTaskPoolTimingTest", V3DTestTimingData
 			{
 				[&]
@@ -125,6 +128,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DThreading
 				}, true, 0
 			});
 
+		//run functions on threads parallel
 		V3DTest::AddTimingTest("V3DTaskPoolTimingTest", V3DTestTimingData
 			{
 				[&]
@@ -134,27 +138,91 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DThreading
 
 					for (int i = 0; i < LoopCount; i++)
 					{
-						pool->SetJobFunction(TestFunc1);
+						pool->SubmitJobFunction(TestFunc1);
 						++workerCounter;
 
-						pool->SetJobFunction(TestFunc2);
+						pool->SubmitJobFunction(TestFunc2);
 						++workerCounter;
 
-						pool->SetJobFunction(TestFunc3);
+						pool->SubmitJobFunction(TestFunc3);
 						++workerCounter;
 
-						pool->SetJobFunction(TestFunc4);
+						pool->SubmitJobFunction(TestFunc4);
 						++workerCounter;
 					}
-
-					while (jobCounter.load() < LoopCount * 4)
-						;
+					
+					pool->WaitForFinish();
 
 					V3DMemory::Delete(pool);
 
 					assert(memoryLeakCount.load() == V3DMemory::GetMemoryLeakCount());
 					assert(jobCounter.load() == LoopCount * 4);
 					assert(workerCounter.load() == LoopCount * 4);
+				}, false, 1
+			});
+	}
+
+	void V3DTaskPoolTests::ThreadPerSystemPoolTimingTest()
+	{
+		//xample: create pool with 3 threads
+		V3DTest::AddTimingTest("V3DTaskPoolThreadPerSystemTimingTest", V3DTestTimingData
+			{
+				[&]
+				{
+					memoryLeakCount.store(V3DMemory::GetMemoryLeakCount());
+					pool = V3DMemory::New<V3DTaskPool<void*>>(V3DFILE_INFO, PoolSize);
+				}, true, 0
+			});
+
+		//xample: run 6 functions on pool with 3 threads on 4 cpu cores
+		V3DTest::AddTimingTest("V3DTaskPoolThreadPerSystemTimingTest", V3DTestTimingData
+			{
+				[&]
+				{
+					jobCounter.store(0);
+					workerCounter.store(0);
+
+					for (int i = 0; i < LoopCount; i++)
+					{
+						for (int poolSizeIndex = 0; poolSizeIndex < PoolSize * 2; poolSizeIndex++)
+						{
+							pool->SubmitJobFunction(TestFunc4);
+						}
+						pool->WaitForFinish();
+					}
+					
+					V3DMemory::Delete(pool);
+				}, false, 1
+			});
+
+		//xample: create pool with 6 threads
+		V3DTest::AddTimingTest("V3DTaskPoolThreadPerSystemDoubleThreadsTimingTest", V3DTestTimingData
+			{
+				[&]
+				{
+					memoryLeakCount.store(V3DMemory::GetMemoryLeakCount());
+					pool = V3DMemory::New<V3DTaskPool<void*>>(V3DFILE_INFO, PoolSize * 2);
+				}, true, 0
+			});
+
+		//xample: run 6 functions on pool with 6 threads on 4 cpu cores
+		V3DTest::AddTimingTest("V3DTaskPoolThreadPerSystemDoubleThreadsTimingTest", V3DTestTimingData
+			{
+				[&]
+				{
+					jobCounter.store(0);
+					workerCounter.store(0);
+
+					for (int i = 0; i < LoopCount; i++)
+					{
+						for (int poolSizeIndex = 0; poolSizeIndex < PoolSize * 2; poolSizeIndex++)
+						{
+							pool->SubmitJobFunction(TestFunc4);
+						}
+						pool->WaitForFinish();
+					}
+
+					V3DMemory::Delete(pool);
 				}, false, 1
 			});
 	}
@@ -241,12 +309,11 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DThreading
 						name += i;
 						name += ".dat";
 
-						taskPool->SetJobFunction(LoadContent, name);
+						taskPool->SubmitJobFunction(LoadContent, name);
 					}
 
-					while (contentCounter.load() < 10)
-						;
-
+					taskPool->WaitForFinish();
+					
 					V3DMemory::Delete(taskPool);
 
 					//assert(memoryLeakCount.load() == V3DMemory::GetMemoryLeakCount());
@@ -278,6 +345,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DThreading
 		PoolStressTest();
 		
 		ThreadVsPoolTimingTest();
+		ThreadPerSystemPoolTimingTest();
 		LoadContentTimingTest();
 	}
 }
