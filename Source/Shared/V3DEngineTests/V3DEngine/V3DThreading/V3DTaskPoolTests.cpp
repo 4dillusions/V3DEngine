@@ -45,21 +45,17 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DThreading
 		V3DTestEventActionFunc test(x, 10);
 
 		pool = V3DMemory::New<V3DTaskPool<void*>>(V3DFILE_INFO, 2);
-		pool->SetJobFunction(&V3DTestEventActionFunc::IncrementXWithNumber, test);
-		pool->SetJobFunction(&V3DTestEventActionFunc::MultiplicationXWithNumber, test);
-
-		while (pool->GetIsWorking())
-			;
+		pool->SubmitJobFunction(&V3DTestEventActionFunc::IncrementXWithNumber, test);
+		pool->SubmitJobFunction(&V3DTestEventActionFunc::MultiplicationXWithNumber, test);
+		pool->WaitForFinish();
 		V3DTest::AssertOk(x == 1100, V3DFILE_INFO);
 		V3DMemory::Delete(pool);
 
 		x = 100;
 		auto pool2 = V3DMemory::New<V3DTaskPool<int>>(V3DFILE_INFO, 2);
-		pool2->SetJobFunction(&V3DTestEventActionFunc::IncrementXWithParam, test, 10);
-		pool2->SetJobFunction(&V3DTestEventActionFunc::MultiplicationXWithParam, test, 20);
-
-		while (pool2->GetIsWorking())
-			;
+		pool2->SubmitJobFunction(&V3DTestEventActionFunc::IncrementXWithParam, test, 10);
+		pool2->SubmitJobFunction(&V3DTestEventActionFunc::MultiplicationXWithParam, test, 20);
+		pool2->WaitForFinish();
 		V3DTest::AssertOk(x == 2200, V3DFILE_INFO);
 		V3DMemory::Delete(pool2);
 		
@@ -76,21 +72,20 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DThreading
 		for (int i = 0; i < 100; i++)
 			for (int j = 0; j < LoopCount; j++)
 			{
-				pool->SetJobFunction(TestFunc1);
+				pool->SubmitJobFunction(TestFunc1);
 				workerCounter.store(workerCounter.load() + 1);
 
-				pool->SetJobFunction(TestFunc2);
+				pool->SubmitJobFunction(TestFunc2);
 				workerCounter.store(workerCounter.load() + 1);
 
-				pool->SetJobFunction(TestFunc3);
+				pool->SubmitJobFunction(TestFunc3);
 				workerCounter.store(workerCounter.load() + 1);
 
-				pool->SetJobFunction(TestFunc4);
+				pool->SubmitJobFunction(TestFunc4);
 				workerCounter.store(workerCounter.load() + 1);
 			}
 
-		while (pool->GetIsWorking()) //while (jobCounter.load() < LoopCount * 4 * 100)
-			;
+		pool->WaitForFinish();
 
 		V3DMemory::Delete(pool);
 		V3DTest::AssertOk(memoryLeakCount.load() == V3DMemory::GetMemoryLeakCount(), V3DFILE_INFO);
@@ -141,21 +136,20 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DThreading
 
 					for (int i = 0; i < LoopCount; i++)
 					{
-						pool->SetJobFunction(TestFunc1);
+						pool->SubmitJobFunction(TestFunc1);
 						++workerCounter;
 
-						pool->SetJobFunction(TestFunc2);
+						pool->SubmitJobFunction(TestFunc2);
 						++workerCounter;
 
-						pool->SetJobFunction(TestFunc3);
+						pool->SubmitJobFunction(TestFunc3);
 						++workerCounter;
 
-						pool->SetJobFunction(TestFunc4);
+						pool->SubmitJobFunction(TestFunc4);
 						++workerCounter;
 					}
 					
-					while (pool->GetIsWorking()) //while (jobCounter.load() < LoopCount * 4)
-						;
+					pool->WaitForFinish();
 
 					V3DMemory::Delete(pool);
 
@@ -248,12 +242,11 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DThreading
 						name += i;
 						name += ".dat";
 
-						taskPool->SetJobFunction(LoadContent, name);
+						taskPool->SubmitJobFunction(LoadContent, name);
 					}
 
-					while(taskPool->GetIsWorking()) //while (contentCounter.load() < 10)
-						;
-
+					taskPool->WaitForFinish();
+					
 					V3DMemory::Delete(taskPool);
 
 					//assert(memoryLeakCount.load() == V3DMemory::GetMemoryLeakCount());

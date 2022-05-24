@@ -12,7 +12,7 @@ namespace V3D::V3DEngine::V3DThreading
 {
 	/*
 		Based on static array datastructure for Tasks
-		Set job funcion starts newer job on free slot of Task array
+		Submit job funcion starts newer job on free slot of Task array
 		After the job finish the Task slot wait for next job
 	*/
 	template <typename TParam = void*> class V3DTaskPool final
@@ -69,26 +69,32 @@ namespace V3D::V3DEngine::V3DThreading
 			return false;
 		}
 
-		void SetJobFunction(const std::function<void()>& jobFunction) const
+		void SubmitJobFunction(const std::function<void()>& jobFunction) const
 		{
 			int index = GetAvailableTaskIndex();
-			data[index]->SetJobFunction(jobFunction);
+			data[index]->SubmitJobFunction(jobFunction);
 		}
 
-		template<typename TObject> void SetJobFunction(void(TObject::* jobFunction)() const, TObject& object) const
+		template<typename TObject> void SubmitJobFunction(void(TObject::* jobFunction)() const, TObject& object) const
 		{
-			SetJobFunction(std::bind(jobFunction, object));  // NOLINT(modernize-avoid-bind)
+			SubmitJobFunction(std::bind(jobFunction, object));  // NOLINT(modernize-avoid-bind)
 		}
 
-		void SetJobFunction(const std::function<void(TParam)>& jobFunction, const TParam& param) const
+		void SubmitJobFunction(const std::function<void(TParam)>& jobFunction, const TParam& param) const
 		{
 			int index = GetAvailableTaskIndex();
-			data[index]->SetJobFunction(jobFunction, param);
+			data[index]->SubmitJobFunction(jobFunction, param);
 		}
 
-		template<typename TObject> void SetJobFunction(void(TObject::* jobFunction)(TParam) const, TObject& object, const TParam& param) const
+		template<typename TObject> void SubmitJobFunction(void(TObject::* jobFunction)(TParam) const, TObject& object, const TParam& param) const
 		{
-			SetJobFunction(std::bind(jobFunction, object, std::placeholders::_1), param);  // NOLINT(modernize-avoid-bind)
+			SubmitJobFunction(std::bind(jobFunction, object, std::placeholders::_1), param);  // NOLINT(modernize-avoid-bind)
+		}
+
+		void WaitForFinish()
+		{
+			while (GetIsWorking())
+				;
 		}
 	};
 }

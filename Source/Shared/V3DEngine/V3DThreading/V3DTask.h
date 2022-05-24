@@ -37,7 +37,7 @@ namespace V3D::V3DEngine::V3DThreading
 			jobThread = V3DCore::V3DMemory::New<std::thread>(V3DFILE_INFO, &V3DTask::Func, this);
 		}
 
-		void SetJobFunction(const std::function<void(TParam)>& job, const TParam& param)
+		void SubmitJobFunction(const std::function<void(TParam)>& job, const TParam& param)
 		{
 			parameter = param;
 			jobFunctionParametrized = job;
@@ -67,7 +67,7 @@ namespace V3D::V3DEngine::V3DThreading
 			jobThread = V3DCore::V3DMemory::New<std::thread>(V3DFILE_INFO, &V3DTask::Func, this);
 		}
 
-		void SetJobFunction(const std::function<void()>& job)
+		void SubmitJobFunction(const std::function<void()>& job)
 		{
 			jobFunction = job;
 			Continue();
