@@ -28,7 +28,7 @@ namespace V3D::V3DEngine::V3DMathematics
 		bool operator!=(const V3DCircle& value) const;
 
 		void SetPosition(float x, float y);
-		void SetPosition(const V3DVector2D& pos);
+		void SetPosition(const V3DVector2D& otherPosition);
 		V3DVector2D& GetPosition();
 		void SetRadius(float otherRadius);
 		float GetRadius() const;
