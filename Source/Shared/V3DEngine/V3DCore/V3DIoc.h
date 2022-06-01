@@ -26,14 +26,6 @@ namespace V3D::V3DEngine::V3DCore
 		static TInstance* instance;
 		static V3DFunc<TInstance*> prototype;
 
-	public:
-		V3DIoc() = delete;
-		V3DIoc(const V3DIoc&) = delete;
-		V3DIoc(V3DIoc&&) = delete;
-		~V3DIoc() = delete;
-		V3DIoc& operator=(const V3DIoc&) = delete;
-		V3DIoc& operator=(V3DIoc&&) = delete;
-
 		template <typename TType> static void Register()
 		{
 			if (prototype.IsEmpty() && instance == nullptr)
@@ -52,22 +44,50 @@ namespace V3D::V3DEngine::V3DCore
 				instance = prototype.Invoke();
 		}
 
+	public:
+		V3DIoc() = delete;
+		V3DIoc(const V3DIoc&) = delete;
+		V3DIoc(V3DIoc&&) = delete;
+		~V3DIoc() = delete;
+		V3DIoc& operator=(const V3DIoc&) = delete;
+		V3DIoc& operator=(V3DIoc&&) = delete;
+
+		template <typename TType> static void RegisterTransient()
+		{
+			Register<TType>();
+		}
+
+		template <typename TType> static void RegisterTransient(const V3DFunc<TInstance*>& otherPrototype)
+		{
+			Register<TType>(otherPrototype);  // NOLINT(clang-diagnostic-microsoft-template)
+		}
+
+		template <typename TType> static void RegisterAndCreateSingleton()
+		{
+			Register<TType>();
+			CreateSingleton();
+		}
+
+		template <typename TType> static void RegisterAndCreateSingleton(const V3DFunc<TInstance*>& otherPrototype)
+		{
+			Register<TType>(otherPrototype);
+			CreateSingleton();
+		}
+
 		static TInstance* CreateTransient()
 		{
+			if (instance != nullptr)
+				return nullptr;
+
 			return prototype.Invoke();
 		}
 
-		static void DeleteSingletonAndRegister()
+		static void Remove()
 		{
 			V3DMemory::Delete(instance);
 			prototype.Set(nullptr);
 		}
-
-		static void DeleteRegister()
-		{
-			prototype.Set(nullptr);
-		}
-
+		
 		static TInstance* GetSingleton()
 		{
 			return instance;

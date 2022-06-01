@@ -20,48 +20,47 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 	{
 		V3DTest::AssertOk(V3DIoc<V3DITestObject>::IsSingletonExist() == false, V3DFILE_INFO);
 
-		V3DIoc<V3DITestObject>::Register<V3DTestObjectA>();
-		V3DIoc<V3DITestObject>::CreateSingleton();
+		V3DIoc<V3DITestObject>::RegisterAndCreateSingleton<V3DTestObjectA>();
 		V3DTest::AssertOk(V3DIoc<V3DITestObject>::GetSingleton()->GetId() == 0, V3DFILE_INFO);
 		V3DTest::AssertOk(V3DIoc<V3DITestObject>::GetSingleton()->GetTypeCode() == 'A', V3DFILE_INFO);
 
 		V3DIoc<V3DITestObject>::GetSingleton()->SetId(20);
-		V3DIoc<V3DITestObject>::Register<V3DTestObjectB>(); //no operation if instance not nullptr
-		V3DIoc<V3DITestObject>::CreateSingleton(); //no operation if instance not nullptr
+		V3DIoc<V3DITestObject>::RegisterTransient<V3DTestObjectB>(); //no operation if instance not nullptr
+		V3DTest::AssertOk(V3DIoc<V3DITestObject>::CreateTransient() == nullptr, V3DFILE_INFO);
 		V3DTest::AssertOk(V3DIoc<V3DITestObject>::GetSingleton()->GetId() == 20, V3DFILE_INFO);
 		V3DTest::AssertOk(V3DIoc<V3DITestObject>::GetSingleton()->GetTypeCode() == 'A', V3DFILE_INFO);
 
-		V3DIoc<V3DITestObject>::DeleteSingletonAndRegister();
+		V3DIoc<V3DITestObject>::Remove();
 		V3DTest::AssertOk(V3DIoc<V3DITestObject>::IsSingletonExist() == false, V3DFILE_INFO);
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
 
-		V3DIoc<V3DITestObject>::Register<V3DTestObjectB>();
-		V3DIoc<V3DITestObject>::CreateSingleton();
+		V3DIoc<V3DITestObject>::RegisterAndCreateSingleton<V3DTestObjectB>();
 		V3DTest::AssertOk(V3DIoc<V3DITestObject>::GetSingleton()->GetTypeCode() == 'B', V3DFILE_INFO);
 
-		V3DIoc<V3DITestObject>::DeleteSingletonAndRegister();
-		V3DIoc<V3DITestObject>::Register<V3DTestObjectA>(V3DFunc<V3DITestObject*>([]
+		V3DIoc<V3DITestObject>::Remove();
+		V3DIoc<V3DITestObject>::RegisterAndCreateSingleton<V3DTestObjectA>(V3DFunc<V3DITestObject*>([]
 		{
 			const auto result = V3DMemory::New<V3DTestObjectB>(V3DFILE_INFO);
 			result->SetId(44);
 
 			return result;
 		}));
-		V3DIoc<V3DITestObject>::CreateSingleton();
 		V3DTest::AssertOk(V3DIoc<V3DITestObject>::GetSingleton()->GetTypeCode() == 'B', V3DFILE_INFO);
 		V3DTest::AssertOk(V3DIoc<V3DITestObject>::GetSingleton()->GetId() == 44, V3DFILE_INFO);
 
-		V3DIoc<V3DITestObject>::DeleteSingletonAndRegister();
+		V3DIoc<V3DITestObject>::Remove();
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
 
 		int id = 0;
-		V3DIoc<V3DITestObject>::Register<V3DTestObjectA>(V3DFunc<V3DITestObject*>(([&id]()
+		V3DIoc<V3DITestObject>::RegisterTransient<V3DTestObjectA>(V3DFunc<V3DITestObject*>(([&id]()
 		{
 			const auto result = V3DMemory::New<V3DTestObjectB>(V3DFILE_INFO);
 			result->SetId(id++);
 
 			return result;
 		})));
+		V3DTest::AssertOk(V3DIoc<V3DITestObject>::GetSingleton() == nullptr, V3DFILE_INFO);
+
 		auto objB1 = V3DIoc<V3DITestObject>::CreateTransient();
 		auto objB2 = V3DIoc<V3DITestObject>::CreateTransient();
 
@@ -71,7 +70,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 		V3DMemory::Delete(objB1);
 		V3DMemory::Delete(objB2);
 
-		V3DIoc<V3DITestObject>::DeleteRegister();
+		V3DIoc<V3DITestObject>::Remove();
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
 	}
 	

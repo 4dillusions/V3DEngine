@@ -12,13 +12,13 @@ using namespace V3D::V3DEngine::V3DIO;
 
 namespace V3D::V3DEngine::V3DCore
 {
-	void V3DIocManager::RegisterAndCreateSingletons()
+	void V3DIocManager::RegisterObjects()
 	{
-		V3DIoc<V3DISQLContext>::Register<V3DSQLiteContext>(V3DFunc<V3DISQLContext*>([&] { return V3DMemory::New<V3DSQLiteContext>(V3DFILE_INFO, "test.db"); }));
+		V3DIoc<V3DISQLContext>::RegisterTransient<V3DSQLiteContext>(V3DFunc<V3DISQLContext*>([&] { return V3DMemory::New<V3DSQLiteContext>(V3DFILE_INFO, "test.db"); }));
 	}
-		
-	void V3DIocManager::DeleteSingletonsAndRegisters()
+
+	void V3DIocManager::RemoveObjects()
 	{
-		V3DIoc<V3DISQLContext>::DeleteSingletonAndRegister();
+		V3DIoc<V3DISQLContext>::Remove();
 	}
 }

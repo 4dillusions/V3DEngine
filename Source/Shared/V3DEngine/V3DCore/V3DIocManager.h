@@ -9,15 +9,15 @@ Released under the terms of the GNU General Public License version 3 or later.
 namespace V3D::V3DEngine::V3DCore
 {
 	/*
-		IocManager can automatically manage all registered objects' lifetime
+		IocManager can manage all registered objects' lifetime and depencies
 	*/
 	class V3DIocManager final
 	{
 		//definition will be implement in client program startup .cpp
-		static void RegisterAndCreateSingletons();
+		static void RegisterObjects();
 
 		//definition will be implement in client program startup .cpp
-		static void DeleteSingletonsAndRegisters();
+		static void RemoveObjects();
 
 	public:
 		V3DIocManager(const V3DIocManager&) = delete;
@@ -27,12 +27,12 @@ namespace V3D::V3DEngine::V3DCore
 
 		V3DIocManager()
 		{
-			RegisterAndCreateSingletons();
+			RegisterObjects();
 		}
 		
 		~V3DIocManager()
 		{
-			DeleteSingletonsAndRegisters();
+			RemoveObjects();
 		}
 	};
 }
