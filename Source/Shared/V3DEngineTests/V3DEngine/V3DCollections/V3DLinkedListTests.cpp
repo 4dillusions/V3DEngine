@@ -23,6 +23,8 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 {
 	void V3DLinkedListTests::CtorDtorTest()
 	{
+		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+
 		V3DTestObjectA::SetReferenceCounter(0);
 		V3DLinkedList<V3DTestObjectA> staticObjLinkedList;
 		staticObjLinkedList.Add(V3DTestObjectA());
@@ -32,33 +34,35 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == 3 + 2, V3DFILE_INFO); //+2: head, tail
 		staticObjLinkedList.~V3DLinkedList();
 		V3DTest::AssertOk(staticObjLinkedList.GetLength() == 0, V3DFILE_INFO);
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
 		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == 0, V3DFILE_INFO);
 
 		V3DLinkedList<int> intList;
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == V3DCollectionsTests::ListMemoryAllocCount, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount + V3DCollectionsTests::ListMemoryAllocCount, V3DFILE_INFO);
 		intList.~V3DLinkedList();
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
 
 		V3DLinkedList<V3DTestObjectA> staticObjList;
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == V3DCollectionsTests::ListMemoryAllocCount, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount + V3DCollectionsTests::ListMemoryAllocCount, V3DFILE_INFO);
 		staticObjList.~V3DLinkedList();
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
 
 		V3DLinkedList<V3DTestObjectA*> dynamicObjList;
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == V3DCollectionsTests::ListMemoryAllocCount, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount + V3DCollectionsTests::ListMemoryAllocCount, V3DFILE_INFO);
 		dynamicObjList.~V3DLinkedList();
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
 	}
 
 	void V3DLinkedListTests::AddGetDataTest()
 	{
+		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+
 		V3DLinkedList<int> intList;
 		intList.Add(10);
 		intList.First();
 		V3DTest::AssertOk(*intList.GetCurrent() == 10, V3DFILE_INFO);
 		intList.~V3DLinkedList();
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
 
 		V3DLinkedList<V3DTestObjectA> staticObjList;
 		V3DTestObjectA sObj;
@@ -67,7 +71,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		staticObjList.First();
 		V3DTest::AssertOk(staticObjList.GetCurrent()->GetId() == 20, V3DFILE_INFO);
 		staticObjList.~V3DLinkedList();
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
 
 		V3DLinkedList<V3DTestObjectA*> dynamicObjList;
 		auto dObj = V3DMemory::New<V3DTestObjectA>(V3DFILE_INFO);
@@ -77,11 +81,13 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		V3DTest::AssertOk((*dynamicObjList.GetCurrent())->GetId() == 20, V3DFILE_INFO);
 		V3DMemory::Delete(dObj);
 		dynamicObjList.~V3DLinkedList();
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
 	}
 
 	void V3DLinkedListTests::AddRemoveStaticTest()
 	{
+		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+
 		V3DLinkedList<int> list;
 
 		list.Add(2);
@@ -119,11 +125,13 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		V3DTest::AssertOk((allNumbers == (4 + 5 + 6)), V3DFILE_INFO);
 
 		list.~V3DLinkedList();
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
 	}
 
 	void V3DLinkedListTests::AddRemoveDynamicTest()
 	{
+		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+
 		V3DTestObjectA::SetReferenceCounter(0);
 		V3DLinkedList<V3DTestObjectA*> list;
 
@@ -177,7 +185,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 
 		list.~V3DLinkedList();
 		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == 0, V3DFILE_INFO);
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
 	}
 
 	void V3DLinkedListTests::LinkedListAddRemoveTimingTest()

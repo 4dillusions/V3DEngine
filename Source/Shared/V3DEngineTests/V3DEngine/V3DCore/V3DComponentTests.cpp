@@ -16,7 +16,6 @@ Released under the terms of the GNU General Public License version 3 or later.
 using namespace V3D::V3DEngine::V3DCore;
 using namespace V3D::V3DEngineTests::V3DTestObject;
 
-
 namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 {
 	void V3DComponentTests::GameComponentTest()
@@ -34,6 +33,8 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 
 	void V3DComponentTests::GameCompositeComponentTest()
 	{
+		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+
 		auto gameLayer = V3DMemory::New<V3DTestLayer>(V3DFILE_INFO, "GameLayer");
 
 		const auto sprite1 = V3DMemory::New<V3DTestSprite>(V3DFILE_INFO, "Sprite1");
@@ -78,7 +79,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 
 		V3DMemory::Delete(gameLayer);
 		V3DMemory::Delete(sprite2);
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
 	}
 
 	void V3DComponentTests::GameCompositeComponentPoolTest()

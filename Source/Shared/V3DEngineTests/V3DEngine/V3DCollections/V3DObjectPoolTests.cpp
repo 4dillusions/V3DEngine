@@ -22,17 +22,21 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 {
 	void V3DObjectPoolTests::CtorDtorTest()
 	{
+		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+
 		V3DObjectPool<V3DTestObjectA> intPool { V3DCollectionsTests::Size };
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == V3DCollectionsTests::PoolMemoryAllocCount, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount + V3DCollectionsTests::PoolMemoryAllocCount, V3DFILE_INFO);
 		intPool.~V3DObjectPool();
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
 	}
 	
 	void V3DObjectPoolTests::AddRemoveTest()
 	{
+		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+
 		V3DTestObjectA::SetReferenceCounter(0);
 		V3DObjectPool<V3DTestObjectA> objectPool { V3DCollectionsTests::Size };
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == V3DCollectionsTests::PoolMemoryAllocCount, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount + V3DCollectionsTests::PoolMemoryAllocCount, V3DFILE_INFO);
 		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == V3DCollectionsTests::Size, V3DFILE_INFO);
 
 		for (objectPool.First(); objectPool.IsDone(); objectPool.Next())
@@ -77,11 +81,13 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		objectPool.~V3DObjectPool();
 		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == 0, V3DFILE_INFO);
 		V3DTest::AssertOk(objectPool.GetLength() == 0, V3DFILE_INFO);
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
 	}
 
 	void V3DObjectPoolTests::RemoveAllTest()
 	{
+		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+
 		const auto ObjectPoolRemoveAllTest = []()
 		{
 			V3DTestObjectA::SetReferenceCounter(0);
@@ -92,7 +98,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		};
 		ObjectPoolRemoveAllTest();
 		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == 0, V3DFILE_INFO);
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
 
 		const auto ObjectPoolRemoveAllCurrentsTest = []()
 		{
@@ -107,11 +113,13 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		};
 		ObjectPoolRemoveAllCurrentsTest();
 		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == 0, V3DFILE_INFO);
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
 	}
 
 	void V3DObjectPoolTests::RemoveAllAndAddTest()
 	{
+		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+
 		const auto ObjectPoolRemoveAllTest = []()
 		{
 			V3DTestObjectA::SetReferenceCounter(0);
@@ -124,7 +132,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		};
 		ObjectPoolRemoveAllTest();
 		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == 0, V3DFILE_INFO);
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
 
 		const auto ObjectPoolRemoveAllCurrentsTest = []()
 		{
@@ -141,7 +149,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		};
 		ObjectPoolRemoveAllCurrentsTest();
 		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == 0, V3DFILE_INFO);
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
 	}
 
 	void V3DObjectPoolTests::RemoveFirstWhileIterateTest()
