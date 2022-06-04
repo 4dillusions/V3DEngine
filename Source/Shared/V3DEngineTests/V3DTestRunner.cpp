@@ -26,9 +26,9 @@ namespace V3D::V3DEngineTests::V3DEngine
 {	
 	void V3DTestRunner::RunAllTests()
 	{
-		V3DIocManager iocManager;
+		V3DIocManager::Init();
 		V3DEnvironment::SetUnitTestMode();
-		
+
 		V3DTypesTests::RunAllTests();
 		V3DMathematics::V3DMathematicsTests::RunAllTests();
 		V3DCore::V3DCoreTests::RunAllTests();
@@ -40,8 +40,10 @@ namespace V3D::V3DEngineTests::V3DEngine
 		V3DThreading::V3DThreadingTests::RunAllTests();
 
 		V3DTestMock::V3DFakeitTests::RunAllTests();
-
 		V3DTest::RunIntegrationTests();
+
+		V3DIocManager::Clean();
+
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
 		V3DTest::WriteStatistics();
 		V3DTest::RunTimingTests();

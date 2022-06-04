@@ -29,8 +29,18 @@ namespace V3D::V3DEngine::V3DCore
 		V3DFunc(const V3DFunc&) = delete;
 		V3DFunc(V3DFunc&&) = delete;
 		~V3DFunc() = default;
-		V3DFunc& operator=(const V3DFunc&) = delete;
-		V3DFunc& operator=(V3DFunc&&) = delete;
+
+		V3DFunc& operator=(const V3DFunc& otherV3DFunc)
+		{
+			func = otherV3DFunc.func;
+			return *this;
+		}
+
+		V3DFunc& operator=(V3DFunc&& otherV3DFunc) noexcept
+		{
+			func = std::move(otherV3DFunc.func);
+			return *this;
+		}
 
 		bool IsEmpty() const
 		{
@@ -77,8 +87,18 @@ namespace V3D::V3DEngine::V3DCore
 		V3DFunc1(const V3DFunc1&) = delete;
 		V3DFunc1(V3DFunc1&&) = delete;
 		~V3DFunc1() = default;
-		V3DFunc1& operator=(const V3DFunc1&) = delete;
-		V3DFunc1& operator=(V3DFunc1&&) = delete;
+
+		V3DFunc1& operator=(const V3DFunc1& otherV3DFunc)
+		{
+			func = otherV3DFunc.func;
+			return *this;
+		}
+
+		V3DFunc1& operator=(V3DFunc1&& otherV3DFunc) noexcept
+		{
+			func = std::move(otherV3DFunc.func);
+			return *this;
+		}
 
 		bool IsEmpty() const
 		{
@@ -125,8 +145,18 @@ namespace V3D::V3DEngine::V3DCore
 		V3DFunc2(const V3DFunc2&) = delete;
 		V3DFunc2(V3DFunc2&&) = delete;
 		~V3DFunc2() = default;
-		V3DFunc2& operator=(const V3DFunc2&) = delete;
-		V3DFunc2& operator=(V3DFunc2&&) = delete;
+		
+		V3DFunc2& operator=(const V3DFunc2& otherV3DFunc)
+		{
+			func = otherV3DFunc.func;
+			return *this;
+		}
+
+		V3DFunc2& operator=(V3DFunc2&& otherV3DFunc) noexcept
+		{
+			func = std::move(otherV3DFunc.func);
+			return *this;
+		}
 
 		bool IsEmpty() const
 		{
@@ -173,8 +203,18 @@ namespace V3D::V3DEngine::V3DCore
 		V3DFunc3(const V3DFunc3&) = delete;
 		V3DFunc3(V3DFunc3&&) = delete;
 		~V3DFunc3() = default;
-		V3DFunc3& operator=(const V3DFunc3&) = delete;
-		V3DFunc3& operator=(V3DFunc3&&) = delete;
+		
+		V3DFunc3& operator=(const V3DFunc3& otherV3DFunc)
+		{
+			func = otherV3DFunc.func;
+			return *this;
+		}
+
+		V3DFunc3& operator=(V3DFunc3&& otherV3DFunc) noexcept
+		{
+			func = std::move(otherV3DFunc.func);
+			return *this;
+		}
 
 		bool IsEmpty() const
 		{

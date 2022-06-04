@@ -6,9 +6,9 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #pragma once
 
+#include "V3DIocContainer.h"
 #include "V3DMemory.h"
-#include "V3DEngine/V3DMacros.h"
-#include "V3DEngine/V3DCore/V3DFunc.h"
+#include "V3DFunc.h"
 
 namespace V3D::V3DEngine::V3DCore
 {
@@ -21,7 +21,7 @@ namespace V3D::V3DEngine::V3DCore
 		Ioc implements prototype, factory and singleton patterns together, called Inversion Of Control and Dependency Injection pattern (DI)
 		This Ioc supports one dynamic instance and one dynamic prototype implementation for singleton or transient objects
 	*/
-	template <typename TInstance> class V3DIoc final
+	template <typename TInstance> class V3DIoc final : public V3DIocContainer
 	{
 		static TInstance* instance;
 		static V3DFunc<TInstance*> prototype;
@@ -29,13 +29,19 @@ namespace V3D::V3DEngine::V3DCore
 		template <typename TType> static void Register()
 		{
 			if (prototype.IsEmpty() && instance == nullptr)
+			{
 				prototype.Set([] { return V3DMemory::New<TType>(V3DFILE_INFO); });
+				removeActionsContainer->Add(V3DAction([] { V3DIoc<TInstance>::Remove(); }));
+			}
 		}
 
 		template <typename TType> static void Register(const V3DFunc<TInstance*>& otherPrototype)
 		{
 			if (!otherPrototype.IsEmpty() && prototype.IsEmpty() && instance == nullptr)
+			{
 				prototype.Set(otherPrototype);
+				removeActionsContainer->Add(V3DAction([] { V3DIoc<TInstance>::Remove(); }));
+			}
 		}
 
 		static void CreateSingleton()
@@ -48,7 +54,7 @@ namespace V3D::V3DEngine::V3DCore
 		V3DIoc() = delete;
 		V3DIoc(const V3DIoc&) = delete;
 		V3DIoc(V3DIoc&&) = delete;
-		~V3DIoc() = delete;
+		~V3DIoc() = default;
 		V3DIoc& operator=(const V3DIoc&) = delete;
 		V3DIoc& operator=(V3DIoc&&) = delete;
 
@@ -76,7 +82,7 @@ namespace V3D::V3DEngine::V3DCore
 
 		static TInstance* CreateTransient()
 		{
-			if (instance != nullptr)
+			if (instance != nullptr || prototype.IsEmpty())
 				return nullptr;
 
 			return prototype.Invoke();
