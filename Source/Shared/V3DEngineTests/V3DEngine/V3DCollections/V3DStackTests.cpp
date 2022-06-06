@@ -18,7 +18,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 {
 	void V3DStackTests::CtorDtorTest()
 	{
-		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
 
 		V3DTestObjectA::SetReferenceCounter(0);
 		V3DStack<V3DTestObjectA> staticObjStack { 3 };
@@ -76,7 +76,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 
 	void V3DStackTests::StackDynamicTest()
 	{
-		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
 
 		V3DTestObjectA::SetReferenceCounter(0);
 		

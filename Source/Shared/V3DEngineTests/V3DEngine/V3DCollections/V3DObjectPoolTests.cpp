@@ -22,7 +22,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 {
 	void V3DObjectPoolTests::CtorDtorTest()
 	{
-		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
 
 		V3DObjectPool<V3DTestObjectA> intPool { V3DCollectionsTests::Size };
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount + V3DCollectionsTests::PoolMemoryAllocCount, V3DFILE_INFO);
@@ -32,7 +32,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 	
 	void V3DObjectPoolTests::AddRemoveTest()
 	{
-		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
 
 		V3DTestObjectA::SetReferenceCounter(0);
 		V3DObjectPool<V3DTestObjectA> objectPool { V3DCollectionsTests::Size };
@@ -86,9 +86,9 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 
 	void V3DObjectPoolTests::RemoveAllTest()
 	{
-		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
 
-		const auto ObjectPoolRemoveAllTest = []()
+		constexpr auto ObjectPoolRemoveAllTest = []()
 		{
 			V3DTestObjectA::SetReferenceCounter(0);
 			V3DObjectPool<V3DTestObjectA> objectPool { V3DCollectionsTests::Size };
@@ -100,7 +100,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == 0, V3DFILE_INFO);
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
 
-		const auto ObjectPoolRemoveAllCurrentsTest = []()
+		constexpr auto ObjectPoolRemoveAllCurrentsTest = []()
 		{
 			V3DTestObjectA::SetReferenceCounter(0);
 			V3DObjectPool<V3DTestObjectA> objectPool { V3DCollectionsTests::Size };
@@ -118,9 +118,9 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 
 	void V3DObjectPoolTests::RemoveAllAndAddTest()
 	{
-		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
 
-		const auto ObjectPoolRemoveAllTest = []()
+		constexpr auto ObjectPoolRemoveAllTest = []()
 		{
 			V3DTestObjectA::SetReferenceCounter(0);
 			V3DObjectPool<V3DTestObjectA> objectPool { V3DCollectionsTests::Size };
@@ -134,7 +134,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == 0, V3DFILE_INFO);
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
 
-		const auto ObjectPoolRemoveAllCurrentsTest = []()
+		constexpr auto ObjectPoolRemoveAllCurrentsTest = []()
 		{
 			V3DTestObjectA::SetReferenceCounter(0);
 			V3DObjectPool<V3DTestObjectA> objectPool { V3DCollectionsTests::Size };

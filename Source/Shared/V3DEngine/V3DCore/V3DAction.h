@@ -29,12 +29,7 @@ namespace V3D::V3DEngine::V3DCore
 		V3DAction(const V3DAction&) = delete;
 		V3DAction(V3DAction&&) = delete;
 		~V3DAction() = default;
-		
-		V3DAction& operator=(const V3DAction& otherV3DAction)
-		{
-			func = otherV3DAction.func;
-			return *this;
-		}
+		V3DAction& operator=(const V3DAction& otherV3DAction) = default;
 
 		V3DAction& operator=(V3DAction&& otherV3DAction) noexcept
 		{
@@ -87,13 +82,8 @@ namespace V3D::V3DEngine::V3DCore
 		V3DAction1(const V3DAction1&) = delete;
 		V3DAction1(V3DAction1&&) = delete;
 		~V3DAction1() = default;
+		V3DAction1& operator=(const V3DAction1& otherV3DAction) = default;
 		
-		V3DAction1& operator=(const V3DAction1& otherV3DAction)
-		{
-			func = otherV3DAction.func;
-			return *this;
-		}
-
 		V3DAction1& operator=(V3DAction1&& otherV3DAction) noexcept
 		{
 			func = std::move(otherV3DAction.func);
@@ -145,13 +135,8 @@ namespace V3D::V3DEngine::V3DCore
 		V3DAction2(const V3DAction2&) = delete;
 		V3DAction2(V3DAction2&&) = delete;
 		~V3DAction2() = default;
+		V3DAction2& operator=(const V3DAction2& otherV3DAction) = default;
 		
-		V3DAction2& operator=(const V3DAction2& otherV3DAction)
-		{
-			func = otherV3DAction.func;
-			return *this;
-		}
-
 		V3DAction2& operator=(V3DAction2&& otherV3DAction) noexcept
 		{
 			func = std::move(otherV3DAction.func);
@@ -203,13 +188,8 @@ namespace V3D::V3DEngine::V3DCore
 		V3DAction3(const V3DAction3&) = delete;
 		V3DAction3(V3DAction3&&) = delete;
 		~V3DAction3() = default;
+		V3DAction3& operator=(const V3DAction3& otherV3DAction) = default;
 		
-		V3DAction3& operator=(const V3DAction3& otherV3DAction)
-		{
-			func = otherV3DAction.func;
-			return *this;
-		}
-
 		V3DAction3& operator=(V3DAction3&& otherV3DAction) noexcept
 		{
 			func = std::move(otherV3DAction.func);

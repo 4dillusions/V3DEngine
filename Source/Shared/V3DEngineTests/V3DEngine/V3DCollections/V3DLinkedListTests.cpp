@@ -23,7 +23,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 {
 	void V3DLinkedListTests::CtorDtorTest()
 	{
-		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
 
 		V3DTestObjectA::SetReferenceCounter(0);
 		V3DLinkedList<V3DTestObjectA> staticObjLinkedList;
@@ -55,7 +55,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 
 	void V3DLinkedListTests::AddGetDataTest()
 	{
-		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
 
 		V3DLinkedList<int> intList;
 		intList.Add(10);
@@ -86,7 +86,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 
 	void V3DLinkedListTests::AddRemoveStaticTest()
 	{
-		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
 
 		V3DLinkedList<int> list;
 
@@ -130,7 +130,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 
 	void V3DLinkedListTests::AddRemoveDynamicTest()
 	{
-		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
 
 		V3DTestObjectA::SetReferenceCounter(0);
 		V3DLinkedList<V3DTestObjectA*> list;

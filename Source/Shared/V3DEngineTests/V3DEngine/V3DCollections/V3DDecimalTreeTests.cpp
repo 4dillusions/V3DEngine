@@ -23,7 +23,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 {
 	void V3DDecimalTreeTests::CtorDtorTest()
 	{
-		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
 
 		V3DTestObjectA::SetReferenceCounter(0);
 		V3DDecimalTree<int, V3DTestObjectA> staticObjDecimalTree;
@@ -60,7 +60,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 
 	void V3DDecimalTreeTests::AddGetDataTest()
 	{
-		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
 
 		V3DDecimalTree<int, int> intTree;
 		intTree.Add(110, 10);
@@ -103,7 +103,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 
 	void V3DDecimalTreeTests::AddRemoveStaticTest()
 	{
-		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
 
 		V3DDecimalTree<int, int> tree;
 
@@ -150,7 +150,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 
 	void V3DDecimalTreeTests::AddRemoveStaticObjectKeyTest()
 	{
-		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
 
 		V3DDecimalTree<V3DString, int> tree;
 		
@@ -197,7 +197,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 
 	void V3DDecimalTreeTests::AddRemoveDynamicTest()
 	{
-		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
 
 		V3DTestObjectA::SetReferenceCounter(0);
 		V3DDecimalTree<int, V3DTestObjectA*> tree;

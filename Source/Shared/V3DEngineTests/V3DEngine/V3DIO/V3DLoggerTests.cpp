@@ -17,7 +17,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 {
 	void V3DLoggerTests::LoggerTest()
 	{
-		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
 
 		auto logTriggerText = V3DMemory::New<V3DString>(V3DFILE_INFO);
 		auto& logger = V3DLogger::Get();

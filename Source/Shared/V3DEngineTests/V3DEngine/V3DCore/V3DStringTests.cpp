@@ -18,7 +18,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 {
 	void V3DStringTests::CtorOperatorsTest()
 	{
-		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
 
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
 		V3DString txt("test");
@@ -70,7 +70,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 	
 	void V3DStringTests::ReturnTest()
 	{
-		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
 
 		constexpr auto StringTestReturn = []()
 		{
@@ -84,7 +84,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 	
 	void V3DStringTests::ToTest()
 	{
-		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
 
 		constexpr auto StringTestTo = []()
 		{
@@ -132,7 +132,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 	
 	void V3DStringTests::GetTest()
 	{
-		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
 
 		constexpr auto StringTestGet = []()
 		{
@@ -221,7 +221,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 	
 	void V3DStringTests::IsTest()
 	{
-		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
 
 		constexpr auto StringTestIs = []()
 		{
@@ -280,7 +280,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 	
 	void V3DStringTests::CopyArrayTest()
 	{
-		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
 
 		constexpr auto StringTestCopyArray = []()
 		{
@@ -294,7 +294,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 	
 	void V3DStringTests::ReplaceRemoveTest()
 	{
-		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
 
 		constexpr auto StringTestReplaceRemove = []()
 		{
@@ -342,7 +342,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 	
 	void V3DStringTests::LargeTest()
 	{
-		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
 
 		constexpr auto StringTestLarge = []()
 		{
@@ -370,7 +370,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 	
 	void V3DStringTests::CopyTest()
 	{
-		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
 
 		constexpr auto StringTestCopy = []() { return V3DString("hoho1234!"); };
 		V3DTest::AssertOk(StringTestCopy() == V3DString("hoho1234!"), V3DFILE_INFO);
@@ -379,7 +379,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 	
 	void V3DStringTests::SplitTest()
 	{
-		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
 
 		auto StringTestSplit = []()
 		{

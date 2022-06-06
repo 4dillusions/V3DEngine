@@ -18,7 +18,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 {
 	void V3DIocTests::DynamicTest()
 	{
-		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
 
 		V3DTest::AssertOk(V3DIoc<V3DITestObject>::IsSingletonExist() == false, V3DFILE_INFO);
 

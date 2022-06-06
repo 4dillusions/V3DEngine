@@ -33,7 +33,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 
 	void V3DComponentTests::GameCompositeComponentTest()
 	{
-		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
 
 		auto gameLayer = V3DMemory::New<V3DTestLayer>(V3DFILE_INFO, "GameLayer");
 

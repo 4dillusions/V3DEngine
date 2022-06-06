@@ -18,7 +18,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 {
 	void V3DQueueTests::CtorDtorTest()
 	{
-		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
 
 		V3DTestObjectA::SetReferenceCounter(0);
 		V3DQueue<V3DTestObjectA> staticObjQueue { 3 };
@@ -76,7 +76,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 
 	void V3DQueueTests::QueueDynamicTest()
 	{
-		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
 
 		V3DTestObjectA::SetReferenceCounter(0);
 		

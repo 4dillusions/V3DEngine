@@ -17,7 +17,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 {
 	void V3DMemoryTests::ValueTest()
 	{
-		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
 
 		int* value = V3DMemory::New<int>(V3DFILE_INFO, 0);
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount + 1, V3DFILE_INFO);
@@ -28,7 +28,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 	
 	void V3DMemoryTests::ArrayTest()
 	{
-		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
 
 		int* arr = V3DMemory::NewArray<int>(V3DFILE_INFO, 10);
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount + 1, V3DFILE_INFO);
@@ -39,7 +39,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 	
 	void V3DMemoryTests::MatrixTest()
 	{
-		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
 
 		constexpr int MatrixSize = 5;
 		int** matrix = V3DMemory::NewMatrix<int>(V3DFILE_INFO, MatrixSize);
@@ -50,7 +50,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 	
 	void V3DMemoryTests::PointerArrayTest()
 	{
-		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
 
 		constexpr int PointerArraySize = 10;
 		V3DTestObjectA::SetReferenceCounter(0);

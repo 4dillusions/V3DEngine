@@ -23,7 +23,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 {
 	void V3DDynamicArrayTests::CtorDtorTest()
 	{
-		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
 
 		V3DTestObjectA::SetReferenceCounter(0);
 		V3DDynamicArray<V3DTestObjectA> staticObjArrayReverse(20);
@@ -55,7 +55,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 
 	void V3DDynamicArrayTests::AddGetDataTest()
 	{
-		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
 
 		V3DDynamicArray<int> intdArray;
 		intdArray.Add(10);
@@ -86,7 +86,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 
 	void V3DDynamicArrayTests::AddRemoveStaticTest()
 	{
-		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
 
 		V3DDynamicArray<int> dArray;
 
@@ -131,7 +131,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 
 	void V3DDynamicArrayTests::AddRemoveDynamicTest()
 	{
-		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
 
 		V3DTestObjectA::SetReferenceCounter(0);
 		V3DDynamicArray<V3DTestObjectA*> dArray;
@@ -192,7 +192,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 
 	void V3DDynamicArrayTests::RemoveAtTest()
 	{
-		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
 
 		V3DDynamicArray<int> dArray;
 
@@ -219,7 +219,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 
 	void V3DDynamicArrayTests::CopyReturnTest()
 	{
-		int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
 
 		auto ObjReturnTest = []()
 		{

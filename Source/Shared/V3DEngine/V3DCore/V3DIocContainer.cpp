@@ -19,7 +19,7 @@ namespace V3D::V3DEngine::V3DCore
 
 	void V3DIocContainer::Clean()
 	{
-		while (auto action = removeActionsContainer->Take())
+		while (const auto action = removeActionsContainer->Take())
 			if (!action->IsEmpty())
 				action->Invoke();
 
