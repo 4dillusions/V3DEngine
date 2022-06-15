@@ -26,9 +26,9 @@ namespace V3D::V3DEngineTests
 		
 		static void Reset();
 
-		static std::string ConvertToString(int value); //will be implement in partial .cpp per platform
-		static void WriteOutput(const std::string& text);
-		static void WriteOutput(const char* text);
+		static std::string ConvertToString(int value);
+		static void WriteOutput(const std::string& text); //will be implement in partial .cpp per platform
+		static void WriteOutput(const char* text); //will be implement in partial .cpp per platform
 
 	public:
 		V3DTest() = delete;

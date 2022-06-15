@@ -1,7 +1,7 @@
-Windows/Android - Visual Studio Community 2019 (16.4.5)
-====================================================================================================================================
-Create solution: Solution/WindowsAndroid/V3DEngine.sln
-******************************************************
+=======================================================
+Windows/Android - Visual Studio Community 2022 (17.2.3)
+Solution/WindowsAndroid/V3DEngine.sln
+=======================================================
 
 configuration 	ARM32	ARM64	x86		x64
 --------------------------------------------
@@ -9,18 +9,16 @@ Android			ARM		ARM64	x86		x64
 Windows			x64		x64		x64		x64
 
 
-Shared
-++++++
-Projects (Windows & Android shared code)
-----------------------------------------
++++++++++++++++++++++++++++++++++++++++++++++++
+Shared (Windows & Android shared code) projects
++++++++++++++++++++++++++++++++++++++++++++++++
 V3DEngine (Shared Items)
 V3DEngineTests (Shared Items)
 
 
-Windows
-+++++++
-Projects (Windows desktop x64)
-------------------------------
+++++++++++++++++++++++++++++++++++++++
+Windows (Windows desktop x64) projects
+++++++++++++++++++++++++++++++++++++++
 V3DEngine (Dynamic-Link Library with exorts .dll)	references: V3DEngine (shared)
 V3DEngineTests (Console App .exe)					references: V3DEngineTests (shared), V3DEngine
 
@@ -28,8 +26,9 @@ Settings
 --------
 General
 	output directory: 
-		.exe: $(SolutionDir)\Windows\Bin\$(Configuration)\$(Platform)\		
+		.exe: $(SolutionDir)\Windows\Bin\$(Configuration)\$(Platform)\
 		.dll/.lib: $(SolutionDir)\Windows\Bin\$(Configuration)\$(Platform)\Lib\<ThirdParty>\<LibName>
+	Intermediate Directory: $(Platform)\$(Configuration)\
 	Target name: $(ProjectName)
 	Windows SDK: 10.0.18362.0
 	Platform toolset: Visual Studio 2022 (v143)
@@ -55,10 +54,9 @@ Build Events:
 		.dll: xcopy $(SolutionDir)\Windows\Bin\$(Configuration)\$(Platform)\Lib\V3DEngine\$(ProjectName).dll $(SolutionDir)\Windows\Bin\$(Configuration)\$(Platform)\ /Y /D
 
 
-Android (Mobile & emulator ARM/ARM64/x86)
-+++++++++++++++++++++++++++++++++++++++++
-Projects (Android x86\ARM\ARM64)
---------------------------------
++++++++++++++++++++++++++++++++++++++++++++++++++
+Android (Mobile & emulator ARM/ARM64/x86) pojects
++++++++++++++++++++++++++++++++++++++++++++++++++
 V3DEngine (Static Library)						references: V3DEngine (shared)	
 												C/C++ Advanced: Compile as: C++
 V3DEngineTests (Native Activity Application)	references: V3DEngineTests (shared), V3DEngine
@@ -73,7 +71,7 @@ General
 	Config type: static library .a (lib), Dynamic library (app)
 	Target API level: 
 		static library		ARM32/x86 19	ARM64/x64 21
-		package (apk)		ARM32/x86 25	ARM64/x64 25
+		package (apk)		ARM32/x86 19	ARM64/x64 25
 		native activity		ARM32/x86 19	ARM64/x64 21
 	
 VC++ directories
@@ -86,6 +84,7 @@ C/C++
 		Enable C++ exceptions: No (release), No (debug)
 	Language
 		Enable RTTI: Yes
-		C language: C11
-		C++ language: C++17
+		C language: C11 (-std=c11)
+		C++ language: C++17 (-std=c++1z)
 	Precompiled headers: Not using, -, -
+	Multi-processor Compilation: Yes

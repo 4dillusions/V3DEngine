@@ -37,6 +37,11 @@ namespace V3D::V3DEngine::V3DCore
 		static void WriteStatistics();
 		static void WriteStatisticsForTests();
 
+		template <typename T> static T* PlacementNew(T* address)
+		{
+			return new (address) T;
+		}
+
 		template <typename T, typename TInfo> static T* New(TInfo info)
 		{
 			T* result = new T;

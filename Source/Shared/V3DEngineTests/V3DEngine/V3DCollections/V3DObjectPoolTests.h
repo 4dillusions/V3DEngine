@@ -19,13 +19,15 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		V3DObjectPoolTests& operator=(V3DObjectPoolTests&&) = delete;
 
 		static void CtorDtorTest();
-		static void AddRemoveTest();
+		static void AddRemoveNewPlacementObjectTest();
+		static void AddRemoveUsedObjectTest();
 		static void RemoveAllTest();
 		static void RemoveAllAndAddTest();
 		static void RemoveFirstWhileIterateTest();
 		static void RemoveLastWhileIterateTest();
 
 		static void ObjectPoolAddRemoveTimingTest();
+		static void ObjectPoolAddRemovePlacementNewTimingTest();
 		static void ObjectPoolIterateTimingTest();
 
 		static void RunAllTests();

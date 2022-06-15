@@ -29,8 +29,35 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		intPool.~V3DObjectPool();
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
 	}
+
+	void V3DObjectPoolTests::AddRemoveNewPlacementObjectTest()
+	{
+		//used objects
+		V3DObjectPool<V3DTestObjectA> objectPool{ 2 };
+		objectPool.Add()->SetId(10);
+		objectPool.Add()->SetId(12);
+
+		objectPool.RemoveAll();
+		V3DTest::AssertOk(objectPool.Add()->GetId() == 12, V3DFILE_INFO);
+		V3DTest::AssertOk(objectPool.Add()->GetId() == 10, V3DFILE_INFO);
+
+		//placement new objects
+		V3DObjectPool<V3DTestObjectA> placePool{ 2 };
+		const auto place1 = placePool.Add();
+		const auto place2 = placePool.Add();
+		place1->SetId(10);
+		place2->SetId(12);
+
+		placePool.RemoveAll();
+		const auto placement1 = placePool.Add(true);
+		const auto placement2 = placePool.Add(true);
+		V3DTest::AssertOk(placement1->GetId() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(placement2->GetId() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(place1 == placement2, V3DFILE_INFO);
+		V3DTest::AssertOk(place2 == placement1, V3DFILE_INFO);
+	}
 	
-	void V3DObjectPoolTests::AddRemoveTest()
+	void V3DObjectPoolTests::AddRemoveUsedObjectTest()
 	{
 		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
 
@@ -247,6 +274,39 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		});
 	}
 
+	void V3DObjectPoolTests::ObjectPoolAddRemovePlacementNewTimingTest()
+	{
+		static V3DObjectPool<V3DTestObjectA>* objectPool;
+
+		V3DTest::AddTimingTest("V3DObjectPoolAddRemovePlacementNewTimingTest", V3DTestTimingData
+			{
+				[]()
+				{
+					objectPool = V3DMemory::New<V3DObjectPool<V3DTestObjectA>>(V3DFILE_INFO, V3DCollectionsTests::BigSize);
+				}, true, 0
+			});
+
+		V3DTest::AddTimingTest("V3DObjectPoolAddRemovePlacementNewTimingTest", V3DTestTimingData
+			{
+				[]()
+				{
+					for (int i = 0; i < V3DCollectionsTests::BigSize; i++)
+						objectPool->Add(true);
+
+					for (objectPool->First(); objectPool->IsDone(); objectPool->Next())
+						objectPool->RemoveCurrent();
+				}, false, 1
+			});
+
+		V3DTest::AddTimingTest("V3DObjectPoolAddRemovePlacementNewTimingTest", V3DTestTimingData
+			{
+				[]()
+				{
+					V3DMemory::Delete(objectPool);
+				}, true, 2
+			});
+	}
+
 	void V3DObjectPoolTests::ObjectPoolIterateTimingTest()
 	{
 		static V3DObjectPool<V3DTestObjectA>* objectPool;
@@ -291,13 +351,15 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 	void V3DObjectPoolTests::RunAllTests()
 	{
 		CtorDtorTest();
-		AddRemoveTest();
+		AddRemoveNewPlacementObjectTest();
+		AddRemoveUsedObjectTest();
 		RemoveAllTest();
 		RemoveAllAndAddTest();
 		RemoveFirstWhileIterateTest();
 		RemoveLastWhileIterateTest();
 
 		ObjectPoolAddRemoveTimingTest();
+		ObjectPoolAddRemovePlacementNewTimingTest();
 		ObjectPoolIterateTimingTest();
 	}
 }

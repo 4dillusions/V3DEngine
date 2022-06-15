@@ -8,6 +8,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngineTests/V3DTest.h"
 #include "V3DEngine/V3DCore/V3DMemory.h"
 #include "V3DEngine/V3DMacros.h"
+#include "V3DEngineTests/V3DEngine/V3DCollections/V3DCollectionsTests.h"
 #include "V3DEngineTests/V3DTestObject/V3DTestObjectA.h"
 
 using namespace V3D::V3DEngine::V3DCore;
@@ -22,6 +23,35 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 		int* value = V3DMemory::New<int>(V3DFILE_INFO, 0);
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount + 1, V3DFILE_INFO);
 		V3DMemory::Delete(value);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
+		V3DTest::AssertOk(value == nullptr, V3DFILE_INFO);
+	}
+
+	void V3DMemoryTests::ValuePlacementNewTest()
+	{
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+		V3DTestObjectA::SetReferenceCounter(0);
+
+		V3DTestObjectA* value = V3DMemory::New<V3DTestObjectA>(V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount + 1, V3DFILE_INFO);
+		V3DTest::AssertOk(value->GetId() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(value->GetIsAlive() == true, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == 1, V3DFILE_INFO);
+
+		value->SetId(12);
+		value->SetIsAlive(false);
+		V3DTest::AssertOk(value->GetId() == 12, V3DFILE_INFO);
+		V3DTest::AssertOk(value->GetIsAlive() == false, V3DFILE_INFO);
+
+		const V3DTestObjectA* valueAddress = value;
+		value = V3DMemory::PlacementNew(value);
+		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == 2, V3DFILE_INFO);
+		V3DTest::AssertOk(valueAddress == value, V3DFILE_INFO);
+		V3DTest::AssertOk(value->GetId() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(value->GetIsAlive() == true, V3DFILE_INFO);
+
+		V3DMemory::Delete(value);
+		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == 1, V3DFILE_INFO);
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
 		V3DTest::AssertOk(value == nullptr, V3DFILE_INFO);
 	}
@@ -85,14 +115,27 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 			heap[i] = 'A';
 	}
 
+	void V3DMemoryTests::MemoryNewDeleteTimingTest()
+	{
+		static V3DTestObjectA* objecArray[V3DCollections::V3DCollectionsTests::BigSize];
+
+		for (auto& i : objecArray)
+			i = new V3DTestObjectA();
+
+		for (auto& i : objecArray)
+			delete i;
+	}
+
 	void V3DMemoryTests::RunAllTests()
 	{
 		ValueTest();
+		ValuePlacementNewTest();
 		ArrayTest();
 		MatrixTest();
 		PointerArrayTest();
 
 		V3DTest::AddTimingTest("MemoryAllocationCMallocTimingTest", MemoryAllocationCMallocTimingTest);
 		V3DTest::AddTimingTest("MemoryAllocationCppNewTimingTest", MemoryAllocationCppNewTimingTest);
+		V3DTest::AddTimingTest("MemoryNewDeleteTimingTest", MemoryNewDeleteTimingTest);
 	}
 }

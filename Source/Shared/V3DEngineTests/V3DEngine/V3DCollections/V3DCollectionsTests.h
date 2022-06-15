@@ -16,7 +16,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		static constexpr int DynamicArrayMemoryAllocCount = 1;
 		static constexpr int DecimalTreeMemoryAllocCount = 1;
 		static constexpr int Size = 10;
-		static constexpr int BigSize = 10'000;
+		static constexpr int BigSize = 100'000;
 		
 		V3DCollectionsTests() = delete;
 		V3DCollectionsTests(const V3DCollectionsTests&) = delete;
