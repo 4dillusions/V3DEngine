@@ -42,6 +42,12 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 		V3DTest::AssertOk(testDataR.text[2] == '3', V3DFILE_INFO);
 		V3DFile::Delete(TestDataFileName);
 
+		const auto testDataRContent = simpleFileRepository->Load(V3DAssetPathType::Options, TestDataFileName);
+		V3DTest::AssertOk(testDataRContent.id == 23, V3DFILE_INFO);
+		V3DTest::AssertOk(testDataRContent.text[0] == '1', V3DFILE_INFO);
+		V3DTest::AssertOk(testDataRContent.text[1] == '2', V3DFILE_INFO);
+		V3DTest::AssertOk(testDataRContent.text[2] == '3', V3DFILE_INFO);
+
 		V3DMemory::Delete(simpleFileRepository);
 	}
 
@@ -70,8 +76,18 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 		V3DTest::AssertOk(testDataR->uvs[1] == 2, V3DFILE_INFO);
 		V3DTest::AssertOk(testDataR->uvs[2] == 3, V3DFILE_INFO);
 		V3DFile::Delete(TestModelDataFileName);
-
 		V3DMemory::Delete(testDataR);
+
+		auto testDataRContent = complexFileRepository->Load(V3DAssetPathType::Model, TestModelDataFileName);
+		V3DTest::AssertOk(testDataRContent->head->verticeCount == 2, V3DFILE_INFO);
+		V3DTest::AssertOk(testDataRContent->head->uvCount == 3, V3DFILE_INFO);
+		V3DTest::AssertOk(testDataRContent->vertices[0] == 10.0f, V3DFILE_INFO);
+		V3DTest::AssertOk(testDataRContent->vertices[1] == 20.0f, V3DFILE_INFO);
+		V3DTest::AssertOk(testDataRContent->uvs[0] == 1, V3DFILE_INFO);
+		V3DTest::AssertOk(testDataRContent->uvs[1] == 2, V3DFILE_INFO);
+		V3DTest::AssertOk(testDataRContent->uvs[2] == 3, V3DFILE_INFO);
+		V3DMemory::Delete(testDataRContent);
+
 		V3DMemory::Delete(complexFileRepository);
 	}
 

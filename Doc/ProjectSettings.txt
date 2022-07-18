@@ -87,4 +87,5 @@ C/C++
 		C language: C11 (-std=c11)
 		C++ language: C++17 (-std=c++1z)
 	Precompiled headers: Not using, -, -
-	Multi-processor Compilation: Yes
+	Advanced: 
+		Multi-processor Compilation: Yes

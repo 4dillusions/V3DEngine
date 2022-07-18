@@ -31,13 +31,13 @@ namespace V3D::V3DEngine::V3DIO
 		if (path == V3DAssetPathType::Internal)
 		{
 			fileFullName += V3DString(static_cast<android_app*>(V3DEnvironment::GetApp())->activity->internalDataPath);
-			fileFullName += '/';
 		}
 		else
 		{
 			fileFullName += V3DString(V3DEnvironment::GetAssetPath(path));
 		}
 
+		fileFullName += '/';
 		fileFullName += fileName;
 
 		if (path == V3DAssetPathType::Internal)
@@ -66,16 +66,20 @@ namespace V3D::V3DEngine::V3DIO
 			char* buffer = V3DMemory::NewArray<char>(V3DFILE_INFO, (sizeof(char) * static_cast<unsigned int>(size)) + 1);
 
 			AAsset_read(asset, buffer, size);
-			result[size] = '\0';
+
+			result = V3DMemory::NewArray<char>(V3DFILE_INFO, static_cast<unsigned int>(sizeof(char) * size));
+			for (int index = 0; index < size; index++)
+				result[index] = buffer[index];
 			
 			AAsset_close(asset);
+			V3DMemory::DeleteArray(buffer);
 		}
 		else
 		{
 			LogFileNotFound();
 		}
 		
-		return nullptr;
+		return result;
 	}
 	
 	void V3DBinaryRW::Write(const char* fileName, const char* data, unsigned int size, unsigned int offset)

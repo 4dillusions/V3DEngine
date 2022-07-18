@@ -1,7 +1,7 @@
 rem clear and copy AssetsMain folder to Windows
 del /s /q Solution\WindowsAndroid\Windows\Bin\Debug\x64\Assets\*
 del /s /q Solution\WindowsAndroid\Windows\Bin\Release\x64\Assets\*
-
+ 
 xcopy /s /i AssetsMain Solution\WindowsAndroid\Windows\Bin\Debug\x64\Assets /e
 xcopy /s /i AssetsMain Solution\WindowsAndroid\Windows\Bin\Release\x64\Assets /e
 

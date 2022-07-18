@@ -125,34 +125,42 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)\Android\Bin\$(Configuration)\$(Platform)\</OutDir>
     <IncludePath>$(SolutionDir)..\..\Source\Shared;$(SolutionDir)..\..\Source\Android;$(IncludePath)</IncludePath>
+    <UseMultiToolTask>true</UseMultiToolTask>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)\Android\Bin\$(Configuration)\$(Platform)\</OutDir>
     <IncludePath>$(SolutionDir)..\..\Source\Shared;$(SolutionDir)..\..\Source\Android;$(IncludePath)</IncludePath>
+    <UseMultiToolTask>true</UseMultiToolTask>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <OutDir>$(SolutionDir)\Android\Bin\$(Configuration)\$(Platform)\</OutDir>
     <IncludePath>$(SolutionDir)..\..\Source\Shared;$(SolutionDir)..\..\Source\Android;$(IncludePath)</IncludePath>
+    <UseMultiToolTask>true</UseMultiToolTask>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <OutDir>$(SolutionDir)\Android\Bin\$(Configuration)\$(Platform)\</OutDir>
     <IncludePath>$(SolutionDir)..\..\Source\Shared;$(SolutionDir)..\..\Source\Android;$(IncludePath)</IncludePath>
+    <UseMultiToolTask>true</UseMultiToolTask>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <OutDir>$(SolutionDir)\Android\Bin\$(Configuration)\$(Platform)\</OutDir>
     <IncludePath>$(SolutionDir)..\..\Source\Shared;$(SolutionDir)..\..\Source\Android;$(IncludePath)</IncludePath>
+    <UseMultiToolTask>true</UseMultiToolTask>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <OutDir>$(SolutionDir)\Android\Bin\$(Configuration)\$(Platform)\</OutDir>
     <IncludePath>$(SolutionDir)..\..\Source\Shared;$(SolutionDir)..\..\Source\Android;$(IncludePath)</IncludePath>
+    <UseMultiToolTask>true</UseMultiToolTask>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <OutDir>$(SolutionDir)\Android\Bin\$(Configuration)\$(Platform)\</OutDir>
     <IncludePath>$(SolutionDir)..\..\Source\Shared;$(SolutionDir)..\..\Source\Android;$(IncludePath)</IncludePath>
+    <UseMultiToolTask>true</UseMultiToolTask>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <OutDir>$(SolutionDir)\Android\Bin\$(Configuration)\$(Platform)\</OutDir>
     <IncludePath>$(SolutionDir)..\..\Source\Shared;$(SolutionDir)..\..\Source\Android;$(IncludePath)</IncludePath>
+    <UseMultiToolTask>true</UseMultiToolTask>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
