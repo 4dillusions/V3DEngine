@@ -69,9 +69,33 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_opensles.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\dr_impl.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_wav.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_wavstream.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\stb_vorbis.c">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\miniaudio.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\dr_flac.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\dr_mp3.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\dr_wav.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\stb_vorbis.h">
       <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>
