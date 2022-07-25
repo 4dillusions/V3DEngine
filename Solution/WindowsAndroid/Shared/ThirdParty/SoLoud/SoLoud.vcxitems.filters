@@ -98,5 +98,110 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\stb_vorbis.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_audiosource.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_bassboostfilter.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_biquadresonantfilter.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_bus.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_c.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_dcremovalfilter.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_echofilter.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_error.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_fader.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_fft.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_fftfilter.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_file.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_file_hack_off.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_file_hack_on.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_filter.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_flangerfilter.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_freeverbfilter.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_internal.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_lofifilter.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_misc.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_monotone.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_noise.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_openmpt.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_queue.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_robotizefilter.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_sfxr.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_speech.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_tedsid.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_thread.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_vic.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_vizsn.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_wav.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_waveshaperfilter.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_wavstream.h">
+      <Filter>Source</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
