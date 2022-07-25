@@ -30,8 +30,12 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_fft_lut.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_file.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_filter.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_miniaudio.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_misc.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_queue.cpp" />
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_thread.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\miniaudio.h" />
   </ItemGroup>
 </Project>
