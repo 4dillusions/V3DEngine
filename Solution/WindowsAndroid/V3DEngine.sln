@@ -59,6 +59,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PicoHash", "PicoHash", "{F6
 		..\..\Source\Shared\ThirdParty\PicoHash\picohash.h = ..\..\Source\Shared\ThirdParty\PicoHash\picohash.h
 	EndProjectSection
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SoLoud", "Shared\ThirdParty\SoLoud\SoLoud.vcxitems", "{C84F65F4-586C-441B-B8D5-781D7C75F4E9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM
@@ -205,6 +207,7 @@ Global
 		{50B4E225-8FCE-4F20-8E22-550F2AD5A38E} = {1A6B2D8F-2A19-4E24-9A12-DBB91BB3638B}
 		{F884C255-B850-4742-B5DF-E50655CBA587} = {50B4E225-8FCE-4F20-8E22-550F2AD5A38E}
 		{F6167965-865C-4A1A-BA07-334002FF81CD} = {1A6B2D8F-2A19-4E24-9A12-DBB91BB3638B}
+		{C84F65F4-586C-441B-B8D5-781D7C75F4E9} = {1A6B2D8F-2A19-4E24-9A12-DBB91BB3638B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0C445ECF-1191-424E-93F8-CAA5EC40B04B}
@@ -212,6 +215,7 @@ Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Shared\V3DEngineTests\V3DEngineTests.vcxitems*{38107070-e6ee-4e58-9fad-ecab69573b0c}*SharedItemsImports = 4
 		Shared\V3DEngineTests\V3DEngineTests.vcxitems*{7012d474-0ee0-4f04-83a9-b13b4d8a77db}*SharedItemsImports = 9
+		Shared\ThirdParty\SoLoud\SoLoud.vcxitems*{c84f65f4-586c-441b-b8d5-781d7c75f4e9}*SharedItemsImports = 9
 		Shared\V3DEngine\V3DEngine.vcxitems*{dd03855b-a659-46c3-a6e8-9c7874956328}*SharedItemsImports = 9
 		Shared\V3DEngine\V3DEngine.vcxitems*{f80bf265-b06b-4a8b-91f0-6c4f0736dd6f}*SharedItemsImports = 4
 		Shared\V3DEngine\V3DEngine.vcxitems*{fa00616c-6032-44ba-b4fb-49a8005f6a45}*SharedItemsImports = 4

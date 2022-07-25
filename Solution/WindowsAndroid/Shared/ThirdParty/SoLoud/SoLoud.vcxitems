@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Label="Globals">
+    <MSBuildAllProjects Condition="'$(MSBuildVersion)' == '' Or '$(MSBuildVersion)' &lt; '16.0'">$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <ItemsProjectGuid>{c84f65f4-586c-441b-b8d5-781d7c75f4e9}</ItemsProjectGuid>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories);$(MSBuildThisFileDirectory)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ProjectCapability Include="SourceItemsFromImports" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_audiosource.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_bus.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_core_3d.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_core_basicops.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_core_faderops.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_core_filterops.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_core_getters.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_core_setters.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_core_voicegroup.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_core_voiceops.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_fader.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_fft.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_fft_lut.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_file.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_filter.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_misc.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_queue.cpp" />
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\..\Source\Shared\ThirdParty\SoLoud\soloud_thread.cpp" />
+  </ItemGroup>
+</Project>
