@@ -12,6 +12,7 @@ Windows			x64		x64		x64		x64
 +++++++++++++++++++++++++++++++++++++++++++++++
 Shared (Windows & Android shared code) projects
 +++++++++++++++++++++++++++++++++++++++++++++++
+ThirdParty\SoLoud (Shared Items)
 V3DEngine (Shared Items)
 V3DEngineTests (Shared Items)
 
@@ -19,7 +20,8 @@ V3DEngineTests (Shared Items)
 ++++++++++++++++++++++++++++++++++++++
 Windows (Windows desktop x64) projects
 ++++++++++++++++++++++++++++++++++++++
-V3DEngine (Dynamic-Link Library with exorts .dll)	references: V3DEngine (shared)
+ThirdParty\SoLoud (Static Library)					references: ThirdParty\SoLoud (shared)
+V3DEngine (Dynamic-Link Library with exports .dll)	references: V3DEngine (shared), ThirdParty\SoLoud
 V3DEngineTests (Console App .exe)					references: V3DEngineTests (shared), V3DEngine
 
 Settings
@@ -27,7 +29,7 @@ Settings
 General
 	output directory: 
 		.exe: $(SolutionDir)\Windows\Bin\$(Configuration)\$(Platform)\
-		.dll/.lib: $(SolutionDir)\Windows\Bin\$(Configuration)\$(Platform)\Lib\<ThirdParty>\<LibName>
+		.dll/.lib: $(SolutionDir)\Windows\Bin\$(Configuration)\$(Platform)\Lib\$(ProjectName)
 	Intermediate Directory: $(Platform)\$(Configuration)\
 	Target name: $(ProjectName)
 	Windows SDK: 10.0.18362.0
@@ -43,6 +45,7 @@ VC++ directories
 	
 C/C++
 	preprocessors: WINCLASSIC, _CRT_SECURE_NO_WARNINGS
+		SoLoud:	WITH_MINIAUDIO
 	Code generation
 		Enable C++ exceptions: No (release), Yes (debug)
 	Language

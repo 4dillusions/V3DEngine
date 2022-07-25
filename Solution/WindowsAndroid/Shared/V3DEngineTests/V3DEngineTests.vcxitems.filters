@@ -37,6 +37,9 @@
     <Filter Include="Source\V3DTestMock">
       <UniqueIdentifier>{860ef5b2-ca36-4abb-a6a5-dd4f35292071}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\V3DEngine\V3DAudio">
+      <UniqueIdentifier>{b953ffcc-6eb8-45f2-889b-2043ba93739d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTest.h">
@@ -282,6 +285,12 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DCore\V3DFunc.h">
       <Filter>Source\V3DEngine\V3DCore</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DAudio\V3DAudioTests.h">
+      <Filter>Source\V3DEngine\V3DAudio</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DAudio\V3DAudioManualTests.h">
+      <Filter>Source\V3DEngine\V3DAudio</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTest.cpp">
@@ -499,6 +508,12 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTestMock\V3DFakeitTests.cpp">
       <Filter>Source\V3DTestMock</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DAudio\V3DAudioTests.cpp">
+      <Filter>Source\V3DEngine\V3DAudio</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DAudio\V3DAudioManualTests.cpp">
+      <Filter>Source\V3DEngine\V3DAudio</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

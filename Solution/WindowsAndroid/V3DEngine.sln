@@ -61,6 +61,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PicoHash", "PicoHash", "{F6
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SoLoud", "Shared\ThirdParty\SoLoud\SoLoud.vcxitems", "{C84F65F4-586C-441B-B8D5-781D7C75F4E9}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SoLoud", "Windows\ThirdParty\SoLoud\SoLoud.vcxproj", "{C882E4DA-709A-4974-9CE3-ECD73A1DC4D7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|ARM = Debug|ARM
@@ -185,6 +187,26 @@ Global
 		{38107070-E6EE-4E58-9FAD-ECAB69573B0C}.Release|x64.Build.0 = Release|x64
 		{38107070-E6EE-4E58-9FAD-ECAB69573B0C}.Release|x86.ActiveCfg = Release|x86
 		{38107070-E6EE-4E58-9FAD-ECAB69573B0C}.Release|x86.Build.0 = Release|x86
+		{C882E4DA-709A-4974-9CE3-ECD73A1DC4D7}.Debug|ARM.ActiveCfg = Debug|x64
+		{C882E4DA-709A-4974-9CE3-ECD73A1DC4D7}.Debug|ARM.Build.0 = Debug|x64
+		{C882E4DA-709A-4974-9CE3-ECD73A1DC4D7}.Debug|ARM32.ActiveCfg = Debug|x64
+		{C882E4DA-709A-4974-9CE3-ECD73A1DC4D7}.Debug|ARM32.Build.0 = Debug|x64
+		{C882E4DA-709A-4974-9CE3-ECD73A1DC4D7}.Debug|ARM64.ActiveCfg = Debug|x64
+		{C882E4DA-709A-4974-9CE3-ECD73A1DC4D7}.Debug|ARM64.Build.0 = Debug|x64
+		{C882E4DA-709A-4974-9CE3-ECD73A1DC4D7}.Debug|x64.ActiveCfg = Debug|x64
+		{C882E4DA-709A-4974-9CE3-ECD73A1DC4D7}.Debug|x64.Build.0 = Debug|x64
+		{C882E4DA-709A-4974-9CE3-ECD73A1DC4D7}.Debug|x86.ActiveCfg = Debug|Win32
+		{C882E4DA-709A-4974-9CE3-ECD73A1DC4D7}.Debug|x86.Build.0 = Debug|Win32
+		{C882E4DA-709A-4974-9CE3-ECD73A1DC4D7}.Release|ARM.ActiveCfg = Release|x64
+		{C882E4DA-709A-4974-9CE3-ECD73A1DC4D7}.Release|ARM.Build.0 = Release|x64
+		{C882E4DA-709A-4974-9CE3-ECD73A1DC4D7}.Release|ARM32.ActiveCfg = Release|x64
+		{C882E4DA-709A-4974-9CE3-ECD73A1DC4D7}.Release|ARM32.Build.0 = Release|x64
+		{C882E4DA-709A-4974-9CE3-ECD73A1DC4D7}.Release|ARM64.ActiveCfg = Release|x64
+		{C882E4DA-709A-4974-9CE3-ECD73A1DC4D7}.Release|ARM64.Build.0 = Release|x64
+		{C882E4DA-709A-4974-9CE3-ECD73A1DC4D7}.Release|x64.ActiveCfg = Release|x64
+		{C882E4DA-709A-4974-9CE3-ECD73A1DC4D7}.Release|x64.Build.0 = Release|x64
+		{C882E4DA-709A-4974-9CE3-ECD73A1DC4D7}.Release|x86.ActiveCfg = Release|Win32
+		{C882E4DA-709A-4974-9CE3-ECD73A1DC4D7}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -208,6 +230,7 @@ Global
 		{F884C255-B850-4742-B5DF-E50655CBA587} = {50B4E225-8FCE-4F20-8E22-550F2AD5A38E}
 		{F6167965-865C-4A1A-BA07-334002FF81CD} = {1A6B2D8F-2A19-4E24-9A12-DBB91BB3638B}
 		{C84F65F4-586C-441B-B8D5-781D7C75F4E9} = {1A6B2D8F-2A19-4E24-9A12-DBB91BB3638B}
+		{C882E4DA-709A-4974-9CE3-ECD73A1DC4D7} = {97B97F08-4B61-4C5F-A577-FE96950771FE}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0C445ECF-1191-424E-93F8-CAA5EC40B04B}
@@ -216,6 +239,7 @@ Global
 		Shared\V3DEngineTests\V3DEngineTests.vcxitems*{38107070-e6ee-4e58-9fad-ecab69573b0c}*SharedItemsImports = 4
 		Shared\V3DEngineTests\V3DEngineTests.vcxitems*{7012d474-0ee0-4f04-83a9-b13b4d8a77db}*SharedItemsImports = 9
 		Shared\ThirdParty\SoLoud\SoLoud.vcxitems*{c84f65f4-586c-441b-b8d5-781d7c75f4e9}*SharedItemsImports = 9
+		Shared\ThirdParty\SoLoud\SoLoud.vcxitems*{c882e4da-709a-4974-9ce3-ecd73a1dc4d7}*SharedItemsImports = 4
 		Shared\V3DEngine\V3DEngine.vcxitems*{dd03855b-a659-46c3-a6e8-9c7874956328}*SharedItemsImports = 9
 		Shared\V3DEngine\V3DEngine.vcxitems*{f80bf265-b06b-4a8b-91f0-6c4f0736dd6f}*SharedItemsImports = 4
 		Shared\V3DEngine\V3DEngine.vcxitems*{fa00616c-6032-44ba-b4fb-49a8005f6a45}*SharedItemsImports = 4
