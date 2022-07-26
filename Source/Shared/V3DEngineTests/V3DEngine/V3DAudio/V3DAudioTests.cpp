@@ -6,12 +6,12 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #include "V3DAudioTests.h"
 
-#include "V3DAudioManualTests.h"
+#include "V3DAudioIntegrationTests.h"
 
 namespace V3D::V3DEngineTests::V3DEngine::V3DAudio
 {
 	void V3DAudioTests::RunAllTests()
 	{
-		V3DAudioManualTests::RunAllTests();
+		V3DAudioIntegrationTests::RunAllTests();
 	}
 }

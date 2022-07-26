@@ -4,7 +4,7 @@ Copyright (c) 2020 by 4D Illusions. All rights reserved.
 Released under the terms of the GNU General Public License version 3 or later.
 */
 
-#include "V3DAudioManualTests.h"
+#include "V3DAudioIntegrationTests.h"
 #include "V3DEngineTests/V3DTest.h"
 #include "V3DEngine/V3DMacros.h"
 #include "V3DEngine/V3DCore/V3DMemory.h"
@@ -18,7 +18,7 @@ using namespace V3D::V3DEngine::V3DAudio;
 
 namespace V3D::V3DEngineTests::V3DEngine::V3DAudio
 {
-	void V3DAudioManualTests::InitAudioTest()
+	void V3DAudioIntegrationTests::InitAudioTest()
 	{
 		V3DTest::AddIntegrationTest(
 				[&]
@@ -28,7 +28,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DAudio
 				});
 	}
 
-	void V3DAudioManualTests::PlaySFXAudioTest()
+	void V3DAudioIntegrationTests::PlaySFXAudioTest()
 	{
 		V3DTest::AddIntegrationTest(
 			[&]
@@ -43,7 +43,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DAudio
 			});
 	}
 
-	void V3DAudioManualTests::RunAllTests()
+	void V3DAudioIntegrationTests::RunAllTests()
 	{
 		InitAudioTest();
 		PlaySFXAudioTest();

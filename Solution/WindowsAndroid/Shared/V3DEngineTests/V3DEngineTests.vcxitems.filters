@@ -288,7 +288,7 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DAudio\V3DAudioTests.h">
       <Filter>Source\V3DEngine\V3DAudio</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DAudio\V3DAudioManualTests.h">
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DAudio\V3DAudioIntegrationTests.h">
       <Filter>Source\V3DEngine\V3DAudio</Filter>
     </ClInclude>
   </ItemGroup>
@@ -512,7 +512,7 @@
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DAudio\V3DAudioTests.cpp">
       <Filter>Source\V3DEngine\V3DAudio</Filter>
     </ClCompile>
-    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DAudio\V3DAudioManualTests.cpp">
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DAudio\V3DAudioIntegrationTests.cpp">
       <Filter>Source\V3DEngine\V3DAudio</Filter>
     </ClCompile>
   </ItemGroup>

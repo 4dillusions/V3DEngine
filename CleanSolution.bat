@@ -28,6 +28,9 @@ del /s /q Solution\WindowsAndroid\Windows\Bin\*.txt
 del /s /q Solution\WindowsAndroid\Windows\Bin\*.tlog
 del /s /q Solution\WindowsAndroid\Windows\Bin\*.lastbuildstate
 
+del /s /q Solution\WindowsAndroid\Windows\ThirdParty\SoLoud\x64\Debug\*
+del /s /q Solution\WindowsAndroid\Windows\ThirdParty\SoLoud\x64\Release\*
+
 del /s /q Solution\WindowsAndroid\Windows\V3DEngine\x64\Debug\*
 del /s /q Solution\WindowsAndroid\Windows\V3DEngine\x64\Release\*
 
