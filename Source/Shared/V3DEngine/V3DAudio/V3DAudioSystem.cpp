@@ -8,6 +8,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "ThirdParty/SoLoud/soloud.h"
 #include "ThirdParty/SoLoud/soloud_wav.h"
 #include "V3DEngine/V3DCore/V3DString.h"
+#include "V3DEngine/V3DIO/V3DBinaryRW.h"
 #include "V3DEngine/V3DIO/V3DLogger.h"
 #include "V3DEngine/V3DIO/V3DLogMessageType.h"
 
@@ -18,7 +19,7 @@ namespace V3D::V3DEngine::V3DAudio
 {
 	V3DAudioSystem::V3DAudioSystem() : sfxSource{ nullptr }
 	{
-		soloudSystem = new SoLoud::Soloud;
+		soloudSystem = V3DMemory::New<SoLoud::Soloud>(V3DFILE_INFO);
 		const auto result = soloudSystem->init();
 
 		V3DString log;
@@ -41,8 +42,8 @@ namespace V3D::V3DEngine::V3DAudio
 		V3DLogger::Get().WriteOutput(V3DLogMessageType::Info, "Release SoLoud AudioSystem");
 
 		soloudSystem->deinit();
-		delete sfxSource;
-		delete soloudSystem;
+		V3DMemory::Delete(sfxSource);
+		V3DMemory::Delete(soloudSystem);
 	}
 
 	void V3DAudioSystem::SetMusicEnable(bool isEnabled) const
@@ -63,9 +64,15 @@ namespace V3D::V3DEngine::V3DAudio
 
 	void V3DAudioSystem::LoadSound(const char* soundName)
 	{
-		sfxSource = new SoLoud::Wav;
-		if (const auto result = dynamic_cast<SoLoud::Wav*>(sfxSource)->load("Assets/Content/Sound/mysound.wav"); result != SoLoud::SO_NO_ERROR)
+		sfxSource = V3DMemory::New<SoLoud::Wav>(V3DFILE_INFO);
+
+		unsigned int lenght = 0;
+		auto soundData = V3DBinaryRW::Read(V3DAssetPathType::Sound, "mysound.wav", &lenght);
+
+		if (const auto result = dynamic_cast<SoLoud::Wav*>(sfxSource)->loadMem(reinterpret_cast<const unsigned char*>(soundData), lenght, true); result != SoLoud::SO_NO_ERROR)
 			V3DLogger::Get().WriteOutput(V3DLogMessageType::Error, V3DString("Couldn't load sound: ") + soundName + " " + soloudSystem->getErrorString(result));
+
+		V3DMemory::DeleteArray(soundData);
 	}
 
 	void V3DAudioSystem::PlayMusic(const char* soundName) const

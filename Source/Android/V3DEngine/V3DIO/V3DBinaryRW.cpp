@@ -16,7 +16,7 @@ using namespace V3D::V3DEngine::V3DCore;
 
 namespace V3D::V3DEngine::V3DIO
 {
-	char* V3DBinaryRW::Read(V3DAssetPathType path, const char* fileName)
+	char* V3DBinaryRW::Read(V3DAssetPathType path, const char* fileName, unsigned int* lenghtOut)
 	{
 		char* result{};
 		V3DString fileFullName;
@@ -45,11 +45,14 @@ namespace V3D::V3DEngine::V3DIO
 			if (auto const file = std::fopen(fileFullName.ToChar(), "rb"))
 			{
 				fseek(file, 0, SEEK_END);
-				const auto size = ftell(file);
+				const auto length = ftell(file);
 				fseek(file, 0, SEEK_SET);
 
-				result = V3DMemory::NewArray<char>(V3DFILE_INFO, static_cast<unsigned int>(sizeof(char) * size));
-				fread(result, size, 1, file);
+				if (lenghtOut != nullptr)
+					*lenghtOut = length;
+
+				result = V3DMemory::NewArray<char>(V3DFILE_INFO, static_cast<unsigned int>(sizeof(char) * length));
+				fread(result, length, 1, file);
 				fclose(file);
 			}
 			else
@@ -62,13 +65,15 @@ namespace V3D::V3DEngine::V3DIO
 
 		if (auto const asset = AAssetManager_open(static_cast<android_app*>(V3DEnvironment::GetApp())->activity->assetManager, fileFullName.ToChar(), AASSET_MODE_UNKNOWN))
 		{
-			const auto size = AAsset_getLength(asset);
-			char* buffer = V3DMemory::NewArray<char>(V3DFILE_INFO, (sizeof(char) * static_cast<unsigned int>(size)) + 1);
+			const auto length = AAsset_getLength(asset);
+			char* buffer = V3DMemory::NewArray<char>(V3DFILE_INFO, (sizeof(char) * static_cast<unsigned int>(length)) + 1);
 
-			AAsset_read(asset, buffer, size);
+			AAsset_read(asset, buffer, length);
+			if (lenghtOut != nullptr)
+				*lenghtOut = length;
 
-			result = V3DMemory::NewArray<char>(V3DFILE_INFO, static_cast<unsigned int>(sizeof(char) * size));
-			for (int index = 0; index < size; index++)
+			result = V3DMemory::NewArray<char>(V3DFILE_INFO, static_cast<unsigned int>(sizeof(char) * length));
+			for (int index = 0; index < length; index++)
 				result[index] = buffer[index];
 			
 			AAsset_close(asset);

@@ -60,11 +60,13 @@ Build Events:
 +++++++++++++++++++++++++++++++++++++++++++++++++
 Android (Mobile & emulator ARM/ARM64/x86) pojects
 +++++++++++++++++++++++++++++++++++++++++++++++++
-V3DEngine (Static Library)						references: V3DEngine (shared)	
+ThirdParty\SoLoud 	(Static Library)						references: ThirdParty\SoLoud (shared)	
+												C/C++ Advanced: Compile as: C++
+V3DEngine (Static Library)						references: V3DEngine (shared), ThirdParty\SoLoud	
 												C/C++ Advanced: Compile as: C++
 V3DEngineTests (Native Activity Application)	references: V3DEngineTests (shared), V3DEngine
 												C/C++ Advanced: Compile as: C++
-												Linker/Input: GLESv1_CM, EGL, m //GLESv2, EGL, m
+												Linker/Input: GLESv1_CM, EGL, m //GLESv2, EGL, m, OpenSLES
 
 Settings
 --------
@@ -83,6 +85,7 @@ VC++ directories
 	
 C/C++
 	preprocessors: ANDROID, _DEBUG
+		SoLoud:	WITH_MINIAUDIO
 	Code generation
 		Enable C++ exceptions: No (release), No (debug)
 	Language

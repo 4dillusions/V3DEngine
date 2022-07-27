@@ -153,6 +153,9 @@
     <Content Include="assets\Content\Model\testModelData.dat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="assets\Content\Sound\mysound.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="assets\Data\Options\test.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -174,7 +177,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="assets\Content\Texture\" />
-    <Folder Include="assets\Content\Sound\" />
     <Folder Include="assets\Content\Shader\" />
     <Folder Include="assets\Data\Level\" />
     <Folder Include="assets\Data\UI\" />
