@@ -18,10 +18,10 @@ namespace V3D::V3DEngine::V3DAudio
         V3DIAudioSystem& operator=(const V3DIAudioSystem&) = delete;
         V3DIAudioSystem& operator=(V3DIAudioSystem&&) = delete;
 
-		virtual void SetMusicEnable(bool isEnabled) const = 0;
+		virtual void SetMusicEnable(bool isEnabled) = 0;
 		virtual bool GetMusicEnable() const = 0;
 		
-		virtual void SetSFXEnable(bool isEnabled) const = 0;
+		virtual void SetSFXEnable(bool isEnabled) = 0;
 		virtual bool GetSFXEnable() const = 0;
 
 		virtual void LoadSound(const char* soundName) = 0;

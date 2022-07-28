@@ -17,11 +17,14 @@ namespace SoLoud
 
 namespace V3D::V3DEngine::V3DAudio
 {
-	class V3DENGINE_API V3DAudioSystem final : public V3DIAudioSystem
+	class V3DENGINE_API V3DAudioSystem final : public V3DIAudioSystem  // NOLINT padding size
     {
-		SoLoud::Soloud* soloudSystem;
 		SoLoud::AudioSource* sfxSource;
+		SoLoud::Soloud* soloudSystem;
 
+		bool isMusicEnable = true;
+		bool isSFXEnable = true;
+		
     public:
         V3DAudioSystem();
         V3DAudioSystem(const V3DAudioSystem&) = delete;
@@ -30,10 +33,10 @@ namespace V3D::V3DEngine::V3DAudio
         V3DAudioSystem& operator=(const V3DAudioSystem&) = delete;
         V3DAudioSystem& operator=(V3DAudioSystem&&) = delete;
 
-		void SetMusicEnable(bool isEnabled) const override;
+		void SetMusicEnable(bool isEnabled) override;
 		bool GetMusicEnable() const override;
 		
-		void SetSFXEnable(bool isEnabled) const override;
+		void SetSFXEnable(bool isEnabled) override;
 		bool GetSFXEnable() const override;
 
 		void LoadSound(const char* soundName) override;

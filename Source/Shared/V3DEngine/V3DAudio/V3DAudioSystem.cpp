@@ -46,20 +46,27 @@ namespace V3D::V3DEngine::V3DAudio
 		V3DMemory::Delete(soloudSystem);
 	}
 
-	void V3DAudioSystem::SetMusicEnable(bool isEnabled) const
-	{ }
+	void V3DAudioSystem::SetMusicEnable(bool isEnabled)
+	{
+		isMusicEnable = isEnabled;
+
+		if (!isEnabled)
+			StopMusic();
+	}
 
 	bool V3DAudioSystem::GetMusicEnable() const
 	{
-		return false;
+		return isMusicEnable;
 	}
 
-	void V3DAudioSystem::SetSFXEnable(bool isEnabled) const
-	{ }
+	void V3DAudioSystem::SetSFXEnable(bool isEnabled)
+	{
+		isSFXEnable = isEnabled;
+	}
 
 	bool V3DAudioSystem::GetSFXEnable() const
 	{
-		return false;
+		return isSFXEnable;
 	}
 
 	void V3DAudioSystem::LoadSound(const char* soundName)
@@ -76,13 +83,17 @@ namespace V3D::V3DEngine::V3DAudio
 	}
 
 	void V3DAudioSystem::PlayMusic(const char* soundName) const
-	{ }
+	{
+		if (isMusicEnable)
+			; //TODO: play music...
+	}
 
 	void V3DAudioSystem::StopMusic() const
 	{ }
 
 	void V3DAudioSystem::PlaySFX(const char* soundName) const
 	{
-		soloudSystem->play(*sfxSource);
+		if (isSFXEnable)
+			soloudSystem->play(*sfxSource);
 	}
 }
