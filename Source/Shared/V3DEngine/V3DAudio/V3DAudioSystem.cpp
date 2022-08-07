@@ -5,19 +5,20 @@ Released under the terms of the GNU General Public License version 3 or later.
 */
 
 #include "V3DAudioSystem.h"
-#include "ThirdParty/SoLoud/soloud.h"
-#include "ThirdParty/SoLoud/soloud_wav.h"
+#include "V3DSoundAsset.h"
 #include "V3DEngine/V3DCore/V3DString.h"
-#include "V3DEngine/V3DIO/V3DBinaryRW.h"
 #include "V3DEngine/V3DIO/V3DLogger.h"
 #include "V3DEngine/V3DIO/V3DLogMessageType.h"
+#include "V3DEngine/V3DAsset/V3DAssetManager.h"
+#include "ThirdParty/SoLoud/soloud.h"
 
 using namespace V3D::V3DEngine::V3DCore;
 using namespace V3D::V3DEngine::V3DIO;
+using namespace V3D::V3DEngine::V3DAsset;
 
 namespace V3D::V3DEngine::V3DAudio
 {
-	V3DAudioSystem::V3DAudioSystem() : sfxSource{ nullptr }
+	V3DAudioSystem::V3DAudioSystem(V3DAssetManager* assetManager) : assetManager{ assetManager }
 	{
 		soloudSystem = V3DMemory::New<SoLoud::Soloud>(V3DFILE_INFO);
 		const auto result = soloudSystem->init();
@@ -32,7 +33,7 @@ namespace V3D::V3DEngine::V3DAudio
 		}
 		else
 		{
-			log += soloudSystem->getErrorString(result);
+			log += SoLoud::Soloud::getErrorString(result);
 			V3DLogger::Get().WriteOutput(V3DLogMessageType::Error, log);
 		}
 	}
@@ -42,7 +43,6 @@ namespace V3D::V3DEngine::V3DAudio
 		V3DLogger::Get().WriteOutput(V3DLogMessageType::Info, "Release SoLoud AudioSystem");
 
 		soloudSystem->deinit();
-		V3DMemory::Delete(sfxSource);
 		V3DMemory::Delete(soloudSystem);
 	}
 
@@ -68,32 +68,28 @@ namespace V3D::V3DEngine::V3DAudio
 	{
 		return isSFXEnable;
 	}
-
-	void V3DAudioSystem::LoadSound(const char* soundName)
-	{
-		sfxSource = V3DMemory::New<SoLoud::Wav>(V3DFILE_INFO);
-
-		unsigned int lenght = 0;
-		auto soundData = V3DBinaryRW::Read(V3DAssetPathType::Sound, "mysound.wav", &lenght);
-
-		if (const auto result = dynamic_cast<SoLoud::Wav*>(sfxSource)->loadMem(reinterpret_cast<const unsigned char*>(soundData), lenght, true); result != SoLoud::SO_NO_ERROR)
-			V3DLogger::Get().WriteOutput(V3DLogMessageType::Error, V3DString("Couldn't load sound: ") + soundName + " " + soloudSystem->getErrorString(result));
-
-		V3DMemory::DeleteArray(soundData);
-	}
-
-	void V3DAudioSystem::PlayMusic(const char* soundName) const
+	
+	void V3DAudioSystem::PlayMusic(const char* soundName)
 	{
 		if (isMusicEnable)
-			; //TODO: play music...
+		{
+			if ((musicAsset = dynamic_cast<V3DSoundAsset*>(assetManager->GetAsset(soundName))))
+				soloudSystem->play(*const_cast<SoLoud::AudioSource*>(musicAsset->GetAudioSource()));
+		}
 	}
 
 	void V3DAudioSystem::StopMusic() const
-	{ }
+	{
+		if (musicAsset != nullptr)
+			soloudSystem->stopAudioSource(*const_cast<SoLoud::AudioSource*>(musicAsset->GetAudioSource()));
+	}
 
 	void V3DAudioSystem::PlaySFX(const char* soundName) const
 	{
 		if (isSFXEnable)
-			soloudSystem->play(*sfxSource);
+		{
+			if (const auto sfxAsset = dynamic_cast<V3DSoundAsset*>(assetManager->GetAsset(soundName)))
+				soloudSystem->play(*const_cast<SoLoud::AudioSource*>(sfxAsset->GetAudioSource()));
+		}
 	}
 }

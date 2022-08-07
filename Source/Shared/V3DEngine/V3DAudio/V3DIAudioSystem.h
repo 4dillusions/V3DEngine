@@ -12,8 +12,8 @@ namespace V3D::V3DEngine::V3DAudio
     {
     public:
         V3DIAudioSystem() = default;
-        V3DIAudioSystem(const V3DIAudioSystem&) = default;
-        V3DIAudioSystem(V3DIAudioSystem&&) = default;
+        V3DIAudioSystem(const V3DIAudioSystem&) = delete;
+        V3DIAudioSystem(V3DIAudioSystem&&) = delete;
         virtual ~V3DIAudioSystem() = default;
         V3DIAudioSystem& operator=(const V3DIAudioSystem&) = delete;
         V3DIAudioSystem& operator=(V3DIAudioSystem&&) = delete;
@@ -23,10 +23,8 @@ namespace V3D::V3DEngine::V3DAudio
 		
 		virtual void SetSFXEnable(bool isEnabled) = 0;
 		virtual bool GetSFXEnable() const = 0;
-
-		virtual void LoadSound(const char* soundName) = 0;
 		
-		virtual void PlayMusic(const char* soundName) const = 0;
+		virtual void PlayMusic(const char* soundName) = 0;
 		virtual void StopMusic() const = 0;
 		
 		virtual void PlaySFX(const char* soundName) const = 0;
