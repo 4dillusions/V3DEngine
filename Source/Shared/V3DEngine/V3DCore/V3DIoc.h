@@ -31,7 +31,7 @@ namespace V3D::V3DEngine::V3DCore
 			if (prototype.IsEmpty() && instance == nullptr)
 			{
 				prototype.Set([] { return V3DMemory::New<TType>(V3DFILE_INFO); });
-				removeActionsContainer->Add(V3DAction([] { V3DIoc<TInstance>::Remove(); }));
+				removeActionsContainer->Add(V3DAction([] { Remove(); }));
 			}
 		}
 
@@ -40,7 +40,7 @@ namespace V3D::V3DEngine::V3DCore
 			if (!otherPrototype.IsEmpty() && prototype.IsEmpty() && instance == nullptr)
 			{
 				prototype.Set(otherPrototype);
-				removeActionsContainer->Add(V3DAction([] { V3DIoc<TInstance>::Remove(); }));
+				removeActionsContainer->Add(V3DAction([] { Remove(); }));
 			}
 		}
 
