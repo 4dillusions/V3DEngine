@@ -19,6 +19,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DAudio
 		V3DAudioIntegrationTests& operator=(V3DAudioIntegrationTests&&) = delete;
 
 		static void InitAudioTest();
+		static void LoadAssetTest();
 		static void PlaySFXAudioTest();
 
 		static void RunAllTests();

@@ -42,7 +42,7 @@ namespace V3D::V3DEngineTests
 		static void AddTimingTest(const std::string& timingFunctionName, const V3DTestObject::V3DTestTimingData& timingTestData);
 		static void AddTimingTest(const std::string& timingFunctionName, const std::function<void()>& timingFunction);
 		static void RunTimingTests();
-		static void AddIntegrationTest(const std::function<void()>& integrationFunction);
+		static void AddIntegrationTest(const std::function<const void()>& integrationFunction);
 		static void RunIntegrationTests();
 		static void WriteStatistics();
 	};

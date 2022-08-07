@@ -21,13 +21,17 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngine/V3DCore/V3DIocManager.h"
 #include "V3DEngineTests/V3DTestMock/V3DFakeitTests.h"
 
+#include "V3DEngine/V3DIO/V3DLogger.h"
+#include "V3DEngine/V3DIO/V3DLogOutputType.h"
+
 using namespace V3D::V3DEngine::V3DCore;
 
 namespace V3D::V3DEngineTests::V3DEngine
 {	
 	void V3DTestRunner::RunAllTests()
 	{
-		//V3DIocManager::Init();
+		V3D::V3DEngine::V3DIO::V3DLogger::Get().SetOutputTypeFlag(V3D::V3DEngine::V3DIO::V3DLogOutputType::ToOutput, true);
+		V3DIocManager::Init();
 		V3DEnvironment::SetUnitTestMode();
 
 		/*V3DTypesTests::RunAllTests();
@@ -44,7 +48,8 @@ namespace V3D::V3DEngineTests::V3DEngine
 		//V3DTestMock::V3DFakeitTests::RunAllTests();
 		V3DTest::RunIntegrationTests();
 
-		//V3DIocManager::Clean();
+		V3D::V3DEngine::V3DIO::V3DLogger::Get().SetOutputTypeFlag(V3D::V3DEngine::V3DIO::V3DLogOutputType::ToOutput, true);
+		V3DIocManager::Clean();
 
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
 		V3DTest::WriteStatistics();

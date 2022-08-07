@@ -103,20 +103,20 @@ namespace V3D::V3DEngineTests
 		WriteOutput("\nTiming tests finished!");
 	}
 
-	void V3DTest::AddIntegrationTest(const std::function<void()>& integrationFunction)
+	void V3DTest::AddIntegrationTest(const std::function<const void()>& integrationFunction)
 	{
 		integrationList.push_back(integrationFunction);
 	}
 
 	void V3DTest::RunIntegrationTests()
 	{
-		WriteOutput(std::string("Integration tests"));
+		WriteOutput(std::string("\nIntegration tests"));
 		WriteOutput(std::string("================="));
 		V3DLogger::Get().SetOutputTypeFlag(V3DLogOutputType::ToOutput, true);
 
 		for (const auto& func : integrationList)
 		{
-			WriteOutput(std::string(""));
+			//WriteOutput(std::string("\n"));
 			func();
 		}
 
