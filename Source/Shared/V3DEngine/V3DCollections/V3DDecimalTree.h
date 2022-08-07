@@ -6,9 +6,9 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #pragma once
 
-#include "V3DDecimalTreeNode.h"
 #include "V3DEngine/V3DCore/V3DMemory.h"
 #include "V3DEngine/V3DMacros.h"
+#include "V3DDecimalTreeNode.h"
 
 #include <cassert>
 
