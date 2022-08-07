@@ -22,7 +22,7 @@ namespace V3D::V3DEngine::V3DIO
 		V3DString fileFullName;
 		const auto LogFileNotFound = [&fileFullName]()
 		{
-			V3DString log = V3DString("Couldn't open: ");
+			V3DString log = V3DString("Couldn't open file: ");
 			log += fileFullName;
 
 			V3DLogger::Get().WriteOutput(V3DLogMessageType::Error, log);

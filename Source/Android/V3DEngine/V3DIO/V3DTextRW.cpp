@@ -16,13 +16,13 @@ using namespace V3D::V3DEngine::V3DCollections;
 
 namespace V3D::V3DEngine::V3DIO
 {
-	V3DString V3DTextRW::Read(V3DAssetPathType path, const char* fileName)
+	V3DString* V3DTextRW::Read(V3DAssetPathType path, const char* fileName)
 	{
-		V3DString result;
+		const auto result = V3DMemory::New<V3DString>(V3DFILE_INFO);
 		V3DString fileFullName;
 		const auto LogFileNotFound = [&fileFullName]()
 		{
-			V3DString log = V3DString("Couldn't open: ");
+			V3DString log = V3DString("Couldn't open file: ");
 			log += fileFullName;
 
 			V3DLogger::Get().WriteOutput(V3DLogMessageType::Error, log);
@@ -46,7 +46,7 @@ namespace V3D::V3DEngine::V3DIO
 			{
 				int letter;
 				while ((letter = getc(file)) != EOF)
-					result += static_cast<char>(letter);
+					*result += static_cast<char>(letter);
 				
 				fclose(file);
 			}
@@ -66,7 +66,7 @@ namespace V3D::V3DEngine::V3DIO
 			AAsset_read(asset, buffer, size);
 
 			buffer[size] = '\0';
-			result += buffer;
+			*result += buffer;
 			
 			AAsset_close(asset);
 			V3DMemory::DeleteArray(buffer);
