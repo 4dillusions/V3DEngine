@@ -73,6 +73,8 @@ namespace V3D::V3DEngine::V3DAudio
 	{
 		if (isMusicEnable)
 		{
+			StopMusic();
+
 			if ((musicAsset = dynamic_cast<V3DSoundAsset*>(assetManager->GetAsset(soundName))))
 				soloudSystem->play(*const_cast<SoLoud::AudioSource*>(musicAsset->GetAudioSource()));
 		}
