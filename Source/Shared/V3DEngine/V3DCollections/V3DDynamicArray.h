@@ -186,6 +186,7 @@ namespace V3D::V3DEngine::V3DCollections
 		void RemoveCurrent()
 		{
 			RemoveAt(currentIndex);
+			currentIndex--;
 		}
 
 		void RemoveAll()

@@ -25,6 +25,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		static void RemoveAllAndAddTest();
 		static void RemoveFirstWhileIterateTest();
 		static void RemoveLastWhileIterateTest();
+		static void RemoveLastThreeWhileIterateTest();
 
 		static void ObjectPoolAddRemoveTimingTest();
 		static void ObjectPoolAddRemovePlacementNewTimingTest();

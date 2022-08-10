@@ -188,6 +188,35 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
 	}
 
+	void V3DLinkedListTests::RemoveLastThreeWhileIterateTest()
+	{
+		constexpr int ListLittleSize = 5;
+		V3DLinkedList<V3DTestObjectA*> list;
+
+		for (int i = 0; i < ListLittleSize; i++)
+		{
+			auto item = V3DMemory::New<V3DTestObjectA>(V3DFILE_INFO, i + 1);
+			item->SetIsAlive(i < 2);
+			list.Add(item);
+		}
+
+		for (list.First(); list.IsDone(); list.Next())
+			if (!(*list.GetCurrent())->GetIsAlive())
+			{
+				V3DMemory::Delete(*list.GetCurrent());
+				list.RemoveCurrent();
+			}
+
+		int objectIdSum = 0;
+		for (list.First(); list.IsDone(); list.Next())
+			objectIdSum += (*list.GetCurrent())->GetId();
+
+		V3DTest::AssertOk(objectIdSum == ListLittleSize - 2, V3DFILE_INFO);
+
+		for (list.First(); list.IsDone(); list.Next())
+			V3DMemory::Delete(*list.GetCurrent());
+	}
+
 	void V3DLinkedListTests::LinkedListAddRemoveTimingTest()
 	{
 		static V3DLinkedList<V3DTestObjectA*>* list;
@@ -273,6 +302,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		AddGetDataTest();
 		AddRemoveStaticTest();
 		AddRemoveDynamicTest();
+		RemoveLastThreeWhileIterateTest();
 
 		LinkedListAddRemoveTimingTest();
 		LinkedListIterateTimingTest();

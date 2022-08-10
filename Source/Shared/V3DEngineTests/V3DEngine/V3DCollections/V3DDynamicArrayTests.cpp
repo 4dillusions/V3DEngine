@@ -240,6 +240,35 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
 	}
 
+	void V3DDynamicArrayTests::RemoveLastThreeWhileIterateTest()
+	{
+		constexpr int ListLittleSize = 5;
+		V3DDynamicArray<V3DTestObjectA*> dArray;
+
+		for (int i = 0; i < ListLittleSize; i++)
+		{
+			auto item = V3DMemory::New<V3DTestObjectA>(V3DFILE_INFO, i + 1);
+			item->SetIsAlive(i < 2);
+			dArray.Add(item);
+		}
+
+		for (dArray.First(); dArray.IsDone(); dArray.Next())
+			if (!(*dArray.GetCurrent())->GetIsAlive())
+			{
+				V3DMemory::Delete(*dArray.GetCurrent());
+				dArray.RemoveCurrent();
+			}
+
+		int objectIdSum = 0;
+		for (dArray.First(); dArray.IsDone(); dArray.Next())
+			objectIdSum += (*dArray.GetCurrent())->GetId();
+
+		V3DTest::AssertOk(objectIdSum == ListLittleSize - 2, V3DFILE_INFO);
+
+		for (dArray.First(); dArray.IsDone(); dArray.Next())
+			V3DMemory::Delete(*dArray.GetCurrent());
+	}
+
 	void V3DDynamicArrayTests::DynamicArrayAddRemoveTimingTest()
 	{
 		static V3DDynamicArray<V3DTestObjectA*>* dArray;
@@ -327,6 +356,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		AddRemoveDynamicTest();
 		RemoveAtTest();
 		CopyReturnTest();
+		RemoveLastThreeWhileIterateTest();
 
 		DynamicArrayAddRemoveTimingTest();
 		DynamicArrayIterateTimingTest();

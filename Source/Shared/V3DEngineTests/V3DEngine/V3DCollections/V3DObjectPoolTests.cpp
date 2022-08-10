@@ -240,6 +240,30 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		V3DTest::AssertOk(sum == 8, V3DFILE_INFO);
 		V3DTest::AssertOk(sumId == 1 + 2 + 3 + 4 + 5 + 6 + 7, V3DFILE_INFO);
 	}
+
+	void V3DObjectPoolTests::RemoveLastThreeWhileIterateTest()
+	{
+		constexpr int PoolLittleSize = 5;
+		V3DObjectPool<V3DTestObjectA> objectPool{ PoolLittleSize };
+		for (int i = 0; i < PoolLittleSize; i++)
+		{
+			const auto obj = objectPool.Add();
+			obj->SetId(i + 1);
+			obj->SetIsAlive(i < 2);
+		}
+
+		for (objectPool.First(); objectPool.IsDone(); objectPool.Next())
+		{
+			if (!objectPool.GetCurrent()->GetIsAlive())
+				objectPool.RemoveCurrent();
+		}
+
+		int objectIdSum = 0;
+		for (objectPool.First(); objectPool.IsDone(); objectPool.Next())
+			objectIdSum += objectPool.GetCurrent()->GetId();
+
+		V3DTest::AssertOk(objectIdSum == PoolLittleSize - 2, V3DFILE_INFO);
+	}
 	
 	void V3DObjectPoolTests::ObjectPoolAddRemoveTimingTest()
 	{
@@ -357,6 +381,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		RemoveAllAndAddTest();
 		RemoveFirstWhileIterateTest();
 		RemoveLastWhileIterateTest();
+		RemoveLastThreeWhileIterateTest();
 
 		ObjectPoolAddRemoveTimingTest();
 		ObjectPoolAddRemovePlacementNewTimingTest();

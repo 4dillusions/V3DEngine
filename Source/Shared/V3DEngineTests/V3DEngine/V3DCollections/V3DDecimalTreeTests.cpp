@@ -299,6 +299,35 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		V3DTest::AssertOk(treeDynamic.GetLength() == 0, V3DFILE_INFO);
 	}
 
+	void V3DDecimalTreeTests::RemoveLastThreeWhileIterateTest()
+	{
+		constexpr int ListLittleSize = 5;
+		V3DDecimalTree<int, V3DTestObjectA*> tree;
+
+		for (int i = 0; i < ListLittleSize; i++)
+		{
+			auto item = V3DMemory::New<V3DTestObjectA>(V3DFILE_INFO, i + 1);
+			item->SetIsAlive(i < 2);
+			tree.Add(item->GetId(), item);
+		}
+
+		for (tree.First(); tree.IsDone(); tree.Next())
+			if (!(*tree.GetCurrentItem())->GetIsAlive())
+			{
+				V3DMemory::Delete(*tree.GetCurrentItem());
+				tree.RemoveCurrent();
+			}
+
+		int objectIdSum = 0;
+		for (tree.First(); tree.IsDone(); tree.Next())
+			objectIdSum += (*tree.GetCurrentItem())->GetId();
+
+		V3DTest::AssertOk(objectIdSum == ListLittleSize - 2, V3DFILE_INFO);
+
+		for (tree.First(); tree.IsDone(); tree.Next())
+			V3DMemory::Delete(*tree.GetCurrentItem());
+	}
+
 	void V3DDecimalTreeTests::DecimalTreeAddRemoveTimingTest()
 	{
 		static V3DDecimalTree<int, V3DTestObjectA*>* tree;
@@ -386,6 +415,8 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		AddRemoveStaticObjectKeyTest();
 		AddRemoveDynamicTest();
 		RemoveAtTest();
+		RemoveLastThreeWhileIterateTest();
+
 		DecimalTreeAddRemoveTimingTest();
 		DecimalTreeIterateTimingTest();
 	}

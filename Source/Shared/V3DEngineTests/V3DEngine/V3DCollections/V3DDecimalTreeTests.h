@@ -24,6 +24,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		static void AddRemoveStaticObjectKeyTest();
 		static void AddRemoveDynamicTest();
 		static void RemoveAtTest();
+		static void RemoveLastThreeWhileIterateTest();
 
 		static void DecimalTreeAddRemoveTimingTest();
 		static void DecimalTreeIterateTimingTest();
