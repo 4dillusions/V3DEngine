@@ -21,6 +21,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DAudio
 		static void InitAudioTest();
 		static void LoadAssetTest();
 		static void PlaySFXAudioTest();
+		static void AudioStressTest();
 
 		static void RunAllTests();
 	};
