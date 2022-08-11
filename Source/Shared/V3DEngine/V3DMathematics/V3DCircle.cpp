@@ -31,24 +31,24 @@ namespace V3D::V3DEngine::V3DMathematics
 		position.y = y;
 	}
 
-	void V3DCircle::SetPosition(const V3DVector2D& pos)
+	void V3DCircle::SetPosition(const V3DVector2D& otherPosition)
 	{
-		this->position = pos;
+		position = otherPosition;
 	}
 
 	V3DVector2D& V3DCircle::GetPosition()
 	{
-		return this->position;
+		return position;
 	}
 
 	void V3DCircle::SetRadius(float otherRadius)
 	{
-		this->radius = otherRadius;
+		radius = otherRadius;
 	}
 
 	float V3DCircle::GetRadius() const
 	{
-		return this->radius;
+		return radius;
 	}
 
 	bool V3DCircle::Contains(int x, int y) const

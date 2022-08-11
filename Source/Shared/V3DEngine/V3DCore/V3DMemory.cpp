@@ -16,11 +16,26 @@ using namespace V3D::V3DEngine::V3DIO;
 
 namespace V3D::V3DEngine::V3DCore
 {
-	std::unordered_map<int*, V3DMemoryInfo> V3DMemory::memoryDictionary;
+	std::unordered_map<void*, V3DMemoryInfo> V3DMemory::memoryDictionary;
 
 	int V3DMemory::GetMemoryLeakCount()
 	{
 		return static_cast<int>(memoryDictionary.size());
+	}
+
+	std::string V3DMemory::GetMemoryAllocatorTypeText(V3DMemoryAllocatorType allocType)
+	{
+		std::string result;
+
+		switch (allocType)
+		{
+			case V3DMemoryAllocatorType::NewMem: result.append("(NewMem) "); break;
+			case V3DMemoryAllocatorType::NewArrayMem: result.append("(NewArrayMem) "); break;
+			case V3DMemoryAllocatorType::NewMatrixMem: result.append("(NewMatrixMem) "); break;
+			case V3DMemoryAllocatorType::NewPointerArrayMem: result.append("(NewPointerArrayMem) "); break;
+		}
+
+		return result;
 	}
 
 	V3DString V3DMemory::GetStatistics()
@@ -29,7 +44,10 @@ namespace V3D::V3DEngine::V3DCore
 		result = "Leaked objects:\n";
 
 		for (const auto& i : memoryDictionary)  // NOLINT(clang-diagnostic-range-loop-construct)
-			result += i.second.info + static_cast<const char>('\n');
+		{
+			const auto allocType = GetMemoryAllocatorTypeText(i.second.allocType);
+			result += allocType + i.second.info + static_cast<const char>('\n');
+		}
 
 		if (memoryDictionary.empty())
 			result += "0 leaked object";
@@ -37,13 +55,13 @@ namespace V3D::V3DEngine::V3DCore
 		return V3DString(result.c_str());
 	}
 
-	void V3DMemory::Add(int* address, const V3DMemoryInfo& info)
+	void V3DMemory::Add(void* address, const V3DMemoryInfo& info)
 	{
 		memoryDictionary.insert({ address, info });
 	}
 
 	// ReSharper disable once CppParameterMayBeConstPtrOrRef
-	void V3DMemory::Remove(int* address, V3DMemoryAllocatorType allocType)
+	void V3DMemory::Remove(void* address, V3DMemoryAllocatorType allocType)
 	{
 		const auto search = memoryDictionary.find(address);
 		if (search != memoryDictionary.end() && search->second.allocType == allocType)

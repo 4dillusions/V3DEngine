@@ -28,7 +28,7 @@ namespace V3D::V3DEngine::V3DIO
         V3DBinaryRW& operator=(const V3DBinaryRW&) = delete;
         V3DBinaryRW& operator=(V3DBinaryRW&&) = delete;        
 
-        static char* Read(V3DCore::V3DAssetPathType path, const char* fileName);
+        static char* Read(V3DCore::V3DAssetPathType path, const char* fileName, unsigned int* lenghtOut = nullptr);
         static void Write(const char* fileName, const char* data, unsigned int size, unsigned int offset = 0);
     };
 }

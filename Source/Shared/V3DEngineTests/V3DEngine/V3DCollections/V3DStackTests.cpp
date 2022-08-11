@@ -18,6 +18,8 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 {
 	void V3DStackTests::CtorDtorTest()
 	{
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+
 		V3DTestObjectA::SetReferenceCounter(0);
 		V3DStack<V3DTestObjectA> staticObjStack { 3 };
 		V3DTest::AssertOk(staticObjStack.IsEmpty(), V3DFILE_INFO);
@@ -31,7 +33,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == 3, V3DFILE_INFO);
 
 		staticObjStack.~V3DStack();
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
 		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == 0, V3DFILE_INFO);
 	}
 
@@ -74,6 +76,8 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 
 	void V3DStackTests::StackDynamicTest()
 	{
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+
 		V3DTestObjectA::SetReferenceCounter(0);
 		
 		V3DStack<V3DTestObjectA*> objLIFO{ 5 };
@@ -131,7 +135,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		V3DMemory::Delete(obj100);
 		objLIFO.~V3DStack();
 		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == 0, V3DFILE_INFO);
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
 	}
 	
 	void V3DStackTests::RunAllTests()

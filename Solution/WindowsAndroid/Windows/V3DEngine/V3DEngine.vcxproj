@@ -28,6 +28,11 @@
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DNetwork\V3DSocketAddressPartial.cpp" />
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEngine\V3DNetwork\V3DSocketHelper.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ThirdParty\SoLoud\SoLoud.vcxproj">
+      <Project>{c882e4da-709a-4974-9ce3-ecd73a1dc4d7}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{F80BF265-B06B-4A8B-91F0-6C4F0736DD6F}</ProjectGuid>
@@ -65,14 +70,14 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <TargetName>$(ProjectName)</TargetName>
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>$(SolutionDir)\Windows\Bin\$(Configuration)\$(Platform)\Lib\V3DEngine\</OutDir>
+    <OutDir>$(SolutionDir)\Windows\Bin\$(Configuration)\$(Platform)\Lib\$(ProjectName)</OutDir>
     <IntDir>$(Platform)\$(Configuration)\</IntDir>
     <IncludePath>$(SolutionDir)..\..\Source\Shared;$(SolutionDir)..\..\Source\Windows;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <TargetName>$(ProjectName)</TargetName>
     <LinkIncremental>false</LinkIncremental>
-    <OutDir>$(SolutionDir)\Windows\Bin\$(Configuration)\$(Platform)\Lib\V3DEngine\</OutDir>
+    <OutDir>$(SolutionDir)\Windows\Bin\$(Configuration)\$(Platform)\Lib\$(ProjectName)</OutDir>
     <IntDir>$(Platform)\$(Configuration)\</IntDir>
     <IncludePath>$(SolutionDir)..\..\Source\Shared;$(SolutionDir)..\..\Source\Windows;$(IncludePath)</IncludePath>
   </PropertyGroup>

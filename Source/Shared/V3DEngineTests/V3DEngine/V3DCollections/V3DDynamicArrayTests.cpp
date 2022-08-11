@@ -23,6 +23,8 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 {
 	void V3DDynamicArrayTests::CtorDtorTest()
 	{
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+
 		V3DTestObjectA::SetReferenceCounter(0);
 		V3DDynamicArray<V3DTestObjectA> staticObjArrayReverse(20);
 		staticObjArrayReverse.Add(V3DTestObjectA());
@@ -32,33 +34,35 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == 3, V3DFILE_INFO);
 		staticObjArrayReverse.~V3DDynamicArray();
 		V3DTest::AssertOk(staticObjArrayReverse.GetLength() == 0, V3DFILE_INFO);
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
 		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == 0, V3DFILE_INFO);
 
 		V3DDynamicArray<int> intdArray;
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == V3DCollectionsTests::DynamicArrayMemoryAllocCount, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount + V3DCollectionsTests::DynamicArrayMemoryAllocCount, V3DFILE_INFO);
 		intdArray.~V3DDynamicArray();
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
 
 		V3DDynamicArray<V3DTestObjectA> staticObjdArray;
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == V3DCollectionsTests::DynamicArrayMemoryAllocCount, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount + V3DCollectionsTests::DynamicArrayMemoryAllocCount, V3DFILE_INFO);
 		staticObjdArray.~V3DDynamicArray();
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
 
 		V3DDynamicArray<V3DTestObjectA*> dynamicObjdArray;
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == V3DCollectionsTests::DynamicArrayMemoryAllocCount, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount + V3DCollectionsTests::DynamicArrayMemoryAllocCount, V3DFILE_INFO);
 		dynamicObjdArray.~V3DDynamicArray();
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
 	}
 
 	void V3DDynamicArrayTests::AddGetDataTest()
 	{
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+
 		V3DDynamicArray<int> intdArray;
 		intdArray.Add(10);
 		intdArray.First();
 		V3DTest::AssertOk(*intdArray.GetCurrent() == 10, V3DFILE_INFO);
 		intdArray.~V3DDynamicArray();
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
 
 		V3DDynamicArray<V3DTestObjectA> staticObjdArray;
 		V3DTestObjectA sObj;
@@ -67,7 +71,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		staticObjdArray.First();
 		V3DTest::AssertOk(staticObjdArray.GetCurrent()->GetId() == 20, V3DFILE_INFO);
 		staticObjdArray.~V3DDynamicArray();
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
 
 		V3DDynamicArray<V3DTestObjectA*> dynamicObjdArray;
 		auto dObj = V3DMemory::New<V3DTestObjectA>(V3DFILE_INFO);
@@ -77,11 +81,13 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		V3DTest::AssertOk((*dynamicObjdArray.GetCurrent())->GetId() == 20, V3DFILE_INFO);
 		V3DMemory::Delete(dObj);
 		dynamicObjdArray.~V3DDynamicArray();
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
 	}
 
 	void V3DDynamicArrayTests::AddRemoveStaticTest()
 	{
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+
 		V3DDynamicArray<int> dArray;
 
 		dArray.Add(2);
@@ -120,11 +126,13 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 
 		dArray.RemoveAll();
 		dArray.~V3DDynamicArray();
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
 	}
 
 	void V3DDynamicArrayTests::AddRemoveDynamicTest()
 	{
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+
 		V3DTestObjectA::SetReferenceCounter(0);
 		V3DDynamicArray<V3DTestObjectA*> dArray;
 
@@ -179,11 +187,13 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		dArray.RemoveAll();
 		dArray.~V3DDynamicArray();
 		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == 0, V3DFILE_INFO);
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
 	}
 
 	void V3DDynamicArrayTests::RemoveAtTest()
 	{
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+
 		V3DDynamicArray<int> dArray;
 
 		dArray.Add(2);
@@ -204,11 +214,13 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		dArray.RemoveAll();
 		dArray.~V3DDynamicArray();
 		V3DTest::AssertOk((allNumbers == (2 + 7 + 6 + 9 + 11 + 4)), V3DFILE_INFO);
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
 	}
 
 	void V3DDynamicArrayTests::CopyReturnTest()
 	{
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+
 		auto ObjReturnTest = []()
 		{
 			V3DDynamicArray<V3DString> result;
@@ -225,7 +237,36 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		};
 
 		V3DTest::AssertOk(*ObjReturnTest()[0] == V3DString("one") && *ObjReturnTest()[1] == V3DString("two"), V3DFILE_INFO);
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
+	}
+
+	void V3DDynamicArrayTests::RemoveLastThreeWhileIterateTest()
+	{
+		constexpr int ListLittleSize = 5;
+		V3DDynamicArray<V3DTestObjectA*> dArray;
+
+		for (int i = 0; i < ListLittleSize; i++)
+		{
+			auto item = V3DMemory::New<V3DTestObjectA>(V3DFILE_INFO, i + 1);
+			item->SetIsAlive(i < 2);
+			dArray.Add(item);
+		}
+
+		for (dArray.First(); dArray.IsDone(); dArray.Next())
+			if (!(*dArray.GetCurrent())->GetIsAlive())
+			{
+				V3DMemory::Delete(*dArray.GetCurrent());
+				dArray.RemoveCurrent();
+			}
+
+		int objectIdSum = 0;
+		for (dArray.First(); dArray.IsDone(); dArray.Next())
+			objectIdSum += (*dArray.GetCurrent())->GetId();
+
+		V3DTest::AssertOk(objectIdSum == ListLittleSize - 2, V3DFILE_INFO);
+
+		for (dArray.First(); dArray.IsDone(); dArray.Next())
+			V3DMemory::Delete(*dArray.GetCurrent());
 	}
 
 	void V3DDynamicArrayTests::DynamicArrayAddRemoveTimingTest()
@@ -315,6 +356,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		AddRemoveDynamicTest();
 		RemoveAtTest();
 		CopyReturnTest();
+		RemoveLastThreeWhileIterateTest();
 
 		DynamicArrayAddRemoveTimingTest();
 		DynamicArrayIterateTimingTest();

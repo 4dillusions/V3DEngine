@@ -14,9 +14,9 @@ using namespace V3D::V3DEngine::V3DCollections;
 
 namespace V3D::V3DEngine::V3DIO
 {
-	V3DString V3DTextRW::Read(V3DAssetPathType path, const char* fileName)
+	V3DString* V3DTextRW::Read(V3DAssetPathType path, const char* fileName)
 	{
-		V3DString result;
+		const auto result = V3DMemory::New<V3DString>(V3DFILE_INFO);
 
 		V3DString fileFullName;
 		fileFullName += V3DString(V3DEnvironment::GetAssetPath(path));
@@ -27,13 +27,13 @@ namespace V3D::V3DEngine::V3DIO
 		{
 			std::string line;
 			while (std::getline(stream, line))
-				result += V3DString(line.c_str()) + "\n";
+				*result += V3DString(line.c_str()) + "\n";
 
 			stream.close();
 		}
 		else
 		{
-			V3DString log = V3DString("Couldn't open: ");
+			V3DString log = V3DString("Couldn't open file: ");
 			log += fileFullName;
 			
 			V3DLogger::Get().WriteOutput(V3DLogMessageType::Error, log);

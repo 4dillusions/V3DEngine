@@ -17,6 +17,8 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 {
 	void V3DLoggerTests::LoggerTest()
 	{
+		const int memoryLeakCount = V3DMemory::GetMemoryLeakCount();
+
 		auto logTriggerText = V3DMemory::New<V3DString>(V3DFILE_INFO);
 		auto& logger = V3DLogger::Get();
 		logger.SetLogTrigger(V3DAction1<const V3DString&>([&logTriggerText](const V3DString& log) { *logTriggerText += log; }));
@@ -80,7 +82,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 		logger.SetOutputTypeFlag(V3DLogOutputType::ToBuffer, false);
 		logger.SetOutputTypeFlag(V3DLogOutputType::ToLogTrigger, false);
 
-		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
+		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
 	}
 
 	void V3DLoggerTests::RunAllTests()

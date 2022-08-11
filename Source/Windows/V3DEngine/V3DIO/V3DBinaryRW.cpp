@@ -14,7 +14,7 @@ using namespace V3D::V3DEngine::V3DCore;
 
 namespace V3D::V3DEngine::V3DIO
 {
-	char* V3DBinaryRW::Read(V3DAssetPathType path, const char* fileName)
+	char* V3DBinaryRW::Read(V3DAssetPathType path, const char* fileName, unsigned int* lenghtOut)
 	{
 		char* result{};
 
@@ -29,13 +29,16 @@ namespace V3D::V3DEngine::V3DIO
 			const auto length = stream.tellg();
 			stream.seekg(0, std::ifstream::beg);
 
+			if (lenghtOut != nullptr)
+				*lenghtOut = static_cast<unsigned int>(length);
+
 			result = V3DMemory::NewArray<char>(V3DFILE_INFO, static_cast<unsigned int>(length));
 			stream.read(result, length);
 			stream.close();
 		}
 		else
 		{
-			V3DString log = V3DString("Couldn't open: ");
+			V3DString log = V3DString("Couldn't open file: ");
 			log += fileFullName;
 
 			V3DLogger::Get().WriteOutput(V3DLogMessageType::Error, log);

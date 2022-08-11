@@ -170,11 +170,15 @@ namespace V3D::V3DEngine::V3DCollections
 			return nullptr;
 		}
 
-		T* Add()
+		T* Add(bool isPlacementNew = false)
 		{
 			if (poolTail->prev != nullptr)
 			{
 				auto temp = poolTail->prev;
+
+				if (isPlacementNew)
+					temp->data = V3DCore::V3DMemory::PlacementNew(temp->data);
+				
 				RemoveNodeFromPool(temp);
 				InsertNodeToList(temp);			
 				length++;

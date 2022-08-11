@@ -31,6 +31,12 @@
     <Filter Include="Source\V3DThreading">
       <UniqueIdentifier>{e1954edb-d6d5-4867-a088-a7152764ee25}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\V3DAudio">
+      <UniqueIdentifier>{91ac7c55-f611-43d4-9dd5-cc2c4f6eb0dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\V3DAsset">
+      <UniqueIdentifier>{fd42545e-0916-494f-8c1c-45e865527972}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DMacros.h">
@@ -252,6 +258,27 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DCore\V3DFunc.h">
       <Filter>Source\V3DCore</Filter>
     </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DCore\V3DIocContainer.h">
+      <Filter>Source\V3DCore</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DAudio\V3DIAudioSystem.h">
+      <Filter>Source\V3DAudio</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DAudio\V3DAudioSystem.h">
+      <Filter>Source\V3DAudio</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DAsset\V3DAssetData.h">
+      <Filter>Source\V3DAsset</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DAsset\V3DAssetBase.h">
+      <Filter>Source\V3DAsset</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DAsset\V3DAssetManager.h">
+      <Filter>Source\V3DAsset</Filter>
+    </ClInclude>
+    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DAudio\V3DSoundAsset.h">
+      <Filter>Source\V3DAudio</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DGameEngine\V3DGameEngineFacade.cpp">
@@ -349,6 +376,21 @@
     </ClCompile>
     <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DThreading\V3DTaskBase.cpp">
       <Filter>Source\V3DThreading</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DCore\V3DIocContainer.cpp">
+      <Filter>Source\V3DCore</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DAudio\V3DAudioSystem.cpp">
+      <Filter>Source\V3DAudio</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DAsset\V3DAssetManager.cpp">
+      <Filter>Source\V3DAsset</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DAsset\V3DAssetBase.cpp">
+      <Filter>Source\V3DAsset</Filter>
+    </ClCompile>
+    <ClCompile Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DAudio\V3DSoundAsset.cpp">
+      <Filter>Source\V3DAudio</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

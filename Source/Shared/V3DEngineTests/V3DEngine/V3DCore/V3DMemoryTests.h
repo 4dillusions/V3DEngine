@@ -21,12 +21,14 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 		V3DMemoryTests& operator=(V3DMemoryTests&&) = delete;
 
 		static void ValueTest();
+		static void ValuePlacementNewTest();
 		static void ArrayTest();
 		static void MatrixTest();
 		static void PointerArrayTest();
 
 		static void MemoryAllocationCMallocTimingTest();
 		static void MemoryAllocationCppNewTimingTest();
+		static void MemoryNewDeleteTimingTest();
 		
 		static void RunAllTests();
 	};

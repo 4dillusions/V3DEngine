@@ -27,7 +27,7 @@ namespace V3D::V3DEngine::V3DIO
         V3DTextRW& operator=(const V3DTextRW&) = delete;
         V3DTextRW& operator=(V3DTextRW&&) = delete;        
 
-        static V3DCore::V3DString Read(V3DCore::V3DAssetPathType path, const char* fileName);
+        static V3DCore::V3DString* Read(V3DCore::V3DAssetPathType path, const char* fileName);
         static void Write(const char* fileName, const V3DCore::V3DString& text);
     };
 }

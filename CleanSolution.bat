@@ -28,6 +28,9 @@ del /s /q Solution\WindowsAndroid\Windows\Bin\*.txt
 del /s /q Solution\WindowsAndroid\Windows\Bin\*.tlog
 del /s /q Solution\WindowsAndroid\Windows\Bin\*.lastbuildstate
 
+del /s /q Solution\WindowsAndroid\Windows\ThirdParty\SoLoud\x64\Debug\*
+del /s /q Solution\WindowsAndroid\Windows\ThirdParty\SoLoud\x64\Release\*
+
 del /s /q Solution\WindowsAndroid\Windows\V3DEngine\x64\Debug\*
 del /s /q Solution\WindowsAndroid\Windows\V3DEngine\x64\Release\*
 
@@ -36,6 +39,15 @@ del /s /q Solution\WindowsAndroid\Windows\V3DEngineTests\x64\Release\*
 
 rem clean all Android VS compiled files
 del /s /q Solution\WindowsAndroid\Android\Bin\*
+
+del /s /q Solution\WindowsAndroid\Android\ThirdParty\SoLoud\ARM\Debug\*
+del /s /q Solution\WindowsAndroid\Android\ThirdParty\SoLoud\ARM\Release\*
+del /s /q Solution\WindowsAndroid\Android\ThirdParty\SoLoud\ARM64\Debug\*
+del /s /q Solution\WindowsAndroid\Android\ThirdParty\SoLoud\ARM64\Release\*
+del /s /q Solution\WindowsAndroid\Android\ThirdParty\SoLoud\x86\Debug\*
+del /s /q Solution\WindowsAndroid\Android\ThirdParty\SoLoud\x86\Release\*
+del /s /q Solution\WindowsAndroid\Android\ThirdParty\SoLoud\x64\Debug\*
+del /s /q Solution\WindowsAndroid\Android\ThirdParty\SoLoud\x64\Release\*
 
 del /s /q Solution\WindowsAndroid\Android\V3DEngine\ARM\Debug\*
 del /s /q Solution\WindowsAndroid\Android\V3DEngine\ARM\Release\*

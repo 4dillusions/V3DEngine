@@ -53,6 +53,11 @@
     <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DNetwork\V3DSocketAddressPartial.cpp" />
     <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DNetwork\V3DSocketHelper.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ThirdParty\SoLoud\SoLoud.vcxproj">
+      <Project>{74658272-bd95-450e-807b-fd101f56e39f}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{fa00616c-6032-44ba-b4fb-49a8005f6a45}</ProjectGuid>
     <Keyword>Android</Keyword>
@@ -125,34 +130,42 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <OutDir>$(SolutionDir)\Android\Bin\$(Configuration)\$(Platform)\</OutDir>
     <IncludePath>$(SolutionDir)..\..\Source\Shared;$(SolutionDir)..\..\Source\Android;$(IncludePath)</IncludePath>
+    <UseMultiToolTask>true</UseMultiToolTask>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>$(SolutionDir)\Android\Bin\$(Configuration)\$(Platform)\</OutDir>
     <IncludePath>$(SolutionDir)..\..\Source\Shared;$(SolutionDir)..\..\Source\Android;$(IncludePath)</IncludePath>
+    <UseMultiToolTask>true</UseMultiToolTask>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
     <OutDir>$(SolutionDir)\Android\Bin\$(Configuration)\$(Platform)\</OutDir>
     <IncludePath>$(SolutionDir)..\..\Source\Shared;$(SolutionDir)..\..\Source\Android;$(IncludePath)</IncludePath>
+    <UseMultiToolTask>true</UseMultiToolTask>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
     <OutDir>$(SolutionDir)\Android\Bin\$(Configuration)\$(Platform)\</OutDir>
     <IncludePath>$(SolutionDir)..\..\Source\Shared;$(SolutionDir)..\..\Source\Android;$(IncludePath)</IncludePath>
+    <UseMultiToolTask>true</UseMultiToolTask>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM64'">
     <OutDir>$(SolutionDir)\Android\Bin\$(Configuration)\$(Platform)\</OutDir>
     <IncludePath>$(SolutionDir)..\..\Source\Shared;$(SolutionDir)..\..\Source\Android;$(IncludePath)</IncludePath>
+    <UseMultiToolTask>true</UseMultiToolTask>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM64'">
     <OutDir>$(SolutionDir)\Android\Bin\$(Configuration)\$(Platform)\</OutDir>
     <IncludePath>$(SolutionDir)..\..\Source\Shared;$(SolutionDir)..\..\Source\Android;$(IncludePath)</IncludePath>
+    <UseMultiToolTask>true</UseMultiToolTask>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|ARM'">
     <OutDir>$(SolutionDir)\Android\Bin\$(Configuration)\$(Platform)\</OutDir>
     <IncludePath>$(SolutionDir)..\..\Source\Shared;$(SolutionDir)..\..\Source\Android;$(IncludePath)</IncludePath>
+    <UseMultiToolTask>true</UseMultiToolTask>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|ARM'">
     <OutDir>$(SolutionDir)\Android\Bin\$(Configuration)\$(Platform)\</OutDir>
     <IncludePath>$(SolutionDir)..\..\Source\Shared;$(SolutionDir)..\..\Source\Android;$(IncludePath)</IncludePath>
+    <UseMultiToolTask>true</UseMultiToolTask>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>

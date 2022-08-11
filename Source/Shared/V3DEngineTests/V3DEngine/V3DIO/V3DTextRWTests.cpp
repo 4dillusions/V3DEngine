@@ -20,11 +20,15 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 		const char* TestAsset = "test2.txt";
 		const char* TestInternal = "test.txt";
 		const V3DString TestString(R"(<img src="Doc/Doxygen/Res/V3DLogoLarge.png">)");
-		
-		V3DTest::AssertOk(V3DTextRW::Read(V3DAssetPathType::Options, TestAsset).Contains(TestString), V3DFILE_INFO);
+
+		V3DString* text1 = V3DTextRW::Read(V3DAssetPathType::Options, TestAsset);
+		V3DTest::AssertOk(text1->Contains(TestString), V3DFILE_INFO);
+		V3DMemory::Delete(text1);
 
 		V3DTextRW::Write(TestInternal, TestString);
-		V3DTest::AssertOk(V3DTextRW::Read(V3DAssetPathType::Internal, TestInternal).Contains(TestString), V3DFILE_INFO);
+		V3DString* text2 = V3DTextRW::Read(V3DAssetPathType::Internal, TestInternal);
+		V3DTest::AssertOk(text2->Contains(TestString), V3DFILE_INFO);
+		V3DMemory::Delete(text2);
 		V3DFile::Delete(TestInternal);
 	}
 

@@ -6,9 +6,9 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #pragma once
 
-#include "V3DDecimalTreeNode.h"
 #include "V3DEngine/V3DCore/V3DMemory.h"
 #include "V3DEngine/V3DMacros.h"
+#include "V3DDecimalTreeNode.h"
 
 #include <cassert>
 
@@ -34,7 +34,7 @@ namespace V3D::V3DEngine::V3DCollections
 		static constexpr int DigitSize = 10;
 		static constexpr int NumberSystemSize = 10;
 		V3DDecimalTreeNode<TKey, TItem>* root{}, * current{}, ** currentAllItemArray{};
-		int currentIndex{}, length{};
+		int currentIndex{}, length{}, currentLength{};
 
 		V3DDecimalTreeNode<TKey, TItem>* CreateNode()
 		{
@@ -107,6 +107,7 @@ namespace V3D::V3DEngine::V3DCollections
 			if (length > 0)
 			{
 				currentIndex = 0;
+				currentLength = length;
 				
 				if (currentAllItemArray != nullptr)
 					DeleteNodeArray(currentAllItemArray);
@@ -126,7 +127,7 @@ namespace V3D::V3DEngine::V3DCollections
 		{
 			currentIndex++;
 
-			if (currentIndex < length)
+			if (currentIndex < currentLength)
 				current = currentAllItemArray[currentIndex];
 			else
 				current = nullptr;

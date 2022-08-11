@@ -17,7 +17,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DData
 {
 	void V3DAppDataSecurityTests::AllAppDataValidTest()
 	{
-		V3DTest::AssertOk(V3DAppDataSecurity::GetIsAllAppDataValid(V3DString("secret key 123"), V3DString("f6c5a0093e3958c85919f6216c97082dd69b91e9c28434f4e3a64060a6c5798c")), V3DFILE_INFO);
+		V3DTest::AssertOk(V3DAppDataSecurity::GetIsAllAppDataValid(V3DString("secret key 123"), V3DString("40a7c1f8450947471163ef4ff3d5e22f41e6f1590e435c55dc3979ebadb4b441")), V3DFILE_INFO);
 	}
 
 	void V3DAppDataSecurityTests::RunAllTests()

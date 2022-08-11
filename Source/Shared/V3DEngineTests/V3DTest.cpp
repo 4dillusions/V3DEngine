@@ -12,8 +12,12 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include <string>
 #include <algorithm>
 
+#include "V3DEngine/V3DIO/V3DLogger.h"
+#include "V3DEngine/V3DIO/V3DLogOutputType.h"
+
 using namespace V3D::V3DEngineTests::V3DTestObject;
 using namespace V3D::V3DEngine::V3DCore;
+using namespace V3D::V3DEngine::V3DIO;
 
 namespace V3D::V3DEngineTests
 {
@@ -68,7 +72,8 @@ namespace V3D::V3DEngineTests
 
 	void V3DTest::RunTimingTests()
 	{
-		WriteOutput("\nTiming tests:");
+		WriteOutput("\nTiming tests");
+		WriteOutput(std::string("================="));
 
 		int testTimingIndex = 1;
 		const auto TestTimingItemCount = std::count_if(timingList.begin(), timingList.end(), [](const std::pair<std::string, V3DTestTimingData>& t) {return t.second.isKip == false; });
@@ -98,20 +103,31 @@ namespace V3D::V3DEngineTests
 		WriteOutput("\nTiming tests finished!");
 	}
 
-	void V3DTest::AddIntegrationTest(const std::function<void()>& integrationFunction)
+	void V3DTest::AddIntegrationTest(const std::function<const void()>& integrationFunction)
 	{
 		integrationList.push_back(integrationFunction);
 	}
 
 	void V3DTest::RunIntegrationTests()
 	{
+		WriteOutput(std::string("\nIntegration tests"));
+		WriteOutput(std::string("================="));
+		V3DLogger::Get().SetOutputTypeFlag(V3DLogOutputType::ToOutput, true);
+
 		for (const auto& func : integrationList)
+		{
+			//WriteOutput(std::string("\n"));
 			func();
+		}
+
+		WriteOutput(std::string("\n"));
+		V3DLogger::Get().SetOutputTypeFlag(V3DLogOutputType::ToOutput, false);
 	}
 
 	void V3DTest::WriteStatistics()
 	{
-		WriteOutput(std::string("UnitTest (") + V3DEnvironment::GetRunMode() + " " + V3DEnvironment::GetPlatformName() + ")");
+		WriteOutput(std::string("UnitTests (") + V3DEnvironment::GetRunMode() + " " + V3DEnvironment::GetPlatformName() + ")");
+		WriteOutput(std::string("================="));
 		WriteOutput("Passed: " + ConvertToString(tests) + '/' + ConvertToString(passedTests));
 		WriteOutput("Unit test Errors:");
 
@@ -124,6 +140,7 @@ namespace V3D::V3DEngineTests
 			WriteOutput("0 error");
 
 		WriteOutput(V3DMemory::GetStatistics().ToChar());
+		WriteOutput("");
 
 		Reset();
 	}

@@ -22,6 +22,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		static void AddGetDataTest();
 		static void AddRemoveStaticTest();
 		static void AddRemoveDynamicTest();
+		static void RemoveLastThreeWhileIterateTest();
 
 		static void LinkedListAddRemoveTimingTest();
 		static void LinkedListIterateTimingTest();

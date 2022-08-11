@@ -422,9 +422,9 @@ namespace V3D::V3DEngine::V3DCore
 	void V3DString::IncrementDataSize(int otherDataSize)
 	{
 		if (otherDataSize == 0)
-			this->dataSize *= 2;
+			dataSize *= 2;
 		else
-			this->dataSize = otherDataSize;
+			dataSize = otherDataSize;
 
 		const V3DString temp(*this);
 		*this = temp;
