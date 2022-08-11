@@ -1,4 +1,4 @@
-V3D engine  <img src="https://img.shields.io/badge/license-GNU%20v3.0-brightgreen"> <img src="https://img.shields.io/badge/total%20lines-150k-blue"> <!--https://shields.io/-->
+V3D engine  <img src="https://img.shields.io/badge/license-GNU%20v3.0-brightgreen"> <img src="https://img.shields.io/badge/total%20lines-170k-blue"> <!--https://shields.io/-->
 ==========
 <p align="center">
   <img src="Doc/Doxygen/Res/V3DLogoLarge.png">
