@@ -30,11 +30,11 @@ namespace V3D::V3DEngineTests::V3DEngine
 {	
 	void V3DTestRunner::RunAllTests()
 	{
-		V3D::V3DEngine::V3DIO::V3DLogger::Get().SetOutputTypeFlag(V3D::V3DEngine::V3DIO::V3DLogOutputType::ToOutput, true);
+		//V3D::V3DEngine::V3DIO::V3DLogger::Get().SetOutputTypeFlag(V3D::V3DEngine::V3DIO::V3DLogOutputType::ToOutput, true);
 		V3DIocManager::Init();
 		V3DEnvironment::SetUnitTestMode();
 
-		/*V3DTypesTests::RunAllTests();
+		V3DTypesTests::RunAllTests();
 		V3DMathematics::V3DMathematicsTests::RunAllTests();
 		V3DCore::V3DCoreTests::RunAllTests();
 		V3DIO::V3DIOTests::RunAllTests();
@@ -42,17 +42,17 @@ namespace V3D::V3DEngineTests::V3DEngine
 		V3DNetwork::V3DNetworkTests::RunAllTests();
 		V3DCryptography::V3DCryptographyTests::RunAllTests();
 		V3DData::V3DDataTests::RunAllTests();
-		V3DThreading::V3DThreadingTests::RunAllTests();*/
+		V3DThreading::V3DThreadingTests::RunAllTests();
 		V3DAudio::V3DAudioTests::RunAllTests();
 
 		//V3DTestMock::V3DFakeitTests::RunAllTests();
-		V3DTest::RunIntegrationTests();
+		//V3DTest::RunIntegrationTests();
 
-		V3D::V3DEngine::V3DIO::V3DLogger::Get().SetOutputTypeFlag(V3D::V3DEngine::V3DIO::V3DLogOutputType::ToOutput, true);
+		//V3D::V3DEngine::V3DIO::V3DLogger::Get().SetOutputTypeFlag(V3D::V3DEngine::V3DIO::V3DLogOutputType::ToOutput, true);
 		V3DIocManager::Clean();
 
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
 		V3DTest::WriteStatistics();
-		V3DTest::RunTimingTests();
+		//V3DTest::RunTimingTests();
 	}
 }
