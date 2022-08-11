@@ -8,8 +8,18 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 namespace V3D::V3DEngineTests::V3DEngine
 {
+	enum class V3DTestType : unsigned;
+
 	class V3DTestRunner final
 	{
+		static V3DTestType testType;
+
+		static void Init();
+		static void RegisterTimingTestsRunUniTests();
+		static void RegisterAndRunIntegrationTests();
+		static void RunTimingTests();
+		static void CleanUp();
+
 	public:
 		V3DTestRunner() = delete;
 		V3DTestRunner(const V3DTestRunner&) = delete;

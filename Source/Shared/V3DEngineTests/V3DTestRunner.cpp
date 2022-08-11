@@ -6,6 +6,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #include "V3DTestRunner.h"
 #include "V3DTest.h"
+#include "V3DTestType.h"
 #include "V3DEngine/V3DMacros.h"
 #include "V3DEngine/V3DTypesTests.h"
 #include "V3DEngine/V3DMathemathics/V3DMathematicsTests.h"
@@ -27,32 +28,70 @@ Released under the terms of the GNU General Public License version 3 or later.
 using namespace V3D::V3DEngine::V3DCore;
 
 namespace V3D::V3DEngineTests::V3DEngine
-{	
-	void V3DTestRunner::RunAllTests()
+{
+	V3DTestType V3DTestRunner::testType = V3DTestType::UnitTests;
+
+	void V3DTestRunner::Init()
 	{
-		//V3D::V3DEngine::V3DIO::V3DLogger::Get().SetOutputTypeFlag(V3D::V3DEngine::V3DIO::V3DLogOutputType::ToOutput, true);
+		if (testType == V3DTestType::IntegrationTests)
+			V3D::V3DEngine::V3DIO::V3DLogger::Get().SetOutputTypeFlag(V3D::V3DEngine::V3DIO::V3DLogOutputType::ToOutput, true);
+
 		V3DIocManager::Init();
 		V3DEnvironment::SetUnitTestMode();
+	}
 
-		V3DTypesTests::RunAllTests();
-		V3DMathematics::V3DMathematicsTests::RunAllTests();
-		V3DCore::V3DCoreTests::RunAllTests();
-		V3DIO::V3DIOTests::RunAllTests();
-		V3DCollections::V3DCollectionsTests::RunAllTests();
-		V3DNetwork::V3DNetworkTests::RunAllTests();
-		V3DCryptography::V3DCryptographyTests::RunAllTests();
-		V3DData::V3DDataTests::RunAllTests();
-		V3DThreading::V3DThreadingTests::RunAllTests();
-		V3DAudio::V3DAudioTests::RunAllTests();
+	void V3DTestRunner::RegisterTimingTestsRunUniTests()
+	{
+		if (testType == V3DTestType::UnitTests || testType == V3DTestType::TimingTests)
+		{
+			V3DTypesTests::RunAllTests();
+			V3DMathematics::V3DMathematicsTests::RunAllTests();
+			V3DCore::V3DCoreTests::RunAllTests();
+			V3DIO::V3DIOTests::RunAllTests();
+			V3DCollections::V3DCollectionsTests::RunAllTests();
+			V3DNetwork::V3DNetworkTests::RunAllTests();
+			V3DCryptography::V3DCryptographyTests::RunAllTests();
+			V3DData::V3DDataTests::RunAllTests();
+			V3DThreading::V3DThreadingTests::RunAllTests();
+			V3DTestMock::V3DFakeitTests::RunAllTests();
+		}
+	}
 
-		//V3DTestMock::V3DFakeitTests::RunAllTests();
-		//V3DTest::RunIntegrationTests();
+	void V3DTestRunner::RegisterAndRunIntegrationTests()
+	{
+		if (testType == V3DTestType::IntegrationTests)
+		{
+			V3DAudio::V3DAudioTests::RunAllTests();
+			V3DTest::RunIntegrationTests();
+		}
+	}
 
-		//V3D::V3DEngine::V3DIO::V3DLogger::Get().SetOutputTypeFlag(V3D::V3DEngine::V3DIO::V3DLogOutputType::ToOutput, true);
+	void V3DTestRunner::RunTimingTests()
+	{
+		if (testType == V3DTestType::TimingTests)
+			V3DTest::RunTimingTests();
+	}
+
+	void V3DTestRunner::CleanUp()
+	{
+		if (testType == V3DTestType::IntegrationTests)
+			V3D::V3DEngine::V3DIO::V3DLogger::Get().SetOutputTypeFlag(V3D::V3DEngine::V3DIO::V3DLogOutputType::ToOutput, true);
+
 		V3DIocManager::Clean();
 
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == 0, V3DFILE_INFO);
 		V3DTest::WriteStatistics();
-		//V3DTest::RunTimingTests();
+	}
+
+	void V3DTestRunner::RunAllTests()
+	{
+		Init();
+
+		RegisterTimingTestsRunUniTests();
+		RegisterAndRunIntegrationTests();
+		
+		CleanUp();
+
+		RunTimingTests();
 	}
 }
