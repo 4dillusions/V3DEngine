@@ -196,9 +196,17 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DMathematics
 			5.0f, 0.0f, 2.0f, 0.0f).Determinant() == 20.0f, V3DFILE_INFO);
 	}
 
-	void V3DMatrix4Tests::RunAllTests()
+	void V3DMatrix4Tests::RunAllUnitTests()
 	{
 		OperatorsTest();
 		FunctionsTest();
+	}
+
+	void V3DMatrix4Tests::RegisterIntegrationTests()
+	{
+	}
+
+	void V3DMatrix4Tests::RegisterTimingTests()
+	{
 	}
 }

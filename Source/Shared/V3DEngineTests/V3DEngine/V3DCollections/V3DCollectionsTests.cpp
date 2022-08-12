@@ -15,14 +15,36 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 {
-	void V3DCollectionsTests::RunAllTests()
+	void V3DCollectionsTests::RunAllUnitTests()
 	{
-		V3DObjectPoolTests::RunAllTests();
-		V3DLinkedListTests::RunAllTests();
-		V3DDynamicArrayTests::RunAllTests();
-		V3DDecimalTreeTests::RunAllTests();
-		V3DQueueTests::RunAllTests();
-		V3DStackTests::RunAllTests();
-		StdTests::RunAllTests();
+		V3DObjectPoolTests::RunAllUnitTests();
+		V3DLinkedListTests::RunAllUnitTests();
+		V3DDynamicArrayTests::RunAllUnitTests();
+		V3DDecimalTreeTests::RunAllUnitTests();
+		V3DQueueTests::RunAllUnitTests();
+		V3DStackTests::RunAllUnitTests();
+		StdTests::RunAllUnitTests();
+	}
+
+	void V3DCollectionsTests::RegisterIntegrationTests()
+	{
+		V3DObjectPoolTests::RegisterIntegrationTests();
+		V3DLinkedListTests::RegisterIntegrationTests();
+		V3DDynamicArrayTests::RegisterIntegrationTests();
+		V3DDecimalTreeTests::RegisterIntegrationTests();
+		V3DQueueTests::RegisterIntegrationTests();
+		V3DStackTests::RegisterIntegrationTests();
+		StdTests::RegisterIntegrationTests();
+	}
+
+	void V3DCollectionsTests::RegisterTimingTests()
+	{
+		V3DObjectPoolTests::RegisterTimingTests();
+		V3DLinkedListTests::RegisterTimingTests();
+		V3DDynamicArrayTests::RegisterTimingTests();
+		V3DDecimalTreeTests::RegisterTimingTests();
+		V3DQueueTests::RegisterTimingTests();
+		V3DStackTests::RegisterTimingTests();
+		StdTests::RegisterTimingTests();
 	}
 }

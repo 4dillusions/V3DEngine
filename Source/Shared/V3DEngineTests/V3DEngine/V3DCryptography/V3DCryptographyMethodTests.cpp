@@ -48,8 +48,16 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCryptography
 		V3DTest::AssertOk(sha256Method.CreateHMAC(plainText, key) == V3DString("4e82d5229aa08327932610b7c6f7e7cb7858da46cebf61120be734abc5672c38"), V3DFILE_INFO);
 	}
 
-	void V3DCryptographyMethodTests::RunAllTests()
-	{	
+	void V3DCryptographyMethodTests::RunAllUnitTests()
+	{
 		HashMethodTest();
+	}
+
+	void V3DCryptographyMethodTests::RegisterIntegrationTests()
+	{
+	}
+
+	void V3DCryptographyMethodTests::RegisterTimingTests()
+	{
 	}
 }

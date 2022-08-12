@@ -407,7 +407,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 			});
 	}
 
-	void V3DDecimalTreeTests::RunAllTests()
+	void V3DDecimalTreeTests::RunAllUnitTests()
 	{
 		CtorDtorTest();
 		AddGetDataTest();
@@ -416,7 +416,14 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		AddRemoveDynamicTest();
 		RemoveAtTest();
 		RemoveLastThreeWhileIterateTest();
+	}
 
+	void V3DDecimalTreeTests::RegisterIntegrationTests()
+	{
+	}
+
+	void V3DDecimalTreeTests::RegisterTimingTests()
+	{
 		DecimalTreeAddRemoveTimingTest();
 		DecimalTreeIterateTimingTest();
 	}

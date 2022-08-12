@@ -18,6 +18,8 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 		V3DCoreTests& operator=(const V3DCoreTests&) = delete;
 		V3DCoreTests& operator=(V3DCoreTests&&) = delete;
 
-		static void RunAllTests();
+		static void RunAllUnitTests();
+		static void RegisterIntegrationTests();
+		static void RegisterTimingTests();
 	};
 }

@@ -25,6 +25,8 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		V3DCollectionsTests& operator=(const V3DCollectionsTests&) = delete;
 		V3DCollectionsTests& operator=(V3DCollectionsTests&&) = delete;
 
-		static void RunAllTests();
+		static void RunAllUnitTests();
+		static void RegisterIntegrationTests();
+		static void RegisterTimingTests();
 	};
 }

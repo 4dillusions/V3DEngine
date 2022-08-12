@@ -36,9 +36,17 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 		V3DTest::AssertOk(T2.item1 == V3, V3DFILE_INFO);
 		V3DTest::AssertOk(T2.item2 == V4, V3DFILE_INFO);
 	}
-	
-	void V3DTupleTests::RunAllTests()
-	{	
+
+	void V3DTupleTests::RunAllUnitTests()
+	{
 		TupleTest();
+	}
+
+	void V3DTupleTests::RegisterIntegrationTests()
+	{
+	}
+
+	void V3DTupleTests::RegisterTimingTests()
+	{
 	}
 }

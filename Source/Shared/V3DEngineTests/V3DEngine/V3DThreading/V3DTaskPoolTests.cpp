@@ -338,12 +338,19 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DThreading
 				}, true, 3
 			});
 	}
-	
-	void V3DTaskPoolTests::RunAllTests()
+
+	void V3DTaskPoolTests::RunAllUnitTests()
 	{
 		PoolObjectMethodTest();
 		PoolStressTest();
-		
+	}
+
+	void V3DTaskPoolTests::RegisterIntegrationTests()
+	{
+	}
+
+	void V3DTaskPoolTests::RegisterTimingTests()
+	{
 		ThreadVsPoolTimingTest();
 		ThreadPerSystemPoolTimingTest();
 		LoadContentTimingTest();

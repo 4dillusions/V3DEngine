@@ -11,7 +11,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 namespace V3D::V3DEngineTests::V3DEngine
 {
-	void V3DTypesTests::RunAllTests()
+	void V3DTypesTests::RunAllUnitTests()
 	{
 		V3DTest::AssertOk(sizeof(Bool) == 1, V3DFILE_INFO);
 		V3DTest::AssertOk(sizeof(Byte) == 1, V3DFILE_INFO);
@@ -20,5 +20,13 @@ namespace V3D::V3DEngineTests::V3DEngine
 		V3DTest::AssertOk(sizeof(Float) == 4, V3DFILE_INFO);
 		V3DTest::AssertOk(sizeof(Int) == 4, V3DFILE_INFO);
 		V3DTest::AssertOk(sizeof(UInt) == 4, V3DFILE_INFO);
+	}
+
+	void V3DTypesTests::RegisterIntegrationTests()
+	{
+	}
+
+	void V3DTypesTests::RegisterTimingTests()
+	{
 	}
 }

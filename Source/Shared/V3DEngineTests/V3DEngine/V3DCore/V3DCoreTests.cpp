@@ -18,17 +18,45 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 {
-	void V3DCoreTests::RunAllTests()
+	void V3DCoreTests::RunAllUnitTests()
 	{
-		V3DTupleTests::RunAllTests();
-		V3DStopperTests::RunAllTests();
-		V3DTimeHourTests::RunAllTests();
-		V3DWatchTests::RunAllTests();
-		V3DMemoryTests::RunAllTests();
-		V3DIocTests::RunAllTests();
-		V3DStringTests::RunAllTests();
-		V3DDateTimeTests::RunAllTests();
-		V3DComponentTests::RunAllTests();
-		V3DEventActionFuncTests::RunAllTests();
+		V3DTupleTests::RunAllUnitTests();
+		V3DStopperTests::RunAllUnitTests();
+		V3DTimeHourTests::RunAllUnitTests();
+		V3DWatchTests::RunAllUnitTests();
+		V3DMemoryTests::RunAllUnitTests();
+		V3DIocTests::RunAllUnitTests();
+		V3DStringTests::RunAllUnitTests();
+		V3DDateTimeTests::RunAllUnitTests();
+		V3DComponentTests::RunAllUnitTests();
+		V3DEventActionFuncTests::RunAllUnitTests();
+	}
+
+	void V3DCoreTests::RegisterIntegrationTests()
+	{
+		V3DTupleTests::RegisterIntegrationTests();
+		V3DStopperTests::RegisterIntegrationTests();
+		V3DTimeHourTests::RegisterIntegrationTests();
+		V3DWatchTests::RegisterIntegrationTests();
+		V3DMemoryTests::RegisterIntegrationTests();
+		V3DIocTests::RegisterIntegrationTests();
+		V3DStringTests::RegisterIntegrationTests();
+		V3DDateTimeTests::RegisterIntegrationTests();
+		V3DComponentTests::RegisterIntegrationTests();
+		V3DEventActionFuncTests::RegisterIntegrationTests();
+	}
+
+	void V3DCoreTests::RegisterTimingTests()
+	{
+		V3DTupleTests::RegisterTimingTests();
+		V3DStopperTests::RegisterTimingTests();
+		V3DTimeHourTests::RegisterTimingTests();
+		V3DWatchTests::RegisterTimingTests();
+		V3DMemoryTests::RegisterTimingTests();
+		V3DIocTests::RegisterTimingTests();
+		V3DStringTests::RegisterTimingTests();
+		V3DDateTimeTests::RegisterTimingTests();
+		V3DComponentTests::RegisterTimingTests();
+		V3DEventActionFuncTests::RegisterTimingTests();
 	}
 }

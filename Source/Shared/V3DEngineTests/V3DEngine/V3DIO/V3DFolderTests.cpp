@@ -31,8 +31,16 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 		}
 	}
 
-	void V3DFolderTests::RunAllTests()
+	void V3DFolderTests::RunAllUnitTests()
 	{
 		FolderTest();
+	}
+
+	void V3DFolderTests::RegisterIntegrationTests()
+	{
+	}
+
+	void V3DFolderTests::RegisterTimingTests()
+	{
 	}
 }

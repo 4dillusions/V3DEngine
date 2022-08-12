@@ -18,6 +18,8 @@ namespace V3D::V3DEngineTests::V3DTestMock
 		V3DFakeitTests& operator=(const V3DFakeitTests&) = delete;
 		V3DFakeitTests& operator=(V3DFakeitTests&&) = delete;
 
-		static void RunAllTests();
+		static void RunAllUnitTests();
+		static void RegisterIntegrationTests();
+		static void RegisterTimingTests();
 	};
 }

@@ -21,6 +21,8 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DMathematics
 		V3DMathematicsTests& operator=(const V3DMathematicsTests&) = delete;
 		V3DMathematicsTests& operator=(V3DMathematicsTests&&) = delete;
 
-		static void RunAllTests();
+		static void RunAllUnitTests();
+		static void RegisterIntegrationTests();
+		static void RegisterTimingTests();
 	};
 }

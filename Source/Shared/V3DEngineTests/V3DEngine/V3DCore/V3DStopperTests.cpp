@@ -29,9 +29,17 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 
 		V3DTest::AssertOk(time > 0, V3DFILE_INFO);
 	}
-	
-	void V3DStopperTests::RunAllTests()
-	{	
+
+	void V3DStopperTests::RunAllUnitTests()
+	{
 		StopperTest();
+	}
+
+	void V3DStopperTests::RegisterIntegrationTests()
+	{
+	}
+
+	void V3DStopperTests::RegisterTimingTests()
+	{
 	}
 }

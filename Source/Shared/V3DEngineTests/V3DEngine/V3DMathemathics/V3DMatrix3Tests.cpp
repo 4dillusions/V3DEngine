@@ -110,9 +110,17 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DMathematics
 		V3DTest::AssertOk(1.0f == floorf(mat10(2, 2)), V3DFILE_INFO); //A * inverse(A) = Identity, if A -> Orthogonal
 	}
 
-	void V3DMatrix3Tests::RunAllTests()
+	void V3DMatrix3Tests::RunAllUnitTests()
 	{
 		OperatorsTest();
 		FunctionsTest();
+	}
+
+	void V3DMatrix3Tests::RegisterIntegrationTests()
+	{
+	}
+
+	void V3DMatrix3Tests::RegisterTimingTests()
+	{
 	}
 }

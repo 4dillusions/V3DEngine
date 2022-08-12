@@ -13,12 +13,30 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 namespace V3D::V3DEngineTests::V3DEngine::V3DNetwork
 {
-	void V3DNetworkTests::RunAllTests()
+	void V3DNetworkTests::RunAllUnitTests()
 	{
-		V3DNetTests::RunAllTests();
-		V3DIpV4AddressTests::RunAllTests();
-		V3DSocketAddressTests::RunAllTests();
-		V3DTCPSocketTests::RunAllTests();
-		V3DUDPSocketTests::RunAllTests();
+		V3DNetTests::RunAllUnitTests();
+		V3DIpV4AddressTests::RunAllUnitTests();
+		V3DSocketAddressTests::RunAllUnitTests();
+		V3DTCPSocketTests::RunAllUnitTests();
+		V3DUDPSocketTests::RunAllUnitTests();
+	}
+
+	void V3DNetworkTests::RegisterIntegrationTests()
+	{
+		V3DNetTests::RegisterIntegrationTests();
+		V3DIpV4AddressTests::RegisterIntegrationTests();
+		V3DSocketAddressTests::RegisterIntegrationTests();
+		V3DTCPSocketTests::RegisterIntegrationTests();
+		V3DUDPSocketTests::RegisterIntegrationTests();
+	}
+
+	void V3DNetworkTests::RegisterTimingTests()
+	{
+		V3DNetTests::RegisterIntegrationTests();
+		V3DIpV4AddressTests::RegisterIntegrationTests();
+		V3DSocketAddressTests::RegisterIntegrationTests();
+		V3DTCPSocketTests::RegisterIntegrationTests();
+		V3DUDPSocketTests::RegisterIntegrationTests();
 	}
 }

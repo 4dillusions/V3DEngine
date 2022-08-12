@@ -23,6 +23,8 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DNetwork
 		static void SendReceiveMessageTest();
 		static void SendAllReceiveMessageTest();
 		
-		static void RunAllTests();
+		static void RunAllUnitTests();
+		static void RegisterIntegrationTests();
+		static void RegisterTimingTests();
 	};
 }

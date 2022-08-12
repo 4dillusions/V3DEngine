@@ -75,9 +75,17 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 		V3DIoc<V3DITestObject>::Remove();
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
 	}
-	
-	void V3DIocTests::RunAllTests()
-	{	
+
+	void V3DIocTests::RunAllUnitTests()
+	{
 		DynamicTest();
+	}
+
+	void V3DIocTests::RegisterIntegrationTests()
+	{
+	}
+
+	void V3DIocTests::RegisterTimingTests()
+	{
 	}
 }

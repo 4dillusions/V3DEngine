@@ -18,6 +18,8 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCryptography
 		V3DCryptographyTests& operator=(const V3DCryptographyTests&) = delete;
 		V3DCryptographyTests& operator=(V3DCryptographyTests&&) = delete;
 
-		static void RunAllTests();
+		static void RunAllUnitTests();
+		static void RegisterIntegrationTests();
+		static void RegisterTimingTests();
 	};
 }

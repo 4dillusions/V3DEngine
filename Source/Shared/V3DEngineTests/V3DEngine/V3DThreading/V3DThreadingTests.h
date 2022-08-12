@@ -18,6 +18,8 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DThreading
 		V3DThreadingTests& operator=(const V3DThreadingTests&) = delete;
 		V3DThreadingTests& operator=(V3DThreadingTests&&) = delete;
 
-		static void RunAllTests();
+		static void RunAllUnitTests();
+		static void RegisterIntegrationTests();
+		static void RegisterTimingTests();
 	};
 }

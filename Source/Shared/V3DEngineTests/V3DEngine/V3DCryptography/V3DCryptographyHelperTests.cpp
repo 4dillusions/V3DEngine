@@ -24,9 +24,17 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCryptography
 		const auto hexStringResult = V3DCryptographyHelper::ConvertHexArrayToString(hexArray, hexArrayLen);
 		V3DTest::AssertOk(hexStringResult == hexString, V3DFILE_INFO);
 	}
-	
-	void V3DCryptographyHelperTests::RunAllTests()
-	{	
+
+	void V3DCryptographyHelperTests::RunAllUnitTests()
+	{
 		ConvertHexArrayToStringTest();
+	}
+
+	void V3DCryptographyHelperTests::RegisterIntegrationTests()
+	{
+	}
+
+	void V3DCryptographyHelperTests::RegisterTimingTests()
+	{
 	}
 }

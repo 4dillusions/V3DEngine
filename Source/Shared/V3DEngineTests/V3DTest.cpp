@@ -72,7 +72,7 @@ namespace V3D::V3DEngineTests
 
 	void V3DTest::RunTimingTests()
 	{
-		WriteOutput("\nTiming tests");
+		WriteOutput(std::string("Timing tests (") + V3DEnvironment::GetRunMode() + " " + V3DEnvironment::GetPlatformName() + ")");
 		WriteOutput(std::string("================="));
 
 		int testTimingIndex = 1;
@@ -110,7 +110,7 @@ namespace V3D::V3DEngineTests
 
 	void V3DTest::RunIntegrationTests()
 	{
-		WriteOutput(std::string("\nIntegration tests"));
+		WriteOutput(std::string("\nIntegration tests (") + V3DEnvironment::GetRunMode() + " " + V3DEnvironment::GetPlatformName() + ")");
 		WriteOutput(std::string("================="));
 		V3DLogger::Get().SetOutputTypeFlag(V3DLogOutputType::ToOutput, true);
 

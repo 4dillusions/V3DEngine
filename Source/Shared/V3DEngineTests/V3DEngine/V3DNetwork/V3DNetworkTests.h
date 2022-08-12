@@ -18,6 +18,8 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DNetwork
 		V3DNetworkTests& operator=(const V3DNetworkTests&) = delete;
 		V3DNetworkTests& operator=(V3DNetworkTests&&) = delete;
 
-		static void RunAllTests();
+		static void RunAllUnitTests();
+		static void RegisterIntegrationTests();
+		static void RegisterTimingTests();
 	};
 }

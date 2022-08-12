@@ -101,11 +101,19 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 
 		V3DMemory::Delete(memoryStreamRepository);
 	}
-	
-	void V3DMemoryStreamTests::RunAllTests()
+
+	void V3DMemoryStreamTests::RunAllUnitTests()
 	{
 		WriteReadArrayTest();
 		WriteReadObjectTest();
 		WriteReadObjectToFileTest();
+	}
+
+	void V3DMemoryStreamTests::RegisterIntegrationTests()
+	{
+	}
+
+	void V3DMemoryStreamTests::RegisterTimingTests()
+	{
 	}
 }

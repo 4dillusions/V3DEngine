@@ -32,8 +32,16 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 		V3DFile::Delete(TestInternal);
 	}
 
-	void V3DTextRWTests::RunAllTests()
+	void V3DTextRWTests::RunAllUnitTests()
 	{
 		TextRWTest();
+	}
+
+	void V3DTextRWTests::RegisterIntegrationTests()
+	{
+	}
+
+	void V3DTextRWTests::RegisterTimingTests()
+	{
 	}
 }

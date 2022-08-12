@@ -60,11 +60,18 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DMathematics
 		for (int i = 0; i < V3DMathematicsTests::RandomCountSize; i++)
 			V3DRandom::CreateRandom(0, V3DMathematicsTests::MaxRandom);
 	}
-	
-	void V3DRandomTests::RunAllTests()
-	{	
-		RandomTest();
 
+	void V3DRandomTests::RunAllUnitTests()
+	{
+		RandomTest();
+	}
+
+	void V3DRandomTests::RegisterIntegrationTests()
+	{
+	}
+
+	void V3DRandomTests::RegisterTimingTests()
+	{
 		V3DTest::AddTimingTest("V3DRandomTimingTest", TimingTest);
 	}
 }

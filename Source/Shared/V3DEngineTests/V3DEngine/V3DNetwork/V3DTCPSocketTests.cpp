@@ -68,8 +68,16 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DNetwork
 		V3DNet::Cleanup();
 	}
 
-	void V3DTCPSocketTests::RunAllTests()
-	{	
+	void V3DTCPSocketTests::RunAllUnitTests()
+	{
 		SendReceiveMessageTest();
+	}
+
+	void V3DTCPSocketTests::RegisterIntegrationTests()
+	{
+	}
+
+	void V3DTCPSocketTests::RegisterTimingTests()
+	{
 	}
 }

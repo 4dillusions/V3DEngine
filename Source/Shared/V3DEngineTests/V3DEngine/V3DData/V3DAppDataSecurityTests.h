@@ -20,6 +20,8 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DData
 
 		static void AllAppDataValidTest();
 
-		static void RunAllTests();
+		static void RunAllUnitTests();
+		static void RegisterIntegrationTests();
+		static void RegisterTimingTests();
 	};
 }

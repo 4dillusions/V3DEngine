@@ -18,9 +18,17 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DNetwork
 		V3DTest::AssertOk(V3DNet::Init(), V3DFILE_INFO);
 		V3DNet::Cleanup();
 	}
-	
-	void V3DNetTests::RunAllTests()
-	{	
+
+	void V3DNetTests::RunAllUnitTests()
+	{
 		InitTest();
+	}
+
+	void V3DNetTests::RegisterIntegrationTests()
+	{
+	}
+
+	void V3DNetTests::RegisterTimingTests()
+	{
 	}
 }

@@ -77,10 +77,18 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DMathematics
 		quaternionFromRotMatrix.Normalizing();
 		V3DTest::AssertOk(ceilf(quaternionFromRotMatrix.Length()) == 1, V3DFILE_INFO);
 	}
-	
-	void V3DQuaternionTests::RunAllTests()
-	{	
+
+	void V3DQuaternionTests::RunAllUnitTests()
+	{
 		OperatorsTest();
 		FunctionsTest();
+	}
+
+	void V3DQuaternionTests::RegisterIntegrationTests()
+	{
+	}
+
+	void V3DQuaternionTests::RegisterTimingTests()
+	{
 	}
 }

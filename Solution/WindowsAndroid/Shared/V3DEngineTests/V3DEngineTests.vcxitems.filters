@@ -282,9 +282,6 @@
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DTestObject\V3DTestEventActionFunc.h">
       <Filter>Source\V3DTestObject</Filter>
     </ClInclude>
-    <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngine\V3DCore\V3DFunc.h">
-      <Filter>Source\V3DEngine\V3DCore</Filter>
-    </ClInclude>
     <ClInclude Include="$(MSBuildThisFileDirectory)..\..\..\..\Source\Shared\V3DEngineTests\V3DEngine\V3DAudio\V3DAudioTests.h">
       <Filter>Source\V3DEngine\V3DAudio</Filter>
     </ClInclude>

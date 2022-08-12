@@ -372,7 +372,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		});
 	}
 
-	void V3DObjectPoolTests::RunAllTests()
+	void V3DObjectPoolTests::RunAllUnitTests()
 	{
 		CtorDtorTest();
 		AddRemoveNewPlacementObjectTest();
@@ -382,7 +382,14 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		RemoveFirstWhileIterateTest();
 		RemoveLastWhileIterateTest();
 		RemoveLastThreeWhileIterateTest();
+	}
 
+	void V3DObjectPoolTests::RegisterIntegrationTests()
+	{
+	}
+
+	void V3DObjectPoolTests::RegisterTimingTests()
+	{
 		ObjectPoolAddRemoveTimingTest();
 		ObjectPoolAddRemovePlacementNewTimingTest();
 		ObjectPoolIterateTimingTest();

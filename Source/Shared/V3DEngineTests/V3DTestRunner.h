@@ -15,10 +15,10 @@ namespace V3D::V3DEngineTests::V3DEngine
 		static V3DTestType testType;
 
 		static void Init();
-		static void RegisterTimingTestsRunUniTests();
-		static void RegisterAndRunIntegrationTests();
-		static void RunTimingTests();
 		static void CleanUp();
+		static void RunUniTests();
+		static void RegisterAndRunIntegrationTests();
+		static void RegisterAndRunRunTimingTests();
 
 	public:
 		V3DTestRunner() = delete;

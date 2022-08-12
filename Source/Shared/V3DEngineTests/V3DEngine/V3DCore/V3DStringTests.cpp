@@ -423,8 +423,8 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
 	}
 
-	void V3DStringTests::RunAllTests()
-	{	
+	void V3DStringTests::RunAllUnitTests()
+	{
 		CtorOperatorsTest();
 		ReturnTest();
 		ToTest();
@@ -436,5 +436,13 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 		LargeTest();
 		CopyTest();
 		SplitTest();
+	}
+
+	void V3DStringTests::RegisterIntegrationTests()
+	{
+	}
+
+	void V3DStringTests::RegisterTimingTests()
+	{
 	}
 }

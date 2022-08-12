@@ -46,9 +46,17 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 
 		V3DTest::AssertOk(watch.GetTime() == V3DTimeHour(59, 0), V3DFILE_INFO);
 	}
-	
-	void V3DWatchTests::RunAllTests()
-	{	
+
+	void V3DWatchTests::RunAllUnitTests()
+	{
 		WatchTest();
+	}
+
+	void V3DWatchTests::RegisterIntegrationTests()
+	{
+	}
+
+	void V3DWatchTests::RegisterTimingTests()
+	{
 	}
 }

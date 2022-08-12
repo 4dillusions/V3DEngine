@@ -71,9 +71,17 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DNetwork
 		SendReceiveMessage(true);
 	}
 
-	void V3DUDPSocketTests::RunAllTests()
-	{	
+	void V3DUDPSocketTests::RunAllUnitTests()
+	{
 		SendReceiveMessageTest();
 		SendAllReceiveMessageTest();
+	}
+
+	void V3DUDPSocketTests::RegisterIntegrationTests()
+	{
+	}
+
+	void V3DUDPSocketTests::RegisterTimingTests()
+	{
 	}
 }

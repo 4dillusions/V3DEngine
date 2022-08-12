@@ -220,8 +220,16 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 				}, true, 2
 			});
 	}
-	
-	void StdTests::RunAllTests()
+
+	void StdTests::RunAllUnitTests()
+	{
+	}
+
+	void StdTests::RegisterIntegrationTests()
+	{
+	}
+
+	void StdTests::RegisterTimingTests()
 	{
 		StdVectorAddRemoveTimingTest();
 		StdVectorIterateTimingTest();

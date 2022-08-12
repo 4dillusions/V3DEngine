@@ -348,7 +348,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 			});
 	}
 
-	void V3DDynamicArrayTests::RunAllTests()
+	void V3DDynamicArrayTests::RunAllUnitTests()
 	{
 		CtorDtorTest();
 		AddGetDataTest();
@@ -357,7 +357,14 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		RemoveAtTest();
 		CopyReturnTest();
 		RemoveLastThreeWhileIterateTest();
+	}
 
+	void V3DDynamicArrayTests::RegisterIntegrationTests()
+	{
+	}
+
+	void V3DDynamicArrayTests::RegisterTimingTests()
+	{
 		DynamicArrayAddRemoveTimingTest();
 		DynamicArrayIterateTimingTest();
 	}

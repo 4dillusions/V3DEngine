@@ -20,9 +20,9 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 namespace V3D::V3DEngineTests::V3DTestMock
 {
-	void V3DFakeitTests::RunAllTests()
-	{
-       /* Mock<V3DITestInterface> mock;
+    void V3DFakeitTests::RunAllUnitTests()
+    {
+        /* Mock<V3DITestInterface> mock;
         V3DITestInterface& interf = mock.get();
 
         When(Method(mock, GetResult)).AlwaysDo([&]()
@@ -38,5 +38,13 @@ namespace V3D::V3DEngineTests::V3DTestMock
         V3DTest::AssertOk(!interf.GetIsSucceed(), V3DFILE_INFO);
         V3DTest::AssertOk(interf.GetCount() == 10, V3DFILE_INFO);
         V3DTest::AssertOk(interf.GetResult() == 1000, V3DFILE_INFO);*/
-	}
+    }
+
+    void V3DFakeitTests::RegisterIntegrationTests()
+    {
+    }
+
+    void V3DFakeitTests::RegisterTimingTests()
+    {
+    }
 }

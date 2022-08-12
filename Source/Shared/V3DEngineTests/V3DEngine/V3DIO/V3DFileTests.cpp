@@ -34,8 +34,16 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 		V3DTest::AssertOk(!V3DFile::IsExist(V3DAssetPathType::Internal, TestInternal), V3DFILE_INFO);
 	}
 
-	void V3DFileTests::RunAllTests()
+	void V3DFileTests::RunAllUnitTests()
 	{
 		FileTest();
+	}
+
+	void V3DFileTests::RegisterIntegrationTests()
+	{
+	}
+
+	void V3DFileTests::RegisterTimingTests()
+	{
 	}
 }

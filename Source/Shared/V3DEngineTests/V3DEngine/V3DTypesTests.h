@@ -18,6 +18,8 @@ namespace V3D::V3DEngineTests::V3DEngine
 		V3DTypesTests& operator=(const V3DTypesTests&) = delete;
 		V3DTypesTests& operator=(V3DTypesTests&&) = delete;
 
-		static void RunAllTests();
+		static void RunAllUnitTests();
+		static void RegisterIntegrationTests();
+		static void RegisterTimingTests();
 	};
 }

@@ -45,9 +45,17 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 		V3DTest::AssertOk(V3DDateTime::GetSqlTimeStamp(&nowTest) == V3DString("2014-9-8 17:51:4.777"), V3DFILE_INFO);
 		V3DTest::AssertOk(V3DDateTime::GetSQLTimeStampNumbers(&nowTest) == V3DString("20149817514777"), V3DFILE_INFO);
 	}
-	
-	void V3DDateTimeTests::RunAllTests()
-	{	
+
+	void V3DDateTimeTests::RunAllUnitTests()
+	{
 		DateTimeTest();
+	}
+
+	void V3DDateTimeTests::RegisterIntegrationTests()
+	{
+	}
+
+	void V3DDateTimeTests::RegisterTimingTests()
+	{
 	}
 }

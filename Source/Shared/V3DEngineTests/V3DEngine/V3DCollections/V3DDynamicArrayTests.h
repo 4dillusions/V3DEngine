@@ -29,6 +29,8 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		static void DynamicArrayAddRemoveTimingTest();
 		static void DynamicArrayIterateTimingTest();
 
-		static void RunAllTests();
+		static void RunAllUnitTests();
+		static void RegisterIntegrationTests();
+		static void RegisterTimingTests();
 	};
 }
