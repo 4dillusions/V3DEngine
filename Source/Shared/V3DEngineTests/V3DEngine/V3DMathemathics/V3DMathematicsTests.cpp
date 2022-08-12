@@ -19,18 +19,48 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 namespace V3D::V3DEngineTests::V3DEngine::V3DMathematics
 {
-	void V3DMathematicsTests::RunAllTests()
+	void V3DMathematicsTests::RunAllUnitTests()
 	{
-		V3DMathTests::RunAllTests();
-		V3DVector2DTests::RunAllTests();
-		V3DVector3DTests::RunAllTests();
-		V3DCircleTests::RunAllTests();
-		V3DRectangleTests::RunAllTests();
-		V3DVector4DTests::RunAllTests();
-		V3DMatrix3Tests::RunAllTests();
-		V3DMatrix4Tests::RunAllTests();
-		V3DQuaternionTests::RunAllTests();
-		V3DRandomTests::RunAllTests();
-		V3DRandomClassicTests::RunAllTests();
+		V3DMathTests::RunAllUnitTests();
+		V3DVector2DTests::RunAllUnitTests();
+		V3DVector3DTests::RunAllUnitTests();
+		V3DCircleTests::RunAllUnitTests();
+		V3DRectangleTests::RunAllUnitTests();
+		V3DVector4DTests::RunAllUnitTests();
+		V3DMatrix3Tests::RunAllUnitTests();
+		V3DMatrix4Tests::RunAllUnitTests();
+		V3DQuaternionTests::RunAllUnitTests();
+		V3DRandomTests::RunAllUnitTests();
+		V3DRandomClassicTests::RunAllUnitTests();
+	}
+
+	void V3DMathematicsTests::RegisterIntegrationTests()
+	{
+		V3DMathTests::RegisterIntegrationTests();
+		V3DVector2DTests::RegisterIntegrationTests();
+		V3DVector3DTests::RegisterIntegrationTests();
+		V3DCircleTests::RegisterIntegrationTests();
+		V3DRectangleTests::RegisterIntegrationTests();
+		V3DVector4DTests::RegisterIntegrationTests();
+		V3DMatrix3Tests::RegisterIntegrationTests();
+		V3DMatrix4Tests::RegisterIntegrationTests();
+		V3DQuaternionTests::RegisterIntegrationTests();
+		V3DRandomTests::RegisterIntegrationTests();
+		V3DRandomClassicTests::RegisterIntegrationTests();
+	}
+
+	void V3DMathematicsTests::RegisterTimingTests()
+	{
+		V3DMathTests::RegisterTimingTests();
+		V3DVector2DTests::RegisterTimingTests();
+		V3DVector3DTests::RegisterTimingTests();
+		V3DCircleTests::RegisterTimingTests();
+		V3DRectangleTests::RegisterTimingTests();
+		V3DVector4DTests::RegisterTimingTests();
+		V3DMatrix3Tests::RegisterTimingTests();
+		V3DMatrix4Tests::RegisterTimingTests();
+		V3DQuaternionTests::RegisterTimingTests();
+		V3DRandomTests::RegisterTimingTests();
+		V3DRandomClassicTests::RegisterTimingTests();
 	}
 }

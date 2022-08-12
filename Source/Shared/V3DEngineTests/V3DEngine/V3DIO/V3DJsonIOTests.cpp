@@ -138,11 +138,19 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 		V3DTest::AssertOk(*outLines[4] == V3DString("-Editor55"), V3DFILE_INFO);
 	}
 
-	void V3DJsonIOTests::RunAllTests()
+	void V3DJsonIOTests::RunAllUnitTests()
 	{
 		JsonParseTest();
 		BuildJsonFromCodeTest();
 		ConfigLoadSaveTest();
 		UIBuildTest();
+	}
+
+	void V3DJsonIOTests::RegisterIntegrationTests()
+	{
+	}
+
+	void V3DJsonIOTests::RegisterTimingTests()
+	{
 	}
 }

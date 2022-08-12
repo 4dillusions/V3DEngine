@@ -36,9 +36,17 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DMathematics
 		V3DTest::AssertOk(V3DMath::IsEqual(3.14486, 3.14486), V3DFILE_INFO);
 		V3DTest::AssertOk(!V3DMath::IsEqual(3.144861, 3.14486), V3DFILE_INFO);
 	}
-	
-	void V3DMathTests::RunAllTests()
-	{	
+
+	void V3DMathTests::RunAllUnitTests()
+	{
 		MathTest();
+	}
+
+	void V3DMathTests::RegisterIntegrationTests()
+	{
+	}
+
+	void V3DMathTests::RegisterTimingTests()
+	{
 	}
 }

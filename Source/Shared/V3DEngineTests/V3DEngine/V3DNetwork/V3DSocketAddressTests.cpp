@@ -50,10 +50,18 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DNetwork
 		V3DLogger::Get().WriteOutput(LocalIp);
 		V3DLogger::Get().SetOutputTypeFlag(V3DLogOutputType::ToOutput, false);*/
 	}
-	
-	void V3DSocketAddressTests::RunAllTests()
-	{	
+
+	void V3DSocketAddressTests::RunAllUnitTests()
+	{
 		CreateAddressTest();
 		GetHostIpTest();
+	}
+
+	void V3DSocketAddressTests::RegisterIntegrationTests()
+	{
+	}
+
+	void V3DSocketAddressTests::RegisterTimingTests()
+	{
 	}
 }

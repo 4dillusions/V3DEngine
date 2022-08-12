@@ -25,9 +25,17 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DNetwork
 		V3DTest::AssertOk(ip2.addr3 == 12, V3DFILE_INFO);
 		V3DTest::AssertOk(ip2.addr4 == 3, V3DFILE_INFO);
 	}
-	
-	void V3DIpV4AddressTests::RunAllTests()
-	{	
+
+	void V3DIpV4AddressTests::RunAllUnitTests()
+	{
 		CreateAndConvertAddressTest();
+	}
+
+	void V3DIpV4AddressTests::RegisterIntegrationTests()
+	{
+	}
+
+	void V3DIpV4AddressTests::RegisterTimingTests()
+	{
 	}
 }

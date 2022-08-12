@@ -10,8 +10,18 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 namespace V3D::V3DEngineTests::V3DEngine::V3DAudio
 {
-	void V3DAudioTests::RunAllTests()
+	void V3DAudioTests::RunAllUnitTests()
 	{
-		V3DAudioIntegrationTests::RunAllTests();
+		V3DAudioIntegrationTests::RunAllUnitTests();
+	}
+
+	void V3DAudioTests::RegisterIntegrationTests()
+	{
+		V3DAudioIntegrationTests::RegisterIntegrationTests();
+	}
+
+	void V3DAudioTests::RegisterTimingTests()
+	{
+		V3DAudioIntegrationTests::RegisterTimingTests();
 	}
 }

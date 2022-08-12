@@ -88,10 +88,18 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DMathematics
 
 		V3DTest::AssertOk(V3DVector2D(-6, -6).MidPoint(V3DVector2D(10, 2)) == V3DVector2D(2, -2), V3DFILE_INFO);
 	}
-	
-	void V3DVector2DTests::RunAllTests()
-	{	
+
+	void V3DVector2DTests::RunAllUnitTests()
+	{
 		OperatorsTest();
 		FunctionsTest();
+	}
+
+	void V3DVector2DTests::RegisterIntegrationTests()
+	{
+	}
+
+	void V3DVector2DTests::RegisterTimingTests()
+	{
 	}
 }

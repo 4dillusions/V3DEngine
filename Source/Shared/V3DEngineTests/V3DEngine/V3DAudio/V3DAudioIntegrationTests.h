@@ -18,11 +18,13 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DAudio
 		V3DAudioIntegrationTests& operator=(const V3DAudioIntegrationTests&) = delete;
 		V3DAudioIntegrationTests& operator=(V3DAudioIntegrationTests&&) = delete;
 
-		static void InitAudioTest();
-		static void LoadAssetTest();
-		static void PlaySFXAudioTest();
-		static void AudioStressTest();
+		static void InitAudioIntegrationTest();
+		static void LoadAssetIntegrationTest();
+		static void PlaySFXAudioIntegrationTest();
+		static void AudioStressIntegrationTest();
 
-		static void RunAllTests();
+		static void RunAllUnitTests();
+		static void RegisterIntegrationTests();
+		static void RegisterTimingTests();
 	};
 }

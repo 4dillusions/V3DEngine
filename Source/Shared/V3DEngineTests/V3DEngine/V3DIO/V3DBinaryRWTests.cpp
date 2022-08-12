@@ -91,9 +91,17 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 		V3DMemory::Delete(complexFileRepository);
 	}
 
-	void V3DBinaryRWTests::RunAllTests()
+	void V3DBinaryRWTests::RunAllUnitTests()
 	{
 		BinarySimpleRWTest();
 		BinaryComplexRWTest();
+	}
+
+	void V3DBinaryRWTests::RegisterIntegrationTests()
+	{
+	}
+
+	void V3DBinaryRWTests::RegisterTimingTests()
+	{
 	}
 }

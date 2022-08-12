@@ -25,9 +25,17 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 		V3DTest::AssertOk(Time3 == V3DTimeHour(0, 59), V3DFILE_INFO);
 		V3DTest::AssertOk(Time4 == V3DTimeHour(59, 0), V3DFILE_INFO);
 	}
-	
-	void V3DTimeHourTests::RunAllTests()
-	{	
+
+	void V3DTimeHourTests::RunAllUnitTests()
+	{
 		TimeHourTest();
+	}
+
+	void V3DTimeHourTests::RegisterIntegrationTests()
+	{
+	}
+
+	void V3DTimeHourTests::RegisterTimingTests()
+	{
 	}
 }

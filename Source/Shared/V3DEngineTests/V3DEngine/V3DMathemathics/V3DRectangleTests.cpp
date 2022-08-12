@@ -41,9 +41,17 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DMathematics
 		V3DTest::AssertOk(Rectangle4.Intersects(V3DRectangle(0, 0, 300, 400)), V3DFILE_INFO);
 		V3DTest::AssertOk(!Rectangle4.Intersects(V3DRectangle(202, 203, 10, 10)), V3DFILE_INFO);
 	}
-	
-	void V3DRectangleTests::RunAllTests()
-	{	
+
+	void V3DRectangleTests::RunAllUnitTests()
+	{
 		RectangleTest();
+	}
+
+	void V3DRectangleTests::RegisterIntegrationTests()
+	{
+	}
+
+	void V3DRectangleTests::RegisterTimingTests()
+	{
 	}
 }

@@ -137,11 +137,19 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		V3DTest::AssertOk(V3DTestObjectA::GetReferenceCounter() == 0, V3DFILE_INFO);
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
 	}
-	
-	void V3DStackTests::RunAllTests()
+
+	void V3DStackTests::RunAllUnitTests()
 	{
 		CtorDtorTest();
 		StackStaticTest();
 		StackDynamicTest();
+	}
+
+	void V3DStackTests::RegisterIntegrationTests()
+	{
+	}
+
+	void V3DStackTests::RegisterTimingTests()
+	{
 	}
 }

@@ -115,11 +115,19 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 
 		V3DMemory::Delete(gameLayerPool);
 	}
-	
-	void V3DComponentTests::RunAllTests()
+
+	void V3DComponentTests::RunAllUnitTests()
 	{
 		GameComponentTest();
 		GameCompositeComponentTest();
 		GameCompositeComponentPoolTest();
+	}
+
+	void V3DComponentTests::RegisterIntegrationTests()
+	{
+	}
+
+	void V3DComponentTests::RegisterTimingTests()
+	{
 	}
 }

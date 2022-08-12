@@ -295,15 +295,22 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 			}, true, 2
 		});
 	}
-	
-	void V3DLinkedListTests::RunAllTests()
+
+	void V3DLinkedListTests::RunAllUnitTests()
 	{
 		CtorDtorTest();
 		AddGetDataTest();
 		AddRemoveStaticTest();
 		AddRemoveDynamicTest();
 		RemoveLastThreeWhileIterateTest();
+	}
 
+	void V3DLinkedListTests::RegisterIntegrationTests()
+	{
+	}
+
+	void V3DLinkedListTests::RegisterTimingTests()
+	{
 		LinkedListAddRemoveTimingTest();
 		LinkedListIterateTimingTest();
 	}

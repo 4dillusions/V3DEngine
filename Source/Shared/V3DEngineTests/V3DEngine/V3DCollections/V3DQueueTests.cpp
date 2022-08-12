@@ -138,10 +138,18 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
 	}
 
-	void V3DQueueTests::RunAllTests()
+	void V3DQueueTests::RunAllUnitTests()
 	{
 		CtorDtorTest();
 		QueueStaticTest();
 		QueueDynamicTest();
+	}
+
+	void V3DQueueTests::RegisterIntegrationTests()
+	{
+	}
+
+	void V3DQueueTests::RegisterTimingTests()
+	{
 	}
 }

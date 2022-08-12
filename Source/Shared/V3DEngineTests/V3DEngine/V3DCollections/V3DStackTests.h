@@ -22,6 +22,8 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		static void StackStaticTest();
 		static void StackDynamicTest();
 
-		static void RunAllTests();
+		static void RunAllUnitTests();
+		static void RegisterIntegrationTests();
+		static void RegisterTimingTests();
 	};
 }

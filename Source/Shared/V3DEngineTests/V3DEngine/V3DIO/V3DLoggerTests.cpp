@@ -85,8 +85,16 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 		V3DTest::AssertOk(V3DMemory::GetMemoryLeakCount() == memoryLeakCount, V3DFILE_INFO);
 	}
 
-	void V3DLoggerTests::RunAllTests()
+	void V3DLoggerTests::RunAllUnitTests()
 	{
 		LoggerTest();
+	}
+
+	void V3DLoggerTests::RegisterIntegrationTests()
+	{
+	}
+
+	void V3DLoggerTests::RegisterTimingTests()
+	{
 	}
 }

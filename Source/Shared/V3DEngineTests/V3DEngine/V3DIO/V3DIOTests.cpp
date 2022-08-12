@@ -16,15 +16,39 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 {	
-	void V3DIOTests::RunAllTests()
+	void V3DIOTests::RunAllUnitTests()
 	{
-		V3DLoggerTests::RunAllTests();
-		V3DFileTests::RunAllTests();
-		V3DFolderTests::RunAllTests();
-		V3DTextRWTests::RunAllTests();
-		V3DBinaryRWTests::RunAllTests();
-		V3DJsonIOTests::RunAllTests();
-		V3DMemoryStreamTests::RunAllTests();
-		V3DSQLiteTests::RunAllTests();
+		V3DLoggerTests::RunAllUnitTests();
+		V3DFileTests::RunAllUnitTests();
+		V3DFolderTests::RunAllUnitTests();
+		V3DTextRWTests::RunAllUnitTests();
+		V3DBinaryRWTests::RunAllUnitTests();
+		V3DJsonIOTests::RunAllUnitTests();
+		V3DMemoryStreamTests::RunAllUnitTests();
+		V3DSQLiteTests::RunAllUnitTests();
+	}
+
+	void V3DIOTests::RegisterIntegrationTests()
+	{
+		V3DLoggerTests::RegisterIntegrationTests();
+		V3DFileTests::RegisterIntegrationTests();
+		V3DFolderTests::RegisterIntegrationTests();
+		V3DTextRWTests::RegisterIntegrationTests();
+		V3DBinaryRWTests::RegisterIntegrationTests();
+		V3DJsonIOTests::RegisterIntegrationTests();
+		V3DMemoryStreamTests::RegisterIntegrationTests();
+		V3DSQLiteTests::RegisterIntegrationTests();
+	}
+
+	void V3DIOTests::RegisterTimingTests()
+	{
+		V3DLoggerTests::RegisterTimingTests();
+		V3DFileTests::RegisterTimingTests();
+		V3DFolderTests::RegisterTimingTests();
+		V3DTextRWTests::RegisterTimingTests();
+		V3DBinaryRWTests::RegisterTimingTests();
+		V3DJsonIOTests::RegisterTimingTests();
+		V3DMemoryStreamTests::RegisterTimingTests();
+		V3DSQLiteTests::RegisterTimingTests();
 	}
 }

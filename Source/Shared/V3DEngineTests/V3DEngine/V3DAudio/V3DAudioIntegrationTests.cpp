@@ -25,7 +25,7 @@ using namespace V3D::V3DEngine::V3DIO;
 
 namespace V3D::V3DEngineTests::V3DEngine::V3DAudio
 {
-	void V3DAudioIntegrationTests::InitAudioTest()
+	void V3DAudioIntegrationTests::InitAudioIntegrationTest()
 	{
 		V3DTest::AddIntegrationTest(
 			[&]
@@ -36,7 +36,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DAudio
 			});
 	}
 
-	void V3DAudioIntegrationTests::LoadAssetTest()
+	void V3DAudioIntegrationTests::LoadAssetIntegrationTest()
 	{
 		V3DTest::AddIntegrationTest(
 			[&]
@@ -46,7 +46,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DAudio
 			});
 	}
 
-	void V3DAudioIntegrationTests::PlaySFXAudioTest()
+	void V3DAudioIntegrationTests::PlaySFXAudioIntegrationTest()
 	{
 		V3DTest::AddIntegrationTest(
 			[&]
@@ -67,7 +67,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DAudio
 			});
 	}
 
-	void V3DAudioIntegrationTests::AudioStressTest()
+	void V3DAudioIntegrationTests::AudioStressIntegrationTest()
 	{
 		V3DTest::AddIntegrationTest(
 			[&]
@@ -146,11 +146,19 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DAudio
 			});
 	}
 
-	void V3DAudioIntegrationTests::RunAllTests()
+	void V3DAudioIntegrationTests::RunAllUnitTests()
 	{
-		InitAudioTest();
-		LoadAssetTest();
-		PlaySFXAudioTest();
-		AudioStressTest();
+	}
+
+	void V3DAudioIntegrationTests::RegisterIntegrationTests()
+	{
+		InitAudioIntegrationTest();
+		LoadAssetIntegrationTest();
+		PlaySFXAudioIntegrationTest();
+		AudioStressIntegrationTest();
+	}
+
+	void V3DAudioIntegrationTests::RegisterTimingTests()
+	{
 	}
 }

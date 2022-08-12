@@ -27,6 +27,8 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCollections
 		static void LinkedListAddRemoveTimingTest();
 		static void LinkedListIterateTimingTest();
 
-		static void RunAllTests();
+		static void RunAllUnitTests();
+		static void RegisterIntegrationTests();
+		static void RegisterTimingTests();
 	};
 }

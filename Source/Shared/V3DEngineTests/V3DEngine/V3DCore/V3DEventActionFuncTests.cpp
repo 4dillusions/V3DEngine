@@ -198,12 +198,20 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 
 		V3DMemory::Delete(obj);
 	}
-	
-	void V3DEventActionFuncTests::RunAllTests()
+
+	void V3DEventActionFuncTests::RunAllUnitTests()
 	{
 		ActionSetInvokeTest();
 		FuncSetInvokeTest();
 		EventNoParamAddRemoveInvokeTest();
 		EventParamAddRemoveInvokeTest();
+	}
+
+	void V3DEventActionFuncTests::RegisterIntegrationTests()
+	{
+	}
+
+	void V3DEventActionFuncTests::RegisterTimingTests()
+	{
 	}
 }

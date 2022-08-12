@@ -66,10 +66,18 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DMathematics
 
 		V3DTest::AssertOk(V3DVector4D(1, 2, 3, 4).DotProduct(V3DVector4D(6, 7, 8, 9)) == 80.0f, V3DFILE_INFO);
 	}
-	
-	void V3DVector4DTests::RunAllTests()
-	{	
+
+	void V3DVector4DTests::RunAllUnitTests()
+	{
 		OperatorsTest();
 		FunctionsTest();
+	}
+
+	void V3DVector4DTests::RegisterIntegrationTests()
+	{
+	}
+
+	void V3DVector4DTests::RegisterTimingTests()
+	{
 	}
 }

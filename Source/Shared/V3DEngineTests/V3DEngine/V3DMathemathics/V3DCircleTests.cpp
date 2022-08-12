@@ -29,9 +29,17 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DMathematics
 		V3DTest::AssertOk(Circle.Intersects(V3DCircle(0, 0, 30)), V3DFILE_INFO);
 		V3DTest::AssertOk(!Circle.Intersects(V3DCircle(20, 30, 10)), V3DFILE_INFO);
 	}
-	
-	void V3DCircleTests::RunAllTests()
-	{	
+
+	void V3DCircleTests::RunAllUnitTests()
+	{
 		CircleTest();
+	}
+
+	void V3DCircleTests::RegisterIntegrationTests()
+	{
+	}
+
+	void V3DCircleTests::RegisterTimingTests()
+	{
 	}
 }

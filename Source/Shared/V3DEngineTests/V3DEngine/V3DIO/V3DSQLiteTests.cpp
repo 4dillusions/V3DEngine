@@ -65,9 +65,17 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 		V3DFile::Delete(dbName);
 		V3DLogger::Get().SetOutputTypeFlag(V3DLogOutputType::ToFile, false);
 	}
-	
-	void V3DSQLiteTests::RunAllTests()
+
+	void V3DSQLiteTests::RunAllUnitTests()
 	{
 		CRUDTest();
+	}
+
+	void V3DSQLiteTests::RegisterIntegrationTests()
+	{
+	}
+
+	void V3DSQLiteTests::RegisterTimingTests()
+	{
 	}
 }

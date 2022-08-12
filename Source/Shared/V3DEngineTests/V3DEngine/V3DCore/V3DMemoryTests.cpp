@@ -126,14 +126,21 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DCore
 			delete i;
 	}
 
-	void V3DMemoryTests::RunAllTests()
+	void V3DMemoryTests::RunAllUnitTests()
 	{
 		ValueTest();
 		ValuePlacementNewTest();
 		ArrayTest();
 		MatrixTest();
 		PointerArrayTest();
+	}
 
+	void V3DMemoryTests::RegisterIntegrationTests()
+	{
+	}
+
+	void V3DMemoryTests::RegisterTimingTests()
+	{
 		V3DTest::AddTimingTest("MemoryAllocationCMallocTimingTest", MemoryAllocationCMallocTimingTest);
 		V3DTest::AddTimingTest("MemoryAllocationCppNewTimingTest", MemoryAllocationCppNewTimingTest);
 		V3DTest::AddTimingTest("MemoryNewDeleteTimingTest", MemoryNewDeleteTimingTest);

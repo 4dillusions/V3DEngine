@@ -18,6 +18,8 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DAudio
 		V3DAudioTests& operator=(const V3DAudioTests&) = delete;
 		V3DAudioTests& operator=(V3DAudioTests&&) = delete;
 
-		static void RunAllTests();
+		static void RunAllUnitTests();
+		static void RegisterIntegrationTests();
+		static void RegisterTimingTests();
 	};
 }

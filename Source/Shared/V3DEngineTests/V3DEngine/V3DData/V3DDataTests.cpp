@@ -9,8 +9,18 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 namespace V3D::V3DEngineTests::V3DEngine::V3DData
 {	
-	void V3DDataTests::RunAllTests()
+	void V3DDataTests::RunAllUnitTests()
 	{
-		V3DAppDataSecurityTests::RunAllTests();
+		V3DAppDataSecurityTests::RunAllUnitTests();
+	}
+
+	void V3DDataTests::RegisterIntegrationTests()
+	{
+		V3DAppDataSecurityTests::RegisterIntegrationTests();
+	}
+
+	void V3DDataTests::RegisterTimingTests()
+	{
+		V3DAppDataSecurityTests::RegisterTimingTests();
 	}
 }
