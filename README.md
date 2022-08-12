@@ -21,8 +21,8 @@ low level C++ API for creating complete 3D applications such as vehicle games.
 
 Depencies
 ---------
-- <a href="https://github.com/nlohmann/json" target="_blank">JSON for modern C++</a> config & communication
-- <a href="https://github.com/kazuho/picohash" target="_blank">picohash</a> header-file-only implementation of MD5, SHA1, SHA224, SHA256, HMAC
-- <a href="https://github.com/sqlite/sqlite" target="_blank">SQLite</a> embedded database support for gameserver
-- <a href="https://github.com/jarikomppa/soloud" target="_blank">SoLoud</a> easy to use, free, portable c/c++ audio engine for games
-- <a href="https://github.com/eranpeer/FakeIt" target="_blank">Fakeit (cancelled)</a> simple mocking framework for C++
+- [JSON for modern C++](https://github.com/nlohmann/json) config & communication
+- [picohash](https://github.com/kazuho/picohash) header-file-only implementation of MD5, SHA1, SHA224, SHA256, HMAC
+- [SQLite](https://github.com/sqlite/sqlite) embedded database support for gameserver
+- [SoLoud](https://github.com/jarikomppa/soloud) easy to use, free, portable c/c++ audio engine for games
+- [Fakeit (cancelled)](https://github.com/eranpeer/FakeIt) simple mocking framework for C++
