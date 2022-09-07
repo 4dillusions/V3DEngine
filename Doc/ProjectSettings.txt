@@ -20,9 +20,10 @@ V3DEngineTests (Shared Items)
 ++++++++++++++++++++++++++++++++++++++
 Windows (Windows desktop x64) projects
 ++++++++++++++++++++++++++++++++++++++
-ThirdParty\SoLoud (Static Library)					references: ThirdParty\SoLoud (shared)
+ThirdParty\SoLoud (Static Library .lib)				references: ThirdParty\SoLoud (shared)
 V3DEngine (Dynamic-Link Library with exports .dll)	references: V3DEngine (shared), ThirdParty\SoLoud
 V3DEngineTests (Console App .exe)					references: V3DEngineTests (shared), V3DEngine
+V3DEditor (Qt Widgets Application .exe)				references: V3DEngine (shared), ThirdParty\SoLoud
 
 Settings
 --------

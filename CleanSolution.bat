@@ -37,6 +37,9 @@ del /s /q Solution\WindowsAndroid\Windows\V3DEngine\x64\Release\*
 del /s /q Solution\WindowsAndroid\Windows\V3DEngineTests\x64\Debug\*
 del /s /q Solution\WindowsAndroid\Windows\V3DEngineTests\x64\Release\*
 
+del /s /q Solution\WindowsAndroid\Windows\V3DEditor\x64\Debug\*
+del /s /q Solution\WindowsAndroid\Windows\V3DEditor\x64\Release\*
+
 rem clean all Android VS compiled files
 del /s /q Solution\WindowsAndroid\Android\Bin\*
 

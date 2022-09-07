@@ -52,3 +52,5 @@ x64/
 *.pdf
 *.odg
 *.dia*
+*.7z
+*.vsix
