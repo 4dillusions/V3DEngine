@@ -109,7 +109,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DEdMainView.cpp" />
-    <QtRcc Include="V3DEdMainView.qrc" />
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\Main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -123,6 +122,9 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="V3DEditor.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DEdMainView.qrc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

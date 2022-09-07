@@ -22,11 +22,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <QtRcc Include="V3DEdMainView.qrc">
-      <Filter>Resource Files</Filter>
-    </QtRcc>
-  </ItemGroup>
-  <ItemGroup>
     <QtMoc Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DEdMainView.h">
       <Filter>Source\V3DEdView</Filter>
     </QtMoc>
@@ -45,5 +40,10 @@
     <Image Include="V3DEditor.ico">
       <Filter>Resource Files</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DEdMainView.qrc">
+      <Filter>Source\V3DEdView</Filter>
+    </QtRcc>
   </ItemGroup>
 </Project>
