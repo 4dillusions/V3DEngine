@@ -12,6 +12,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #include <thread>
 
+using namespace V3D::V3DEditor::V3DEdView;
 using namespace std;
 using namespace std::chrono_literals;
 

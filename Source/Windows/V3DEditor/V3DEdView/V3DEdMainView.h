@@ -6,17 +6,23 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #pragma once
 
-#include <QtWidgets/QMainWindow>
 #include "ui_V3DEdMainView.h"
+#include <QtWidgets/QMainWindow>
 
-class V3DEdMainView : public QMainWindow
+namespace V3D::V3DEditor::V3DEdView
 {
-    Q_OBJECT
+    class V3DEdMainView final : public QMainWindow
+    {
+        Q_OBJECT
 
-public:
-    V3DEdMainView(QWidget *parent = nullptr);
-    ~V3DEdMainView();
+        Ui::V3DEdMainViewClass ui;
 
-private:
-    Ui::V3DEdMainViewClass ui;
-};
+    public:
+        explicit V3DEdMainView(QWidget* parent = nullptr);
+        V3DEdMainView(const V3DEdMainView&) = delete;
+        V3DEdMainView(V3DEdMainView&&) = delete;
+        ~V3DEdMainView() override = default;
+        V3DEdMainView& operator=(const V3DEdMainView&) = delete;
+        V3DEdMainView& operator=(V3DEdMainView&&) = delete;
+    };
+}
