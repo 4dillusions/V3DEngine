@@ -6,7 +6,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #pragma once
 
-namespace V3D::V3DEngineTests::V3DEngine
+namespace V3D::V3DEngineTests
 {
 	enum class V3DTestType : unsigned;
 

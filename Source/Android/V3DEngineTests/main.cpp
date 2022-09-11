@@ -24,7 +24,7 @@ static int32_t engine_handle_input(struct android_app* app, AInputEvent* event)
 		if (AKeyEvent_getAction(event) == AKEY_EVENT_ACTION_UP)
 			if (AKeyEvent_getKeyCode(event) == AKEYCODE_BACK)
 			{
-				V3D::V3DEngineTests::V3DEngine::V3DTestRunner::RunAllTests();
+				V3D::V3DEngineTests::V3DTestRunner::RunAllTests();
 
 				return 1;
 			}

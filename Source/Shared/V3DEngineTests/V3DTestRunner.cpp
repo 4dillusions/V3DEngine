@@ -25,16 +25,18 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngine/V3DIO/V3DLogger.h"
 #include "V3DEngine/V3DIO/V3DLogOutputType.h"
 
+using namespace V3D::V3DEngineTests::V3DEngine;
 using namespace V3D::V3DEngine::V3DCore;
+using namespace V3D::V3DEngine::V3DIO;
 
-namespace V3D::V3DEngineTests::V3DEngine
+namespace V3D::V3DEngineTests
 {
 	V3DTestType V3DTestRunner::testType = V3DTestType::UnitTests;
 
 	void V3DTestRunner::Init()
 	{
 		if (testType == V3DTestType::IntegrationTests)
-			V3D::V3DEngine::V3DIO::V3DLogger::Get().SetOutputTypeFlag(V3D::V3DEngine::V3DIO::V3DLogOutputType::ToOutput, true);
+			V3DLogger::Get().SetOutputTypeFlag(V3DLogOutputType::ToOutput, true);
 
 		V3DIocManager::Init();
 		V3DEnvironment::SetUnitTestMode();
@@ -43,7 +45,7 @@ namespace V3D::V3DEngineTests::V3DEngine
 	void V3DTestRunner::CleanUp()
 	{
 		if (testType == V3DTestType::IntegrationTests)
-			V3D::V3DEngine::V3DIO::V3DLogger::Get().SetOutputTypeFlag(V3D::V3DEngine::V3DIO::V3DLogOutputType::ToOutput, true);
+			V3DLogger::Get().SetOutputTypeFlag(V3DLogOutputType::ToOutput, true);
 
 		V3DIocManager::Clean();
 

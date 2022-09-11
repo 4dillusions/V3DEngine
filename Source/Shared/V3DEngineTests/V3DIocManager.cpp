@@ -20,7 +20,7 @@ namespace V3D::V3DEngine::V3DCore
 {
 	void V3DIocManager::Init()
 	{
-		V3DLogger::Get().WriteOutput(V3DLogMessageType::Info, "Init IocManager");
+		V3DLogger::Get().WriteOutput(V3DLogMessageType::Info, "Init IocManager: V3DEngineTests");
 
 		V3DIocContainer::Init(10);
 
@@ -32,7 +32,7 @@ namespace V3D::V3DEngine::V3DCore
 
 	void V3DIocManager::Clean()
 	{
-		V3DLogger::Get().WriteOutput(V3DLogMessageType::Info, "Clean IocManager");
+		V3DLogger::Get().WriteOutput(V3DLogMessageType::Info, "Clean IocManager: V3DEngineTests");
 		V3DIocContainer::Clean();
 	}
 }
