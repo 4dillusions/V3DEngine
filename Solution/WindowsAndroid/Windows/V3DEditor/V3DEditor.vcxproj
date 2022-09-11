@@ -108,8 +108,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdApp.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdClient.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdCore\V3DEdEnvironment.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdCore\V3DEdWindowManager.cpp" />
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DEdMainView.cpp" />
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\Main.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DIocManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DEdMainView.h" />
@@ -118,13 +123,34 @@
     <QtUic Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DEdMainView.ui" />
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="V3DEditor.rc" />
+    <Image Include="Resources\command.png" />
+    <Image Include="Resources\editor.png" />
+    <Image Include="Resources\new.png" />
+    <Image Include="Resources\open.png" />
+    <Image Include="Resources\play.png" />
+    <Image Include="Resources\qt.png" />
+    <Image Include="Resources\redo.png" />
+    <Image Include="Resources\refresh.png" />
+    <Image Include="Resources\save.png" />
+    <Image Include="Resources\saveAll.png" />
+    <Image Include="Resources\search.png" />
+    <Image Include="Resources\settings.png" />
+    <Image Include="Resources\stop.png" />
+    <Image Include="Resources\undo.png" />
+    <Image Include="Resources\V3DEditor.ico" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="V3DEditor.ico" />
+    <ResourceCompile Include="Resources\V3DEditor.rc" />
   </ItemGroup>
   <ItemGroup>
-    <QtRcc Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DEdMainView.qrc" />
+    <QtRcc Include="Resources\V3DEdMainView.qrc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdClient.h" />
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdCore\V3DEdAssetPathType.h" />
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdCore\V3DEdEnvironment.h" />
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdCore\V3DEdIWindowManager.h" />
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdCore\V3DEdWindowManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

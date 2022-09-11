@@ -1,16 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>qrc;rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="Source">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>qml;cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
     <Filter Include="Source\V3DEdView">
       <UniqueIdentifier>{0130d970-aaf4-4406-a4a9-9127fb8d8aa8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>qrc;rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source\V3DEdCore">
+      <UniqueIdentifier>{53f24ddd-aec2-4133-a5d9-915ea22c67f2}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -19,6 +22,21 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DEdMainView.cpp">
       <Filter>Source\V3DEdView</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdClient.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdCore\V3DEdEnvironment.cpp">
+      <Filter>Source\V3DEdCore</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdApp.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DIocManager.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdCore\V3DEdWindowManager.cpp">
+      <Filter>Source\V3DEdCore</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -32,18 +50,77 @@
     </QtUic>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="V3DEditor.rc">
-      <Filter>Resource Files</Filter>
-    </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="V3DEditor.ico">
-      <Filter>Resource Files</Filter>
+    <Image Include="Resources\V3DEditor.ico">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Resources\command.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Resources\editor.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Resources\new.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Resources\open.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Resources\play.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Resources\qt.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Resources\redo.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Resources\refresh.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Resources\save.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Resources\saveAll.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Resources\search.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Resources\settings.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Resources\stop.png">
+      <Filter>Resources</Filter>
+    </Image>
+    <Image Include="Resources\undo.png">
+      <Filter>Resources</Filter>
     </Image>
   </ItemGroup>
   <ItemGroup>
-    <QtRcc Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DEdMainView.qrc">
-      <Filter>Source\V3DEdView</Filter>
+    <ResourceCompile Include="Resources\V3DEditor.rc">
+      <Filter>Resources</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <QtRcc Include="Resources\V3DEdMainView.qrc">
+      <Filter>Resources</Filter>
     </QtRcc>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdClient.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdCore\V3DEdAssetPathType.h">
+      <Filter>Source\V3DEdCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdCore\V3DEdEnvironment.h">
+      <Filter>Source\V3DEdCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdCore\V3DEdIWindowManager.h">
+      <Filter>Source\V3DEdCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdCore\V3DEdWindowManager.h">
+      <Filter>Source\V3DEdCore</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

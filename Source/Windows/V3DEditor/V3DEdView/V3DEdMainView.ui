@@ -6,37 +6,380 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>600</width>
-    <height>400</height>
+    <width>1024</width>
+    <height>768</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1024</width>
+    <height>768</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>V3DEditor</string>
   </property>
-  <widget class="QWidget" name="centralWidget"/>
-  <widget class="QMenuBar" name="menuBar">
-   <property name="geometry">
-    <rect>
-     <x>0</x>
-     <y>0</y>
-     <width>600</width>
-     <height>22</height>
-    </rect>
-   </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QHBoxLayout" name="horizontalLayout">
+    <item>
+     <widget class="QSplitter" name="splitter">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+      <property name="childrenCollapsible">
+       <bool>false</bool>
+      </property>
+      <widget class="QTabWidget" name="tabLevelView">
+       <property name="minimumSize">
+        <size>
+         <width>296</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <widget class="QWidget" name="tabPageLevelView">
+        <attribute name="title">
+         <string>Level view</string>
+        </attribute>
+       </widget>
+      </widget>
+      <widget class="QTabWidget" name="tabCode">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>296</width>
+         <height>0</height>
+        </size>
+       </property>
+      </widget>
+     </widget>
+    </item>
+   </layout>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>34</height>
+    </size>
+   </property>
+   <property name="movable">
+    <bool>false</bool>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::TopToolBarArea</set>
+   </property>
+   <property name="floatable">
+    <bool>false</bool>
+   </property>
    <attribute name="toolBarArea">
     <enum>TopToolBarArea</enum>
    </attribute>
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
+   <addaction name="actionNewLevel"/>
+   <addaction name="actionOpenLevel"/>
+   <addaction name="actionPlayLevel"/>
+   <addaction name="actionStopLevel"/>
+   <addaction name="actionReloadLevel"/>
+   <addaction name="actionExecuteCommand"/>
+   <addaction name="actionUndo"/>
+   <addaction name="actionRedo"/>
+   <addaction name="actionSaveCurrent"/>
+   <addaction name="actionSaveAll"/>
+   <addaction name="actionSearch"/>
+   <addaction name="actionEditorSettings"/>
+   <addaction name="actionAboutEditor"/>
+   <addaction name="actionAboutQt"/>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QDockWidget" name="dockLevelGraph">
+   <property name="minimumSize">
+    <size>
+     <width>200</width>
+     <height>200</height>
+    </size>
+   </property>
+   <property name="features">
+    <set>QDockWidget::DockWidgetFloatable|QDockWidget::DockWidgetMovable</set>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
+   </property>
+   <property name="windowTitle">
+    <string>Level graph</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents"/>
+  </widget>
+  <widget class="QDockWidget" name="dockProperties">
+   <property name="minimumSize">
+    <size>
+     <width>200</width>
+     <height>200</height>
+    </size>
+   </property>
+   <property name="features">
+    <set>QDockWidget::DockWidgetFloatable|QDockWidget::DockWidgetMovable</set>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
+   </property>
+   <property name="windowTitle">
+    <string>Properties</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>2</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_2"/>
+  </widget>
+  <widget class="QDockWidget" name="dockAssetBrowser">
+   <property name="minimumSize">
+    <size>
+     <width>200</width>
+     <height>200</height>
+    </size>
+   </property>
+   <property name="features">
+    <set>QDockWidget::DockWidgetFloatable|QDockWidget::DockWidgetMovable</set>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::LeftDockWidgetArea|Qt::RightDockWidgetArea</set>
+   </property>
+   <property name="windowTitle">
+    <string>Asset browser</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_11"/>
+  </widget>
+  <widget class="QDockWidget" name="dockEngineLog">
+   <property name="minimumSize">
+    <size>
+     <width>200</width>
+     <height>200</height>
+    </size>
+   </property>
+   <property name="features">
+    <set>QDockWidget::DockWidgetFloatable|QDockWidget::DockWidgetMovable</set>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::BottomDockWidgetArea</set>
+   </property>
+   <property name="windowTitle">
+    <string>Engine log</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>8</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_3"/>
+  </widget>
+  <widget class="QDockWidget" name="dockOutput">
+   <property name="minimumSize">
+    <size>
+     <width>200</width>
+     <height>200</height>
+    </size>
+   </property>
+   <property name="features">
+    <set>QDockWidget::DockWidgetFloatable|QDockWidget::DockWidgetMovable</set>
+   </property>
+   <property name="allowedAreas">
+    <set>Qt::BottomDockWidgetArea</set>
+   </property>
+   <property name="windowTitle">
+    <string>Output</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>8</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_14"/>
+  </widget>
+  <action name="actionNewLevel">
+   <property name="icon">
+    <iconset resource="../../../../Solution/WindowsAndroid/Windows/V3DEditor/Resources/V3DEdMainView.qrc">
+     <normaloff>:/V3DEdMainView/new.png</normaloff>:/V3DEdMainView/new.png</iconset>
+   </property>
+   <property name="text">
+    <string>NewLevel</string>
+   </property>
+   <property name="toolTip">
+    <string>New level</string>
+   </property>
+  </action>
+  <action name="actionOpenLevel">
+   <property name="icon">
+    <iconset resource="../../../../Solution/WindowsAndroid/Windows/V3DEditor/Resources/V3DEdMainView.qrc">
+     <normaloff>:/V3DEdMainView/open.png</normaloff>:/V3DEdMainView/open.png</iconset>
+   </property>
+   <property name="text">
+    <string>OpenLevel</string>
+   </property>
+   <property name="toolTip">
+    <string>Open level</string>
+   </property>
+  </action>
+  <action name="actionPlayLevel">
+   <property name="icon">
+    <iconset resource="../../../../Solution/WindowsAndroid/Windows/V3DEditor/Resources/V3DEdMainView.qrc">
+     <normaloff>:/V3DEdMainView/play.png</normaloff>:/V3DEdMainView/play.png</iconset>
+   </property>
+   <property name="text">
+    <string>PlayLevel</string>
+   </property>
+   <property name="toolTip">
+    <string>Play level</string>
+   </property>
+  </action>
+  <action name="actionStopLevel">
+   <property name="icon">
+    <iconset resource="../../../../Solution/WindowsAndroid/Windows/V3DEditor/Resources/V3DEdMainView.qrc">
+     <normaloff>:/V3DEdMainView/stop.png</normaloff>:/V3DEdMainView/stop.png</iconset>
+   </property>
+   <property name="text">
+    <string>StopLevel</string>
+   </property>
+   <property name="toolTip">
+    <string>Stop level</string>
+   </property>
+  </action>
+  <action name="actionExecuteCommand">
+   <property name="icon">
+    <iconset resource="../../../../Solution/WindowsAndroid/Windows/V3DEditor/Resources/V3DEdMainView.qrc">
+     <normaloff>:/V3DEdMainView/command.png</normaloff>:/V3DEdMainView/command.png</iconset>
+   </property>
+   <property name="text">
+    <string>ExecuteCommand</string>
+   </property>
+   <property name="toolTip">
+    <string>Execute command</string>
+   </property>
+  </action>
+  <action name="actionUndo">
+   <property name="icon">
+    <iconset resource="../../../../Solution/WindowsAndroid/Windows/V3DEditor/Resources/V3DEdMainView.qrc">
+     <normaloff>:/V3DEdMainView/undo.png</normaloff>:/V3DEdMainView/undo.png</iconset>
+   </property>
+   <property name="text">
+    <string>Undo</string>
+   </property>
+   <property name="toolTip">
+    <string>Undo</string>
+   </property>
+  </action>
+  <action name="actionRedo">
+   <property name="icon">
+    <iconset resource="../../../../Solution/WindowsAndroid/Windows/V3DEditor/Resources/V3DEdMainView.qrc">
+     <normaloff>:/V3DEdMainView/redo.png</normaloff>:/V3DEdMainView/redo.png</iconset>
+   </property>
+   <property name="text">
+    <string>Redo</string>
+   </property>
+   <property name="toolTip">
+    <string>Redo</string>
+   </property>
+  </action>
+  <action name="actionSaveCurrent">
+   <property name="icon">
+    <iconset resource="../../../../Solution/WindowsAndroid/Windows/V3DEditor/Resources/V3DEdMainView.qrc">
+     <normaloff>:/V3DEdMainView/save.png</normaloff>:/V3DEdMainView/save.png</iconset>
+   </property>
+   <property name="text">
+    <string>SaveCurrent</string>
+   </property>
+   <property name="toolTip">
+    <string>Save current</string>
+   </property>
+  </action>
+  <action name="actionSaveAll">
+   <property name="icon">
+    <iconset resource="../../../../Solution/WindowsAndroid/Windows/V3DEditor/Resources/V3DEdMainView.qrc">
+     <normaloff>:/V3DEdMainView/saveAll.png</normaloff>:/V3DEdMainView/saveAll.png</iconset>
+   </property>
+   <property name="text">
+    <string>SaveAll</string>
+   </property>
+   <property name="toolTip">
+    <string>Save all</string>
+   </property>
+  </action>
+  <action name="actionSearch">
+   <property name="icon">
+    <iconset resource="../../../../Solution/WindowsAndroid/Windows/V3DEditor/Resources/V3DEdMainView.qrc">
+     <normaloff>:/V3DEdMainView/search.png</normaloff>:/V3DEdMainView/search.png</iconset>
+   </property>
+   <property name="text">
+    <string>Search</string>
+   </property>
+   <property name="toolTip">
+    <string>Search</string>
+   </property>
+  </action>
+  <action name="actionEditorSettings">
+   <property name="icon">
+    <iconset resource="../../../../Solution/WindowsAndroid/Windows/V3DEditor/Resources/V3DEdMainView.qrc">
+     <normaloff>:/V3DEdMainView/settings.png</normaloff>:/V3DEdMainView/settings.png</iconset>
+   </property>
+   <property name="text">
+    <string>EditorSettings</string>
+   </property>
+   <property name="toolTip">
+    <string>Editor settings</string>
+   </property>
+  </action>
+  <action name="actionAboutEditor">
+   <property name="icon">
+    <iconset resource="../../../../Solution/WindowsAndroid/Windows/V3DEditor/Resources/V3DEdMainView.qrc">
+     <normaloff>:/V3DEdMainView/editor.png</normaloff>:/V3DEdMainView/editor.png</iconset>
+   </property>
+   <property name="text">
+    <string>AboutEditor</string>
+   </property>
+   <property name="toolTip">
+    <string>About editor</string>
+   </property>
+  </action>
+  <action name="actionAboutQt">
+   <property name="icon">
+    <iconset resource="../../../../Solution/WindowsAndroid/Windows/V3DEditor/Resources/V3DEdMainView.qrc">
+     <normaloff>:/V3DEdMainView/qt.png</normaloff>:/V3DEdMainView/qt.png</iconset>
+   </property>
+   <property name="text">
+    <string>AboutQt</string>
+   </property>
+   <property name="toolTip">
+    <string>About Qt</string>
+   </property>
+  </action>
+  <action name="actionReloadLevel">
+   <property name="icon">
+    <iconset resource="../../../../Solution/WindowsAndroid/Windows/V3DEditor/Resources/V3DEdMainView.qrc">
+     <normaloff>:/V3DEdMainView/refresh.png</normaloff>:/V3DEdMainView/refresh.png</iconset>
+   </property>
+   <property name="text">
+    <string>ReloadLevel</string>
+   </property>
+   <property name="toolTip">
+    <string>Reload level</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
-  <include location="V3DEdMainView.qrc"/>
+  <include location="../../../../Solution/WindowsAndroid/Windows/V3DEditor/Resources/V3DEdMainView.qrc"/>
  </resources>
  <connections/>
 </ui>
