@@ -8,8 +8,14 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 namespace V3D::V3DEditor::V3DEdView
 {
-    V3DEdMainView::V3DEdMainView(QWidget* parent) : QMainWindow(parent), ui{}
+    V3DEdMainView::V3DEdMainView(QWidget* parent) : QMainWindow(parent)
     {
         ui.setupUi(this);
+
+        tabifyDockWidget(ui.dockLevelGraph, ui.dockAssetBrowser);
+        ui.dockLevelGraph->raise();
+
+        tabifyDockWidget(ui.dockEngineLog, ui.dockOutput);
+        ui.dockEngineLog->raise();
     }
 }

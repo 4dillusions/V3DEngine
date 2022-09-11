@@ -4,36 +4,26 @@ Copyright (c) 2020 by 4D Illusions. All rights reserved.
 Released under the terms of the GNU General Public License version 3 or later.
 */
 
-#include "V3DEdView/V3DEdMainView.h"
+#include "V3DEdClient.h"
+#include "V3DEngine/V3DCore/V3DIoc.h"
+#include "V3DEngine/V3DCore/V3DIocManager.h"
 
-#include <QtWidgets/QApplication>
-#include <qsplashscreen.h>
-#include <qfile.h>
+#include <QApplication>
 
-#include <thread>
-
-using namespace V3D::V3DEditor::V3DEdView;
-using namespace std;
-using namespace std::chrono_literals;
+using namespace V3D::V3DEngine::V3DCore;
+using namespace V3D::V3DEditor;
 
 int main(int argc, char *argv[])
 {
-    QApplication a(argc, argv);
+	QApplication app(argc, argv);
 
-    const QPixmap pixmap("Assets/EditorContent/V3DLogoLarge.png");
-	QSplashScreen splash(pixmap);
-	splash.show();
-	this_thread::sleep_for(1s);
-    splash.close();
-    QApplication::processEvents();
+	V3DIocManager::Init();
+	
+	auto client = V3DIoc<V3DEdClient>::CreateTransient();
+	const int Result = client->Execute();
+	V3DMemory::Delete(client);
+	
+	V3DIocManager::Clean();
 
-	QFile File("Assets/EditorContent/darkorange.qss");
-	File.open(QFile::ReadOnly);
-    const QString StyleSheet = QLatin1String(File.readAll());
-	qApp->setStyleSheet(StyleSheet);
-
-    V3DEdMainView w;
-    w.setWindowState(Qt::WindowFullScreen);
-    w.showMaximized();
-    return QApplication::exec();
+	return Result;
 }

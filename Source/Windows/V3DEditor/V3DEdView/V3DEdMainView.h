@@ -15,7 +15,7 @@ namespace V3D::V3DEditor::V3DEdView
     {
         Q_OBJECT
 
-        Ui::V3DEdMainViewClass ui;
+    	Ui::V3DEdMainViewClass ui{};
 
     public:
         explicit V3DEdMainView(QWidget* parent = nullptr);
