@@ -9,13 +9,17 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngine/V3DIO/V3DLogMessageType.h"
 #include "V3DEngine/V3DCore/V3DIoc.h"
 #include "V3DEdView/V3DEdMainView.h"
-#include "V3DEdCore/V3DEdWindowManager.h"
+#include "V3DEdCore/V3DEdViewManager.h"
+#include "V3DEdService/V3DEdMainService.h"
+#include "V3DEdController/V3DEdMainController.h"
 #include "V3DEdClient.h"
 
 using namespace V3D::V3DEngine::V3DIO;
 using namespace V3D::V3DEditor;
 using namespace V3DEdCore;
 using namespace V3DEdView;
+using namespace V3DEdService;
+using namespace V3DEdController;
 
 namespace V3D::V3DEngine::V3DCore
 {
@@ -27,9 +31,11 @@ namespace V3D::V3DEngine::V3DCore
 		V3DIocContainer::Init(10);
 
 		V3DIoc<V3DEdMainView>::RegisterAndCreateSingleton<V3DEdMainView>();
-		V3DIoc<V3DEdIWindowManager>::RegisterAndCreateSingleton<V3DEdWindowManager>(V3DFunc<V3DEdIWindowManager*>([&] { return V3DMemory::New<V3DEdWindowManager>(V3DFILE_INFO, V3DIoc<V3DEdMainView>::GetSingleton()); }));
-
-		V3DIoc<V3DEdClient>::RegisterTransient<V3DEdClient>(V3DFunc<V3DEdClient*>([&] { return V3DMemory::New<V3DEdClient>(V3DFILE_INFO, V3DIoc<V3DEdIWindowManager>::GetSingleton()); }));
+		V3DIoc<V3DEdIViewManager>::RegisterAndCreateSingleton<V3DEdViewManager>(V3DFunc<V3DEdIViewManager*>([&] { return V3DMemory::New<V3DEdViewManager>(V3DFILE_INFO, V3DIoc<V3DEdMainView>::GetSingleton()); }));
+		V3DIoc<V3DEdMainService>::RegisterAndCreateSingleton<V3DEdMainService>(V3DFunc<V3DEdMainService*>([&] { return V3DMemory::New<V3DEdMainService>(V3DFILE_INFO, V3DIoc<V3DEdIViewManager>::GetSingleton()); }));
+		V3DIoc<V3DEdMainController>::RegisterTransient<V3DEdMainController>(V3DFunc<V3DEdMainController*>([&] { return V3DMemory::New<V3DEdMainController>(V3DFILE_INFO, V3DIoc<V3DEdMainService>::GetSingleton()); }));
+		
+		V3DIoc<V3DEdClient>::RegisterTransient<V3DEdClient>(V3DFunc<V3DEdClient*>([&] { return V3DMemory::New<V3DEdClient>(V3DFILE_INFO, V3DIoc<V3DEdIViewManager>::GetSingleton()); }));
 	}
 
 	void V3DIocManager::Clean()

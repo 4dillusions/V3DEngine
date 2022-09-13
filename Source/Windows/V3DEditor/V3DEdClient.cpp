@@ -15,7 +15,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #include <thread>
 
-#include "V3DEdCore/V3DEdIWindowManager.h"
+#include "V3DEdCore/V3DEdIViewManager.h"
 
 using namespace V3D::V3DEditor::V3DEdCore;
 using namespace V3D::V3DEditor::V3DEdView;
@@ -24,19 +24,19 @@ using namespace std::chrono_literals;
 
 namespace V3D::V3DEditor
 {
-	V3DEdClient::V3DEdClient(V3DEdIWindowManager* windowManager) : windowManager{ windowManager }
+	V3DEdClient::V3DEdClient(V3DEdIViewManager* viewManager) : viewManager{ viewManager }
 	{ }
 
 	int V3DEdClient::Execute() const
 	{
-		windowManager->ShowSplashScreen();
+		viewManager->ShowSplashView();
 		
 		QFile file(V3DEdEnvironment::GetAssetPath(V3DEdAssetPathType::EditorSkinStyle));
 		file.open(QFile::ReadOnly);
 		const QString StyleSheet = QLatin1String(file.readAll());
 		qApp->setStyleSheet(StyleSheet);
 		
-		windowManager->ShowMainWindow();
+		viewManager->ShowMainView();
 
 		return QApplication::exec();
 	}

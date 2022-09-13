@@ -15,6 +15,12 @@
     <Filter Include="Source\V3DEdCore">
       <UniqueIdentifier>{53f24ddd-aec2-4133-a5d9-915ea22c67f2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\V3DEdController">
+      <UniqueIdentifier>{85f1b7dc-8092-4421-adec-f6e8165a0b10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\V3DEdService">
+      <UniqueIdentifier>{710c2060-fbf3-43cb-b21d-e809eb5c9830}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\Main.cpp">
@@ -35,8 +41,14 @@
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DIocManager.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdCore\V3DEdWindowManager.cpp">
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdCore\V3DEdViewManager.cpp">
       <Filter>Source\V3DEdCore</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdController\V3DEdMainController.cpp">
+      <Filter>Source\V3DEdController</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdService\V3DEdMainService.cpp">
+      <Filter>Source\V3DEdService</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -116,11 +128,17 @@
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdCore\V3DEdEnvironment.h">
       <Filter>Source\V3DEdCore</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdCore\V3DEdIWindowManager.h">
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdCore\V3DEdIViewManager.h">
       <Filter>Source\V3DEdCore</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdCore\V3DEdWindowManager.h">
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdCore\V3DEdViewManager.h">
       <Filter>Source\V3DEdCore</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdController\V3DEdMainController.h">
+      <Filter>Source\V3DEdController</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdService\V3DEdMainService.h">
+      <Filter>Source\V3DEdService</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -381,5 +381,25 @@
  <resources>
   <include location="../../../../Solution/WindowsAndroid/Windows/V3DEditor/Resources/V3DEdMainView.qrc"/>
  </resources>
- <connections/>
+ <connections>
+  <connection>
+   <sender>mainToolBar</sender>
+   <signal>actionTriggered(QAction*)</signal>
+   <receiver>V3DEdMainViewClass</receiver>
+   <slot>OnToolBarAction(QAction*)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>546</x>
+     <y>13</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>509</x>
+     <y>39</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>OnToolBarAction(QAction*)</slot>
+ </slots>
 </ui>

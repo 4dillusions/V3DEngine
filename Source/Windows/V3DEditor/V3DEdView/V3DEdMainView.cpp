@@ -18,4 +18,20 @@ namespace V3D::V3DEditor::V3DEdView
         tabifyDockWidget(ui.dockEngineLog, ui.dockOutput);
         ui.dockEngineLog->raise();
     }
+    
+    V3DEdMainView::~V3DEdMainView()
+    {
+        ViewActionRelease.Invoke();
+    }
+    
+    // ReSharper disable once CppParameterMayBeConstPtrOrRef
+    void V3DEdMainView::OnToolBarAction(QAction* action) const
+    {
+	    const auto ActionName = action->objectName();
+
+        if (ActionName == ui.actionAboutEditor->objectName())
+            ToolBarActionAboutEditor.Invoke();
+        else if (ActionName == ui.actionAboutQt->objectName())
+            ToolBarActionAboutQt.Invoke();
+    }
 }

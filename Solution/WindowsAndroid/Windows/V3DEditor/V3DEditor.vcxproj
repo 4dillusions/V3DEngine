@@ -110,8 +110,10 @@
   <ItemGroup>
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdApp.cpp" />
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdClient.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdController\V3DEdMainController.cpp" />
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdCore\V3DEdEnvironment.cpp" />
-    <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdCore\V3DEdWindowManager.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdCore\V3DEdViewManager.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdService\V3DEdMainService.cpp" />
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DEdMainView.cpp" />
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\Main.cpp" />
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DIocManager.cpp" />
@@ -147,10 +149,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdClient.h" />
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdController\V3DEdMainController.h" />
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdCore\V3DEdAssetPathType.h" />
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdCore\V3DEdEnvironment.h" />
-    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdCore\V3DEdIWindowManager.h" />
-    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdCore\V3DEdWindowManager.h" />
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdCore\V3DEdIViewManager.h" />
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdCore\V3DEdViewManager.h" />
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdService\V3DEdMainService.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

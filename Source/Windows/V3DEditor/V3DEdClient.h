@@ -10,21 +10,16 @@ namespace V3D::V3DEditor
 {
     namespace V3DEdCore
     {
-        class V3DEdIWindowManager;
+        class V3DEdIViewManager;
     }
 
     class V3DEdClient final
     {
-        V3DEdCore::V3DEdIWindowManager* windowManager;
+        V3DEdCore::V3DEdIViewManager* viewManager;
 
     public:
-        explicit V3DEdClient(V3DEdCore::V3DEdIWindowManager* windowManager);
-        V3DEdClient(const V3DEdClient&) = delete;
-        V3DEdClient(V3DEdClient&&) = delete;
-        ~V3DEdClient() = default;
-        V3DEdClient& operator=(const V3DEdClient&) = delete;
-        V3DEdClient& operator=(V3DEdClient&&) = delete;
-
+        explicit V3DEdClient(V3DEdCore::V3DEdIViewManager* viewManager);
+        
         int Execute() const;
     };
 }
