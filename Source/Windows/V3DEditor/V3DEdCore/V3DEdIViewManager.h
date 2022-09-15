@@ -23,5 +23,7 @@ namespace V3D::V3DEditor::V3DEdCore
 
 		virtual void ShowAboutEditorView() = 0;
 		virtual void ShowAboutQtView() = 0;
+
+		virtual void UpdateMainView() = 0;
     };
 }

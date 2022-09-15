@@ -112,10 +112,13 @@
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdClient.cpp" />
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdController\V3DEdMainController.cpp" />
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdCore\V3DEdEnvironment.cpp" />
-    <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdCore\V3DEdViewManager.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdLocator\V3DEdControllerLocator.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdLocator\V3DEdModelLocator.cpp" />
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdService\V3DEdMainService.cpp" />
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DEdMainView.cpp" />
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\Main.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DEdViewBindings.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DEdViewManager.cpp" />
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DIocManager.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -126,6 +129,7 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\command.png" />
+    <Image Include="Resources\deleteAll.png" />
     <Image Include="Resources\editor.png" />
     <Image Include="Resources\new.png" />
     <Image Include="Resources\open.png" />
@@ -153,8 +157,14 @@
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdCore\V3DEdAssetPathType.h" />
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdCore\V3DEdEnvironment.h" />
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdCore\V3DEdIViewManager.h" />
-    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdCore\V3DEdViewManager.h" />
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdLocator\V3DEdControllerLocator.h" />
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdLocator\V3DEdModelLocator.h" />
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdModel\V3DEdBindingModel.h" />
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdModel\V3DEdCommands.h" />
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdModel\V3DEdMainModel.h" />
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdService\V3DEdMainService.h" />
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DEdViewBindings.h" />
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DEdViewManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">

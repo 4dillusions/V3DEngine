@@ -42,7 +42,7 @@ namespace V3D::V3DEngine::V3DIO
 		logTrigger.Set(otherLogTrigger);
 	}
 
-	V3DString const* V3DLogger::GetBuffer() const
+	V3DString* V3DLogger::GetBuffer() const
 	{
 		return buffer;
 	}
@@ -72,7 +72,7 @@ namespace V3D::V3DEngine::V3DIO
 		WriteOutput(log.ToChar());
 	}
 
-	void V3DLogger::WriteOutput(V3DLogMessageType messageType, const V3DCore::V3DString& log)
+	void V3DLogger::WriteOutput(V3DLogMessageType messageType, const V3DString& log)
 	{
 		WriteOutput(messageType, log.ToChar());
 	}

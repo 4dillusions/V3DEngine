@@ -21,6 +21,12 @@
     <Filter Include="Source\V3DEdService">
       <UniqueIdentifier>{710c2060-fbf3-43cb-b21d-e809eb5c9830}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\V3DEdModel">
+      <UniqueIdentifier>{1a512cfa-b449-41b2-b08a-b25c093f98ad}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\V3DEdLocator">
+      <UniqueIdentifier>{e07cef0b-e19e-4c10-a31b-03ebf260915f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\Main.cpp">
@@ -41,14 +47,23 @@
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DIocManager.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdCore\V3DEdViewManager.cpp">
-      <Filter>Source\V3DEdCore</Filter>
-    </ClCompile>
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdController\V3DEdMainController.cpp">
       <Filter>Source\V3DEdController</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdService\V3DEdMainService.cpp">
       <Filter>Source\V3DEdService</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DEdViewManager.cpp">
+      <Filter>Source\V3DEdView</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdLocator\V3DEdControllerLocator.cpp">
+      <Filter>Source\V3DEdLocator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdLocator\V3DEdModelLocator.cpp">
+      <Filter>Source\V3DEdLocator</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DEdViewBindings.cpp">
+      <Filter>Source\V3DEdView</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -107,6 +122,9 @@
     <Image Include="Resources\undo.png">
       <Filter>Resources</Filter>
     </Image>
+    <Image Include="Resources\deleteAll.png">
+      <Filter>Resources</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resources\V3DEditor.rc">
@@ -131,14 +149,32 @@
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdCore\V3DEdIViewManager.h">
       <Filter>Source\V3DEdCore</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdCore\V3DEdViewManager.h">
-      <Filter>Source\V3DEdCore</Filter>
-    </ClInclude>
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdController\V3DEdMainController.h">
       <Filter>Source\V3DEdController</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdService\V3DEdMainService.h">
       <Filter>Source\V3DEdService</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdModel\V3DEdMainModel.h">
+      <Filter>Source\V3DEdModel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DEdViewManager.h">
+      <Filter>Source\V3DEdView</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdLocator\V3DEdControllerLocator.h">
+      <Filter>Source\V3DEdLocator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdLocator\V3DEdModelLocator.h">
+      <Filter>Source\V3DEdLocator</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DEdViewBindings.h">
+      <Filter>Source\V3DEdView</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdModel\V3DEdCommands.h">
+      <Filter>Source\V3DEdModel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdModel\V3DEdBindingModel.h">
+      <Filter>Source\V3DEdModel</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

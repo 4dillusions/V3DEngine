@@ -13,7 +13,9 @@ namespace V3D::V3DEngine::V3DCore
 	public:
 		T1 item1;
 
-		V3DTuple1(T1 item1) : item1{ item1 }
+		V3DTuple1() = default;
+
+		explicit V3DTuple1(T1 item1) : item1{ item1 }
 		{ }
 	};
 
@@ -22,6 +24,8 @@ namespace V3D::V3DEngine::V3DCore
 	public:
 		T1 item1;
 		T2 item2;
+
+		V3DTuple2() = default;
 
 		V3DTuple2(T1 item1, T2 item2) : item1{ item1 }, item2{ item2 }
 		{ }
@@ -33,6 +37,8 @@ namespace V3D::V3DEngine::V3DCore
 		T1 item1;
 		T2 item2;
 		T3 item3;
+
+		V3DTuple3() = default;
 
 		V3DTuple3(T1 item1, T2 item2, T3 item3) : item1{ item1 }, item2{ item2 }, item3{ item3 }
 		{ }
@@ -46,6 +52,8 @@ namespace V3D::V3DEngine::V3DCore
 		T3 item3;
 		T4 item4;
 
+		V3DTuple4() = default;
+
 		V3DTuple4(T1 item1, T2 item2, T3 item3, T4 item4) : item1{ item1 }, item2{ item2 }, item3{ item3 }, item4{ item4 }
 		{ }
 	};
@@ -58,6 +66,8 @@ namespace V3D::V3DEngine::V3DCore
 		T3 item3;
 		T4 item4;
 		T5 item5;
+
+		V3DTuple5() = default;
 
 		V3DTuple5(T1 item1, T2 item2, T3 item3, T4 item4, T5 item5) : item1{ item1 }, item2{ item2 }, item3{ item3 }, item4{ item4 }, item5{ item5 }
 		{ }

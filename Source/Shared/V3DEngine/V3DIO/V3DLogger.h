@@ -26,13 +26,13 @@ namespace V3D::V3DEngine::V3DIO
         
         V3DCore::V3DString* buffer{};  // NOLINT(clang-diagnostic-padded)
         
-        V3DLogger();
-        ~V3DLogger();
-
         static void WriteLineToFile(const char* log);
         static void WriteLineToOutput(const char* log);
 
     public:
+        V3DLogger();
+        ~V3DLogger();
+
         const char* const LogFileName = "Log.txt";
 
         const char* const InfoTag = "[Info]";
@@ -51,7 +51,7 @@ namespace V3D::V3DEngine::V3DIO
         //Log trigger helps show logs another environment for example in editor
         void SetLogTrigger(const V3DCore::V3DAction1<const V3DCore::V3DString&>& otherLogTrigger);
 
-        V3DCore::V3DString const* GetBuffer() const;
+        V3DCore::V3DString* GetBuffer() const;
 
         V3DCore::V3DString GetWarnings() const;
         V3DCore::V3DString GetErrors() const;
