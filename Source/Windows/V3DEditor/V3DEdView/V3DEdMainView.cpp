@@ -39,6 +39,8 @@ namespace V3D::V3DEditor::V3DEdView
     
     void V3DEdMainView::InitBindings()
     {
+        viewBindings->AddBinding(V3DEdCommands::ShowSettingsView, { this, nullptr, &mainModel->isSettingsViewActive, ui.actionEditorSettings });
+
         viewBindings->AddBinding(V3DEdCommands::AddEngineLogItem, { this, ui.listEngineLog, &mainModel->engineLog, nullptr });
         viewBindings->AddBinding(V3DEdCommands::ClearEngineLogItem, { this, ui.listEngineLog, &mainModel->engineLog, ui.btnEngineLogDeleteAll });
 
@@ -58,7 +60,9 @@ namespace V3D::V3DEditor::V3DEdView
     {
 	    const auto ActionName = action->objectName();
 
-        if (ActionName == ui.actionAboutEditor->objectName())
+        if (ActionName == ui.actionEditorSettings->objectName())
+            ToolBarActionSettings.Invoke();
+        else if (ActionName == ui.actionAboutEditor->objectName())
             ToolBarActionAboutEditor.Invoke();
         else if (ActionName == ui.actionAboutQt->objectName())
             ToolBarActionAboutQt.Invoke();

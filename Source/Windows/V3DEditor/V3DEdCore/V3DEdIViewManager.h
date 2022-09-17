@@ -21,6 +21,7 @@ namespace V3D::V3DEditor::V3DEdCore
 		virtual void ShowSplashView() = 0;
 		virtual void ShowMainView() = 0;
 
+		virtual void ShowSettingsView() = 0;
 		virtual void ShowAboutEditorView() = 0;
 		virtual void ShowAboutQtView() = 0;
 

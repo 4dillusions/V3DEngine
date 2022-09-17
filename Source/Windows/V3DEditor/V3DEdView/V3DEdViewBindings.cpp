@@ -54,9 +54,15 @@ namespace V3D::V3DEditor::V3DEdView
 		
 		switch (command)
 		{
+			case V3DEdCommands::ShowSettingsView:
+				bindingAction.Set([this](void* widget, void* data) { });
+				canExecuteAction.Set([this](void* widget, void* data) { static_cast<QAction*>(widget)->setEnabled(!*static_cast<bool*>(data)); });
+				break;
+
 			case V3DEdCommands::AddEngineLogItem:
 			case V3DEdCommands::AddOutputLogItem:
 				bindingAction.Set([this](void* widget, void* data) { UpdateAddLogItem(widget, data); });
+				canExecuteAction.Set([this](void* widget, void* data) { });
 				break;
 
 			case V3DEdCommands::ClearEngineLogItem:

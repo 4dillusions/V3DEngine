@@ -8,14 +8,10 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 namespace V3D::V3DEditor::V3DEdModel
 {
-	enum class V3DEdCommands
+	enum class V3DEdCommands;
+
+	struct V3DEdSettingsModel final
 	{
-		ShowSettingsView,
-
-		AddEngineLogItem,
-		ClearEngineLogItem,
-
-		AddOutputLogItem,
-		ClearOutputLogItem,
+		V3DEdCommands command{};
 	};
 }

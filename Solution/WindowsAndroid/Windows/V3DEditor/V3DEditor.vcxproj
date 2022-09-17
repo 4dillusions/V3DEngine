@@ -117,6 +117,7 @@
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdService\V3DEdMainService.cpp" />
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DEdMainView.cpp" />
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\Main.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DEdSettingsView.cpp" />
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DEdViewBindings.cpp" />
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DEdViewManager.cpp" />
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DIocManager.cpp" />
@@ -126,6 +127,7 @@
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DEdMainView.ui" />
+    <QtUic Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DEdSettingsView.ui" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\command.png" />
@@ -162,7 +164,9 @@
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdModel\V3DEdBindingModel.h" />
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdModel\V3DEdCommands.h" />
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdModel\V3DEdMainModel.h" />
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdModel\V3DEdSettingsModel.h" />
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdService\V3DEdMainService.h" />
+    <QtMoc Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DEdSettingsView.h" />
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DEdViewBindings.h" />
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DEdViewManager.h" />
   </ItemGroup>

@@ -22,6 +22,11 @@ namespace V3D::V3DEditor::V3DEdController
 		engineLogger->SetLogTrigger(V3DAction1<const V3DString&>([this](const V3DString& log) { OnEngineLogTrigger(log); }));
 	}
 
+	void V3DEdMainController::OnToolBarSettings() const
+	{
+		mainService->Settings();
+	}
+
 	void V3DEdMainController::OnToolBarAboutEditor() const
 	{
 		mainService->AboutEditor();

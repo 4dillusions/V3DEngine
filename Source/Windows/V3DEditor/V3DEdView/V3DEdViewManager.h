@@ -35,6 +35,7 @@ namespace V3D::V3DEditor::V3DEdView
 		void ShowSplashView() override;
 		void ShowMainView() override;
 
+		void ShowSettingsView() override;
 		void ShowAboutEditorView() override;
 		void ShowAboutQtView() override;
 

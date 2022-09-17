@@ -44,7 +44,8 @@ namespace V3D::V3DEditor::V3DEdService
 
     public:
         V3DEdMainService(V3DEdCore::V3DEdIViewManager* viewManager, V3DEdModel::V3DEdMainModel* mainModel, V3DEngine::V3DIO::V3DLogger* outputLogger);
-        
+
+        void Settings() const;
         void AboutEditor() const;
         void AboutQt() const;
 

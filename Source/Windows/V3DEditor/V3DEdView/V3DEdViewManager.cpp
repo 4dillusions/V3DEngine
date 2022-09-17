@@ -6,6 +6,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #include "V3DEdViewManager.h"
 #include "V3DEdMainView.h"
+#include "V3DEdSettingsView.h"
 #include "V3DEditor/V3DEdCore/V3DEdEnvironment.h"
 #include "V3DEditor/V3DEdCore/V3DEdAssetPathType.h"
 #include "V3DEditor/V3DEdLocator/V3DEdModelLocator.h"
@@ -52,6 +53,7 @@ namespace V3D::V3DEditor::V3DEdView
 	{
 		const auto MainController = controllerLocator->CreateOrGetMainController();
 
+		mainView->ToolBarActionSettings.Set([=] { MainController->OnToolBarSettings(); });
 		mainView->ToolBarActionAboutEditor.Set([=] { MainController->OnToolBarAboutEditor(); });
 		mainView->ToolBarActionAboutQt.Set([=] { MainController->OnToolBarAboutQt(); });
 
@@ -66,6 +68,21 @@ namespace V3D::V3DEditor::V3DEdView
 
 		mainView->setWindowState(Qt::WindowFullScreen);
 		mainView->showMaximized();
+	}
+
+	void V3DEdViewManager::ShowSettingsView()
+	{
+		auto settingsView = V3DIoc<V3DEdSettingsView>::CreateTransient();
+
+		settingsView->ViewActionRelease.Set([=]
+		{
+			V3DIoc<V3DEdModelLocator>::GetSingleton()->ReleaseSettingsModel(); //created & injected for View and Service by IoCManager with locator
+			//V3DIoc<V3DEdControllerLocator>::GetSingleton()->ReleaseSettingsController();
+		});
+
+		settingsView->exec();
+
+		V3DMemory::Delete(settingsView);
 	}
 
 	void V3DEdViewManager::ShowAboutEditorView()

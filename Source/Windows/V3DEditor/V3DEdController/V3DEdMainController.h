@@ -33,6 +33,7 @@ namespace V3D::V3DEditor::V3DEdController
     public:
         V3DEdMainController(V3DEdService::V3DEdMainService* mainService, V3DEngine::V3DIO::V3DLogger* engineLogger);
 
+        void OnToolBarSettings() const;
         void OnToolBarAboutEditor() const;
         void OnToolBarAboutQt() const;
         

@@ -17,6 +17,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEdView/V3DEdViewManager.h"
 #include "V3DEdService/V3DEdMainService.h"
 #include "V3DEdController/V3DEdMainController.h"
+#include "V3DEdView/V3DEdSettingsView.h"
 #include "V3DEdClient.h"
 
 using namespace V3D::V3DEngine::V3DIO;
@@ -46,7 +47,10 @@ namespace V3D::V3DEngine::V3DCore
 		V3DIoc<V3DEdViewBindings>::RegisterAndCreateSingleton<V3DEdViewBindings>();
 
 		V3DIoc<V3DEdMainView>::RegisterAndCreateSingleton<V3DEdMainView>(V3DFunc<V3DEdMainView*>([] { return V3DMemory::New<V3DEdMainView>(V3DFILE_INFO, V3DIoc<V3DEdModelLocator>::GetSingleton()->CreateOrGetMainModel(), V3DIoc<V3DEdViewBindings>::GetSingleton()); }));
+		V3DIoc<V3DEdSettingsView>::RegisterTransient<V3DEdSettingsView>(V3DFunc<V3DEdSettingsView*>([] { return V3DMemory::New<V3DEdSettingsView>(V3DFILE_INFO, V3DIoc<V3DEdModelLocator>::GetSingleton()->CreateOrGetSettingsModel(), V3DIoc<V3DEdViewBindings>::GetSingleton()); }));
+
 		V3DIoc<V3DEdIViewManager>::RegisterAndCreateSingleton<V3DEdViewManager>(V3DFunc<V3DEdIViewManager*>([] { return V3DMemory::New<V3DEdViewManager>(V3DFILE_INFO, V3DIoc<V3DEdControllerLocator>::GetSingleton(), V3DIoc<V3DEdMainView>::GetSingleton()); }));
+
 		V3DIoc<V3DEdMainService>::RegisterAndCreateSingleton<V3DEdMainService>(V3DFunc<V3DEdMainService*>([] { return V3DMemory::New<V3DEdMainService>(V3DFILE_INFO, V3DIoc<V3DEdIViewManager>::GetSingleton(), V3DIoc<V3DEdModelLocator>::GetSingleton()->CreateOrGetMainModel(), V3DIoc<V3DLogger>::GetSingleton()); }));
 		V3DIoc<V3DEdMainController>::RegisterTransient<V3DEdMainController>(V3DFunc<V3DEdMainController*>([] { return V3DMemory::New<V3DEdMainController>(V3DFILE_INFO, V3DIoc<V3DEdMainService>::GetSingleton(), &V3DLogger::Get()); }));
 		

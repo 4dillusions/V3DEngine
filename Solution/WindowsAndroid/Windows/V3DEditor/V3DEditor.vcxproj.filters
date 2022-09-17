@@ -65,14 +65,23 @@
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DEdViewBindings.cpp">
       <Filter>Source\V3DEdView</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DEdSettingsView.cpp">
+      <Filter>Source\V3DEdView</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DEdMainView.h">
       <Filter>Source\V3DEdView</Filter>
     </QtMoc>
+    <QtMoc Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DEdSettingsView.h">
+      <Filter>Source\V3DEdView</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DEdMainView.ui">
+      <Filter>Source\V3DEdView</Filter>
+    </QtUic>
+    <QtUic Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DEdSettingsView.ui">
       <Filter>Source\V3DEdView</Filter>
     </QtUic>
   </ItemGroup>
@@ -174,6 +183,9 @@
       <Filter>Source\V3DEdModel</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdModel\V3DEdBindingModel.h">
+      <Filter>Source\V3DEdModel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdModel\V3DEdSettingsModel.h">
       <Filter>Source\V3DEdModel</Filter>
     </ClInclude>
   </ItemGroup>

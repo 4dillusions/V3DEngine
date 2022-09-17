@@ -22,6 +22,19 @@ namespace V3D::V3DEditor::V3DEdService
 		viewManager{ viewManager }, mainModel { mainModel }, outputLogger{ outputLogger }
 	{ }
 	
+	void V3DEdMainService::Settings() const
+	{
+		mainModel->command = V3DEdCommands::ShowSettingsView;
+
+		mainModel->isSettingsViewActive = true;
+		viewManager->UpdateMainView();
+
+		viewManager->ShowSettingsView();
+
+		mainModel->isSettingsViewActive = false;
+		viewManager->UpdateMainView();
+	}
+
 	void V3DEdMainService::AboutEditor() const
 	{
 		viewManager->ShowAboutEditorView();

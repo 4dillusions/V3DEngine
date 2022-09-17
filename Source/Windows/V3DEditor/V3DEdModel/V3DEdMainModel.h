@@ -17,6 +17,8 @@ namespace V3D::V3DEditor::V3DEdModel
 	{
 		V3DEdCommands command{};
 
+		bool isSettingsViewActive{ false };
+
 		V3DEngine::V3DCollections::V3DDynamicArray<V3DEngine::V3DCore::V3DString> engineLog;
 		V3DEngine::V3DCollections::V3DDynamicArray<V3DEngine::V3DCore::V3DString> outputLog;
 	};

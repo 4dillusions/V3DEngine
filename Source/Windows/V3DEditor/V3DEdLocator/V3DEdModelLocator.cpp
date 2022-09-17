@@ -6,6 +6,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #include "V3DEdModelLocator.h"
 #include "V3DEditor/V3DEdModel/V3DEdMainModel.h"
+#include "V3DEditor/V3DEdModel/V3DEdSettingsModel.h"
 #include "V3DEngine/V3DMacros.h"
 #include "V3DEngine/V3DCore/V3DMemory.h"
 
@@ -25,5 +26,18 @@ namespace V3D::V3DEditor::V3DEdLocator
 	void V3DEdModelLocator::ReleaseMainModel()
 	{
 		V3DMemory::Delete(mainModel);
+	}
+
+	V3DEdSettingsModel* V3DEdModelLocator::CreateOrGetSettingsModel()
+	{
+		if (settingsModel == nullptr)
+			settingsModel = V3DMemory::New<V3DEdSettingsModel>(V3DFILE_INFO);
+
+		return settingsModel;
+	}
+
+	void V3DEdModelLocator::ReleaseSettingsModel()
+	{
+		V3DMemory::Delete(settingsModel);
 	}
 }

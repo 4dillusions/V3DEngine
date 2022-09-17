@@ -29,13 +29,14 @@ namespace V3D::V3DEditor::V3DEdView
         V3DEdViewBindings* viewBindings;
         
     public:
-        explicit V3DEdMainView(V3DEdModel::V3DEdMainModel* mainModel, V3DEdViewBindings* viewBindings, QWidget* parent = nullptr);
+        V3DEdMainView(V3DEdModel::V3DEdMainModel* mainModel, V3DEdViewBindings* viewBindings, QWidget* parent = nullptr);
         V3DEdMainView(const V3DEdMainView&) = delete;
         V3DEdMainView(V3DEdMainView&&) = delete;
         ~V3DEdMainView() override;
         V3DEdMainView& operator=(const V3DEdMainView&) = delete;
         V3DEdMainView& operator=(V3DEdMainView&&) = delete;
 
+        V3DEngine::V3DCore::V3DAction ToolBarActionSettings;
 		V3DEngine::V3DCore::V3DAction ToolBarActionAboutEditor;
         V3DEngine::V3DCore::V3DAction ToolBarActionAboutQt;
 
