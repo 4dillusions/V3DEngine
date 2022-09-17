@@ -11,7 +11,8 @@ namespace V3D::V3DEditor::V3DEdModel
 	struct V3DEdBindingModel final
 	{
 		void* view;
-		void* widget;
+		void* dataWidget;
 		void* data;
+		void* executeWidget;
 	};
 }

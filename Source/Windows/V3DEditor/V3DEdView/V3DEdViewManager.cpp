@@ -13,6 +13,11 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEditor/V3DEdController/V3DEdMainController.h"
 #include "V3DEngine/V3DCore/V3DIoc.h"
 
+//log test
+//#include "V3DEngine/V3DCore/V3DString.h"
+//#include "V3DEngine/V3DIO/V3DLogger.h"
+//#include "V3DEditor/V3DEdService/V3DEdMainService.h"
+
 #include <qsplashscreen.h>
 #include <QMessageBox>
 #include <QAbstractButton>
@@ -74,11 +79,15 @@ namespace V3D::V3DEditor::V3DEdView
 		BtnDetails->click();
 
 		messageBox.exec();
+
+		//V3DEngine::V3DIO::V3DLogger::Get().WriteOutput(V3DEngine::V3DIO::V3DLogMessageType::Info, "void V3DEdViewManager::ShowAboutQtView()"); //log test
 	}
 
 	void V3DEdViewManager::ShowAboutQtView()
 	{
 		QApplication::aboutQt();
+
+		//V3DIoc<V3DEdService::V3DEdMainService>::GetSingleton()->OutputLogWrite(V3DEngine::V3DIO::V3DLogMessageType::Info, V3DString("void V3DEdViewManager::ShowAboutEditorView()")); //log test
 	}
 
 	void V3DEdViewManager::UpdateMainView()

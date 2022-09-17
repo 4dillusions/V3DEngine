@@ -47,7 +47,7 @@ namespace V3D::V3DEditor::V3DEdView
     private:
         void InitUI();
         void InitBindings();
-
+        
     public:
         void Update() const;
 

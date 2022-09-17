@@ -33,20 +33,21 @@ namespace V3D::V3DEditor::V3DEdView
 
         tabifyDockWidget(ui.dockLevelGraph, ui.dockAssetBrowser);
         ui.dockLevelGraph->raise();
-
         tabifyDockWidget(ui.dockEngineLog, ui.dockOutputLog);
         ui.dockEngineLog->raise();
     }
-
+    
     void V3DEdMainView::InitBindings()
     {
-        viewBindings->AddBinding(V3DEdCommands::AddEngineLogItem, { this, ui.listEngineLog, &mainModel->engineLog });
-        viewBindings->AddBinding(V3DEdCommands::ClearEngineLogItem, { this, ui.listEngineLog, &mainModel->engineLog });
+        viewBindings->AddBinding(V3DEdCommands::AddEngineLogItem, { this, ui.listEngineLog, &mainModel->engineLog, nullptr });
+        viewBindings->AddBinding(V3DEdCommands::ClearEngineLogItem, { this, ui.listEngineLog, &mainModel->engineLog, ui.btnEngineLogDeleteAll });
 
-        viewBindings->AddBinding(V3DEdCommands::AddOutputLogItem, { this, ui.listOutputLog, &mainModel->outputLog });
-        viewBindings->AddBinding(V3DEdCommands::ClearOutputLogItem, { this, ui.listOutputLog, &mainModel->outputLog });
+        viewBindings->AddBinding(V3DEdCommands::AddOutputLogItem, { this, ui.listOutputLog, &mainModel->outputLog, nullptr });
+        viewBindings->AddBinding(V3DEdCommands::ClearOutputLogItem, { this, ui.listOutputLog, &mainModel->outputLog, ui.btnOutputLogDeleteAll });
+
+        viewBindings->UpdateCanExecuteBindings(this);
     }
-
+    
     void V3DEdMainView::Update() const
     {
         viewBindings->Update(mainModel->command);

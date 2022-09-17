@@ -159,7 +159,7 @@ QComboBox::drop-down
 
 QComboBox::down-arrow
 {
-	 image: url(LF3EditorPocok/Content/Images/down_arrow.png);
+	 image: url(Assets/EditorContent/Images/down_arrow.png);
 }
 
 QGroupBox:focus
@@ -335,7 +335,7 @@ QMainWindow::separator:hover
 QToolBar::handle
 {
      spacing: 3px; /* spacing between items in the tool bar */
-	 image: url(LF3EditorPocok/Content/Images/handle.png);
+	 image: url(Assets/EditorContent/Images/handle.png);
 }
 
 QMenu::separator
@@ -455,7 +455,7 @@ QRadioButton::indicator:hover, QCheckBox::indicator:hover
 
 QCheckBox::indicator:checked
 {
-	image: url(LF3EditorPocok/Content/Images/checkbox.png);
+	image: url(Assets/EditorContent/Images/checkbox.png);
 }
 
 QCheckBox::indicator:disabled, QRadioButton::indicator:disabled

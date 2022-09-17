@@ -5,6 +5,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 */
 
 #pragma once
+#include "V3DEdMainView.h"
 
 namespace V3D::V3DEditor::V3DEdModel
 {
@@ -17,6 +18,7 @@ namespace V3D::V3DEditor::V3DEdView
 	class V3DEdViewBindings final
 	{
 		void* bindings;
+		void* canExecutes;
 
 	public:
 		V3DEdViewBindings();
@@ -27,11 +29,11 @@ namespace V3D::V3DEditor::V3DEdView
 		V3DEdViewBindings& operator=(V3DEdViewBindings&&) = delete;
 
 		void AddBinding(V3DEdModel::V3DEdCommands command, const V3DEdModel::V3DEdBindingModel& bindingModel) const;
+		void UpdateCanExecuteBindings(const void* view) const;
 		void Update(V3DEdModel::V3DEdCommands command) const;
 		void RemoveBindings(const void* view) const;
 
 	private:
 		void UpdateAddLogItem(void* widget, void* data) const;
-		void UpdateClearLogItem(void* widget, void* data) const;
 	};
 }
