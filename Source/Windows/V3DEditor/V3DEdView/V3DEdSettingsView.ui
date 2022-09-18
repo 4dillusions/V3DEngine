@@ -28,14 +28,17 @@
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <widget class="QTabWidget" name="tabSettings">
-     <widget class="QWidget" name="tab">
+     <property name="currentIndex">
+      <number>1</number>
+     </property>
+     <widget class="QWidget" name="tabPageEditorSettings">
       <attribute name="title">
-       <string>Tab 1</string>
+       <string>Editor settings</string>
       </attribute>
      </widget>
-     <widget class="QWidget" name="tab_2">
+     <widget class="QWidget" name="tabPageGameSettings">
       <attribute name="title">
-       <string>Tab 2</string>
+       <string>Game settings</string>
       </attribute>
      </widget>
     </widget>
@@ -63,6 +66,12 @@
      </item>
      <item>
       <widget class="QPushButton" name="btnOK">
+       <property name="minimumSize">
+        <size>
+         <width>75</width>
+         <height>24</height>
+        </size>
+       </property>
        <property name="text">
         <string>OK</string>
        </property>
@@ -70,6 +79,12 @@
      </item>
      <item>
       <widget class="QPushButton" name="btnCancel">
+       <property name="minimumSize">
+        <size>
+         <width>75</width>
+         <height>24</height>
+        </size>
+       </property>
        <property name="text">
         <string>Cancel</string>
        </property>

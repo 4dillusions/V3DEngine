@@ -77,7 +77,7 @@ namespace V3D::V3DEditor::V3DEdView
 		settingsView->ViewActionRelease.Set([=]
 		{
 			V3DIoc<V3DEdModelLocator>::GetSingleton()->ReleaseSettingsModel(); //created & injected for View and Service by IoCManager with locator
-			//V3DIoc<V3DEdControllerLocator>::GetSingleton()->ReleaseSettingsController();
+			//V3DIoc<V3DEdControllerLocator>::GetSingleton()->ReleaseSettingsController(); //TODO
 		});
 
 		settingsView->exec();
