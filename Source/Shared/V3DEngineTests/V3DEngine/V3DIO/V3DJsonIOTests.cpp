@@ -13,6 +13,10 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngineTests/V3DTestObject/V3DTestConfigJsonRepository.h"
 
 #include "ThirdParty/Json/json.hpp"
+#include "V3DEngine/V3DIO/V3DJsonVariantTypes.h"
+#include "V3DEngine/V3DIO/V3DJsonVariant.h"
+#include "V3DEngine/V3DIO/V3DLogger.h"
+#include "V3DEngineTests/V3DTestObject/V3DJsonVariantHelper.h"
 #include "V3DEngineTests/V3DTestObject/V3DTestUIControl.h"
 #include "V3DEngineTests/V3DTestObject/V3DTestUIControlJsonRepository.h"
 
@@ -57,13 +61,13 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 	void V3DJsonIOTests::ConfigLoadSaveTest()
 	{
 		const auto jsonText =
-			R"(
-				{
-					"name": "Test 123",
-					"width": 35,
-					"testNumber" : 3.14
-				}
-			)";
+		R"(
+			{
+				"name": "Test 123",
+				"width": 35,
+				"testNumber" : 3.14
+			}
+		)";
 
 		V3DITextRepository<V3DTestConfigData>* configJsonRepository = V3DMemory::New<V3DTestConfigJsonRepository>(V3DFILE_INFO);
 
@@ -80,47 +84,47 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 	void V3DJsonIOTests::UIBuildTest()
 	{
 		const auto jsonText =
-			R"(
-				{
-					"type": "window",
-					"name": "Main window",
-					"x" : 0,
-					"y" : 0,
-					"controls" :
+		R"(
+			{
+				"type": "window",
+				"name": "Main window",
+				"x" : 0,
+				"y" : 0,
+				"controls" :
+				[
+					{
+						"type": "window",
+						"name": "Settings window",
+						"x" : 100,
+						"y" : 100,
+						"controls" :
 						[
 							{
-								"type": "window",
-								"name": "Settings window",
-								"x" : 100,
-								"y" : 100,
-								"controls" :
-									[
-										{
-											"type": "button",
-											"name": "Start",
-											"x" : 10,
-											"y" : 0,
-											"controls" : null
-										},
-										{
-											"type": "button",
-											"name": "Exit",
-											"x" : 10,
-											"y" : 50,
-											"controls" : null
-										}
-									]
+								"type": "button",
+								"name": "Start",
+								"x" : 10,
+								"y" : 0,
+								"controls" : null
 							},
 							{
 								"type": "button",
-								"name": "Editor",
-								"x" : 5,
-								"y" : 5,
+								"name": "Exit",
+								"x" : 10,
+								"y" : 50,
 								"controls" : null
 							}
 						]
-				}
-			)";
+					},
+					{
+						"type": "button",
+						"name": "Editor",
+						"x" : 5,
+						"y" : 5,
+						"controls" : null
+					}
+				]
+			}
+		)";
 
 		V3DTestUIControl control;
 
@@ -138,12 +142,79 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 		V3DTest::AssertOk(*outLines[4] == V3DString("-Editor55"), V3DFILE_INFO);
 	}
 
+	void V3DJsonIOTests::TraversalAndSetTest()
+	{
+		const auto JsonString =
+			R"(
+			{
+				"widgetName": "window",
+				"width": 122,
+				"list": [1, 2, 3],
+				"objects":
+				{
+					"obj1":
+					{
+						"x": 10,
+						"y": 20
+					},
+					"obj2":
+					{
+						"x": 30,
+						"y": 40
+					}
+				}
+			}
+		)";
+
+		const json JsonObj = V3DJsonIO::GetJsonObject(JsonString);
+		V3DAction3<const V3DString&, const V3DString&, const V3DJsonVariant&> action;
+
+		const auto OutputBefore = R"({"list":[1,2,3],"objects":{"obj1":{"x":10,"y":20},"obj2":{"x":30,"y":40}},"widgetName":"window","width":122})";
+		V3DTest::AssertOk(V3DString(OutputBefore) == V3DString(JsonObj.dump().c_str()), V3DFILE_INFO);
+
+		action.Set([&](const V3DString& parentName, const V3DString& name, const V3DJsonVariant& variant)
+		{
+			if (name == V3DString("widgetName"))
+				*variant.text = "window1";
+
+			if (variant.unsignedIntNumber != nullptr && *variant.unsignedIntNumber == 30)
+				*variant.unsignedIntNumber = 32;
+
+			if (variant.currentType == V3DJsonVariantTypes::Array)
+			{
+				const auto Array = static_cast<json::array_t*>(variant.array);
+				Array->clear();
+				Array->push_back(4);
+				Array->push_back(5);
+				Array->push_back(6);
+			}
+		});
+		V3DJsonIO::TraversalJsonHierarchy(JsonObj, nullptr, action);
+		const auto OutputAfter = R"({"list":[4,5,6],"objects":{"obj1":{"x":10,"y":20},"obj2":{"x":32,"y":40}},"widgetName":"window1","width":122})";
+		V3DTest::AssertOk(V3DString(OutputAfter) == V3DString(JsonObj.dump().c_str()), V3DFILE_INFO);
+
+
+		//dump custom hierarchy and json structure
+		V3DLogger::Get().SetOutputTypeFlag(V3DLogOutputType::ToOutput, true);
+		action.Set([&](const V3DString& parentName, const V3DString& name, const V3DJsonVariant& variant)
+		{
+			V3DString dumpLine;
+			dumpLine += V3DString("<") + parentName + "> " + V3DJsonVariantHelper::ToStringType(variant) + " " + name + " " + V3DJsonVariantHelper::ToStringValue(variant);
+			V3DLogger::Get().WriteOutput(V3DLogMessageType::Info, dumpLine);
+		});
+		V3DJsonIO::TraversalJsonHierarchy(JsonObj, nullptr, action);
+
+		V3DLogger::Get().WriteOutput(V3DLogMessageType::Info, JsonObj.dump().c_str());
+		V3DLogger::Get().SetOutputTypeFlag(V3DLogOutputType::ToOutput, false);
+	}
+
 	void V3DJsonIOTests::RunAllUnitTests()
 	{
 		JsonParseTest();
 		BuildJsonFromCodeTest();
 		ConfigLoadSaveTest();
 		UIBuildTest();
+		TraversalAndSetTest();
 	}
 
 	void V3DJsonIOTests::RegisterIntegrationTests()

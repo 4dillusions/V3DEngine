@@ -45,7 +45,7 @@
     <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DBinaryRW.cpp" />
     <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DFile.cpp" />
     <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DFolder.cpp" />
-    <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DJsonIO.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DJsonIOPartial.cpp" />
     <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DLoggerPartial.cpp" />
     <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DSQLiteContext.cpp" />
     <ClCompile Include="..\..\..\..\Source\Android\V3DEngine\V3DIO\V3DTextRW.cpp" />

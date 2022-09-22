@@ -6,13 +6,19 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #pragma once
 
-#include "V3DEngine/V3DEngineLibrary.h"
-
 #include "ThirdParty/Json/json_fwd.hpp"
+#include "V3DEngine/V3DEngineLibrary.h"
+#include "V3DEngine/V3DCore/V3DAction.h"
 
+namespace V3D::V3DEngine::V3DCore
+{
+	class V3DString;
+}
+	
 namespace V3D::V3DEngine::V3DIO
 {
-    //definitions will be implement in platform specific .cpp
+	class V3DJsonVariant;
+
     class V3DENGINE_API V3DJsonIO final
     {
     public:
@@ -23,7 +29,9 @@ namespace V3D::V3DEngine::V3DIO
         V3DJsonIO& operator=(const V3DJsonIO&) = delete;
         V3DJsonIO& operator=(V3DJsonIO&&) = delete;
 
-        static nlohmann::json GetJsonObject(const char* jsonText);
-        static char* GetByteStream(const nlohmann::json& jsonObj);
+        static nlohmann::json GetJsonObject(const char* jsonText); //definition will be implement in platform specific .cpp
+        static char* GetByteStream(const nlohmann::json& jsonObj); //definition will be implement in platform specific .cpp
+
+        static void TraversalJsonHierarchy(const nlohmann::json& jsonObj, void* parent, const V3DCore::V3DAction3<const V3DCore::V3DString&, const V3DCore::V3DString&, const V3DJsonVariant&>& action);
     };
 }

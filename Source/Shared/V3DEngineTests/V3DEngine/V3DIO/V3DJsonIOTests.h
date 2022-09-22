@@ -22,6 +22,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 		static void BuildJsonFromCodeTest();
 		static void ConfigLoadSaveTest();
 		static void UIBuildTest();
+		static void TraversalAndSetTest();
 
 		static void RunAllUnitTests();
 		static void RegisterIntegrationTests();
