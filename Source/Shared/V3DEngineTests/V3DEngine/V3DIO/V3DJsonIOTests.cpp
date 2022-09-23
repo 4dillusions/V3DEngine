@@ -195,7 +195,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 
 
 		//dump custom hierarchy and json structure
-		V3DLogger::Get().SetOutputTypeFlag(V3DLogOutputType::ToOutput, true);
+		/*V3DLogger::Get().SetOutputTypeFlag(V3DLogOutputType::ToOutput, true);
 		action.Set([&](const V3DString& parentName, const V3DString& name, const V3DJsonVariant& variant)
 		{
 			V3DString dumpLine;
@@ -205,7 +205,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 		V3DJsonIO::TraversalJsonHierarchy(JsonObj, nullptr, action);
 
 		V3DLogger::Get().WriteOutput(V3DLogMessageType::Info, JsonObj.dump().c_str());
-		V3DLogger::Get().SetOutputTypeFlag(V3DLogOutputType::ToOutput, false);
+		V3DLogger::Get().SetOutputTypeFlag(V3DLogOutputType::ToOutput, false);*/
 	}
 
 	void V3DJsonIOTests::RunAllUnitTests()
