@@ -7,6 +7,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DLogger.h"
 #include "V3DEngine/V3DCore/V3DMemory.h"
 #include "V3DEngine/V3DCore/V3DDateTime.h"
+#include "V3DEngine/V3DCore/V3DString.h"
 
 using namespace V3D::V3DEngine::V3DCore;
 
