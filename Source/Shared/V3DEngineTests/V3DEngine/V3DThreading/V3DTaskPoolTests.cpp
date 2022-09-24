@@ -48,7 +48,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DThreading
 		pool->SubmitJobFunction(&V3DTestEventActionFunc::IncrementXWithNumber, test);
 		pool->SubmitJobFunction(&V3DTestEventActionFunc::MultiplicationXWithNumber, test);
 		pool->WaitForFinish();
-		V3DTest::AssertOk(x == 1100, V3DFILE_INFO);
+		V3DTest::AssertOk(x == 1100 || x == 1010, V3DFILE_INFO); //thread order is not guarantee
 		V3DMemory::Delete(pool);
 
 		x = 100;
@@ -56,7 +56,7 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DThreading
 		pool2->SubmitJobFunction(&V3DTestEventActionFunc::IncrementXWithParam, test, 10);
 		pool2->SubmitJobFunction(&V3DTestEventActionFunc::MultiplicationXWithParam, test, 20);
 		pool2->WaitForFinish();
-		V3DTest::AssertOk(x == 2200, V3DFILE_INFO);
+		V3DTest::AssertOk(x == 2200 || x == 2010, V3DFILE_INFO); //thread order is not guarantee
 		V3DMemory::Delete(pool2);
 	}
 
