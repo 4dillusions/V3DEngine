@@ -98,6 +98,7 @@
    <addaction name="actionOpenLevel"/>
    <addaction name="actionPlayLevel"/>
    <addaction name="actionStopLevel"/>
+   <addaction name="actionPauseLevel"/>
    <addaction name="actionReloadLevel"/>
    <addaction name="actionExecuteCommand"/>
    <addaction name="actionUndo"/>
@@ -482,6 +483,18 @@
    </property>
    <property name="toolTip">
     <string>Reload level</string>
+   </property>
+  </action>
+  <action name="actionPauseLevel">
+   <property name="icon">
+    <iconset resource="../../../../Solution/WindowsAndroid/Windows/V3DEditor/Resources/V3DEdMainView.qrc">
+     <normaloff>:/V3DEdMainView/pause.png</normaloff>:/V3DEdMainView/pause.png</iconset>
+   </property>
+   <property name="text">
+    <string>PauseLevel</string>
+   </property>
+   <property name="toolTip">
+    <string>Pause level</string>
    </property>
   </action>
  </widget>

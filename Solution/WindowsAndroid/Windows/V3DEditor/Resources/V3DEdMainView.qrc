@@ -1,5 +1,6 @@
 <RCC>
   <qresource prefix="/V3DEdMainView">
+    <file>pause.png</file>
     <file>editor.png</file>
     <file>deleteAll.png</file>
     <file>new.png</file>
