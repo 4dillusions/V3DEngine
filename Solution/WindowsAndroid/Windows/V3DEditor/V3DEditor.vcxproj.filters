@@ -68,6 +68,12 @@
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DEdSettingsView.cpp">
       <Filter>Source\V3DEdView</Filter>
     </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdController\V3DEdSettingsController.cpp">
+      <Filter>Source\V3DEdController</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdService\V3DEdSettingsService.cpp">
+      <Filter>Source\V3DEdService</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DEdMainView.h">
@@ -187,6 +193,12 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdModel\V3DEdSettingsModel.h">
       <Filter>Source\V3DEdModel</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdController\V3DEdSettingsController.h">
+      <Filter>Source\V3DEdController</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdService\V3DEdSettingsService.h">
+      <Filter>Source\V3DEdService</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

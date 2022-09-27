@@ -17,12 +17,14 @@ namespace V3D::V3DEditor::V3DEdLocator
 namespace V3D::V3DEditor::V3DEdView
 {
 	class V3DEdMainView;
+	class V3DEdSettingsView;
 
 	class V3DEdViewManager final : public V3DEdCore::V3DEdIViewManager
 	{
 		V3DEdLocator::V3DEdControllerLocator* controllerLocator;
 
 		V3DEdMainView* mainView;
+		V3DEdSettingsView* settingsView{};
 
 	public:
 		V3DEdViewManager(V3DEdLocator::V3DEdControllerLocator* controllerLocator, V3DEdMainView* mainView);
@@ -40,5 +42,6 @@ namespace V3D::V3DEditor::V3DEdView
 		void ShowAboutQtView() override;
 
 		void UpdateMainView() override;
+		void UpdateSettingsView() override;
 	};
 }

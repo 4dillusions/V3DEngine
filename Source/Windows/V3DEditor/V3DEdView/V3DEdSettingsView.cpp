@@ -47,13 +47,8 @@ namespace V3D::V3DEditor::V3DEdView
         viewBindings->Update(settingsModel->command);
     }
     
-    //void V3DEdSettingsView::OnOkClicked() const
-    //{
-    //    OkAction.Invoke();
-    //}
-
-    //void V3DEdSettingsView::OnCancelClicked() const
-    //{
-    //    CancelAction.Invoke();
-    //}
+    void V3DEdSettingsView::OnSaveClicked() const
+    {
+        SaveAction.Invoke();
+    }
 }

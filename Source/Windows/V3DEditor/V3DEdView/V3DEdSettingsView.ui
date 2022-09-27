@@ -195,7 +195,7 @@
       </spacer>
      </item>
      <item>
-      <widget class="QPushButton" name="btnOK">
+      <widget class="QPushButton" name="btnSave">
        <property name="minimumSize">
         <size>
          <width>75</width>
@@ -203,7 +203,7 @@
         </size>
        </property>
        <property name="text">
-        <string>OK</string>
+        <string>Save</string>
        </property>
       </widget>
      </item>
@@ -227,18 +227,18 @@
  <resources/>
  <connections>
   <connection>
-   <sender>btnOK</sender>
+   <sender>btnSave</sender>
    <signal>clicked()</signal>
    <receiver>V3DEdSettingsViewClass</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>278</x>
-     <y>253</y>
+     <x>933</x>
+     <y>754</y>
     </hint>
     <hint type="destinationlabel">
-     <x>96</x>
-     <y>254</y>
+     <x>689</x>
+     <y>734</y>
     </hint>
    </hints>
   </connection>
@@ -249,14 +249,33 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>369</x>
-     <y>253</y>
+     <x>1014</x>
+     <y>754</y>
     </hint>
     <hint type="destinationlabel">
-     <x>179</x>
-     <y>282</y>
+     <x>997</x>
+     <y>763</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnSave</sender>
+   <signal>clicked()</signal>
+   <receiver>V3DEdSettingsViewClass</receiver>
+   <slot>OnSaveClicked()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>871</x>
+     <y>749</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>746</x>
+     <y>754</y>
     </hint>
    </hints>
   </connection>
  </connections>
+ <slots>
+  <slot>OnSaveClicked()</slot>
+ </slots>
 </ui>

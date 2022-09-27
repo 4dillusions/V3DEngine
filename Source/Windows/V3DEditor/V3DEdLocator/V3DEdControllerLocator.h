@@ -9,6 +9,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 namespace V3D::V3DEditor::V3DEdController
 {
 	class V3DEdMainController;
+	class V3DEdSettingsController;
 }
 
 namespace V3D::V3DEditor::V3DEdLocator
@@ -16,9 +17,13 @@ namespace V3D::V3DEditor::V3DEdLocator
 	class V3DEdControllerLocator final
     {
 		V3DEdController::V3DEdMainController* mainController{};
+		V3DEdController::V3DEdSettingsController* settingsController{};
 
 	public:
 		V3DEdController::V3DEdMainController* CreateOrGetMainController();
 		void ReleaseMainController();
+
+		V3DEdController::V3DEdSettingsController* CreateOrGetSettingsController();
+		void ReleaseSettingsController();
     };
 }

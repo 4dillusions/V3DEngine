@@ -25,6 +25,8 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #include <thread>
 
+#include "V3DEditor/V3DEdController/V3DEdSettingsController.h"
+
 using namespace V3D::V3DEditor::V3DEdCore;
 using namespace V3D::V3DEditor::V3DEdModel;
 using namespace V3D::V3DEditor::V3DEdLocator;
@@ -72,12 +74,15 @@ namespace V3D::V3DEditor::V3DEdView
 
 	void V3DEdViewManager::ShowSettingsView()
 	{
-		auto settingsView = V3DIoc<V3DEdSettingsView>::CreateTransient();
+		settingsView = V3DIoc<V3DEdSettingsView>::CreateTransient();
+		const auto SettingsController = controllerLocator->CreateOrGetSettingsController();
+
+		settingsView->SaveAction.Set([=] { SettingsController->OnSettingsSave(); });
 
 		settingsView->ViewActionRelease.Set([=]
 		{
 			V3DIoc<V3DEdModelLocator>::GetSingleton()->ReleaseSettingsModel(); //created & injected for View and Service by IoCManager with locator
-			//V3DIoc<V3DEdControllerLocator>::GetSingleton()->ReleaseSettingsController(); //TODO
+			V3DIoc<V3DEdControllerLocator>::GetSingleton()->ReleaseSettingsController();
 		});
 
 		settingsView->exec();
@@ -110,5 +115,10 @@ namespace V3D::V3DEditor::V3DEdView
 	void V3DEdViewManager::UpdateMainView()
 	{
 		mainView->Update();
+	}
+
+	void V3DEdViewManager::UpdateSettingsView()
+	{
+		settingsView->Update();
 	}
 }

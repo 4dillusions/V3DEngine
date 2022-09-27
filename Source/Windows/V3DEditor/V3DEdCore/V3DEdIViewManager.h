@@ -26,5 +26,6 @@ namespace V3D::V3DEditor::V3DEdCore
 		virtual void ShowAboutQtView() = 0;
 
 		virtual void UpdateMainView() = 0;
+		virtual void UpdateSettingsView() = 0;
     };
 }

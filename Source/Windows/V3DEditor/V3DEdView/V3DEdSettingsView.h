@@ -35,7 +35,9 @@ namespace V3D::V3DEditor::V3DEdView
         ~V3DEdSettingsView() override;
         V3DEdSettingsView& operator=(const V3DEdSettingsView&) = delete;
         V3DEdSettingsView& operator=(V3DEdSettingsView&&) = delete;
-        
+
+        V3DEngine::V3DCore::V3DAction SaveAction;
+
         V3DEngine::V3DCore::V3DAction ViewActionRelease;
 
     private:
@@ -45,9 +47,7 @@ namespace V3D::V3DEditor::V3DEdView
     public:
         void Update() const;
 
-    //public slots:
-        
-        //void OnOkClicked() const;
-        //void OnCancelClicked() const;
+    public slots:
+        void OnSaveClicked() const;
     };
 }

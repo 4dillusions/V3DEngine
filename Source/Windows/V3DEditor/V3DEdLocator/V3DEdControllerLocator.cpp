@@ -6,6 +6,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #include "V3DEdControllerLocator.h"
 #include "V3DEditor/V3DEdController/V3DEdMainController.h"
+#include "V3DEditor/V3DEdController/V3DEdSettingsController.h"
 #include "V3DEngine/V3DCore/V3DIoc.h"
 
 using namespace V3D::V3DEditor::V3DEdController;
@@ -24,5 +25,18 @@ namespace V3D::V3DEditor::V3DEdLocator
 	void V3DEdControllerLocator::ReleaseMainController()
 	{
 		V3DMemory::Delete(mainController);
+	}
+
+	V3DEdSettingsController* V3DEdControllerLocator::CreateOrGetSettingsController()
+	{
+		if (settingsController == nullptr)
+			settingsController = V3DIoc<V3DEdSettingsController>::CreateTransient();
+
+		return settingsController;
+	}
+
+	void V3DEdControllerLocator::ReleaseSettingsController()
+	{
+		V3DMemory::Delete(settingsController);
 	}
 }
