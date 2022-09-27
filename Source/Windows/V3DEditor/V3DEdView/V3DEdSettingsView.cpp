@@ -31,6 +31,10 @@ namespace V3D::V3DEditor::V3DEdView
     {
         ui.setupUi(this);
         setWindowFlags(Qt::Dialog | Qt::Desktop);
+
+        ui.treeProperties->headerItem()->setText(0, "Property");
+        ui.treeProperties->headerItem()->setText(1, "Value");
+        ui.treeProperties->header()->resizeSections(QHeaderView::ResizeToContents);
     }
     
     void V3DEdSettingsView::InitBindings() const

@@ -35,6 +35,10 @@ namespace V3D::V3DEditor::V3DEdView
         ui.dockLevelGraph->raise();
         tabifyDockWidget(ui.dockEngineLog, ui.dockOutputLog);
         ui.dockEngineLog->raise();
+
+        ui.treeProperties->headerItem()->setText(0, "Property");
+        ui.treeProperties->headerItem()->setText(1, "Value");
+        ui.treeProperties->header()->resizeSections(QHeaderView::ResizeToContents);
     }
     
     void V3DEdMainView::InitBindings()
