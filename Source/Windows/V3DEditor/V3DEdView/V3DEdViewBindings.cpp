@@ -37,6 +37,8 @@ namespace V3D::V3DEditor::V3DEdView
 
 	V3DEdViewBindings::~V3DEdViewBindings()
 	{
+		RemoveAllBindings();
+
 		auto bindingList = static_cast<BindingList*>(bindings);
 		V3DMemory::Delete(bindingList);
 
@@ -55,14 +57,18 @@ namespace V3D::V3DEditor::V3DEdView
 		switch (command)
 		{
 			case V3DEdCommands::ShowSettingsView:
-				bindingAction.Set([this](void* widget, void* data) { });
+				//bindingAction.Set([this](void* widget, void* data) { });
 				canExecuteAction.Set([this](void* widget, void* data) { static_cast<QAction*>(widget)->setEnabled(!*static_cast<bool*>(data)); });
+				break;
+
+			case V3DEdCommands::LoadSettingsViewData:
+			case V3DEdCommands::SaveSettingsViewData:
 				break;
 
 			case V3DEdCommands::AddEngineLogItem:
 			case V3DEdCommands::AddOutputLogItem:
 				bindingAction.Set([this](void* widget, void* data) { UpdateAddLogItem(widget, data); });
-				canExecuteAction.Set([this](void* widget, void* data) { });
+				//canExecuteAction.Set([this](void* widget, void* data) { });
 				break;
 
 			case V3DEdCommands::ClearEngineLogItem:
@@ -77,8 +83,12 @@ namespace V3D::V3DEditor::V3DEdView
 
 		if (!canExecuteAction.IsEmpty())
 		{
-			const auto CanExecuteTupleItem = CanExecutesMap->insert(bindingModel.data, V3DMemory::New<CanExecuteLinkedList>(V3DFILE_INFO));
-			CanExecuteTupleItem.value()->Add(V3DTuple::Create(bindingModel, canExecuteAction));
+			const auto It = CanExecutesMap->find(bindingModel.data);
+			if (It == CanExecutesMap->end())
+			{
+				const auto CanExecuteTupleItem = CanExecutesMap->insert(bindingModel.data, V3DMemory::New<CanExecuteLinkedList>(V3DFILE_INFO));
+				CanExecuteTupleItem.value()->Add(V3DTuple::Create(bindingModel, canExecuteAction));
+			}
 		}
 	}
 
@@ -114,14 +124,14 @@ namespace V3D::V3DEditor::V3DEdView
 	{
 		const auto BindingsTree = static_cast<BindingList*>(bindings);
 		for (BindingsTree->First(); BindingsTree->IsDone(); BindingsTree->Next())
-			if (BindingsTree->GetCurrentItem()->item1.view == view)
+			if (view == nullptr || BindingsTree->GetCurrentItem()->item1.view == view)
 				BindingsTree->RemoveCurrent();
 
 		const auto CanExecutesMap = static_cast<CanExecuteMap*>(canExecutes);
 		for (CanExecuteMap::Iterator it = CanExecutesMap->begin(); it != CanExecutesMap->end();)
 		{
 			it.value()->First();
-			if (it.value()->GetCurrent()->item1.view == view)
+			if (view == nullptr || it.value()->GetCurrent()->item1.view == view)
 			{
 				V3DMemory::Delete(it.value());
 				CanExecutesMap->remove(it++.key());
@@ -131,6 +141,17 @@ namespace V3D::V3DEditor::V3DEdView
 				++it;
 			}
 		}
+	}
+
+	void V3DEdViewBindings::RemoveViewBindings(const void* view) const
+	{
+		if (view != nullptr)
+			RemoveBindings(view);
+	}
+
+	void V3DEdViewBindings::RemoveAllBindings() const
+	{
+		RemoveBindings(nullptr);
 	}
 
 	void V3DEdViewBindings::UpdateAddLogItem(void* widget, void* data) const

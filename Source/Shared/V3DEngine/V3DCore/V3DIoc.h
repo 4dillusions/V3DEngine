@@ -10,6 +10,8 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DMemory.h"
 #include "V3DFunc.h"
 
+#include <cassert>
+
 namespace V3D::V3DEngine::V3DCore
 {
 	/*
@@ -31,7 +33,7 @@ namespace V3D::V3DEngine::V3DCore
 			if (prototype.IsEmpty() && instance == nullptr)
 			{
 				prototype.Set([] { return V3DMemory::New<TType>(V3DFILE_INFO); });
-				removeActionsContainer->Add(V3DAction([] { Remove(); }));
+				assert(removeActionsContainer->Add(V3DAction([] { Remove(); }))); //Ioc action container is full. Init it bigger size!
 			}
 		}
 
@@ -40,7 +42,7 @@ namespace V3D::V3DEngine::V3DCore
 			if (!otherPrototype.IsEmpty() && prototype.IsEmpty() && instance == nullptr)
 			{
 				prototype.Set(otherPrototype);
-				removeActionsContainer->Add(V3DAction([] { Remove(); }));
+				assert(removeActionsContainer->Add(V3DAction([] { Remove(); }))); //Ioc action container is full. Init it bigger size!
 			}
 		}
 
