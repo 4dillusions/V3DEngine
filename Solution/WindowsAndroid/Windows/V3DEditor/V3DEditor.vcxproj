@@ -113,6 +113,8 @@
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdController\V3DEdMainController.cpp" />
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdController\V3DEdSettingsController.cpp" />
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdCore\V3DEdEnvironment.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdData\V3DEdCameraJsonRepository.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdData\V3DEdTextFileManager.cpp" />
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdLocator\V3DEdControllerLocator.cpp" />
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdLocator\V3DEdModelLocator.cpp" />
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdService\V3DEdMainService.cpp" />
@@ -122,6 +124,7 @@
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DEdSettingsView.cpp" />
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DEdViewBindings.cpp" />
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DEdViewManager.cpp" />
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DPropertyTreeBuilder.cpp" />
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DIocManager.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -161,7 +164,10 @@
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdController\V3DEdSettingsController.h" />
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdCore\V3DEdAssetPathType.h" />
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdCore\V3DEdEnvironment.h" />
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdCore\V3DEdITextFileManager.h" />
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdCore\V3DEdIViewManager.h" />
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdData\V3DEdCameraJsonRepository.h" />
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdData\V3DEdTextFileManager.h" />
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdLocator\V3DEdControllerLocator.h" />
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdLocator\V3DEdModelLocator.h" />
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdModel\V3DEdBindingModel.h" />
@@ -169,6 +175,7 @@
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdModel\V3DEdMainModel.h" />
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdModel\V3DEdSettingsModel.h" />
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdService\V3DEdMainService.h" />
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DPropertyTreeBuilder.h" />
     <QtMoc Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DEdSettingsView.h" />
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdService\V3DEdSettingsService.h" />
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DEdViewBindings.h" />

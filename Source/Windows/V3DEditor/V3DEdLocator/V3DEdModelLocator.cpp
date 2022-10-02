@@ -38,6 +38,11 @@ namespace V3D::V3DEditor::V3DEdLocator
 
 	void V3DEdModelLocator::ReleaseSettingsModel()
 	{
+		V3DMemory::Delete(settingsModel->editorStyleJson);
+		V3DMemory::Delete(settingsModel->editorStyleJsonText);
+		V3DMemory::Delete(settingsModel->gameSettingsJson);
+		V3DMemory::Delete(settingsModel->gameSettingsJsonText);
+
 		V3DMemory::Delete(settingsModel);
 	}
 }

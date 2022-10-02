@@ -15,6 +15,11 @@ namespace V3D::V3DEditor::V3DEdController
 	V3DEdSettingsController::V3DEdSettingsController(V3DEdSettingsService* settingsService) : settingsService{ settingsService }
 	{ }
 
+	void V3DEdSettingsController::OnSettingsLoad() const
+	{
+		settingsService->Load();
+	}
+
 	void V3DEdSettingsController::OnSettingsSave() const
 	{
 		settingsService->Save();

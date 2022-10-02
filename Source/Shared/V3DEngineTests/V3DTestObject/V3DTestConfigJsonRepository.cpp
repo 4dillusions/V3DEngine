@@ -5,7 +5,6 @@ Released under the terms of the GNU General Public License version 3 or later.
 */
 
 #include "V3DTestConfigJsonRepository.h"
-#include "V3DEngine/V3DIO/V3DBinaryRW.h"
 #include "V3DEngine/V3DIO/V3DJsonIO.h"
 
 #include "V3DTestConfigData.h"

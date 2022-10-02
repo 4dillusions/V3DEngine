@@ -11,6 +11,8 @@ namespace V3D::V3DEditor::V3DEdModel
 	enum class V3DEdCommands
 	{
 		ShowSettingsView,
+		LoadSettingsViewData,
+		SaveSettingsViewData,
 
 		AddEngineLogItem,
 		ClearEngineLogItem,

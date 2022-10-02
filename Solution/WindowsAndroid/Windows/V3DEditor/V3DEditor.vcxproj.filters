@@ -27,6 +27,9 @@
     <Filter Include="Source\V3DEdLocator">
       <UniqueIdentifier>{e07cef0b-e19e-4c10-a31b-03ebf260915f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source\V3DEdData">
+      <UniqueIdentifier>{a64bef20-f95d-4abc-b420-1d7fa27ae8f9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\Main.cpp">
@@ -73,6 +76,15 @@
     </ClCompile>
     <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdService\V3DEdSettingsService.cpp">
       <Filter>Source\V3DEdService</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DPropertyTreeBuilder.cpp">
+      <Filter>Source\V3DEdView</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdData\V3DEdCameraJsonRepository.cpp">
+      <Filter>Source\V3DEdData</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdData\V3DEdTextFileManager.cpp">
+      <Filter>Source\V3DEdData</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -199,6 +211,18 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdService\V3DEdSettingsService.h">
       <Filter>Source\V3DEdService</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdView\V3DPropertyTreeBuilder.h">
+      <Filter>Source\V3DEdView</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdData\V3DEdCameraJsonRepository.h">
+      <Filter>Source\V3DEdData</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdData\V3DEdTextFileManager.h">
+      <Filter>Source\V3DEdData</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\Source\Windows\V3DEditor\V3DEdCore\V3DEdITextFileManager.h">
+      <Filter>Source\V3DEdCore</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

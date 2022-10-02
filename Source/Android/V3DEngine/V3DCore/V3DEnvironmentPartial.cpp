@@ -67,6 +67,8 @@ namespace V3D::V3DEngine::V3DCore
 
 			case V3DAssetPathType::Internal: return "";
 
+			case V3DAssetPathType::EditorContent: return "EditorContent";
+
 			//default: return "default";
 		}
 

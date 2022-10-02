@@ -20,6 +20,8 @@ namespace V3D::V3DEditor::V3DEdView
 		void* bindings;
 		void* canExecutes;
 
+		void RemoveBindings(const void* view) const;
+
 	public:
 		V3DEdViewBindings();
 		V3DEdViewBindings(const V3DEdViewBindings&) = delete;
@@ -31,7 +33,8 @@ namespace V3D::V3DEditor::V3DEdView
 		void AddBinding(V3DEdModel::V3DEdCommands command, const V3DEdModel::V3DEdBindingModel& bindingModel) const;
 		void UpdateCanExecuteBindings(const void* view) const;
 		void Update(V3DEdModel::V3DEdCommands command) const;
-		void RemoveBindings(const void* view) const;
+		void RemoveViewBindings(const void* view) const;
+		void RemoveAllBindings() const;
 
 	private:
 		void UpdateAddLogItem(void* widget, void* data) const;

@@ -19,6 +19,7 @@ namespace V3D::V3DEditor::V3DEdModel
 namespace V3D::V3DEditor::V3DEdView
 {
 	class V3DEdViewBindings;
+    class V3DPropertyTreeBuilder;
 
 	class V3DEdSettingsView final : public QDialog
     {
@@ -27,18 +28,25 @@ namespace V3D::V3DEditor::V3DEdView
     	Ui::V3DEdSettingsViewClass ui{};
         V3DEdModel::V3DEdSettingsModel* settingsModel;
         V3DEdViewBindings* viewBindings;
+        V3DPropertyTreeBuilder* propertyTreeBuilder;
         
     public:
-        V3DEdSettingsView(V3DEdModel::V3DEdSettingsModel* settingsModel,V3DEdViewBindings* viewBindings, QWidget* parent = nullptr);
+        V3DEdSettingsView(V3DEdModel::V3DEdSettingsModel* settingsModel, V3DEdViewBindings* viewBindings, V3DPropertyTreeBuilder* propertyTreeBuilder, QWidget* parent = nullptr);
         V3DEdSettingsView(const V3DEdSettingsView&) = delete;
         V3DEdSettingsView(V3DEdSettingsView&&) = delete;
         ~V3DEdSettingsView() override;
         V3DEdSettingsView& operator=(const V3DEdSettingsView&) = delete;
         V3DEdSettingsView& operator=(V3DEdSettingsView&&) = delete;
 
+        V3DEngine::V3DCore::V3DAction LoadAction;
         V3DEngine::V3DCore::V3DAction SaveAction;
 
         V3DEngine::V3DCore::V3DAction ViewActionRelease;
+
+        QTreeWidget* GetTreeEditorStyleProperties() const;
+        QTreeWidget* GetTreeGameProperties() const;
+
+        void ShowDialog();
 
     private:
         void InitUI();

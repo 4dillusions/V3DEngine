@@ -6,6 +6,7 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #include "V3DEdSettingsView.h"
 #include "V3DEdViewBindings.h"
+#include "V3DPropertyTreeBuilder.h"
 //#include "V3DEditor/V3DEdModel/V3DEdCommands.h"
 #include "V3DEditor/V3DEdModel/V3DEdSettingsModel.h"
 //#include "V3DEditor/V3DEdModel/V3DEdBindingModel.h"
@@ -15,7 +16,8 @@ using namespace V3D::V3DEditor::V3DEdModel;
 
 namespace V3D::V3DEditor::V3DEdView
 {
-    V3DEdSettingsView::V3DEdSettingsView(V3DEdSettingsModel* settingsModel, V3DEdViewBindings* viewBindings, QWidget* parent) : QDialog(parent), settingsModel{ settingsModel }, viewBindings{ viewBindings }
+    V3DEdSettingsView::V3DEdSettingsView(V3DEdSettingsModel* settingsModel, V3DEdViewBindings* viewBindings, V3DPropertyTreeBuilder* propertyTreeBuilder, QWidget* parent)
+		: QDialog(parent), settingsModel{ settingsModel }, viewBindings{ viewBindings }, propertyTreeBuilder{ propertyTreeBuilder }
     {
         InitUI();
         InitBindings();
@@ -24,7 +26,23 @@ namespace V3D::V3DEditor::V3DEdView
     V3DEdSettingsView::~V3DEdSettingsView()
     {
         ViewActionRelease.Invoke();
-        viewBindings->RemoveBindings(this);
+        viewBindings->RemoveViewBindings(this);
+    }
+
+    QTreeWidget* V3DEdSettingsView::GetTreeEditorStyleProperties() const
+    {
+        return ui.treeEditorStyleProperties;
+    }
+
+    QTreeWidget* V3DEdSettingsView::GetTreeGameProperties() const
+    {
+        return ui.treeGameProperties;
+    }
+
+    void V3DEdSettingsView::ShowDialog()
+    {
+        LoadAction.Invoke();
+        exec();
     }
 
     void V3DEdSettingsView::InitUI()
@@ -32,9 +50,8 @@ namespace V3D::V3DEditor::V3DEdView
         ui.setupUi(this);
         setWindowFlags(Qt::Dialog | Qt::Desktop);
 
-        ui.treeProperties->headerItem()->setText(0, "Property");
-        ui.treeProperties->headerItem()->setText(1, "Value");
-        ui.treeProperties->header()->resizeSections(QHeaderView::ResizeToContents);
+        propertyTreeBuilder->InitTreeWidget(ui.treeEditorStyleProperties);
+        propertyTreeBuilder->InitTreeWidget(ui.treeGameProperties);
     }
     
     void V3DEdSettingsView::InitBindings() const

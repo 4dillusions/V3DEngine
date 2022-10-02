@@ -7,12 +7,17 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEdViewManager.h"
 #include "V3DEdMainView.h"
 #include "V3DEdSettingsView.h"
+#include "V3DPropertyTreeBuilder.h"
 #include "V3DEditor/V3DEdCore/V3DEdEnvironment.h"
 #include "V3DEditor/V3DEdCore/V3DEdAssetPathType.h"
+#include "V3DEditor/V3DEdController/V3DEdSettingsController.h"
+#include "V3DEditor/V3DEdLocator/V3DEdModelLocator.h"
+#include "V3DEditor/V3DEdModel/V3DEdSettingsModel.h"
 #include "V3DEditor/V3DEdLocator/V3DEdModelLocator.h"
 #include "V3DEditor/V3DEdLocator/V3DEdControllerLocator.h"
 #include "V3DEditor/V3DEdController/V3DEdMainController.h"
 #include "V3DEngine/V3DCore/V3DIoc.h"
+#include "V3DEngine/V3DCore/V3DString.h"
 
 //log test
 //#include "V3DEngine/V3DCore/V3DString.h"
@@ -25,8 +30,6 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #include <thread>
 
-#include "V3DEditor/V3DEdController/V3DEdSettingsController.h"
-
 using namespace V3D::V3DEditor::V3DEdCore;
 using namespace V3D::V3DEditor::V3DEdModel;
 using namespace V3D::V3DEditor::V3DEdLocator;
@@ -38,8 +41,8 @@ using namespace std::chrono_literals;
 
 namespace V3D::V3DEditor::V3DEdView
 {
-	V3DEdViewManager::V3DEdViewManager(V3DEdControllerLocator* controllerLocator, V3DEdMainView* mainView)
-		: controllerLocator{ controllerLocator }, mainView{ mainView } //mainView etc. are singleton, no need inject the other transient depencies
+	V3DEdViewManager::V3DEdViewManager(V3DEdModelLocator* modelLocator, V3DEdControllerLocator* controllerLocator, V3DEdMainView* mainView, V3DPropertyTreeBuilder* propertyTreeBuilder)
+		: modelLocator{ modelLocator }, controllerLocator{ controllerLocator }, mainView{ mainView }, propertyTreeBuilder{ propertyTreeBuilder }
 	{ }
 
 	void V3DEdViewManager::ShowSplashView()
@@ -77,6 +80,7 @@ namespace V3D::V3DEditor::V3DEdView
 		settingsView = V3DIoc<V3DEdSettingsView>::CreateTransient();
 		const auto SettingsController = controllerLocator->CreateOrGetSettingsController();
 
+		settingsView->LoadAction.Set([=] { SettingsController->OnSettingsLoad(); });
 		settingsView->SaveAction.Set([=] { SettingsController->OnSettingsSave(); });
 
 		settingsView->ViewActionRelease.Set([=]
@@ -85,7 +89,7 @@ namespace V3D::V3DEditor::V3DEdView
 			V3DIoc<V3DEdControllerLocator>::GetSingleton()->ReleaseSettingsController();
 		});
 
-		settingsView->exec();
+		settingsView->ShowDialog();
 
 		V3DMemory::Delete(settingsView);
 	}
@@ -110,6 +114,13 @@ namespace V3D::V3DEditor::V3DEdView
 		QApplication::aboutQt();
 
 		//V3DIoc<V3DEdService::V3DEdMainService>::GetSingleton()->OutputLogWrite(V3DEngine::V3DIO::V3DLogMessageType::Info, V3DString("void V3DEdViewManager::ShowAboutEditorView()")); //log test
+	}
+
+	void V3DEdViewManager::LoadSettingsViewData()
+	{
+		const auto SettingsModel = modelLocator->CreateOrGetSettingsModel();
+		SettingsModel->editorStyleJson = propertyTreeBuilder->BuildTreeWidget(SettingsModel->editorStyleJsonText->ToChar(), settingsView->GetTreeEditorStyleProperties());
+		SettingsModel->gameSettingsJson = propertyTreeBuilder->BuildTreeWidget(SettingsModel->gameSettingsJsonText->ToChar(), settingsView->GetTreeGameProperties());
 	}
 
 	void V3DEdViewManager::UpdateMainView()

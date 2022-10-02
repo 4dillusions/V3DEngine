@@ -155,4 +155,9 @@ namespace V3D::V3DEngine::V3DCore
 
 		return result;
 	}
+
+	const char* V3DEnvironment::GetGameOptionsName()
+	{
+		return "GameOptions.json";
+	}
 }

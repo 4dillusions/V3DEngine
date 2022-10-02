@@ -26,7 +26,7 @@ namespace V3D::V3DEngine::V3DCore
         static int windowHeight;
         static int screenWidth;
         static int screenHeight;
-		
+        
 	public:
         V3DEnvironment() = default;
         V3DEnvironment(const V3DEnvironment&) = default;
@@ -58,6 +58,8 @@ namespace V3D::V3DEngine::V3DCore
         static void SetGameName(char* gameNameValue);
         static bool GetIsWindowOrientationPortrait();
         static V3DString GetSystemInfo();
+
+        static const char* GetGameOptionsName();
 
         //definitions will be implement in platform specific .cpp
         static const char* GetPlatformName();

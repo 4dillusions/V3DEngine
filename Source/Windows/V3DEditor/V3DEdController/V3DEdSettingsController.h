@@ -20,6 +20,7 @@ namespace V3D::V3DEditor::V3DEdController
     public:
         V3DEdSettingsController(V3DEdService::V3DEdSettingsService* settingsService);
 
+        void OnSettingsLoad() const;
         void OnSettingsSave() const;
     };
 }

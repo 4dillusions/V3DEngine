@@ -6,32 +6,39 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #include "V3DEdMainService.h"
 #include "V3DEditor/V3DEdCore/V3DEdIViewManager.h"
+#include "V3DEditor/V3DEdLocator/V3DEdModelLocator.h"
 #include "V3DEditor/V3DEdModel/V3DEdCommands.h"
 #include "V3DEditor/V3DEdModel/V3DEdMainModel.h"
 #include "V3DEngine/V3DCore/V3DString.h"
 #include "V3DEngine/V3DIO/V3DLogger.h"
 
 using namespace V3D::V3DEditor::V3DEdCore;
+using namespace V3D::V3DEditor::V3DEdLocator;
 using namespace V3D::V3DEditor::V3DEdModel;
 using namespace V3D::V3DEngine::V3DCore;
 using namespace V3D::V3DEngine::V3DIO;
 
 namespace V3D::V3DEditor::V3DEdService
 {
-	V3DEdMainService::V3DEdMainService(V3DEdIViewManager* viewManager, V3DEdMainModel* mainModel, V3DLogger* outputLogger) :
-		viewManager{ viewManager }, mainModel { mainModel }, outputLogger{ outputLogger }
+	V3DEdMainService::V3DEdMainService(V3DEdIViewManager* viewManager, V3DEdModelLocator* modelLocator, V3DLogger* outputLogger) :
+		viewManager{ viewManager }, modelLocator{ modelLocator }, outputLogger{ outputLogger }
 	{ }
+
+	V3DEdMainModel* V3DEdMainService::GetMainModel() const
+	{
+		return modelLocator->CreateOrGetMainModel();
+	}
 	
 	void V3DEdMainService::Settings() const
 	{
-		mainModel->command = V3DEdCommands::ShowSettingsView;
+		GetMainModel()->command = V3DEdCommands::ShowSettingsView;
 
-		mainModel->isSettingsViewActive = true;
+		GetMainModel()->isSettingsViewActive = true;
 		viewManager->UpdateMainView();
 
 		viewManager->ShowSettingsView();
 
-		mainModel->isSettingsViewActive = false;
+		GetMainModel()->isSettingsViewActive = false;
 		viewManager->UpdateMainView();
 	}
 
@@ -47,15 +54,15 @@ namespace V3D::V3DEditor::V3DEdService
 
 	void V3DEdMainService::EngineLogWrite(const V3DString& log) const
 	{
-		mainModel->engineLog.Add(log);
-		mainModel->command = V3DEdCommands::AddEngineLogItem;
+		GetMainModel()->engineLog.Add(log);
+		GetMainModel()->command = V3DEdCommands::AddEngineLogItem;
 		viewManager->UpdateMainView();
 	}
 
 	void V3DEdMainService::EngineLogClear() const
 	{
-		mainModel->engineLog.RemoveAll();
-		mainModel->command = V3DEdCommands::ClearEngineLogItem;
+		GetMainModel()->engineLog.RemoveAll();
+		GetMainModel()->command = V3DEdCommands::ClearEngineLogItem;
 		viewManager->UpdateMainView();
 	}
 
@@ -67,16 +74,16 @@ namespace V3D::V3DEditor::V3DEdService
 		V3DString outLog = *outputLogger->GetBuffer();
 		outLog.Remove('\n');
 
-		mainModel->outputLog.Add(outLog);
-		mainModel->command = V3DEdCommands::AddOutputLogItem;
+		GetMainModel()->outputLog.Add(outLog);
+		GetMainModel()->command = V3DEdCommands::AddOutputLogItem;
 
 		viewManager->UpdateMainView();
 	}
 
 	void V3DEdMainService::OutputLogClear() const
 	{
-		mainModel->outputLog.RemoveAll();
-		mainModel->command = V3DEdCommands::ClearOutputLogItem;
+		GetMainModel()->outputLog.RemoveAll();
+		GetMainModel()->command = V3DEdCommands::ClearOutputLogItem;
 		viewManager->UpdateMainView();
 	}
 }

@@ -15,6 +15,11 @@ namespace V3D::V3DEditor
         class V3DEdIViewManager;
     }
 
+    namespace V3DEdLocator
+    {
+        class V3DEdModelLocator;
+    }
+
     namespace V3DEdModel
     {
         struct V3DEdMainModel;
@@ -39,11 +44,13 @@ namespace V3D::V3DEditor::V3DEdService
     class V3DEdMainService final
     {
         V3DEdCore::V3DEdIViewManager* viewManager;
-        V3DEdModel::V3DEdMainModel* mainModel;
+        V3DEdLocator::V3DEdModelLocator* modelLocator;
         V3DEngine::V3DIO::V3DLogger* outputLogger;
 
+        V3DEdModel::V3DEdMainModel* GetMainModel() const;
+
     public:
-        V3DEdMainService(V3DEdCore::V3DEdIViewManager* viewManager, V3DEdModel::V3DEdMainModel* mainModel, V3DEngine::V3DIO::V3DLogger* outputLogger);
+        V3DEdMainService(V3DEdCore::V3DEdIViewManager* viewManager, V3DEdLocator::V3DEdModelLocator* modelLocator, V3DEngine::V3DIO::V3DLogger* outputLogger);
 
         void Settings() const;
         void AboutEditor() const;

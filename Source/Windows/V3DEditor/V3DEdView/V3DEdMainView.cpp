@@ -6,25 +6,34 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #include "V3DEdMainView.h"
 #include "V3DEdViewBindings.h"
+#include "V3DPropertyTreeBuilder.h"
+#include "V3DEditor/V3DEdLocator/V3DEdModelLocator.h"
 #include "V3DEditor/V3DEdModel/V3DEdCommands.h"
 #include "V3DEditor/V3DEdModel/V3DEdMainModel.h"
 #include "V3DEditor/V3DEdModel/V3DEdBindingModel.h"
 
 using namespace V3D::V3DEngine::V3DCore;
+using namespace V3D::V3DEditor::V3DEdLocator;
 using namespace V3D::V3DEditor::V3DEdModel;
 
 namespace V3D::V3DEditor::V3DEdView
 {
-    V3DEdMainView::V3DEdMainView(V3DEdMainModel* mainModel, V3DEdViewBindings* viewBindings, QWidget* parent) : QMainWindow(parent), mainModel{ mainModel }, viewBindings{ viewBindings }
+    V3DEdMainView::V3DEdMainView(V3DEdModelLocator* modelLocator, V3DEdViewBindings* viewBindings, V3DPropertyTreeBuilder* propertyTreeBuilder, QWidget* parent)
+		: QMainWindow(parent), modelLocator{ modelLocator }, viewBindings{ viewBindings }, propertyTreeBuilder{ propertyTreeBuilder }
     {
         InitUI();
         InitBindings();
+    }
+
+    V3DEdMainModel* V3DEdMainView::GetMainModel() const
+    {
+        return modelLocator->CreateOrGetMainModel();
     }
     
     V3DEdMainView::~V3DEdMainView()
     {
         ViewActionRelease.Invoke();
-        viewBindings->RemoveBindings(this);
+        viewBindings->RemoveViewBindings(this);
     }
 
     void V3DEdMainView::InitUI()
@@ -36,27 +45,25 @@ namespace V3D::V3DEditor::V3DEdView
         tabifyDockWidget(ui.dockEngineLog, ui.dockOutputLog);
         ui.dockEngineLog->raise();
 
-        ui.treeProperties->headerItem()->setText(0, "Property");
-        ui.treeProperties->headerItem()->setText(1, "Value");
-        ui.treeProperties->header()->resizeSections(QHeaderView::ResizeToContents);
+        propertyTreeBuilder->InitTreeWidget(ui.treeProperties);
     }
     
     void V3DEdMainView::InitBindings()
     {
-        viewBindings->AddBinding(V3DEdCommands::ShowSettingsView, { this, nullptr, &mainModel->isSettingsViewActive, ui.actionEditorSettings });
+        viewBindings->AddBinding(V3DEdCommands::ShowSettingsView, { this, nullptr, &GetMainModel()->isSettingsViewActive, ui.actionEditorSettings });
 
-        viewBindings->AddBinding(V3DEdCommands::AddEngineLogItem, { this, ui.listEngineLog, &mainModel->engineLog, nullptr });
-        viewBindings->AddBinding(V3DEdCommands::ClearEngineLogItem, { this, ui.listEngineLog, &mainModel->engineLog, ui.btnEngineLogDeleteAll });
+        viewBindings->AddBinding(V3DEdCommands::AddEngineLogItem, { this, ui.listEngineLog, &GetMainModel()->engineLog, nullptr });
+        viewBindings->AddBinding(V3DEdCommands::ClearEngineLogItem, { this, ui.listEngineLog, &GetMainModel()->engineLog, ui.btnEngineLogDeleteAll });
 
-        viewBindings->AddBinding(V3DEdCommands::AddOutputLogItem, { this, ui.listOutputLog, &mainModel->outputLog, nullptr });
-        viewBindings->AddBinding(V3DEdCommands::ClearOutputLogItem, { this, ui.listOutputLog, &mainModel->outputLog, ui.btnOutputLogDeleteAll });
+        viewBindings->AddBinding(V3DEdCommands::AddOutputLogItem, { this, ui.listOutputLog, &GetMainModel()->outputLog, nullptr });
+        viewBindings->AddBinding(V3DEdCommands::ClearOutputLogItem, { this, ui.listOutputLog, &GetMainModel()->outputLog, ui.btnOutputLogDeleteAll });
 
         viewBindings->UpdateCanExecuteBindings(this);
     }
     
     void V3DEdMainView::Update() const
     {
-        viewBindings->Update(mainModel->command);
+        viewBindings->Update(GetMainModel()->command);
     }
     
     // ReSharper disable once CppParameterMayBeConstPtrOrRef

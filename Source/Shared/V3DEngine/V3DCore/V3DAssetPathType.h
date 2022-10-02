@@ -26,5 +26,8 @@ namespace V3D::V3DEngine::V3DCore
 
 		//root
 		Internal,
+
+		//special folder for editor only
+		EditorContent
 	};
 }

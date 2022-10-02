@@ -18,16 +18,19 @@ namespace V3D::V3DEditor::V3DEdView
 {
 	class V3DEdMainView;
 	class V3DEdSettingsView;
+	class V3DPropertyTreeBuilder;
 
 	class V3DEdViewManager final : public V3DEdCore::V3DEdIViewManager
 	{
+		V3DEdLocator::V3DEdModelLocator* modelLocator;
 		V3DEdLocator::V3DEdControllerLocator* controllerLocator;
 
 		V3DEdMainView* mainView;
 		V3DEdSettingsView* settingsView{};
+		V3DPropertyTreeBuilder* propertyTreeBuilder;
 
 	public:
-		V3DEdViewManager(V3DEdLocator::V3DEdControllerLocator* controllerLocator, V3DEdMainView* mainView);
+		V3DEdViewManager(V3DEdLocator::V3DEdModelLocator* modelLocator, V3DEdLocator::V3DEdControllerLocator* controllerLocator, V3DEdMainView* mainView, V3DPropertyTreeBuilder* propertyTreeBuilder);
 		V3DEdViewManager(const V3DEdViewManager&) = delete;
 		V3DEdViewManager(V3DEdViewManager&&) = delete;
 		~V3DEdViewManager() override = default;
@@ -40,6 +43,8 @@ namespace V3D::V3DEditor::V3DEdView
 		void ShowSettingsView() override;
 		void ShowAboutEditorView() override;
 		void ShowAboutQtView() override;
+
+		void LoadSettingsViewData() override;
 
 		void UpdateMainView() override;
 		void UpdateSettingsView() override;

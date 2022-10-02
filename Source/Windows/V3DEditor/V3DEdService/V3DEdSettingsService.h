@@ -11,6 +11,12 @@ namespace V3D::V3DEditor
     namespace V3DEdCore
     {
         class V3DEdIViewManager;
+        class V3DEdITextFileManager;
+    }
+
+    namespace V3DEdLocator
+    {
+        class V3DEdModelLocator;
     }
 
     namespace V3DEdModel
@@ -24,11 +30,15 @@ namespace V3D::V3DEditor::V3DEdService
     class V3DEdSettingsService final
     {
         V3DEdCore::V3DEdIViewManager* viewManager;
-        V3DEdModel::V3DEdSettingsModel* settingsModel;
+        V3DEdCore::V3DEdITextFileManager* textFileManager;
+        V3DEdLocator::V3DEdModelLocator* modelLocator;
+
+        V3DEdModel::V3DEdSettingsModel* GetSettingsModel() const;
         
     public:
-        V3DEdSettingsService(V3DEdCore::V3DEdIViewManager* viewManager, V3DEdModel::V3DEdSettingsModel* settingsModel);
+        V3DEdSettingsService(V3DEdCore::V3DEdIViewManager* viewManager, V3DEdCore::V3DEdITextFileManager* textFileManager, V3DEdLocator::V3DEdModelLocator* modelLocator);
 
+        void Load() const;
         void Save() const;
     };
 }
