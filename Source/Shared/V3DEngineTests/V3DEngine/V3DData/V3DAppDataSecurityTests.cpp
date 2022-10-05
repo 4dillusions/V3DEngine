@@ -17,7 +17,8 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DData
 {
 	void V3DAppDataSecurityTests::AllAppDataValidTest()
 	{
-		V3DTest::AssertOk(V3DAppDataSecurity::GetIsAllAppDataValid(V3DString("secret key 123"), V3DString("40a7c1f8450947471163ef4ff3d5e22f41e6f1590e435c55dc3979ebadb4b441")), V3DFILE_INFO);
+		//online tool: https://www.devglan.com/online-tools/hmac-sha256-online
+		V3DTest::AssertOk(V3DAppDataSecurity::GetIsAllAppDataValid(V3DString("secret key 123"), V3DString("e9bd672aa4e99f7ab21e122bbd2c606aebd3fc66d40eb58ace8357c1d85b7f91")), V3DFILE_INFO);
 	}
 
 	void V3DAppDataSecurityTests::RunAllUnitTests()

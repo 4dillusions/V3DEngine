@@ -20,14 +20,15 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 		V3DTest::AssertOk(!V3DFolder::IsExist(static_cast<V3DAssetPathType>(-1)), V3DFILE_INFO); //negative test: "default" folder
 
 		auto fileList = V3DFolder::GetFileList(V3DAssetPathType::Options);
-		constexpr int FileListCout = 3;
+		constexpr int FileListCout = 4;
 		V3DTest::AssertOk(fileList.GetLength() == FileListCout, V3DFILE_INFO);
 
 		if (fileList.GetLength() == FileListCout)
 		{
-			V3DTest::AssertOk(*fileList[0] == V3DString("test.txt"), V3DFILE_INFO);
-			V3DTest::AssertOk(*fileList[1] == V3DString("test2.txt"), V3DFILE_INFO);
-			V3DTest::AssertOk(*fileList[2] == V3DString("testData.dat"), V3DFILE_INFO);
+			V3DTest::AssertOk(*fileList[0] == V3DString("GameOptions.json"), V3DFILE_INFO);
+			V3DTest::AssertOk(*fileList[1] == V3DString("test.txt"), V3DFILE_INFO);
+			V3DTest::AssertOk(*fileList[2] == V3DString("test2.txt"), V3DFILE_INFO);
+			V3DTest::AssertOk(*fileList[3] == V3DString("testData.dat"), V3DFILE_INFO);
 		}
 	}
 
