@@ -10,17 +10,14 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngine/V3DEngineLibrary.h"
 #include "V3DEngine/V3DCore/V3DAction.h"
 
-namespace V3D::V3DEngine::V3DCore
-{
-	class V3DString;
-}
-	
 namespace V3D::V3DEngine::V3DIO
 {
 	class V3DJsonVariant;
 
     class V3DENGINE_API V3DJsonIO final
     {
+        static void NoOp(); //for android partial compiling: wcstoll etc compile error fixing
+
     public:
         V3DJsonIO() = delete;
         V3DJsonIO(const V3DJsonIO&) = delete;
@@ -29,9 +26,10 @@ namespace V3D::V3DEngine::V3DIO
         V3DJsonIO& operator=(const V3DJsonIO&) = delete;
         V3DJsonIO& operator=(V3DJsonIO&&) = delete;
 
-        static nlohmann::json GetJsonObject(const char* jsonText); //definition will be implement in platform specific .cpp
-        static char* GetByteStream(const nlohmann::json& jsonObj); //definition will be implement in platform specific .cpp
+        static const char* GetLastError();
 
-        static void TraversalJsonHierarchy(const nlohmann::json& jsonObj, void* parent, const V3DCore::V3DAction3<const V3DCore::V3DString&, const V3DCore::V3DString&, const V3DJsonVariant&>& action);
+        static nlohmann::json GetJsonObject(const char* jsonText);
+        static char* GetByteStream(const nlohmann::json& jsonObj);
+        static void TraversalJsonHierarchy(const nlohmann::json& jsonObj, void* parent, const V3DCore::V3DAction1<const V3DJsonVariant&>& action);
     };
 }

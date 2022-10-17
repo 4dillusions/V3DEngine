@@ -8,17 +8,17 @@ Released under the terms of the GNU General Public License version 3 or later.
 #include "V3DEngineTests/V3DTest.h"
 #include "V3DEngine/V3DMacros.h"
 #include "V3DEngine/V3DIO/V3DJsonIO.h"
-#include "V3DEngine/V3DCore/V3DString.h"
-#include "V3DEngineTests/V3DTestObject/V3DTestConfigData.h"
-#include "V3DEngineTests/V3DTestObject/V3DTestConfigJsonRepository.h"
-
-#include "ThirdParty/Json/json.hpp"
 #include "V3DEngine/V3DIO/V3DJsonVariantTypes.h"
 #include "V3DEngine/V3DIO/V3DJsonVariant.h"
 #include "V3DEngine/V3DIO/V3DLogger.h"
-#include "V3DEngineTests/V3DTestObject/V3DJsonVariantHelper.h"
+#include "V3DEngine/V3DCore/V3DString.h"
+#include "V3DEngineTests/V3DTestObject/V3DTestConfigData.h"
+#include "V3DEngineTests/V3DTestObject/V3DTestConfigJsonRepository.h"
 #include "V3DEngineTests/V3DTestObject/V3DTestUIControl.h"
 #include "V3DEngineTests/V3DTestObject/V3DTestUIControlJsonRepository.h"
+//#include "V3DEngineTests/V3DTestObject/V3DJsonVariantHelper.h"
+
+#include "ThirdParty/Json/json.hpp"
 
 using namespace V3D::V3DEngine::V3DIO;
 using namespace V3D::V3DEngine::V3DCore;
@@ -33,9 +33,11 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 	{
 		const auto jsonGoodObject = V3DJsonIO::GetJsonObject(R"({"test" : "good"})");
 		V3DTest::AssertOk(!jsonGoodObject.empty(), V3DFILE_INFO);
-
+		V3DTest::AssertOk(V3DString(V3DJsonIO::GetLastError()).IsEmpty(), V3DFILE_INFO);
+		
 		const auto jsonWrongObject = V3DJsonIO::GetJsonObject(R"({"test" : wrong"})");
 		V3DTest::AssertOk(jsonWrongObject.empty(), V3DFILE_INFO);
+		V3DTest::AssertOk(!V3DString(V3DJsonIO::GetLastError()).IsEmpty(), V3DFILE_INFO);
 	}
 	
 	void V3DJsonIOTests::BuildJsonFromCodeTest()
@@ -167,14 +169,14 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 		)";
 
 		const json JsonObj = V3DJsonIO::GetJsonObject(JsonString);
-		V3DAction3<const V3DString&, const V3DString&, const V3DJsonVariant&> action;
+		V3DAction1<const V3DJsonVariant&> action;
 
 		const auto OutputBefore = R"({"list":[1,2,3],"objects":{"obj1":{"x":10,"y":20},"obj2":{"x":30,"y":40}},"widgetName":"window","width":122})";
 		V3DTest::AssertOk(V3DString(OutputBefore) == V3DString(JsonObj.dump().c_str()), V3DFILE_INFO);
 
-		action.Set([&](const V3DString& parentName, const V3DString& name, const V3DJsonVariant& variant)
+		action.Set([&](const V3DJsonVariant& variant)
 		{
-			if (name == V3DString("widgetName"))
+			if (V3DString(variant.name) == V3DString("widgetName"))
 				*variant.text = "window1";
 
 			if (variant.unsignedIntNumber != nullptr && *variant.unsignedIntNumber == 30)
@@ -192,14 +194,13 @@ namespace V3D::V3DEngineTests::V3DEngine::V3DIO
 		V3DJsonIO::TraversalJsonHierarchy(JsonObj, nullptr, action);
 		const auto OutputAfter = R"({"list":[4,5,6],"objects":{"obj1":{"x":10,"y":20},"obj2":{"x":32,"y":40}},"widgetName":"window1","width":122})";
 		V3DTest::AssertOk(V3DString(OutputAfter) == V3DString(JsonObj.dump().c_str()), V3DFILE_INFO);
-
-
+		
 		//dump custom hierarchy and json structure
 		/*V3DLogger::Get().SetOutputTypeFlag(V3DLogOutputType::ToOutput, true);
-		action.Set([&](const V3DString& parentName, const V3DString& name, const V3DJsonVariant& variant)
+		action.Set([&](const V3DJsonVariant& variant)
 		{
 			V3DString dumpLine;
-			dumpLine += V3DString("<") + parentName + "> " + V3DJsonVariantHelper::ToStringType(variant) + " " + name + " " + V3DJsonVariantHelper::ToStringValue(variant);
+			dumpLine += V3DString("<") + V3DString(variant.parentName) + "> " + V3DJsonVariantHelper::ToStringType(variant) + " " + V3DString(variant.name) + " " + V3DJsonVariantHelper::ToStringValue(variant);
 			V3DLogger::Get().WriteOutput(V3DLogMessageType::Info, dumpLine);
 		});
 		V3DJsonIO::TraversalJsonHierarchy(JsonObj, nullptr, action);
