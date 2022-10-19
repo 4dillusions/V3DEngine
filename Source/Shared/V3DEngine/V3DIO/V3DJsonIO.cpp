@@ -73,7 +73,7 @@ namespace V3D::V3DEngine::V3DIO
 				if (variant.currentType == V3DJsonVariantTypes::Array)
 				{
 					variant.currentType = V3DJsonVariantTypes::Array;
-					variant.array = const_cast<json::array_t*>(&it.value().get_ref<const json::array_t&>());
+					variant.array = const_cast<json::array_t*>(it.value().get_ptr<const json::array_t*>());
 				}
 
 				action.Invoke(variant);
@@ -104,36 +104,36 @@ namespace V3D::V3DEngine::V3DIO
 					//< array (ordered collection of values)
 				case nlohmann::detail::value_t::array:
 					variant.currentType = V3DJsonVariantTypes::Array;
-					variant.array = const_cast<json::array_t*>(&it.value().get_ref<const json::array_t&>());
+					variant.array = const_cast<json::array_t*>(it.value().get_ptr<const json::array_t*>());
 					break;
 
 					//< string value
 				case nlohmann::detail::value_t::string:
 					variant.currentType = V3DJsonVariantTypes::Text;
-					variant.text = const_cast<json::string_t*>(&it.value().get_ref<const json::string_t&>());
+					variant.text = const_cast<json::string_t*>(it.value().get_ptr<const json::string_t*>());
 					break;
 
 					//< boolean value
 				case nlohmann::detail::value_t::boolean:
 					variant.currentType = V3DJsonVariantTypes::Boolean;
-					variant.boolean = const_cast<bool*>(&it.value().get_ref<const json::boolean_t&>());
+					variant.boolean = const_cast<bool*>(it.value().get_ptr<const json::boolean_t*>());
 					break;
 
 					//< number value (signed/unsigned integer integer)
 				case nlohmann::detail::value_t::number_integer:
 					variant.currentType = V3DJsonVariantTypes::IntNumber;
-					variant.intNumber = const_cast<std::int64_t*>(&it.value().get_ref<const json::number_integer_t&>());
+					variant.intNumber = const_cast<std::int64_t*>(it.value().get_ptr<const json::number_integer_t*>());
 					break;
 
 				case nlohmann::detail::value_t::number_unsigned:
 					variant.currentType = V3DJsonVariantTypes::UnsignedIntNumber;
-					variant.unsignedIntNumber = const_cast<std::uint64_t*>(&it.value().get_ref<const json::number_unsigned_t&>());
+					variant.unsignedIntNumber = const_cast<std::uint64_t*>(it.value().get_ptr<const json::number_unsigned_t*>());
 					break;
 
 					//< number value (floating-point)
 				case nlohmann::detail::value_t::number_float:
 					variant.currentType = V3DJsonVariantTypes::DoubleNumber;
-					variant.floatNumber = const_cast<double*>(&it.value().get_ref<const json::number_float_t&>());
+					variant.floatNumber = const_cast<double*>(it.value().get_ptr<const json::number_float_t*>());
 					break;
 
 					//< binary array (ordered collection of bytes)

@@ -15,8 +15,10 @@ namespace V3D::V3DEngine::V3DIO
 	class V3DENGINE_API V3DJsonVariant final
 	{
 	public:
+		const char* name{};
+		const char* parentName{};
 		V3DJsonVariantTypes currentType = V3DJsonVariantTypes::Null;
-
+		
 		bool* boolean{};
 
 		//long (x86), long long (x64), for using in real data suggested: long
