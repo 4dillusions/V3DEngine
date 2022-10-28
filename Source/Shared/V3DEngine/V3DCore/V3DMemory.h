@@ -55,9 +55,9 @@ namespace V3D::V3DEngine::V3DCore
 			return result;
 		}
 		
-		template <typename T, typename TInfo, typename P1> static T* New(TInfo info, P1 p1)
+		template <typename T, typename TInfo, typename... TParams> static T* New(TInfo info, TParams... params)
 		{
-			T* result = new T(p1);
+			T* result = new T(std::forward<TParams>(params)...);
 
 			const static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
 			if (isDebugMode || isUnitTestMode)
@@ -66,66 +66,11 @@ namespace V3D::V3DEngine::V3DCore
 			return result;
 		}
 
-		template <typename T, typename P1> static T* NewExplicit(P1 p1)
+		template <typename T, typename TParam> static T* NewExplicit(TParam param)
 		{
-			return new T(p1);
+			return new T(param);
 		}
-
-		template <typename T, typename TInfo, typename P1, typename P2> static T* New(TInfo info, P1 p1, P2 p2)
-		{
-			T* result = new T(p1, p2);
-
-			const static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
-			if (isDebugMode || isUnitTestMode)
-				V3DMemory::Add(static_cast<void*>(result), { info , V3DMemoryAllocatorType::NewMem });
-
-			return result;
-		}
-
-		template <typename T, typename TInfo, typename P1, typename P2, typename P3> static T* New(TInfo info, P1 p1, P2 p2, P3 p3)
-		{
-			T* result = new T(p1, p2, p3);
-
-			const static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
-			if (isDebugMode || isUnitTestMode)
-				V3DMemory::Add(static_cast<void*>(result), { info , V3DMemoryAllocatorType::NewMem });
-
-			return result;
-		}
-
-		template <typename T, typename TInfo, typename P1, typename P2, typename P3, typename P4> static T* New(TInfo info, P1 p1, P2 p2, P3 p3, P4 p4)
-		{
-			T* result = new T(p1, p2, p3, p4);
-
-			const static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
-			if (isDebugMode || isUnitTestMode)
-				V3DMemory::Add(static_cast<void*>(result), { info , V3DMemoryAllocatorType::NewMem });
-
-			return result;
-		}
-
-		template <typename T, typename TInfo, typename P1, typename P2, typename P3, typename P4, typename P5> static T* New(TInfo info, P1 p1, P2 p2, P3 p3, P4 p4, P5 p5)
-		{
-			T* result = new T(p1, p2, p3, p4, p5);
-
-			const static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
-			if (isDebugMode || isUnitTestMode)
-				V3DMemory::Add(static_cast<void*>(result), { info , V3DMemoryAllocatorType::NewMem });
-
-			return result;
-		}
-
-		template <typename T, typename TInfo, typename P1, typename P2, typename P3, typename P4, typename P5, typename P6> static T* New(TInfo info, P1 p1, P2 p2, P3 p3, P4 p4, P5 p5, P6 p6)
-		{
-			T* result = new T(p1, p2, p3, p4, p5, p6);
-
-			const static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
-			if (isDebugMode || isUnitTestMode)
-				V3DMemory::Add(static_cast<void*>(result), { info , V3DMemoryAllocatorType::NewMem });
-
-			return result;
-		}
-
+		
 		template <typename T> static void Delete(T& obj)
 		{
 			const static bool isUnitTestMode{ V3DEnvironment::GetIsUnitTestMode() };
