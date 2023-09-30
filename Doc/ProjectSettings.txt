@@ -61,13 +61,17 @@ Build Events:
 +++++++++++++++++++++++++++++++++++++++++++++++++
 Android (Mobile & emulator ARM/ARM64/x86) pojects
 +++++++++++++++++++++++++++++++++++++++++++++++++
-ThirdParty\SoLoud 	(Static Library)						references: ThirdParty\SoLoud (shared)	
+ThirdParty\SoLoud 	(Static Library)			references: ThirdParty\SoLoud (shared)	
 												C/C++ Advanced: Compile as: C++
 V3DEngine (Static Library)						references: V3DEngine (shared), ThirdParty\SoLoud	
 												C/C++ Advanced: Compile as: C++
 V3DEngineTests (Native Activity Application)	references: V3DEngineTests (shared), V3DEngine
 												C/C++ Advanced: Compile as: C++
 												Linker/Input: GLESv1_CM, EGL, m //GLESv2, EGL, m, OpenSLES
+												
+VS 2022 v 17.4:
+[!!!]Android SDK update: Ant scripts have been removed, so users will no longer see Ant-based templates in the New Project dialog. For help migrating from Ant templates to Gradle templates, please see: Migrating Builds From Apache Ant (gradle.org)[!!!]
+	V3DEngineTests (Native Activity Application) will be convert from Ant to Gradle project!
 
 Settings
 --------

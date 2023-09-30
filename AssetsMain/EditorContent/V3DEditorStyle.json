@@ -1,5 +1,8 @@
 {
   "intValue" : 10,
   "floatValue" : 3.1456,
-  "stringValue" : "V3DEditorStyle.json: Test text!"
+  "stringValue" : "V3DEditorStyle.json: Test text!",
+  "stringValue2" : "V3DEditorStyle.json: Test text!\nV3DEditorStyle.json: Test text!\nV3DEditorStyle.json: Test text!\n",
+  "boolValue" : true,
+  "arrayStrings" : ["one", "two", "three"]
 }

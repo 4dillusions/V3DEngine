@@ -1,5 +1,7 @@
 {
-  "intValue" : 10,
-  "floatValue" : 3.1456,
-  "stringValue" : "GameOptions.json: Test text!"
+  "intValue" : 101,
+  "floatValue" : 31.1456,
+  "stringValue" : "GameOptions.json: Test text!",
+  "boolValue" :	false,
+  "arrayNumbers" : [1, 2, 3]
 }

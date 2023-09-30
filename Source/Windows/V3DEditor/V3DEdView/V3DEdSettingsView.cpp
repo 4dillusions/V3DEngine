@@ -27,6 +27,8 @@ namespace V3D::V3DEditor::V3DEdView
     {
         ViewActionRelease.Invoke();
         viewBindings->RemoveViewBindings(this);
+        propertyTreeBuilder->DeleteTreeWidget(ui.treeEditorStyleProperties);
+        propertyTreeBuilder->DeleteTreeWidget(ui.treeGameProperties);
     }
 
     QTreeWidget* V3DEdSettingsView::GetTreeEditorStyleProperties() const

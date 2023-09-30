@@ -8,7 +8,15 @@ Released under the terms of the GNU General Public License version 3 or later.
 
 #include "ThirdParty/Json/json_fwd.hpp"
 
+namespace V3D::V3DEngine::V3DIO
+{
+	class V3DJsonVariant;
+}
+
+class QWidget;
 class QTreeWidget;
+class QTreeWidgetItem;
+class QPushButton;
 
 namespace V3D::V3DEditor::V3DEdView
 {
@@ -32,7 +40,25 @@ namespace V3D::V3DEditor::V3DEdView
 	{
 	public:
 		void InitTreeWidget(const QTreeWidget* treeWidget);
+		nlohmann::json* BuildTreeWidget(const char* jsonText, QTreeWidget* treeWidget);
+		
+		void DeleteTreeWidget(QTreeWidget* treeWidget);
 
-		nlohmann::json* BuildTreeWidget(const char* jsonText, const QTreeWidget* treeWidget) const;
+	private:
+		QWidget* CreateQCheckBox(QWidget* parent, bool checked);
+		QWidget* CreateQTextOrLineEdit(QWidget* parent, const char* text);
+		QWidget* CreateQSpinBox(QWidget* parent, unsigned int number);
+		QWidget* CreateQSpinBox(QWidget* parent, int number);
+		QWidget* CreateQDoubleSpinBox(QWidget* parent, double number);
+		QWidget* CreateArrayEditQPushButton(QWidget* parent);
+
+		void AddBindingToArrayButton(QPushButton* button, const V3DEngine::V3DIO::V3DJsonVariant& variant, QTreeWidgetItem* currentTreeItem, QTreeWidget* treeWidget);
+
+		QWidget* CreateItemWidget(QTreeWidget* treeWidget, QWidget* parent, QTreeWidgetItem*& parentTreeItem, QTreeWidgetItem* currentTreeItem, const V3DEngine::V3DIO::V3DJsonVariant& variant);
+
+		void DeleteTreeWidgetItem(QTreeWidgetItem* currentTreeItem, QTreeWidget* treeWidget);
+
+		void BuildTreeNodeWidget(QTreeWidget* treeWidget, nlohmann::json* jsonNode);
+		nlohmann::json* TreeWidgetBuilder(const char* jsonText, QTreeWidget* treeWidget, nlohmann::json* jsonNode);
 	};
 }
